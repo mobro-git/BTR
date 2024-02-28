@@ -1,27 +1,22 @@
-##### Setup ----------------
+# Load packages required to define the pipeline:
 library(targets)
-library(tarchetypes)
+library(tarchetypes) 
 
 source("packages.R")
 
-tar_source()
-
-# Set target-specific options such as packages.
+# Set target options:
 tar_option_set(
-  packages = c("dplyr","readr","tidyverse","datasets") # packages to make available to targets
+  packages = c("dplyr","readr","tidyverse") # packages to make available to targets
 )
 
-# Plotmapping: plot subject and figure type table. Cannot be used by tar_map unless outside of tar_plan()
+# Run the R scripts in the R/ folder with your custom functions:
+tar_source()
 
-figmap_list_csv = "plot_mapping/figmap.csv"
-figmap_list = read_csv(figmap_list_csv, col_types = cols()) %>% as_tibble()
-
-# End this file with a list of target objects.
-tar_plan(
+# Replace the target list below with your own:
+list(
   
-  ######################################################################################### -
-  ######################################################################################### -
   
+<<<<<<< HEAD
   ##### Config -----------------
   config = list(
     scen_mapping = read_scen_mapping(scen_mapping_csv),
@@ -225,10 +220,7 @@ tar_plan(
   # cone = create_graph("leep", "cone_uncertainty", config, clean_data, figmap_leep_cone),
   # stackbar = create_graph("leep", "stacked_bar", config, clean_data, figmap_leep_stackbar),
   # diffbar = create_graph("leep", "diff_bar", config, clean_data, figmap_leep_diffbar)
+=======
+>>>>>>> c28a0830aa727a4e84cc0d6d28f367fc999d0170
   
 )
-
-# view Targets pipeline in flow-chart style with dependency links
-# tar_visnetwork(targets_only=TRUE)
-
-# compile_all_data() # compiles all .csvs in final_figures/data into one workbook
