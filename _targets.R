@@ -13,8 +13,7 @@ tar_option_set(
 tar_source()
 
 tar_option_set(
-  packages = c("dplyr","readr","tidyverse","datasets"),
-  error = 'continue'# packages to make available to targets
+  packages = c("dplyr","readr","tidyverse","datasets")# packages to make available to targets
 )
 
 tar_plan(
@@ -38,7 +37,7 @@ tar_plan(
   
   ##### Template ---------------------------------------------------
   
-  tar_target(template_xlsx, "data-raw/EMF37_data_template_R2_v2.xlsx", format = "file"),
+  tar_target(template_xlsx, "data-raw/BTR24_data_template_v1.xlsx", format = "file"),
   tar_target(template, read_emf_template_xlsx(template_xlsx)),
   
   #### Data Files ----------------------------------------------------------------

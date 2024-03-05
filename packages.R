@@ -1,18 +1,42 @@
 # packages.R
 
-# targets packages
 library(targets)
 library(tarchetypes)
-
-# general code
-library(here)
-library(tidyverse)
+library(crew)
 
 library(conflicted)
 conflict_prefer("filter", "dplyr")
 
-# figure-specific
-library(patchwork) # combining figures
-library(ggh4x) # setting facet-specific axes with facetted_pos_scales()
-library(ggrepel) # ggplot label repel for better spacing
+library(here)
+library(fs)
+library(glue)
+
+library(plotly)
+library(data.table)
+library(tidyverse)
+library(patchwork)
+library(ggh4x)
+library(ggrepel)
+library(dplyr)
+library(readr)
+library(datasets)
+library(units)
+library(readxl)
+
+library(janitor)
+library(kableExtra)
+library(DT)
+library(visNetwork)
+
+library(cowplot)
+library(tableHTML)
+library(egg)
+library(ggbreak)
+
+library(openxlsx)
+library(flextable)
+library(naniar)
+library(gt)
+library(webshot2)
+library(scales)
 

@@ -30,10 +30,8 @@ read_process_minimal_from_raw <- function(filepath) {
 #' @export
 
 read_process_data_file <- function(filepath, config) {
-
   read_raw_data_file(filepath) %>%
     process_data_file(config)
-
 }
 
 #### Processing --------------
