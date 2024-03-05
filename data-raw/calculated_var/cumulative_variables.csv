@@ -1,0 +1,4 @@
+﻿variable,new_variable,start_yr,end_yr
+Emissions|CO2,Emissions|CO2|Cumulative,2020,2050
+Emissions|CO2|Energy,Emissions|CO2|Energy|Cumulative,2020,2050
+Emissions|CO2|Industrial Processes,Emissions|CO2|Industrial Processes|Cumulative,2020,2050

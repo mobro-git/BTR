@@ -1,0 +1,39 @@
+﻿variable,new_variable,per_type,ref_type,ref_value,unit
+Emissions|CO2,Emissions|CO2|Percent difference from No IRA,difference,scenario,No IRA,%
+Emissions|CO2|Energy|Supply|Electricity,Emissions|CO2|Energy|Supply|Electricity|Percent difference from No IRA,difference,scenario,No IRA,%
+Emissions|CO2|Energy|Demand|Transportation|Total,Emissions|CO2|Energy|Demand|Transportation|Total|Percent difference from No IRA,difference,scenario,No IRA,%
+Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total|Percent difference from No IRA,difference,scenario,No IRA,%
+Emissions|CO2|Energy|Demand|Buildings|Total,Emissions|CO2|Energy|Demand|Buildings|Total|Percent difference from No IRA,difference,scenario,No IRA,%
+Primary Energy|Oil,Primary Energy|Oil|Percent difference from No IRA,difference,scenario,No IRA,%
+Primary Energy|Gas,Primary Energy|Gas|Percent difference from No IRA,difference,scenario,No IRA,%
+Primary Energy|Coal,Primary Energy|Coal|Percent difference from No IRA,difference,scenario,No IRA,%
+Emissions|CO2|Energy|Demand|Transportation|Indirect,Emissions|CO2|Energy|Demand|Transportation|Indirect|Percent difference from No IRA,difference,scenario,No IRA,%
+Emissions|CO2|Energy|Demand|Industry and Fuel Production|Indirect,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Indirect|Percent difference from No IRA,difference,scenario,No IRA,%
+Emissions|CO2|Energy|Demand|Buildings|Indirect,Emissions|CO2|Energy|Demand|Buildings|Indirect|Percent difference from No IRA,difference,scenario,No IRA,%
+Emissions|CO2|Energy|Demand|Transportation,Emissions|CO2|Energy|Demand|Transportation|Percent difference from No IRA,difference,scenario,No IRA,%
+Emissions|CO2|Energy|Demand|Industry and Fuel Production,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Percent difference from No IRA,difference,scenario,No IRA,%
+Emissions|CO2|Energy|Demand|Buildings,Emissions|CO2|Energy|Demand|Buildings|Percent difference from No IRA,difference,scenario,No IRA,%
+Final Energy|Industry|Fossil,Final Energy|Industry|Fossil|Percent difference from No IRA,difference,scenario,No IRA,%
+Emissions|NOx|Energy|Supply|Electricity,Emissions|NOx|Energy|Supply|Electricity|Percent difference from No IRA,difference,scenario,No IRA,%
+Emissions|Sulfur|Energy|Supply|Electricity,Emissions|Sulfur|Energy|Supply|Electricity|Percent difference from No IRA,difference,scenario,No IRA,%
+Secondary Energy|Electricity|Nuclear,Secondary Energy|Electricity|Nuclear|Percent differnce from No IRA,difference,scenario,No IRA,%
+Secondary Energy|Electricity|Solar,Secondary Energy|Electricity|Solar|Percent differnce from No IRA,difference,scenario,No IRA,%
+Secondary Energy|Electricity|Wind,Secondary Energy|Electricity|Wind|Percent differnce from No IRA,difference,scenario,No IRA,%
+Secondary Energy|Electricity|Biomass,Secondary Energy|Electricity|Biomass|Percent differnce from No IRA,difference,scenario,No IRA,%
+Secondary Energy|Electricity|Geothermal,Secondary Energy|Electricity|Geothermal|Percent differnce from No IRA,difference,scenario,No IRA,%
+Secondary Energy|Electricity|Hydro,Secondary Energy|Electricity|Hydro|Percent differnce from No IRA,difference,scenario,No IRA,%
+Secondary Energy|Electricity|Oil|w/ CCS,Secondary Energy|Electricity|Oil|w/ CCS|Percent differnce from No IRA,difference,scenario,No IRA,%
+Secondary Energy|Electricity|Gas|w/ CCS,Secondary Energy|Electricity|Gas|w/ CCS|Percent differnce from No IRA,difference,scenario,No IRA,%
+Secondary Energy|Electricity|Coal|w/ CCS,Secondary Energy|Electricity|Coal|w/ CCS|Percent differnce from No IRA,difference,scenario,No IRA,%
+Secondary Energy|Electricity|Coal|w/o CCS,Secondary Energy|Electricity|Coal|w/o CCS|Percent differnce from No IRA,difference,scenario,No IRA,%
+Secondary Energy|Electricity|Gas|w/o CCS,Secondary Energy|Electricity|Gas|w/o CCS|Percent differnce from No IRA,difference,scenario,No IRA,%
+Secondary Energy|Electricity|Oil|w/o CCS,Secondary Energy|Electricity|Oil|w/o CCS|Percent differnce from No IRA,difference,scenario,No IRA,%
+Final Energy|Industry and Fuel Production|Percent Electricity,Final Energy|Industry and Fuel Production|Percent Electricity|Percent Difference from 2020,difference,year,2020,%
+Final Energy|Industry|Percent Electricity,Final Energy|Industry|Percent Electricity|Percent Difference from 2020,difference,year,2020,%
+Final Energy|Transportation|Percent Electricity,Final Energy|Transportation|Percent Electricity|Percent Difference from 2020,difference,year,2020,%
+Final Energy|Buildings|Percent Electricity,Final Energy|Buildings|Percent Electricity|Percent Difference from 2020,difference,year,2020,%
+Final Energy|Transportation|Electricity,Final Energy|Transportation|Electricity|Percent difference from 2020,difference,year,2020,%
+Final Energy|Industry|Electricity,Final Energy|Industry|Electricity|Percent difference from 2020,difference,year,2020,%
+Final Energy|Buildings|Electricity,Final Energy|Buildings|Electricity|Percent difference from 2020,difference,year,2020,%
+Final Energy|Electricity,Final Energy|Electricity|Percent difference from 2020,difference,year,2020,%
+Final Energy|Electricity,Final Energy|Electricity|Percent difference from No IRA,difference,scenario,No IRA,%

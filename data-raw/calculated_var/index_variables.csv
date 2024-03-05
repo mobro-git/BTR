@@ -1,0 +1,13 @@
+﻿variable,ref_value,ref_type,unit
+Emissions|CO2,2020,year,Index
+Emissions|CO2|Energy,2020,year,Index
+Emissions|CO2|Energy|Demand,2020,year,Index
+Emissions|CO2|Energy|Demand|Buildings,2020,year,Index
+Emissions|CO2|Energy|Demand|Buildings|Indirect,2020,year,Index
+Emissions|CO2|Energy|Demand|Industry,2020,year,Index
+Emissions|CO2|Energy|Demand|Industry|Indirect,2020,year,Index
+Emissions|CO2|Energy|Demand|Transportation,2020,year,Index
+Emissions|CO2|Energy|Demand|Transportation|Indirect,2020,year,Index
+Emissions|CO2|Energy|Supply,2020,year,Index
+Emissions|CO2|Energy|Supply|Electricity,2020,year,Index
+Emissions|CO2|Energy and Industrial Processes,2020,year,Index
