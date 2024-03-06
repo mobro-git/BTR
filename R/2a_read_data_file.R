@@ -22,14 +22,14 @@ read_raw_data_file <- function(filepath) {
     stop("Unable to read file type.")
   }
   
-  
-  standard_cols <- c("Model",
+  raw_data_cols <- c("Model",
                      "Scenario",
                      "Region",
                      "Variable",
                      "Unit")
-  if(! all(standard_cols) %in% names(raw)){
-    rlang::abort(paste(filepath, ' does not contain all required columns: ', print(standard_cols)))
+
+  if(! all(raw_data_cols %in% names(raw))){
+    stop(paste0(setdiff(raw_data_cols, names(raw)),' column missing from ',fs::path_file(filepath)))
   }
   
   raw %>%

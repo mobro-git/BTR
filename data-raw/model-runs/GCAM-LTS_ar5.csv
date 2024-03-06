@@ -1,4 +1,4 @@
-model,scenario,year,unit,value,variable,region
+Model,Scenario,Year,Unit,Value,Variable,Region
 GCAM 5.3,AM.HiRem.AdvPwr,2025,Mt CO2-equiv/yr,3952.847581,Emissions|GHG|Net,United States
 GCAM 5.3,AM.HiRem.AdvPwr,2030,Mt CO2-equiv/yr,3123.418095,Emissions|GHG|Net,United States
 GCAM 5.3,AM.HiRem.AdvPwr,2035,Mt CO2-equiv/yr,2028.240706,Emissions|GHG|Net,United States

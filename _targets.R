@@ -4,18 +4,16 @@ library(tarchetypes)
 
 source("packages.R")
 
-# Set target options:
-tar_option_set(
-  packages = c("dplyr","readr","tidyverse") # packages to make available to targets
-)
-
 # Run the R scripts in the R/ folder with your custom functions:
 tar_source()
 
+# Set target options:
 tar_option_set(
-  packages = c("dplyr","readr","tidyverse","datasets")# packages to make available to targets
+  packages = c("dplyr","readr","tidyverse","datasets"), # packages to make available to targets
+  error = "abridge"
 )
 
+# Define targets
 tar_plan(
   
   ##### Config -----------------
@@ -87,12 +85,8 @@ tar_plan(
                            summation_var,
                            cumulative_var,
                            annual_growth_rate_var,
-                           per_diff_var)},
-  
-  
+                           per_diff_var)}
   
   
 )
-
-
 

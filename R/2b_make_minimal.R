@@ -42,7 +42,7 @@ process_minimal_from_raw <- function(data) {
 #' @export
 transform_emf_to_long <- function(data) {
 
-  if(!"value" %in% names(data)){
+  if(!any(c("value","Value") %in% names(data))){
     data %>%
       tidyr::pivot_longer(
         cols = num_range(prefix = "", range = 2010:2100),
