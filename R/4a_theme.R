@@ -1,10 +1,15 @@
 
+# TODO: need to library tidyverse so that figure elements (e.g. "xup") can be defined with theme() function and tar_source() can find "%>%" function.
+# unsure why this only needs to be done ONLY for this R script
+library(ggplot2)
+library(magrittr)
+
 # Themes
 
 theme_emf <- function(fig_size = "auto") {
 
   if(fig_size == "auto") {
-    theme <- theme_light() +
+    theme_fig <- theme_light() +
       theme(text = element_text(size = 12),
             legend.background = element_rect(fill="white",color=NA),
             legend.title=element_blank(),
@@ -19,12 +24,12 @@ theme_emf <- function(fig_size = "auto") {
             strip.background = element_rect(fill=NA, size=1))#C5CFE3
   }
   else if(fig_size == "small") {
-    theme <- theme_light() +
+    theme_fig <- theme_light() +
       theme(text = element_text(size = 11),
             plot.subtitle = element_text(face="bold",size = 10,hjust=0.5),
             axis.text.y = element_text(size=10),
             axis.title.y = element_text(size=10,face="bold",vjust=2))
-    theme
+    theme_fig
   }}
 
 xup <- theme(axis.text.x = element_text(vjust = 12))
