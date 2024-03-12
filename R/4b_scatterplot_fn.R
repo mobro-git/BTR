@@ -10,7 +10,7 @@ scatterplot_wrap_fn <- function(df, data_list, mapping_list) {
          color = "") +
     #scale_subpalette(mapping_list$palettes, mapping_list$model_color_palette) +
     scale_y_continuous(labels = scales::comma)  +
-    theme_emf() +
+    theme_custom() +
     theme(panel.spacing.x = unit(4, "mm"))
 
   return(p)
@@ -28,7 +28,7 @@ scatterplot_grid_fn <- function(df, data_list, mapping_list) {
          color = "") +
     #scale_subpalette(mapping_list$palettes, mapping_list$model_color_palette) +
     scale_y_continuous(labels = scales::comma)  +
-    theme_emf() +
+    theme_custom() +
     theme(panel.spacing.x = unit(4, "mm"))
 
   return(p)
@@ -56,7 +56,7 @@ scatterplot_single_fn <- function(df, data_list, mapping_list) {
            shape = mapping_list$shape,
            title = mapping_list$title) +
       # scale_subpalette(mapping_list$palettes, mapping_list$model_color_palette) +
-      theme_emf() +
+      theme_custom() +
       theme(panel.spacing.x = unit(4, "mm"))
   }
   else {
@@ -72,7 +72,7 @@ scatterplot_single_fn <- function(df, data_list, mapping_list) {
            title = mapping_list$title) +
       # scale_subpalette(mapping_list$palettes, mapping_list$model_color_palette) +
       scale_y_continuous(labels = scales::comma)  +
-      theme_emf() +
+      theme_custom() +
       theme(panel.spacing.x = unit(4, "mm"))
   }
 

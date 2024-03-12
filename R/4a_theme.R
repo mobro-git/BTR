@@ -6,7 +6,7 @@ library(magrittr)
 
 # Themes
 
-theme_emf <- function(fig_size = "auto") {
+theme_custom <- function(fig_size = "auto") {
 
   if(fig_size == "auto") {
     theme_fig <- theme_light() +

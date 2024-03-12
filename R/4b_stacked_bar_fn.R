@@ -9,7 +9,7 @@ stacked_bar_single_fn <- function(df, data_list, mapping_list) {
          x = "",
          y = mapping_list$ylab,
          fill = "") +
-    theme_emf() +
+    theme_custom() +
     theme(axis.text.x = element_text(angle = 90, hjust=1)) +
     scale_subpalette(mapping_list$palettes, mapping_list$model_color_palette)
 
@@ -25,7 +25,7 @@ stacked_bar_wrap_fn <- function(df, data_list, mapping_list) {
          x = "",
          y = mapping_list$ylab,
          fill = "") +
-    theme_emf() +
+    theme_custom() +
     theme(axis.text.x = element_text(angle = 90, hjust=1)) +
     scale_subpalette(mapping_list$palettes, mapping_list$model_color_palette)
 
@@ -42,7 +42,7 @@ stacked_bar_grid_fn <- function(df, data_list, mapping_list) {
          x = "",
          y = mapping_list$ylab,
          fill = "") +
-    theme_emf() +
+    theme_custom() +
     theme(axis.text.x = element_text(angle = 90, hjust=1)) +
     scale_subpalette(mapping_list$palettes, mapping_list$model_color_palette)
 

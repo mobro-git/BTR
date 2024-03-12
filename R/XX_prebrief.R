@@ -26,7 +26,7 @@ ranges = function(all_data, summary_data, filter_variable, subtitle = "", top = 
     scale_shape_manual(values = c("No IRA" = 17, "IRA" = 16),
                        breaks = c("No IRA", "IRA")) +
     facet_grid(year ~ ., switch = "y") +
-    theme_emf() +
+    theme_custom() +
     theme(axis.ticks = element_blank(), axis.text.y = element_blank(),
           #axis.title.y = element_text(size = 8),
           axis.title.y = element_blank(),
@@ -79,7 +79,7 @@ spg_msb = function(df, title, yname, gd, ymin, ymax, ybreaks, yax_format, annota
   figure = ggplot(df, aes(year,value, color = scenario2, group = interaction(model, scenario))) +
     geom_line(aes(alpha = alpha), size = 0.5) +
     scale_subpalette(subpalettes, "Emissions|CO2|Energy|Demand|Industry") +
-    theme_emf() +
+    theme_custom() +
     scale_x_continuous(breaks = c(2005, 2021, 2025, 2030, 2035)) +
     scale_y_continuous(limits = c(ymin, ymax), breaks = ybreaks, labels = yax_format) +
     scale_alpha(range = c(1, 1), guide = F) +
@@ -142,7 +142,7 @@ dotted_msb = function(df, spg, metric, ymin, ymax, config, figmap_leep_timeserie
     segment_code_30 +
     scale_x_continuous(breaks = c(2030), labels = c("2030"), limits = c(2029.9, 2030.1)) +
     scale_y_continuous(limits = c(ymin, ymax)) +
-    theme_emf() +
+    theme_custom() +
     scale_subpalette(subpalettes, "Emissions|CO2|Energy|Demand|Industry") +
     scale_shape_manual(values = c("IRA" = 1, "No IRA" = 2)) +
     theme(panel.grid = element_blank(), plot.title = element_blank(),
@@ -159,7 +159,7 @@ dotted_msb = function(df, spg, metric, ymin, ymax, config, figmap_leep_timeserie
     segment_code_35 +
     scale_x_continuous(breaks = c(2035), labels = c("2035"), limits = c(2034.9, 2035.1)) +
     scale_y_continuous(limits = c(ymin,ymax)) +
-    theme_emf() +
+    theme_custom() +
     scale_subpalette(subpalettes, "Emissions|CO2|Energy|Demand|Industry") +
     scale_shape_manual(values = c("IRA" = 1, "No IRA" = 2)) +
     theme(panel.grid = element_blank(), plot.title = element_blank(),
@@ -242,7 +242,7 @@ delta_msb = function(pd_map_ID, drop, config, clean_data, figmap_leep_timeseries
     labs(title = "",
          x = "",
          y = expression("% Difference from No IRA")) +
-    theme_emf() +
+    theme_custom() +
     theme(
       axis.ticks = element_blank(),
       axis.text.x = element_text(angle = 45, hjust = 1),

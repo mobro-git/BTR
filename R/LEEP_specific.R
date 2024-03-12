@@ -140,7 +140,7 @@ dot_plots_sens = function(plot_type, config, emf_data_long, figmap, figure_num, 
     #text_code +
     scale_x_continuous(breaks = c(2030), labels = c("2030"), limits = c(2029.9, 2030.1)) +
     scale_y_continuous(limits = c(ymin, ymax)) +
-    theme_emf() +
+    theme_custom() +
     scale_subpalette(subpalettes, "Emissions Sensitivity") +
     theme(panel.grid = element_blank(), plot.title = element_blank(),
           axis.text.y = element_blank(),
@@ -154,7 +154,7 @@ dot_plots_sens = function(plot_type, config, emf_data_long, figmap, figure_num, 
     segment_code_35 +
     scale_x_continuous(breaks = c(2035), labels = c("2035"), limits = c(2034.9, 2035.1)) +
     scale_y_continuous(limits = c(ymin,ymax)) +
-    theme_emf() +
+    theme_custom() +
     scale_subpalette(subpalettes, "Emissions Sensitivity") +
     theme(panel.grid = element_blank(), plot.title = element_blank(),
           axis.text.y = element_blank(),
@@ -232,7 +232,7 @@ sens_dot_plot = function(dta, title, figmap, config, far_left = FALSE, single = 
     scale_x_continuous(breaks = c(2030, 2035), labels = c(2030, 2035), limits = c(2028, 2037)) +
     scale_y_continuous(limits = c(ymin, ymax), labels = scales::comma) +
     #scale_subpalette(subpalettes,"ZZZZZ") +
-    theme_emf() +
+    theme_custom() +
     ggtitle(title) +
     theme(axis.title.x = element_blank(),
           plot.title = element_text(hjust = 0.5, size = 8),
@@ -384,7 +384,7 @@ dot_plots = function(plot_type, config, emf_data_long, figmap, figure_num, reg, 
     #text_code +
     scale_x_continuous(breaks = c(2030), labels = c("2030"), limits = c(2029.9, 2030.1)) +
     scale_y_continuous(limits = c(ymin, ymax)) +
-    theme_emf() +
+    theme_custom() +
     scale_subpalette(subpalettes, "Emissions|CO2|Energy|Demand|Industry") +
     theme(panel.grid = element_blank(), plot.title = element_blank(),
           axis.text.y = element_blank(), axis.text.x = element_text(angle = 45, hjust = 1),
@@ -399,7 +399,7 @@ dot_plots = function(plot_type, config, emf_data_long, figmap, figure_num, reg, 
     segment_code_35 +
     scale_x_continuous(breaks = c(2035), labels = c("2035"), limits = c(2034.9, 2035.1)) +
     scale_y_continuous(limits = c(ymin,ymax)) +
-    theme_emf() +
+    theme_custom() +
     scale_subpalette(subpalettes, "Emissions|CO2|Energy|Demand|Industry") +
     theme(panel.grid = element_blank(), plot.title = element_blank(),
           axis.text.y = element_blank(), axis.text.x = element_text(angle = 45, hjust = 1),
@@ -595,7 +595,7 @@ emis_stack = function(dta, title, figmap, config, econwide = FALSE) {
     labs(y = expression(paste("End-Use Emissions (Mt C", O[2], "/yr)")), title = title) +
     # expression(paste("Economy-Wide C", O[2])),
     scale_subpalette(subpalettes, "Emissions Stack") +
-    theme_emf() +
+    theme_custom() +
     theme(axis.ticks.x = element_blank(), axis.ticks.y = element_line(color = "black"), axis.ticks.length = unit(-0.15, "cm"), axis.title.x = element_blank(), plot.title = element_blank()) +
     bottom1
 
@@ -747,7 +747,7 @@ dot_plots_but_with_arrows = function(plot_type, config, emf_data_long, figmap, f
     #text_code +
     scale_x_continuous(breaks = c(2030), labels = c("2030"), limits = c(2029, 2031)) +
     scale_y_continuous(limits = c(ymin, ymax)) +
-    theme_emf() +
+    theme_custom() +
     scale_subpalette(subpalettes, "Emissions|CO2|Energy|Demand|Industry") +
     theme(panel.grid = element_blank(), plot.title = element_blank(),
           axis.text.y = element_blank(), axis.text.x = element_text(angle = 45, hjust = 1),
@@ -767,7 +767,7 @@ dot_plots_but_with_arrows = function(plot_type, config, emf_data_long, figmap, f
     # segment_code_35 +
     scale_x_continuous(breaks = c(2035), labels = c("2035"), limits = c(2034, 2036)) +
     scale_y_continuous(limits = c(ymin,ymax)) +
-    theme_emf() +
+    theme_custom() +
     scale_subpalette(subpalettes, "Emissions|CO2|Energy|Demand|Industry") +
     theme(panel.grid = element_blank(), plot.title = element_blank(),
           axis.text.y = element_blank(), axis.text.x = element_text(angle = 45, hjust = 1),
@@ -1136,7 +1136,7 @@ indicator_small = function(all_data, summary_data, filter_variable, subtitle = "
     scale_shape_manual(values = c("No IRA" = 17, "IRA" = 16),
                        breaks = c("No IRA", "IRA")) +
     facet_grid(year ~ ., switch = "y") +
-    theme_emf() +
+    theme_custom() +
     theme(axis.ticks = element_blank(), axis.text.y = element_blank(),
           #axis.title.y = element_text(size = 8),
           axis.title.y = element_blank(),
@@ -1194,7 +1194,7 @@ indicator_smallX = function(all_data, summary_data, filter_variable, subtitle = 
     scale_shape_manual(values = c("No IRA" = 17, "IRA" = 16),
                        breaks = c("No IRA", "IRA")) +
     facet_grid(year ~ ., switch = "y") +
-    theme_emf() +
+    theme_custom() +
     theme(axis.ticks = element_blank(), axis.text.y = element_blank(),
           #axis.title.y = element_text(size = 8),
           axis.title.y = element_blank(),
@@ -1315,7 +1315,7 @@ spg2 = function(df, title, yname, gd, ymin, ymax, ybreaks, yax_format, annotate,
   figure = ggplot(df, aes(year,value, color = scenario, group = interaction(model, scenario))) +
     geom_line(aes(alpha = alpha, linetype = scenario), size = 0.5) +
     scale_subpalette(subpalettes, "Emissions|CO2|Energy|Demand|Industry") +
-    theme_emf() +
+    theme_custom() +
     scale_linetype_manual(values = c("Historic" = "solid", "IRA" = "solid", "No IRA" = "longdash"))+
     scale_x_continuous(breaks = c(2005, 2021, 2025, 2030, 2035)) +
     scale_y_continuous(limits = c(ymin, ymax), breaks = ybreaks, labels = yax_format) +
@@ -1356,7 +1356,7 @@ spg2_2010 = function(df, title, yname, gd, ymin, ymax, ybreaks, yax_format, anno
   figure = ggplot(df, aes(year,value, color = scenario, group = interaction(model, scenario))) +
     geom_line(aes(alpha = alpha, linetype = scenario), size = 0.5) +
     scale_subpalette(subpalettes, "Emissions|CO2|Energy|Demand|Industry") +
-    theme_emf() +
+    theme_custom() +
     scale_linetype_manual(values = c("Historic" = "solid", "IRA" = "solid", "No IRA" = "longdash"))+
     scale_x_continuous(breaks = c(2010, 2021, 2025, 2030, 2035)) +
     scale_y_continuous(limits = c(ymin, ymax), breaks = ybreaks, labels = yax_format) +
@@ -1397,7 +1397,7 @@ spg3 = function(df, title, yname, gd, ymin, ymax, ybreaks, yax_format, annotate,
   figure = ggplot(df, aes(year,value, color = scenario, group = interaction(model, scenario))) +
     geom_line(aes(alpha = alpha, linetype = scenario), size = 0.5) +
     scale_subpalette(subpalettes, "Emissions|CO2|Energy|Demand|Industry") +
-    theme_emf() +
+    theme_custom() +
     scale_linetype_manual(values = c("Historic" = "solid", "IRA" = "solid", "No IRA" = "longdash"))+
     scale_x_continuous(breaks = c(2020, 2025, 2030, 2035)) +
     scale_y_continuous(limits = c(ymin, ymax), breaks = ybreaks, labels = yax_format) +
@@ -1451,7 +1451,7 @@ spg3 = function(df, title, yname, gd, ymin, ymax, ybreaks, yax_format, annotate,
 #
 #   figure = ggplot(df, aes(year,value, color = scenario, group = interaction(model, scenario))) + geom_line(aes(alpha = alpha), size = 0.5) +
 #     scale_subpalette(subpalettes, "Emissions|CO2|Energy|Demand|Industry") +
-#     theme_emf() +
+#     theme_custom() +
 #     scale_x_continuous(breaks = c(2005, 2021, 2025, 2030, 2035)) +
 #     scale_y_continuous(limits = c(ymin, ymax), breaks = ybreaks, labels = yax) +
 #     scale_alpha(range = c(1, 1), guide = F) +
@@ -1512,7 +1512,7 @@ dotted = function(df, spg, metric, ymin, ymax, config, figmap_leep_timeseries, d
     segment_code_30 +
     scale_x_continuous(breaks = c(2030), labels = c("2030"), limits = c(2029.9, 2030.1)) +
     scale_y_continuous(limits = c(ymin, ymax)) +
-    theme_emf() +
+    theme_custom() +
     scale_subpalette(subpalettes, "Emissions|CO2|Energy|Demand|Industry") +
     scale_shape_manual(values = c("IRA" = 1, "No IRA" = 2)) +
     theme(panel.grid = element_blank(), plot.title = element_blank(),
@@ -1528,7 +1528,7 @@ dotted = function(df, spg, metric, ymin, ymax, config, figmap_leep_timeseries, d
     segment_code_35 +
     scale_x_continuous(breaks = c(2035), labels = c("2035"), limits = c(2034.9, 2035.1)) +
     scale_y_continuous(limits = c(ymin,ymax)) +
-    theme_emf() +
+    theme_custom() +
     scale_subpalette(subpalettes, "Emissions|CO2|Energy|Demand|Industry") +
     scale_shape_manual(values = c("IRA" = 1, "No IRA" = 2)) +
     theme(panel.grid = element_blank(), plot.title = element_blank(),
@@ -1890,7 +1890,7 @@ pd = function(ts_map_ID, title, yname, gd, drop) {
     labs(title = title,
          x = "",
          y = yname) +
-    theme_emf() +
+    theme_custom() +
     theme( axis.ticks = element_line(color = "black"),
            axis.ticks.length = unit(-0.15, "cm"),
            axis.text.x = element_text(angle = 45, hjust = 1),
@@ -2016,7 +2016,7 @@ ad = function(diff_ID, title, metric, gd, drop) {
       labs(title = title,
            x = "",
            y = expression(paste("Absoltue Difference (TWh)"))) +
-      theme_emf() +
+      theme_custom() +
       theme( axis.ticks = element_line(color = "black"),
              axis.ticks.length = unit(-0.15, "cm"),
              axis.text.x = element_text(angle = 45, hjust = 1),
@@ -2077,7 +2077,7 @@ ad = function(diff_ID, title, metric, gd, drop) {
       labs(title = title,
            x = "",
            y = expression(paste("Absolute Difference (Mt C", O[2], "/yr)"))) +
-      theme_emf() +
+      theme_custom() +
       theme(
         axis.text.x = element_text(angle = 45, hjust = 1),
         panel.spacing.x = unit(4, "mm"),
@@ -2155,7 +2155,7 @@ delta = function(pd_map_ID, drop, config, clean_data, figmap_leep_timeseries) {
     labs(title = "",
          x = "",
          y = expression("% Difference from No IRA")) +
-    theme_emf() +
+    theme_custom() +
     theme(
       axis.ticks = element_line(color = "black"),
       axis.ticks.length = unit(-0.15, "cm"),
@@ -2250,7 +2250,7 @@ four_corners = function(title, ts_map_ID, pd_map_ID, ad_map_ID, drop, histsrc, m
                                                     "REGEN-EPRI",
                                                     "RIO-REPEAT",
                                                     "USREP-ReEDS")) +
-      theme_emf() +
+      theme_custom() +
       scale_x_continuous(breaks = c(2021, 2025, 2030, 2035)) +
       scale_y_continuous(limits = c(ymin, ymax), breaks = brk, labels = scales::comma) +
       scale_linetype_manual(values = c("EPS-EI" = "solid",
@@ -2315,7 +2315,7 @@ four_corners = function(title, ts_map_ID, pd_map_ID, ad_map_ID, drop, histsrc, m
                                                     "REGEN-EPRI",
                                                     "RIO-REPEAT",
                                                     "USREP-ReEDS")) +
-      theme_emf() +
+      theme_custom() +
       scale_x_continuous(breaks = c(2021, 2025, 2030, 2035)) +
       scale_y_continuous(limits = c(ymin, ymax), breaks = brk, labels = scales::comma) +
       labs(title = "IRA",
@@ -2383,7 +2383,7 @@ four_corners = function(title, ts_map_ID, pd_map_ID, ad_map_ID, drop, histsrc, m
                                                     "REGEN-EPRI",
                                                     "RIO-REPEAT",
                                                     "USREP-ReEDS")) +
-      theme_emf() +
+      theme_custom() +
       scale_x_continuous(breaks = c(2021, 2025, 2030, 2035)) +
       scale_y_continuous(limits = c(ymin, ymax), breaks = brk, labels = scales::comma) +
       scale_linetype_manual(values = c("EPS-EI" = "solid",
@@ -2448,7 +2448,7 @@ four_corners = function(title, ts_map_ID, pd_map_ID, ad_map_ID, drop, histsrc, m
                                                     "REGEN-EPRI",
                                                     "RIO-REPEAT",
                                                     "USREP-ReEDS")) +
-      theme_emf() +
+      theme_custom() +
       scale_x_continuous(breaks = c(2021, 2025, 2030, 2035)) +
       scale_y_continuous(limits = c(ymin, ymax), breaks = brk, labels = scales::comma) +
       labs(title = "IRA",

@@ -9,7 +9,7 @@ time_series_wrap_fn <- function(df, data_list, mapping_list) {
          color = "") +
     scale_subpalette(mapping_list$palettes, mapping_list$model_color_palette) +
     scale_y_continuous(labels = scales::comma)  +
-    theme_emf() +
+    theme_custom() +
     theme(axis.text.x = element_text(angle = 45, hjust=1)) +
     theme(panel.spacing.x = unit(4, "mm"))
 
@@ -28,7 +28,7 @@ time_series_grid_fn <- function(df, data_list, mapping_list) {
          color = "") +
     scale_subpalette(mapping_list$palettes, mapping_list$model_color_palette) +
     scale_y_continuous(labels = scales::comma)  +
-    theme_emf() +
+    theme_custom() +
     theme(axis.text.x = element_text(angle = 45, hjust=1)) +
     theme(panel.spacing.x = unit(4, "mm"))
 
@@ -49,7 +49,7 @@ time_series_single_fn <- function(df, data_list, mapping_list) {
          color = "") +
     scale_subpalette(mapping_list$palettes, mapping_list$model_color_palette) +
     scale_y_continuous(labels = scales::comma)  +
-    theme_emf() +
+    theme_custom() +
     theme(axis.text.x = element_text(angle = 45, hjust=1)) +
     theme(panel.spacing.x = unit(4, "mm"))
 

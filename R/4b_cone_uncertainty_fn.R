@@ -49,7 +49,7 @@ band_grid_fn <- function(df, data_list, mapping_list) {
          fill = "",
          color = "") +
     scale_subpalette(mapping_list$palettes, mapping_list$model_color_palette) +
-    theme_emf() +
+    theme_custom() +
     scale_y_continuous(labels = scales::comma)  +
     theme(panel.spacing.x = unit(4, "mm"))
 
@@ -78,7 +78,7 @@ band_wrap_fn <- function(df, data_list, mapping_list) {
          fill = "",
          color = "") +
     scale_subpalette(mapping_list$palettes, mapping_list$model_color_palette) +
-    theme_emf() +
+    theme_custom() +
     scale_y_continuous(labels = scales::comma)  +
     theme(panel.spacing.x = unit(4, "mm"))
 
@@ -107,7 +107,7 @@ cone_uncertainty_single_fn <- function(df, data_list, mapping_list) {
          fill = "",
          color = "") +
     scale_subpalette(mapping_list$palettes, mapping_list$model_color_palette) +
-    theme_emf() +
+    theme_custom() +
     theme(panel.spacing.x = unit(4, "mm")) +
     scale_y_continuous(labels = scales::comma)
 
@@ -137,7 +137,7 @@ cone_uncertainty_grid_fn <- function(df, data_list, mapping_list) {
          fill = "",
          color = "") +
     scale_subpalette(mapping_list$palettes, mapping_list$model_color_palette) +
-    theme_emf() +
+    theme_custom() +
     scale_y_continuous(labels = scales::comma)  +
     theme(panel.spacing.x = unit(4, "mm"))
 
@@ -167,7 +167,7 @@ cone_uncertainty_wrap_fn <- function(df, data_list, mapping_list) {
          fill = "",
          color = "") +
     scale_subpalette(mapping_list$palettes, mapping_list$model_color_palette) +
-    theme_emf() +
+    theme_custom() +
     scale_y_continuous(labels = scales::comma)  +
     theme(panel.spacing.x = unit(4, "mm"))
 

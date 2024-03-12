@@ -20,7 +20,7 @@ net_zero_bar <- function(scen, fig_title, presentation_title, subpalettes, data_
       geom_col(data = df %>% filter(type == "mod"),
                aes(x = model, y = value, fill = variable),
                position = "stack") +
-      theme_emf() +
+      theme_custom() +
       theme(axis.text.x = element_text(angle = 90, hjust=1)) +
       labs(title = fig_title,
            y="Mt CO2", x = "Model") +
@@ -39,7 +39,7 @@ net_zero_bar <- function(scen, fig_title, presentation_title, subpalettes, data_
       geom_col(data = df %>% filter(type == "mod"),
                aes(x = model, y = value, fill = variable),
                position = "stack") +
-      theme_emf() +
+      theme_custom() +
       theme(axis.text.x = element_text(angle = 90, hjust=1)) +
       labs(title = fig_title,
            y="Mt CO2", x = "Model") +
