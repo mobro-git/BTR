@@ -1,7 +1,19 @@
 
-# creates figmap csv paths based on mapping csv
-figmap_csv_path <- function(fig_subject, fig_type) {
-
-  paste0("plot_mapping/", fig_subject, "_", fig_type, ".csv")
-
+# creates list of files to be tracked in figmap_csv targets
+figmap_mapping_values <- function(folder) {
+  
+  files = tibble(file = list.files(folder)) %>%
+    mutate(file = paste0(folder,"/",file))
+  files
+  
 }
+
+# creates figmap csv paths based on mapping csv
+figmap_csv_target <- function(file) {
+
+  name = str_replace(file_path_sans_ext(file),"figure_mapping/","")
+  name
+  
+}
+
+

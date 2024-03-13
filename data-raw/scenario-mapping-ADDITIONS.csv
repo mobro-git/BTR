@@ -1,0 +1,13 @@
+datasrc,model,scenario
+GCAM-LTS_ar5.csv,GCAM 5.3,AM.HiRem.AdvPwr
+GCAM-LTS_ar5.csv,GCAM 5.3,AM.LowRem.AllAdv
+GCAM-LTS_ar5.csv,GCAM 5.3,AM.MedRem.AllAdv
+GCAM-LTS_ar5.csv,GCAM 5.3,AM.MedRem.AllAdv.OGhighprice
+GCAM-LTS_ar5.csv,GCAM 5.3,AM.MedRem.AllAdv.OGlowprice
+GCAM-LTS_ar5.csv,GCAM 5.3,AM.MedRem.AllAdv.SEhigh
+GCAM-LTS_ar5.csv,GCAM 5.3,AM.MedRem.AllAdv.SElow
+GCAM-LTS_ar5.csv,GCAM 5.3,AM.MedRem.RefBldg
+GCAM-LTS_ar5.csv,GCAM 5.3,AM.MedRem.RefCH4
+GCAM-LTS_ar5.csv,GCAM 5.3,AM.MedRem.RefInd
+GCAM-LTS_ar5.csv,GCAM 5.3,AM.MedRem.RefPower
+GCAM-LTS_ar5.csv,GCAM 5.3,AM.MedRem.RefTrans

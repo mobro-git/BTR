@@ -30,7 +30,7 @@ read_process_minimal_from_raw <- function(filepath) {
 #' @export
 
 read_process_data_file <- function(filepath, config) {
-  print(filepath)
+  print(paste0("Reading ",filepath))
   read_raw_data_file(filepath) %>%
     process_data_file(config)
 }
@@ -166,8 +166,11 @@ map_scenario_names <- function(data,
     anti_join(scen_mapping, by = join_vars)
 
   if(nrow(preflight) > 0) {
+    write_csv(preflight, "data-raw/scenario-mapping-ADDITIONS.csv")
     print(glue::glue_data(preflight, "{datasrc}, {model}, {scenario}"))
-    rlang::abort("Combinations not in scenario cleaning crosswalk (above). Please add to data-raw/scen-map")
+    rlang::abort("Model+scenario combinations above not present in scenario crosswalk (data-raw/scenario-mapping.csv).
+                 Combinations have been saved off to data-raw/scenario-mapping-ADDITIONS.csv. 
+                 There might still be missing model+scenario in another datasource.")
   }
 
   # change model and scenario names in data to standardized names in scen_mapping file

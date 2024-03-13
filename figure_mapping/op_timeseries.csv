@@ -1,0 +1,43 @@
+figure_type,figure_no,title_name,variable,variable_rename,flip_sign,regions,models,years,scenarios,type,x,y,facet1,facet2,color,page_filter,scales
+timeseriesplot,1,Energy-Related CO2 Emissions,Emissions|CO2|Energy,Energy CO2 Emissions,0,default_regions,models_op,default5,sm_scenarios,grid,year,value,variable_rename,scenario,model,region,free_y
+timeseriesplot,2,Gross CO2 Emissions,Emissions|CO2,CO2,0,default_regions,models_op,default5,sm_scenarios,grid,year,value,variable_rename,scenario,model,region,free_y
+timeseriesplot,3,Negative Emissions,Carbon Sequestration|CCS|Biomass|Energy,BECCS,0,default_regions,models_op,default5,sm_scenarios,grid,year,value,variable_rename,scenario,model,region,free_y
+timeseriesplot,3,Negative Emissions,Carbon Sequestration|Chemical Feedstocks|Biomass,Biofeedstock,0,default_regions,models_op,default5,sm_scenarios,grid,year,value,variable_rename,scenario,model,region,free_y
+timeseriesplot,3,Negative Emissions,Carbon Sequestration|LULUCF,Land Use,0,default_regions,models_op,default5,sm_scenarios,grid,year,value,variable_rename,scenario,model,region,free_y
+timeseriesplot,3,Negative Emissions,Carbon Sequestration|Direct Air Capture|Net,DAC,0,default_regions,models_op,default5,sm_scenarios,grid,year,value,variable_rename,scenario,model,region,free_y
+timeseriesplot,4,Fossil Emissions,Emissions|CO2|Energy|Coal,Coal,0,default_regions,models_op,default5,sm_scenarios,grid,year,value,variable_rename,scenario,model,region,free_y
+timeseriesplot,4,Fossil Emissions,Emissions|CO2|Energy|Gas,Gas,0,default_regions,models_op,default5,sm_scenarios,grid,year,value,variable_rename,scenario,model,region,free_y
+timeseriesplot,4,Fossil Emissions,Emissions|CO2|Energy|Oil,Oil,0,default_regions,models_op,default5,sm_scenarios,grid,year,value,variable_rename,scenario,model,region,free_y
+timeseriesplot,5,Primary Energy,Primary Energy|Biomass,Biomass,0,default_regions,models_op,default5,sm_scenarios,grid,year,value,variable_rename,scenario,model,region,free_y
+timeseriesplot,5,Primary Energy,Primary Energy|Coal,Coal,0,default_regions,models_op,default5,sm_scenarios,grid,year,value,variable_rename,scenario,model,region,free_y
+timeseriesplot,5,Primary Energy,Primary Energy|Gas,Gas,0,default_regions,models_op,default5,sm_scenarios,grid,year,value,variable_rename,scenario,model,region,free_y
+timeseriesplot,5,Primary Energy,Primary Energy|Oil,Oil,0,default_regions,models_op,default5,sm_scenarios,grid,year,value,variable_rename,scenario,model,region,free_y
+timeseriesplot,6,Secondary Energy,Secondary Energy|Biogas,Biogas,0,default_regions,models_op,default5,sm_scenarios,grid,year,value,variable_rename,scenario,model,region,free_y
+timeseriesplot,6,Secondary Energy,Secondary Energy|Biomass Liquids,Biomass Liquids,0,default_regions,models_op,default5,sm_scenarios,grid,year,value,variable_rename,scenario,model,region,free_y
+timeseriesplot,6,Secondary Energy,Secondary Energy|Electricity,Electricity,0,default_regions,models_op,default5,sm_scenarios,grid,year,value,variable_rename,scenario,model,region,free_y
+timeseriesplot,6,Secondary Energy,Secondary Energy|Hydrogen,Hydrogen,0,default_regions,models_op,default5,sm_scenarios,grid,year,value,variable_rename,scenario,model,region,free_y
+timeseriesplot,6,Secondary Energy,Secondary Energy|Petroleum Refining,Refining,0,default_regions,models_op,default5,sm_scenarios,grid,year,value,variable_rename,scenario,model,region,free_y
+timeseriesplot,7,Gross and Net CO2 Accounting,Emissions|CO2|Net Emissions,Net CO2,0,default_regions,models_op,default5,sm_scenarios,grid,year,value,scenario,model,variable_rename,region,free_y
+timeseriesplot,7,Gross and Net CO2 Accounting,Emissions Accounting|CO2|Gross Positive CO2,Gross Positive CO2,0,default_regions,models_op,default5,sm_scenarios,grid,year,value,scenario,model,variable_rename,region,free_y
+timeseriesplot,7,Gross and Net CO2 Accounting,Emissions Accounting|CO2|CO2 + Fossil CCS,CO2 + Fossil CCS,0,default_regions,models_op,default5,sm_scenarios,grid,year,value,scenario,model,variable_rename,region,free_y
+timeseriesplot,7,Gross and Net CO2 Accounting,Emissions Accounting|CO2|Negative (BECCS),BECCS (neg),0,default_regions,models_op,default5,sm_scenarios,grid,year,value,scenario,model,variable_rename,region,free_y
+timeseriesplot,7,Gross and Net CO2 Accounting,Emissions Accounting|CO2|Negative (BECCS + LULUCF),BECCS + LULUCF (neg),0,default_regions,models_op,default5,sm_scenarios,grid,year,value,scenario,model,variable_rename,region,free_y
+timeseriesplot,7,Gross and Net CO2 Accounting,Emissions Accounting|CO2|Negative (BECCS + LULUCF + DAC),BECCS + LULUCF + DAC (neg),0,default_regions,models_op,default5,sm_scenarios,grid,year,value,scenario,model,variable_rename,region,free_y
+timeseriesplot,8,Carbon Price,Price|Carbon,CO2 Price,0,default_regions,models_co2price,default5,nz50_scenarios,wrap,year,value,scenario,,model,region,fixed
+timeseriesplot,9,Final Energy Price,Price|Final Energy|Electricity,Electricity,0,default_regions,models_op,default5,sm_scenarios,grid,year,value,variable_rename,scenario,model,region,free_y
+timeseriesplot,9,Final Energy Price,Price|Final Energy|Gas,Gas,0,default_regions,models_op,default5,sm_scenarios,grid,year,value,variable_rename,scenario,model,region,free_y
+timeseriesplot,9,Final Energy Price,Price|Final Energy|Oil,Gasoline,0,default_regions,models_op,default5,sm_scenarios,grid,year,value,variable_rename,scenario,model,region,free_y
+timeseriesplot,9,Final Energy Price,Price|Final Energy|Hydrogen,Hydrogen,0,default_regions,models_op,default5,sm_scenarios,grid,year,value,variable_rename,scenario,model,region,free_y
+timeseriesplot,9,Final Energy Price,Price|Final Energy|Biomass Liquids,Biomass Liquids,0,default_regions,models_op,default5,sm_scenarios,grid,year,value,variable_rename,scenario,model,region,free_y
+timeseriesplot,10,Electricity Final Energy Price,Price|Final Energy|Electricity,Final Energy,0,default_regions,models_op,default5,sm_scenarios,grid,year,value,scenario,model,variable_rename,region,free_y
+timeseriesplot,10,Electricity Final Energy Price,Price|Final Energy|Commercial|Electricity,Commercial,0,default_regions,models_op,default5,sm_scenarios,grid,year,value,scenario,model,variable_rename,region,free_y
+timeseriesplot,10,Electricity Final Energy Price,Price|Final Energy|Industrial|Electricity,Industry,0,default_regions,models_op,default5,sm_scenarios,grid,year,value,scenario,model,variable_rename,region,free_y
+timeseriesplot,10,Electricity Final Energy Price,Price|Final Energy|Residential|Electricity,Residential,0,default_regions,models_op,default5,sm_scenarios,grid,year,value,scenario,model,variable_rename,region,free_y
+timeseriesplot,10,Electricity Final Energy Price,Price|Final Energy|Transportation|Electricity,Transportation,0,default_regions,models_op,default5,sm_scenarios,grid,year,value,scenario,model,variable_rename,region,free_y
+timeseriesplot,11,Percent Electricity,Final Energy|Percent Electricity,Total,0,default_regions,models_op,default5,sm_scenarios,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,11,Percent Electricity,Final Energy|Buildings|Percent Electricity,Buildings,0,default_regions,models_op,default5,sm_scenarios,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,11,Percent Electricity,Final Energy|Industry|Percent Electricity,Industry,0,default_regions,models_op,default5,sm_scenarios,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,11,Percent Electricity,Final Energy|Transportation|Percent Electricity,Transportation,0,default_regions,models_op,default5,sm_scenarios,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,12.1,GDP,GDP|MER,GDP,0,default_regions,models_op_aeo,default5_2025,NT.Ref,single,year,value,,,model,region,free_y
+timeseriesplot,12.2,GDP - Diff from AEO2022,GDP|MER|Percent difference from AEO2022,GDP,0,default_regions,models_op_aeo,default5_2025,NT.Ref,single,year,value,,,model,region,free_y
+timeseriesplot,13,Population,Population,Population,0,default_regions,models_op_aeo,default5,NT.Ref,single,year,value,,,model,region,free_y

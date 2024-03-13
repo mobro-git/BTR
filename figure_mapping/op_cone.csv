@@ -1,0 +1,7 @@
+figure_type,figure_no,title_name,variable,variable_rename,flip_sign,regions,models,years,scenarios,type,x,y,range,facet1,facet2,page_filter,color,scales
+coneplot,1,Net Emissions,Emissions|CO2|Energy,Energy & Industrial Processes,0,default_regions,models_main,default5,all_scenarios,wrap,year,value,model,scenario,NA,region,variable_rename,fixed
+coneplot,1,Net Emissions,Carbon Sequestration|CCS|Biomass|Energy,BECCS,0,default_regions,models_main,default5,all_scenarios,wrap,year,value,model,scenario,NA,region,variable_rename,fixed
+coneplot,1,Net Emissions,Carbon Sequestration|Chemical Feedstocks|Biomass,Bio-feedstock,0,default_regions,models_main,default5,all_scenarios,wrap,year,value,model,scenario,NA,region,variable_rename,fixed
+coneplot,1,Net Emissions,Carbon Sequestration|Direct Air Capture|Net,DAC,0,default_regions,models_main,default5,all_scenarios,wrap,year,value,model,scenario,NA,region,variable_rename,fixed
+coneplot,1,Net Emissions,Carbon Sequestration|LULUCF,LULUCF,0,default_regions,models_main,default5,all_scenarios,wrap,year,value,model,scenario,NA,region,variable_rename,fixed
+coneplot,2,Carbon Price,Price|Carbon,CO2 Price,0,default_regions,models_op,default5,nz50_scenarios,grid,year,value,model,scenario,variable_rename,region,variable_rename,fixed
