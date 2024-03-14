@@ -93,8 +93,10 @@ tar_plan(
   ### Figure mapping --------------
 
   tar_map(
-    values = figmap_mapping_values("figure_mapping"),
-    tar_target(figmap_csv, figmap_csv_target(file), format = "file"))
+    values = figmap_values("figure-maps"),
+    tar_target(figmap_csv, figmap_csv_target(file), format = "file"),
+    tar_target(figmap, figmap_target(figmap_csv, config))
+    )
   
 )
 
