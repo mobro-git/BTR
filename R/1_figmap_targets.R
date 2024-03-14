@@ -19,11 +19,12 @@ figmap_csv_target <- function(file) {
 # creates the figmap targets
 figmap_target <- function(figmap_csv, config) {
   
-  file = file_sans_ext(str_remove(figmap_csv,"figure-maps/"))
+  file = str_remove(figmap_csv,"figure-maps/") %>% str_remove(".csv")
   plot_list = gsub("_.*","",file)
   figure_type = gsub(".*_","",file)
   
-  import_figure_csv(plot_list, figure_type, config)
+  figmap = import_figure_csv(plot_list, figure_type, figmap_csv, config)
+  figmap
   
 }
 
@@ -40,13 +41,13 @@ figmap_target <- function(figmap_csv, config) {
 #' @param figure_type please make sure figure_type only takes on the value stacked, diff, or ts
 #' @return
 
-import_figure_csv <- function(plot_list, figure_type, config) {
+import_figure_csv <- function(plot_list, figure_type, figmap_csv, config) {
   
   if (! (figure_type %in% c("scatter","stackbar","ref_stackbar","timeseries","diffbar","cone","band","sankey","corrplot"))) {
     rlang::abort("Please use 'scatter','stackbar','ref_stackbar','timeseries','diffbar','cone','band','sankey','corrplot' for figure_type.")
   }
   
-  df = readr::read_csv(plot_list, col_types = cols())
+  df = readr::read_csv(figmap_csv, col_types = cols())
   
   status = df %>%
     assert_figure_csv_has_standard_columns(figure_type) %>%

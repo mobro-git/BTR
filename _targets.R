@@ -22,8 +22,13 @@ tar_plan(
   ##### Config -----------------
   
   config = list(
+    # variables and mapping
     scen_mapping = read_scen_mapping(scen_mapping_csv),
     template = template,
+    calculated_var = all_calculated,
+    
+    #models
+    models = c("GCAM-LTS","GCAM-PNNL","NEMS-OP","USREP-ReEDS"),
     
     fives = c(seq(2005,2022,by = 1),seq(2025,2040,by = 5)),
     annual = c(seq(2005,2040,by = 1)),
@@ -70,7 +75,12 @@ tar_plan(
 
   tar_target(index_var_list, "data-raw/calculated_var/index_variables.csv", format = "file"),
   index_var = readr::read_csv(index_var_list, col_types = cols()),
-
+  
+  tar_target(all_calculated, list(ratio_var = ratio_var,
+                                  summation_var=summation_var,
+                                  cumulative_var = cumulative_var,
+                                  annual_growth_rate_var = annual_growth_rate_var,
+                                  per_diff_var = per_diff_var)),
 
   # _Making data_long ----
 
