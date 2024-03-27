@@ -35,6 +35,24 @@ read_process_data_file <- function(filepath, config) {
     process_data_file(config)
 }
 
+read_usproj_data_file <- function(filepath, crosswalk_csv) {
+  print(paste0("Reading ",filepath))
+  
+  crosswalk <- read_csv(crosswalk_csv)
+  
+  raw <-  read_file_ext(filepath) %>%
+    mutate(datasrc = fs::path_file(filepath)) %>% 
+    left_join(crosswalk, by='datasrc') %>% 
+    select(datasrc, model, scenario, everything(),-notes)
+    
+  
+  
+  
+    
+  
+  
+}
+
 #### Processing --------------
 
 #' Process a data file for analysis from raw From to emf_data_long

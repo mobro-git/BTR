@@ -5,8 +5,8 @@
 #'
 #' @return
 #' @export
-read_raw_data_file <- function(filepath) {
 
+read_file_ext <- function(filepath) {
   filepath_ext <- fs::path_ext(filepath)
 
   raw <- if(filepath_ext %in% c("xls", "xlsx")) {
@@ -21,6 +21,12 @@ read_raw_data_file <- function(filepath) {
   } else {
     stop("Unable to read file type.")
   }
+}
+
+
+read_raw_data_file <- function(filepath) {
+
+  raw <-  read_file_ext(filepath)
   
   column_renames <- c(
     "model" = "Model",

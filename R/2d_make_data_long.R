@@ -26,6 +26,33 @@ make_data_long <- function(data_long_read) {
     filter(!is.na(value))
 }
 
+make_usproj_data_long <- function(usproj_data_loaded) {
+
+  usproj_data_long <- usproj_data_loaded %>%
+    tidyr::pivot_longer(
+      cols = num_range(prefix = "", range = 1990:2100),
+      names_to = "year",
+      values_to = "value")%>%
+    mutate(year = as.numeric(year)) %>% 
+    select(
+      model,
+      scenario,
+      usproj_category,
+      usproj_source,
+      usproj_subsource,
+      usproj_sector,
+      gas,
+      year,
+      value,
+      unit,
+      region,
+      datasrc
+    ) %>%
+    replace(is.na(.),0)
+}
+  
+
+
 make_calculated_vars <- function(data_long, ratio_var, summation_var, cumulative_var, annual_growth_rate_var, per_diff_var) {
 
   print("Creating summation variables")

@@ -97,7 +97,7 @@ tar_plan(
                                   annual_growth_rate_var = annual_growth_rate_var,
                                   per_diff_var = per_diff_var)),
 
-  # _Making data_long ----
+  # Make modeled-data long ----
 
   data_loaded = {
     map_dfr(data_files, ~read_process_data_file(.x, config)) %>%
@@ -114,7 +114,15 @@ tar_plan(
                            cumulative_var,
                            annual_growth_rate_var,
                            per_diff_var)},
-
+  
+  # Make usproj data long ----
+  
+  usproj_data_loaded = {
+    map_dfr(usproj_files, ~read_usproj_data_file(.x, crosswalk_usproj_csv)) %>%
+      arrange_standard()},
+  
+  usproj_data_long = make_usproj_data_long(usproj_data_loaded),
+  
   ### Figure mapping --------------
 
   tar_map(
