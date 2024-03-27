@@ -1,4 +1,8 @@
 
+##########################################################################
+# Create pairs of targets for figure map csvs and content
+##########################################################################
+
 # creates list of files to be tracked in figmap_csv targets
 figmap_values <- function(folder) {
   
@@ -27,7 +31,6 @@ figmap_target <- function(figmap_csv, config) {
   figmap
   
 }
-
 
 
 ##########################################################################

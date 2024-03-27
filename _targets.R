@@ -22,10 +22,11 @@ tar_plan(
   ##### Config -----------------
   
   config = list(
-    # variables and mapping
-    scen_mapping = read_scen_mapping(scen_mapping_csv),
+    version = "2024_BTR1",
+    scen_mapping = read_scen_mapping(crosswalk_model_runs_csv),
     template = template,
     calculated_var = all_calculated,
+    base_year = 2022,
     
     #models
     models = c("GCAM-LTS","GCAM-PNNL","NEMS-OP","USREP-ReEDS"),
@@ -41,39 +42,53 @@ tar_plan(
     table = c(2005, 2010, 2015, 2020, 2022, 2025, 2030 , 2035, 2040)
   ),
 
-  ##### Template ---------------------------------------------------
+  ##### Template + Crosswalks ---------------------------------------------------
 
-  tar_target(template_xlsx, "data-raw/BTR24_data_template_v1.xlsx", format = "file"),
+  # BTR reporting template
+  tar_target(template_xlsx, "data-raw/template/BTR24_data_template_v1.xlsx", format = "file"),
   tar_target(template, read_emf_template_xlsx(template_xlsx)),
+  
+  # scenario+model crosswalks
+  tar_target(crosswalk_model_runs_csv, "data-raw/crosswalk/crosswalk_model-runs.csv", format = "file"),
+  tar_target(crosswalk_usproj_csv, "data-raw/crosswalk/crosswalk_usproj.csv", format = "file"), 
 
   #### Data Files ----------------------------------------------------------------
 
+  # WM and WAM scenario - BTR template modeling
   tar_target(data_folder, "data-raw/model-runs/", format = "file"),
   tar_target(data_files, dir_ls(data_folder), format = "file"),
+  
+  # usproj Non-CO2 and CO2 from IPPU and NEU 
+  tar_target(usproj_data_folder, "data-raw/usproj-data/", format = "file"),
+  tar_target(usproj_files, dir_ls(usproj_data_folder), format = "file"),
 
-  tar_target(scen_mapping_csv, "data-raw/scenario-mapping.csv", format = "file"),
-
+  # Past projections and drivers
+  tar_target(past_proj_csv, "data-raw/ncbr_comparison/netghg_ncbr_comparisons.csv", format = "file"),
+  tar_target(past_proj, read_csv(past_proj_csv)),
+  
+  tar_target(past_driver_csv, "data-raw/ncbr_comparison/tbl_5-6_drivers_comparison.csv", format = "file"),
+  tar_target(past_driver, read_csv(past_driver_csv)),
 
   #### Data Processing -----------------------
 
   # _Calculated variables ----
 
-  tar_target(ratio_var_list, "data-raw/calculated_var/ratio_variables.csv", format = "file"),
+  tar_target(ratio_var_list, "data-raw/calculated-var/ratio_variables.csv", format = "file"),
   ratio_var = readr::read_csv(ratio_var_list, col_types = cols()),
 
-  tar_target(summation_var_list, "data-raw/calculated_var/summation_variables.csv", format = "file"),
+  tar_target(summation_var_list, "data-raw/calculated-var/summation_variables.csv", format = "file"),
   summation_var = readr::read_csv(summation_var_list, col_types = cols()),
 
-  tar_target(cumulative_var_list, "data-raw/calculated_var/cumulative_variables.csv", format = "file"),
+  tar_target(cumulative_var_list, "data-raw/calculated-var/cumulative_variables.csv", format = "file"),
   cumulative_var = readr::read_csv(cumulative_var_list, col_types = cols()),
 
-  tar_target(annual_growth_rate_var_list, "data-raw/calculated_var/annualgrowthrate_variables.csv", format = "file"),
+  tar_target(annual_growth_rate_var_list, "data-raw/calculated-var/annualgrowthrate_variables.csv", format = "file"),
   annual_growth_rate_var = readr::read_csv(annual_growth_rate_var_list, col_types = cols()),
 
-  tar_target(per_diff_var_list, "data-raw/calculated_var/per_diff_variables.csv", format = "file"),
+  tar_target(per_diff_var_list, "data-raw/calculated-var/per_diff_variables.csv", format = "file"),
   per_diff_var = readr::read_csv(per_diff_var_list, col_types = cols()),
 
-  tar_target(index_var_list, "data-raw/calculated_var/index_variables.csv", format = "file"),
+  tar_target(index_var_list, "data-raw/calculated-var/index_variables.csv", format = "file"),
   index_var = readr::read_csv(index_var_list, col_types = cols()),
   
   tar_target(all_calculated, list(ratio_var = ratio_var,
@@ -106,7 +121,15 @@ tar_plan(
     values = figmap_values("figure-maps"),
     tar_target(figmap_csv, figmap_csv_target(file), format = "file"),
     tar_target(figmap, figmap_target(figmap_csv, config))
-    )
+    ),
+  
+  ### Outputs ----
+  
+  tar_render(ncbr_btr_comparison,
+             "docs/report/ncbr_btr_comparison.Rmd",
+             output_dir = paste0("output/",config$version,"btr_tables_figs"),
+             output_file = "ncbr_btr_comparison",
+             params = list(mode = "targets"))
   
 )
 

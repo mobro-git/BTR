@@ -4,12 +4,17 @@ Code for interactive exploration, QA, compilation, and visualization of emission
 
 ## File and Folder Organization:
 
-/R -- contains package-like functions only supporting the data pipeline
-/data-raw -- contains all raw data, templates, variable definitions, and crosswalks
+/R -- package-like functions only supporting the data pipeline and functions are organized by subject matter
+
+/data-raw -- all raw data, templates, variable definitions, and crosswalks
     
-Model-scenario data are in /data-raw/model-runs
-templates are in /data-raw/templates
-Control files are in /data-raw
+/model-runs -- modeled projections for current BTR as well as results for comparison - results MUST be in BTR template format
+/ncbr_comparison -- past NatCom/BR/Climate Action Report projections for comparison
+/usproj-data -- current BTR projections for non-co2 gasses and co2 emissions from IPPU and NEU using NEMS activity drivers - from EPA's usproj repository
+BTR24_data_template_v1.xlsx -- reporting template for co2 fossil fuel combustion emissions and energy data
+scenario-mapping.csv -- mapping scenario and model names in raw-data to desired names in final data product
+scenario-mapping-ADDITIONS.csv -- csv to aid in adding required combinations of model+scenario found in raw data not yet accounted for in the scenario-mapping.csv
+
 /scripts -- contains top-level scripts/code
 /docs -- contains r markdowns and quarto reports
 
@@ -222,18 +227,4 @@ With the plot mapping file imported, we can start processing and manipulating th
 3) The function then creates palettes for the specific graphs. Morgan can talk/write more about the palette creation functions.
 
 4) The function calls the `pdf_plots` or the `png_plots` function in the `R/4c_figure_plotting_fn.R` file to actually create the plots. The functions, again, packed other layers. It, again, first checks whether the plot type is supported. If so, it uses a graph type specific function to process each figure in the spreadsheet. Example graph type specific functions include `time_series_figure_specific_data_processing` function in the `R/4c_figure_plotting_fn.R` file. It filters data down to relevant scenarios, years, regions, and models. Then, for each graph, we may need to create multiple copies for different categories. For example, we may need a time series of emissions from oil, coal, and gas for the United States and Canada individually. In this case, we will need to use "region" in the page filter as an indicator. In the `pdf_plots` and the `png_plots` functions, we loop through each of graph copies and generate the graph if it passes both the approved type test (function `approved_facet_type`) and the single unit test (`check_dat_before_plotting`). Otherwise, an error code would be given and the process stopped. 
-
-
-# III. Developer Guide for Plot Types Not Already in the Pipeline (a random example: spiderplot)
-
-1) add grid/wrap/single plot function: create a new file under the 4b category, and use files such as `R/4b_time_series_fn.R` as templates.
-
-2) change `R/4a_plotmap_processing.R` file to support new plot mapping files. 
-
-Use the plot function above as a guideline to determine what information we need. 
-
-3) change `R/4c_figure_data_processing.R` file: Add figure specific processing function. Make sure to use consistent naming convention. 
-
-4) change the `approved_plot_type` and the `call_plot_fn` functions in the `R/4c_figure_plotting_fn.R` file to support the new capability.
-
 
