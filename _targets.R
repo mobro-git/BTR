@@ -71,7 +71,7 @@ tar_plan(
 
   #### Data Processing -----------------------
 
-  # _Calculated variables ----
+  # _calculated variables ----
 
   tar_target(ratio_var_list, "data-raw/calculated-var/ratio_variables.csv", format = "file"),
   ratio_var = readr::read_csv(ratio_var_list, col_types = cols()),
@@ -97,7 +97,7 @@ tar_plan(
                                   annual_growth_rate_var = annual_growth_rate_var,
                                   per_diff_var = per_diff_var)),
 
-  # Make modeled-data long ----
+  # _modeled-data long ----
 
   data_loaded = {
     map_dfr(data_files, ~read_process_data_file(.x, config)) %>%
@@ -115,7 +115,7 @@ tar_plan(
                            annual_growth_rate_var,
                            per_diff_var)},
   
-  # Make usproj data long ----
+  # _usproj data long ----
   
   usproj_data_loaded = {
     map_dfr(usproj_files, ~read_usproj_data_file(.x, crosswalk_usproj_csv)) %>%

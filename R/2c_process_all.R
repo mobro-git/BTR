@@ -1,33 +1,17 @@
 
-#### Whole process --------------
-
-#' read_process_minimal_from_raw
-#'
-#' @param filepath
-#'
-#' Read and process data to generate emf_data_min
-#'
-#' @return emf_data_min
-#' @export
+# Read in raw data with minimal processing
 
 read_process_minimal_from_raw <- function(filepath) {
-
+  
   print(filepath)
   read_raw_data_file(filepath) %>%
     process_minimal_from_raw() %>%
     standardize_col_names()
-
+  
 }
 
-#' read_process_data_file
-#'
-#' @param filepath
-#' @param config
-#'
-#' Read and process data to generate emf_data_long_read
-#'
-#' @return emf_data_long_read
-#' @export
+
+# Load and process raw data
 
 read_process_data_file <- function(filepath, config) {
   print(paste0("Reading ",filepath))
@@ -35,36 +19,20 @@ read_process_data_file <- function(filepath, config) {
     process_data_file(config)
 }
 
-read_usproj_data_file <- function(filepath, crosswalk_csv) {
+read_usproj_data_file <- function(filepath, crosswalk_usproj_csv) {
   print(paste0("Reading ",filepath))
   
-  crosswalk <- read_csv(crosswalk_csv)
+  crosswalk <- read_csv(crosswalk_usproj_csv)
   
   raw <-  read_file_ext(filepath) %>%
     mutate(datasrc = fs::path_file(filepath)) %>% 
-    left_join(crosswalk, by='datasrc') %>% 
+    map_usproj_scenario_names(crosswalk) %>% 
     select(datasrc, model, scenario, everything(),-notes)
-    
-  
-  
-  
-    
-  
   
 }
 
-#### Processing --------------
 
-#' Process a data file for analysis from raw From to emf_data_long
-#'
-#' Step 1. get emf_data_min
-#' Step 2. standardize column names, row
-#'
-#' @param data dataframe of raw data
-#' @export
-#'
 process_data_file <- function(data, config = NULL) {
-
 
   min <- data %>%
     process_minimal_from_raw()
@@ -96,13 +64,6 @@ process_data_file <- function(data, config = NULL) {
 #' only keep variable and unit combos consistent with the data template
 #' standardize the format of year and value
 #' change variables expressed in percentages into scentific expressions
-#'
-#' TODO: export the mismatched rows to a csv file to report back to modelers
-#'
-#' @param data
-#' @param config
-#' @return
-#' @export
 
 standardize_row_data <- function(data, config) {
 
@@ -124,16 +85,10 @@ standardize_row_data <- function(data, config) {
 }
 
 
-
-
 #' read_scen_mapping
 #'
 #' this function reads the scenario mapping file and specifies the column type
 #' for a list of pre-specified variables: datasrc, model, scenario, model_new, scenario_new
-#' @param filepath to the scenario mapping file
-#'
-#' @return scen_mapping
-#' @export
 
 read_scen_mapping <- function(filepath) {
   scen_mapping <- readr::read_csv(
@@ -148,22 +103,13 @@ read_scen_mapping <- function(filepath) {
   scen_mapping
 }
 
-#' map_scenario_names
-#'
+#' crosswalk_scenario_names
 #'
 #' Modify `model` and `scenario` names to be canonical
 #'
-#' This function first checks whether all combinations of datasrc-model-scenario in data are in the scen_mapping
-#' Then, it replaces model and scenario name with standardized names in the scen-mapping file
-#'
-#'
-#' @param data in long format, must have standard columns including `datasrc`, `model`, and `scenario`
-#' @param scen_mapping dataframe representing mapping to model & scenario.
-#'
-#' @import dplyr
-#' @import readr
-#' @export
-#'
+#' This function first checks whether all combinations of datasrc-model-scenario in data are in the crosswalk_model-runs
+#' Then, it replaces model and scenario name with standardized names in the crosswalk_model-runs file
+
 map_scenario_names <- function(data,
                                scen_mapping = NULL) {
 
@@ -208,10 +154,25 @@ map_scenario_names <- function(data,
   res
 }
 
+# Add model and scenario columns and names to usproj dataframe based on the crosswalk_usproj file
 
+map_usproj_scenario_names <- function(raw, crosswalk) {
+  
+  # make sure crosswalk has everything needed
+  preflight <- distinct_at(raw, "datasrc") %>%
+    anti_join(crosswalk, by = "datasrc")
+  
+  if(nrow(preflight) > 0) {
+    paste0(preflight)
+    rlang::abort(paste0("Please add ", preflight, " to the usproj scenario crosswalk (data-raw/crosswalk/crosswalk_usproj.csv)"))
+  }
+  
+  crosswalked = raw %>%
+    left_join(crosswalk, by = "datasrc")
+  return(crosswalked)
+  
+}
 
-
-standard_cols = c("model", "scenario", "region", "variable", "unit", "year", "value", "datasrc")
 
 #' assert_has_standard_cols
 #' checking if all standard columns exist in the dataframe
@@ -221,6 +182,9 @@ standard_cols = c("model", "scenario", "region", "variable", "unit", "year", "va
 #'
 #' @return
 #' @export
+
+standard_cols = c("model", "scenario", "region", "variable", "unit", "year", "value", "datasrc")
+
 assert_has_standard_cols <- function(data) {
 
   if(! all(standard_cols %in% names(data))) stop("Missing at least one standard column")
