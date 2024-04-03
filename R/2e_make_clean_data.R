@@ -7,7 +7,7 @@
 
 complete_implicit_na = function(df) {
 
-  print("Completing implicit NAs")
+  print(paste0("Completing implicit NAs"))
   # model-scenario combinations to cross reference. only add back implicit missing data for model-scenario combinations submitted
   submitted = unique(df[c("model","scenario")])
 

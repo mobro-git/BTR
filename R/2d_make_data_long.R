@@ -19,7 +19,8 @@ make_data_long <- function(data_long_read) {
     # drop all-zero model-run-variable data
     group_by(., model, scenario, variable) %>%
       filter(!all(value == 0)) %>%
-      ungroup()} %>%
+      ungroup()
+  } %>%
     relocate_standard_col_order() %>%
     arrange_standard() %>%
     country_abbr() %>%
@@ -179,17 +180,17 @@ make_ratio_variables <- function(data_long, ratio_var) {
   #   filter(variable %in% all_var)
 
   ratio = list()
-  for (i in 1:nrow(ratio_var)) {
-    ratio[[i]] <- data_long %>%
+  for (var in 1:nrow(ratio_var)) {
+    ratio[[var]] <- data_long %>%
       group_by(model, scenario, region, year) %>%
       summarise(
-        value = (value %forwhich% (variable == ratio_var$numerator[i])) /
-          (value %forwhich% (variable == ratio_var$denominator[i])),
-        variable = ratio_var$variable[i],
-        unit = ratio_var$unit[i],
-        datasrc = "make_ratio_variables"
-      ) %>%
-      ungroup()
+        value = (value %forwhich% (variable == ratio_var$numerator[var])) /
+          (value %forwhich% (variable == ratio_var$denominator[var])),
+        variable = ratio_var$variable[var],
+        unit = ratio_var$unit[var],
+        datasrc = "make_ratio_variables",
+        .groups = 'drop'
+      ) 
   }
 
   all_ratio_vars <- bind_rows(ratio) %>%
@@ -236,8 +237,7 @@ make_summation_variables <- function(data_long, summation_var) {
         variable = unique(var_list$variable),
         unit = unique(var_list$unit),
         datasrc = "make_summation_variables",
-        .groups = "drop") %>%
-      ungroup()
+        .groups = "drop") 
   }
 
   bind_rows(summation) %>%
@@ -324,8 +324,8 @@ make_agr_variables <- function(data, annual_growth_rate_var) {
     summarise(value_num = log((value %forwhich% (range == "end_yr")) / (value %forwhich% (range == "start_yr"))),
               value_den = ((year %forwhich% (range == "end_yr")) - (year %forwhich% (range == "start_yr"))),
               value = (value_num/value_den)*100,
-              year = year %forwhich% (range == "end_yr")) %>%
-    ungroup() %>%
+              year = year %forwhich% (range == "end_yr"),
+              .groups = "drop") %>%
     rename(variable = new_variable) %>%
     mutate(unit = "% Annual Growth Rate",
            datasrc = "make_annual_growth_rate_var") %>%
