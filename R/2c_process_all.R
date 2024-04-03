@@ -27,7 +27,8 @@ read_usproj_data_file <- function(filepath, crosswalk_usproj_csv) {
   raw <-  read_file_ext(filepath) %>%
     mutate(datasrc = fs::path_file(filepath)) %>% 
     map_usproj_scenario_names(crosswalk) %>% 
-    select(datasrc, model, scenario, everything(),-notes)
+    select(datasrc, model, scenario, everything(),-notes) %>% 
+    country_abbr()
   
 }
 

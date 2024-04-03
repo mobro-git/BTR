@@ -121,6 +121,30 @@ tar_plan(
   
   usproj_data_long = make_usproj_data_long(usproj_data_loaded, config),
   
+  ### Projections Compilation --------------
+  
+  data_long_clean_ffc = {
+    data_long_clean %>% filter(variable %in% c('BTR|Emissions|CO2|Energy excl TRN Subtract', 'Emissions|CO2|Energy|Demand|Transportation'))
+  },
+  
+  data_long_clean_ffc_map = {
+    
+    data_long_clean_ffc %>% 
+      mutate(usproj_sector = 
+               case_when(str_detect(variable,'excl TRN') ~ "Energy",
+                         str_detect(variable,'Demand|Transportation') ~ "Transportation"),
+             gas = "CO2",
+             unit = "MMTCO2e",
+             usproj_category = "FFC",
+             usproj_source = "FFC",
+             usproj_subsource = "FFC",
+             )
+    
+  },
+  
+  
+  
+  
   ### Figure mapping --------------
 
   tar_map(
@@ -136,6 +160,10 @@ tar_plan(
              output_dir = paste0("output/",config$version,"btr_tables_figs"),
              output_file = "ncbr_btr_comparison",
              params = list(mode = "targets"))
+  
+  
+  
+  
   
 )
 

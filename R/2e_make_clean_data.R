@@ -105,3 +105,17 @@ make_data_long_clean <- function(data_long,ratio_var,summation_var,cumulative_va
   return(data_long_clean)
   
 }
+
+# 
+# new_vars <- data_long_clean %>% filter(variable %in% c('BTR|Emissions|CO2|Energy excl TRN Subtract','BTR|Emissions|CO2|Energy excl TRN Sum'))
+# 
+# wide <- new_vars %>% pivot_wider(names_from = variable)
+# 
+# wide_mutate <- wide %>% mutate(diff = `BTR|Emissions|CO2|Energy excl TRN Sum` - `BTR|Emissions|CO2|Energy excl TRN Subtract`)
+# 
+
+
+
+
+
+

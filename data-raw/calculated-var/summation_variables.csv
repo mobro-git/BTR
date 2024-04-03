@@ -1,4 +1,4 @@
-﻿index,variable,lower_level,unit,flip_sign
+﻿index,variable,lower_level,unit,multiplier
 1,Final Energy|Fossil,Final Energy|Coal,Quads,1
 1,Final Energy|Fossil,Final Energy|Gas,Quads,1
 1,Final Energy|Fossil,Final Energy|Oil,Quads,1
@@ -122,3 +122,8 @@
 209,Emissions|CO2|Energy|Demand|Transportation|GHGI|Other Total,Emissions|CO2|Energy|Demand|Transportation|GHGI|Buses,Mt CO2/yr,1
 209,Emissions|CO2|Energy|Demand|Transportation|GHGI|Other Total,Emissions|CO2|Energy|Demand|Transportation|GHGI|Mortorcycles,Mt CO2/yr,1
 209,Emissions|CO2|Energy|Demand|Transportation|GHGI|Other Total,Emissions|CO2|Energy|Demand|Transportation|GHGI|Rail,Mt CO2/yr,1
+210,BTR|Emissions|CO2|Energy excl TRN Sum,Emissions|CO2|Energy|Demand|Buildings,Mt CO2/yr,1
+210,BTR|Emissions|CO2|Energy excl TRN Sum,Emissions|CO2|Energy|Demand|Industry,Mt CO2/yr,1
+210,BTR|Emissions|CO2|Energy excl TRN Sum,Emissions|CO2|Energy|Supply,Mt CO2/yr,1
+211,BTR|Emissions|CO2|Energy excl TRN Subtract,Emissions|CO2|Energy,Mt CO2/yr,1
+211,BTR|Emissions|CO2|Energy excl TRN Subtract,Emissions|CO2|Energy|Demand|Transportation,Mt CO2/yr,-1

@@ -237,7 +237,7 @@ make_summation_variables <- function(data_long, summation_var) {
       filter(index == i)
 
     pre_join <- var_list %>%
-      select(lower_level, flip_sign) %>%
+      select(lower_level, multiplier) %>%
       rename(variable = lower_level)
 
     data_long_pre_join <- data_long %>%
@@ -248,7 +248,7 @@ make_summation_variables <- function(data_long, summation_var) {
 
     summation[[i]] <- data_long_join %>%
       filter(variable %in% var_list$lower_level) %>%
-      mutate(value = value*flip_sign) %>%
+      mutate(value = value*multiplier) %>%
       group_by(model, scenario, region, year) %>%
       summarise(
         value = sum(value),
