@@ -26,12 +26,12 @@ process_minimal_from_raw <- function(data) {
   data %>%
     select(-starts_with("...")) %>% # empty col headers dropped
     janitor::remove_empty("rows") %>%
-    transform_emf_to_long() %>%
+    transform_to_long() %>%
     standardize_col_names()
 }
 
 
-#' transform_emf_to_long
+#' transform_to_long
 #' @param data
 #' Transform original EMF format data to long format
 #' Specifically, transform columns 2010 to 2100 into year and value
@@ -40,7 +40,7 @@ process_minimal_from_raw <- function(data) {
 #' @return data
 #'
 #' @export
-transform_emf_to_long <- function(data) {
+transform_to_long <- function(data) {
 
   if(!any(c("value","Value") %in% names(data))){
     data %>%

@@ -1,6 +1,6 @@
 # centralized variable processing here for emf_data_long
 
-#' make_emf_data_long
+#' make_data_long
 #'
 #' @param data_long_read
 #'
@@ -14,7 +14,7 @@
 #' @export
 #'
 #' @examples
-make_data_long <- function(data_long_read) {
+make_data_long <- function(data_long_read, config) {
   data_long <- data_long_read %>% {
     # drop all-zero model-run-variable data
     group_by(., model, scenario, variable) %>%
@@ -25,9 +25,18 @@ make_data_long <- function(data_long_read) {
     arrange_standard() %>%
     country_abbr() %>%
     filter(!is.na(value))
+  
+  # save off data_long data to csv
+  outputpath = paste0("output/",config$version)
+  create_folders(outputpath)
+  create_folders(paste0(outputpath,"/interim_data"))
+  write_csv(data_long, paste0(outputpath,"/interim_data/data_long.csv"))
+  
+  return(data_long)
+  
 }
 
-make_usproj_data_long <- function(usproj_data_loaded) {
+make_usproj_data_long <- function(usproj_data_loaded, config) {
   usproj_data_long <- usproj_data_loaded %>%
     tidyr::pivot_longer(
       cols = num_range(prefix = "", range = 1990:2100),
@@ -50,6 +59,15 @@ make_usproj_data_long <- function(usproj_data_loaded) {
       region,
       datasrc
     ) 
+  
+  # save off data_long data to csv
+  outputpath = paste0("output/",config$version)
+  create_folders(outputpath)
+  create_folders(paste0(outputpath,"/interim_data"))
+  write_csv(usproj_data_long,paste0(outputpath,"/interim_data/usproj_data_long.csv"))
+  
+  usproj_data_long
+  
 }
 
 

@@ -85,3 +85,23 @@ unit_conversion = function(df) {
 
 }
 
+make_data_long_clean <- function(data_long,ratio_var,summation_var,cumulative_var,annual_growth_rate_var,per_diff_var,config) {
+  
+  data_long_clean = data_long %>%
+    complete_implicit_na() %>%
+    manual_data_update() %>%
+    make_calculated_vars(ratio_var,
+                         summation_var,
+                         cumulative_var,
+                         annual_growth_rate_var,
+                         per_diff_var)
+  
+  # save off data_long data to csv
+  outputpath = paste0("output/",config$version)
+  create_folders(outputpath)
+  create_folders(paste0(outputpath,"/interim_data"))
+  write_csv(data_long_clean,paste0(outputpath,"/interim_data/data_long_clean.csv"))
+  
+  return(data_long_clean)
+  
+}

@@ -103,17 +103,15 @@ tar_plan(
     map_dfr(data_files, ~read_process_data_file(.x, config)) %>%
       arrange_standard()},
 
-  data_long = make_data_long(data_loaded),
+  data_long = make_data_long(data_loaded, config),
 
-  data_long_clean = {
-    data_long %>%
-      complete_implicit_na() %>%
-      manual_data_update() %>%
-      make_calculated_vars(ratio_var,
-                           summation_var,
-                           cumulative_var,
-                           annual_growth_rate_var,
-                           per_diff_var)},
+  data_long_clean = make_data_long_clean(data_long,
+                                         ratio_var,
+                                         summation_var,
+                                         cumulative_var,
+                                         annual_growth_rate_var,
+                                         per_diff_var,
+                                         config), 
   
   # _usproj data long ----
   
@@ -121,7 +119,7 @@ tar_plan(
     map_dfr(usproj_files, ~read_usproj_data_file(.x, crosswalk_usproj_csv)) %>%
       arrange_standard()},
   
-  usproj_data_long = make_usproj_data_long(usproj_data_loaded),
+  usproj_data_long = make_usproj_data_long(usproj_data_loaded, config),
   
   ### Figure mapping --------------
 
