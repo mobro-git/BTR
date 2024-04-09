@@ -123,26 +123,31 @@ tar_plan(
   
   ### Projections Compilation --------------
   
-  data_long_clean_ffc = {
-    data_long_clean %>% filter(variable %in% c('BTR|Emissions|CO2|Energy excl TRN Subtract', 'Emissions|CO2|Energy|Demand|Transportation'))
+  # crosswalk between BTR and usproj template variables
+  tar_target(var_crosswalk_csv, "data-raw/crosswalk/crosswalk_var.csv", format = "file"),
+  tar_target(var_crosswalk, read_csv(var_crosswalk_csv)),
+  
+  ffc_raw_data = {
+    data_long_clean %>% 
+      filter(variable %in% unique(var_crosswalk$btr_var))
   },
   
-  data_long_clean_ffc_map = {
-    
-    data_long_clean_ffc %>% 
-      mutate(usproj_sector = 
-               case_when(str_detect(variable,'excl TRN') ~ "Energy",
-                         str_detect(variable,'Demand|Transportation') ~ "Transportation"),
-             gas = "CO2",
-             unit = "MMTCO2e",
-             usproj_category = "FFC",
-             usproj_source = "FFC",
-             usproj_subsource = "FFC",
-             )
-    
+  ffc_data_mapped = {
+    ffc_raw_data %>%
+      rename("btr_var" = "variable") %>%
+      left_join(var_crosswalk, by = "btr_var") %>%
+      select(names(usproj_data_long))
   },
   
   
+  ### QA/QC ----
+  
+  check_nrg_excl_trn_acct = {
+    nrg_excl_trn_acct <- data_long_clean %>% 
+      filter(variable %in% c('BTR|Emissions|CO2|Energy excl TRN Subtract','BTR|Emissions|CO2|Energy excl TRN Sum'))%>% 
+      pivot_wider(names_from = variable) %>%
+      mutate(diff = `BTR|Emissions|CO2|Energy excl TRN Sum` - `BTR|Emissions|CO2|Energy excl TRN Subtract`)
+  },
   
   
   ### Figure mapping --------------
@@ -160,11 +165,7 @@ tar_plan(
              output_dir = paste0("output/",config$version,"btr_tables_figs"),
              output_file = "ncbr_btr_comparison",
              params = list(mode = "targets"))
-  
-  
-  
-  
-  
+
 )
 
 

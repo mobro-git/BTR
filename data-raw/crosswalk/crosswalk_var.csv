@@ -1,0 +1,15 @@
+btr_var,gas,usproj_sector,usproj_category,usproj_source,usproj_subsource
+Emissions|CO2|Energy|Demand|Buildings|Commercial,CO2,Energy,FFCCom,FFC,FFC
+Emissions|CO2|Energy|Demand|Buildings|Residential,CO2,Energy,FFCRes,FFC,FFC
+Emissions|CO2|Energy|Demand|Industry,CO2,Energy,FFCInd,FFC,FFC
+Emissions|CO2|Energy|Demand|Transportation,CO2,Transportation,FFCTrans,FFC,FFC
+Emissions|CO2|Energy|Supply|Biogas,CO2,Energy,FFCInd,FFC,FFC
+Emissions|CO2|Energy|Supply|Biogas,CO2,Energy,FFCInd,FFC,FFC
+Emissions|CO2|Energy|Supply|Biomass Liquids,CO2,Energy,FFCInd,FFC,FFC
+Emissions|CO2|Energy|Supply|Electricity,CO2,Energy,FFCElec,FFC,FFC
+Emissions|CO2|Energy|Supply|Gas,CO2,Energy,FFCInd,FFC,FFC
+Emissions|CO2|Energy|Supply|Heat,CO2,Energy,FFCInd,FFC,FFC
+Emissions|CO2|Energy|Supply|Hydrogen,CO2,Energy,FFCInd,FFC,FFC
+Emissions|CO2|Energy|Supply|Petroleum Refining,CO2,Energy,FFCInd,FFC,FFC
+Emissions|CO2|Energy|Supply|Synthetic Gas,CO2,Energy,FFCInd,FFC,FFC
+Emissions|CO2|Energy|Supply|Synthetic Liquids,CO2,Energy,FFCInd,FFC,FFC
