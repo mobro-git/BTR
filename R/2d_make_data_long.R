@@ -37,6 +37,7 @@ make_data_long <- function(data_long_read, config) {
 }
 
 make_usproj_data_long <- function(usproj_data_loaded, config) {
+  
   usproj_data_long <- usproj_data_loaded %>%
     tidyr::pivot_longer(
       cols = num_range(prefix = "", range = 1990:2100),
@@ -58,7 +59,7 @@ make_usproj_data_long <- function(usproj_data_loaded, config) {
       usproj_subsource,
       region,
       datasrc
-    ) 
+    )
   
   # save off data_long data to csv
   outputpath = paste0("output/",config$version)

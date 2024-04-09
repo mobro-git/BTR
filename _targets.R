@@ -26,7 +26,7 @@ tar_plan(
     scen_mapping = read_scen_mapping(crosswalk_model_runs_csv),
     template = template,
     calculated_var = all_calculated,
-    base_year = 2022,
+    base_year = 2021, # TODO: update to 2022 when we get updated inventory
     
     #models
     models = c("GCAM-LTS","GCAM-PNNL","NEMS-OP","USREP-ReEDS"),
@@ -115,6 +115,7 @@ tar_plan(
   
   # _usproj data long ----
   
+  # TODO: Need to update usproj projections for FFCUST - need data from OP-NEMS
   usproj_data_loaded = {
     map_dfr(usproj_files, ~read_usproj_data_file(.x, crosswalk_usproj_csv)) %>%
       arrange_standard()},
@@ -127,18 +128,9 @@ tar_plan(
   tar_target(var_crosswalk_csv, "data-raw/crosswalk/crosswalk_var.csv", format = "file"),
   tar_target(var_crosswalk, read_csv(var_crosswalk_csv)),
   
-  ffc_raw_data = {
-    data_long_clean %>% 
-      filter(variable %in% unique(var_crosswalk$btr_var))
-  },
+  ffc_raw_data = get_ffc_model_runs(data_long_clean, var_crosswalk, usproj_data_long),
   
-  ffc_data_mapped = {
-    ffc_raw_data %>%
-      rename("btr_var" = "variable") %>%
-      left_join(var_crosswalk, by = "btr_var") %>%
-      select(names(usproj_data_long))
-  },
-  
+  usproj_all = add_ffc_ghgi(ffc_raw_data,usproj_data_long,var_crosswalk,config),
   
   ### QA/QC ----
   
