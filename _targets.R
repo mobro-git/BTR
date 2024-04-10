@@ -129,7 +129,8 @@ tar_plan(
   tar_target(lulucf_crosswalk_csv, "data-raw/crosswalk/crosswalk_lulucf.csv", format = "file"),
   tar_target(lulucf_crosswalk, read_csv(lulucf_crosswalk_csv)), 
   
-  lulucf_data = {map_dfr(lulucf_files, ~read_lulucf_data_file(.x, lulucf_crosswalk, var_crosswalk)) %>%
+  lulucf_data = {
+    map_dfr(lulucf_files, ~read_lulucf_data_file(.x, lulucf_crosswalk, var_crosswalk)) %>%
       arrange_standard()},
   
   ### Projections Compilation --------------
@@ -142,15 +143,25 @@ tar_plan(
   
   usproj_all = add_ffc_lulucf(ffc_raw_data,lulucf_data,usproj_data_long,var_crosswalk,config),
     
-  
   # crosswalk compilation
   
   tar_target(crosswalk_compilation_csv, "data-raw/crosswalk/crosswalk_compilation.csv", format = "file"),
   tar_target(crosswalk_compilation, read_csv(crosswalk_compilation_csv)), # TODO: CHECK FOR MODELS AND SCENARIOS!
   
   # map proj_names to projections
+
+  tar_target(projections_all, map_proj_name_v2(usproj_all, crosswalk_compilation, config)),
   
-  tar_target(proj_usa, map_proj_name(usproj_all, crosswalk_compilation, config)),
+  ## Targets
+  
+  #### 1) add historic data to projections_all - proj_name = "historic", scenario = "historic", model = "ghgi"
+  #### 2) projections_all_sm - projection_all %>% group_by(proj_name, gas, usproj_sector, unit, year) and summarize, should have a number for each gas and sector combo. export to output csv
+  #### 3) projections_net_ghg - projections_all_sm %>% group_by(proj_name) and summarize - net all emissions and sum, should just be one number. export to output csv
+  
+  ## Markdown
+  
+  #### 1) create gas and sector summary tables
+  #### 2) create basic projections figure - historic net ghg and full projection range 
   
   
   ### QA/QC ----

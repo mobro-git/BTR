@@ -1,4 +1,4 @@
-proj_name,usproj_scen,ffc_model,ffc_scen
-test1,wm_v1,NEMS-OP,IRA
-test2,wm_v2,GCAM-PNNL,IRA
-test3,wm_v1,USREP-ReEDS,IRA
+proj_name,usproj_scen,ffc_model,ffc_scen,lulucf_model,lulucf_scen
+test1,wm_v1,NEMS-OP,IRA,lulucf,wam_high
+test2,wm_v2,GCAM-PNNL,IRA,lulucf_80pct,wam_high
+test3,wm_v1,USREP-ReEDS,IRA,lulucf,wam_low
