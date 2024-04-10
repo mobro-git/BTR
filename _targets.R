@@ -126,11 +126,22 @@ tar_plan(
   
   # crosswalk between BTR and usproj template variables
   tar_target(var_crosswalk_csv, "data-raw/crosswalk/crosswalk_var.csv", format = "file"),
-  tar_target(var_crosswalk, read_csv(var_crosswalk_csv)),
+  tar_target(var_crosswalk, read_csv(var_crosswalk_csv)), # TODO: CHECK FOR VARIABLES!
   
   ffc_raw_data = get_ffc_model_runs(data_long_clean, var_crosswalk, usproj_data_long),
   
   usproj_all = add_ffc_ghgi(ffc_raw_data,usproj_data_long,var_crosswalk,config),
+  
+  
+  # crosswalk compilation
+  
+  tar_target(crosswalk_compilation_csv, "data-raw/crosswalk/crosswalk_compilation.csv", format = "file"),
+  tar_target(crosswalk_compilation, read_csv(crosswalk_compilation_csv)), # TODO: CHECK FOR MODELS AND SCENARIOS!
+  
+  # map proj_names to projections
+  
+  tar_target(proj_usa, map_proj_name(usproj_all, crosswalk_compilation, config)),
+  
   
   ### QA/QC ----
   

@@ -1,0 +1,4 @@
+proj_name,usproj_scen,ffc_model,ffc_scen
+test1,wm_v1,NEMS-OP,IRA
+test2,wm_v2,GCAM-PNNL,IRA
+test3,wm_v1,USREP-ReEDS,IRA
