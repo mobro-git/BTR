@@ -122,6 +122,16 @@ tar_plan(
   
   usproj_data_long = make_usproj_data_long(usproj_data_loaded, config),
   
+  # load lulucf ----
+  tar_target(lulucf_folder, "data-raw/lulucf/", format = "file"),
+  tar_target(lulucf_files, dir_ls(lulucf_folder), format = "file"),
+  
+  tar_target(lulucf_crosswalk_csv, "data-raw/crosswalk/crosswalk_lulucf.csv", format = "file"),
+  tar_target(lulucf_crosswalk, read_csv(lulucf_crosswalk_csv)), 
+  
+  lulucf_data = {map_dfr(lulucf_files, ~read_lulucf_data_file(.x, lulucf_crosswalk, var_crosswalk)) %>%
+      arrange_standard()},
+  
   ### Projections Compilation --------------
   
   # crosswalk between BTR and usproj template variables
@@ -130,8 +140,8 @@ tar_plan(
   
   ffc_raw_data = get_ffc_model_runs(data_long_clean, var_crosswalk, usproj_data_long),
   
-  usproj_all = add_ffc_ghgi(ffc_raw_data,usproj_data_long,var_crosswalk,config),
-  
+  usproj_all = add_ffc_lulucf(ffc_raw_data,lulucf_data,usproj_data_long,var_crosswalk,config),
+    
   
   # crosswalk compilation
   

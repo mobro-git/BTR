@@ -1,0 +1,9 @@
+datasrc,model,scenario,model_new,scenario_new
+lulucf_lts.xlsx,lulucf,LOW BAU,lulucf,bau_low
+lulucf_lts.xlsx,lulucf,HIGH BAU,lulucf,bau_high
+lulucf_lts.xlsx,lulucf,Low Range WAM,lulucf,wam_low
+lulucf_lts.xlsx,lulucf,High Range WAM,lulucf,wam_high
+lulucf_lts_test.xlsx,lulucf,LOW BAU,lulucf_80pct,bau_low
+lulucf_lts_test.xlsx,lulucf,HIGH BAU,lulucf_80pct,bau_high
+lulucf_lts_test.xlsx,lulucf,Low Range WAM,lulucf_80pct,wam_low
+lulucf_lts_test.xlsx,lulucf,High Range WAM,lulucf_80pct,wam_high

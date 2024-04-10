@@ -16,7 +16,7 @@ get_ffc_model_runs = function(data_long_clean, var_crosswalk, usproj_data_long) 
 
 # add ffc co2 emissions projections from model-runs to usproj_data_long
 
-add_ffc_ghgi = function(ffc_raw_data,usproj_data_long,var_crosswalk,config) {
+add_ffc_lulucf = function(ffc_raw_data,lulucf_data,usproj_data_long,var_crosswalk,config) {
   
   usproj_no_ffc_proj = usproj_data_long %>%
     # remove FFC projections, keep only historic data - *****EXCEPT KEEP FFCUST PROJECTIONS (not in crosswalk)*****
@@ -25,11 +25,17 @@ add_ffc_ghgi = function(ffc_raw_data,usproj_data_long,var_crosswalk,config) {
         year > config$base_year)) %>%
     mutate(btr_var = "") %>%
     rbind(ffc_raw_data)
+  
+  lulucf_ordered = lulucf_data %>% select(names(usproj_no_ffc_proj)) %>% rbind(usproj_no_ffc_proj)
     
 }
 
+#add_lulucf = function()
 
-# map proj_name
+
+
+
+# map proj_name in crosswalk to usproj_all
 
 map_proj_name = function(usproj_all, crosswalk_compilation, config) {
   
@@ -38,7 +44,7 @@ map_proj_name = function(usproj_all, crosswalk_compilation, config) {
   
   
   # Create empty list
-  proj_names <- vector('character', nrow(proj_usa))
+  proj_names <- list()
   
   #Loop through each row of projections
   for(i in 1:nrow(proj_usa)){
@@ -54,10 +60,10 @@ map_proj_name = function(usproj_all, crosswalk_compilation, config) {
         proj_names[i] <- 'usproj'
       }
       else if (model %in% crosswalk_compilation$ffc_model & scenario %in% crosswalk_compilation$ffc_scen) {
-        merged_row <- row %>% left_join(crosswalk_compilation, by = c('model'='ffc_model', 'scenario'='ffc_scen'))
+        merged_row <- row %>% left_join(crosswalk_compilation, by = c('model'='ffc_model', 'scenario'='ffc_scen', 'scenario' = 'usproj_scen'))
         proj_names[i] <- merged_row$proj_name
       }
-      else print(paste('Model/Scenario combo:', '(',model,', ',scenario,')', ', is not recognized.'))
+     # else print(#paste('Model/Scenario combo:', '(',model,', ',scenario,')', ', is not recognized.'))
     }
     else proj_names[i] <- 'ghgi_historical'
   }
@@ -68,3 +74,39 @@ map_proj_name = function(usproj_all, crosswalk_compilation, config) {
  
 }
 
+map_proj_name_v2 = function(usproj_all, crosswalk_compilation, config) {
+  
+  #Filter out non-national estimates
+  proj_usa <- usproj_all %>% filter(region == 'United States')
+  
+  
+  # Create empty list
+  proj_names <- list()
+  
+  #Loop through each row of projections
+  for(i in 1:nrow(proj_usa)){
+    
+    row <- proj_usa[i,]
+    
+    model <- row$model
+    scenario <- row$scenario
+    year <- row$year
+    
+    if (year > config$base_year) {
+      if (model == 'usproj') {
+        proj_names[i] <- 'usproj'
+      }
+      else if (model %in% crosswalk_compilation$ffc_model & scenario %in% crosswalk_compilation$ffc_scen) {
+        merged_row <- row %>% left_join(crosswalk_compilation, by = c('model'='ffc_model', 'scenario'='ffc_scen', 'scenario' = 'usproj_scen'))
+        proj_names[i] <- merged_row$proj_name
+      }
+      else print(paste('Model/Scenario combo:', '(',model,', ',scenario,')', ', is not recognized.'))
+    }
+    else proj_names[i] <- 'ghgi_historical'
+  }
+  
+  proj_usa$proj_name <- proj_names
+  
+  return(proj_usa %>% select(proj_name, everything()))
+  
+}

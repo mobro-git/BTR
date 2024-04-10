@@ -32,6 +32,12 @@ read_usproj_data_file <- function(filepath, crosswalk_usproj_csv) {
   
 }
 
+read_lulucf_data_file <- function(filepath, lulucf_crosswalk, var_crosswalk) {
+  print(paste0("Reading ",filepath))
+  read_raw_data_file(filepath) %>%
+    map_lulucf(lulucf_crosswalk) %>% 
+    rename(btr_var = variable) %>% 
+    left_join(var_crosswalk, by = 'btr_var')}
 
 process_data_file <- function(data, config = NULL) {
 
@@ -131,10 +137,10 @@ map_scenario_names <- function(data,
     anti_join(scen_mapping, by = join_vars)
 
   if(nrow(preflight) > 0) {
-    write_csv(preflight, "data-raw/scenario-mapping-ADDITIONS.csv")
+    write_csv(preflight, "data-raw/crosswalk/crosswalk_model-runs-ADDITIONS.csv")
     print(glue::glue_data(preflight, "{datasrc}, {model}, {scenario}"))
-    rlang::abort("Model+scenario combinations above not present in scenario crosswalk (data-raw/scenario-mapping.csv).
-                 Combinations have been saved off to data-raw/scenario-mapping-ADDITIONS.csv. 
+    rlang::abort("Model+scenario combinations above not present in crosswalk (data-raw/crosswalk/crosswalk_model-runs.csv).
+                 Combinations have been saved off to data-raw/crosswalk/crosswalk_model-runs-ADDITIONS.csv. 
                  There might still be missing model+scenario in another datasource.")
   }
 
@@ -152,6 +158,35 @@ map_scenario_names <- function(data,
     select(model, scenario, region, year, variable, unit, value, everything()) %>%
     assert_has_standard_cols()
 
+  res
+}
+
+
+map_lulucf <- function(data, lulucf_crosswalk) {
+  
+  join_vars <- c("datasrc", "model", "scenario")
+  
+  # make sure crosswalk has everything needed
+  preflight <- distinct_at(data, join_vars) %>%
+    anti_join(lulucf_crosswalk, by = join_vars)
+  
+  if(nrow(preflight) > 0) {
+    print(glue::glue_data(preflight, "{datasrc}, {model}, {scenario}"))
+    rlang::abort("Model+scenario combinations above not present in crosswalk_lulucf.csv") 
+  }
+  
+  scen_mapping <- select(lulucf_crosswalk, all_of(join_vars), model_new, scenario_new)
+  
+  res <- data %>%
+    left_join(scen_mapping, by = join_vars) %>%
+    mutate(
+      model = model_new,
+      scenario = scenario_new
+    ) %>%
+    select(-model_new, -scenario_new) %>%
+    select(model, scenario, region, year, variable, unit, value, everything()) %>%
+    assert_has_standard_cols()
+  
   res
 }
 
