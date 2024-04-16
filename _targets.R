@@ -31,7 +31,7 @@ tar_plan(
     #models
     models = c("GCAM-LTS","GCAM-PNNL","NEMS-OP","USREP-ReEDS"),
     
-    fives = c(seq(2005,2022,by = 1),seq(2025,2040,by = 5)),
+    fives = c(seq(2005,2020,by = 5),2022,seq(2025,2040,by = 5)),
     annual = c(seq(2005,2040,by = 1)),
     
     fives_lts = c(seq(2005,2022,by = 1),seq(2025,2050,by = 5)),
@@ -39,7 +39,11 @@ tar_plan(
     
     annual_1990 = c(seq(1990,2040,by = 1)),
     annual_2010 = c(seq(2010,2040,by = 1)),
-    table = c(2005, 2010, 2015, 2020, 2022, 2025, 2030 , 2035, 2040)
+    table = c(2005, 2010, 2015, 2020, 2022, 2025, 2030 , 2035, 2040),
+    
+    gas_order = c("CO2", "CH4", "N2O", "HFCs", "PFCs", "SF6", "F-gas"),
+    sector_order = c("Energy", "Transportation", "IPPU", "Agriculture", "Waste", 'LULUCF')
+    
   ),
 
   ##### Template + Crosswalks ---------------------------------------------------
@@ -155,13 +159,40 @@ tar_plan(
   ## Targets
   
   #### 1) add historic data to projections_all - proj_name = "historic", scenario = "historic", model = "ghgi"
+  tar_target(add_hist_data, add_historical_data(usproj_all, config, projections_all)),
+  
   #### 2) projections_all_sm - projection_all %>% group_by(proj_name, gas, usproj_sector, unit, year) and summarize, should have a number for each gas and sector combo. export to output csv
+  tar_target(projections_all_sm, gen_proj_all_sm(add_hist_data, 'test2')),
+  
+  tar_target(gas_df, group_gas_breakout_dataset(projections_all_sm,config)),
+  tar_target(sector_df, group_sector_breakout_dataset(projections_all_sm,config)),
+  tar_target(lulucf_sink_df, lulucf_sink_breakout(projections_all_sm, config)),
+  
+  
+  tar_target(tge_gas, data.frame(gas = 'Total Gross Emissions')),
+  tar_target(tge_sector, data.frame(usproj_sector = 'Total Gross Emissions')),
+  
+  tar_target(tne_gas, data.frame(gas = 'Total Net Emissions')),
+  tar_target(tne_sector, data.frame(usproj_sector = 'Total Net Emissions')),
+  
+  
+  tar_target(total_gross_emissions_df_gas, total_gross_emissions(projections_all_sm, config,tge_gas)),
+  tar_target(total_gross_emissions_df_sector, total_gross_emissions(projections_all_sm, config,tge_sector)),
+  
+
+  
+ # tar_target(total_net_emissions_df, total_net_emissions(projections_all_sm, config)),
+  
+  
   #### 3) projections_net_ghg - projections_all_sm %>% group_by(proj_name) and summarize - net all emissions and sum, should just be one number. export to output csv
   
   ## Markdown
   
   #### 1) create gas and sector summary tables
   #### 2) create basic projections figure - historic net ghg and full projection range 
+  
+  # group compilation
+  
   
   
   ### QA/QC ----

@@ -112,3 +112,28 @@ map_proj_name_v2 = function(usproj_all, crosswalk_compilation, config) {
   return(projections_all)
   
 }
+
+
+add_historical_data <- function(usproj_all, config, projections_all) {
+  
+  historical <- usproj_all %>% filter(region == 'United States') %>% filter(year <= config$base_year)
+  
+  historical_ghgi <- historical %>% mutate(proj_name = 'ghgi') %>%
+    mutate(model = 'ghgi') %>%
+    mutate(scenario = 'historical') %>%
+    select(names(projections_all))
+  
+  projections_all <- projections_all %>% rbind(historical_ghgi)
+  
+  
+}
+
+gen_proj_all_sm <- function(add_hist_data, scen){
+  
+  projections_all_sm <- add_hist_data %>% 
+    group_by(proj_name, gas, usproj_sector, unit, year) %>%
+    filter(proj_name %in% c('ghgi', scen)) %>% 
+    summarise(sum = sum(value)) 
+
+    }
+
