@@ -1,0 +1,79 @@
+---
+
+pagetitle: "2024 Biennial Transparency Report Projections Chapter: Tables & Figures"
+output:
+  html_document:
+
+---
+
+```{r}
+source('packages.R')
+tar_load(c(projections_all_sm, config))
+
+
+```
+
+
+```{r}
+# Gas breakout df
+ years_sum <- projections_all_sm %>% filter(year %in% config$table)
+  gas_dataset <- years_sum %>%
+    group_by(proj_name, gas, year) %>%
+    summarise(mmtco2e = sum(sum)) %>%
+    filter(!gas=='LULUCF Sink')
+  
+  gas_dataset_wide <- gas_dataset %>% pivot_wider(names_from = year,
+                                          values_from = mmtco2e) %>% 
+    arrange(factor(gas, levels = config$gas_order))
+```
+
+```{r}
+# usproj sector breakout df
+
+  sector_dataset <- years_sum %>% group_by(proj_name, usproj_sector, year) %>% summarise(mmtco2e = sum(sum)) %>% filter(!usproj_sector=='LULUCF Sink')
+  
+  sector_dataset_wide <- sector_dataset %>% pivot_wider(names_from = year,
+                                          values_from = mmtco2e)%>% 
+    arrange(factor(usproj_sector, levels = config$sector_order))
+
+
+```
+
+```{r}
+# LULUCF Sink breakout df
+
+  lulucf_sink_df <- projections_all_sm %>% ungroup() %>% 
+    select(proj_name,gas,year,sum) %>% 
+    filter(gas=='LULUCF Sink') %>%
+    filter(year %in% config$table) 
+  
+  lulucf_sink_wide <- lulucf_sink_df %>% pivot_wider(names_from = year,
+                                                     values_from = sum)
+
+
+
+```
+
+```{r}
+
+# Total Gross emissions
+  total_gross_emissions_df <- projections_all_sm %>% ungroup %>%
+    filter(!gas=='LULUCF Sink') %>%
+    filter(year %in% config$table) %>%
+    group_by(proj_name, year) %>% 
+    summarise('Total Gross Emissions' = sum(sum))
+  
+  tge_wide <- total_gross_emissions_df %>% pivot_wider(names_from = year,
+                                                       values_from = 'Total Gross Emissions')
+  
+  tge_final <- cbind(tge_header,tge_wide)
+
+
+```
+
+```{r}
+
+
+
+```
+

@@ -2,12 +2,12 @@
 group_gas_breakout_dataset <- function(projections_all_sm, config) {
   
   years_sum <- projections_all_sm %>% filter(year %in% config$table)
-  dataset <- years_sum %>%
-    group_by(gas, year) %>%
+  gas_dataset <- years_sum %>%
+    group_by(proj_name, gas, year) %>%
     summarise(mmtco2e = sum(sum)) %>%
     filter(!gas=='LULUCF Sink')
   
-  dataset_wide <- dataset %>% pivot_wider(names_from = year,
+  gas_dataset_wide <- gas_dataset %>% pivot_wider(names_from = year,
                                           values_from = mmtco2e) %>% 
     arrange(factor(gas, levels = config$gas_order))
   }
@@ -16,9 +16,9 @@ group_gas_breakout_dataset <- function(projections_all_sm, config) {
 group_sector_breakout_dataset <- function(projections_all_sm, config) {
   
   years_sum <- projections_all_sm %>% filter(year %in% config$table)
-  dataset <- years_sum %>% group_by(usproj_sector, year) %>% summarise(mmtco2e = sum(sum)) %>% filter(!usproj_sector=='LULUCF Sink')
+  sector_dataset <- years_sum %>% group_by(proj_name, usproj_sector, year) %>% summarise(mmtco2e = sum(sum)) %>% filter(!usproj_sector=='LULUCF Sink')
   
-  dataset_wide <- dataset %>% pivot_wider(names_from = year,
+  sector_dataset_wide <- sector_dataset %>% pivot_wider(names_from = year,
                                           values_from = mmtco2e)%>% 
     arrange(factor(usproj_sector, levels = config$sector_order))
 }
@@ -26,7 +26,7 @@ group_sector_breakout_dataset <- function(projections_all_sm, config) {
 lulucf_sink_breakout <- function(projections_all_sm, config){
   
   lulucf_sink_df <- projections_all_sm %>% ungroup() %>% 
-    select(gas,year,sum) %>% 
+    select(proj_name,gas,year,sum) %>% 
     filter(gas=='LULUCF Sink') %>%
     filter(year %in% config$table) 
   
@@ -40,7 +40,7 @@ total_gross_emissions <- function(projections_all_sm, config, tge_header){
   total_gross_emissions_df <- projections_all_sm %>% ungroup %>%
     filter(!gas=='LULUCF Sink') %>%
     filter(year %in% config$table) %>%
-    group_by(year) %>% 
+    group_by(proj_name, year) %>% 
     summarise('Total Gross Emissions' = sum(sum))
   
   tge_wide <- total_gross_emissions_df %>% pivot_wider(names_from = year,

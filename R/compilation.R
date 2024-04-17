@@ -128,11 +128,10 @@ add_historical_data <- function(usproj_all, config, projections_all) {
   
 }
 
-gen_proj_all_sm <- function(add_hist_data, scen){
+gen_proj_all_sm <- function(add_hist_data){
   
   projections_all_sm <- add_hist_data %>% 
-    group_by(proj_name, gas, usproj_sector, unit, year) %>%
-    filter(proj_name %in% c('ghgi', scen)) %>% 
+    group_by(proj_name, gas, usproj_sector, unit, year) %>% 
     summarise(sum = sum(value)) 
 
     }

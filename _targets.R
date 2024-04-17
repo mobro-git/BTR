@@ -162,23 +162,8 @@ tar_plan(
   tar_target(add_hist_data, add_historical_data(usproj_all, config, projections_all)),
   
   #### 2) projections_all_sm - projection_all %>% group_by(proj_name, gas, usproj_sector, unit, year) and summarize, should have a number for each gas and sector combo. export to output csv
-  tar_target(projections_all_sm, gen_proj_all_sm(add_hist_data, 'test2')),
-  
-  tar_target(gas_df, group_gas_breakout_dataset(projections_all_sm,config)),
-  tar_target(sector_df, group_sector_breakout_dataset(projections_all_sm,config)),
-  tar_target(lulucf_sink_df, lulucf_sink_breakout(projections_all_sm, config)),
-  
-  
-  tar_target(tge_gas, data.frame(gas = 'Total Gross Emissions')),
-  tar_target(tge_sector, data.frame(usproj_sector = 'Total Gross Emissions')),
-  
-  tar_target(tne_gas, data.frame(gas = 'Total Net Emissions')),
-  tar_target(tne_sector, data.frame(usproj_sector = 'Total Net Emissions')),
-  
-  
-  tar_target(total_gross_emissions_df_gas, total_gross_emissions(projections_all_sm, config,tge_gas)),
-  tar_target(total_gross_emissions_df_sector, total_gross_emissions(projections_all_sm, config,tge_sector)),
-  
+  tar_target(projections_all_sm, gen_proj_all_sm(add_hist_data)),
+
 
   
  # tar_target(total_net_emissions_df, total_net_emissions(projections_all_sm, config)),
