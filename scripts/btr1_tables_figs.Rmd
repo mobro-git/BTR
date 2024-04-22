@@ -55,7 +55,36 @@ total_gross_emissions_df <- summarise_emissions(gas_breakout_df)
 
 ```{r}
 
-total_net_emissions <- total_net_emissions(gas_breakout_df, lulucf_sink_breakout)
+total_net_emissions <- get_total_net_emissions(gas_breakout_df, lulucf_sink_breakout)
+
+```
+
+```{r}
+
+
+gas_table_df <- create_gas_table_df(
+  gas_breakout_df,
+  total_gross_emissions_df,
+  lulucf_sink_breakout,
+  total_net_emissions
+)
+
+
+sector_table_df <- create_sector_table_df(
+  sector_breakout_df,
+  total_gross_emissions_df,
+  lulucf_sink_breakout,
+  total_net_emissions
+)
+
+
+```
+
+```{r}
+
+
+
+
 
 ```
 

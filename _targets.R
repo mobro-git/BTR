@@ -41,8 +41,10 @@ tar_plan(
     annual_2010 = c(seq(2010,2040,by = 1)),
     table = c(2005, 2010, 2015, 2020, 2022, 2025, 2030 , 2035, 2040),
     
-    gas_order = c("CO2", "CH4", "N2O", "HFCs", "PFCs", "SF6", "F-gas"),
-    sector_order = c("Energy", "Transportation", "IPPU", "Agriculture", "Waste", 'LULUCF')
+    gas_order = c("CO2", "CH4", "N2O", "HFCs", "PFCs", "SF6","F-gas"), #TODO: Make sure NF3 is included in USPROJ data
+    sector_order = c("Energy", "Transportation", "IPPU", "Agriculture", "Waste", 'LULUCF'),
+    
+    output_dir = 'output/2024_BTR1'
     
   ),
 
@@ -163,10 +165,30 @@ tar_plan(
   
   #### 2) projections_all_sm - projection_all %>% group_by(proj_name, gas, usproj_sector, unit, year) and summarize, should have a number for each gas and sector combo. export to output csv
   tar_target(projections_all_sm, gen_proj_all_sm(add_hist_data)),
-
-
+  tar_target(write_proj_all_sm, write_csv(projections_all_sm, 'output/2024_BTR1/proj_tables/projections_all_sm.csv')),
   
- # tar_target(total_net_emissions_df, total_net_emissions(projections_all_sm, config)),
+  
+  # Generate LULUCF Sink breakout
+ # tar_target(lulucf_sink_breakout_df, gen_lulucf_sink_breakout_df(projections_all_sm, config)), #TODO: Figure out where to net out positive LULUCF Emissions, figure out if sink is just co2
+  
+  # Generate gas/sector breakouts from proj_all_sm
+  tar_target(gas_dataset, gen_gas_dataset(projections_all_sm, config)),
+  tar_target(gas_breakout, gen_gas_breakout(gas_dataset,config, category_order = config$gas_order, lulucf_sink_breakout)),
+  
+  tar_target(sector_dataset, group_sector_breakout_dataset(projections_all_sm, config)),
+  tar_target(sector_breakout, gen_sector_breakout(sector_dataset,config, config$sector_order, lulucf_sink_breakout)),
+  
+  
+  
+  # Sum Total Gross Emissions
+  tar_target(total_gross_emissions, gen_total_gross_emissions(gas_breakout)),
+  
+  
+  # Calculate Total Net Emissions and write
+  tar_target(total_net_emissions, get_total_net_emissions(gas_breakout, lulucf_sink_breakout)),
+  tar_target(write_TNE_csv, write_csv(total_net_emissions, 'output/2024_BTR1/proj_tables/total_net_emissions.csv')),
+  
+  
   
   
   #### 3) projections_net_ghg - projections_all_sm %>% group_by(proj_name) and summarize - net all emissions and sum, should just be one number. export to output csv
@@ -207,5 +229,4 @@ tar_plan(
              params = list(mode = "targets"))
 
 )
-
 
