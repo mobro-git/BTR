@@ -169,14 +169,14 @@ tar_plan(
   
   
   # Generate LULUCF Sink breakout
- # tar_target(lulucf_sink_breakout_df, gen_lulucf_sink_breakout_df(projections_all_sm, config)), #TODO: Figure out where to net out positive LULUCF Emissions, figure out if sink is just co2
+  tar_target(lulucf_sink_breakout, gen_lulucf_sink_breakout(projections_all_sm, config)), #TODO: Figure out where to net out positive LULUCF Emissions, figure out if sink is just co2
   
   # Generate gas/sector breakouts from proj_all_sm
   tar_target(gas_dataset, gen_gas_dataset(projections_all_sm, config)),
-  tar_target(gas_breakout, gen_gas_breakout(gas_dataset,config, category_order = config$gas_order, lulucf_sink_breakout)),
+  tar_target(gas_breakout, gen_gas_breakout(gas_dataset, config, category_order = config$gas_order, lulucf_sink_breakout)),
   
-  tar_target(sector_dataset, group_sector_breakout_dataset(projections_all_sm, config)),
-  tar_target(sector_breakout, gen_sector_breakout(sector_dataset,config, config$sector_order, lulucf_sink_breakout)),
+  tar_target(sector_dataset, gen_sector_dataset(projections_all_sm, config)),
+  tar_target(sector_breakout, gen_sector_breakout(sector_dataset, config, category_order = config$sector_order, lulucf_sink_breakout)),
   
   
   
@@ -185,7 +185,7 @@ tar_plan(
   
   
   # Calculate Total Net Emissions and write
-  tar_target(total_net_emissions, get_total_net_emissions(gas_breakout, lulucf_sink_breakout)),
+  tar_target(total_net_emissions, gen_total_net_emissions(gas_breakout, lulucf_sink_breakout)),
   tar_target(write_TNE_csv, write_csv(total_net_emissions, 'output/2024_BTR1/proj_tables/total_net_emissions.csv')),
   
   

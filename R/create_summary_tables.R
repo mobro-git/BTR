@@ -1,3 +1,34 @@
+gen_lulucf_sink_breakout <- function(projections_all_sm, config){
+  
+  lulucf_sink_df <- projections_all_sm %>% ungroup() %>% 
+    select(proj_name,gas,year,sum) %>% 
+    filter(gas=='LULUCF Sink') %>%
+    filter(year %in% config$table) 
+
+  years_lulucf_sink <- as.character(unique(lulucf_sink_df$year))
+  lulucf_sink_hist <- lulucf_sink_df %>% filter(year <= config$base_year)
+  years_lulucf_sink_hist <- as.character(unique(lulucf_sink_hist$year))
+  
+  
+  ghgi_subset <-
+    lulucf_sink_df %>% filter(proj_name == 'ghgi') %>% filter(year <= config$base_year)
+  proj_subset <-
+    lulucf_sink_df %>% filter(!proj_name == 'ghgi') %>% filter(year > config$base_year)
+  
+  ghgi_subset_wide <- ghgi_subset %>% pivot_wider(names_from = year,
+                                                  values_from = sum) %>% ungroup() %>% select(years_lulucf_sink_hist)
+  
+  proj_subset_wide <-
+    proj_subset %>% pivot_wider(names_from = year,
+                                values_from = sum)
+  ghgi_subset_wide_rep <-
+    do.call('rbind', replicate(nrow(proj_subset_wide), ghgi_subset_wide, simplify =
+                                 FALSE))
+  
+  value_df <- cbind(proj_subset_wide, ghgi_subset_wide_rep) %>% select(proj_name, gas, years_lulucf_sink)
+  return(value_df)
+}
+
 
 gen_gas_dataset <- function(projections_all_sm, config) {
   
@@ -16,7 +47,7 @@ gen_gas_dataset <- function(projections_all_sm, config) {
 
 
 
-gen_gas_breakout_df <- function(gas_dataset, config, category_order, lulucf_sink_breakout_df) {
+gen_gas_breakout <- function(gas_dataset, config, category_order, lulucf_sink_breakout_df) {
   
   
   processed_dfs <- list()
@@ -71,7 +102,7 @@ gen_sector_dataset <- function(projections_all_sm, config) {
 #     arrange(factor(usproj_sector, levels = config$sector_order))
 }
 
-gen_sector_breakout_df <- function(sector_dataset, config, category_order, lulucf_sink_breakout_df) {
+gen_sector_breakout <- function(sector_dataset, config, category_order, lulucf_sink_breakout_df) {
   
   
   processed_dfs <- list()
@@ -107,8 +138,8 @@ gen_sector_breakout_df <- function(sector_dataset, config, category_order, luluc
   }
   breakout_df <- bind_rows(processed_dfs)
   
-  
-  usproj_sector_table_df <- breakout_df %>% rbind(lulucf_sink_breakout) 
+  lulucf_sink_breakout_df <- lulucf_sink_breakout_df %>% rename(usproj_sector = gas)
+  usproj_sector_table_df <- breakout_df %>% rbind(lulucf_sink_breakout_df) 
   return(usproj_sector_table_df)
 }
 
@@ -129,18 +160,18 @@ gen_total_gross_emissions <- function(gas_breakout_df){
 }
 
 
-gen_total_net_emissions <- function(gas_breakout_df,lulucf_sink_breakout_df){
+gen_total_net_emissions <- function(gas_breakout,lulucf_sink_breakout){
   
-  cols_gas_breakout <- colnames(gas_breakout_df)
+  cols_gas_breakout <- colnames(gas_breakout)
   
-  missing_cols <- setdiff(cols_gas_breakout, colnames(lulucf_sink_breakout_df))
-  lulucf_sink_breakout_df[missing_cols] <- NA
+  missing_cols <- setdiff(cols_gas_breakout, colnames(lulucf_sink_breakout))
+  lulucf_sink_breakout[missing_cols] <- NA
   
-  lulucf_sink_breakout_df <- lulucf_sink_breakout_df[, cols_gas_breakout]
+  lulucf_sink_breakout <- lulucf_sink_breakout[, cols_gas_breakout]
   
-  combined_df <- bind_rows(gas_breakout_df, lulucf_sink_breakout_df)
+  combined_df <- bind_rows(gas_breakout, lulucf_sink_breakout)
   
-  tne_df <- summarise_emissions(combined_df)%>% 
+  tne_df <- gen_total_gross_emissions(combined_df)%>% 
     mutate(source = 'Total Net Emissions') %>% 
     select(proj_name,source, everything())
   
