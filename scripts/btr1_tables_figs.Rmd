@@ -82,7 +82,16 @@ sector_table_df <- create_sector_table_df(
 
 ```{r}
 
+tar_load(total_net_emissions)
 
+tne <- total_net_emissions %>% select(!source)
+
+tne_long <- tne %>% pivot_longer(cols = as.character(config$table),
+                                                 names_to = 'year',
+                                                 values_to = 'value') %>% select(proj_name,year,value)
+
+ggplot() +
+  geom_line(data = tne_long, aes(x = year, y = value, linewidth = 6))
 
 
 

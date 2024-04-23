@@ -27,6 +27,7 @@ tar_plan(
     template = template,
     calculated_var = all_calculated,
     base_year = 2021, # TODO: update to 2022 when we get updated inventory
+    ghgi_scen = "wm_v1", # Set usproj scenario to pull ghgi data
     
     #models
     models = c("GCAM-LTS","GCAM-PNNL","NEMS-OP","USREP-ReEDS"),
@@ -40,6 +41,7 @@ tar_plan(
     annual_1990 = c(seq(1990,2040,by = 1)),
     annual_2010 = c(seq(2010,2040,by = 1)),
     table = c(2005, 2010, 2015, 2020, 2022, 2025, 2030 , 2035, 2040),
+    
     
     gas_order = c("CO2", "CH4", "N2O", "HFCs", "PFCs", "SF6","F-gas"), #TODO: Make sure NF3 is included in USPROJ data
     sector_order = c("Energy", "Transportation", "IPPU", "Agriculture", "Waste", 'LULUCF'),
@@ -126,7 +128,13 @@ tar_plan(
     map_dfr(usproj_files, ~read_usproj_data_file(.x, crosswalk_usproj_csv)) %>%
       arrange_standard()},
   
-  usproj_data_long = make_usproj_data_long(usproj_data_loaded, config),
+  usproj_data_long_all = make_usproj_data_long(usproj_data_loaded, config),
+  
+  # usproj w/o historical data
+  usproj_data_long = gen_usproj_projections(usproj_data_long_all, config),
+  
+  # _ghgi data ----
+  ghgi_cat = gen_usproj_ghgi(usproj_data_long_all, config),
   
   # load lulucf ----
   tar_target(lulucf_folder, "data-raw/lulucf/", format = "file"),

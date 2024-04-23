@@ -146,7 +146,7 @@ map_scenario_names <- function(data,
 
   # change model and scenario names in data to standardized names in scen_mapping file
   # check if the dataframe has standard columns
-  scen_mapping <- select(scen_mapping, join_vars, model_new, scenario_new)
+  scen_mapping <- select(scen_mapping, all_of(join_vars), model_new, scenario_new)
 
   res <- data %>%
     left_join(scen_mapping, by = join_vars) %>%

@@ -35,7 +35,7 @@ add_ffc_lulucf = function(ffc_raw_data,lulucf_data,usproj_data_long,var_crosswal
 
 # map proj_name in crosswalk to usproj_all
 
-map_proj_name = function(usproj_all, crosswalk_compilation, config) {
+map_proj_name <-  function(usproj_all, crosswalk_compilation, config) {
   
   #Filter out non-national estimates
   proj_usa <- usproj_all %>% filter(region == 'United States')
@@ -116,14 +116,32 @@ map_proj_name_v2 = function(usproj_all, crosswalk_compilation, config) {
 
 add_historical_data <- function(usproj_all, config, projections_all) {
   
-  historical <- usproj_all %>% filter(region == 'United States') %>% filter(year <= config$base_year)
+  historical <-
+    usproj_all %>%
+    filter(region == 'United States') %>% 
+    filter(year <= config$base_year) %>% 
+    group_by(model, scenario, year, gas, usproj_sector) %>% 
+    summarise(sum = sum(value)) %>%
+    ungroup() %>%
+   select(!scenario) %>%
+    distinct()
+  
+  
+  proj_all <- projections_all %>% 
+    group_by(proj_name,model, scenario, year, gas, usproj_sector) %>% 
+    summarise(sum = sum(value)) %>% 
+    ungroup()
+  
   
   historical_ghgi <- historical %>% mutate(proj_name = 'ghgi') %>%
     mutate(model = 'ghgi') %>%
     mutate(scenario = 'historical') %>%
-    select(names(projections_all))
+    select(names(proj_all)) %>% 
+    distinct()
   
-  projections_all <- projections_all %>% rbind(historical_ghgi)
+ 
+  
+  add_hist_data <- proj_all %>% rbind(historical_ghgi)
   
   
 }
@@ -131,8 +149,41 @@ add_historical_data <- function(usproj_all, config, projections_all) {
 gen_proj_all_sm <- function(add_hist_data){
   
   projections_all_sm <- add_hist_data %>% 
-    group_by(proj_name, gas, usproj_sector, unit, year) %>% 
-    summarise(sum = sum(value)) 
+    group_by(proj_name, gas, usproj_sector, year) %>% 
+    summarise(sum = sum(sum))
 
     }
 
+################################
+
+
+add_historical_data_test <- function(usproj_all, config, projections_all) {
+  
+  historical <-
+    usproj_all %>%
+    filter(region == 'United States') %>% 
+    filter(year == '2010') %>% 
+    group_by(model, scenario, year, gas, usproj_sector) %>% 
+    summarise(sum = sum(value)) %>% 
+    ungroup()
+  
+  
+  proj_all <- projections_all %>% 
+    group_by(proj_name,model, scenario, year, gas, usproj_sector) %>% 
+    summarise(sum = sum(value)) %>% 
+    ungroup()
+  
+  
+  historical_ghgi <- historical %>% mutate(proj_name = 'ghgi') %>%
+    mutate(model = 'ghgi') %>%
+    mutate(scenario = 'historical') %>%
+    select(proj_name,everything()) %>%
+    group_by(year,gas,usproj_sector) %>% 
+    distinct()
+  
+  
+  
+  add_hist_data <- proj_all %>% rbind(historical_ghgi)
+  
+  
+}

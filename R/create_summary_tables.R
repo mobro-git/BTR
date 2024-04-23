@@ -16,7 +16,7 @@ gen_lulucf_sink_breakout <- function(projections_all_sm, config){
     lulucf_sink_df %>% filter(!proj_name == 'ghgi') %>% filter(year > config$base_year)
   
   ghgi_subset_wide <- ghgi_subset %>% pivot_wider(names_from = year,
-                                                  values_from = sum) %>% ungroup() %>% select(years_lulucf_sink_hist)
+                                                  values_from = sum) %>% ungroup() %>% select(all_of(years_lulucf_sink_hist))
   
   proj_subset_wide <-
     proj_subset %>% pivot_wider(names_from = year,
@@ -25,7 +25,7 @@ gen_lulucf_sink_breakout <- function(projections_all_sm, config){
     do.call('rbind', replicate(nrow(proj_subset_wide), ghgi_subset_wide, simplify =
                                  FALSE))
   
-  value_df <- cbind(proj_subset_wide, ghgi_subset_wide_rep) %>% select(proj_name, gas, years_lulucf_sink)
+  value_df <- cbind(proj_subset_wide, ghgi_subset_wide_rep) %>% select(proj_name, gas, all_of(years_lulucf_sink_hist))
   return(value_df)
 }
 

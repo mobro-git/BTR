@@ -71,6 +71,23 @@ make_usproj_data_long <- function(usproj_data_loaded, config) {
   
 }
 
+gen_usproj_ghgi <- function(usproj_data_long_all, config){
+  
+  scen <- config$ghgi_scen
+  if(! scen %in% usproj_data_long_all$scenario){
+    rlang::abort('Invalid config$ghgi_scen. Choose valid scenario name from crosswalk_usproj')
+  }
+  usproj_ghgi <- usproj_data_long_all %>% filter(year <= config$base_year) %>% 
+    filter(scenario == scen)
+}
+
+gen_usproj_projections <- function(usproj_data_long_all, config){
+  
+  usproj_projections <- usproj_data_long_all %>% filter(year > config$base_year)
+    
+}
+
+
 
 
 make_calculated_vars <- function(data_long, ratio_var, summation_var, cumulative_var, annual_growth_rate_var, per_diff_var) {

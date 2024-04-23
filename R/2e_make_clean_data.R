@@ -88,6 +88,7 @@ unit_conversion = function(df) {
 make_data_long_clean <- function(data_long,ratio_var,summation_var,cumulative_var,annual_growth_rate_var,per_diff_var,config) {
   
   data_long_clean = data_long %>%
+    filter(year >= config$base_year) %>%
     complete_implicit_na() %>%
     manual_data_update() %>%
     make_calculated_vars(ratio_var,
