@@ -32,7 +32,8 @@ tar_plan(
     #models
     models = c("GCAM-LTS","GCAM-PNNL","NEMS-OP","USREP-ReEDS"),
     
-    fives = c(seq(2005,2020,by = 5),2022,seq(2025,2040,by = 5)),
+    fives = c(seq(2005,2021,by = 1),seq(2025,2040,by = 5)),
+    fives_sumtab = c(seq(2005,2020,by = 5),2022,seq(2025,2040,by = 5)),
     annual = c(seq(2005,2040,by = 1)),
     
     fives_lts = c(seq(2005,2022,by = 1),seq(2025,2050,by = 5)),

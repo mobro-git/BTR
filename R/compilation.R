@@ -100,8 +100,9 @@ map_proj_name_v2 = function(usproj_all, crosswalk_compilation, config) {
       filter(model == row$lulucf_model & scenario == row$lulucf_scen)
                
     proj_i = rbind(proj_i_ffc,proj_i_lulucf,proj_i_usproj) %>%
-      mutate(proj_name = row$proj_name) %>%
-      select(proj_name, everything())
+      mutate(proj_name = row$proj_name,
+             grouping = row$grouping) %>%
+      select(proj_name, grouping, everything())
     
     projections[[i]] = proj_i
     
@@ -117,7 +118,8 @@ map_proj_name_v2 = function(usproj_all, crosswalk_compilation, config) {
 add_historical_data <- function(ghgi_cat, projections_all) {
   
   ghgi_data = ghgi_cat %>%
-    mutate(btr_var = "") %>%
+    mutate(btr_var = "",
+           grouping = "ghgi") %>%
     select(names(projections_all))
   
   projections_ghgi = rbind(ghgi_data, projections_all)
@@ -128,7 +130,7 @@ add_historical_data <- function(ghgi_cat, projections_all) {
 gen_proj_all_sm <- function(projections_ghgi, config){
   
   projections_all_sm <- projections_ghgi %>% 
-    group_by(proj_name, gas, usproj_sector, year) %>% 
+    group_by(proj_name, grouping, gas, usproj_sector, year) %>% 
     summarise(sum = sum(value))
   
   write_csv(projections_all_sm, paste0('output/',config$version,'/proj_tables/projections_all_sm.csv'))

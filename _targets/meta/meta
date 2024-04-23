@@ -1,10 +1,10 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
 "%|||%"|function|28bdb9a1b5a6acc2|||||||||||||||
 %forwhich%|function|9320d517f0334dd8|||||||||||||||
-.Random.seed|object|d45749a61370fbc2|||||||||||||||
+.Random.seed|object|d3521f565c73029f|||||||||||||||
 ad|function|fa667e491702614c|||||||||||||||
 add_ffc_lulucf|function|d52ab9fefe5c923b|||||||||||||||
-add_historical_data|function|362f7b5397dc9a5d|||||||||||||||
+add_historical_data|function|74d73a375fe8775f|||||||||||||||
 add_historical_data_test|function|3c5b072cbe154684|||||||||||||||
 all_blank_or_zero|function|8a29bb3328acf8f3|||||||||||||||
 all_calculated|stem|35aa6dc77d7ff6e5|3bab5870f004d48e|efc5d20b6d7d3275|621432996||t19836.6799673413s|95004decb12e4ca5|2636|rds|local|vector|||0||
@@ -27,6 +27,7 @@ band_grid_fn|function|bc745ccdbf816ef2|||||||||||||||
 band_wrap_fn|function|b92451e2a1a2ea0e|||||||||||||||
 blank_theme|object|008a59f8dce4543b|||||||||||||||
 bottom1|object|6280d64eb594116d|||||||||||||||
+br_project|function|998138a36f5e5636|||||||||||||||
 call_plot_fn|function|470ab27e7900750f|||||||||||||||
 check_dat_before_plotting|function|cf10600ba99b19a9|||||||||||||||
 check_figure_specification|function|16764a34e7ec4fda|||||||||||||||
@@ -45,7 +46,7 @@ cone_uncertainty_figure_specific_data_processing|function|15ef96323bb79e08||||||
 cone_uncertainty_grid_fn|function|a4e68f68c9bd1ead|||||||||||||||
 cone_uncertainty_single_fn|function|05ed950ed4ea2884|||||||||||||||
 cone_uncertainty_wrap_fn|function|4f24dffe4d108863|||||||||||||||
-config|stem|c7b855af586fdbed|e50c91873c50f688|25f5f35cfd16b356|-1931060652||t19836.6829238505s|c7d6e57e441f1c81|32038|rds|local|vector|||0.313||
+config|stem|caca58baf4921c36|7748de4e0fca743a|25f5f35cfd16b356|-1931060652||t19836.75456181s|7e1a0d26266d107e|32057|rds|local|vector|||1.359||
 conv_units_case|function|2f5df7cef2e056ad|||||||||||||||
 convert_units|function|4fe7079ce3a837bb|||||||||||||||
 corrplot|object|937a2188c51d5076|||||||||||||||
@@ -58,8 +59,8 @@ create_graph|function|eb3c880abd34806c|||||||||||||||
 create_graph_list|function|b533346ca8a78f63|||||||||||||||
 create_sector_table_df|function|cf082d5d33c224b3|||||||||||||||
 create_subpalettes|function|eb78d9ec43dcc966|||||||||||||||
-crosswalk_compilation|stem|56d65f60aad59b01|deb75bf6713a5e18|e6235c965bf62c4a|1696674245||t19836.6799404407s|c8cda3a0d78c66fb|406|rds|local|vector|||0.187||
-crosswalk_compilation_csv|stem|19812186de68533e|720e7da8fe6c3ade|ef46db3751d8e999|660992272|data-raw/crosswalk/crosswalk_compilation.csv|t19823.8097413994s|0cf7d46830a37596|201|file|local|vector|||0||
+crosswalk_compilation|stem|2aaaafaa32079087|deb75bf6713a5e18|bbb28ee11c800d44|1696674245||t19836.7750152211s|0e097f16d551a674|448|rds|local|vector|||1.468||
+crosswalk_compilation_csv|stem|e3f9289735a011cc|720e7da8fe6c3ade|ef46db3751d8e999|660992272|data-raw/crosswalk/crosswalk_compilation.csv|t19836.7741339732s|001fa5a0c082fe27|364|file|local|vector|||0||
 crosswalk_model_runs_csv|stem|e38ba8d7cabb3e2e|a3a8f4f476e3b05b|ef46db3751d8e999|-203487882|data-raw/crosswalk/crosswalk_model-runs.csv|t19836.6826961948s|2c94e4d58cb66d77|3349|file|local|vector|||0||
 crosswalk_usproj_csv|stem|4fee148646183fba|87ea7de8ce629f1a|ef46db3751d8e999|1145089259|data-raw/crosswalk/crosswalk_usproj.csv|t19821.9998748803s|6afa6e1fd73417a7|225|file|local|vector|||0||
 cumulate|function|d2a32fcd881895a9|||||||||||||||
@@ -68,9 +69,9 @@ cumulative_var_list|stem|7ff9797507a15215|bec1bfbb3decad31|ef46db3751d8e999|2038
 data_files|stem|f7689744f4414fc2|ea2c63a76a444ff2|b4fd7c9c600fce95|22696647|data-raw/model-runs/BR_voluntarysupplement_2023.xlsx*data-raw/model-runs/GCAM-LTS_ar5.csv*data-raw/model-runs/OP-NEMS IRA 5cenario outputs w retire 07-19-23 - June cases.xlsx*data-raw/model-runs/PNNL_GCAM6_IRA_EPA_LEEP_6_30_23.xlsx*data-raw/model-runs/USREP-ReEDS_emf_results_april2024.xlsx*data-raw/model-runs/usrep_reeds_allscen.csv*data-raw/model-runs/usrep_report_emf_wm_prelim_4_23_24.csv*data-raw/model-runs/usrep_report_emf_wm_test_4_18_24.csv|t19836.6674778204s|1b48fcba0caac93d|20508778|file|local|vector|||0.016||
 data_folder|stem|f7689744f4414fc2|25bdb741c8d0b6c4|ef46db3751d8e999|1592691519|data-raw/model-runs/|t19836.6809670207s|a75e104011428481|4096|file|local|vector|||0||
 data_from_graph|function|ee5b2c612805abc4|||||||||||||||
-data_loaded|stem|8816741cc5bc58dd|bccb3a0cb7aaa375|2538d1de5311a5f8|-1231467939||t19836.6830099573s|7c82e5ff39939073|1492887|rds|local|vector|||6.625||
-data_long|stem|72bad6686e1d9935|f54932e38547ac95|0f651a56093796a0|1218221069||t19836.6830399441s|d7f7c729657ff9dc|1481344|rds|local|vector|||0.953||
-data_long_clean|stem|476d55c34f99beea|78719659122c4f34|3c8f7720d2fc7b42|1033467674||t19836.6834458885s|438fffec27557438|1372002|rds|local|vector|||34|Returning more or less than 1 row per summarise group was deprecated indplyr 1.1.0.ℹ Please use reframe instead.ℹ When switching from summarise to reframe, remember that reframe  always returns an ungrouped data frame and adjust accordingly.. Returning more or less than 1 row per summarise group was deprecated indplyr 1.1.0.ℹ Please use reframe instead.ℹ When switching from summarise to reframe, remember that reframe  always returns an ungrouped data frame and adjust accordingly.. Returning more or less than 1 row per summarise group was deprecated indplyr 1.1.0.ℹ Please use reframe instead.ℹ When switching from summarise to reframe, remember that reframe  always returns an ungrouped data frame and adjust accordingly.. Returning more or less than 1 row per summarise group was deprecated indplyr 1.1.0.ℹ Please use reframe instead.ℹ When switching from summarise to reframe, remember that reframe  always returns an ungrouped data frame and adjust accordingly.. Returning more or less than 1 row per summarise group was deprecated indplyr 1.1.0.ℹ Please use reframe instead.ℹ When switching from summarise to reframe, remember that reframe  always returns an ungrouped data frame and adjust accordingly.. Returning more or less than 1 row per summarise group was deprecated indplyr 1.1.0.ℹ Please use reframe instead.ℹ When switching from summarise to reframe, remember that reframe  always returns an ungrouped data frame and adjust accordingly.. Returning more or less than 1 row per summarise group was deprecated indplyr 1.1.0.ℹ Please use reframe instead.ℹ When switching from summarise to reframe, remember that reframe  always returns an ungrouped data frame and adjust accordingly.. Returning more or less than 1 row per summarise group was deprecated indplyr 1.1.0.ℹ Please use reframe instead.ℹ When switching from summarise to|
+data_loaded|stem|8816741cc5bc58dd|bccb3a0cb7aaa375|c854564096346299|-1231467939||t19836.7784094389s|7c82e5ff39939073|1492887|rds|local|vector|||9.297||
+data_long|stem|72bad6686e1d9935|f54932e38547ac95|b75551a3b849decf|1218221069||t19836.7784375632s|d7f7c729657ff9dc|1481344|rds|local|vector|||1.218||
+data_long_clean|stem|476d55c34f99beea|78719659122c4f34|f71aaae27d66e89c|1033467674||t19836.7789438375s|438fffec27557438|1372002|rds|local|vector|||42.453|Returning more or less than 1 row per summarise group was deprecated indplyr 1.1.0.ℹ Please use reframe instead.ℹ When switching from summarise to reframe, remember that reframe  always returns an ungrouped data frame and adjust accordingly.. Returning more or less than 1 row per summarise group was deprecated indplyr 1.1.0.ℹ Please use reframe instead.ℹ When switching from summarise to reframe, remember that reframe  always returns an ungrouped data frame and adjust accordingly.. Returning more or less than 1 row per summarise group was deprecated indplyr 1.1.0.ℹ Please use reframe instead.ℹ When switching from summarise to reframe, remember that reframe  always returns an ungrouped data frame and adjust accordingly.. Returning more or less than 1 row per summarise group was deprecated indplyr 1.1.0.ℹ Please use reframe instead.ℹ When switching from summarise to reframe, remember that reframe  always returns an ungrouped data frame and adjust accordingly.. Returning more or less than 1 row per summarise group was deprecated indplyr 1.1.0.ℹ Please use reframe instead.ℹ When switching from summarise to reframe, remember that reframe  always returns an ungrouped data frame and adjust accordingly.. Returning more or less than 1 row per summarise group was deprecated indplyr 1.1.0.ℹ Please use reframe instead.ℹ When switching from summarise to reframe, remember that reframe  always returns an ungrouped data frame and adjust accordingly.. Returning more or less than 1 row per summarise group was deprecated indplyr 1.1.0.ℹ Please use reframe instead.ℹ When switching from summarise to reframe, remember that reframe  always returns an ungrouped data frame and adjust accordingly.. Returning more or less than 1 row per summarise group was deprecated indplyr 1.1.0.ℹ Please use reframe instead.ℹ When switching from summarise to|
 def_from_variable|function|a5bdc8a40c061104|||||||||||||||
 def_from_variable_factory|function|3d4b34e942400071|||||||||||||||
 def_var_from_variable|function|6aecc0579a5f70af|||||||||||||||
@@ -98,7 +99,7 @@ four_corners|function|55829157f78c6c7c|||||||||||||||
 gen_gas_breakout|function|377cd5b33ce1f60f|||||||||||||||
 gen_gas_dataset|function|fb5b024340f12426|||||||||||||||
 gen_lulucf_sink_breakout|function|fcda898e63369d7a|||||||||||||||
-gen_proj_all_sm|function|ad46286cf28dbe0c|||||||||||||||
+gen_proj_all_sm|function|2abd7c7a2e13189c|||||||||||||||
 gen_sector_breakout|function|6ab62ff62f4f4e0a|||||||||||||||
 gen_sector_dataset|function|766ae3d664665e4f|||||||||||||||
 gen_total_gross_emissions|function|01a9896c5cea0004|||||||||||||||
@@ -107,7 +108,7 @@ gen_usproj_ghgi|function|f824d1a518686f19|||||||||||||||
 gen_usproj_projections|function|261e73d6922583d2|||||||||||||||
 get_ffc_model_runs|function|d5394b4f90815619|||||||||||||||
 get_plot_fn|function|4642ef943da39ede|||||||||||||||
-ghgi_cat|stem|00fe41d95a7384e3|70a961ec4f314b77|5a48c59fe8384fb3|2010122048||t19836.7447741933s|fb3b7a08bbe742eb|11012|rds|local|vector|||0.015||
+ghgi_cat|stem|00fe41d95a7384e3|70a961ec4f314b77|1556fc828e72d063|2010122048||t19836.778411457s|fb3b7a08bbe742eb|11012|rds|local|vector|||0.015||
 gt_elec_table|function|7bd1d678f4707d9b|||||||||||||||
 handle_units|function|cd807d5d217e6e57|||||||||||||||
 html|function|7bc6fe073acfb08c|||||||||||||||
@@ -123,7 +124,7 @@ lulucf_crosswalk|stem|0d17ba9a151cfbba|f5a9c8ea565a5ee6|c9e13ea481d06734|1920710
 lulucf_crosswalk_csv|stem|7143f531d7592460|1bf8d3fb0ceec0b0|ef46db3751d8e999|-2063322010|data-raw/crosswalk/crosswalk_lulucf.csv|t19823.7983686377s|20798277a5bbdf65|499|file|local|vector|||0||
 lulucf_data|stem|76f866fcd6d3b82d|e6a224a25a9ccbc9|f54f4b5af806aa9c|1090876771||t19836.7446411631s|af2be79594b747a3|846|rds|local|vector|||0.75||
 lulucf_files|stem|6a8288653e2dfc22|5487b24fb3e16dd9|8b42a1c3b898f625|746031396|data-raw/lulucf/lulucf_lts.xlsx*data-raw/lulucf/lulucf_lts_test.xlsx|t19836.74401315s|c9bc74dc9885b820|20059|file|local|vector|||0||
-lulucf_folder|stem|6a8288653e2dfc22|c4a2ce640d82d027|ef46db3751d8e999|1213910913|data-raw/lulucf/|t19836.74401315s|c9bc74dc9885b820|20059|file|local|vector|||0||
+lulucf_folder|stem|6a8288653e2dfc22|c4a2ce640d82d027|ef46db3751d8e999|1213910913|data-raw/lulucf/|t19836.744032869s|a75e104011428481|4096|file|local|vector|||0||
 lulucf_sink_breakout|stem||d8f2697918b7f47e|a291dd874e7d0ece|-422541732||t19836.7034782155s||0|rds|local|vector|||0.172||arguments imply differing number of rows 3, 0
 make_agr_variables|function|3f1af90dd2813546|||||||||||||||
 make_calculated_vars|function|16e148c3a800e923|||||||||||||||
@@ -139,7 +140,7 @@ make_usproj_data_long|function|099f686948f68992|||||||||||||||
 manual_data_update|function|708c1674565aeeb5|||||||||||||||
 map_lulucf|function|b8767cc9f57d45d9|||||||||||||||
 map_proj_name|function|1a078aa3547c83a1|||||||||||||||
-map_proj_name_v2|function|03aabce2c7ff0f3b|||||||||||||||
+map_proj_name_v2|function|55ddf125acf32d9d|||||||||||||||
 map_scenario_names|function|7e757673ddae7106|||||||||||||||
 map_usproj_scenario_names|function|3556d4e370149f70|||||||||||||||
 map_variable_names|function|afdcc0a222aec12e|||||||||||||||
@@ -168,9 +169,9 @@ print_graph|function|fd174adfc729a71b|||||||||||||||
 process_data_file|function|a17edf84464049ba|||||||||||||||
 process_minimal_from_raw|function|a116c5ec17b790b5|||||||||||||||
 process_special_cases|function|769a11f3181de215|||||||||||||||
-projections_all|stem|c2cb0a754d5bcff3|e2a92ca1020b8c3b|a17533e1f18403c9|155507554||t19836.7447910619s|2b54a6d68d7bf413|20495|rds|local|vector|||0.172||
-projections_all_sm|stem|d9b75bb534af0652|32a35258173eaee1|9e3ffe3a14d6d411|1865356298||t19836.7448055743s|d4a14964a18f30ae|11813|rds|local|vector|||1.063||
-projections_ghgi|stem|58a7994b7dee6464|3b3e52a3854c6364|b81320d5ee055ee9|1931247551||t19836.7447926593s|fdc1fe3322436633|30908|rds|local|vector|||0.015||
+projections_all|stem|09079633cdbec759|e2a92ca1020b8c3b|eed15073af4e54ad|155507554||t19836.7789501933s|07a35f8c7cab6ace|36560|rds|local|vector|||0.203||
+projections_all_sm|stem|fd5ce090b3d2345d|32a35258173eaee1|695b407135578941|1865356298||t19836.7818845681s|52f2f9c46ee1b042|16923|rds|local|vector|||0.953||
+projections_ghgi|stem|f3f541be64718c01|3b3e52a3854c6364|4d8fba8064d35ff5|1931247551||t19836.7789520833s|af0df65d7324f242|45961|rds|local|vector|||0.016||
 ratio_var|stem|ed6f7b0166ee9016|b3c6235d8cc77c85|31c53dcb3f204f0f|423366342||t19836.6799505868s|f2f2c895b8fc004d|584|rds|local|vector|||0.016||
 ratio_var_list|stem|eed5775de456d8ca|ad4467fec8f06fb0|ef46db3751d8e999|6859307|data-raw/calculated-var/ratio_variables.csv|t19787.7522944921s|6519bd7d59f8c08e|1472|file|local|vector|||0||
 read_csv_model_metadata|function|b24b9b94f32e8c58|||||||||||||||
@@ -252,11 +253,11 @@ transform_to_national|function|3d51467cc7de5a1d|||||||||||||||
 unit_conversion|function|a9dee5fdebb2ea0a|||||||||||||||
 unit_name_standardize|function|34b48f4b1ff4674f|||||||||||||||
 units_package_name_aliases|object|662e8fcdea98b646|||||||||||||||
-usproj_all|stem|96966c134caea0b5|a2f7ae965ad2a74a|28b4c488cd2449fe|-1813347914||t19836.7447874923s|86afa4b3c4d5511f|44927|rds|local|vector|||0.015||
-usproj_data_folder|stem|8dbebcd4ea914e3c|6bb2fe8039595c97|ef46db3751d8e999|-1366827195|data-raw/usproj-data/|t19836.7394314516s|a20c4cc627d84cc8|54844|file|local|vector|||0||
+usproj_all|stem|96966c134caea0b5|a2f7ae965ad2a74a|d413b0c2e942a9a5|-1813347914||t19836.7789462457s|86afa4b3c4d5511f|44927|rds|local|vector|||0.015||
+usproj_data_folder|stem|8dbebcd4ea914e3c|6bb2fe8039595c97|ef46db3751d8e999|-1366827195|data-raw/usproj-data/|t19836.7395888639s|a75e104011428481|4096|file|local|vector|||0||
 usproj_data_loaded|stem|764fcfc98ae85e55|84bcd51cebd648d0|c37799843fdcf394|89606039||t19836.744631569s|22d6d4a83ae0698f|13791|rds|local|vector|||1.11||
-usproj_data_long|stem|ef5a4d9cafcbac36|8b67c7c8f0fb85d9|59ee934e35adc3b8|664509153||t19836.7447733548s|948d9171fdf3b9c1|12923|rds|local|vector|||0.016||
-usproj_data_long_all|stem|0db6d92ee7b8db3b|8c1c6c2982e0f94a|a18e9d1cd4114c7e|-1831827907||t19836.7446501705s|4d308b584e999a46|32801|rds|local|vector|||0.625||
+usproj_data_long|stem|ef5a4d9cafcbac36|8b67c7c8f0fb85d9|421f47b6a275a9d3|664509153||t19836.7784105142s|948d9171fdf3b9c1|12923|rds|local|vector|||0||
+usproj_data_long_all|stem|0db6d92ee7b8db3b|8c1c6c2982e0f94a|d311fed222d5f390|-1831827907||t19836.7782894955s|4d308b584e999a46|32801|rds|local|vector|||1||
 usproj_files|stem|8dbebcd4ea914e3c|45243e077d44a99d|87a41756b1c1c42e|-1405288976|data-raw/usproj-data/usproj_emissions_2024_wide_for_btr_03072024 - Copy.csv*data-raw/usproj-data/usproj_emissions_2024_wide_for_btr_03072024.csv|t19836.7394314516s|a20c4cc627d84cc8|54844|file|local|vector|||0.016||
 validate_model_metadata|function|68e06b880cf64b41|||||||||||||||
 var_crosswalk|stem|0092577aec6bed7f|93efb12a30b8fe8e|8ca598546e616076|936268870||t19836.6799476837s|d7ca44766c08299d|596|rds|local|vector|||0.141||
