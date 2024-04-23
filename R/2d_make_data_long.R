@@ -77,8 +77,14 @@ gen_usproj_ghgi <- function(usproj_data_long_all, config){
   if(! scen %in% usproj_data_long_all$scenario){
     rlang::abort('Invalid config$ghgi_scen. Choose valid scenario name from crosswalk_usproj')
   }
-  usproj_ghgi <- usproj_data_long_all %>% filter(year <= config$base_year) %>% 
-    filter(scenario == scen)
+  
+  usproj_ghgi <- usproj_data_long_all %>% 
+    filter(year <= config$base_year) %>% 
+    filter(scenario == scen) %>%
+    mutate(proj_name = "ghgi",
+           model = "ghgi",
+           scenario = "historical")
+  
 }
 
 gen_usproj_projections <- function(usproj_data_long_all, config){

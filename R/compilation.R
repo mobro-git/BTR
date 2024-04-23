@@ -114,76 +114,25 @@ map_proj_name_v2 = function(usproj_all, crosswalk_compilation, config) {
 }
 
 
-add_historical_data <- function(usproj_all, config, projections_all) {
+add_historical_data <- function(ghgi_cat, projections_all) {
   
-  historical <-
-    usproj_all %>%
-    filter(region == 'United States') %>% 
-    filter(year <= config$base_year) %>% 
-    group_by(model, scenario, year, gas, usproj_sector) %>% 
-    summarise(sum = sum(value)) %>%
-    ungroup() %>%
-   select(!scenario) %>%
-    distinct()
+  ghgi_data = ghgi_cat %>%
+    mutate(btr_var = "") %>%
+    select(names(projections_all))
   
-  
-  proj_all <- projections_all %>% 
-    group_by(proj_name,model, scenario, year, gas, usproj_sector) %>% 
-    summarise(sum = sum(value)) %>% 
-    ungroup()
-  
-  
-  historical_ghgi <- historical %>% mutate(proj_name = 'ghgi') %>%
-    mutate(model = 'ghgi') %>%
-    mutate(scenario = 'historical') %>%
-    select(names(proj_all)) %>% 
-    distinct()
-  
- 
-  
-  add_hist_data <- proj_all %>% rbind(historical_ghgi)
+  projections_ghgi = rbind(ghgi_data, projections_all)
   
   
 }
 
-gen_proj_all_sm <- function(add_hist_data){
+gen_proj_all_sm <- function(projections_ghgi, config){
   
-  projections_all_sm <- add_hist_data %>% 
+  projections_all_sm <- projections_ghgi %>% 
     group_by(proj_name, gas, usproj_sector, year) %>% 
-    summarise(sum = sum(sum))
+    summarise(sum = sum(value))
+  
+  write_csv(projections_all_sm, paste0('output/',config$version,'/proj_tables/projections_all_sm.csv'))
+  
+  return(projections_all_sm)
 
-    }
-
-################################
-
-
-add_historical_data_test <- function(usproj_all, config, projections_all) {
-  
-  historical <-
-    usproj_all %>%
-    filter(region == 'United States') %>% 
-    filter(year == '2010') %>% 
-    group_by(model, scenario, year, gas, usproj_sector) %>% 
-    summarise(sum = sum(value)) %>% 
-    ungroup()
-  
-  
-  proj_all <- projections_all %>% 
-    group_by(proj_name,model, scenario, year, gas, usproj_sector) %>% 
-    summarise(sum = sum(value)) %>% 
-    ungroup()
-  
-  
-  historical_ghgi <- historical %>% mutate(proj_name = 'ghgi') %>%
-    mutate(model = 'ghgi') %>%
-    mutate(scenario = 'historical') %>%
-    select(proj_name,everything()) %>%
-    group_by(year,gas,usproj_sector) %>% 
-    distinct()
-  
-  
-  
-  add_hist_data <- proj_all %>% rbind(historical_ghgi)
-  
-  
 }

@@ -155,48 +155,32 @@ tar_plan(
   
   ffc_raw_data = get_ffc_model_runs(data_long_clean, var_crosswalk, usproj_data_long),
   
-  usproj_all = add_ffc_lulucf(ffc_raw_data,lulucf_data,usproj_data_long,var_crosswalk,config),
+  usproj_all = add_ffc_lulucf(ffc_raw_data, lulucf_data, usproj_data_long, var_crosswalk, config),
     
   # crosswalk compilation
-  
   tar_target(crosswalk_compilation_csv, "data-raw/crosswalk/crosswalk_compilation.csv", format = "file"),
   tar_target(crosswalk_compilation, read_csv(crosswalk_compilation_csv)), # TODO: CHECK FOR MODELS AND SCENARIOS!
   
-  # map proj_names to projections
+  # _complete projections ----
+  projections_all = map_proj_name_v2(usproj_all, crosswalk_compilation, config),
+  projections_ghgi = add_historical_data(ghgi_cat, projections_all), # bind ghgi historical data
+  projections_all_sm = gen_proj_all_sm(projections_ghgi, config), # gas and sector sums for each projection
+  
+  # _summary table breakouts
+  lulucf_sink_breakout = gen_lulucf_sink_breakout(projections_all_sm, config), #TODO: Figure out where to net out positive LULUCF Emissions, figure out if sink is just co2
 
-  tar_target(projections_all, map_proj_name_v2(usproj_all, crosswalk_compilation, config)),
-  
-  ## Targets
-  
-  #### 1) add historic data to projections_all - proj_name = "historic", scenario = "historic", model = "ghgi"
-  tar_target(add_hist_data, add_historical_data(usproj_all, config, projections_all)),
-  
-  #### 2) projections_all_sm - projection_all %>% group_by(proj_name, gas, usproj_sector, unit, year) and summarize, should have a number for each gas and sector combo. export to output csv
-  tar_target(projections_all_sm, gen_proj_all_sm(add_hist_data)),
-  tar_target(write_proj_all_sm, write_csv(projections_all_sm, 'output/2024_BTR1/proj_tables/projections_all_sm.csv')),
-  
-  
-  # Generate LULUCF Sink breakout
-  tar_target(lulucf_sink_breakout, gen_lulucf_sink_breakout(projections_all_sm, config)), #TODO: Figure out where to net out positive LULUCF Emissions, figure out if sink is just co2
-  
-  # Generate gas/sector breakouts from proj_all_sm
-  tar_target(gas_dataset, gen_gas_dataset(projections_all_sm, config)),
-  tar_target(gas_breakout, gen_gas_breakout(gas_dataset, config, category_order = config$gas_order, lulucf_sink_breakout)),
-  
-  tar_target(sector_dataset, gen_sector_dataset(projections_all_sm, config)),
-  tar_target(sector_breakout, gen_sector_breakout(sector_dataset, config, category_order = config$sector_order, lulucf_sink_breakout)),
-  
-  
-  
+  gas_dataset = gen_gas_dataset(projections_all_sm, config),
+  gas_breakout = gen_gas_breakout(gas_dataset, config, category_order = config$gas_order, lulucf_sink_breakout),
+
+  sector_dataset = gen_sector_dataset(projections_all_sm, config),
+  sector_breakout = gen_sector_breakout(sector_dataset, config, category_order = config$sector_order, lulucf_sink_breakout),
+
   # Sum Total Gross Emissions
   tar_target(total_gross_emissions, gen_total_gross_emissions(gas_breakout)),
-  
-  
+
   # Calculate Total Net Emissions and write
   tar_target(total_net_emissions, gen_total_net_emissions(gas_breakout, lulucf_sink_breakout)),
   tar_target(write_TNE_csv, write_csv(total_net_emissions, 'output/2024_BTR1/proj_tables/total_net_emissions.csv')),
-  
-  
   
   
   #### 3) projections_net_ghg - projections_all_sm %>% group_by(proj_name) and summarize - net all emissions and sum, should just be one number. export to output csv
