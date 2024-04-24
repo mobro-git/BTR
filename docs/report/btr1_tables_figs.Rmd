@@ -22,78 +22,91 @@ tar_load(c(projections_all_sm, config))
 ```
 
 ```{r}
-
-gas_dataset <- group_gas_breakout_dataset(projections_all_sm, config)
-gas_breakout_df <- gen_gas_breakout(gas_dataset,config,config$gas_order)
-
-```
-
-```{r}
-sector_dataset <- group_sector_breakout_dataset(projections_all_sm, config)
-sector_breakout_df <- gen_sector_breakout_df(sector_dataset, config, config$sector_order)
-
-```
-
-
-
-```{r}
-lulucf_sink_breakout <- lulucf_sink_breakout(projections_all_sm, config)
-
-```
-
-
-
-```{r}
-
-# Total Gross emissions
-total_gross_emissions_df <- summarise_emissions(gas_breakout_df)
+create_summary_table <- function(category, grouping, projections_all_sm, config) {
   
+  col_order <- c('category','year','low','high')
+  
+  summary <- projections_all_sm %>%
+    filter(!gas == 'Total') %>%  # WTH?? fix pls usproj
+    rename(category = .data[[category]]) %>% 
+    filter(grouping == grouping) %>%
+    filter(year %in% config$table) %>% 
+    group_by(proj_name,category, year) %>%
+    summarise(cat_sum = sum(sum))
+  
+  summary_total_gross <- summary %>%
+    filter(!category == 'LULUCF Sink') %>%
+    group_by(proj_name, year) %>%
+    summarise(value = sum(cat_sum)) %>%
+    group_by(year) %>%
+    mutate(low = min(value),
+           high = max(value)) %>% 
+    select(year,low,high) %>% 
+    distinct() %>%
+    mutate(category = 'Total Gross Emissions') %>% 
+    select(all_of(col_order))
+  
+  
+  summary_total_net <- summary %>%
+    group_by(proj_name, year) %>%
+    summarise(value = sum(cat_sum)) %>%
+    group_by(year) %>%
+    mutate(low = min(value),
+           high = max(value)) %>%
+    select(year,low,high) %>% 
+    distinct() %>%
+    mutate(category = 'Total Net Emissions')
+  
+  
+  
+  if(category == 'gas'){
+    processed_datasets <- list()
+    for(gas in config$gas_order){
+      
+      cat_summary <- summary %>%
+        filter(category == gas) %>%
+        group_by(proj_name, year) %>%
+        summarise(value = sum(cat_sum)) %>%
+        group_by(year) %>%
+        mutate(low = min(value),
+               high = max(value)) %>%
+        select(year, low, high) %>%
+        distinct() %>%
+        mutate(category = gas) %>% 
+        select(all_of(col_order))
+      
+      processed_datasets[[gas]] <- cat_summary
+    }
+    summary_table_df <- bind_rows(processed_datasets)
+  }
+  else if(category == 'usproj_sector'){
+    processed_datasets <- list()
+    for(sector in config$sector_order){
+      
+      cat_summary <- summary %>%
+        filter(category == sector) %>%
+        group_by(proj_name, year) %>%
+        summarise(value = sum(cat_sum)) %>%
+        group_by(year) %>%
+        mutate(low = min(value),
+               high = max(value)) %>%
+        select(year, low, high) %>%
+        distinct() %>%
+        mutate(category = sector) %>% 
+        select(all_of(col_order))
+      
+      processed_datasets[[sector]] <- cat_summary
+    }
+    summary_table_df <- bind_rows(processed_datasets)
+  }
+  else rlang::abort('Enter "gas" or "usproj_sector" into function.')
 
+#tbl_historic <- gas_summary %>% filter(year %in% config$table) %>% pivot_wider(names_from = "year", values_from = "gas_sum")
+  
+}
 
 
 ```
 
-```{r}
 
-total_net_emissions <- get_total_net_emissions(gas_breakout_df, lulucf_sink_breakout)
-
-```
-
-```{r}
-
-
-gas_table_df <- create_gas_table_df(
-  gas_breakout_df,
-  total_gross_emissions_df,
-  lulucf_sink_breakout,
-  total_net_emissions
-)
-
-
-sector_table_df <- create_sector_table_df(
-  sector_breakout_df,
-  total_gross_emissions_df,
-  lulucf_sink_breakout,
-  total_net_emissions
-)
-
-
-```
-
-```{r}
-
-tar_load(total_net_emissions)
-
-tne <- total_net_emissions %>% select(!source)
-
-tne_long <- tne %>% pivot_longer(cols = as.character(config$table),
-                                                 names_to = 'year',
-                                                 values_to = 'value') %>% select(proj_name,year,value)
-
-ggplot() +
-  geom_line(data = tne_long, aes(x = year, y = value, linewidth = 6))
-
-
-
-```
 
