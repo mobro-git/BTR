@@ -41,11 +41,11 @@ tar_plan(
     
     annual_1990 = c(seq(1990,2040,by = 1)),
     annual_2010 = c(seq(2010,2040,by = 1)),
-    table = c(2005, 2010, 2015, 2020, 2022, 2025, 2030 , 2035, 2040),
+    table = c(2005, 2010, 2015, 2020, 2021, 2025, 2030 , 2035, 2040),
     
     
     gas_order = c("CO2", "CH4", "N2O", "HFCs", "PFCs", "SF6","F-gas"), #TODO: Make sure NF3 is included in USPROJ data
-    sector_order = c("Energy", "Transportation", "IPPU", "Agriculture", "Waste", 'LULUCF'),
+    sector_order = c("Energy","Transportation","IPPU","Agriculture","Waste","LULUCF"),
     
     output_dir = 'output/2024_BTR1'
     
