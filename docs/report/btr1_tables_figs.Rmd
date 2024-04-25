@@ -16,15 +16,55 @@ tar_source()
 
 ```
 
-```{r}
-tar_load(c(projections_all_sm, config))
-
-```
 
 ```{r}
+
+create_high_low_df <- function(summary_subset){
+  # Function to create low/high year columns from table row subsets
+  
+  proj_years <- c('2025','2030','2035','2040')
+  hist_years <- c('2005','2010','2015','2020', config$base_year)
+  proj_col_order <- c('2025_low',
+                      '2025_high',
+                      '2030_low',
+                      '2030_high',
+                      '2035_low',
+                      '2035_high',
+                      '2040_low',
+                      '2040_high')
+ 
+  df_low <- summary_subset %>% 
+    select(category,year,low) %>%
+    pivot_wider(names_from = 'year',
+                values_from = 'low')
+  
+  
+   df_high <- summary_subset %>% 
+    select(category,year,high) %>%
+    pivot_wider(names_from = 'year',
+                values_from = 'high')
+   
+    
+
+  
+   df_merged <- merge(df_low[, c('category',proj_years)],df_high[, c('category',proj_years)], by = 'category', suffix = c('','_high'))
+   
+   for(year in proj_years) {
+     colnames(df_merged)[colnames(df_merged)==year] <- paste0(year,'_low')
+     colnames(df_merged)[colnames(df_merged) == paste0(year,'_high')] <- paste0(year,'_high')
+   }
+   
+   df_merge_final <- merge(df_low %>% select(category, all_of(hist_years)), df_merged) %>%
+     select(category, all_of(hist_years), all_of(proj_col_order))
+  
+}
+
+
+
 create_summary_table <- function(category, grouping, projections_all_sm, config) {
   
   col_order <- c('category','year','low','high')
+
   
   summary <- projections_all_sm %>%
     filter(!gas == 'Total') %>%  # WTH?? fix pls usproj
@@ -45,7 +85,7 @@ create_summary_table <- function(category, grouping, projections_all_sm, config)
     distinct() %>%
     mutate(category = 'Total Gross Emissions') %>% 
     select(all_of(col_order))
-  
+
   
   summary_total_net <- summary %>%
     group_by(proj_name, year) %>%
@@ -55,12 +95,14 @@ create_summary_table <- function(category, grouping, projections_all_sm, config)
            high = max(value)) %>%
     select(year,low,high) %>% 
     distinct() %>%
-    mutate(category = 'Total Net Emissions')
+    mutate(category = 'Total Net Emissions') %>% 
+    select(all_of(col_order))
   
   
   
   if(category == 'gas'){
-    processed_datasets <- list()
+  order_index <- c(2,1,4,3,5,6)
+  processed_datasets <- list()
     for(gas in config$gas_order){
       
       cat_summary <- summary %>%
@@ -78,9 +120,10 @@ create_summary_table <- function(category, grouping, projections_all_sm, config)
       processed_datasets[[gas]] <- cat_summary
     }
     summary_table_df <- bind_rows(processed_datasets)
-  }
-  else if(category == 'usproj_sector'){
+    
+  } else if(category == 'usproj_sector'){
     processed_datasets <- list()
+    order_index <- c(2,5,3,1,6,4)
     for(sector in config$sector_order){
       
       cat_summary <- summary %>%
@@ -98,15 +141,105 @@ create_summary_table <- function(category, grouping, projections_all_sm, config)
       processed_datasets[[sector]] <- cat_summary
     }
     summary_table_df <- bind_rows(processed_datasets)
+    
   }
-  else rlang::abort('Enter "gas" or "usproj_sector" into function.')
-
-#tbl_historic <- gas_summary %>% filter(year %in% config$table) %>% pivot_wider(names_from = "year", values_from = "gas_sum")
+  else{rlang::abort('Enter "gas" or "usproj_sector" into as category.')}
   
+  summary_table_df_high_low <- create_high_low_df(summary_table_df)
+  summary_table_df_high_low <- summary_table_df_high_low[order_index,]
+  
+  
+  total_gross_emissions_high_low <- create_high_low_df(summary_total_gross)
+  total_net_emissions_high_low <- create_high_low_df(summary_total_net)
+
+  
+  summary_lulucf_sink <- summary %>% filter(category == 'LULUCF Sink')%>%
+        group_by(category,proj_name, year) %>%
+        summarise(value = sum(cat_sum)) %>%
+        group_by(year) %>%
+        mutate(low = min(value),
+               high = max(value)) %>%
+        select(category, year, low, high) %>%
+        distinct()
+  
+  lulucf_sink_high_low <- create_high_low_df(summary_lulucf_sink)
+  
+  final_summary_table <- summary_table_df_high_low %>%
+    rbind(total_gross_emissions_high_low) %>% 
+    rbind(lulucf_sink_high_low) %>% 
+    rbind(total_net_emissions_high_low)
+  
+  rownames(final_summary_table) <- NULL
+  
+  final_summary_table <- final_summary_table %>% mutate_if(is.numeric, round)
+
+  return(final_summary_table)
 }
+
 
 
 ```
 
+```{r}
 
+tar_load(c(projections_all_sm, config))
+
+gas_table <- create_summary_table('gas','wm', projections_all_sm, config)
+
+sector_table <- create_summary_table('usproj_sector', 'wm', projections_all_sm, config)
+
+```
+
+```{r}
+gas_table %>% 
+  kbl(caption = "Recreating booktabs style table") %>%
+  kable_classic(full_width = F, html_font = "Cambria")
+
+```
+
+
+
+
+
+
+
+
+
+# BTR Main Plot
+
+```{r data}
+net_ghg = projections_all_sm %>%
+  group_by(proj_name, grouping, year) %>%
+  summarise(sum = sum(sum)) %>%
+  filter(year %in% config$fives)
+
+ghgi = net_ghg %>% filter(proj_name == "ghgi")
+proj_no_connect = net_ghg %>% 
+  filter(proj_name != "ghgi")
+
+connect = ghgi[ghgi$year == 2021,]$sum
+baseline = ghgi[ghgi$year == 2005,]$sum
+
+proj_connect = proj_no_connect %>% 
+  group_by(proj_name) %>%
+  slice(1) %>%
+  mutate(
+    year = 2021,
+    sum = ghgi$sum[ghgi$year == 2021])
+
+proj = rbind(proj_no_connect, proj_connect) %>%
+  mutate(year = as.numeric(year))
+
+targets = data.frame(
+  year = c(2020, 2025, 2030),
+  ymin = c((baseline * (1-.169)), (baseline * (1-.26)), (baseline * (1-.50))),
+  ymax = c((baseline * (1-.171)), (baseline * (1-.28)), (baseline * (1-.52))),
+  grouping = c("17% Below 2005","26-28% Below 2005","50-52% Below 2005")
+)
+```
+
+```{r proj function}
+projections = br_project(ghgi, proj, targets = TRUE)
+projections
+```
 
