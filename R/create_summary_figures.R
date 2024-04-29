@@ -57,7 +57,7 @@ br_project = function(ghgi, proj, targets = NULL, legend_position = c(0.15, 0.2)
       legend.position = "inside",
       legend.position.inside = c(0.15, 0.2))
   
-  projections
+ # projections
   
   # add targets boxes and horizontal lines
   if (!is.null(targets)) {

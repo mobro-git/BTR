@@ -161,7 +161,7 @@ gen_total_gross_emissions <- function(gas_breakout_df){
 }
 
 
-gen_total_net_emissions <- function(gas_breakout,lulucf_sink_breakout){
+gen_total_net_emissions <- function(gas_breakout,lulucf_sink_breakout,config){
   
   cols_gas_breakout <- colnames(gas_breakout)
   
@@ -175,6 +175,8 @@ gen_total_net_emissions <- function(gas_breakout,lulucf_sink_breakout){
   tne_df <- gen_total_gross_emissions(combined_df)%>% 
     mutate(source = 'Total Net Emissions') %>% 
     select(proj_name,source, everything())
+  
+  write_csv(tne_df, paste0('output/',config$version,'/proj_tables/total_net_emissions.csv'))
   
 
   return(tne_df)

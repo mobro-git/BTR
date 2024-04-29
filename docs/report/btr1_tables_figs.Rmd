@@ -6,6 +6,10 @@ output:
 
 ---
 
+```{r,echo = FALSE, results = "show", warning = FALSE, message = FALSE, error = FALSE}
+knitr::opts_chunk$set(echo = FALSE, results = "show", warning = FALSE, message = FALSE, error = FALSE, fig.align = "center", fig.width = 9, fig.height = 7)
+
+```
 
 
 ```{r}
@@ -172,10 +176,51 @@ create_summary_table <- function(category, grouping, projections_all_sm, config)
   rownames(final_summary_table) <- NULL
   
   final_summary_table <- final_summary_table %>% mutate_if(is.numeric, round)
+  
+  numeric_cols <- sapply(final_summary_table,is.numeric)
+  final_summary_table[, numeric_cols] <- lapply(final_summary_table[, numeric_cols], scales::comma)
 
   return(final_summary_table)
 }
 
+
+create_html_table <- function(final_summary_table, stubhead){
+  
+   hist_years <- c('2005','2010','2015','2020', config$base_year)
+  proj_col_order <- c('2025_low',
+                      '2025_high',
+                      '2030_low',
+                      '2030_high',
+                      '2035_low',
+                      '2035_high',
+                      '2040_low',
+                      '2040_high')
+  
+ html_table <-  final_summary_table %>%
+   rename(!!stubhead := category) %>% 
+    gt() %>%
+   tab_spanner(label = "2025", columns = proj_col_order[1:2]) %>%
+    tab_spanner(label = "2030", columns = proj_col_order[3:4]) %>%
+    tab_spanner(label = "2035", columns = proj_col_order[5:6]) %>%
+    tab_spanner(label = "2040", columns = proj_col_order[7:8]) %>%
+    cols_label(`2025_low` = 'Low') %>%
+    cols_label(`2030_low` = 'Low') %>% 
+    cols_label(`2035_low` = 'Low') %>% 
+    cols_label(`2040_low` = 'Low') %>%
+    
+    cols_label(`2025_high` = 'High') %>%
+    cols_label(`2030_high` = 'High') %>% 
+    cols_label(`2035_high` = 'High') %>% 
+    cols_label(`2040_high` = 'High') %>% 
+
+    tab_spanner(label = "Historical ", columns = all_of(hist_years), level = 2) %>%
+    tab_spanner(label = "Projected", columns = all_of(proj_col_order))%>%
+   tab_header(title = paste0('Historical and Projected U.S. GHG Emissions (2023 Policy Baseline), by ',stubhead,': 2005-2040 (MMT CO2e)')) %>%
+   gt_theme_nc_blue()
+
+               
+   
+}
 
 
 ```
@@ -184,22 +229,31 @@ create_summary_table <- function(category, grouping, projections_all_sm, config)
 
 tar_load(c(projections_all_sm, config))
 
-gas_table <- create_summary_table('gas','wm', projections_all_sm, config)
+gas_df <- create_summary_table('gas','wm', projections_all_sm, config)
 
-sector_table <- create_summary_table('usproj_sector', 'wm', projections_all_sm, config)
+sector_df <- create_summary_table('usproj_sector', 'wm', projections_all_sm, config)
+
+gas_table <- create_html_table(gas_df, 'Gas')
+
+sector_table <- create_html_table(sector_df, 'Sector')
+
+
 
 ```
 
 ```{r}
-gas_table %>% 
-  kbl(caption = "Recreating booktabs style table") %>%
-  kable_classic(full_width = F, html_font = "Cambria")
+
+gas_table
+
 
 ```
 
 
+```{r}
 
+sector_table
 
+```
 
 
 
@@ -239,7 +293,7 @@ targets = data.frame(
 ```
 
 ```{r proj function}
-projections = br_project(ghgi, proj, targets = TRUE)
-projections
+#projections = br_project(ghgi, proj, targets = TRUE)
+#projections
 ```
 

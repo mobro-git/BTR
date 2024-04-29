@@ -110,6 +110,8 @@ map_proj_name_v2 = function(usproj_all, crosswalk_compilation, config) {
   
   projections_all = bind_rows(projections)
   
+  write_csv(projections_all, paste0('output/',config$version,'/proj_tables/projections_all.csv'))
+  
   return(projections_all)
   
 }

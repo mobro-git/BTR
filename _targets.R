@@ -45,10 +45,7 @@ tar_plan(
     
     
     gas_order = c("CO2", "CH4", "N2O", "HFCs", "PFCs", "SF6","F-gas"), #TODO: Make sure NF3 is included in USPROJ data
-    sector_order = c("Energy","Transportation","IPPU","Agriculture","Waste","LULUCF"),
-    
-    output_dir = 'output/2024_BTR1'
-    
+    sector_order = c("Energy","Transportation","IPPU","Agriculture","Waste","LULUCF")
   ),
 
   ##### Template + Crosswalks ---------------------------------------------------
@@ -180,9 +177,8 @@ tar_plan(
   tar_target(total_gross_emissions, gen_total_gross_emissions(gas_breakout)),
 
   # Calculate Total Net Emissions and write
-  tar_target(total_net_emissions, gen_total_net_emissions(gas_breakout, lulucf_sink_breakout)),
-  tar_target(write_TNE_csv, write_csv(total_net_emissions, 'output/2024_BTR1/proj_tables/total_net_emissions.csv')),
-  
+  tar_target(total_net_emissions, gen_total_net_emissions(gas_breakout, lulucf_sink_breakout, config)),
+
   
   #### 3) projections_net_ghg - projections_all_sm %>% group_by(proj_name) and summarize - net all emissions and sum, should just be one number. export to output csv
   
@@ -217,8 +213,14 @@ tar_plan(
   
   tar_render(ncbr_btr_comparison,
              "docs/report/ncbr_btr_comparison.Rmd",
-             output_dir = paste0("output/",config$version,"btr_tables_figs"),
-             output_file = "ncbr_btr_comparison",
+             output_dir = paste0('output/',config$version,"/tables_figs/"),
+             output_file = "ncbr_btr_comparison.html",
+             params = list(mode = "targets")),
+  
+  tar_render(btr_tables_figs,
+             "docs/report/btr1_tables_figs.Rmd",
+             output_dir = paste0('output/',config$version,"/tables_figs/"),
+             output_file = "btr1_tables_figs.html",
              params = list(mode = "targets"))
 
 )
