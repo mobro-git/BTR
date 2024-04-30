@@ -135,6 +135,8 @@ gen_proj_all_sm <- function(projections_ghgi, config){
     group_by(proj_name, grouping, gas, usproj_sector, year) %>% 
     summarise(sum = sum(value))
   
+  projections_all_sm <- projections_all_sm %>% group_by(gas, usproj_sector) %>% mutate(pct_change_05 = round((sum/sum[year==2005]-1),2))
+  
   write_csv(projections_all_sm, paste0('output/',config$version,'/proj_tables/projections_all_sm.csv'))
   
   return(projections_all_sm)

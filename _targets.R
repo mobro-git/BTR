@@ -164,7 +164,7 @@ tar_plan(
   projections_ghgi = add_historical_data(ghgi_cat, projections_all), # bind ghgi historical data
   projections_all_sm = gen_proj_all_sm(projections_ghgi, config), # gas and sector sums for each projection
   
-  # _summary table breakouts
+  # _summary table breakouts ----
   lulucf_sink_breakout = gen_lulucf_sink_breakout(projections_all_sm, config), #TODO: Figure out where to net out positive LULUCF Emissions, figure out if sink is just co2
 
   gas_dataset = gen_gas_dataset(projections_all_sm, config),
@@ -173,10 +173,10 @@ tar_plan(
   sector_dataset = gen_sector_dataset(projections_all_sm, config),
   sector_breakout = gen_sector_breakout(sector_dataset, config, category_order = config$sector_order, lulucf_sink_breakout),
 
-  # Sum Total Gross Emissions
+  # Sum Total Gross Emissions ----
   tar_target(total_gross_emissions, gen_total_gross_emissions(gas_breakout)),
 
-  # Calculate Total Net Emissions and write
+  # Calculate Total Net Emissions and write ----
   tar_target(total_net_emissions, gen_total_net_emissions(gas_breakout, lulucf_sink_breakout, config)),
 
   
