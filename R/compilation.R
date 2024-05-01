@@ -116,6 +116,7 @@ map_proj_name_v2 = function(usproj_all, crosswalk_compilation, config) {
   
 }
 
+# Add ghgi data to projections
 
 add_historical_data <- function(ghgi_cat, projections_all) {
   
@@ -129,13 +130,18 @@ add_historical_data <- function(ghgi_cat, projections_all) {
   
 }
 
+# Get summed values for each gas&sector combo, calculate % difference from 2005 levels
+
 gen_proj_all_sm <- function(projections_ghgi, config){
   
   projections_all_sm <- projections_ghgi %>% 
     group_by(proj_name, grouping, gas, usproj_sector, year) %>% 
-    summarise(sum = sum(value))
+    summarise(sum = sum(value),.groups='drop')
   
-  projections_all_sm <- projections_all_sm %>% group_by(gas, usproj_sector) %>% mutate(pct_change_05 = round((sum/sum[year==2005]-1),2))
+  projections_all_sm <- projections_all_sm %>%
+    group_by(gas, usproj_sector) %>%
+    mutate(pct_change_05 = round((sum/sum[year==2005]-1),2)) %>% 
+    ungroup()
   
   write_csv(projections_all_sm, paste0('output/',config$version,'/proj_tables/projections_all_sm.csv'))
   

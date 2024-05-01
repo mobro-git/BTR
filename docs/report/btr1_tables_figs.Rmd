@@ -80,18 +80,36 @@ sector_table
 ```{r, pct change by gas}
 pct_change_table <- create_pct_change_table('gas', 'wm', projections_all_sm, config)
 
+```
+```{r}
+
 pct_change_html <- create_pct_change_html_table(pct_change_table, 'Gas', config)
 
-pct_change_html
 ```
+
+
+```{r}
+pct_change_html
+
+```
+
+
 ```{r, pct change by sector}
 pct_change_table <- create_pct_change_table('usproj_sector', 'wm', projections_all_sm, config)
 
-pct_change_html <- create_pct_change_html_table(pct_change_table, 'Sector', config)
-
-pct_change_html
 ```
 
+```{r}
+
+pct_change_html <- create_pct_change_html_table(pct_change_table, 'Sector', config)
+
+```
+
+
+```{r}
+pct_change_html
+
+```
 
 
 ## BTR Main Plot

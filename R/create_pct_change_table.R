@@ -5,7 +5,8 @@ add_pct_change_05 <- function(dataframe) {
   
   dataframe <- dataframe %>%
     group_by(category) %>%
-    mutate(pct_change_05 = round((cat_sum/cat_sum[year==2005]-1),2))
+    mutate(pct_change_05 = round((cat_sum/cat_sum[year==2005]-1),2)) %>% 
+    ungroup()
   
 }
 
@@ -15,15 +16,14 @@ create_pct_change_table <- function(category, grouping, projections_all_sm, conf
   col_order <- c('category','year','low','high')
 
   summary <- projections_all_sm %>%
-    filter(!gas == 'Total') %>%  # WTH?? fix pls usproj
+    filter(!gas == 'Total') %>%  # WTH?? fix pls usproj TODO
     rename(category = .data[[category]]) %>% 
     filter(grouping == grouping) %>%
     filter(year %in% config$table) %>% 
     group_by(proj_name,category, year) %>%
-    summarise(cat_sum = sum(sum)) %>% 
+    summarise(cat_sum = sum(sum),.groups='drop') %>% 
     add_pct_change_05() %>%
-    select(!cat_sum) %>% 
-    ungroup()
+    select(!cat_sum) 
 
   
   summary_total_gross <- projections_all_sm %>%
@@ -32,21 +32,22 @@ create_pct_change_table <- function(category, grouping, projections_all_sm, conf
     filter(grouping == grouping) %>%
     filter(year %in% config$table) %>% 
     group_by(proj_name,category, year) %>%
-    summarise(cat_sum = sum(sum)) %>%
+    summarise(cat_sum = sum(sum),.groups='drop') %>%
     filter(!category == 'LULUCF Sink') %>%
     group_by(proj_name,year) %>%
-    summarise(cat_sum = sum(cat_sum)) %>%
-    ungroup() %>% 
+    summarise(cat_sum = sum(cat_sum),.groups='drop') %>%
+    
     mutate(pct_change_05 = (cat_sum/cat_sum[year==2005]-1)) %>% 
-    mutate(pct_change_05 = round(pct_change_05,2)) %>% 
+    mutate(pct_change_05 = round(pct_change_05,2)) %>%
+    
     group_by(year) %>%
     mutate(low = min(pct_change_05, na.rm=TRUE),
            high = max(pct_change_05, na.rm=TRUE)) %>%
-    ungroup() %>% 
+    ungroup() %>%
+    
     select(year,low,high) %>% 
     distinct() %>%
     mutate(category = 'Total Gross Emissions') %>%
-    ungroup() %>% 
     select(all_of(col_order))
   
   summary_total_net <- projections_all_sm %>%
@@ -55,10 +56,9 @@ create_pct_change_table <- function(category, grouping, projections_all_sm, conf
     filter(grouping == grouping) %>%
     filter(year %in% config$table) %>% 
     group_by(proj_name,category, year) %>%
-    summarise(cat_sum = sum(sum)) %>%
+    summarise(cat_sum = sum(sum),.groups='drop') %>%
     group_by(proj_name,year) %>%
-    summarise(cat_sum = sum(cat_sum)) %>%
-    ungroup() %>% 
+    summarise(cat_sum = sum(cat_sum),.groups='drop') %>%
     mutate(pct_change_05 = (cat_sum/cat_sum[year==2005]-1)) %>% 
     mutate(pct_change_05 = round(pct_change_05,2)) %>% 
     group_by(year) %>%
@@ -68,7 +68,6 @@ create_pct_change_table <- function(category, grouping, projections_all_sm, conf
     select(year,low,high) %>% 
     distinct() %>%
     mutate(category = 'Total Net Emissions') %>%
-    ungroup() %>% 
     select(all_of(col_order))
   
   

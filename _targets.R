@@ -44,7 +44,7 @@ tar_plan(
     table = c(2005, 2010, 2015, 2020, 2021, 2025, 2030 , 2035, 2040),
     
     
-    gas_order = c("CO2", "CH4", "N2O", "HFCs", "PFCs", "SF6","F-gas"), #TODO: Make sure NF3 is included in USPROJ data
+    gas_order = c("CO2", "CH4", "N2O", "HFCs", "PFCs", "SF6"), #TODO: Make sure NF3 is included in USPROJ data
     sector_order = c("Energy","Transportation","IPPU","Agriculture","Waste","LULUCF")
   ),
 
@@ -161,17 +161,17 @@ tar_plan(
   
   # _complete projections ----
   projections_all = map_proj_name_v2(usproj_all, crosswalk_compilation, config),
-  projections_ghgi = add_historical_data(ghgi_cat, projections_all), # bind ghgi historical data
+  projections_ghgi = add_historical_data(ghgi_cat, projections_all), # bind ghgi historical data to projectiosn
   projections_all_sm = gen_proj_all_sm(projections_ghgi, config), # gas and sector sums for each projection
   
   # _summary table breakouts ----
   lulucf_sink_breakout = gen_lulucf_sink_breakout(projections_all_sm, config), #TODO: Figure out where to net out positive LULUCF Emissions, figure out if sink is just co2
 
   gas_dataset = gen_gas_dataset(projections_all_sm, config),
-  gas_breakout = gen_gas_breakout(gas_dataset, config, category_order = config$gas_order, lulucf_sink_breakout),
+  gas_breakout = gen_gas_breakout(gas_dataset, config, category_order = config$gas_order),
 
   sector_dataset = gen_sector_dataset(projections_all_sm, config),
-  sector_breakout = gen_sector_breakout(sector_dataset, config, category_order = config$sector_order, lulucf_sink_breakout),
+  sector_breakout = gen_sector_breakout(sector_dataset, config, category_order = config$sector_order),
 
   # Sum Total Gross Emissions ----
   tar_target(total_gross_emissions, gen_total_gross_emissions(gas_breakout)),

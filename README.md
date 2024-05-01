@@ -35,7 +35,7 @@ To use the pipeline to create necessary statistics and graphics, users should fo
 
 ## Step 1. Activate the Virtual Environment
 
-Click on the `LEEP.Rproj` file to enter the virtual environment for the project, which captures all the required versions of the packages used in the pipeline. 
+Click on the `BTR.Rproj` file to enter the virtual environment for the project, which captures all the required versions of the packages used in the pipeline. 
 
 ## Step 2. Run the pipeline 
 
