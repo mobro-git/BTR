@@ -1,8 +1,8 @@
 
-create_graph <- function(presentation_title, presentation_plot_type, config, emf_data_long, figmap,
+create_graph <- function(presentation_title, presentation_plot_type, config, settings, emf_data_long, figmap,
                          pdfGraphs = TRUE, pngGraphs = FALSE, sub = "", saveData = FALSE) {
   #  create folders
-  overall_path = paste("./output/", presentation_title, "/", sep = "")
+  overall_path = paste("./output/", settings$version,"/",presentation_title, "/", sep = "")
 
   if (pngGraphs) {
     subfolders = c("", presentation_plot_type)

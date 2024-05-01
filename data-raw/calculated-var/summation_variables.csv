@@ -8,122 +8,24 @@
 3,Emissions|CO2|Energy|Demand|Industry|Total,Emissions|CO2|Energy|Demand|Industry|Indirect,Mt CO2/yr,1
 4,Emissions|CO2|Energy|Demand|Transportation|Total,Emissions|CO2|Energy|Demand|Transportation,Mt CO2/yr,1
 4,Emissions|CO2|Energy|Demand|Transportation|Total,Emissions|CO2|Energy|Demand|Transportation|Indirect,Mt CO2/yr,1
-5,Final Energy|Buildings|Non-Electric,Final Energy|Buildings|Gas,Quads,1
-5,Final Energy|Buildings|Non-Electric,Final Energy|Buildings|Oil,Quads,1
-5,Final Energy|Buildings|Non-Electric,Final Energy|Buildings|Coal,Quads,1
-5,Final Energy|Buildings|Non-Electric,Final Energy|Buildings|Biomass,Quads,1
-5,Final Energy|Buildings|Non-Electric,Final Energy|Buildings|Biogas,Quads,1
-5,Final Energy|Buildings|Non-Electric,Final Energy|Buildings|Biomass liquids,Quads,1
 6,Emissions|CO2|CDR,Carbon Sequestration|LULUCF,Mt CO2/yr,1
-6,Emissions|CO2|CDR,Carbon Sequestration|CCS|Biomass|Energy – BECCS,Mt CO2/yr,1
-7,Final Energy|Transportation|Fossil,Final Energy|Transportation|Oil,Quads,1
-7,Final Energy|Transportation|Fossil,Final Energy|Transportation|Gas,Quads,1
-9,Final Energy|Industry|Fossil,Final Energy|Industry|Coal,Quads,1
-9,Final Energy|Industry|Fossil,Final Energy|Industry|Gas,Quads,1
-9,Final Energy|Industry|Fossil,Final Energy|Industry|Oil,Quads,1
-9,Final Energy|Industry|Fossil,Transformation Energy|Coal,Quads,1
-9,Final Energy|Industry|Fossil,Transformation Energy|Oil,Quads,1
-9,Final Energy|Industry|Fossil,Transformation Energy|Gas,Quads,1
-9,Final Energy|Industry|Fossil,Final Energy|Industry|Gas Feedstocks,Quads,1
-9,Final Energy|Industry|Fossil,Final Energy|Industry|Oil Feedstocks,Quads,1
-10,Final Energy|Industry|Fossil,Final Energy|Industry|Coal|w/ CCS,Quads,1
-10,Final Energy|Industry|Fossil,Final Energy|Industry|Coal|w/o CCS,Quads,1
-10,Final Energy|Industry|Fossil,Final Energy|Industry|Gas|w/ CCS,Quads,1
-10,Final Energy|Industry|Fossil,Final Energy|Industry|Gas|w/o CCS,Quads,1
-10,Final Energy|Industry|Fossil,Final Energy|Industry|Oil|w/ CCS,Quads,1
-10,Final Energy|Industry|Fossil,Final Energy|Industry|Oil|w/o CCS,Quads,1
-10,Final Energy|Industry|Fossil,Transformation Energy|Coal,Quads,1
-10,Final Energy|Industry|Fossil,Transformation Energy|Oil,Quads,1
-10,Final Energy|Industry|Fossil,Transformation Energy|Gas,Quads,1
-10,Final Energy|Industry|Fossil,Final Energy|Industry|Gas Feedstocks,Quads,1
-10,Final Energy|Industry|Fossil,Final Energy|Industry|Oil Feedstocks,Quads,1
-11,Final Energy|Industry|Alternative Fuels,Final Energy|Industry|Biomass Liquids,Quads,1
-11,Final Energy|Industry|Alternative Fuels,Final Energy|Industry|Biogas,Quads,1
-11,Final Energy|Industry|Alternative Fuels,Final Energy|Industry|Biomass Liquids feedstocks,Quads,1
-11,Final Energy|Industry|Alternative Fuels,Final Energy|Industry|Hydrogen,Quads,1
-11,Final Energy|Industry|Alternative Fuels,Final Energy|Industry|Biomass,Quads,1
-11,Final Energy|Industry|Alternative Fuels,Transformation Energy|Biomass,Quads,1
-12,Final Energy|Industry|Alternative Fuels,Final Energy|Industry|Biomass Liquids,Quads,1
-12,Final Energy|Industry|Alternative Fuels,Final Energy|Industry|Biogas,Quads,1
-12,Final Energy|Industry|Alternative Fuels,Final Energy|Industry|Biomass Liquids feedstocks,Quads,1
-12,Final Energy|Industry|Alternative Fuels,Final Energy|Industry|Hydrogen,Quads,1
-12,Final Energy|Industry|Alternative Fuels,Final Energy|Industry|Biomass|w/ CCS,Quads,1
-12,Final Energy|Industry|Alternative Fuels,Final Energy|Industry|Biomass|w/o CCS,Quads,1
-12,Final Energy|Industry|Alternative Fuels,Transformation Energy|Biomass,Quads,1
+6,Emissions|CO2|CDR,Carbon Sequestration|CCS|Biomass|Energy,Mt CO2/yr,1
 13,Energy Service|Transportation|EV|Sales Share,Energy Service|Transportation|Passenger|BEV|Sales Share,%,1
 13,Energy Service|Transportation|EV|Sales Share,Energy Service|Transportation|Passenger|FCEV|Sales Share,%,1
 13,Energy Service|Transportation|EV|Sales Share,Energy Service|Transportation|Passenger|HEV|Sales Share,%,1
 13,Energy Service|Transportation|EV|Sales Share,Energy Service|Transportation|Freight|BEV|Sales Share,%,1
 13,Energy Service|Transportation|EV|Sales Share,Energy Service|Transportation|Freight|FCEV|Sales Share,%,1
 13,Energy Service|Transportation|EV|Sales Share,Energy Service|Transportation|Passenger|PHEV|Sales Share,%,1
-14,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Emissions|CO2|Energy|Demand|Industry and Fuel Production,Mt CO2/yr,1
-14,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Indirect,Mt CO2/yr,1
-15,Final Energy|Buildings|Alternative Fuels,Final Energy|Buildings|Biogas,Quads,1
-15,Final Energy|Buildings|Alternative Fuels,Final Energy|Buildings|Biomass Liquids,Quads,1
-15,Final Energy|Buildings|Alternative Fuels,Final Energy|Buildings|Biomass Solids,Quads,1
-15,Final Energy|Buildings|Alternative Fuels,Final Energy|Buildings|Hydrogen,Quads,1
-15,Final Energy|Buildings|Alternative Fuels,Final Energy|Buildings|Synthetic Gas,Quads,1
-15,Final Energy|Buildings|Alternative Fuels,Final Energy|Buildings|Synthetic Liquids,Quads,1
-16,Final Energy|Buildings|Fossil,Final Energy|Buildings|Coal,Quads,1
-16,Final Energy|Buildings|Fossil,Final Energy|Buildings|Gas,Quads,1
-16,Final Energy|Buildings|Fossil,Final Energy|Buildings|Oil,Quads,1
-19,Final Energy|Transportation|Alternative Fuels,Final Energy|Transportation|Biogas,Quads,1
-19,Final Energy|Transportation|Alternative Fuels,Final Energy|Transportation|Biomass Liquids,Quads,1
-19,Final Energy|Transportation|Alternative Fuels,Final Energy|Transportation|Hydrogen,Quads,1
-19,Final Energy|Transportation|Alternative Fuels,Final Energy|Transportation|Synthetic Gas,Quads,1
-19,Final Energy|Transportation|Alternative Fuels,Final Energy|Transportation|Synthetic Liquids,Quads,1
-20,Secondary Energy|Electricity|Low Emissions,Secondary Energy|Electricity|Nuclear,Quads,1
-20,Secondary Energy|Electricity|Low Emissions,Secondary Energy|Electricity|Solar,Quads,1
-20,Secondary Energy|Electricity|Low Emissions,Secondary Energy|Electricity|Wind,Quads,1
-20,Secondary Energy|Electricity|Low Emissions,Secondary Energy|Electricity|Biomass,Quads,1
-20,Secondary Energy|Electricity|Low Emissions,Secondary Energy|Electricity|Geothermal,Quads,1
-20,Secondary Energy|Electricity|Low Emissions,Secondary Energy|Electricity|Hydro,Quads,1
-20,Secondary Energy|Electricity|Low Emissions,Secondary Energy|Electricity|Oil|w/ CCS,Quads,1
-20,Secondary Energy|Electricity|Low Emissions,Secondary Energy|Electricity|Gas|w/ CCS,Quads,1
-20,Secondary Energy|Electricity|Low Emissions,Secondary Energy|Electricity|Coal|w/ CCS,Quads,1
-20,Secondary Energy|Electricity|Low Emissions,Secondary Energy|Electricity|Coal|w/o CCS,Quads,1
-20,Secondary Energy|Electricity|Low Emissions,Secondary Energy|Electricity|Gas|w/o CCS,Quads,1
-20,Secondary Energy|Electricity|Low Emissions,Secondary Energy|Electricity|Oil|w/o CCS,Quads,1
-21,Secondary Energy|Electricity|Renewable,Secondary Energy|Electricity|Solar,Quads,1
-21,Secondary Energy|Electricity|Renewable,Secondary Energy|Electricity|Wind,Quads,1
-21,Secondary Energy|Electricity|Renewable,Secondary Energy|Electricity|Geothermal,Quads,1
-21,Secondary Energy|Electricity|Renewable,Secondary Energy|Electricity|Hydro,Quads,1
-22,Emissions|CO2|All Industry,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Mt CO2/yr,1
-22,Emissions|CO2|All Industry,Emissions|CO2|Industrial Processes,Mt CO2/yr,1
-124,Emissions|CO2|Energy|Demand|Buildings|Direct,Emissions|CO2|Energy|Demand|Buildings|Residential,Mt CO2/yr,1
-124,Emissions|CO2|Energy|Demand|Buildings|Direct,Emissions|CO2|Energy|Demand|Buildings|Commercial,Mt CO2/yr,1
-124,Emissions|CO2|Energy|Demand|Buildings|Direct,Emissions|CO2|Energy|Demand|Buildings|Residential|Indirect,Mt CO2/yr,-1
-124,Emissions|CO2|Energy|Demand|Buildings|Direct,Emissions|CO2|Energy|Demand|Buildings|Commercial|Indirect,Mt CO2/yr,-1
-125,Emissions|CO2|Energy|Demand|Transportation|Direct,Emissions|CO2|Energy|Demand|Transportation,Mt CO2/yr,1
-125,Emissions|CO2|Energy|Demand|Transportation|Direct,Emissions|CO2|Energy|Demand|Transportation|Indirect,Mt CO2/yr,-1
-126,Emissions|CO2|Energy|Demand|Industry|Direct,Emissions|CO2|Energy|Demand|Industry|Indirect,Mt CO2/yr,-1
-126,Emissions|CO2|Energy|Demand|Industry|Direct,Emissions|CO2|Energy|Demand|Industry,Mt CO2/yr,1
-201,Secondary Energy|Electricity|Other|Sum,Secondary Energy|Electricity|Biomass,Quads,1
-201,Secondary Energy|Electricity|Other|Sum,Secondary Energy|Electricity|Biomass|w/o CCS,Quads,1
-201,Secondary Energy|Electricity|Other|Sum,Secondary Energy|Electricity|Other,Quads,1
-202,Secondary Energy|Electricity|Coal|Sum,Secondary Energy|Electricity|Coal,Quads,1
-202,Secondary Energy|Electricity|Coal|Sum,Secondary Energy|Electricity|Coal|w/o CCS,Quads,1
-202,Secondary Energy|Electricity|Coal|Sum,Secondary Energy|Electricity|Coal|w/ CCS,Quads,1
-203,Secondary Energy|Electricity|Gas|Sum,Secondary Energy|Electricity|Gas,Quads,1
-203,Secondary Energy|Electricity|Gas|Sum,Secondary Energy|Electricity|Gas|w/ CCS,Quads,1
-203,Secondary Energy|Electricity|Gas|Sum,Secondary Energy|Electricity|Gas|w/o CCS,Quads,1
-204,Secondary Energy|Electricity|Nuclear|Sum,Secondary Energy|Electricity|Nuclear,Quads,1
-205,Secondary Energy|Electricity|Oil|Sum,Secondary Energy|Electricity|Oil,Quads,1
-205,Secondary Energy|Electricity|Oil|Sum,Secondary Energy|Electricity|Oil|w/o CCS,Quads,1
-205,Secondary Energy|Electricity|Oil|Sum,Secondary Energy|Electricity|Oil|w/ CCS,Quads,1
-206,Secondary Energy|Electricity|Renewables|Sum,Secondary Energy|Electricity|Geothermal,Quads,1
-206,Secondary Energy|Electricity|Renewables|Sum,Secondary Energy|Electricity|Hydro,Quads,1
-206,Secondary Energy|Electricity|Renewables|Sum,Secondary Energy|Electricity|Solar,Quads,1
-206,Secondary Energy|Electricity|Renewables|Sum,Secondary Energy|Electricity|Wind,Quads,1
-207,Emissions|CO2|Energy|Demand|Transportation|GHGI|Aircraft Total,Emissions|CO2|Energy|Demand|Transportation|GHGI|Commerical Aircraft,Mt CO2/yr,1
-207,Emissions|CO2|Energy|Demand|Transportation|GHGI|Aircraft Total,Emissions|CO2|Energy|Demand|Transportation|GHGI|Other Aircraft,Mt CO2/yr,1
-208,Emissions|CO2|Energy|Demand|Transportation|GHGI|Pipelines Total,Emissions|CO2|Energy|Demand|Transportation|GHGI|Pipelines,Mt CO2/yr,1
-208,Emissions|CO2|Energy|Demand|Transportation|GHGI|Pipelines Total,Emissions|CO2|Energy|Demand|Transportation|GHGI|Lubricants,Mt CO2/yr,1
-209,Emissions|CO2|Energy|Demand|Transportation|GHGI|Other Total,Emissions|CO2|Energy|Demand|Transportation|GHGI|Buses,Mt CO2/yr,1
-209,Emissions|CO2|Energy|Demand|Transportation|GHGI|Other Total,Emissions|CO2|Energy|Demand|Transportation|GHGI|Mortorcycles,Mt CO2/yr,1
-209,Emissions|CO2|Energy|Demand|Transportation|GHGI|Other Total,Emissions|CO2|Energy|Demand|Transportation|GHGI|Rail,Mt CO2/yr,1
 210,BTR|Emissions|CO2|Energy excl TRN Sum,Emissions|CO2|Energy|Demand|Buildings,Mt CO2/yr,1
 210,BTR|Emissions|CO2|Energy excl TRN Sum,Emissions|CO2|Energy|Demand|Industry,Mt CO2/yr,1
 210,BTR|Emissions|CO2|Energy excl TRN Sum,Emissions|CO2|Energy|Supply,Mt CO2/yr,1
 211,BTR|Emissions|CO2|Energy excl TRN Subtract,Emissions|CO2|Energy,Mt CO2/yr,1
 211,BTR|Emissions|CO2|Energy excl TRN Subtract,Emissions|CO2|Energy|Demand|Transportation,Mt CO2/yr,-1
+1000,Emissions|CO2|Net Emissions,Emissions|CO2|Energy,Mt CO2/yr,1
+1000,Emissions|CO2|Net Emissions,Emissions|CO2|Industrial Processes,Mt CO2/yr,1
+1000,Emissions|CO2|Net Emissions,Emissions|CO2|Other,Mt CO2/yr,1
+1000,Emissions|CO2|Net Emissions,Carbon Sequestration|Direct Air Capture|Net,Mt CO2/yr,1
+1000,Emissions|CO2|Net Emissions,Carbon Sequestration|CCS|Biomass|Energy,Mt CO2/yr,1
+1000,Emissions|CO2|Net Emissions,Carbon Sequestration|CCS|Biomass|Industrial Processes,Mt CO2/yr,1
+1000,Emissions|CO2|Net Emissions,Carbon Sequestration|Chemical Feedstocks|Biomass,Mt CO2/yr,1
+1000,Emissions|CO2|Net Emissions,Carbon Sequestration|LULUCF ,Mt CO2/yr,1

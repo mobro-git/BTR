@@ -14,7 +14,6 @@ library(tools)
 
 library(plotly)
 library(data.table)
-library(tidyverse)
 suppressPackageStartupMessages(library(tidyverse))
 library(patchwork)
 library(ggh4x)

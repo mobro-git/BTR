@@ -21,13 +21,13 @@ figmap_csv_target <- function(file) {
 }
 
 # creates the figmap targets
-figmap_target <- function(figmap_csv, config) {
+figmap_target <- function(figmap_csv, config, settings) {
   
   file = str_remove(figmap_csv,"figure-maps/") %>% str_remove(".csv")
   plot_list = gsub("_.*","",file)
   figure_type = gsub(".*_","",file)
   
-  figmap = import_figure_csv(plot_list, figure_type, figmap_csv, config)
+  figmap = import_figure_csv(plot_list, figure_type, figmap_csv, config, settings)
   figmap
   
 }
@@ -44,7 +44,7 @@ figmap_target <- function(figmap_csv, config) {
 #' @param figure_type please make sure figure_type only takes on the value stacked, diff, or ts
 #' @return
 
-import_figure_csv <- function(plot_list, figure_type, figmap_csv, config) {
+import_figure_csv <- function(plot_list, figure_type, figmap_csv, config, settings) {
   
   if (! (figure_type %in% c("scatter","stackbar","ref_stackbar","timeseries","diffbar","cone","band","sankey","corrplot"))) {
     rlang::abort("Please use 'scatter','stackbar','ref_stackbar','timeseries','diffbar','cone','band','sankey','corrplot' for figure_type.")
@@ -54,9 +54,9 @@ import_figure_csv <- function(plot_list, figure_type, figmap_csv, config) {
   
   status = df %>%
     assert_figure_csv_has_standard_columns(figure_type) %>%
-    assert_vars_in_template_or_calculated(figure_type, config) %>%
-    assert_models_in_config(config) %>%
-    assert_scenarios_in_config(config) %>%
+    assert_vars_in_template_or_calculated(figure_type, settings) %>%
+    assert_models_in_config(config, settings) %>%
+    assert_scenarios_in_config(config, settings) %>%
     assert_regions_in_config(config) %>%
     assert_years_in_config_or_numeric(config) %>%
     assert_valid_page_filter(figure_type) %>%
@@ -141,7 +141,7 @@ assert_figure_csv_has_standard_columns <- function(status, figure_type) {
 #'
 #' @return TRUE or abort
 
-assert_vars_in_template_or_calculated <- function(status, figure_type, config) {
+assert_vars_in_template_or_calculated <- function(status, figure_type, settings) {
   
   if (figure_type != "sankey") {
     plot_vars = unique(status$variable)
@@ -154,14 +154,14 @@ assert_vars_in_template_or_calculated <- function(status, figure_type, config) {
       unique(status$target_var))
   }
   
-  template_vars = unique(config$template$variable)
+  template_vars = unique(settings$template$variable)
   
-  all_vars = c(unique(config$template$variable),
-               unique(config$calculated_var$ratio_var$variable),
-               unique(config$calculated_var$summation_var$variable),
-               unique(config$calculated_var$cumulative_var$new_variable),
-               unique(config$calculated_var$annual_growth_rate_var$new_variable),
-               unique(config$calculated_var$per_diff_var$new_variable))
+  all_vars = c(unique(settings$template$variable),
+               unique(settings$calculated_var$ratio_var$variable),
+               unique(settings$calculated_var$summation_var$variable),
+               unique(settings$calculated_var$cumulative_var$new_variable),
+               unique(settings$calculated_var$annual_growth_rate_var$new_variable),
+               unique(settings$calculated_var$per_diff_var$new_variable))
   
   present = plot_vars %in% all_vars
   
@@ -187,7 +187,7 @@ assert_vars_in_template_or_calculated <- function(status, figure_type, config) {
 #'
 #' @return status or abort
 
-assert_models_in_config <- function(status, config) {
+assert_models_in_config <- function(status, config, settings) {
   
   not_present = c()
   
@@ -195,7 +195,7 @@ assert_models_in_config <- function(status, config) {
   
   for(item in unique_model_config) {
     
-    present = (item %in% names(config) | (item %in% config$all_models))
+    present = (item %in% names(config) | (item %in% settings$scen_mapping$model_new))
     
     if(! all(present)) {not_present = append(not_present, item)}
     
@@ -216,7 +216,7 @@ assert_models_in_config <- function(status, config) {
 #'
 #' @return status or abort
 #' @export
-assert_scenarios_in_config <- function(status, config) {
+assert_scenarios_in_config <- function(status, config, settings) {
   
   not_present = c()
   
@@ -224,7 +224,7 @@ assert_scenarios_in_config <- function(status, config) {
   
   for(item in unique_scenario_config) {
     
-    present = (item %in% names(config) | (item %in% config$all_scenarios))
+    present = (item %in% names(config) | (item %in% settings$scen_mapping$scenario_new))
     
     if(! all(present)) {not_present = append(not_present, item)}
     

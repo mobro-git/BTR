@@ -21,17 +21,27 @@ tar_plan(
   
   ##### Config -----------------
   
-  config = list(
+  settings = list(
     version = "2024_BTR1",
     scen_mapping = read_scen_mapping(crosswalk_model_runs_csv),
     template = template,
-    calculated_var = all_calculated,
-    base_year = 2021, # TODO: update to 2022 when we get updated inventory
+    calculated_var = all_calculated
+  ), 
+  
+  config = list(
+    # models
+    model_wam = c("GCAM-LTS","GCAM-PNNL","NEMS-OP"),
+    model_wm = c("GCAM-PNNL","NEMS-OP","USREP-ReEDS"),
+    
+    # scenarios
     ghgi_scen = "wm_v1", # Set usproj scenario to pull ghgi data
+    wm = c("wm","ref","IRA"),
     
-    #models
-    models = c("GCAM-LTS","GCAM-PNNL","NEMS-OP","USREP-ReEDS"),
+    # regions
+    usa = "United States",
     
+    # years
+    base_year = 2021, # TODO: update to 2022 when we get updated inventory
     fives = c(seq(2005,2021,by = 1),seq(2025,2040,by = 5)),
     fives_sumtab = c(seq(2005,2020,by = 5),2022,seq(2025,2040,by = 5)),
     annual = c(seq(2005,2040,by = 1)),
@@ -39,19 +49,22 @@ tar_plan(
     fives_lts = c(seq(2005,2022,by = 1),seq(2025,2050,by = 5)),
     annual_lts = c(seq(2005,2050,by = 1)),
     
+    fives_proj = c(seq(2020,2050, by = 10)),
+    annual_proj = c(seq(2020,2050, by = 1)),
+    
     annual_1990 = c(seq(1990,2040,by = 1)),
     annual_2010 = c(seq(2010,2040,by = 1)),
     table = c(2005, 2010, 2015, 2020, 2021, 2025, 2030 , 2035, 2040),
-    
-    
-    gas_order = c("CO2", "CH4", "N2O", "HFCs", "PFCs", "SF6"), #TODO: Make sure NF3 is included in USPROJ data
+  
+    # ordering
+    gas_order = c("CO2", "CH4", "N2O", "HFCs", "PFCs", "SF6"), #TODO: Make sure NF3 is included in USPROJ data>>>>>>> Stashed changes
     sector_order = c("Energy","Transportation","IPPU","Agriculture","Waste","LULUCF")
   ),
 
   ##### Template + Crosswalks ---------------------------------------------------
 
   # BTR reporting template
-  tar_target(template_xlsx, "data-raw/template/BTR24_data_template_v1.xlsx", format = "file"),
+  tar_target(template_xlsx, "data-raw/template/EMF37_data_template_R2_v2.xlsx", format = "file"),
   tar_target(template, read_emf_template_xlsx(template_xlsx)),
   
   # scenario+model crosswalks
@@ -106,10 +119,10 @@ tar_plan(
   # _modeled-data long ----
 
   data_loaded = {
-    map_dfr(data_files, ~read_process_data_file(.x, config)) %>%
+    map_dfr(data_files, ~read_process_data_file(.x, config, settings)) %>%
       arrange_standard()},
 
-  data_long = make_data_long(data_loaded, config),
+  data_long = make_data_long(data_loaded, settings),
 
   data_long_clean = make_data_long_clean(data_long,
                                          ratio_var,
@@ -117,7 +130,8 @@ tar_plan(
                                          cumulative_var,
                                          annual_growth_rate_var,
                                          per_diff_var,
-                                         config), 
+                                         config,
+                                         settings), 
   
   # _usproj data long ----
   
@@ -126,7 +140,7 @@ tar_plan(
     map_dfr(usproj_files, ~read_usproj_data_file(.x, crosswalk_usproj_csv)) %>%
       arrange_standard()},
   
-  usproj_data_long_all = make_usproj_data_long(usproj_data_loaded, config),
+  usproj_data_long_all = make_usproj_data_long(usproj_data_loaded, settings),
   
   # usproj w/o historical data
   usproj_data_long = gen_usproj_projections(usproj_data_long_all, config),
@@ -160,9 +174,9 @@ tar_plan(
   tar_target(crosswalk_compilation, read_csv(crosswalk_compilation_csv)), # TODO: CHECK FOR MODELS AND SCENARIOS!
   
   # _complete projections ----
-  projections_all = map_proj_name_v2(usproj_all, crosswalk_compilation, config),
+  projections_all = map_proj_name_v2(usproj_all, crosswalk_compilation, config, settings),
   projections_ghgi = add_historical_data(ghgi_cat, projections_all), # bind ghgi historical data to projectiosn
-  projections_all_sm = gen_proj_all_sm(projections_ghgi, config), # gas and sector sums for each projection
+  projections_all_sm = gen_proj_all_sm(projections_ghgi, settings), # gas and sector sums for each projection
   
   # _summary table breakouts ----
   lulucf_sink_breakout = gen_lulucf_sink_breakout(projections_all_sm, config), #TODO: Figure out where to net out positive LULUCF Emissions, figure out if sink is just co2
@@ -177,7 +191,7 @@ tar_plan(
   tar_target(total_gross_emissions, gen_total_gross_emissions(gas_breakout)),
 
   # Calculate Total Net Emissions and write ----
-  tar_target(total_net_emissions, gen_total_net_emissions(gas_breakout, lulucf_sink_breakout, config)),
+  tar_target(total_net_emissions, gen_total_net_emissions(gas_breakout, lulucf_sink_breakout, settings)),
 
   
   #### 3) projections_net_ghg - projections_all_sm %>% group_by(proj_name) and summarize - net all emissions and sum, should just be one number. export to output csv
@@ -206,22 +220,27 @@ tar_plan(
   tar_map(
     values = figmap_values("figure-maps"),
     tar_target(figmap_csv, figmap_csv_target(file), format = "file"),
-    tar_target(figmap, figmap_target(figmap_csv, config))
+    tar_target(figmap, figmap_target(figmap_csv, config, settings))
     ),
   
   ### Outputs ----
   
   tar_render(ncbr_btr_comparison,
              "docs/report/ncbr_btr_comparison.Rmd",
-             output_dir = paste0('output/',config$version,"/tables_figs/"),
+             output_dir = paste0('output/',settings$version,"/tables_figs/"),
              output_file = "ncbr_btr_comparison.html",
              params = list(mode = "targets")),
   
   tar_render(btr_tables_figs,
              "docs/report/btr1_tables_figs.Rmd",
-             output_dir = paste0('output/',config$version,"/tables_figs/"),
+             output_dir = paste0('output/',settings$version,"/tables_figs/"),
              output_file = "btr1_tables_figs.html",
-             params = list(mode = "targets"))
+             params = list(mode = "targets")),
+  
+  btr_sb = create_graph("cross-model comparison", "stacked_bar", config, settings, data_long_clean, figmap_btr_stackbar),
+  btr_db = create_graph("cross-model comparison", "diff_bar", config, settings, data_long_clean, figmap_btr_diffbar),
+  btr_ts = create_graph("cross-model comparison", "time_series", config, settings, data_long_clean, figmap_btr_timeseries),
+  btr_cu = create_graph("cross-model comparison", "cone_uncertainty", config, settings, data_long_clean, figmap_btr_cone)
 
 )
 

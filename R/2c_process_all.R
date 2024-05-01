@@ -13,10 +13,10 @@ read_process_minimal_from_raw <- function(filepath) {
 
 # Load and process raw data
 
-read_process_data_file <- function(filepath, config) {
+read_process_data_file <- function(filepath, config, settings) {
   print(paste0("Reading ",filepath))
   read_raw_data_file(filepath) %>%
-    process_data_file(config)
+    process_data_file(config, settings)
 }
 
 read_usproj_data_file <- function(filepath, crosswalk_usproj_csv) {
@@ -39,7 +39,7 @@ read_lulucf_data_file <- function(filepath, lulucf_crosswalk, var_crosswalk) {
     rename(btr_var = variable) %>% 
     left_join(var_crosswalk, by = 'btr_var')}
 
-process_data_file <- function(data, config = NULL) {
+process_data_file <- function(data, config = NULL, settings) {
 
   min <- data %>%
     process_minimal_from_raw()
@@ -47,14 +47,14 @@ process_data_file <- function(data, config = NULL) {
   # standardization steps:
   std <- min %>%
     standardize_col_names() %>%
-    standardize_row_data(config) %>%
+    standardize_row_data(settings) %>%
     filter(!is.na(unit)) %>%
     normalize_units()
 
   res <- std %>%
 
     # analysis stuff:
-    map_scenario_names(config$scen_mapping) %>%
+    map_scenario_names(settings$scen_mapping) %>%
     filter(!is.na(scenario)) %>%
     # TODO: need to re-format transform_to_national to handle all sub-national results
     # transform_to_national() %>% # right now uses sum(.x, na.rm = TRUE)
@@ -72,7 +72,7 @@ process_data_file <- function(data, config = NULL) {
 #' standardize the format of year and value
 #' change variables expressed in percentages into scentific expressions
 
-standardize_row_data <- function(data, config) {
+standardize_row_data <- function(data, settings) {
 
   # TODO: should some of these be warnings/errors or evaluated other places?
 
@@ -80,10 +80,10 @@ standardize_row_data <- function(data, config) {
     filter(!is.na(model) & !is.na(scenario)) %>%
 
     # Only keep variable data which is in the template
-    filter(variable %in% config$template$variable) %>%
+    filter(variable %in% settings$template$variable) %>%
 
     # Only keep data with variable/unit combination that match the template
-    semi_join(config$template, by = c("variable", "unit")) %>%
+    semi_join(settings$template, by = c("variable", "unit")) %>%
 
     mutate(year = as.numeric(year),
            value = as.numeric(value)) %>%
@@ -126,9 +126,6 @@ map_scenario_names <- function(data,
 
 
   join_vars <- c("datasrc", "model", "scenario")
-  # scen_mapping <- if(is.null(scen_mapping)) {
-  #   rlang::global_env()$config$scen_mapping
-  # } else scen_mapping
 
   if(is.null(scen_mapping)) stop("You must pass `scen_mapping` to map_scenario_names.")
 
