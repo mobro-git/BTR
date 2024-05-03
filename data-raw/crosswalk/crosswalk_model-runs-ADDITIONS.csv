@@ -1,3 +1,3 @@
 datasrc,model,scenario
-usrep_report_emf_btr_prelim2.csv,USREP-ReEDS,test9_ref
-usrep_report_emf_btr_prelim2.csv,USREP-ReEDS,test10_wm
+gcam_05012024_CO2Emissions_raw_CONVERTED.csv,GCAM,WM
+gcam_05012024_CO2Emissions_raw_CONVERTED.csv,GCAM,WOM

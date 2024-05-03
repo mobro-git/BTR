@@ -1,115 +1,115 @@
 figure_type,figure_no,title_name,variable,variable_rename,flip_sign,regions,models,years,scenarios,type,x,y,range,facet1,facet2,page_filter,color,scales
-coneplot,1,Net Emissions,Emissions|CO2|Energy,Energy & Industrial Processes,0,usa,model_wm,fives_proj,wm,single,year,value,model,NA,NA,region,variable_rename,fixed
-coneplot,1,Net Emissions,Carbon Sequestration|CCS|Biomass|Energy,BECCS,0,usa,model_wm,fives_proj,wm,single,year,value,model,NA,NA,region,variable_rename,fixed
-coneplot,1,Net Emissions,Carbon Sequestration|Chemical Feedstocks|Biomass,Bio-feedstocks,0,usa,model_wm,fives_proj,wm,single,year,value,model,NA,NA,region,variable_rename,fixed
-coneplot,1,Net Emissions,Carbon Sequestration|Direct Air Capture|Net,DAC,0,usa,model_wm,fives_proj,wm,single,year,value,model,NA,NA,region,variable_rename,fixed
-coneplot,1,Net Emissions,Carbon Sequestration|LULUCF,LULUCF,0,usa,model_wm,fives_proj,wm,single,year,value,model,NA,NA,region,variable_rename,fixed
-coneplot,200,Net CO2 Emissions,Emissions|CO2|Net Emissions,CO2,0,usa,model_wm,fives_proj,wm,single,year,value,model,NA,NA,region,variable_rename,fixed
-coneplot,2,Fossil Emissions,Emissions|CO2|Energy|Coal,Coal,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,2,Fossil Emissions,Emissions|CO2|Energy|Gas,Gas,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,2,Fossil Emissions,Emissions|CO2|Energy|Oil,Oil,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,3,Primary Energy Fossil,Primary Energy|Coal,Coal,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,3,Primary Energy Fossil,Primary Energy|Gas,Gas,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,3,Primary Energy Fossil,Primary Energy|Oil,Oil,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,4,Primary Energy Non-Fossil,Primary Energy|Hydro,Hydro,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,4,Primary Energy Non-Fossil,Primary Energy|Biomass,Biomass,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,4,Primary Energy Non-Fossil,Primary Energy|Nuclear,Nuclear,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,4,Primary Energy Non-Fossil,Primary Energy|Wind,Wind,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,4,Primary Energy Non-Fossil,Primary Energy|Geothermal,Geothermal,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,4,Primary Energy Non-Fossil,Primary Energy|Ocean,Ocean,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,4,Primary Energy Non-Fossil,Primary Energy|Other,Other,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,4,Primary Energy Non-Fossil,Primary Energy|Solar,Solar,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,5,Secondary Energy,Secondary Energy|Biogas,Biogas,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,5,Secondary Energy,Secondary Energy|Biomass Liquids,Biomass Liquids,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,5,Secondary Energy,Secondary Energy|Electricity,Electricity,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,5,Secondary Energy,Secondary Energy|Hydrogen,Hydrogen,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,5,Secondary Energy,Secondary Energy|Petroleum Refining,Refining,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,5,Secondary Energy,Secondary Energy|Synthetic Gas,Synthetic Gas,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,5,Secondary Energy,Secondary Energy|Synthetic Liquids,Synthetic Liquids,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,6,Sectoral Emissions,Emissions|CO2|Energy|Demand|Buildings,Buildings,0,usa,model_wm,fives_proj,wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,6,Sectoral Emissions,Emissions|CO2|Energy|Demand|Industry,Industry,0,usa,model_wm,fives_proj,wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,6,Sectoral Emissions,Emissions|CO2|Energy|Demand|Transportation,Transportation,0,usa,model_wm,fives_proj,wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,6,Sectoral Emissions,Emissions|CO2|Energy|Supply|Electricity,Electricity,0,usa,model_wm,fives_proj,wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,100,Sectoral Emissions - NZ50,Emissions|CO2|Energy|Demand|Buildings,Buildings,0,usa,model_wm,fives_proj,wm,grid,year,value,model,variable_rename,scenario,region,variable_rename,free_y
-coneplot,100,Sectoral Emissions - NZ50,Emissions|CO2|Energy|Demand|Industry,Industry,0,usa,model_wm,fives_proj,wm,grid,year,value,model,variable_rename,scenario,region,variable_rename,free_y
-coneplot,100,Sectoral Emissions - NZ50,Emissions|CO2|Energy|Demand|Transportation,Transportation,0,usa,model_wm,fives_proj,wm,grid,year,value,model,variable_rename,scenario,region,variable_rename,free_y
-coneplot,100,Sectoral Emissions - NZ50,Emissions|CO2|Energy|Supply|Electricity,Electricity,0,usa,model_wm,fives_proj,wm,grid,year,value,model,variable_rename,scenario,region,variable_rename,free_y
-coneplot,100,Sectoral Emissions - NZ50,Carbon Sequestration|Direct Air Capture|Net,DAC,0,usa,model_wm,fives_proj,wm,grid,year,value,model,variable_rename,scenario,region,variable_rename,free_y
-coneplot,6.2,Sectoral Energy,Final Energy|Buildings,Buildings,0,usa,model_wm,fives_proj,wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,6.2,Sectoral Energy,Final Energy|Industry,Industry,0,usa,model_wm,fives_proj,wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,6.2,Sectoral Energy,Final Energy|Transportation,Transportation,0,usa,model_wm,fives_proj,wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,6.2,Sectoral Energy,Secondary Energy|Electricity,Electricity,0,usa,model_wm,fives_proj,wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,7,CDR,Carbon Sequestration|CCS|Biomass|Energy,BECCS,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,7,CDR,Carbon Sequestration|Chemical Feedstocks|Biomass,Bio-feedstocks,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,7,CDR,Carbon Sequestration|Direct Air Capture|Net,DAC,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,7,CDR,Carbon Sequestration|LULUCF,LULUCF,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,8,Electricity - Combustion,Secondary Energy|Electricity|Biomass|w/ CCS,Biomass w/ CCS,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,8,Electricity - Combustion,Secondary Energy|Electricity|Biomass|w/o CCS,Biomass w/o CCS,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,8,Electricity - Combustion,Secondary Energy|Electricity|Coal|w/ CCS,Coal w/ CCS,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,8,Electricity - Combustion,Secondary Energy|Electricity|Coal|w/o CCS,Coal w/o CCS,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,8,Electricity - Combustion,Secondary Energy|Electricity|Gas|w/ CCS,Gas w/ CCS,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,8,Electricity - Combustion,Secondary Energy|Electricity|Gas|w/o CCS,Gas w/o CCS,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,8,Electricity - Combustion,Secondary Energy|Electricity|Oil|w/ CCS,Oil w/ CCS,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,8,Electricity - Combustion,Secondary Energy|Electricity|Oil|w/o CCS,Oil w/o CCS,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,8,Electricity - Combustion,Secondary Energy|Electricity|Hydrogen,Hydrogen,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,8,Electricity - Combustion,Secondary Energy|Electricity|Synthetic Gas,Synthetic Gas,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,8,Electricity - Combustion,Secondary Energy|Electricity|Synthetic Liquids,Synthetic Liquids,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,9,Electricity - Non-Combustion,Secondary Energy|Electricity|Geothermal,Geothermal,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,9,Electricity - Non-Combustion,Secondary Energy|Electricity|Hydro,Hydro,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,9,Electricity - Non-Combustion,Secondary Energy|Electricity|Nuclear,Nuclear,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,9,Electricity - Non-Combustion,Secondary Energy|Electricity|Ocean,Ocean,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,9,Electricity - Non-Combustion,Secondary Energy|Electricity|Solar|CSP,Solar CSP,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,9,Electricity - Non-Combustion,Secondary Energy|Electricity|Solar|PV,Solar PV,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,9,Electricity - Non-Combustion,Secondary Energy|Electricity|Wind|Offshore,Wind Offshore,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,9,Electricity - Non-Combustion,Secondary Energy|Electricity|Wind|Onshore,Wind Onshore,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,10,Final Energy - Buildings,Final Energy|Buildings|Coal,Coal,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,10,Final Energy - Buildings,Final Energy|Buildings|Gas,Gas,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,10,Final Energy - Buildings,Final Energy|Buildings|Oil,Oil,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,10,Final Energy - Buildings,Final Energy|Buildings|Electricity,Electricity,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,10,Final Energy - Buildings,Final Energy|Buildings|Hydrogen,Hydrogen,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,10,Final Energy - Buildings,Final Energy|Buildings|Biogas,Biogas,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,10,Final Energy - Buildings,Final Energy|Buildings|Biomass Liquids,Biomass Liquids,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,10,Final Energy - Buildings,Final Energy|Buildings|Biomass Solids,Biomass Solids,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,10,Final Energy - Buildings,Final Energy|Buildings|Synthetic Gas,Synthetic Gas,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,10,Final Energy - Buildings,Final Energy|Buildings|Synthetic Liquids,Synthetic Liquids,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,11,Final Energy - Industry,Final Energy|Industry|Coal,Coal,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,11,Final Energy - Industry,Final Energy|Industry|Gas,Gas,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,11,Final Energy - Industry,Final Energy|Industry|Oil,Oil,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,11,Final Energy - Industry,Final Energy|Industry|Electricity,Electricity,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,11,Final Energy - Industry,Final Energy|Industry|Hydrogen,Hydrogen,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,11,Final Energy - Industry,Final Energy|Industry|Biogas,Biogas,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,11,Final Energy - Industry,Final Energy|Industry|Biomass Liquids,Biomass Liquids,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,11,Final Energy - Industry,Final Energy|Industry|Biomass Solids,Biomass Solids,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,11,Final Energy - Industry,Final Energy|Industry|Synthetic Gas,Synthetic Gas,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,11,Final Energy - Industry,Final Energy|Industry|Synthetic Liquids,Synthetic Liquids,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,12,Final Energy - Transportation,Final Energy|Transportation|Gas,Gas,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,12,Final Energy - Transportation,Final Energy|Transportation|Oil,Oil,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,12,Final Energy - Transportation,Final Energy|Transportation|Electricity,Electricity,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,12,Final Energy - Transportation,Final Energy|Transportation|Hydrogen,Hydrogen,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,12,Final Energy - Transportation,Final Energy|Transportation|Biogas,Biogas,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,12,Final Energy - Transportation,Final Energy|Transportation|Biomass Liquids,Biomass Liquids,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,12,Final Energy - Transportation,Final Energy|Transportation|Synthetic Gas,Synthetic Gas,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,12,Final Energy - Transportation,Final Energy|Transportation|Synthetic Liquids,Synthetic Liquids,0,usa,model_wm,fives_proj,wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,13,Electricity,Secondary Energy|Electricity|Biomass,Biomass,0,usa,model_wm,fives_proj,wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,13,Electricity,Secondary Energy|Electricity|Coal,Coal,0,usa,model_wm,fives_proj,wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,13,Electricity,Secondary Energy|Electricity|Gas,Gas,0,usa,model_wm,fives_proj,wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,13,Electricity,Secondary Energy|Electricity|Geothermal,Geothermal,0,usa,model_wm,fives_proj,wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,13,Electricity,Secondary Energy|Electricity|Hydro,Hydro,0,usa,model_wm,fives_proj,wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,13,Electricity,Secondary Energy|Electricity|Hydrogen,Hydrogen,0,usa,model_wm,fives_proj,wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,13,Electricity,Secondary Energy|Electricity|Nuclear,Nuclear,0,usa,model_wm,fives_proj,wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,13,Electricity,Secondary Energy|Electricity|Ocean,Ocean,0,usa,model_wm,fives_proj,wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,13,Electricity,Secondary Energy|Electricity|Oil,Oil,0,usa,model_wm,fives_proj,wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,13,Electricity,Secondary Energy|Electricity|Solar,Solar,0,usa,model_wm,fives_proj,wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,13,Electricity,Secondary Energy|Electricity|Synthetic Gas,Synthetic Gas,0,usa,model_wm,fives_proj,wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,13,Electricity,Secondary Energy|Electricity|Synthetic Liquids,Synthetic Liquids,0,usa,model_wm,fives_proj,wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,13,Electricity,Secondary Energy|Electricity|Wind,Wind,0,usa,model_wm,fives_proj,wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,14,Final Energy,Final Energy|Coal,Coal,0,usa,model_wm,fives_proj,wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,14,Final Energy,Final Energy|Gas,Gas,0,usa,model_wm,fives_proj,wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,14,Final Energy,Final Energy|Oil,Oil,0,usa,model_wm,fives_proj,wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,14,Final Energy,Final Energy|Electricity,Electricity,0,usa,model_wm,fives_proj,wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,14,Final Energy,Final Energy|Hydrogen,Hydrogen,0,usa,model_wm,fives_proj,wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,14,Final Energy,Final Energy|Biogas,Biogas,0,usa,model_wm,fives_proj,wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,14,Final Energy,Final Energy|Biomass Liquids,Biomass Liquids,0,usa,model_wm,fives_proj,wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,14,Final Energy,Final Energy|Biomass Solids,Biomass Solids,0,usa,model_wm,fives_proj,wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,14,Final Energy,Final Energy|Synthetic Gas,Synthetic Gas,0,usa,model_wm,fives_proj,wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
-coneplot,14,Final Energy,Final Energy|Synthetic Liquids,Synthetic Liquids,0,usa,model_wm,fives_proj,wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,1,Net Emissions,Emissions|CO2|Energy,Energy & Industrial Processes,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,NA,NA,region,variable_rename,fixed
+coneplot,1,Net Emissions,Carbon Sequestration|CCS|Biomass|Energy,BECCS,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,NA,NA,region,variable_rename,fixed
+coneplot,1,Net Emissions,Carbon Sequestration|Chemical Feedstocks|Biomass,Bio-feedstocks,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,NA,NA,region,variable_rename,fixed
+coneplot,1,Net Emissions,Carbon Sequestration|Direct Air Capture|Net,DAC,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,NA,NA,region,variable_rename,fixed
+coneplot,1,Net Emissions,Carbon Sequestration|LULUCF,LULUCF,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,NA,NA,region,variable_rename,fixed
+coneplot,200,Net CO2 Emissions,Emissions|CO2|Net Emissions,CO2,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,NA,NA,region,variable_rename,fixed
+coneplot,2,Fossil Emissions,Emissions|CO2|Energy|Coal,Coal,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,2,Fossil Emissions,Emissions|CO2|Energy|Gas,Gas,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,2,Fossil Emissions,Emissions|CO2|Energy|Oil,Oil,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,3,Primary Energy Fossil,Primary Energy|Coal,Coal,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,3,Primary Energy Fossil,Primary Energy|Gas,Gas,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,3,Primary Energy Fossil,Primary Energy|Oil,Oil,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,4,Primary Energy Non-Fossil,Primary Energy|Hydro,Hydro,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,4,Primary Energy Non-Fossil,Primary Energy|Biomass,Biomass,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,4,Primary Energy Non-Fossil,Primary Energy|Nuclear,Nuclear,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,4,Primary Energy Non-Fossil,Primary Energy|Wind,Wind,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,4,Primary Energy Non-Fossil,Primary Energy|Geothermal,Geothermal,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,4,Primary Energy Non-Fossil,Primary Energy|Ocean,Ocean,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,4,Primary Energy Non-Fossil,Primary Energy|Other,Other,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,4,Primary Energy Non-Fossil,Primary Energy|Solar,Solar,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,5,Secondary Energy,Secondary Energy|Biogas,Biogas,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,5,Secondary Energy,Secondary Energy|Biomass Liquids,Biomass Liquids,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,5,Secondary Energy,Secondary Energy|Electricity,Electricity,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,5,Secondary Energy,Secondary Energy|Hydrogen,Hydrogen,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,5,Secondary Energy,Secondary Energy|Petroleum Refining,Refining,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,5,Secondary Energy,Secondary Energy|Synthetic Gas,Synthetic Gas,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,5,Secondary Energy,Secondary Energy|Synthetic Liquids,Synthetic Liquids,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,6,Sectoral Emissions,Emissions|CO2|Energy|Demand|Buildings,Buildings,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,6,Sectoral Emissions,Emissions|CO2|Energy|Demand|Industry,Industry,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,6,Sectoral Emissions,Emissions|CO2|Energy|Demand|Transportation,Transportation,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,6,Sectoral Emissions,Emissions|CO2|Energy|Supply|Electricity,Electricity,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,100,Sectoral Emissions - NZ50,Emissions|CO2|Energy|Demand|Buildings,Buildings,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,model,variable_rename,scenario,region,variable_rename,free_y
+coneplot,100,Sectoral Emissions - NZ50,Emissions|CO2|Energy|Demand|Industry,Industry,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,model,variable_rename,scenario,region,variable_rename,free_y
+coneplot,100,Sectoral Emissions - NZ50,Emissions|CO2|Energy|Demand|Transportation,Transportation,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,model,variable_rename,scenario,region,variable_rename,free_y
+coneplot,100,Sectoral Emissions - NZ50,Emissions|CO2|Energy|Supply|Electricity,Electricity,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,model,variable_rename,scenario,region,variable_rename,free_y
+coneplot,100,Sectoral Emissions - NZ50,Carbon Sequestration|Direct Air Capture|Net,DAC,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,model,variable_rename,scenario,region,variable_rename,free_y
+coneplot,6.2,Sectoral Energy,Final Energy|Buildings,Buildings,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,6.2,Sectoral Energy,Final Energy|Industry,Industry,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,6.2,Sectoral Energy,Final Energy|Transportation,Transportation,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,6.2,Sectoral Energy,Secondary Energy|Electricity,Electricity,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,7,CDR,Carbon Sequestration|CCS|Biomass|Energy,BECCS,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,7,CDR,Carbon Sequestration|Chemical Feedstocks|Biomass,Bio-feedstocks,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,7,CDR,Carbon Sequestration|Direct Air Capture|Net,DAC,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,7,CDR,Carbon Sequestration|LULUCF,LULUCF,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,8,Electricity - Combustion,Secondary Energy|Electricity|Biomass|w/ CCS,Biomass w/ CCS,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,8,Electricity - Combustion,Secondary Energy|Electricity|Biomass|w/o CCS,Biomass w/o CCS,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,8,Electricity - Combustion,Secondary Energy|Electricity|Coal|w/ CCS,Coal w/ CCS,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,8,Electricity - Combustion,Secondary Energy|Electricity|Coal|w/o CCS,Coal w/o CCS,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,8,Electricity - Combustion,Secondary Energy|Electricity|Gas|w/ CCS,Gas w/ CCS,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,8,Electricity - Combustion,Secondary Energy|Electricity|Gas|w/o CCS,Gas w/o CCS,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,8,Electricity - Combustion,Secondary Energy|Electricity|Oil|w/ CCS,Oil w/ CCS,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,8,Electricity - Combustion,Secondary Energy|Electricity|Oil|w/o CCS,Oil w/o CCS,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,8,Electricity - Combustion,Secondary Energy|Electricity|Hydrogen,Hydrogen,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,8,Electricity - Combustion,Secondary Energy|Electricity|Synthetic Gas,Synthetic Gas,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,8,Electricity - Combustion,Secondary Energy|Electricity|Synthetic Liquids,Synthetic Liquids,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,9,Electricity - Non-Combustion,Secondary Energy|Electricity|Geothermal,Geothermal,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,9,Electricity - Non-Combustion,Secondary Energy|Electricity|Hydro,Hydro,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,9,Electricity - Non-Combustion,Secondary Energy|Electricity|Nuclear,Nuclear,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,9,Electricity - Non-Combustion,Secondary Energy|Electricity|Ocean,Ocean,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,9,Electricity - Non-Combustion,Secondary Energy|Electricity|Solar|CSP,Solar CSP,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,9,Electricity - Non-Combustion,Secondary Energy|Electricity|Solar|PV,Solar PV,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,9,Electricity - Non-Combustion,Secondary Energy|Electricity|Wind|Offshore,Wind Offshore,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,9,Electricity - Non-Combustion,Secondary Energy|Electricity|Wind|Onshore,Wind Onshore,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,10,Final Energy - Buildings,Final Energy|Buildings|Coal,Coal,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,10,Final Energy - Buildings,Final Energy|Buildings|Gas,Gas,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,10,Final Energy - Buildings,Final Energy|Buildings|Oil,Oil,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,10,Final Energy - Buildings,Final Energy|Buildings|Electricity,Electricity,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,10,Final Energy - Buildings,Final Energy|Buildings|Hydrogen,Hydrogen,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,10,Final Energy - Buildings,Final Energy|Buildings|Biogas,Biogas,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,10,Final Energy - Buildings,Final Energy|Buildings|Biomass Liquids,Biomass Liquids,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,10,Final Energy - Buildings,Final Energy|Buildings|Biomass Solids,Biomass Solids,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,10,Final Energy - Buildings,Final Energy|Buildings|Synthetic Gas,Synthetic Gas,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,10,Final Energy - Buildings,Final Energy|Buildings|Synthetic Liquids,Synthetic Liquids,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,11,Final Energy - Industry,Final Energy|Industry|Coal,Coal,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,11,Final Energy - Industry,Final Energy|Industry|Gas,Gas,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,11,Final Energy - Industry,Final Energy|Industry|Oil,Oil,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,11,Final Energy - Industry,Final Energy|Industry|Electricity,Electricity,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,11,Final Energy - Industry,Final Energy|Industry|Hydrogen,Hydrogen,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,11,Final Energy - Industry,Final Energy|Industry|Biogas,Biogas,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,11,Final Energy - Industry,Final Energy|Industry|Biomass Liquids,Biomass Liquids,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,11,Final Energy - Industry,Final Energy|Industry|Biomass Solids,Biomass Solids,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,11,Final Energy - Industry,Final Energy|Industry|Synthetic Gas,Synthetic Gas,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,11,Final Energy - Industry,Final Energy|Industry|Synthetic Liquids,Synthetic Liquids,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,12,Final Energy - Transportation,Final Energy|Transportation|Gas,Gas,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,12,Final Energy - Transportation,Final Energy|Transportation|Oil,Oil,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,12,Final Energy - Transportation,Final Energy|Transportation|Electricity,Electricity,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,12,Final Energy - Transportation,Final Energy|Transportation|Hydrogen,Hydrogen,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,12,Final Energy - Transportation,Final Energy|Transportation|Biogas,Biogas,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,12,Final Energy - Transportation,Final Energy|Transportation|Biomass Liquids,Biomass Liquids,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,12,Final Energy - Transportation,Final Energy|Transportation|Synthetic Gas,Synthetic Gas,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,12,Final Energy - Transportation,Final Energy|Transportation|Synthetic Liquids,Synthetic Liquids,0,usa,model_wm,fives_proj,scen_wm,single,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,13,Electricity,Secondary Energy|Electricity|Biomass,Biomass,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,13,Electricity,Secondary Energy|Electricity|Coal,Coal,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,13,Electricity,Secondary Energy|Electricity|Gas,Gas,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,13,Electricity,Secondary Energy|Electricity|Geothermal,Geothermal,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,13,Electricity,Secondary Energy|Electricity|Hydro,Hydro,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,13,Electricity,Secondary Energy|Electricity|Hydrogen,Hydrogen,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,13,Electricity,Secondary Energy|Electricity|Nuclear,Nuclear,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,13,Electricity,Secondary Energy|Electricity|Ocean,Ocean,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,13,Electricity,Secondary Energy|Electricity|Oil,Oil,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,13,Electricity,Secondary Energy|Electricity|Solar,Solar,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,13,Electricity,Secondary Energy|Electricity|Synthetic Gas,Synthetic Gas,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,13,Electricity,Secondary Energy|Electricity|Synthetic Liquids,Synthetic Liquids,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,13,Electricity,Secondary Energy|Electricity|Wind,Wind,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,14,Final Energy,Final Energy|Coal,Coal,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,14,Final Energy,Final Energy|Gas,Gas,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,14,Final Energy,Final Energy|Oil,Oil,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,14,Final Energy,Final Energy|Electricity,Electricity,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,14,Final Energy,Final Energy|Hydrogen,Hydrogen,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,14,Final Energy,Final Energy|Biogas,Biogas,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,14,Final Energy,Final Energy|Biomass Liquids,Biomass Liquids,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,14,Final Energy,Final Energy|Biomass Solids,Biomass Solids,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,14,Final Energy,Final Energy|Synthetic Gas,Synthetic Gas,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed
+coneplot,14,Final Energy,Final Energy|Synthetic Liquids,Synthetic Liquids,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,model,variable_rename,NA,region,variable_rename,fixed

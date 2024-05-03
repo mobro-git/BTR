@@ -13,10 +13,10 @@ read_process_minimal_from_raw <- function(filepath) {
 
 # Load and process raw data
 
-read_process_data_file <- function(filepath, config, settings) {
+read_process_data_file <- function(filepath, settings) {
   print(paste0("Reading ",filepath))
   read_raw_data_file(filepath) %>%
-    process_data_file(config, settings)
+    process_data_file(settings)
 }
 
 read_usproj_data_file <- function(filepath, crosswalk_usproj_csv) {
@@ -39,7 +39,7 @@ read_lulucf_data_file <- function(filepath, lulucf_crosswalk, var_crosswalk) {
     rename(btr_var = variable) %>% 
     left_join(var_crosswalk, by = 'btr_var')}
 
-process_data_file <- function(data, config = NULL, settings) {
+process_data_file <- function(data, settings) {
 
   min <- data %>%
     process_minimal_from_raw()

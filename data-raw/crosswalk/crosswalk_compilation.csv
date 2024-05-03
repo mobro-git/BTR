@@ -1,7 +1,6 @@
 proj_name,usproj_scen,ffc_model,ffc_scen,lulucf_model,lulucf_scen,grouping
-test1,wm_v1,NEMS-OP,IRA,lulucf,bau_low,wm
-test2,wm_v2,GCAM-PNNL,IRA,lulucf_80pct,bau_low,wm
-test3,wm_v1,USREP-ReEDS,IRA,lulucf,bau_low,wm
-test4,wm_v1,NEMS-OP,IRA,lulucf,wam_high,wam
-test5,wm_v2,GCAM-PNNL,IRA,lulucf_80pct,wam_high,wam
-test6,wm_v1,USREP-ReEDS,IRA,lulucf,wam_high,wam
+wm_nems_lowseq,wm_v1,NEMS,wm,lulucf,bau_low,wm
+wm_gcam_lowseq,wm_v1,GCAM,IRA,lulucf,bau_low,wm
+wm_usrr_lowseq,wm_v1,USREP-ReEDS,wm,lulucf,bau_low,wm
+wm_nems_highseq,wm_v1,NEMS,IRA,lulucf,bau_high,wm
+wm_usrr_highseq,wm_v1,USREP-ReEDS,IRA,lulucf,bau_high,wm

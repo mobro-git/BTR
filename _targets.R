@@ -19,7 +19,7 @@ source("scripts/theming.R")
 # Define targets
 tar_plan(
   
-  ##### Config -----------------
+  ##### Config and settings -----------------
   
   settings = list(
     version = "2024_BTR1",
@@ -31,11 +31,11 @@ tar_plan(
   config = list(
     # models
     model_wam = c("GCAM-LTS","GCAM-PNNL","NEMS-OP"),
-    model_wm = c("GCAM-PNNL","NEMS-OP","USREP-ReEDS"),
+    model_wm = c("GCAM","NEMS","USREP-ReEDS"),
     
     # scenarios
     ghgi_scen = "wm_v1", # Set usproj scenario to pull ghgi data
-    wm = c("wm","ref","IRA"),
+    scen_wm = c("wm"),
     
     # regions
     usa = "United States",
@@ -49,8 +49,9 @@ tar_plan(
     fives_lts = c(seq(2005,2022,by = 1),seq(2025,2050,by = 5)),
     annual_lts = c(seq(2005,2050,by = 1)),
     
-    fives_proj = c(seq(2020,2050, by = 10)),
+    fives_proj = c(seq(2020,2050, by = 5)),
     annual_proj = c(seq(2020,2050, by = 1)),
+    last_proj = 2040,
     
     annual_1990 = c(seq(1990,2040,by = 1)),
     annual_2010 = c(seq(2010,2040,by = 1)),
@@ -119,7 +120,7 @@ tar_plan(
   # _modeled-data long ----
 
   data_loaded = {
-    map_dfr(data_files, ~read_process_data_file(.x, config, settings)) %>%
+    map_dfr(data_files, ~read_process_data_file(.x, settings)) %>%
       arrange_standard()},
 
   data_long = make_data_long(data_loaded, settings),
@@ -238,7 +239,7 @@ tar_plan(
              params = list(mode = "targets")),
   
   btr_sb = create_graph("cross-model comparison", "stacked_bar", config, settings, data_long_clean, figmap_btr_stackbar),
-  btr_db = create_graph("cross-model comparison", "diff_bar", config, settings, data_long_clean, figmap_btr_diffbar),
+  # btr_db = create_graph("cross-model comparison", "diff_bar", config, settings, data_long_clean, figmap_btr_diffbar), # Error: Can't extract column with `unique(dat$page_filter)`. ✖ Subscript `unique(dat$page_filter)` must be size 1, not 0.
   btr_ts = create_graph("cross-model comparison", "time_series", config, settings, data_long_clean, figmap_btr_timeseries),
   btr_cu = create_graph("cross-model comparison", "cone_uncertainty", config, settings, data_long_clean, figmap_btr_cone)
 
