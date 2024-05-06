@@ -23,10 +23,9 @@ data_from_graph <- function(plot_type, config, emf_data_long, figmap, figure_num
     if(scenario_rename) {
       dat = dat %>%
         mutate(scenario = case_when(
-          scenario == "NT.Ref" ~ "Reference",
-          scenario == "0by50.Ref" ~ "Net Zero",
-          scenario == "0by50.Adv" ~ "Net Zero+",
-          TRUE~"needs to be accounted for"))
+          scenario == "wm" ~ "With Measures",
+          scenario == "wam" ~ "With Additional Measures",
+          TRUE~scenario))
     }
 
       if(!is.null(level_var)){
@@ -75,7 +74,8 @@ print_graph <- function(plot_type, config, emf_data_long, figmap, figure_num, re
     if(scenario_rename) {
       dat = dat %>%
         mutate(scenario = case_when(
-          scenario == "Reference" ~ "Pre-IRA",
+          scenario == "wm" ~ "With Measures",
+          scenario == "wam" ~ "With Additional Measures",
           TRUE~scenario))
     }
 

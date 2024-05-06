@@ -170,7 +170,19 @@ stackbar,16,Sectoral CO2 Emissions (2040),Carbon Sequestration|LULUCF,0,LULUCF,u
 stackbar,17,Final Energy - Sector,Final Energy|Buildings,0,Buildings,usa,model_wm,fives_proj ,scen_wm,grid,stack,year,value,scenario,model,variable_rename,region,fixed
 stackbar,17,Final Energy - Sector,Final Energy|Industry,0,Industry,usa,model_wm,fives_proj ,scen_wm,grid,stack,year,value,scenario,model,variable_rename,region,fixed
 stackbar,17,Final Energy - Sector,Final Energy|Transportation,0,Transportation,usa,model_wm,fives_proj ,scen_wm,grid,stack,year,value,scenario,model,variable_rename,region,fixed
-stackbar,18,Energy CO2 Emissions Accounting,Emissions|CO2|Energy|Supply,0,Supply,usa,model_wm,fives_proj ,scen_wm,grid,stack,year,value,scenario,model,variable_rename,region,fixed
-stackbar,18,Energy CO2 Emissions Accounting,Emissions|CO2|Energy|Demand|Industry,0,Industry,usa,model_wm,fives_proj ,scen_wm,grid,stack,year,value,scenario,model,variable_rename,region,fixed
-stackbar,18,Energy CO2 Emissions Accounting,Emissions|CO2|Energy|Demand|Transportation,0,Transportation,usa,model_wm,fives_proj ,scen_wm,grid,stack,year,value,scenario,model,variable_rename,region,fixed
-stackbar,18,Energy CO2 Emissions Accounting,Emissions|CO2|Energy|Demand|Buildings,0,Buildings,usa,model_wm,fives_proj ,scen_wm,grid,stack,year,value,scenario,model,variable_rename,region,fixed
+stackbar,18,Energy CO2 Emissions Accounting - total supply,Emissions|CO2|Energy|Supply,0,Supply,usa,model_wm,fives_proj ,scen_wm,grid,stack,year,value,scenario,model,variable_rename,region,fixed
+stackbar,18,Energy CO2 Emissions Accounting - total supply,Emissions|CO2|Energy|Demand|Industry,0,Industry,usa,model_wm,fives_proj ,scen_wm,grid,stack,year,value,scenario,model,variable_rename,region,fixed
+stackbar,18,Energy CO2 Emissions Accounting - total supply,Emissions|CO2|Energy|Demand|Transportation,0,Transportation,usa,model_wm,fives_proj ,scen_wm,grid,stack,year,value,scenario,model,variable_rename,region,fixed
+stackbar,18,Energy CO2 Emissions Accounting - total supply,Emissions|CO2|Energy|Demand|Buildings,0,Buildings,usa,model_wm,fives_proj ,scen_wm,grid,stack,year,value,scenario,model,variable_rename,region,fixed
+stackbar,19,Energy CO2 Emissions Accounting - supply breakout,Emissions|CO2|Energy|Demand|Industry,0,Industry,usa,model_wm,fives_proj ,scen_wm,grid,stack,year,value,scenario,model,variable_rename,region,fixed
+stackbar,19,Energy CO2 Emissions Accounting - supply breakout,Emissions|CO2|Energy|Demand|Transportation,0,Transportation,usa,model_wm,fives_proj ,scen_wm,grid,stack,year,value,scenario,model,variable_rename,region,fixed
+stackbar,19,Energy CO2 Emissions Accounting - supply breakout,Emissions|CO2|Energy|Demand|Buildings,0,Buildings,usa,model_wm,fives_proj ,scen_wm,grid,stack,year,value,scenario,model,variable_rename,region,fixed
+stackbar,19,Energy CO2 Emissions Accounting - supply breakout,Emissions|CO2|Energy|Supply|Biogas,0,Biogas,usa,model_wm,fives_proj ,scen_wm,grid,stack,year,value,scenario,model,variable_rename,region,fixed
+stackbar,19,Energy CO2 Emissions Accounting - supply breakout,Emissions|CO2|Energy|Supply|Biomass Liquids,0,Biomass Liquids,usa,model_wm,fives_proj ,scen_wm,grid,stack,year,value,scenario,model,variable_rename,region,fixed
+stackbar,19,Energy CO2 Emissions Accounting - supply breakout,Emissions|CO2|Energy|Supply|Heat,0,Heat,usa,model_wm,fives_proj ,scen_wm,grid,stack,year,value,scenario,model,variable_rename,region,fixed
+stackbar,19,Energy CO2 Emissions Accounting - supply breakout,Emissions|CO2|Energy|Supply|Hydrogen,0,Hydrogen,usa,model_wm,fives_proj ,scen_wm,grid,stack,year,value,scenario,model,variable_rename,region,fixed
+stackbar,19,Energy CO2 Emissions Accounting - supply breakout,Emissions|CO2|Energy|Supply|Petroleum Refining,0,Petroleum Refining,usa,model_wm,fives_proj ,scen_wm,grid,stack,year,value,scenario,model,variable_rename,region,fixed
+stackbar,19,Energy CO2 Emissions Accounting - supply breakout,Emissions|CO2|Energy|Supply|Synthetic Gas,0,Synthetic Fuels,usa,model_wm,fives_proj ,scen_wm,grid,stack,year,value,scenario,model,variable_rename,region,fixed
+stackbar,19,Energy CO2 Emissions Accounting - supply breakout,Emissions|CO2|Energy|Supply|Synthetic Liquids,0,Synthetic Fuels,usa,model_wm,fives_proj ,scen_wm,grid,stack,year,value,scenario,model,variable_rename,region,fixed
+stackbar,19,Energy CO2 Emissions Accounting - supply breakout,Emissions|CO2|Energy|Supply|Electricity,0,Electricity,usa,model_wm,fives_proj ,scen_wm,grid,stack,year,value,scenario,model,variable_rename,region,fixed
+stackbar,19,Energy CO2 Emissions Accounting - supply breakout,Emissions|CO2|Energy|Supply,0,Supply,usa,model_wm,fives_proj ,scen_wm,grid,stack,year,value,scenario,model,variable_rename,region,fixed

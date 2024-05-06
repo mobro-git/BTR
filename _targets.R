@@ -238,8 +238,14 @@ tar_plan(
              output_file = "btr1_tables_figs.html",
              params = list(mode = "targets")),
   
+  # tar_render(results_overview,
+  #            "docs/report/results_overview.Rmd",
+  #            output_dir = paste0('output/',settings$version,"/presentations/"),
+  #            output_file = paste0("results_summary_", Sys.time(), ".html"),
+  #            params = list(mode = "targets")),
+  
   btr_sb = create_graph("cross-model comparison", "stacked_bar", config, settings, data_long_clean, figmap_btr_stackbar),
-  btr_db = create_graph("cross-model comparison", "diff_bar", config, settings, data_long_clean, figmap_btr_diffbar), # Error: Can't extract column with `unique(dat$page_filter)`. ✖ Subscript `unique(dat$page_filter)` must be size 1, not 0.
+  btr_db = create_graph("cross-model comparison", "diff_bar", config, settings, data_long_clean, figmap_btr_diffbar), 
   btr_ts = create_graph("cross-model comparison", "time_series", config, settings, data_long_clean, figmap_btr_timeseries),
   btr_cu = create_graph("cross-model comparison", "cone_uncertainty", config, settings, data_long_clean, figmap_btr_cone)
 

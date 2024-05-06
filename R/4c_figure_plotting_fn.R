@@ -65,23 +65,24 @@ check_dat_before_plotting <- function(dat) {
 #' This function produces pdf files
 #' @param overall_path
 #' @param df
-#' @param presentation_name
+#' @param presentation_title
 #' @param type
 #'
 #' @return
-pdf_plots <- function(overall_path, df, presentation_name, type, sub_palettes, config, sub, saveData = FALSE) {
-  pdf(file=paste(overall_path, presentation_name, "_", type, sub, ".pdf",sep=""), width = 14, height = 6)
+pdf_plots <- function(overall_path, df, presentation_title, presentation_plot_type, sub_palettes, config, sub, saveData = FALSE) {
+  
+  pdf(file=paste(overall_path, presentation_title, "_", presentation_plot_type, sub, ".pdf",sep=""), width = 14, height = 6)
   print(paste("There are a total of ", length(unique(df$title_name)), " figures", sep = ""))
 
   if (saveData) {
     data_wb <- createWorkbook()
   }
 
-  if(approved_plot_type(type)) {
+  if(approved_plot_type(presentation_plot_type)) {
 
-    data_processing_fn = get(paste(type, "_figure_specific_data_processing", sep = ""))
-
-    for (figure_num in unique(df$figure_no)) {
+    data_processing_fn = get(paste(presentation_plot_type, "_figure_specific_data_processing", sep = ""))
+    
+    for (figure_num in sort(unique(df$figure_no))) {
 
       dat = df %>%
           filter(figure_no == figure_num) %>%
@@ -95,35 +96,26 @@ pdf_plots <- function(overall_path, df, presentation_name, type, sub_palettes, c
           filter(!!sym(unique(dat$page_filter)) == selected)
 
         if (approved_facet_type(dat_filtered) & check_dat_before_plotting(dat_filtered)) {
-          plot_fn = get_plot_fn(type, unique(dat_filtered$type))
+          plot_fn = get_plot_fn(presentation_plot_type, unique(dat_filtered$type))
 
           if (saveData) {
             addWorksheet(data_wb, figure_num)
             writeData(wb = data_wb, sheet = as.character(figure_num), x = dat_filtered)
           }
 
-          if(type != "corrplot") {
-          plot = call_plot_fn(dat_filtered, figure, selected, sub_palettes, type, plot_fn)
+          if(presentation_plot_type != "corrplot") {
+          plot = call_plot_fn(dat_filtered, figure, selected, sub_palettes, presentation_plot_type, plot_fn)
           print(plot)
           } else {
-            call_plot_fn(dat_filtered, figure, selected, sub_palettes, type, plot_fn)
+            call_plot_fn(dat_filtered, figure, selected, sub_palettes, presentation_plot_type, plot_fn)
           }
         }
-
-      # for (selected_region in unique(dat$region)) {
-      #   dat_filtered = dat %>%
-      #     filter(region == selected_region)
-
-        # if (approved_facet_type(dat_filtered) & check_dat_before_plotting(dat_filtered)) {
-        #   plot_fn = get_plot_fn(type, unique(dat_filtered$type))
-        #   plot = call_plot_fn(dat_filtered, figure, selected_region, sub_palettes, type, plot_fn)
-        # }
       }
     }
   }
 
   if (saveData) {
-    saveWorkbook(data_wb, file = paste(overall_path, presentation_name, "_", type, sub, ".xlsx",sep=""), overwrite = TRUE)
+    saveWorkbook(data_wb, file = paste(overall_path, presentation_title, "_", presentation_plot_type, sub, ".xlsx",sep=""), overwrite = TRUE)
   }
 
 
@@ -136,16 +128,16 @@ pdf_plots <- function(overall_path, df, presentation_name, type, sub_palettes, c
 #'
 #' @param overall_path
 #' @param df
-#' @param presentation_name
-#' @param type
+#' @param presentation_title
+#' @param presentation_plot_type
 #'
 #' @return
 
-png_plots <- function(overall_path, df, presentation_name, type, sub_palettes, config, sub, saveData = FALSE) {
+png_plots <- function(overall_path, df, presentation_title, presentation_plot_type, sub_palettes, config, sub, saveData = FALSE) {
 
   # Make sure plot type is sound; abort if not named correctly
-  if(approved_plot_type(type)) {
-    data_processing_fn = get(paste(type, "_figure_specific_data_processing", sep = ""))
+  if(approved_plot_type(presentation_plot_type)) {
+    data_processing_fn = get(paste(presentation_plot_type, "_figure_specific_data_processing", sep = ""))
 
     for (figure_num in unique(df$figure_no)) {
 
@@ -162,31 +154,17 @@ png_plots <- function(overall_path, df, presentation_name, type, sub_palettes, c
 
         if (approved_facet_type(dat_filtered) & check_dat_before_plotting(dat_filtered)) {
 
-          write.xlsx(dat_filtered, paste(overall_path, presentation_name, "_", type, sub, ".xlsx",sep=""))
+          write.xlsx(dat_filtered, paste(overall_path, presentation_title, "_", presentation_plot_type, sub, ".xlsx",sep=""))
 
-          plot_fn = get_plot_fn(type, unique(dat_filtered$type))
-          png(filename=paste(overall_path, type, "/",
+          plot_fn = get_plot_fn(presentation_plot_type, unique(dat_filtered$type))
+          png(filename=paste(overall_path, presentation_plot_type, "/",
                              str_replace_all(unique(dat$title_name), "\\|","_") , "_",
                              str_replace(selected, " ", "_"), sub,".png", sep = ""),
               width=1200, height=600)
-          plot = call_plot_fn(dat_filtered, figure, selected, sub_palettes, type, plot_fn)
+          plot = call_plot_fn(dat_filtered, figure, selected, sub_palettes, presentation_plot_type, plot_fn)
 
           print(plot)
           dev.off()
-
-      # for (selected_region in unique(dat$region)) {
-      #   dat_filtered = dat %>%
-      #     filter(region == selected_region)
-
-        # if (approved_facet_type(dat_filtered) & check_dat_before_plotting(dat_filtered)) {
-        #   plot_fn = get_plot_fn(type, unique(dat_filtered$type))
-        #   png(filename=paste(overall_path, type, "/", str_replace(selected_region, " ", "_"), "_",
-        #                      str_replace_all(unique(dat$title_name), "\\|","_") , ".png", sep = ""),
-        #       width=1200, height=600)
-        #   plot = call_plot_fn(dat_filtered, figure, selected_region, sub_palettes, type, plot_fn)
-        #
-        #   print(plot)
-        #   dev.off()
         }
       }
     }
