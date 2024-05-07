@@ -15,102 +15,44 @@ knitr::opts_chunk$set(echo = FALSE, results = "show", warning = FALSE, message =
 
 ```
 
-
 ```{r}
 source('packages.R')
 library(targets)
 library(tarchetypes)
 tar_source()
-
+tar_load(c(projections_all_sm, config))
 ```
+
 ## Value Summary Tables
 
-
-```{r}
-
-tar_load(c(projections_all_sm, config))
-
-
-
-```
-
-```{r}
-
+```{r create df}
 gas_df <- create_summary_table('gas','wm', projections_all_sm, config)
-
-```
-
-
-```{r}
 sector_df <- create_summary_table('usproj_sector', 'wm', projections_all_sm, config)
-
 ```
 
-
-```{r}
+```{r gas summary}
 gas_table <- create_html_table(gas_df, 'Gas',config)
-
-```
-
-```{r}
-
-
-sector_table <- create_html_table(sector_df, 'Sector',config)
-
-```
-
-
-
-```{r}
-
 gas_table
-
-
 ```
 
-
-```{r}
-
+```{r sector summary}
+sector_table <- create_html_table(sector_df, 'Sector',config)
 sector_table
-
 ```
 
 ## 2005 Percent Change Table
 
 ```{r, pct change by gas}
-pct_change_table <- create_pct_change_table('gas', 'wm', projections_all_sm, config)
-
+pct_change_table_gas <- create_pct_change_table('gas', 'wm', projections_all_sm, config)
+pct_change_html_gas <- create_pct_change_html_table(pct_change_table_gas, 'Gas', config)
+pct_change_html_gas
 ```
-```{r}
-
-pct_change_html <- create_pct_change_html_table(pct_change_table, 'Gas', config)
-
-```
-
-
-```{r}
-pct_change_html
-
-```
-
 
 ```{r, pct change by sector}
-pct_change_table <- create_pct_change_table('usproj_sector', 'wm', projections_all_sm, config)
-
+pct_change_table_sector <- create_pct_change_table('usproj_sector', 'wm', projections_all_sm, config)
+pct_change_html_sector <- create_pct_change_html_table(pct_change_table_sector, 'Sector', config)
+pct_change_html_sector
 ```
-
-```{r}
-
-pct_change_html <- create_pct_change_html_table(pct_change_table, 'Sector', config)
-
-```
-
-
-```{r}
-pct_change_html
-
-```
-
 
 ## BTR Main Plot
 

@@ -5,31 +5,34 @@ date: "`r Sys.time()`"
 ---
 
 ```{r,echo = FALSE, results = "show", warning = FALSE, message = FALSE, error = FALSE}
-knitr::opts_chunk$set(echo = FALSE, results = "show", warning = FALSE, message = FALSE, error = FALSE, fig.align = "center", fig.width = 9, fig.height = 5)
-
+knitr::opts_chunk$set(echo = FALSE, results = "show", warning = FALSE, message = FALSE, error = FALSE, 
+                      fig.align = "center", fig.width = 9, fig.height = 5)
 ```
 
 
 ```{r}
-source('packages.R')
 library(targets)
 library(tarchetypes)
-source("scripts/theming.R")
 tar_source()
+```
 
-tar_load(c(
-  config,
-  settings,
-  data_long_clean,
-  figmap_btr_stackbar,
-  figmap_btr_timeseries,
-  figmap_btr_diffbar
-  ))
+```{r}
+tar_load(config)
+tar_load(settings)
+tar_load(data_long_clean)
+tar_load(figmap_btr_stackbar)
+tar_load(figmap_btr_timeseries)
+tar_load(figmap_btr_diffbar)
+```
+
+```{r}
+source('packages.R')
+source("scripts/theming.R")
 ```
 
 # Emissions
 
-## Energy CO2 Emissions Accounting 
+## Energy CO2 Emissions Accounting {.tabset}
 
 ### Sector
 
@@ -41,7 +44,8 @@ sector
 ### Model
 
 ```{r}
-print_graph("time_series", config, data_long_clean, figmap_btr_timeseries, 9, "United States", scenario_rename = TRUE,
+model = print_graph("time_series", config, data_long_clean, figmap_btr_timeseries, 9, "United States", scenario_rename = TRUE,
             level_var = c("Buildings", "Industry", "Transportation", "Supply", "Total Energy"))
+model
 ```
 
