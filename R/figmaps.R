@@ -15,8 +15,8 @@ figmap_values <- function(folder) {
 # creates figmap csv paths based on mapping csv
 figmap_csv_target <- function(file) {
 
-  name = paste0("figure-maps/",file,".csv")
-  name
+  figmap_csv = paste0("figure-maps/",file,".csv")
+  figmap_csv
   
 }
 
@@ -51,6 +51,18 @@ import_figure_csv <- function(plot_list, figure_type, figmap_csv, config, settin
   }
   
   df = readr::read_csv(figmap_csv, col_types = cols())
+  
+  if (figure_type == "diffbar"){
+    if (!unique(df$ref_type) %in% c("year")){
+      rlang::abort("Unrecognized diffbar: Please use 'year' for ref_type.")
+    }
+    else {
+      if (!unique(df$ref_value) %in% config$fives_sumtab){
+        rlang::abort("Unrecognized diffbar: Please use a year in config$fives_sumtab for ref_value.")
+      }
+    }
+  }
+  
   
   status = df %>%
     assert_figure_csv_has_standard_columns(figure_type) %>%
