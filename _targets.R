@@ -241,7 +241,7 @@ tar_plan(
   tar_render(results_overview,
              "docs/report/results_overview.Rmd",
              output_dir = paste0('output/',settings$version,"/presentations/"),
-             output_file = "results_summary_.html",
+             output_file = paste0("results_summary_",Sys.Date(),".html"),
              params = list(mode = "targets")),
   
   btr_sb = create_graph("overview", "stacked_bar", config, settings, data_long_clean, figmap_btr_stackbar, pngGraphs = TRUE),
