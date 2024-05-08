@@ -235,19 +235,19 @@ tar_plan(
   tar_render(btr_tables_figs,
              "docs/report/btr1_tables_figs.Rmd",
              output_dir = paste0('output/',settings$version,"/tables_figs/"),
-             output_file = "btr1_tables_figs.html",
+             output_file = paste0("btr1_tables_figs.html_",Sys.Date(),".html"),
              params = list(mode = "targets")),
   
-  # tar_render(results_overview,
-  #            "docs/report/results_overview.Rmd",
-  #            output_dir = paste0('output/',settings$version,"/presentations/"),
-  #            output_file = paste0("results_summary_", Sys.time(), ".html"),
-  #            params = list(mode = "targets")),
+  tar_render(results_overview,
+             "docs/report/results_overview.Rmd",
+             output_dir = paste0('output/',settings$version,"/presentations/"),
+             output_file = paste0("results_summary_",Sys.Date(),".html"),
+             params = list(mode = "targets")),
   
-  btr_sb = create_graph("cross-model comparison", "stacked_bar", config, settings, data_long_clean, figmap_btr_stackbar),
-  btr_db = create_graph("cross-model comparison", "diff_bar", config, settings, data_long_clean, figmap_btr_diffbar), 
-  btr_ts = create_graph("cross-model comparison", "time_series", config, settings, data_long_clean, figmap_btr_timeseries),
-  btr_cu = create_graph("cross-model comparison", "cone_uncertainty", config, settings, data_long_clean, figmap_btr_cone)
+  btr_sb = create_graph("overview", "stacked_bar", config, settings, data_long_clean, figmap_btr_stackbar, pngGraphs = TRUE),
+  btr_db = create_graph("overview", "diff_bar", config, settings, data_long_clean, figmap_btr_diffbar, pngGraphs = TRUE), 
+  btr_ts = create_graph("overview", "time_series", config, settings, data_long_clean, figmap_btr_timeseries, pngGraphs = TRUE),
+  btr_cu = create_graph("overview", "cone_uncertainty", config, settings, data_long_clean, figmap_btr_cone, pngGraphs = TRUE)
 
 )
 

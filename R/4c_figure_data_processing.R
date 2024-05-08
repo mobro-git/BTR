@@ -275,7 +275,7 @@ diff_bar_figure_specific_data_processing <- function(df, config) {
       df <- df %>%
         group_by(model, scenario, region, year, unit, title_name, datasrc, figure_no)
 
-      if (unique(df$line_request)) {
+      if (unique(df$show_net)) {
         df = df %>%
           mutate(diff_sum = sum(diff))
       }

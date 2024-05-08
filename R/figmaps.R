@@ -52,16 +52,13 @@ import_figure_csv <- function(plot_list, figure_type, figmap_csv, config, settin
   
   df = readr::read_csv(figmap_csv, col_types = cols())
   
-  if (figure_type == "diffbar"){
-    if (!unique(df$ref_type) %in% c("year")){
-      rlang::abort("Unrecognized diffbar: Please use 'year' for ref_type.")
-    }
-    else {
-      if (!unique(df$ref_value) %in% config$fives_sumtab){
-        rlang::abort("Unrecognized diffbar: Please use a year in config$fives_sumtab for ref_value.")
-      }
-    }
-  }
+  # TODO: adjust check for diffbar ref_type for year, scenario, model, or region *** additional check needed in fig-specific data processing to make sure theres valid data for the given ref_type and ref_value
+  # if (figure_type == "diffbar"){
+  #   if (!unique(df$ref_type) %in% c("year","scenario","model")){
+  #     rlang::abort("Unrecognized ref_type: must be year, scenario, model, or region.")
+  #   }
+  #   
+  # }
   
   
   status = df %>%
@@ -103,7 +100,7 @@ standard_stackbar_cols <- standard_fig_cols
 
 standard_ref_stackbar_cols <- c(standard_fig_cols, "ref_model")
 
-standard_diffbar_cols <- c(standard_fig_cols, "ref_type", "ref_value", "line_request")
+standard_diffbar_cols <- c(standard_fig_cols, "ref_type", "ref_value", "show_net")
 
 standard_timeseries_cols <- standard_fig_cols
 
@@ -360,7 +357,7 @@ stackbar = fig_type_obj
 
 ref_stackbar = c(fig_type_obj, "ref_model")
 
-diffbar = c(fig_type_obj, "ref_type", "ref_value", "line_request")
+diffbar = c(fig_type_obj, "ref_type", "ref_value", "show_net")
 
 timeseries = fig_type_obj
 

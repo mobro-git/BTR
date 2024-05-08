@@ -239,7 +239,7 @@ call_plot_fn <- function(df, figure, selected, sub_palettes, graph_type, plot_fn
   else if (graph_type == "diff_bar") {
     data_list$y = "diff"
     plot = plot_fn(df = df, data_list = data_list, mapping_list = mapping_list)
-    if (unique(df$line_request)) {
+    if (unique(df$show_net)) {
       plot = plot +
         geom_line(aes(y = .data[["diff_sum"]], linetype = "Net"))
     }

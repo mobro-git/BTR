@@ -1,4 +1,4 @@
-figure_type,figure_no,title_name,variable,flip_sign,variable_rename,ref_type,ref_value,regions,models,years,scenarios,type,position,x,y,facet1,facet2,line_request,color,page_filter,scales
+figure_type,figure_no,title_name,variable,flip_sign,variable_rename,ref_type,ref_value,regions,models,years,scenarios,type,position,x,y,facet1,facet2,show_net,color,page_filter,scales
 diffbarplot,1,CO2 Emissions,Emissions|CO2|Energy,0,Energy,year,2020,usa,model_wm,fives_proj,scen_wm,grid,stack,year,value,scenario,model,TRUE,variable_rename,region,fixed
 diffbarplot,1,CO2 Emissions,Emissions|CO2|Industrial Processes,0,Industrial Processes,year,2020,usa,model_wm,fives_proj,scen_wm,grid,stack,year,value,scenario,model,TRUE,variable_rename,region,fixed
 diffbarplot,1,CO2 Emissions,Emissions|CO2|Other,0,Other,year,2020,usa,model_wm,fives_proj,scen_wm,grid,stack,year,value,scenario,model,TRUE,variable_rename,region,fixed
