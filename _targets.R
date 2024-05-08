@@ -36,6 +36,8 @@ tar_plan(
     # scenarios
     ghgi_scen = "wm_v1", # Set usproj scenario to pull ghgi data
     scen_wm = c("wm"),
+    scen_wm_ira = c("wm","leep_IRA"),
+    
     
     # regions
     usa = "United States",
