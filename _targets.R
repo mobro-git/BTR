@@ -235,7 +235,7 @@ tar_plan(
   tar_render(btr_tables_figs,
              "docs/report/btr1_tables_figs.Rmd",
              output_dir = paste0('output/',settings$version,"/tables_figs/"),
-             output_file = "btr1_tables_figs.html",
+             output_file = paste0("btr1_tables_figs.html_",Sys.Date(),".html"),
              params = list(mode = "targets")),
   
   tar_render(results_overview,
