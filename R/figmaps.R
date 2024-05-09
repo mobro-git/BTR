@@ -53,13 +53,12 @@ import_figure_csv <- function(plot_list, figure_type, figmap_csv, config, settin
   df = readr::read_csv(figmap_csv, col_types = cols())
   
   # TODO: adjust check for diffbar ref_type for year, scenario, model, or region *** additional check needed in fig-specific data processing to make sure theres valid data for the given ref_type and ref_value
-  # if (figure_type == "diffbar"){
-  #   if (!unique(df$ref_type) %in% c("year","scenario","model")){
-  #     rlang::abort("Unrecognized ref_type: must be year, scenario, model, or region.")
-  #   }
-  #   
-  # }
-  
+  if (figure_type == "diffbar") {
+    ref_types = unique(df$ref_type)
+    if (!all(ref_types %in% c("year", "scenario", "model", "region"))) {
+      rlang::abort(paste0("Unrecognized ref_type in ",figmap_csv,": must be year, scenario, model, or region."))
+    }
+  }
   
   status = df %>%
     assert_figure_csv_has_standard_columns(figure_type) %>%

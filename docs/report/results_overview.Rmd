@@ -20,9 +20,9 @@ tar_source()
 tar_load(config)
 tar_load(settings)
 tar_load(data_long_clean)
-tar_load(figmap_btr_stackbar)
-tar_load(figmap_btr_timeseries)
-tar_load(figmap_btr_diffbar)
+tar_load(figmap_nrgco2_stackbar)
+tar_load(figmap_nrgco2_timeseries)
+tar_load(figmap_nrgco2_diffbar)
 ```
 
 ```{r}
@@ -37,14 +37,14 @@ source("scripts/theming.R")
 ### Sector
 
 ```{r}
-sector = print_graph("stacked_bar", config, data_long_clean, figmap_btr_stackbar, 18, "United States", scenario_rename = TRUE)
+sector = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 18, "United States", scenario_rename = TRUE)
 sector
 ```
 
 ### Model
 
 ```{r}
-model = print_graph("time_series", config, data_long_clean, figmap_btr_timeseries, 9, "United States", scenario_rename = TRUE,
+model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 9, "United States", scenario_rename = TRUE,
             level_var = c("Buildings", "Industry", "Transportation", "Supply", "Total Energy"))
 model
 ```

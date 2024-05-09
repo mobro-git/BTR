@@ -246,10 +246,10 @@ tar_plan(
              output_file = paste0("results_summary_",Sys.Date(),".html"),
              params = list(mode = "targets")),
   
-  btr_sb = create_graph("overview", "stacked_bar", config, settings, data_long_clean, figmap_btr_stackbar, pngGraphs = TRUE),
-  btr_db = create_graph("overview", "diff_bar", config, settings, data_long_clean, figmap_btr_diffbar, pngGraphs = TRUE), 
-  btr_ts = create_graph("overview", "time_series", config, settings, data_long_clean, figmap_btr_timeseries, pngGraphs = TRUE),
-  btr_cu = create_graph("overview", "cone_uncertainty", config, settings, data_long_clean, figmap_btr_cone, pngGraphs = TRUE)
+  nrgco2_sb = create_graph("nrgco2", "stacked_bar", config, settings, data_long_clean, figmap_nrgco2_stackbar, pngGraphs = TRUE),
+  nrgco2_db = create_graph("nrgco2", "diff_bar", config, settings, data_long_clean, figmap_nrgco2_diffbar, pngGraphs = TRUE), 
+  nrgco2_ts = create_graph("nrgco2", "time_series", config, settings, data_long_clean, figmap_nrgco2_timeseries, pngGraphs = TRUE),
+  nrgco2_cu = create_graph("nrgco2", "cone_uncertainty", config, settings, data_long_clean, figmap_nrgco2_cone, pngGraphs = TRUE)
 
 )
 

@@ -2,7 +2,7 @@
 create_graph <- function(presentation_title, presentation_plot_type, config, settings, emf_data_long, figmap,
                          pdfGraphs = TRUE, pngGraphs = FALSE, sub = "", saveData = FALSE) {
   #  create folders
-  overall_path = paste("./output/", settings$version,"/",presentation_title, "/", sep = "")
+  overall_path = paste("./output/", settings$version,"/exploratory_figures/",presentation_title, "/", sep = "")
 
   if (pngGraphs) {
     subfolders = c("", presentation_plot_type)
@@ -30,7 +30,7 @@ create_graph <- function(presentation_title, presentation_plot_type, config, set
 
   if (pngGraphs) {
     # full processing based on figure requests + create png of plots
-    png_plots(overall_path, df, presentation_title, presentation_plot_type, subpalettes, config, sub, saveData)
+    png_plots(overall_path, df, presentation_title, presentation_plot_type, subpalettes, config, sub, saveData, pdfGraphs)
   }
 
 }

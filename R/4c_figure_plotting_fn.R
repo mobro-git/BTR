@@ -133,8 +133,13 @@ pdf_plots <- function(overall_path, df, presentation_title, presentation_plot_ty
 #'
 #' @return
 
-png_plots <- function(overall_path, df, presentation_title, presentation_plot_type, sub_palettes, config, sub, saveData = FALSE) {
+png_plots <- function(overall_path, df, presentation_title, presentation_plot_type, sub_palettes, config, sub, saveData = FALSE, pdfGraphs) {
 
+  # saves data for each figure in new workbook sheet, but only if pdfGraphs = FALSE, otherwise data will already be written in pdfGraphs function
+  if (saveData & pdfGraphs == FALSE) {
+    data_wb <- createWorkbook()
+  }
+  
   # Make sure plot type is sound; abort if not named correctly
   if(approved_plot_type(presentation_plot_type)) {
     data_processing_fn = get(paste(presentation_plot_type, "_figure_specific_data_processing", sep = ""))
@@ -154,7 +159,10 @@ png_plots <- function(overall_path, df, presentation_title, presentation_plot_ty
 
         if (approved_facet_type(dat_filtered) & check_dat_before_plotting(dat_filtered)) {
 
-          write.xlsx(dat_filtered, paste(overall_path, presentation_title, "_", presentation_plot_type, sub, ".xlsx",sep=""))
+          if (saveData & pdfGraphs == FALSE) {
+            addWorksheet(data_wb, figure_num)
+            writeData(wb = data_wb, sheet = as.character(figure_num), x = dat_filtered)
+          }
 
           plot_fn = get_plot_fn(presentation_plot_type, unique(dat_filtered$type))
           png(filename=paste(overall_path, presentation_plot_type, "/",
@@ -164,6 +172,11 @@ png_plots <- function(overall_path, df, presentation_title, presentation_plot_ty
           plot = call_plot_fn(dat_filtered, figure, selected, sub_palettes, presentation_plot_type, plot_fn)
 
           print(plot)
+          
+          if (saveData & pdfGraphs == FALSE) {
+            saveWorkbook(data_wb, file = paste(overall_path, presentation_title, "_", presentation_plot_type, sub, ".xlsx",sep=""), overwrite = TRUE)
+          }
+          
           dev.off()
         }
       }
