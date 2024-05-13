@@ -49,3 +49,84 @@ model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timese
 model
 ```
 
+
+---
+
+# Final BTR Tables and Figures
+
+
+```{r}
+
+tar_load(c(projections_all_sm, config))
+
+
+```
+
+## Value Summary Tables
+
+```{r create df}
+gas_df <- create_summary_table('gas','wm', projections_all_sm, config)
+sector_df <- create_summary_table('usproj_sector', 'wm', projections_all_sm, config)
+```
+
+```{r gas summary}
+gas_table <- create_html_table(gas_df, 'Gas',config)
+gas_table
+```
+
+```{r sector summary}
+sector_table <- create_html_table(sector_df, 'Sector',config)
+sector_table
+```
+
+## 2005 Percent Change Table
+
+```{r, pct change by gas}
+pct_change_table_gas <- create_pct_change_table('gas', 'wm', projections_all_sm, config)
+pct_change_html_gas <- create_pct_change_html_table(pct_change_table_gas, 'Gas', config)
+pct_change_html_gas
+```
+
+```{r, pct change by sector}
+pct_change_table_sector <- create_pct_change_table('usproj_sector', 'wm', projections_all_sm, config)
+pct_change_html_sector <- create_pct_change_html_table(pct_change_table_sector, 'Sector', config)
+pct_change_html_sector
+```
+
+## BTR Main Plot
+
+```{r data}
+net_ghg = projections_all_sm %>%
+  group_by(proj_name, grouping, year) %>%
+  summarise(sum = sum(sum)) %>%
+  filter(year %in% config$fives)
+
+ghgi = net_ghg %>% filter(proj_name == "ghgi")
+proj_no_connect = net_ghg %>% 
+  filter(proj_name != "ghgi")
+
+connect = ghgi[ghgi$year == 2022,]$sum
+baseline = ghgi[ghgi$year == 2005,]$sum
+
+proj_connect = proj_no_connect %>% 
+  group_by(proj_name) %>%
+  slice(1) %>%
+  mutate(
+    year = 2022,
+    sum = ghgi$sum[ghgi$year == 2022])
+
+proj = rbind(proj_no_connect, proj_connect) %>%
+  mutate(year = as.numeric(year))
+
+ndc_targets = data.frame(
+  year = c(2020, 2025, 2030),
+  ymin = c((baseline * (1-.169)), (baseline * (1-.26)), (baseline * (1-.50))),
+  ymax = c((baseline * (1-.171)), (baseline * (1-.28)), (baseline * (1-.52))),
+  grouping = c("17% Below 2005","26-28% Below 2005","50-52% Below 2005")
+)
+```
+
+```{r proj function}
+projections = br_project(ghgi, proj, targets = ndc_targets)
+projections
+```

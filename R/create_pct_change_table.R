@@ -74,7 +74,7 @@ create_pct_change_table <- function(category, grouping, projections_all_sm, conf
   
   
   if(category == 'gas'){
-    order_index <- c(2,1,4,3,5,6)
+    order_index <- c(2,1,4,3,6,7,5)
     processed_datasets <- list()
     for(gas in config$gas_order){
       
@@ -95,7 +95,7 @@ create_pct_change_table <- function(category, grouping, projections_all_sm, conf
     
   } else if(category == 'usproj_sector'){
     processed_datasets <- list()
-    order_index <- c(2,5,3,1,6,4)
+    order_index <- c(2,5,3,1,5)
     for(sector in config$sector_order){
       
       cat_pct_change <- summary %>%

@@ -66,15 +66,15 @@ ghgi = net_ghg %>% filter(proj_name == "ghgi")
 proj_no_connect = net_ghg %>% 
   filter(proj_name != "ghgi")
 
-connect = ghgi[ghgi$year == 2021,]$sum
+connect = ghgi[ghgi$year == 2022,]$sum
 baseline = ghgi[ghgi$year == 2005,]$sum
 
 proj_connect = proj_no_connect %>% 
   group_by(proj_name) %>%
   slice(1) %>%
   mutate(
-    year = 2021,
-    sum = ghgi$sum[ghgi$year == 2021])
+    year = 2022,
+    sum = ghgi$sum[ghgi$year == 2022])
 
 proj = rbind(proj_no_connect, proj_connect) %>%
   mutate(year = as.numeric(year))

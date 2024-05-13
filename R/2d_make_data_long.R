@@ -38,7 +38,7 @@ make_data_long <- function(data_long_read, settings) {
 
 make_usproj_data_long <- function(usproj_data_loaded, settings) {
   
-  usproj_data_long <- usproj_data_loaded %>%
+  usproj_data_long_all_lulucf <- usproj_data_loaded %>%
     tidyr::pivot_longer(
       cols = num_range(prefix = "", range = 1990:2100),
       names_to = "year",
@@ -60,6 +60,24 @@ make_usproj_data_long <- function(usproj_data_loaded, settings) {
       region,
       datasrc
     )
+  
+  # TODO: Need to figure out whether to sum Non-CO2 gases in LULUCF Sink -
+  #       currently netting out all gases.
+  
+  usproj_lulucf_co2 <- usproj_data_long_all_lulucf %>%
+    filter(usproj_sector == 'LULUCF') %>% # gas == 'CO2'
+    mutate(usproj_category = 'LULUCF Sink',
+           gas = 'LULUCF Sink',
+           usproj_sector = 'LULUCF Sink',
+           usproj_source = 'LULUCF Sink',
+           usproj_subsource = 'LULUCF Sink') %>% 
+    group_by(across(c(-value))) %>%
+    summarise(value = sum(value),.groups = 'drop') %>%
+    select(names(usproj_data_long_all_lulucf))
+  
+  usproj_data_long <- usproj_data_long_all_lulucf %>% 
+    filter(!usproj_sector == 'LULUCF') %>% # gas == 'CO2'
+    rbind(usproj_lulucf_co2)
   
   # save off data_long data to csv
   outputpath = paste0("output/",settings$version)

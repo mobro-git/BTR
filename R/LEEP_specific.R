@@ -47,7 +47,7 @@ dot_plots_sens = function(plot_type, config, emf_data_long, figmap, figure_num, 
   fig = print_graph(plot_type, config, emf_data_long, figmap, figure_num, reg)
   # update the axis range
   fig = fig + scale_y_continuous(limits = c(ymin, ymax)) +
-    #scale_x_continuous(breaks = c(2005, 2021, 2025, 2030, 2035), labels = c(2005, 2021, 2025, 2030, 2035)) +
+    #scale_x_continuous(breaks = c(2005, 2022, 2025, 2030, 2035), labels = c(2005, 2022, 2025, 2030, 2035)) +
     scale_alpha(range = c(0.6, 1), guide = "none") +
     annotate("text", x = historic_coord[1], y = historic_coord[2], label = "Historic", color = "black", alpha = 1) +
     annotate("text", x = iralow_coord[1], y = iralow_coord[2], label = "IRA.Low", color = "#A1A1A1", alpha = 1) +
@@ -284,7 +284,7 @@ sens_dot_plot = function(dta, title, figmap, config, far_left = FALSE, single = 
 
 
 # function for spaghetti plots + dot plots
-dot_plots = function(plot_type, config, emf_data_long, figmap, figure_num, reg, ymin, ymax, plot_title, metric, labels = FALSE, hist_year = 2021, historic_coord = c(0,0), preira_coord = c(0,0), ira_coord = c(0,0), ylab = "") {
+dot_plots = function(plot_type, config, emf_data_long, figmap, figure_num, reg, ymin, ymax, plot_title, metric, labels = FALSE, hist_year = 2022, historic_coord = c(0,0), preira_coord = c(0,0), ira_coord = c(0,0), ylab = "") {
   subpalettes = create_subpalettes(figmap, config)
 
   # make the spagetti plot
@@ -468,8 +468,8 @@ lts_coneplot_with_dots = function(config, data, figmap, lts_fignum, leep_fignum,
   # make the LTS cone plot
   fig1 = print_graph("cone_uncertainty", config, data, figmap, lts_fignum, region) +
     scale_y_continuous(limits = c(ymin, ymax)) +
-    # scale_x_continuous(breaks = c(2005, 2021, 2030, 2035, 2050), labels = c(2005, 2021, 2030, 2035, 2050)) +
-    scale_x_continuous(breaks = c(2005, 2021, 2030, 2035), labels = c(2005, 2021, 2030, 2035)) +
+    # scale_x_continuous(breaks = c(2005, 2022, 2030, 2035, 2050), labels = c(2005, 2022, 2030, 2035, 2050)) +
+    scale_x_continuous(breaks = c(2005, 2022, 2030, 2035), labels = c(2005, 2022, 2030, 2035)) +
     #again
     theme(axis.text.x = element_text(angle = 45, hjust = 1), axis.ticks = element_blank(), plot.title = element_text(hjust = 0.5, size = titlesize))
 
@@ -590,7 +590,7 @@ emis_stack = function(dta, title, figmap, config, econwide = FALSE) {
     bar_code +
     #geom_text(aes(x = year, y = value, label = round(value, 0), fill = variable_rename), size = 2.5, position = position_stack(vjust = 0.5, reverse = FALSE)) +
     #geom_text(data = totals, aes(x = year, y = value, label = round(value, 0)), vjust = -0.4, stat = "identity", size = 2.5) +
-    scale_x_continuous(breaks = c(2005, 2021), labels = c(2005, 2021)) +
+    scale_x_continuous(breaks = c(2005, 2022), labels = c(2005, 2022)) +
     scale_y_continuous(expand = c(0,0), limits = c(0,6200),labels = scales::comma) +
     labs(y = expression(paste("End-Use Emissions (Mt C", O[2], "/yr)")), title = title) +
     # expression(paste("Economy-Wide C", O[2])),
@@ -635,7 +635,7 @@ clean_supplemental_data = function(df, fig_no) {
   return(df_clean)
 }
 
-dot_plots_but_with_arrows = function(plot_type, config, emf_data_long, figmap, figure_num, reg, ymin, ymax, plot_title, metric, labels = FALSE, hist_year = 2021, historic_coord = c(0,0), preira_coord = c(0,0), ira_coord = c(0,0)) {
+dot_plots_but_with_arrows = function(plot_type, config, emf_data_long, figmap, figure_num, reg, ymin, ymax, plot_title, metric, labels = FALSE, hist_year = 2022, historic_coord = c(0,0), preira_coord = c(0,0), ira_coord = c(0,0)) {
   subpalettes = create_subpalettes(figmap, config)
 
   # make the spagetti plot
@@ -854,7 +854,7 @@ summary_tables = function(table_no, var, suffix, drop_mod = NULL, drop_datasrc =
   var_df = clean_data %>% filter(variable == var)
 
   baseline_2005 = (var_df %>% filter(year == 2005 & model == "EPA-GHGI"))$value
-  baseline_2021 = (var_df %>% filter(year == 2021 & model == "EPA-GHGI"))$value
+  baseline_2022 = (var_df %>% filter(year == 2022 & model == "EPA-GHGI"))$value
 
   var_unit = unique(var_df$unit)
 
@@ -868,19 +868,19 @@ summary_tables = function(table_no, var, suffix, drop_mod = NULL, drop_datasrc =
         scenario %in% c("IRA", "No IRA"))
 
   # TODO: update to 2022 when inventory is updated
-  dup_2021 = mod %>%
+  dup_2022 = mod %>%
     select(model,scenario,unit,region,variable) %>%
     distinct() %>%
     mutate(
-      year = 2021,
+      year = 2022,
       datasrc = "EPA-GHGI",
-      value = baseline_2021
+      value = baseline_2022
     ) %>%
     relocate_standard_col_order()
 
-  df = rbind(mod, dup_2021)
+  df = rbind(mod, dup_2022)
 
-  year_range <- seq.int(from = 2021, to = 2035)
+  year_range <- seq.int(from = 2022, to = 2035)
 
   interpolation = df %>%
     select(-variable, -datasrc, -region, -unit) %>%
@@ -900,8 +900,8 @@ summary_tables = function(table_no, var, suffix, drop_mod = NULL, drop_datasrc =
     filter(year >= 2024) %>%
     mutate(diff_2005 = baseline_2005 - value,
            per_diff_2005 = (diff_2005 / baseline_2005) * 100) %>%
-    mutate(diff_2021 = baseline_2021 - value,
-           per_diff_2021 = (diff_2021 / baseline_2021) * 100) %>%
+    mutate(diff_2022 = baseline_2022 - value,
+           per_diff_2022 = (diff_2022 / baseline_2022) * 100) %>%
     mutate_if(is.numeric, round, 1) %>%
     mutate(year = as.character(year))
 
@@ -914,9 +914,9 @@ summary_tables = function(table_no, var, suffix, drop_mod = NULL, drop_datasrc =
       min_diff_2005 = round(min(per_diff_2005),1),
       max_diff_2005 = round(max(per_diff_2005),1),
       median_diff_2005 = round(median(per_diff_2005),1),
-      min_diff_2021 = round(min(per_diff_2021),1),
-      max_diff_2021 = round(max(per_diff_2021),1),
-      median_diff_2021 = round(median(per_diff_2021),1)
+      min_diff_2022 = round(min(per_diff_2022),1),
+      max_diff_2022 = round(max(per_diff_2022),1),
+      median_diff_2022 = round(median(per_diff_2022),1)
     ) %>%
     ungroup()
 
@@ -959,11 +959,11 @@ summary_tables = function(table_no, var, suffix, drop_mod = NULL, drop_datasrc =
   colnames(table2) = colnames
 
   table3 = stats_noira %>%
-    select(year, median_diff_2005, min_diff_2005, max_diff_2005, median_diff_2021, min_diff_2021, max_diff_2021)
+    select(year, median_diff_2005, min_diff_2005, max_diff_2005, median_diff_2022, min_diff_2022, max_diff_2022)
   colnames(table3) = colnames
 
   table4 = stats_ira %>%
-    select(year, median_diff_2005, min_diff_2005, max_diff_2005, median_diff_2021, min_diff_2021, max_diff_2021)
+    select(year, median_diff_2005, min_diff_2005, max_diff_2005, median_diff_2022, min_diff_2022, max_diff_2022)
   colnames(table4) = colnames
 
   # ft_table1 = tableit(
@@ -998,29 +998,29 @@ summary_tables = function(table_no, var, suffix, drop_mod = NULL, drop_datasrc =
 
   # ft_table3 = tableit(
   #   table = table3,
-  #   table_name = as_paragraph("% Difference in ",suffix," from 2005 and 2021 for the No IRA scenario"),
-  #   col_names = c("","2005","2021")
+  #   table_name = as_paragraph("% Difference in ",suffix," from 2005 and 2022 for the No IRA scenario"),
+  #   col_names = c("","2005","2022")
   # )
   # ft_table3
   gt_table3 = tablegt(
     table = table3,
-    table_name = paste0("Difference in ", suffix, " from 2005 and 2021 for the No IRA scenario"),
-    col_names = c("","2005","2021"),
+    table_name = paste0("Difference in ", suffix, " from 2005 and 2022 for the No IRA scenario"),
+    col_names = c("","2005","2022"),
     num_decimals = 1
   )
   gt_table3
 
   # ft_table4 = tableit(
   #   table = table4,
-  #   table_name = as_paragraph("% Difference in ",suffix," from 2005 and 2021 for the IRA scenario"),
-  #   col_names = c("","2005","2021")
+  #   table_name = as_paragraph("% Difference in ",suffix," from 2005 and 2022 for the IRA scenario"),
+  #   col_names = c("","2005","2022")
   # )
   # ft_table4
 
   gt_table4 = tablegt(
     table = table4,
-    table_name = paste0("Difference in ", suffix, " from 2005 and 2021 for the IRA scenario"),
-    col_names = c("","2005","2021"),
+    table_name = paste0("Difference in ", suffix, " from 2005 and 2022 for the IRA scenario"),
+    col_names = c("","2005","2022"),
     num_decimals = 1
   )
   gt_table4
@@ -1279,11 +1279,11 @@ spg_clean = function(ts_map_ID, drop, histsrc, config, clean_data, figmap_leep_t
         T ~ 1
       )
     ) %>%
-    filter(year <= 2021 &
+    filter(year <= 2022 &
              model == histsrc |
-             year >= 2021 & scenario != "Historic") %>%
+             year >= 2022 & scenario != "Historic") %>%
     pivot_wider(names_from = year, values_from = value) %>%
-    mutate(`2021` = case_when(T ~ `2021`[model == histsrc])) %>%
+    mutate(`2022` = case_when(T ~ `2022`[model == histsrc])) %>%
     pivot_longer(cols = starts_with("20"),
                  names_to = "year",
                  values_to = "value") %>%
@@ -1318,7 +1318,7 @@ spg2 = function(df, title, yname, gd, ymin, ymax, ybreaks, yax_format, annotate,
     scale_subpalette(subpalettes, "Emissions|CO2|Energy|Demand|Industry") +
     theme_custom() +
     scale_linetype_manual(values = c("Historic" = "solid", "IRA" = "solid", "No IRA" = "longdash"))+
-    scale_x_continuous(breaks = c(2005, 2021, 2025, 2030, 2035)) +
+    scale_x_continuous(breaks = c(2005, 2022, 2025, 2030, 2035)) +
     scale_y_continuous(limits = c(ymin, ymax), breaks = ybreaks, labels = yax_format) +
     scale_alpha(range = c(1, 1), guide = F) +
     labs(title = title,
@@ -1359,7 +1359,7 @@ spg2_2010 = function(df, title, yname, gd, ymin, ymax, ybreaks, yax_format, anno
     scale_subpalette(subpalettes, "Emissions|CO2|Energy|Demand|Industry") +
     theme_custom() +
     scale_linetype_manual(values = c("Historic" = "solid", "IRA" = "solid", "No IRA" = "longdash"))+
-    scale_x_continuous(breaks = c(2010, 2021, 2025, 2030, 2035)) +
+    scale_x_continuous(breaks = c(2010, 2022, 2025, 2030, 2035)) +
     scale_y_continuous(limits = c(ymin, ymax), breaks = ybreaks, labels = yax_format) +
     scale_alpha(range = c(1, 1), guide = F) +
     labs(title = title,
@@ -1439,11 +1439,11 @@ spg3 = function(df, title, yname, gd, ymin, ymax, ybreaks, yax_format, annotate,
 #         T ~ 1
 #       )
 #     ) %>%
-#     filter(year <= 2021 &
+#     filter(year <= 2022 &
 #              model == histsrc |
-#              year >= 2021 & scenario != "Historic") %>%
+#              year >= 2022 & scenario != "Historic") %>%
 #     pivot_wider(names_from = year, values_from = value) %>%
-#     mutate(`2021` = case_when(T ~ `2021`[model == histsrc])) %>%
+#     mutate(`2022` = case_when(T ~ `2022`[model == histsrc])) %>%
 #     pivot_longer(cols = starts_with("20"),
 #                  names_to = "year",
 #                  values_to = "value") %>%
@@ -1453,7 +1453,7 @@ spg3 = function(df, title, yname, gd, ymin, ymax, ybreaks, yax_format, annotate,
 #   figure = ggplot(df, aes(year,value, color = scenario, group = interaction(model, scenario))) + geom_line(aes(alpha = alpha), size = 0.5) +
 #     scale_subpalette(subpalettes, "Emissions|CO2|Energy|Demand|Industry") +
 #     theme_custom() +
-#     scale_x_continuous(breaks = c(2005, 2021, 2025, 2030, 2035)) +
+#     scale_x_continuous(breaks = c(2005, 2022, 2025, 2030, 2035)) +
 #     scale_y_continuous(limits = c(ymin, ymax), breaks = ybreaks, labels = yax) +
 #     scale_alpha(range = c(1, 1), guide = F) +
 #     labs(title = title,
@@ -1790,7 +1790,7 @@ pd = function(ts_map_ID, title, yname, gd, drop) {
     "United States"
   ) %>%
     filter(!scenario == "No IRA") %>%
-    filter(year > 2021) %>%
+    filter(year > 2022) %>%
     filter(!model %in% drop) %>%
     group_by(model, year, scenario, variable_rename) %>%
     summarize(value= sum(value)) %>%
@@ -1802,13 +1802,13 @@ pd = function(ts_map_ID, title, yname, gd, drop) {
     group_by(year) %>%
     summarize(median = median(value))
 
-  #Set 2021 value to zero for all models
+  #Set 2022 value to zero for all models
   hist <- df %>%
     group_by(model) %>%
     slice(1) %>%
     mutate(scenario = "Historic",
            value = 0,
-           year = 2021)
+           year = 2022)
 
   #Stitch it back together with main data
   df <- rbind(df, hist)
@@ -1837,7 +1837,7 @@ pd = function(ts_map_ID, title, yname, gd, drop) {
       color = model,
       linetype = model),
       size = 0.75) +
-    geom_point(aes(x = 2021, y = 0), color = "black") +
+    geom_point(aes(x = 2022, y = 0), color = "black") +
     geom_point(
       data = medians,
       aes(x = year, y = median),
@@ -1898,7 +1898,7 @@ pd = function(ts_map_ID, title, yname, gd, drop) {
            panel.spacing.x = unit(4, "mm"),
            legend.position = gd
     ) +
-    scale_x_continuous(breaks = c(2021, 2025, 2030, 2035))
+    scale_x_continuous(breaks = c(2022, 2025, 2030, 2035))
   return(list(figure = figure,
               pd_df = df))
 }
@@ -1933,7 +1933,7 @@ ad = function(diff_ID, title, metric, gd, drop) {
                        diff_ID,
                        "United States") %>%
     filter(!model %in% drop)%>%
-    filter(year > 2021) %>%
+    filter(year > 2022) %>%
     group_by(model, year, scenario, variable_rename) %>%
     summarize(diff = sum(diff))%>%
     filter(year == 2025 | year == 2030 | year == 2035)
@@ -1948,7 +1948,7 @@ ad = function(diff_ID, title, metric, gd, drop) {
     slice(1) %>%
     mutate(scenario = "Historic",
            diff = 0,
-           year = 2021)
+           year = 2022)
 
   df <- rbind(df, hist)
 
@@ -1963,7 +1963,7 @@ ad = function(diff_ID, title, metric, gd, drop) {
                   linetype = model
                 ),
                 size = 0.75) +
-      geom_point(aes(x = 2021, y = 0), color = "black") +
+      geom_point(aes(x = 2022, y = 0), color = "black") +
       geom_point(
         data = medians,
         aes(x = year, y = median),
@@ -2024,7 +2024,7 @@ ad = function(diff_ID, title, metric, gd, drop) {
              panel.spacing.x = unit(4, "mm"),
              legend.position = gd
       ) +
-      scale_x_continuous(breaks = c(2021, 2025, 2030, 2035)) +
+      scale_x_continuous(breaks = c(2022, 2025, 2030, 2035)) +
       scale_y_continuous(labels = scales::comma)
   } else {
     figure = ggplot() +
@@ -2037,7 +2037,7 @@ ad = function(diff_ID, title, metric, gd, drop) {
                   linetype = model
                 ),
                 size = 0.75) +
-      geom_point(aes(x = 2021, y = 0), color = "black") +
+      geom_point(aes(x = 2022, y = 0), color = "black") +
       geom_point(
         data = medians,
         aes(x = year, y = median),
@@ -2084,7 +2084,7 @@ ad = function(diff_ID, title, metric, gd, drop) {
         panel.spacing.x = unit(4, "mm"),
         legend.position = gd
       ) +
-      scale_x_continuous(breaks = c(2021, 2025, 2030, 2035))+
+      scale_x_continuous(breaks = c(2022, 2025, 2030, 2035))+
       scale_y_continuous(labels = scales::comma)
   }
   return(list(figure = figure,
@@ -2105,7 +2105,7 @@ delta = function(pd_map_ID, drop, config, clean_data, figmap_leep_timeseries) {
     "United States"
   ) %>%
     filter(!scenario == "No IRA") %>%
-    filter(year > 2021) %>%
+    filter(year > 2022) %>%
     filter(!model %in% drop) %>%
     group_by(model, year, scenario, variable_rename) %>%
     summarize(value= sum(value))
@@ -2115,27 +2115,27 @@ delta = function(pd_map_ID, drop, config, clean_data, figmap_leep_timeseries) {
     summarize(median = median(value))
   med_hist = medians %>%
     filter(year == 2030) %>%
-    mutate(year = 2021) %>%
+    mutate(year = 2022) %>%
     mutate(median = 0)
 
   medians = rbind(medians, med_hist)
 
   medians = medians %>%
-    filter(year %in% c(2021, 2025, 2030, 2035))
+    filter(year %in% c(2022, 2025, 2030, 2035))
 
-  #Set 2021 value to zero for all models
+  #Set 2022 value to zero for all models
   hist <- df %>%
     group_by(model) %>%
     slice(1) %>%
     mutate(scenario = "IRA",
            value = 0,
-           year = 2021)
+           year = 2022)
 
   #Stitch it back together with main data
   df <- rbind(df, hist)
 
   df = df %>%
-    filter(year %in% c(2021, 2025, 2030, 2035))
+    filter(year %in% c(2022, 2025, 2030, 2035))
 
   figure = ggplot() +
     geom_hline(aes(yintercept=0), color = "#9E9E9E", size = 0.75) +
@@ -2146,7 +2146,7 @@ delta = function(pd_map_ID, drop, config, clean_data, figmap_leep_timeseries) {
       color = scenario,
       alpha = 1),
       size = 0.75) +
-    #    geom_point(aes(x = 2021, y = 0), color = "black") +
+    #    geom_point(aes(x = 2022, y = 0), color = "black") +
     geom_line(
       data = medians,
       aes(x = year, y = median),
@@ -2163,7 +2163,7 @@ delta = function(pd_map_ID, drop, config, clean_data, figmap_leep_timeseries) {
       panel.spacing.x = unit(4, "mm"),
       legend.position = "none"
     ) +
-    scale_x_continuous(breaks = c(2021, 2025, 2030, 2035)) +
+    scale_x_continuous(breaks = c(2022, 2025, 2030, 2035)) +
     scale_y_continuous(name = NULL, sec.axis = sec_axis(~., name = expression("% Difference from No IRA"))) +
     guides(y = "none")
   return(list(figure = figure, medians = medians, df = df))
@@ -2205,23 +2205,23 @@ four_corners = function(title, ts_map_ID, pd_map_ID, ad_map_ID, drop, histsrc, m
   ) %>%
     filter(!model %in% drop) %>%
     filter(!datasrc %in% drop)%>%
-    filter(year >= 2021) %>%
-    filter(year <= 2021 &
+    filter(year >= 2022) %>%
+    filter(year <= 2022 &
              model == histsrc |
-             year > 2021 & scenario != "Historic") %>%
+             year > 2022 & scenario != "Historic") %>%
     group_by(model, scenario, year, variable_rename) %>%
     summarize(value = sum(value)) %>%
     pivot_wider(names_from = year, values_from = value)
 
   ts_df = ts_df %>%
-    mutate(`2021` = case_when(T ~ ts_df$`2021`[ts_df$model == histsrc])) %>%
+    mutate(`2022` = case_when(T ~ ts_df$`2022`[ts_df$model == histsrc])) %>%
     pivot_longer(cols = starts_with("20"),
                  names_to = "year",
                  values_to = "value") %>%
     filter(!is.na(value)) %>%
     mutate(year = as.numeric(year)) %>%
     mutate(figure_num = fig_no)%>%
-    filter(year == 2021 | year == 2025 | year == 2030 | year == 2035)
+    filter(year == 2022 | year == 2025 | year == 2030 | year == 2035)
 
   noIRAmedians = ts_df[ts_df$scenario == "No IRA",] %>%
     filter(year == 2030 | year == 2035) %>%
@@ -2252,7 +2252,7 @@ four_corners = function(title, ts_map_ID, pd_map_ID, ad_map_ID, drop, histsrc, m
                                                     "RIO-REPEAT",
                                                     "USREP-ReEDS")) +
       theme_custom() +
-      scale_x_continuous(breaks = c(2021, 2025, 2030, 2035)) +
+      scale_x_continuous(breaks = c(2022, 2025, 2030, 2035)) +
       scale_y_continuous(limits = c(ymin, ymax), breaks = brk, labels = scales::comma) +
       scale_linetype_manual(values = c("EPS-EI" = "solid",
                                        "GCAM-CGS" = "solid",
@@ -2291,7 +2291,7 @@ four_corners = function(title, ts_map_ID, pd_map_ID, ad_map_ID, drop, histsrc, m
               legend.position = "right",
               plot.title = element_text(hjust = 0.5),
               axis.text.x = element_text(angle = 45, hjust = 1)) +
-      geom_point(aes(x = 2021, y = ts_df$value[ts_df$year == 2021][1]), color = "black") +
+      geom_point(aes(x = 2022, y = ts_df$value[ts_df$year == 2022][1]), color = "black") +
       geom_point(
         data = noIRAmedians,
         aes(x = year, y = median),
@@ -2317,7 +2317,7 @@ four_corners = function(title, ts_map_ID, pd_map_ID, ad_map_ID, drop, histsrc, m
                                                     "RIO-REPEAT",
                                                     "USREP-ReEDS")) +
       theme_custom() +
-      scale_x_continuous(breaks = c(2021, 2025, 2030, 2035)) +
+      scale_x_continuous(breaks = c(2022, 2025, 2030, 2035)) +
       scale_y_continuous(limits = c(ymin, ymax), breaks = brk, labels = scales::comma) +
       labs(title = "IRA",
            y = expression(paste("Generation (TWh)")),
@@ -2357,7 +2357,7 @@ four_corners = function(title, ts_map_ID, pd_map_ID, ad_map_ID, drop, histsrc, m
               legend.position = "right",
               plot.title = element_text(hjust = 0.5),
               axis.text.x = element_text(angle = 45, hjust = 1)) +
-      geom_point(aes(x = 2021, y = ts_df$value[ts_df$year == 2021][1]), color = "black") +
+      geom_point(aes(x = 2022, y = ts_df$value[ts_df$year == 2022][1]), color = "black") +
       geom_point(
         data = IRAmedians,
         aes(x = year, y = median),
@@ -2385,7 +2385,7 @@ four_corners = function(title, ts_map_ID, pd_map_ID, ad_map_ID, drop, histsrc, m
                                                     "RIO-REPEAT",
                                                     "USREP-ReEDS")) +
       theme_custom() +
-      scale_x_continuous(breaks = c(2021, 2025, 2030, 2035)) +
+      scale_x_continuous(breaks = c(2022, 2025, 2030, 2035)) +
       scale_y_continuous(limits = c(ymin, ymax), breaks = brk, labels = scales::comma) +
       scale_linetype_manual(values = c("EPS-EI" = "solid",
                                        "GCAM-CGS" = "solid",
@@ -2424,7 +2424,7 @@ four_corners = function(title, ts_map_ID, pd_map_ID, ad_map_ID, drop, histsrc, m
               legend.position = "right",
               plot.title = element_text(hjust = 0.5),
               axis.text.x = element_text(angle = 45, hjust = 1)) +
-      geom_point(aes(x = 2021, y = ts_df$value[ts_df$year == 2021][1]), color = "black") +
+      geom_point(aes(x = 2022, y = ts_df$value[ts_df$year == 2022][1]), color = "black") +
       geom_point(
         data = noIRAmedians,
         aes(x = year, y = median),
@@ -2450,7 +2450,7 @@ four_corners = function(title, ts_map_ID, pd_map_ID, ad_map_ID, drop, histsrc, m
                                                     "RIO-REPEAT",
                                                     "USREP-ReEDS")) +
       theme_custom() +
-      scale_x_continuous(breaks = c(2021, 2025, 2030, 2035)) +
+      scale_x_continuous(breaks = c(2022, 2025, 2030, 2035)) +
       scale_y_continuous(limits = c(ymin, ymax), breaks = brk, labels = scales::comma) +
       labs(title = "IRA",
            y = expression(paste("Emissions (Mt C",O[2],"/yr)")),
@@ -2490,7 +2490,7 @@ four_corners = function(title, ts_map_ID, pd_map_ID, ad_map_ID, drop, histsrc, m
               legend.position = "right",
               plot.title = element_text(hjust = 0.5),
               axis.text.x = element_text(angle = 45, hjust = 1)) +
-      geom_point(aes(x = 2021, y = ts_df$value[ts_df$year == 2021][1]), color = "black") +
+      geom_point(aes(x = 2022, y = ts_df$value[ts_df$year == 2022][1]), color = "black") +
       geom_point(
         data = IRAmedians,
         aes(x = year, y = median),

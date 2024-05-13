@@ -134,11 +134,11 @@ add_historical_data <- function(ghgi_cat, projections_all) {
 
 gen_proj_all_sm <- function(projections_ghgi, settings){
   
-  projections_all_sm <- projections_ghgi %>% 
+  projections_all_sm_v1 <- projections_ghgi %>% 
     group_by(proj_name, grouping, gas, usproj_sector, year) %>% 
     summarise(sum = sum(value),.groups='drop')
   
-  projections_all_sm <- projections_all_sm %>%
+  projections_all_sm <- projections_all_sm_v1 %>%
     group_by(gas, usproj_sector) %>%
     mutate(pct_change_05 = round((sum/sum[year==2005]-1),2)) %>% 
     ungroup()

@@ -49,7 +49,7 @@ br_project = function(ghgi, proj, targets = NULL, legend_position = c(0.15, 0.2)
          color = "",
          fill = "") +
     scale_y_continuous(limits = c(0, 7000), expand = c(0, 0)) +
-    scale_x_continuous(breaks = c(2005, 2010, 2015, 2021, 2025, 2030, 2035), expand = c(0,0)) +
+    scale_x_continuous(breaks = c(2005, 2010, 2015, 2022, 2025, 2030, 2035), expand = c(0,0)) +
     guides(fill = guide_legend(nrow = 4, byrow = T)) +
     geom_hline(aes(yintercept = 0)) +
     theme_btr() +

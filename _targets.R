@@ -34,7 +34,7 @@ tar_plan(
     model_wm = c("GCAM","NEMS","USREP-ReEDS"),
     
     # scenarios
-    ghgi_scen = "wm_v1", # Set usproj scenario to pull ghgi data
+    ghgi_scen = "wm", # Set usproj scenario to pull ghgi data
     scen_wm = c("wm"),
     scen_wm_ira = c("wm","leep_IRA"),
     
@@ -43,8 +43,8 @@ tar_plan(
     usa = "United States",
     
     # years
-    base_year = 2021, # TODO: update to 2022 when we get updated inventory
-    fives = c(seq(2005,2021,by = 1),seq(2025,2040,by = 5)),
+    base_year = 2022, 
+    fives = c(seq(2005,2022,by = 1),seq(2025,2040,by = 5)),
     fives_sumtab = c(seq(2005,2020,by = 5),2022,seq(2025,2040,by = 5)),
     annual = c(seq(2005,2040,by = 1)),
     
@@ -57,11 +57,11 @@ tar_plan(
     
     annual_1990 = c(seq(1990,2040,by = 1)),
     annual_2010 = c(seq(2010,2040,by = 1)),
-    table = c(2005, 2010, 2015, 2020, 2021, 2025, 2030 , 2035, 2040),
+    table = c(2005, 2010, 2015, 2020, 2022, 2025, 2030 , 2035, 2040),
   
     # ordering
-    gas_order = c("CO2", "CH4", "N2O", "HFCs", "PFCs", "SF6"), #TODO: Make sure NF3 is included in USPROJ data>>>>>>> Stashed changes
-    sector_order = c("Energy","Transportation","IPPU","Agriculture","Waste","LULUCF")
+    gas_order = c("CO2", "CH4", "N2O", "HFCs", "PFCs", "SF6", "NF3"), #TODO: Make sure NF3 is included in USPROJ data>>>>>>> Stashed changes
+    sector_order = c("Energy","Transportation","IPPU","Agriculture","Waste")#,"LULUCF") # Uncomment if not netting out all LULUCF emissions
   ),
 
   ##### Template + Crosswalks ---------------------------------------------------
@@ -127,7 +127,7 @@ tar_plan(
 
   data_long = make_data_long(data_loaded, settings),
 
-  data_long_clean = make_data_long_clean(data_long,
+  data_long_clean = make_data_long_clean(data_long, # TODO: Figure out why summation variables have high run time
                                          ratio_var,
                                          summation_var,
                                          cumulative_var,
@@ -143,10 +143,10 @@ tar_plan(
     map_dfr(usproj_files, ~read_usproj_data_file(.x, crosswalk_usproj_csv)) %>%
       arrange_standard()},
   
-  usproj_data_long_all = make_usproj_data_long(usproj_data_loaded, settings),
+  usproj_data_long_all = make_usproj_data_long(usproj_data_loaded, settings), 
   
   # usproj w/o historical data
-  usproj_data_long = gen_usproj_projections(usproj_data_long_all, config),
+  usproj_data_long = gen_usproj_projections(usproj_data_long_all, config), 
   
   # _ghgi data ----
   ghgi_cat = gen_usproj_ghgi(usproj_data_long_all, config),
@@ -178,7 +178,7 @@ tar_plan(
   
   # _complete projections ----
   projections_all = map_proj_name_v2(usproj_all, crosswalk_compilation, config, settings),
-  projections_ghgi = add_historical_data(ghgi_cat, projections_all), # bind ghgi historical data to projectiosn
+  projections_ghgi = add_historical_data(ghgi_cat, projections_all), # bind ghgi historical data to projections
   projections_all_sm = gen_proj_all_sm(projections_ghgi, settings), # gas and sector sums for each projection
   
   # _summary table breakouts ----
@@ -247,7 +247,7 @@ tar_plan(
              params = list(mode = "targets")),
   
   nrgco2_sb = create_graph("nrgco2", "stacked_bar", config, settings, data_long_clean, figmap_nrgco2_stackbar, pngGraphs = TRUE),
-  nrgco2_db = create_graph("nrgco2", "diff_bar", config, settings, data_long_clean, figmap_nrgco2_diffbar, pngGraphs = TRUE), 
+  nrgco2_db = create_graph("nrgco2", "diff_bar", config, settings, data_long_clean, figmap_nrgco2_diffbar, pngGraphs = TRUE), # TODO: Keep troubleshooting difference from scenario and model
   nrgco2_ts = create_graph("nrgco2", "time_series", config, settings, data_long_clean, figmap_nrgco2_timeseries, pngGraphs = TRUE),
   nrgco2_cu = create_graph("nrgco2", "cone_uncertainty", config, settings, data_long_clean, figmap_nrgco2_cone, pngGraphs = TRUE)
 
