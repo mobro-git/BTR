@@ -351,6 +351,9 @@ create_summary_table <- function(category, grouping, projections_all_sm, config)
       processed_datasets[[sector]] <- cat_summary
     }
     summary_table_df <- bind_rows(processed_datasets)
+    summary_table_df$category <- ifelse(summary_table_df$category == 'IPPU', 'Industrial Processes', summary_table_df$category) # Change 'IPPU' to 'Industrial Processes'
+    
+    
     
   }
   else{rlang::abort('Enter "gas" or "usproj_sector" into as category.')}

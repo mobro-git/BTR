@@ -112,6 +112,8 @@ create_pct_change_table <- function(category, grouping, projections_all_sm, conf
       processed_datasets[[sector]] <- cat_pct_change
     }
     pct_change_table_df <- bind_rows(processed_datasets)
+    pct_change_table_df$category <- ifelse(pct_change_table_df$category == 'IPPU', 'Industrial Processes', pct_change_table_df$category) # Change 'IPPU' to 'Industrial Processes'
+    
     
   }
   else{rlang::abort('Enter "gas" or "usproj_sector" into as category.')}
