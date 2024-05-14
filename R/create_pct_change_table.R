@@ -174,6 +174,11 @@ create_pct_change_html_table <- function(final_summary_table, stubhead, config){
   html_table <-  final_summary_table %>%
     rename(!!stubhead := category) %>% 
     gt() %>%
+    text_transform(locations = cells_body(columns = 1),
+                   fn = function(x) {
+                     subscript_numbers(x)
+                   }) %>%
+    
     tab_spanner(label = "2025", columns = proj_col_order[1:2]) %>%
     tab_spanner(label = "2030", columns = proj_col_order[3:4]) %>%
     tab_spanner(label = "2035", columns = proj_col_order[5:6]) %>%

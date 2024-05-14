@@ -268,6 +268,12 @@ create_high_low_df <- function(summary_subset, config){
   
 }
 
+##
+
+
+subscript_numbers <- function(string) {
+  gsub("([0-9]+)","<sub>\\1</sub>",string,perl = TRUE)
+}
 
 
 create_summary_table <- function(category, grouping, projections_all_sm, config) {
@@ -328,6 +334,8 @@ create_summary_table <- function(category, grouping, projections_all_sm, config)
       processed_datasets[[gas]] <- cat_summary
     }
     summary_table_df <- bind_rows(processed_datasets)
+    #summary_table_df$category <- subscript_numbers(summary_table_df$category)
+    
     
   } else if(category == 'usproj_sector'){
     processed_datasets <- list()
@@ -390,6 +398,7 @@ create_summary_table <- function(category, grouping, projections_all_sm, config)
   return(final_summary_table)
 }
 
+#######################################################
 
 create_html_table <- function(final_summary_table, stubhead, config){
   
@@ -403,9 +412,15 @@ create_html_table <- function(final_summary_table, stubhead, config){
                       '2040_low',
                       '2040_high')
   
-  html_table <-  final_summary_table %>%
-    rename(!!stubhead := category) %>% 
+  html_table <-  final_summary_table  %>%
+    rename(!!stubhead := category) %>%
+    
     gt() %>%
+    text_transform(locations = cells_body(columns = 1),
+                   fn = function(x) {
+                     subscript_numbers(x)
+                   }) %>% 
+    
     tab_spanner(label = "2025", columns = proj_col_order[1:2]) %>%
     tab_spanner(label = "2030", columns = proj_col_order[3:4]) %>%
     tab_spanner(label = "2035", columns = proj_col_order[5:6]) %>%
@@ -425,9 +440,8 @@ create_html_table <- function(final_summary_table, stubhead, config){
     tab_spanner(label = "Historical ", columns = all_of(hist_years), level = 2) %>%
     tab_spanner(label = "Projected", columns = all_of(proj_col_order))%>%
     tab_header(title = paste0('Historical and Projected U.S. GHG Emissions (2023 Policy Baseline), by ',stubhead,': 2005-2040 (MMT CO2e)')) %>%
+    
     gt_theme_nc_blue()
-  
-  
   
 }
 

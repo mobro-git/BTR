@@ -30,6 +30,7 @@ gas_df <- create_summary_table('gas','wm', projections_all_sm, config)
 sector_df <- create_summary_table('usproj_sector', 'wm', projections_all_sm, config)
 ```
 
+
 ```{r gas summary}
 gas_table <- create_html_table(gas_df, 'Gas',config)
 gas_table
