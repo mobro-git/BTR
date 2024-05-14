@@ -273,8 +273,9 @@ make_ratio_variables <- function(data_long, ratio_var) {
 make_summation_variables <- function(data_long, summation_var) {
 
   summation = list()
-  for (i in 1:max(summation_var$index)) {
-
+ #for (i in 1:max(summation_var$index)) {
+  for (i in unique(summation_var$index)) {
+  
     var_list <- summation_var %>%
       filter(index == i)
 

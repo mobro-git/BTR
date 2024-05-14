@@ -16,7 +16,6 @@ create_pct_change_table <- function(category, grouping, projections_all_sm, conf
   col_order <- c('category','year','low','high')
 
   summary <- projections_all_sm %>%
-    filter(!gas == 'Total') %>%  # WTH?? fix pls usproj TODO
     rename(category = .data[[category]]) %>% 
     filter(grouping == grouping) %>%
     filter(year %in% config$table) %>% 
@@ -27,7 +26,6 @@ create_pct_change_table <- function(category, grouping, projections_all_sm, conf
 
   
   summary_total_gross <- projections_all_sm %>%
-    filter(!gas == 'Total') %>%  # WTH?? fix pls usproj
     rename(category = .data[[category]]) %>% 
     filter(grouping == grouping) %>%
     filter(year %in% config$table) %>% 
@@ -51,7 +49,6 @@ create_pct_change_table <- function(category, grouping, projections_all_sm, conf
     select(all_of(col_order))
   
   summary_total_net <- projections_all_sm %>%
-    filter(!gas == 'Total') %>%  # WTH?? fix pls usproj
     rename(category = .data[[category]]) %>% 
     filter(grouping == grouping) %>%
     filter(year %in% config$table) %>% 

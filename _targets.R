@@ -126,7 +126,7 @@ tar_plan(
       arrange_standard()},
 
   data_long = make_data_long(data_loaded, settings),
-
+  
   data_long_clean = make_data_long_clean(data_long, # TODO: Figure out why summation variables have high run time
                                          ratio_var,
                                          summation_var,
@@ -180,6 +180,7 @@ tar_plan(
   projections_all = map_proj_name_v2(usproj_all, crosswalk_compilation, config, settings),
   projections_ghgi = add_historical_data(ghgi_cat, projections_all), # bind ghgi historical data to projections
   projections_all_sm = gen_proj_all_sm(projections_ghgi, settings), # gas and sector sums for each projection
+  # TODO: Find out why Transporation CO2 is missing
   
   # _summary table breakouts ----
   lulucf_sink_breakout = gen_lulucf_sink_breakout(projections_all_sm, config), #TODO: Figure out where to net out positive LULUCF Emissions, figure out if sink is just co2

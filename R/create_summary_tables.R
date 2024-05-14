@@ -48,8 +48,7 @@ gen_gas_dataset <- function(projections_all_sm, config) {
   gas_dataset <- years_sum %>%
     group_by(proj_name, gas, year) %>%
     summarise(mmtco2e = sum(sum),.groups='drop') %>% 
-    filter(!gas=='LULUCF Sink')%>%
-    filter(!gas == 'Total')
+    filter(!gas=='LULUCF Sink')
   
 }
 
@@ -277,7 +276,6 @@ create_summary_table <- function(category, grouping, projections_all_sm, config)
   
   
   summary <- projections_all_sm %>%
-    filter(!gas == 'Total') %>%  # WTH?? fix pls usproj
     rename(category = .data[[category]]) %>% 
     filter(grouping == grouping) %>%
     filter(year %in% config$table) %>% 
@@ -333,7 +331,7 @@ create_summary_table <- function(category, grouping, projections_all_sm, config)
     
   } else if(category == 'usproj_sector'){
     processed_datasets <- list()
-    order_index <- c(2,5,3,1,5)
+    order_index <- c(2,4,3,1,5)
     for(sector in config$sector_order){
       
       cat_summary <- summary %>%
