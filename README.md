@@ -4,19 +4,31 @@ Code for interactive exploration, QA, compilation, and visualization of emission
 
 ## File and Folder Organization:
 
-/R -- package-like functions only supporting the data pipeline and functions are organized by subject matter
+/_targets -- Stores rData objects and metadata for completed 'targets' - !will only appear after the targets pipeline has run!
+
+/data-extra -- Data used in the pipeline, but not directly. It holds files that are used elsewhere or still need transformation before they're used in the pipeline.
 
 /data-raw -- all raw data, templates, variable definitions, and crosswalks
     
-/model-runs -- modeled projections for current BTR as well as results for comparison - results MUST be in BTR template format
-/ncbr_comparison -- past NatCom/BR/Climate Action Report projections for comparison
-/usproj-data -- current BTR projections for non-co2 gasses and co2 emissions from IPPU and NEU using NEMS activity drivers - from EPA's usproj repository
-BTR24_data_template_v1.xlsx -- reporting template for co2 fossil fuel combustion emissions and energy data
-scenario-mapping.csv -- mapping scenario and model names in raw-data to desired names in final data product
-scenario-mapping-ADDITIONS.csv -- csv to aid in adding required combinations of model+scenario found in raw data not yet accounted for in the scenario-mapping.csv
+-/archive -- data not currently used in the pipeline
+-/calculated-var -- workbooks to define calculated variables for energy model reported variables
+-/crosswalk -- crosswalks to define model and scenario names, map variables between usproj and model-runs workbooks, and define models and scenarios to be used for the full net GHG BTR projections
+-/lulucf -- LULUCF carbon stock change projections, from EPA and USDA
+-/model-runs -- energy model projections for current BTR as well as results for comparison - !results MUST be in reporting template format! (see template below)
+-/ncbr_comparison -- past NatCom/BR/Climate Action Report projections for comparison
+-/template -- reporting template for co2 fossil fuel combustion emissions and energy data, BTR2024 using EMF37_data_template_R2_v2.xlsx
+-/usproj-data -- current BTR projections for non-co2 gasses and co2 emissions from IPPU and NEU using NEMS activity drivers - from EPA's usproj repository
 
-/scripts -- contains top-level scripts/code
 /docs -- contains r markdowns and quarto reports
+
+/figure-maps -- Workbooks to define and create comparison figures
+
+/output -- output directory for data products, figures, and reports
+
+/R -- package-like functions only supporting the data pipeline and functions are organized by subject matter
+
+/scripts -- scripts and code to support the pipeline
+
 
 ## Getting Started:
 
