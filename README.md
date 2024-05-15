@@ -10,14 +10,14 @@ Code for interactive exploration, QA, compilation, and visualization of emission
 
 /data-raw -- all raw data, templates, variable definitions, and crosswalks
     
--/archive -- data not currently used in the pipeline
--/calculated-var -- workbooks to define calculated variables for energy model reported variables
--/crosswalk -- crosswalks to define model and scenario names, map variables between usproj and model-runs workbooks, and define models and scenarios to be used for the full net GHG BTR projections
--/lulucf -- LULUCF carbon stock change projections, from EPA and USDA
--/model-runs -- energy model projections for current BTR as well as results for comparison - !results MUST be in reporting template format! (see template below)
--/ncbr_comparison -- past NatCom/BR/Climate Action Report projections for comparison
--/template -- reporting template for co2 fossil fuel combustion emissions and energy data, BTR2024 using EMF37_data_template_R2_v2.xlsx
--/usproj-data -- current BTR projections for non-co2 gasses and co2 emissions from IPPU and NEU using NEMS activity drivers - from EPA's usproj repository
+*/archive -- data not currently used in the pipeline
+*/calculated-var -- workbooks to define calculated variables for energy model reported variables
+*/crosswalk -- crosswalks to define model and scenario names, map variables between usproj and model-runs workbooks, and define models and scenarios to be used for the full net GHG BTR projections
+*/lulucf -- LULUCF carbon stock change projections, from EPA and USDA
+*/model-runs -- energy model projections for current BTR as well as results for comparison - !results MUST be in reporting template format! (see template below)
+*/ncbr_comparison -- past NatCom/BR/Climate Action Report projections for comparison
+*/template -- reporting template for co2 fossil fuel combustion emissions and energy data, BTR2024 using EMF37_data_template_R2_v2.xlsx
+*/usproj-data -- current BTR projections for non-co2 gasses and co2 emissions from IPPU and NEU using NEMS activity drivers - from EPA's usproj repository
 
 /docs -- contains r markdowns and quarto reports
 
