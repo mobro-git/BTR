@@ -150,7 +150,7 @@ color_map <- c(
   "Solar" = "m.yellow",
   "Wind" = "m.green",
   "Hydro" = "m.cobalt",
-  "Geothermal" = "#E01616",
+  "Geothermal" = "maroonD",
   "Ocean" = "m.blue",
   "Nuclear" = "#E01616",
   "Storage" = "gray pink",

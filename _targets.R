@@ -58,14 +58,14 @@ tar_plan(
     annual_1990 = c(seq(1990,2040,by = 1)),
     annual_2010 = c(seq(2010,2040,by = 1)),
     table = c(2005, 2010, 2015, 2020, 2022, 2025, 2030 , 2035, 2040),
-  
+    
     # ordering
     gas_order = c("CO2", "CH4", "N2O", "HFCs", "PFCs", "SF6", "NF3"),
     sector_order = c("Energy","Transportation","IPPU","Agriculture","Waste")#,"LULUCF") # Uncomment if not netting out all LULUCF emissions
   ),
-
+  
   ##### Template + Crosswalks ---------------------------------------------------
-
+  
   # BTR reporting template
   tar_target(template_xlsx, "data-raw/template/EMF37_data_template_R2_v2.xlsx", format = "file"),
   tar_target(template, read_emf_template_xlsx(template_xlsx)),
@@ -73,9 +73,9 @@ tar_plan(
   # scenario+model crosswalks
   tar_target(crosswalk_model_runs_csv, "data-raw/crosswalk/crosswalk_model-runs.csv", format = "file"),
   tar_target(crosswalk_usproj_csv, "data-raw/crosswalk/crosswalk_usproj.csv", format = "file"), 
-
+  
   #### Data Files ----------------------------------------------------------------
-
+  
   # WM and WAM scenario - BTR template modeling
   tar_target(data_folder, "data-raw/model-runs/", format = "file"),
   tar_target(data_files, dir_ls(data_folder), format = "file"),
@@ -83,33 +83,33 @@ tar_plan(
   # usproj Non-CO2 and CO2 from IPPU and NEU 
   tar_target(usproj_data_folder, "data-raw/usproj-data/", format = "file"),
   tar_target(usproj_files, dir_ls(usproj_data_folder), format = "file"),
-
+  
   # Past projections and drivers
   tar_target(past_proj_csv, "data-raw/ncbr_comparison/netghg_ncbr_comparisons.csv", format = "file"),
   tar_target(past_proj, read_csv(past_proj_csv)),
   
   tar_target(past_driver_csv, "data-raw/ncbr_comparison/tbl_5-6_drivers_comparison.csv", format = "file"),
   tar_target(past_driver, read_csv(past_driver_csv)),
-
+  
   #### Data Processing -----------------------
-
+  
   # _calculated variables ----
-
+  
   tar_target(ratio_var_list, "data-raw/calculated-var/ratio_variables.csv", format = "file"),
   ratio_var = readr::read_csv(ratio_var_list, col_types = cols()),
-
+  
   tar_target(summation_var_list, "data-raw/calculated-var/summation_variables.csv", format = "file"),
   summation_var = readr::read_csv(summation_var_list, col_types = cols()),
-
+  
   tar_target(cumulative_var_list, "data-raw/calculated-var/cumulative_variables.csv", format = "file"),
   cumulative_var = readr::read_csv(cumulative_var_list, col_types = cols()),
-
+  
   tar_target(annual_growth_rate_var_list, "data-raw/calculated-var/annualgrowthrate_variables.csv", format = "file"),
   annual_growth_rate_var = readr::read_csv(annual_growth_rate_var_list, col_types = cols()),
-
+  
   tar_target(per_diff_var_list, "data-raw/calculated-var/per_diff_variables.csv", format = "file"),
   per_diff_var = readr::read_csv(per_diff_var_list, col_types = cols()),
-
+  
   tar_target(index_var_list, "data-raw/calculated-var/index_variables.csv", format = "file"),
   index_var = readr::read_csv(index_var_list, col_types = cols()),
   
@@ -118,14 +118,14 @@ tar_plan(
                                   cumulative_var = cumulative_var,
                                   annual_growth_rate_var = annual_growth_rate_var,
                                   per_diff_var = per_diff_var)),
-
+  
   # _modeled-data long ----
-
+  
   data_loaded = {
     map_dfr(data_files, ~read_process_data_file(.x, settings)) %>%
       arrange_standard()},
-# TODO: Figure out where to read in LTS and BR:VS data
-
+  # TODO: Figure out where to read in LTS and BR:VS data
+  
   data_long = make_data_long(data_loaded, settings),
   
   data_long_clean = make_data_long_clean(data_long,
@@ -139,7 +139,6 @@ tar_plan(
   
   # _usproj data long ----
   
-  # TODO: Need to update usproj projections for FFCUST - need data from OP-NEMS
   usproj_data_loaded = {
     map_dfr(usproj_files, ~read_usproj_data_file(.x, crosswalk_usproj_csv)) %>%
       arrange_standard()},
@@ -172,7 +171,7 @@ tar_plan(
   ffc_raw_data = get_ffc_model_runs(data_long_clean, var_crosswalk, usproj_data_long),
   
   usproj_all = add_ffc_lulucf(ffc_raw_data, lulucf_data, usproj_data_long, var_crosswalk, config),
-    
+  
   # crosswalk compilation
   tar_target(crosswalk_compilation_csv, "data-raw/crosswalk/crosswalk_compilation.csv", format = "file"),
   tar_target(crosswalk_compilation, read_csv(crosswalk_compilation_csv)), # TODO: CHECK FOR MODELS AND SCENARIOS!
@@ -184,20 +183,20 @@ tar_plan(
   # TODO: Find out why Transportation CO2 is missing
   
   # _summary table breakouts ----
-  lulucf_sink_breakout = gen_lulucf_sink_breakout(projections_all_sm, config), #TODO: Figure out where to net out positive LULUCF Emissions, figure out if sink is just co2
-
+  lulucf_sink_breakout = gen_lulucf_sink_breakout(projections_all_sm, config),
+  
   gas_dataset = gen_gas_dataset(projections_all_sm, config),
   gas_breakout = gen_gas_breakout(gas_dataset, config, category_order = config$gas_order),
-
+  
   sector_dataset = gen_sector_dataset(projections_all_sm, config),
   sector_breakout = gen_sector_breakout(sector_dataset, config, category_order = config$sector_order),
-
+  
   # Sum Total Gross Emissions ----
   tar_target(total_gross_emissions, gen_total_gross_emissions(gas_breakout)),
-
+  
   # Calculate Total Net Emissions and write ----
   tar_target(total_net_emissions, gen_total_net_emissions(gas_breakout, lulucf_sink_breakout, settings)),
-
+  
   
   #### 3) projections_net_ghg - projections_all_sm %>% group_by(proj_name) and summarize - net all emissions and sum, should just be one number. export to output csv
   
@@ -221,12 +220,12 @@ tar_plan(
   
   
   ### Figure mapping --------------
-
+  
   tar_map(
     values = figmap_values("figure-maps"),
     tar_target(figmap_csv, figmap_csv_target(file), format = "file"),
     tar_target(figmap, figmap_target(figmap_csv, config, settings))
-    ),
+  ),
   
   ### Outputs ----
   
@@ -249,9 +248,9 @@ tar_plan(
              params = list(mode = "targets")),
   
   nrgco2_sb = create_graph("nrgco2", "stacked_bar", config, settings, data_long_clean, figmap_nrgco2_stackbar, pngGraphs = TRUE),
-  nrgco2_db = create_graph("nrgco2", "diff_bar", config, settings, data_long_clean, figmap_nrgco2_diffbar, pngGraphs = TRUE), 
+  nrgco2_db = create_graph("nrgco2", "diff_bar", config, settings, data_long_clean, figmap_nrgco2_diffbar, pngGraphs = TRUE),
   nrgco2_ts = create_graph("nrgco2", "time_series", config, settings, data_long_clean, figmap_nrgco2_timeseries, pngGraphs = TRUE),
   nrgco2_cu = create_graph("nrgco2", "cone_uncertainty", config, settings, data_long_clean, figmap_nrgco2_cone, pngGraphs = TRUE)
-
+  
 )
 

@@ -867,7 +867,6 @@ summary_tables = function(table_no, var, suffix, drop_mod = NULL, drop_datasrc =
         year >= 2024 &
         scenario %in% c("IRA", "No IRA"))
 
-  # TODO: update to 2022 when inventory is updated
   dup_2022 = mod %>%
     select(model,scenario,unit,region,variable) %>%
     distinct() %>%
