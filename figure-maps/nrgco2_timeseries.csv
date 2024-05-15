@@ -34,3 +34,12 @@ timeseriesplot,9,Energy CO2 Emissions Accounting,Emissions|CO2|Energy|Supply,Sup
 timeseriesplot,9,Energy CO2 Emissions Accounting,Emissions|CO2|Energy|Demand|Industry,Industry,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
 timeseriesplot,9,Energy CO2 Emissions Accounting,Emissions|CO2|Energy|Demand|Transportation,Transportation,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
 timeseriesplot,9,Energy CO2 Emissions Accounting,Emissions|CO2|Energy|Demand|Buildings,Buildings,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,10,Energy Supply CO2 Emissions,Emissions|CO2|Energy|Supply|Biogas,Biogas,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,10,Energy Supply CO2 Emissions,Emissions|CO2|Energy|Supply|Biomass Liquids,Biomass Liquids,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,10,Energy Supply CO2 Emissions,Emissions|CO2|Energy|Supply|Electricity,Electricity,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,10,Energy Supply CO2 Emissions,Emissions|CO2|Energy|Supply|Gas,Gas,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,10,Energy Supply CO2 Emissions,Emissions|CO2|Energy|Supply|Heat,Heat,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,10,Energy Supply CO2 Emissions,Emissions|CO2|Energy|Supply|Hydrogen,Hydrogen,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,10,Energy Supply CO2 Emissions,Emissions|CO2|Energy|Supply|Petroleum Refining,Petroleum Refining,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,10,Energy Supply CO2 Emissions,Emissions|CO2|Energy|Supply|Synthetic Gas,Synthetic Gas,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,10,Energy Supply CO2 Emissions,Emissions|CO2|Energy|Supply|Synthetic Liquids,Synthetic Liquids,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y

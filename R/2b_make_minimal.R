@@ -45,7 +45,7 @@ transform_to_long <- function(data) {
   if(!any(c("value","Value") %in% names(data))){
     data %>%
       tidyr::pivot_longer(
-        cols = num_range(prefix = "", range = 2010:2100),
+        cols = num_range(prefix = "", range = 2005:2100),
         names_to = "year",
         values_to = "value"
       ) %>%

@@ -16,7 +16,7 @@ read_process_minimal_from_raw <- function(filepath) {
 read_process_data_file <- function(filepath, settings) {
   print(paste0("Reading ",filepath))
   read_raw_data_file(filepath) %>%
-    process_data_file(settings)
+    process_data_file(settings = settings, filepath = filepath)
 }
 
 read_usproj_data_file <- function(filepath, crosswalk_usproj_csv) {
@@ -29,7 +29,6 @@ read_usproj_data_file <- function(filepath, crosswalk_usproj_csv) {
     map_usproj_scenario_names(crosswalk) %>% 
     select(datasrc, model, scenario, everything(),-notes) %>% 
     country_abbr()
-  
 }
 
 read_lulucf_data_file <- function(filepath, lulucf_crosswalk, var_crosswalk) {
@@ -39,7 +38,7 @@ read_lulucf_data_file <- function(filepath, lulucf_crosswalk, var_crosswalk) {
     rename(btr_var = variable) %>% 
     left_join(var_crosswalk, by = 'btr_var')}
 
-process_data_file <- function(data, settings) {
+process_data_file <- function(data, settings, filepath) {
 
   min <- data %>%
     process_minimal_from_raw()
@@ -60,6 +59,11 @@ process_data_file <- function(data, settings) {
     # transform_to_national() %>% # right now uses sum(.x, na.rm = TRUE)
     select(model, scenario, region, variable, unit, year, value, datasrc) %>%
     assert_has_standard_cols()
+  
+  if(nrow(res)==0) {
+    rlang::abort(paste0("No valid data in ", filepath,". Check that variable names and units match reporting template."))
+  }
+  return(res)
 }
 
 
@@ -138,7 +142,7 @@ map_scenario_names <- function(data,
     print(glue::glue_data(preflight, "{datasrc}, {model}, {scenario}"))
     rlang::abort("Model+scenario combinations above not present in crosswalk (data-raw/crosswalk/crosswalk_model-runs.csv).
                  Combinations have been saved off to data-raw/crosswalk/crosswalk_model-runs-ADDITIONS.csv. 
-                 There might still be missing model+scenario in another datasource.")
+                 There might still be missing model+scenario in another datasource.") #TODO: Low prioritt; create one list of all additions needed, skip file with issues but add to list
   }
 
   # change model and scenario names in data to standardized names in scen_mapping file

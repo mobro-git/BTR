@@ -55,7 +55,7 @@ read_raw_data_file <- function(filepath) {
     stop(paste0(setdiff(raw_data_cols, names(raw_renamed)),' column missing from ',fs::path_file(filepath),". "))
   }
   
-  raw %>%
+  raw_renamed %>%
     mutate(datasrc = fs::path_file(filepath))
 }
 

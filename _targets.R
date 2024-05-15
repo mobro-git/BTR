@@ -60,7 +60,7 @@ tar_plan(
     table = c(2005, 2010, 2015, 2020, 2022, 2025, 2030 , 2035, 2040),
   
     # ordering
-    gas_order = c("CO2", "CH4", "N2O", "HFCs", "PFCs", "SF6", "NF3"), #TODO: Make sure NF3 is included in USPROJ data>>>>>>> Stashed changes
+    gas_order = c("CO2", "CH4", "N2O", "HFCs", "PFCs", "SF6", "NF3"),
     sector_order = c("Energy","Transportation","IPPU","Agriculture","Waste")#,"LULUCF") # Uncomment if not netting out all LULUCF emissions
   ),
 
@@ -124,10 +124,11 @@ tar_plan(
   data_loaded = {
     map_dfr(data_files, ~read_process_data_file(.x, settings)) %>%
       arrange_standard()},
+# TODO: Figure out where to read in LTS and BR:VS data
 
   data_long = make_data_long(data_loaded, settings),
   
-  data_long_clean = make_data_long_clean(data_long, # TODO: Figure out why summation variables have high run time
+  data_long_clean = make_data_long_clean(data_long,
                                          ratio_var,
                                          summation_var,
                                          cumulative_var,
@@ -180,7 +181,7 @@ tar_plan(
   projections_all = map_proj_name_v2(usproj_all, crosswalk_compilation, config, settings),
   projections_ghgi = add_historical_data(ghgi_cat, projections_all), # bind ghgi historical data to projections
   projections_all_sm = gen_proj_all_sm(projections_ghgi, settings), # gas and sector sums for each projection
-  # TODO: Find out why Transporation CO2 is missing
+  # TODO: Find out why Transportation CO2 is missing
   
   # _summary table breakouts ----
   lulucf_sink_breakout = gen_lulucf_sink_breakout(projections_all_sm, config), #TODO: Figure out where to net out positive LULUCF Emissions, figure out if sink is just co2

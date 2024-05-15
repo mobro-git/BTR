@@ -1,2 +1,3 @@
 datasrc,model,scenario,notes
-usproj_emissions_2024_wide_for_btr_05022024.csv,usproj,wm,usproj_data 050224
+usproj_emissions_2024_wide_for_btr_05022024_old.csv,usproj,wm_old,usproj_data 050224
+usproj_emissions_2024_wide_for_btr_05022024_usprojRUN05152024.csv,usproj,wm,"update to new inventory, add FFCUST projections"
