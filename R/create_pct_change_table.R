@@ -92,7 +92,7 @@ create_pct_change_table <- function(category, grouping, projections_all_sm, conf
     
   } else if(category == 'usproj_sector'){
     processed_datasets <- list()
-    order_index <- c(2,5,3,1,5)
+    order_index <- c(2,4,3,1,5)
     for(sector in config$sector_order){
       
       cat_pct_change <- summary %>%
