@@ -1,3 +1,3 @@
 datasrc,model,scenario
-fake_data.csv,davids-model,dl_ref
-fake_data.csv,davids-model,dl_wm
+report_usrep_reeds_5.15.csv,USREP-ReEDS,test10_ref
+report_usrep_reeds_5.15.csv,USREP-ReEDS,test10_wm
