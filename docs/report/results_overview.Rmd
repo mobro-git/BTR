@@ -1,6 +1,12 @@
 ---
 title: "BTR Results Overview"
-output: html_document
+output:
+  html_document:
+    toc: yes
+    toc_float:
+      toc_collapsed: true
+    toc_depth: 3
+    theme: spacelab
 date: "`r Sys.time()`"
 ---
 
@@ -24,8 +30,6 @@ tar_load(figmap_nrgco2_stackbar)
 tar_load(figmap_nrgco2_timeseries)
 tar_load(figmap_nrgco2_diffbar)
 tar_load(figmap_draftbriefing_stackbar)
-
-
 ```
 
 ```{r}
@@ -52,6 +56,7 @@ model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timese
 model
 ```
 
+# Energy Consumption
 
 ## Final Energy {.tabset}
 
@@ -103,6 +108,8 @@ Transportation = print_graph("stacked_bar", config, data_long_clean, figmap_draf
 Transportation
 ```
 
+# Energy Production
+
 ## Secondary Energy {.tabset}
 
 ### Fuel
@@ -116,7 +123,6 @@ Fuel
 Model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 8, "United States", scenario_rename = TRUE)
 Model
 ```
-
 
 ## Electricity Production {.tabset}
 
@@ -169,14 +175,10 @@ Capacity
 
 ---
 
-# Final BTR Tables and Figures
-
+# BTR Tables and Figures
 
 ```{r}
-
 tar_load(c(projections_all_sm, config))
-
-
 ```
 
 ## Value Summary Tables
