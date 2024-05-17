@@ -246,4 +246,6 @@ ndc_targets = data.frame(
 ```{r proj function}
 projections = br_project(ghgi, proj, targets = ndc_targets)
 projections
+
+#TODO: create a new figure that graphs the % reduction from 2005 instead of the objective values - both for historical emissions AND projections
 ```
