@@ -17,12 +17,12 @@ tar_source()
 ```
 
 ```{r}
-tar_load(config)
-tar_load(settings)
-tar_load(data_long_clean)
-tar_load(figmap_nrgco2_stackbar)
-tar_load(figmap_nrgco2_timeseries)
-tar_load(figmap_nrgco2_diffbar)
+tar_load(c(config,
+           settings,
+           data_long_clean,
+           figmap_nrgco2_stackbar,
+           figmap_nrgco2_timeseries,
+           figmap_nrgco2_diffbar))
 ```
 
 ```{r}
@@ -49,17 +49,12 @@ model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timese
 model
 ```
 
-
----
+----
 
 # Final BTR Tables and Figures
 
-
 ```{r}
-
 tar_load(c(projections_all_sm, config))
-
-
 ```
 
 ## Value Summary Tables
@@ -129,4 +124,6 @@ ndc_targets = data.frame(
 ```{r proj function}
 projections = br_project(ghgi, proj, targets = ndc_targets)
 projections
+
+# TODO: create projections figure that shows % reduction from 2005 instead of objective values
 ```

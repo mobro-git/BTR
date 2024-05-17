@@ -1,0 +1,69 @@
+---
+title: "QA Scratchpad"
+author: "Morgan Browning"
+date: "2024-05-17"
+output: html_document
+---
+
+```{r,echo = FALSE, results = "show", warning = FALSE, message = FALSE, error = FALSE}
+knitr::opts_chunk$set(echo = FALSE, results = "show", warning = FALSE, message = FALSE, error = FALSE, 
+                      fig.align = "center", fig.width = 9, fig.height = 5)
+```
+
+```{r}
+library(targets)
+library(tarchetypes)
+tar_source()
+```
+
+```{r}
+tar_load(c(config,
+           settings,
+           data_loaded,
+           data_long,
+           data_long_clean,
+           usproj_data_loaded,
+           usproj_data_long_all,
+           usproj_data_long,
+           ghgi_cat,
+           lulucf_data,
+           usproj_all,
+           projections_all,
+           projections_ghgi,
+           projections_all_sm))
+
+source('packages.R')
+source("scripts/theming.R")
+```
+
+```{r}
+trn_data_loaded = data_loaded %>%
+  filter(variable == "Emissions|CO2|Energy|Demand|Transportation") %>%
+  filter(year %in% config$fives_proj) %>%
+  filter(scenario == "wm") %>%
+  filter(region == "USA")
+
+trn_data_long = data_long %>%
+  filter(variable == "Emissions|CO2|Energy|Demand|Transportation") %>%
+  filter(year %in% config$fives_proj) %>%
+  filter(scenario == "wm") %>%
+  filter(region == "United States")
+
+trn_data_long_clean = data_long_clean %>%
+  filter(variable == "Emissions|CO2|Energy|Demand|Transportation") %>%
+  filter(year %in% config$fives_proj) %>%
+  filter(scenario == "wm") %>%
+  filter(region == "United States")
+
+trn_projections_all = projections_all %>%
+  filter(btr_var == "Emissions|CO2|Energy|Demand|Transportation") %>%
+  filter(year %in% config$fives_proj) %>%
+  filter(scenario == "wm") 
+
+trn_projections_all_sm = projections_all_sm %>%
+  filter(usproj_sector == "Transportation") %>%
+  filter(year %in% config$fives_proj) %>%
+  filter(grouping == "wm") 
+```
+
+
