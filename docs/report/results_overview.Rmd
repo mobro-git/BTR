@@ -1,0 +1,249 @@
+---
+title: "BTR Results Overview"
+output: html_document
+date: "`r Sys.time()`"
+---
+
+```{r,echo = FALSE, results = "show", warning = FALSE, message = FALSE, error = FALSE}
+knitr::opts_chunk$set(echo = FALSE, results = "show", warning = FALSE, message = FALSE, error = FALSE, 
+                      fig.align = "center", fig.width = 9, fig.height = 5)
+```
+
+
+```{r}
+library(targets)
+library(tarchetypes)
+tar_source()
+```
+
+```{r}
+tar_load(config)
+tar_load(settings)
+tar_load(data_long_clean)
+tar_load(figmap_nrgco2_stackbar)
+tar_load(figmap_nrgco2_timeseries)
+tar_load(figmap_nrgco2_diffbar)
+tar_load(figmap_draftbriefing_stackbar)
+
+
+```
+
+```{r}
+source('packages.R')
+source("scripts/theming.R")
+```
+
+# Emissions
+
+## Energy CO2 Emissions {.tabset}
+
+### Sector
+
+```{r}
+sector = print_graph("stacked_bar", config, data_long_clean, figmap_draftbriefing_stackbar, 19, "United States", scenario_rename = TRUE)
+sector
+```
+
+### Model
+
+```{r}
+model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 9, "United States", scenario_rename = TRUE,
+            level_var = c("Buildings", "Industry", "Transportation", "Supply", "Total Energy"))
+model
+```
+
+
+## Final Energy {.tabset}
+
+### Fuel
+```{r}
+fuel = print_graph("stacked_bar", config, data_long_clean, figmap_draftbriefing_stackbar, 14, "United States", scenario_rename = TRUE)
+fuel
+```
+
+### Sector
+```{r}
+sector = print_graph("stacked_bar", config, data_long_clean, figmap_draftbriefing_stackbar, 17, "United States", scenario_rename = TRUE)
+sector
+```
+
+
+## Final Energy by Model {.tabset}
+
+### Sector
+```{r}
+Sector = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 2, "United States", scenario_rename = TRUE)
+Sector
+```
+
+### Fuel
+```{r}
+Fuel = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 1, "United States", scenario_rename = TRUE)
+Fuel
+```
+
+
+## Final Energy by Sector {.tabset}
+
+### Buildings
+```{r}
+Buildings = print_graph("stacked_bar", config, data_long_clean, figmap_draftbriefing_stackbar, 8, "United States", scenario_rename = TRUE)
+Buildings
+```
+
+### Industry
+```{r}
+Industry = print_graph("stacked_bar", config, data_long_clean, figmap_draftbriefing_stackbar, 9, "United States", scenario_rename = TRUE)
+Industry
+```
+
+### Transportation
+```{r}
+Transportation = print_graph("stacked_bar", config, data_long_clean, figmap_draftbriefing_stackbar, 12, "United States", scenario_rename = TRUE)
+Transportation
+```
+
+## Secondary Energy {.tabset}
+
+### Fuel
+```{r}
+Fuel = print_graph("stacked_bar", config, data_long_clean, figmap_draftbriefing_stackbar, 15, "United States", scenario_rename = TRUE)
+Fuel
+```
+
+### Model
+```{r}
+Model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 8, "United States", scenario_rename = TRUE)
+Model
+```
+
+
+## Electricity Production {.tabset}
+
+### Generation
+```{r}
+elec_gen = print_graph("stacked_bar", config, data_long_clean, figmap_draftbriefing_stackbar, 13, "United States", scenario_rename = TRUE)
+elec_gen
+```
+
+
+### Capacity
+```{r}
+Capacity = print_graph("stacked_bar", config, data_long_clean, figmap_draftbriefing_stackbar, 3, "United States", scenario_rename = TRUE)
+Capacity
+```
+
+
+
+## Electricity Production - Combustion {.tabset}
+
+### Generation
+```{r}
+elec_gen = print_graph("stacked_bar", config, data_long_clean, figmap_draftbriefing_stackbar, 6, "United States", scenario_rename = TRUE)
+elec_gen
+```
+
+
+### Capacity
+```{r}
+Capacity = print_graph("stacked_bar", config, data_long_clean, figmap_draftbriefing_stackbar, 4, "United States", scenario_rename = TRUE)
+Capacity
+```
+
+
+
+## Electricity Production - Non-Combustion {.tabset}
+
+### Generation
+```{r}
+elec_gen = print_graph("stacked_bar", config, data_long_clean, figmap_draftbriefing_stackbar, 7, "United States", scenario_rename = TRUE)
+elec_gen
+```
+
+
+### Capacity
+```{r}
+Capacity = print_graph("stacked_bar", config, data_long_clean, figmap_draftbriefing_stackbar, 5, "United States", scenario_rename = TRUE)
+Capacity
+```
+
+---
+
+# Final BTR Tables and Figures
+
+
+```{r}
+
+tar_load(c(projections_all_sm, config))
+
+
+```
+
+## Value Summary Tables
+
+```{r create df}
+gas_df <- create_summary_table('gas','wm', projections_all_sm, config)
+sector_df <- create_summary_table('usproj_sector', 'wm', projections_all_sm, config)
+```
+
+```{r gas summary}
+gas_table <- create_html_table(gas_df, 'Gas',config)
+gas_table
+```
+
+```{r sector summary}
+sector_table <- create_html_table(sector_df, 'Sector',config)
+sector_table
+```
+
+## 2005 Percent Change Table
+
+```{r, pct change by gas}
+pct_change_table_gas <- create_pct_change_table('gas', 'wm', projections_all_sm, config)
+pct_change_html_gas <- create_pct_change_html_table(pct_change_table_gas, 'Gas', config)
+pct_change_html_gas
+```
+
+```{r, pct change by sector}
+pct_change_table_sector <- create_pct_change_table('usproj_sector', 'wm', projections_all_sm, config)
+pct_change_html_sector <- create_pct_change_html_table(pct_change_table_sector, 'Sector', config)
+pct_change_html_sector
+```
+
+## BTR Main Plot
+
+```{r data}
+net_ghg = projections_all_sm %>%
+  group_by(proj_name, grouping, year) %>%
+  summarise(sum = sum(sum)) %>%
+  filter(year %in% config$fives)
+
+ghgi = net_ghg %>% filter(proj_name == "ghgi")
+proj_no_connect = net_ghg %>% 
+  filter(proj_name != "ghgi")
+
+connect = ghgi[ghgi$year == 2022,]$sum
+baseline = ghgi[ghgi$year == 2005,]$sum
+
+proj_connect = proj_no_connect %>% 
+  group_by(proj_name) %>%
+  slice(1) %>%
+  mutate(
+    year = 2022,
+    sum = ghgi$sum[ghgi$year == 2022])
+
+proj = rbind(proj_no_connect, proj_connect) %>%
+  mutate(year = as.numeric(year))
+
+ndc_targets = data.frame(
+  year = c(2020, 2025, 2030),
+  ymin = c((baseline * (1-.169)), (baseline * (1-.26)), (baseline * (1-.50))),
+  ymax = c((baseline * (1-.171)), (baseline * (1-.28)), (baseline * (1-.52))),
+  grouping = c("17% Below 2005","26-28% Below 2005","50-52% Below 2005")
+)
+```
+
+```{r proj function}
+projections = br_project(ghgi, proj, targets = ndc_targets)
+projections
+```
