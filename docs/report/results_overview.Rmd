@@ -23,6 +23,9 @@ tar_load(data_long_clean)
 tar_load(figmap_nrgco2_stackbar)
 tar_load(figmap_nrgco2_timeseries)
 tar_load(figmap_nrgco2_diffbar)
+tar_load(figmap_draftbriefing_stackbar)
+
+
 ```
 
 ```{r}
@@ -32,12 +35,12 @@ source("scripts/theming.R")
 
 # Emissions
 
-## Energy CO2 Emissions Accounting {.tabset}
+## Energy CO2 Emissions {.tabset}
 
 ### Sector
 
 ```{r}
-sector = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 18, "United States", scenario_rename = TRUE)
+sector = print_graph("stacked_bar", config, data_long_clean, figmap_draftbriefing_stackbar, 19, "United States", scenario_rename = TRUE)
 sector
 ```
 
@@ -49,6 +52,120 @@ model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timese
 model
 ```
 
+
+## Final Energy {.tabset}
+
+### Fuel
+```{r}
+fuel = print_graph("stacked_bar", config, data_long_clean, figmap_draftbriefing_stackbar, 14, "United States", scenario_rename = TRUE)
+fuel
+```
+
+### Sector
+```{r}
+sector = print_graph("stacked_bar", config, data_long_clean, figmap_draftbriefing_stackbar, 17, "United States", scenario_rename = TRUE)
+sector
+```
+
+
+## Final Energy by Model {.tabset}
+
+### Sector
+```{r}
+Sector = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 2, "United States", scenario_rename = TRUE)
+Sector
+```
+
+### Fuel
+```{r}
+Fuel = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 1, "United States", scenario_rename = TRUE)
+Fuel
+```
+
+
+## Final Energy by Sector {.tabset}
+
+### Buildings
+```{r}
+Buildings = print_graph("stacked_bar", config, data_long_clean, figmap_draftbriefing_stackbar, 8, "United States", scenario_rename = TRUE)
+Buildings
+```
+
+### Industry
+```{r}
+Industry = print_graph("stacked_bar", config, data_long_clean, figmap_draftbriefing_stackbar, 9, "United States", scenario_rename = TRUE)
+Industry
+```
+
+### Transportation
+```{r}
+Transportation = print_graph("stacked_bar", config, data_long_clean, figmap_draftbriefing_stackbar, 12, "United States", scenario_rename = TRUE)
+Transportation
+```
+
+## Secondary Energy {.tabset}
+
+### Fuel
+```{r}
+Fuel = print_graph("stacked_bar", config, data_long_clean, figmap_draftbriefing_stackbar, 15, "United States", scenario_rename = TRUE)
+Fuel
+```
+
+### Model
+```{r}
+Model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 8, "United States", scenario_rename = TRUE)
+Model
+```
+
+
+## Electricity Production {.tabset}
+
+### Generation
+```{r}
+elec_gen = print_graph("stacked_bar", config, data_long_clean, figmap_draftbriefing_stackbar, 13, "United States", scenario_rename = TRUE)
+elec_gen
+```
+
+
+### Capacity
+```{r}
+Capacity = print_graph("stacked_bar", config, data_long_clean, figmap_draftbriefing_stackbar, 3, "United States", scenario_rename = TRUE)
+Capacity
+```
+
+
+
+## Electricity Production - Combustion {.tabset}
+
+### Generation
+```{r}
+elec_gen = print_graph("stacked_bar", config, data_long_clean, figmap_draftbriefing_stackbar, 6, "United States", scenario_rename = TRUE)
+elec_gen
+```
+
+
+### Capacity
+```{r}
+Capacity = print_graph("stacked_bar", config, data_long_clean, figmap_draftbriefing_stackbar, 4, "United States", scenario_rename = TRUE)
+Capacity
+```
+
+
+
+## Electricity Production - Non-Combustion {.tabset}
+
+### Generation
+```{r}
+elec_gen = print_graph("stacked_bar", config, data_long_clean, figmap_draftbriefing_stackbar, 7, "United States", scenario_rename = TRUE)
+elec_gen
+```
+
+
+### Capacity
+```{r}
+Capacity = print_graph("stacked_bar", config, data_long_clean, figmap_draftbriefing_stackbar, 5, "United States", scenario_rename = TRUE)
+Capacity
+```
 
 ---
 
