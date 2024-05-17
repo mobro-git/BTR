@@ -1,7 +1,7 @@
 figure_type,figure_no,title_name,variable,variable_rename,flip_sign,regions,models,years,scenarios,type,x,y,facet1,facet2,color,page_filter,scales
-timeseriesplot,1,Final Energy by Fuel: Fossil,Final Energy|Coal,Coal,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
-timeseriesplot,1,Final Energy by Fuel: Fossil,Final Energy|Gas,Gas,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
-timeseriesplot,1,Final Energy by Fuel: Fossil,Final Energy|Oil,Oil,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,1,Final Energy by Fuel - Fossil,Final Energy|Coal,Coal,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,1,Final Energy by Fuel - Fossil,Final Energy|Gas,Gas,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,1,Final Energy by Fuel - Fossil,Final Energy|Oil,Oil,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
 timeseriesplot,2,Final Energy by Sector,Final Energy|Buildings,Buildings,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
 timeseriesplot,2,Final Energy by Sector,Final Energy|Industry,Industry,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
 timeseriesplot,2,Final Energy by Sector,Final Energy|Transportation,Transportation,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
@@ -43,3 +43,15 @@ timeseriesplot,10,Energy Supply CO2 Emissions,Emissions|CO2|Energy|Supply|Hydrog
 timeseriesplot,10,Energy Supply CO2 Emissions,Emissions|CO2|Energy|Supply|Petroleum Refining,Petroleum Refining,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
 timeseriesplot,10,Energy Supply CO2 Emissions,Emissions|CO2|Energy|Supply|Synthetic Gas,Synthetic Gas,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
 timeseriesplot,10,Energy Supply CO2 Emissions,Emissions|CO2|Energy|Supply|Synthetic Liquids,Synthetic Liquids,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,11,Energy CO2 Emissions Accounting - supply breakout,Emissions|CO2|Energy|Demand|Industry,Industry,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,11,Energy CO2 Emissions Accounting - supply breakout,Emissions|CO2|Energy|Demand|Transportation,Transportation,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,11,Energy CO2 Emissions Accounting - supply breakout,Emissions|CO2|Energy|Demand|Buildings,Buildings,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,11,Energy CO2 Emissions Accounting - supply breakout,Emissions|CO2|Energy|Supply|Biogas,Biogas,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,11,Energy CO2 Emissions Accounting - supply breakout,Emissions|CO2|Energy|Supply|Biomass Liquids,Biomass Liquids,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,11,Energy CO2 Emissions Accounting - supply breakout,Emissions|CO2|Energy,Total,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,11,Energy CO2 Emissions Accounting - supply breakout,Emissions|CO2|Energy|Supply|Heat,Heat,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,11,Energy CO2 Emissions Accounting - supply breakout,Emissions|CO2|Energy|Supply|Hydrogen,Hydrogen,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,11,Energy CO2 Emissions Accounting - supply breakout,Emissions|CO2|Energy|Supply|Petroleum Refining,Petroleum Refining,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,11,Energy CO2 Emissions Accounting - supply breakout,Emissions|CO2|Energy|Supply|Synthetic Gas,Synthetic Fuels,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,11,Energy CO2 Emissions Accounting - supply breakout,Emissions|CO2|Energy|Supply|Synthetic Liquids,Synthetic Fuels,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,11,Energy CO2 Emissions Accounting - supply breakout,Emissions|CO2|Energy|Supply|Electricity,Electricity,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
