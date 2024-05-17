@@ -185,7 +185,6 @@ stackbar,19,Energy CO2 Emissions Accounting - supply breakout,Emissions|CO2|Ener
 stackbar,19,Energy CO2 Emissions Accounting - supply breakout,Emissions|CO2|Energy|Supply|Synthetic Gas,0,Synthetic Fuels,usa,model_wm,fives_proj ,scen_wm_ira,grid,stack,year,value,scenario,model,variable_rename,region,fixed
 stackbar,19,Energy CO2 Emissions Accounting - supply breakout,Emissions|CO2|Energy|Supply|Synthetic Liquids,0,Synthetic Fuels,usa,model_wm,fives_proj ,scen_wm_ira,grid,stack,year,value,scenario,model,variable_rename,region,fixed
 stackbar,19,Energy CO2 Emissions Accounting - supply breakout,Emissions|CO2|Energy|Supply|Electricity,0,Electricity,usa,model_wm,fives_proj ,scen_wm_ira,grid,stack,year,value,scenario,model,variable_rename,region,fixed
-stackbar,19,Energy CO2 Emissions Accounting - supply breakout,Emissions|CO2|Energy|Supply,0,Supply,usa,model_wm,fives_proj ,scen_wm_ira,grid,stack,year,value,scenario,model,variable_rename,region,fixed
 stackbar,20,TRN Direct and Indirect Emissions,Emissions|CO2|Energy|Demand|Transportation,0,Direct,usa,model_wm,fives_proj ,scen_wm_ira,grid,stack,year,value,scenario,model,variable_rename,region,fixed
 stackbar,20,TRN Direct and Indirect Emissions,Emissions|CO2|Energy|Demand|Transportation|Indirect,0,Indirect,usa,model_wm,fives_proj ,scen_wm_ira,grid,stack,year,value,scenario,model,variable_rename,region,fixed
 stackbar,21,TRN Mode Emissions,Emissions|CO2|Energy|Demand|Transportation|Aviation,0,Aviation,usa,model_wm,fives_proj ,scen_wm_ira,grid,stack,year,value,scenario,model,variable_rename,region,fixed

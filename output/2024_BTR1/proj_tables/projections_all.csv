@@ -2525,26 +2525,26 @@ nems_wm_lowseq,wm,usproj,wm,IPPU,CO2,2047,0.31,MMTCO2e,Zinc,Zinc,Zinc,United Sta
 nems_wm_lowseq,wm,usproj,wm,IPPU,CO2,2048,0.29,MMTCO2e,Zinc,Zinc,Zinc,United States,usproj_emissions_2024_wide_for_btr_05022024_usprojRUN05152024.csv,
 nems_wm_lowseq,wm,usproj,wm,IPPU,CO2,2049,0.28,MMTCO2e,Zinc,Zinc,Zinc,United States,usproj_emissions_2024_wide_for_btr_05022024_usprojRUN05152024.csv,
 nems_wm_lowseq,wm,usproj,wm,IPPU,CO2,2050,0.27,MMTCO2e,Zinc,Zinc,Zinc,United States,usproj_emissions_2024_wide_for_btr_05022024_usprojRUN05152024.csv,
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2025,201.4599651,Mt CO2/yr,FFCCom,FFC,FFC,United States,gcam_database_basexdbWM_050224gcamreport.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2025,250.9887749,Mt CO2/yr,FFCRes,FFC,FFC,United States,gcam_database_basexdbWM_050224gcamreport.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2025,620.8674542,Mt CO2/yr,FFCInd,FFC,FFC,United States,gcam_database_basexdbWM_050224gcamreport.csv,Emissions|CO2|Energy|Demand|Industry
-gcam_wm_lowseq,wm,GCAM,wm,Transportation,CO2,2025,1790.771806,Mt CO2/yr,FFCTrans,FFC,FFC,United States,gcam_database_basexdbWM_050224gcamreport.csv,Emissions|CO2|Energy|Demand|Transportation
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2025,1132.075394,Mt CO2/yr,FFCElec,FFC,FFC,United States,gcam_database_basexdbWM_050224gcamreport.csv,Emissions|CO2|Energy|Supply|Electricity
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2030,202.6396216,Mt CO2/yr,FFCCom,FFC,FFC,United States,gcam_database_basexdbWM_050224gcamreport.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2030,226.8750418,Mt CO2/yr,FFCRes,FFC,FFC,United States,gcam_database_basexdbWM_050224gcamreport.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2030,648.3847858,Mt CO2/yr,FFCInd,FFC,FFC,United States,gcam_database_basexdbWM_050224gcamreport.csv,Emissions|CO2|Energy|Demand|Industry
-gcam_wm_lowseq,wm,GCAM,wm,Transportation,CO2,2030,1533.462329,Mt CO2/yr,FFCTrans,FFC,FFC,United States,gcam_database_basexdbWM_050224gcamreport.csv,Emissions|CO2|Energy|Demand|Transportation
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2030,932.2187037,Mt CO2/yr,FFCElec,FFC,FFC,United States,gcam_database_basexdbWM_050224gcamreport.csv,Emissions|CO2|Energy|Supply|Electricity
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2035,202.6452612,Mt CO2/yr,FFCCom,FFC,FFC,United States,gcam_database_basexdbWM_050224gcamreport.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2035,224.4585134,Mt CO2/yr,FFCRes,FFC,FFC,United States,gcam_database_basexdbWM_050224gcamreport.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2035,678.6464046,Mt CO2/yr,FFCInd,FFC,FFC,United States,gcam_database_basexdbWM_050224gcamreport.csv,Emissions|CO2|Energy|Demand|Industry
-gcam_wm_lowseq,wm,GCAM,wm,Transportation,CO2,2035,1213.199878,Mt CO2/yr,FFCTrans,FFC,FFC,United States,gcam_database_basexdbWM_050224gcamreport.csv,Emissions|CO2|Energy|Demand|Transportation
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2035,818.2679668,Mt CO2/yr,FFCElec,FFC,FFC,United States,gcam_database_basexdbWM_050224gcamreport.csv,Emissions|CO2|Energy|Supply|Electricity
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2040,210.6673948,Mt CO2/yr,FFCCom,FFC,FFC,United States,gcam_database_basexdbWM_050224gcamreport.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2040,230.804355,Mt CO2/yr,FFCRes,FFC,FFC,United States,gcam_database_basexdbWM_050224gcamreport.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2040,732.7650209,Mt CO2/yr,FFCInd,FFC,FFC,United States,gcam_database_basexdbWM_050224gcamreport.csv,Emissions|CO2|Energy|Demand|Industry
-gcam_wm_lowseq,wm,GCAM,wm,Transportation,CO2,2040,1052.013721,Mt CO2/yr,FFCTrans,FFC,FFC,United States,gcam_database_basexdbWM_050224gcamreport.csv,Emissions|CO2|Energy|Demand|Transportation
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2040,782.8916446,Mt CO2/yr,FFCElec,FFC,FFC,United States,gcam_database_basexdbWM_050224gcamreport.csv,Emissions|CO2|Energy|Supply|Electricity
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2025,201.4599651047333,Mt CO2/yr,FFCCom,FFC,FFC,United States,database_basexdbWM_050224gcamreport.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2025,250.9887749304695,Mt CO2/yr,FFCRes,FFC,FFC,United States,database_basexdbWM_050224gcamreport.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2025,620.8674541694845,Mt CO2/yr,FFCInd,FFC,FFC,United States,database_basexdbWM_050224gcamreport.xlsx,Emissions|CO2|Energy|Demand|Industry
+gcam_wm_lowseq,wm,GCAM,wm,Transportation,CO2,2025,1790.771805649968,Mt CO2/yr,FFCTrans,FFC,FFC,United States,database_basexdbWM_050224gcamreport.xlsx,Emissions|CO2|Energy|Demand|Transportation
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2025,1132.075394461518,Mt CO2/yr,FFCElec,FFC,FFC,United States,database_basexdbWM_050224gcamreport.xlsx,Emissions|CO2|Energy|Supply|Electricity
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2030,202.6396216086519,Mt CO2/yr,FFCCom,FFC,FFC,United States,database_basexdbWM_050224gcamreport.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2030,226.8750418167721,Mt CO2/yr,FFCRes,FFC,FFC,United States,database_basexdbWM_050224gcamreport.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2030,648.3847857938262,Mt CO2/yr,FFCInd,FFC,FFC,United States,database_basexdbWM_050224gcamreport.xlsx,Emissions|CO2|Energy|Demand|Industry
+gcam_wm_lowseq,wm,GCAM,wm,Transportation,CO2,2030,1533.462329473606,Mt CO2/yr,FFCTrans,FFC,FFC,United States,database_basexdbWM_050224gcamreport.xlsx,Emissions|CO2|Energy|Demand|Transportation
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2030,932.2187037142348,Mt CO2/yr,FFCElec,FFC,FFC,United States,database_basexdbWM_050224gcamreport.xlsx,Emissions|CO2|Energy|Supply|Electricity
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2035,202.6452611866812,Mt CO2/yr,FFCCom,FFC,FFC,United States,database_basexdbWM_050224gcamreport.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2035,224.4585133884725,Mt CO2/yr,FFCRes,FFC,FFC,United States,database_basexdbWM_050224gcamreport.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2035,678.6464045768995,Mt CO2/yr,FFCInd,FFC,FFC,United States,database_basexdbWM_050224gcamreport.xlsx,Emissions|CO2|Energy|Demand|Industry
+gcam_wm_lowseq,wm,GCAM,wm,Transportation,CO2,2035,1213.199877860443,Mt CO2/yr,FFCTrans,FFC,FFC,United States,database_basexdbWM_050224gcamreport.xlsx,Emissions|CO2|Energy|Demand|Transportation
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2035,818.2679668227846,Mt CO2/yr,FFCElec,FFC,FFC,United States,database_basexdbWM_050224gcamreport.xlsx,Emissions|CO2|Energy|Supply|Electricity
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2040,210.6673947814911,Mt CO2/yr,FFCCom,FFC,FFC,United States,database_basexdbWM_050224gcamreport.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2040,230.804354960684,Mt CO2/yr,FFCRes,FFC,FFC,United States,database_basexdbWM_050224gcamreport.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2040,732.7650208765762,Mt CO2/yr,FFCInd,FFC,FFC,United States,database_basexdbWM_050224gcamreport.xlsx,Emissions|CO2|Energy|Demand|Industry
+gcam_wm_lowseq,wm,GCAM,wm,Transportation,CO2,2040,1052.013720625698,Mt CO2/yr,FFCTrans,FFC,FFC,United States,database_basexdbWM_050224gcamreport.xlsx,Emissions|CO2|Energy|Demand|Transportation
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2040,782.8916445931104,Mt CO2/yr,FFCElec,FFC,FFC,United States,database_basexdbWM_050224gcamreport.xlsx,Emissions|CO2|Energy|Supply|Electricity
 gcam_wm_lowseq,wm,lulucf,bau_low,LULUCF Sink,LULUCF Sink,2025,-743.0971115756233,MMT CO2e,LULUCF Sink,LULUCF Sink,LULUCF Sink,United States,lulucf_lts.xlsx,LandSink
 gcam_wm_lowseq,wm,lulucf,bau_low,LULUCF Sink,LULUCF Sink,2030,-743.0971115756233,MMT CO2e,LULUCF Sink,LULUCF Sink,LULUCF Sink,United States,lulucf_lts.xlsx,LandSink
 gcam_wm_lowseq,wm,lulucf,bau_low,LULUCF Sink,LULUCF Sink,2035,-659.263229427202,MMT CO2e,LULUCF Sink,LULUCF Sink,LULUCF Sink,United States,lulucf_lts.xlsx,LandSink

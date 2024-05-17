@@ -33,3 +33,4 @@ OP-NEMS BTR Scenario with Measures Data 5-2-2024.xlsx,OP-NEMS,OP Moderate,NEMS,w
 gcam_database_basexdbWM_050224gcamreport.csv,GCAM 7.0,WM_050224,GCAM,wm,btr - OP-NEMS BTR wm
 report_usrep_reeds_5.15.csv,USREP-ReEDS,test10_ref,USREP-ReEDS,ref_noira,"btr - similar to the LEEP ref - includes BIL and CAFE, no IRA, but with significant updates to ReEDS and changes to USREP"
 report_usrep_reeds_5.15.csv,USREP-ReEDS,test10_wm,USREP-ReEDS,wm,"btr - includes IRA , the infrastructure law, 111, ransportation standards, building efficiency standards"
+database_basexdbWM_050224gcamreport.xlsx,GCAM 7.0,WM_050224,GCAM,wm,btr- gcam 5/17/24

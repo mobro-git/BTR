@@ -1,3 +1,2 @@
 datasrc,model,scenario
-report_usrep_reeds_5.15.csv,USREP-ReEDS,test10_ref
-report_usrep_reeds_5.15.csv,USREP-ReEDS,test10_wm
+database_basexdbWM_050224gcamreport.xlsx,GCAM 7.0,WM_050224
