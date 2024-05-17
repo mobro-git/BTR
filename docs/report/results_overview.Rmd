@@ -181,38 +181,42 @@ Capacity
 tar_load(c(projections_all_sm, config))
 ```
 
-## Value Summary Tables
+## Value Summary Tables {.tabset}
 
 ```{r create df}
 gas_df <- create_summary_table('gas','wm', projections_all_sm, config)
 sector_df <- create_summary_table('usproj_sector', 'wm', projections_all_sm, config)
 ```
 
+### Gas
 ```{r gas summary}
 gas_table <- create_html_table(gas_df, 'Gas',config)
 gas_table
 ```
 
+### Sector
 ```{r sector summary}
 sector_table <- create_html_table(sector_df, 'Sector',config)
 sector_table
 ```
 
-## 2005 Percent Change Table
+## 2005 Percent Change Table {.tabset}
 
+### Gas
 ```{r, pct change by gas}
 pct_change_table_gas <- create_pct_change_table('gas', 'wm', projections_all_sm, config)
 pct_change_html_gas <- create_pct_change_html_table(pct_change_table_gas, 'Gas', config)
 pct_change_html_gas
 ```
 
+### Sector
 ```{r, pct change by sector}
 pct_change_table_sector <- create_pct_change_table('usproj_sector', 'wm', projections_all_sm, config)
 pct_change_html_sector <- create_pct_change_html_table(pct_change_table_sector, 'Sector', config)
 pct_change_html_sector
 ```
 
-## BTR Main Plot
+## BTR Main Plot {.tabset}
 
 ```{r data}
 net_ghg = projections_all_sm %>%
@@ -245,9 +249,57 @@ ndc_targets = data.frame(
 )
 ```
 
+### Net GHG Emissions
 ```{r proj function}
 projections = br_project(ghgi, proj, targets = ndc_targets)
 projections
 
 #TODO: create a new figure that graphs the % reduction from 2005 instead of the objective values - both for historical emissions AND projections
 ```
+
+
+```{r}
+
+net_ghg = projections_all_sm %>%
+  group_by(proj_name, grouping, year) %>%
+  summarise(sum = sum(sum),.groups = 'drop') %>%
+  filter(year %in% config$fives) %>%
+  mutate(pct_change_05 = round((sum/sum[year==2005]-1),2))
+
+
+ghgi = net_ghg %>% filter(proj_name == "ghgi")
+proj_no_connect = net_ghg %>% 
+  filter(proj_name != "ghgi")
+
+connect = ghgi[ghgi$year == 2022,]$pct_change_05
+baseline = ghgi[ghgi$year == 2005,]$pct_change_05
+
+proj_connect = proj_no_connect %>% 
+  group_by(proj_name) %>%
+  slice(1) %>%
+  mutate(
+    year = 2022,
+    pct_change_05 = ghgi$pct_change_05[ghgi$year == 2022])
+
+proj = rbind(proj_no_connect, proj_connect) %>%
+  mutate(year = as.numeric(year))
+
+ndc_targets = data.frame(
+  year = c(2020, 2025, 2030),
+  ymin = c(-.17, -.28, -.52),
+  ymax = c(-.17, -.26, -.5),
+  grouping = c("17% Below 2005","26-28% Below 2005","50-52% Below 2005")
+)
+
+
+
+
+```
+
+### Percent Change from 2005
+
+```{r}
+projections_pct_change = br_project_pct_change(ghgi, proj, targets = ndc_targets)
+projections_pct_change
+```
+

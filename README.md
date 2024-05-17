@@ -42,7 +42,7 @@ Click on the `BTR.Rproj` file to enter the virtual environment for the project, 
 
 ## Step 2. Run the pipeline 
 
-The `_targets.R` file details the entire pipeline, including the steps to loading and processing EMF37 data, calculating transformed data, creating summary statistics, and producing graphics. The main benefit of using a targets pipeline is that it tracks changes and dependencies so that we don't need to re-run everything every time we change something. Once the pipeline is run once, only the target objects and their relevant dependencies that have changes will be re-run. 
+The `_targets.R` file details the entire pipeline, including the steps to loading and processing historical and projected data, calculating transformed data, creating summary statistics, and producing graphics. The main benefit of using a targets pipeline is that it tracks changes and dependencies so that we don't need to re-run everything every time we change something. Once the pipeline is run once, only the target objects and their relevant dependencies that have changes will be re-run. 
 
 ### 1) Targets File Structure 
 
@@ -50,9 +50,11 @@ The majority of the `_targets.R` file is nested within the `tar_plan()` function
 
 The `tar_plan()` list contains roughly four types of objects: 
 
-a) **config**: a list of (sort of global) variables, e.g., all_scenarios. These variables are what we want to make available to all the `.R` and `.Rmd` files through the `tar_load(config)` command. 
+b) **settings**: a list of (sort of global) variables, e.g., all_scenarios. These variables are what we want to make available to all the `.R` and `.Rmd` files through the `tar_load(config)` command.
 
-b) **file objects**: these objects include the template, metadata, raw EMF37 data files, and spreadsheet containing instructions on what new variables to create and what graphs to generate. These objects just track files and their locations, not what is in them. They are created using `tar_target(target_name, "filepath", format = "file")`. The last parameter, `format`, is what indicates that this target will track only the file, not what is in it. 
+a) **config**: a list of (sort of global) variables, e.g., all_scenarios. These variables are what we want to make available to all the `.R` and `.Rmd` files through the `tar_load(config)` command.
+
+b) **file objects**: these objects include the template, metadata, raw data files, and spreadsheet containing instructions on what new variables to create and what graphs to generate. These objects just track files and their locations, not what is in them. They are created using `tar_target(target_name, "filepath", format = "file")`. The last parameter, `format`, is what indicates that this target will track only the file, not what is in it. 
 
 c) **functional and data objects**: these objects track or manipulate data. They can be created either using `tar_target()` or a more simplified format `target_name = whatever_you_do_to_create_the_target`. If you have a code chunk following the "=", you need to put the code within "{}" so that it executes correctly. 
 
