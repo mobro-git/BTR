@@ -57,9 +57,47 @@ import_figure_csv <- function(plot_list, figure_type, figmap_csv, config, settin
     if (!all(ref_types %in% c("year", "scenario", "model", "region"))) {
       rlang::abort(paste0("Unrecognized ref_type in ",figmap_csv,": must be year, scenario, model, or region."))
     }
-    # TODO: additional check needed here or in fig-specific data processing to make sure theres valid data for the given ref_type and ref_value
-    # Loop through figure numbers and check ref_value according to ref_type
+    for(i in unique(df$figure_no)) {
+      figure_subset <- df %>% filter(figure_no == i)
+      ###
+      # Check only 1 ref_type and 1 ref_value per figure
+      ref_type <- unique(figure_subset$ref_type)
+      ref_value <- unique(figure_subset$ref_value)
+      
+      if(length(ref_type) > 1){
+        rlang::abort(paste0("Multiple ref_types used in diffbar figure ",i,"."))
+      }
+      if(length(ref_value) > 1){
+        rlang::abort(paste0("Multiple ref_values used in diffbar figure ",i,"."))
+      }
+      ###
+      # Check ref_values according to valid ref_type
+      if(ref_type == "year"){
+        if(!ref_value %in% eval(parse(text = paste0("config$",unique(figure_subset$years))))){
+          rlang::abort(paste0("Invalid year ref_value used in diffbar figure # ",i,". \n Please input a year from config$",unique(figure_subset$years),"."))
+        }
+      }
+      
+      if(ref_type == "scenario"){
+        if(!ref_value %in% eval(parse(text = paste0("config$",unique(figure_subset$scenarios))))){
+          rlang::abort(paste0("Invalid scenario ref_value used in diffbar figure #",i,". \n Please input a scenario from config$",unique(figure_subset$scenarios),"."))
+        }
+      }
+      
+      if(ref_type == "model"){
+        if(!ref_value %in% eval(parse(text = paste0("config$",unique(figure_subset$models))))){
+          rlang::abort(paste0("Invalid model ref_value used in diffbar figure #",i,". \n Please input a model from config$",unique(figure_subset$models),"."))
+        }
+      }
+      
+      if(ref_type == "region"){
+        if(!ref_value %in% eval(parse(text = paste0("config$",unique(figure_subset$regions))))){
+          rlang::abort(paste0("Invalid region ref_value used in diffbar figure #",i,". \n Please input a region from config$",unique(figure_subset$regions),"."))
+        }
+      }
+    }
   }
+
   
   status = df %>%
     assert_figure_csv_has_standard_columns(figure_type) %>%
