@@ -194,10 +194,23 @@ gas_table <- create_html_table(gas_df, 'Gas',config)
 gas_table
 ```
 
+
+```{r}
+filename <- paste0("gas_table_",Sys.Date(),".png")
+gtsave(gas_table, paste0('output/',settings$version,"/tables_figs/results_tables/estimated_values/",filename))
+
+```
+
 ### Sector
 ```{r sector summary}
 sector_table <- create_html_table(sector_df, 'Sector',config)
 sector_table
+```
+
+```{r}
+
+filename <- paste0("sector_table_",Sys.Date(),".png")
+gtsave(sector_table, paste0('output/',settings$version,"/tables_figs/results_tables/estimated_values/",filename))
 ```
 
 ## 2005 Percent Change Table {.tabset}
@@ -209,11 +222,25 @@ pct_change_html_gas <- create_pct_change_html_table(pct_change_table_gas, 'Gas',
 pct_change_html_gas
 ```
 
+
+```{r}
+
+filename <- paste0("gas_table_pctchange05_",Sys.Date(),".png")
+gtsave(pct_change_html_gas, paste0('output/',settings$version,"/tables_figs/results_tables/percent_change_2005/",filename))
+```
+
 ### Sector
 ```{r, pct change by sector}
 pct_change_table_sector <- create_pct_change_table('usproj_sector', 'wm', projections_all_sm, config)
 pct_change_html_sector <- create_pct_change_html_table(pct_change_table_sector, 'Sector', config)
 pct_change_html_sector
+```
+
+
+```{r}
+
+filename <- paste0("sector_table_pctchange05_",Sys.Date(),".png")
+gtsave(pct_change_html_sector, paste0('output/',settings$version,"/tables_figs/results_tables/percent_change_2005/",filename))
 ```
 
 ## BTR Main Plot {.tabset}

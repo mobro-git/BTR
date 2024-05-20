@@ -232,13 +232,13 @@ tar_plan(
   
   tar_render(ncbr_btr_comparison,
              "docs/report/ncbr_btr_comparison.Rmd",
-             output_dir = paste0('output/',settings$version,"/tables_figs/"),
+             output_dir = paste0('output/',settings$version,"/tables_figs/results_pages/"),
              output_file = "ncbr_btr_comparison.html",
              params = list(mode = "targets")),
   
   tar_render(btr_tables_figs,
              "docs/report/btr1_tables_figs.Rmd",
-             output_dir = paste0('output/',settings$version,"/tables_figs/"),
+             output_dir = paste0('output/',settings$version,"/tables_figs/results_pages/"),
              output_file = paste0("btr1_tables_figs.html_",Sys.Date(),".html"),
              params = list(mode = "targets")),
   
