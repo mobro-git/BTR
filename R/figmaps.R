@@ -57,41 +57,41 @@ import_figure_csv <- function(plot_list, figure_type, figmap_csv, config, settin
     if (!all(ref_types %in% c("year", "scenario", "model", "region"))) {
       rlang::abort(paste0("Unrecognized ref_type in ",figmap_csv,": must be year, scenario, model, or region."))
     }
-    for(i in unique(df$figure_no)) {
+    for (i in unique(df$figure_no)) {
       figure_subset <- df %>% filter(figure_no == i)
       ###
       # Check only 1 ref_type and 1 ref_value per figure
       ref_type <- unique(figure_subset$ref_type)
       ref_value <- unique(figure_subset$ref_value)
       
-      if(length(ref_type) > 1){
+      if (length(ref_type) > 1) {
         rlang::abort(paste0("Multiple ref_types used in diffbar figure ",i,"."))
       }
-      if(length(ref_value) > 1){
+      if (length(ref_value) > 1) {
         rlang::abort(paste0("Multiple ref_values used in diffbar figure ",i,"."))
       }
       ###
       # Check ref_values according to valid ref_type
-      if(ref_type == "year"){
-        if(!ref_value %in% eval(parse(text = paste0("config$",unique(figure_subset$years))))){
+      if (ref_type == "year") {
+        if (!ref_value %in% eval(parse(text = paste0("config$",unique(figure_subset$years))))) {
           rlang::abort(paste0("Invalid year ref_value used in diffbar figure # ",i,". \n Please input a year from config$",unique(figure_subset$years),"."))
         }
       }
       
-      if(ref_type == "scenario"){
-        if(!ref_value %in% eval(parse(text = paste0("config$",unique(figure_subset$scenarios))))){
+      if (ref_type == "scenario") {
+        if (!ref_value %in% eval(parse(text = paste0("config$",unique(figure_subset$scenarios))))) {
           rlang::abort(paste0("Invalid scenario ref_value used in diffbar figure #",i,". \n Please input a scenario from config$",unique(figure_subset$scenarios),"."))
         }
       }
       
-      if(ref_type == "model"){
-        if(!ref_value %in% eval(parse(text = paste0("config$",unique(figure_subset$models))))){
+      if (ref_type == "model") {
+        if (!ref_value %in% eval(parse(text = paste0("config$",unique(figure_subset$models))))) {
           rlang::abort(paste0("Invalid model ref_value used in diffbar figure #",i,". \n Please input a model from config$",unique(figure_subset$models),"."))
         }
       }
       
-      if(ref_type == "region"){
-        if(!ref_value %in% eval(parse(text = paste0("config$",unique(figure_subset$regions))))){
+      if (ref_type == "region") {
+        if (!ref_value %in% eval(parse(text = paste0("config$",unique(figure_subset$regions))))) {
           rlang::abort(paste0("Invalid region ref_value used in diffbar figure #",i,". \n Please input a region from config$",unique(figure_subset$regions),"."))
         }
       }
@@ -168,7 +168,7 @@ standard_corrplot_cols <- c("figure_no", "title_name", "variable", "variable_ren
 #' @return
 
 assert_figure_csv_has_standard_columns <- function(status, figure_type) {
-  if(! all(get(paste("standard_", figure_type, "_cols", sep = "")) %in% names(status))) {
+  if (! all(get(paste("standard_", figure_type, "_cols", sep = "")) %in% names(status))) {
     rlang::abort(paste("Missing at least one standard column in the ", figure_type, " plot mapping csv.", sep = ""),
                  class = 'plot_mapping_csv')
   }
@@ -244,11 +244,11 @@ assert_models_in_config <- function(status, config, settings) {
     
     present = (item %in% names(config) | (item %in% settings$scen_mapping$model_new))
     
-    if(! all(present)) {not_present = append(not_present, item)}
+    if (! all(present)) {not_present = append(not_present, item)}
     
   }
   
-  if(length(not_present) > 0) {
+  if (length(not_present) > 0) {
     rlang::abort(message = paste("The following item in the 'models' column NOT in config: ",not_present),
                  class = 'plot_mapping_csv models')
   }
@@ -273,11 +273,11 @@ assert_scenarios_in_config <- function(status, config, settings) {
     
     present = (item %in% names(config) | (item %in% settings$scen_mapping$scenario_new))
     
-    if(! all(present)) {not_present = append(not_present, item)}
+    if (! all(present)) {not_present = append(not_present, item)}
     
   }
   
-  if(length(not_present) > 0) {
+  if (length(not_present) > 0) {
     rlang::abort(message = paste("The following item in the 'scenarios' column NOT in config: ",not_present),
                  class = 'plot_mapping_csv scenarios')
   }
@@ -295,7 +295,7 @@ assert_regions_in_config <- function(status, config) {
   
   present = unique(status$regions) %in% names(config)
   
-  if(! all(present)) {
+  if (! all(present)) {
     rlang::abort(message = paste("\"", status$regions[!present], "\" in the 'regions' column NOT in config.", sep = ""),
                  class = 'plot_mapping_csv regions')
   }
@@ -320,11 +320,11 @@ assert_years_in_config_or_numeric <- function(status, config) {
     
     present = (item %in% names(config) | is.numeric(item))
     
-    if(! all(present)) {not_present = append(not_present, item)}
+    if (! all(present)) {not_present = append(not_present, item)}
     
   }
   
-  if(length(not_present) > 0) {
+  if (length(not_present) > 0) {
     rlang::abort(message = paste("The following item in the 'years' column NOT in config: ",not_present),
                  class = 'plot_mapping_csv years')
   }
@@ -341,13 +341,13 @@ assert_years_in_config_or_numeric <- function(status, config) {
 #' @export
 assert_valid_page_filter <- function(status, figure_type) {
   
-  if(figure_type != "sankey") {
+  if (figure_type != "sankey") {
     
     unique_page_filter = unique(status$page_filter)
     
     present = (unique_page_filter %in% c("region", "year", "scenario", "model")) || is.na(unique_page_filter)
     
-    if(! all(present)) {
+    if (! all(present)) {
       rlang::abort(message = paste("\"", status$page_filter[!present], "\" in the 'page_filter' column need to be region, year, scenario, or model.", sep = ""),
                    class = 'plot_mapping_csv page_filter')
     }
@@ -370,7 +370,7 @@ set_default_page_filter <- function(df) {
   
   empty_page_filter = is.na(unique_page_filter)
   
-  if (any(empty_page_filter)){
+  if (any(empty_page_filter)) {
     rlang::warn("No value for certain figures in the page_filter column. Setting to region as default.")
     df = df %>%
       mutate(page_filter = case_when(
@@ -428,7 +428,7 @@ corrplot <- c("title_name","regions","models","years","scenarios","page_filter",
 #'
 check_figure_specification <- function(status, figure_type) {
   
-  if(figure_type != "sankey") {
+  if (figure_type != "sankey") {
     
     ###  check if the figure number corresponds to only one set of specification -----
     summary_list = status %>%

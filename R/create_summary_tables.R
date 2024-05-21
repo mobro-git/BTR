@@ -412,6 +412,8 @@ create_html_table <- function(final_summary_table, stubhead, config){
                       '2040_low',
                       '2040_high')
   
+  table_title <- paste0('Historical and Projected U.S. GHG Emissions (2023 Policy Baseline), by ',stubhead,': 2005-2040 (MMTCO<sub>2</sub>e)')
+  
   html_table <-  final_summary_table  %>%
     rename(!!stubhead := category) %>%
     
@@ -438,8 +440,8 @@ create_html_table <- function(final_summary_table, stubhead, config){
     cols_align('left', columns = stubhead) %>% 
     
     tab_spanner(label = "Historical ", columns = all_of(hist_years), level = 2) %>%
-    tab_spanner(label = "Projected", columns = all_of(proj_col_order))%>%
-    tab_header(title = paste0('Historical and Projected U.S. GHG Emissions (2023 Policy Baseline), by ',stubhead,': 2005-2040 (MMT CO2e)')) %>%
+    tab_spanner(label = "Projected", columns = all_of(proj_col_order)) %>%
+    tab_header(title = gt::html(table_title)) %>%
     
     gt_theme_nc_blue()
   

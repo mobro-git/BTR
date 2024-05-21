@@ -171,6 +171,8 @@ create_pct_change_html_table <- function(final_summary_table, stubhead, config){
                       '2040_low',
                       '2040_high')
   
+  table_title <- paste0('Historical and Projected U.S. GHG Emissions (2023 Policy Baseline), by ',stubhead,': 2005-2040 (MMTCO<sub>2</sub>e)')
+  
   html_table <-  final_summary_table %>%
     rename(!!stubhead := category) %>% 
     gt() %>%

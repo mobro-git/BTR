@@ -284,6 +284,12 @@ projections
 #TODO: create a new figure that graphs the % reduction from 2005 instead of the objective values - both for historical emissions AND projections
 ```
 
+```{r}
+filename <- paste0("btr_main_fig_",Sys.Date(),".png")
+ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_fig/",filename))
+
+```
+
 
 ```{r}
 
@@ -330,3 +336,8 @@ projections_pct_change = br_project_pct_change(ghgi, proj, targets = ndc_targets
 projections_pct_change
 ```
 
+```{r}
+filename <- paste0("btr_main_fig_pctchange05_",Sys.Date(),".png")
+ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_fig/",filename))
+
+```
