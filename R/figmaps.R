@@ -7,6 +7,7 @@
 figmap_values <- function(folder) {
   
   files = tibble(file = list.files(folder)) %>%
+    filter(file != 'README.md') %>% 
     mutate(file = str_remove(file, ".csv"))
   files
   
