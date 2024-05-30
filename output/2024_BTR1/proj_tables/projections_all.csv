@@ -4913,42 +4913,42 @@ gcam_wm_lowseq,wm,usproj,wm,IPPU,CO2,2047,0.31,MMTCO2e,Zinc,Zinc,Zinc,United Sta
 gcam_wm_lowseq,wm,usproj,wm,IPPU,CO2,2048,0.29,MMTCO2e,Zinc,Zinc,Zinc,United States,usproj_emissions_2024_wide_for_btr_05022024_usprojRUN05152024.csv,
 gcam_wm_lowseq,wm,usproj,wm,IPPU,CO2,2049,0.28,MMTCO2e,Zinc,Zinc,Zinc,United States,usproj_emissions_2024_wide_for_btr_05022024_usprojRUN05152024.csv,
 gcam_wm_lowseq,wm,usproj,wm,IPPU,CO2,2050,0.27,MMTCO2e,Zinc,Zinc,Zinc,United States,usproj_emissions_2024_wide_for_btr_05022024_usprojRUN05152024.csv,
-usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2025,219.9969689,Mt CO2/yr,FFCCom,FFC,FFC,United States,report_usrep_reeds_5.15.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
-usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2025,208.3822418,Mt CO2/yr,FFCRes,FFC,FFC,United States,report_usrep_reeds_5.15.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
-usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2025,835.9126501,Mt CO2/yr,FFCInd,FFC,FFC,United States,report_usrep_reeds_5.15.csv,Emissions|CO2|Energy|Demand|Industry
-usrr_wm_lowseq,wm,USREP-ReEDS,wm,Transportation,CO2,2025,1561.583912,Mt CO2/yr,FFCTrans,FFC,FFC,United States,report_usrep_reeds_5.15.csv,Emissions|CO2|Energy|Demand|Transportation
-usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2025,850.5428003,Mt CO2/yr,FFCElec,FFC,FFC,United States,report_usrep_reeds_5.15.csv,Emissions|CO2|Energy|Supply|Electricity
-usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2025,109.5055617,Mt CO2/yr,FFCInd,FFC,FFC,United States,report_usrep_reeds_5.15.csv,Emissions|CO2|Energy|Supply|Petroleum Refining
-usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2030,195.8614886,Mt CO2/yr,FFCCom,FFC,FFC,United States,report_usrep_reeds_5.15.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
-usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2030,154.8332219,Mt CO2/yr,FFCRes,FFC,FFC,United States,report_usrep_reeds_5.15.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
-usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2030,827.6955058,Mt CO2/yr,FFCInd,FFC,FFC,United States,report_usrep_reeds_5.15.csv,Emissions|CO2|Energy|Demand|Industry
-usrr_wm_lowseq,wm,USREP-ReEDS,wm,Transportation,CO2,2030,1383.140511,Mt CO2/yr,FFCTrans,FFC,FFC,United States,report_usrep_reeds_5.15.csv,Emissions|CO2|Energy|Demand|Transportation
-usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2030,398.8750012,Mt CO2/yr,FFCElec,FFC,FFC,United States,report_usrep_reeds_5.15.csv,Emissions|CO2|Energy|Supply|Electricity
-usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2030,94.96923013,Mt CO2/yr,FFCInd,FFC,FFC,United States,report_usrep_reeds_5.15.csv,Emissions|CO2|Energy|Supply|Petroleum Refining
-usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2035,176.3941635,Mt CO2/yr,FFCCom,FFC,FFC,United States,report_usrep_reeds_5.15.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
-usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2035,132.3260027,Mt CO2/yr,FFCRes,FFC,FFC,United States,report_usrep_reeds_5.15.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
-usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2035,777.6355609,Mt CO2/yr,FFCInd,FFC,FFC,United States,report_usrep_reeds_5.15.csv,Emissions|CO2|Energy|Demand|Industry
-usrr_wm_lowseq,wm,USREP-ReEDS,wm,Transportation,CO2,2035,1251.003605,Mt CO2/yr,FFCTrans,FFC,FFC,United States,report_usrep_reeds_5.15.csv,Emissions|CO2|Energy|Demand|Transportation
-usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2035,258.2186864,Mt CO2/yr,FFCElec,FFC,FFC,United States,report_usrep_reeds_5.15.csv,Emissions|CO2|Energy|Supply|Electricity
-usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2035,84.10190195,Mt CO2/yr,FFCInd,FFC,FFC,United States,report_usrep_reeds_5.15.csv,Emissions|CO2|Energy|Supply|Petroleum Refining
-usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2040,172.3577183,Mt CO2/yr,FFCCom,FFC,FFC,United States,report_usrep_reeds_5.15.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
-usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2040,137.1289395,Mt CO2/yr,FFCRes,FFC,FFC,United States,report_usrep_reeds_5.15.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
-usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2040,1014.256343,Mt CO2/yr,FFCInd,FFC,FFC,United States,report_usrep_reeds_5.15.csv,Emissions|CO2|Energy|Demand|Industry
-usrr_wm_lowseq,wm,USREP-ReEDS,wm,Transportation,CO2,2040,1200.141054,Mt CO2/yr,FFCTrans,FFC,FFC,United States,report_usrep_reeds_5.15.csv,Emissions|CO2|Energy|Demand|Transportation
-usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2040,312.3920783,Mt CO2/yr,FFCElec,FFC,FFC,United States,report_usrep_reeds_5.15.csv,Emissions|CO2|Energy|Supply|Electricity
-usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2040,77.02996512,Mt CO2/yr,FFCInd,FFC,FFC,United States,report_usrep_reeds_5.15.csv,Emissions|CO2|Energy|Supply|Petroleum Refining
-usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2045,170.6715665,Mt CO2/yr,FFCCom,FFC,FFC,United States,report_usrep_reeds_5.15.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
-usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2045,176.5266946,Mt CO2/yr,FFCRes,FFC,FFC,United States,report_usrep_reeds_5.15.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
-usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2045,1080.21185,Mt CO2/yr,FFCInd,FFC,FFC,United States,report_usrep_reeds_5.15.csv,Emissions|CO2|Energy|Demand|Industry
-usrr_wm_lowseq,wm,USREP-ReEDS,wm,Transportation,CO2,2045,1195.422432,Mt CO2/yr,FFCTrans,FFC,FFC,United States,report_usrep_reeds_5.15.csv,Emissions|CO2|Energy|Demand|Transportation
-usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2045,472.3641984,Mt CO2/yr,FFCElec,FFC,FFC,United States,report_usrep_reeds_5.15.csv,Emissions|CO2|Energy|Supply|Electricity
-usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2045,72.82151425,Mt CO2/yr,FFCInd,FFC,FFC,United States,report_usrep_reeds_5.15.csv,Emissions|CO2|Energy|Supply|Petroleum Refining
-usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2050,155.5764371,Mt CO2/yr,FFCCom,FFC,FFC,United States,report_usrep_reeds_5.15.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
-usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2050,204.3046511,Mt CO2/yr,FFCRes,FFC,FFC,United States,report_usrep_reeds_5.15.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
-usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2050,1139.617464,Mt CO2/yr,FFCInd,FFC,FFC,United States,report_usrep_reeds_5.15.csv,Emissions|CO2|Energy|Demand|Industry
-usrr_wm_lowseq,wm,USREP-ReEDS,wm,Transportation,CO2,2050,1221.922012,Mt CO2/yr,FFCTrans,FFC,FFC,United States,report_usrep_reeds_5.15.csv,Emissions|CO2|Energy|Demand|Transportation
-usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2050,603.7424411,Mt CO2/yr,FFCElec,FFC,FFC,United States,report_usrep_reeds_5.15.csv,Emissions|CO2|Energy|Supply|Electricity
-usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2050,69.82623105,Mt CO2/yr,FFCInd,FFC,FFC,United States,report_usrep_reeds_5.15.csv,Emissions|CO2|Energy|Supply|Petroleum Refining
+usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2025,219.1690527,Mt CO2/yr,FFCCom,FFC,FFC,United States,report_usrep_reeds_5.30.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
+usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2025,206.8889619,Mt CO2/yr,FFCRes,FFC,FFC,United States,report_usrep_reeds_5.30.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
+usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2025,835.0334294,Mt CO2/yr,FFCInd,FFC,FFC,United States,report_usrep_reeds_5.30.csv,Emissions|CO2|Energy|Demand|Industry
+usrr_wm_lowseq,wm,USREP-ReEDS,wm,Transportation,CO2,2025,1544.961076,Mt CO2/yr,FFCTrans,FFC,FFC,United States,report_usrep_reeds_5.30.csv,Emissions|CO2|Energy|Demand|Transportation
+usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2025,1090.034057,Mt CO2/yr,FFCElec,FFC,FFC,United States,report_usrep_reeds_5.30.csv,Emissions|CO2|Energy|Supply|Electricity
+usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2025,108.8010656,Mt CO2/yr,FFCInd,FFC,FFC,United States,report_usrep_reeds_5.30.csv,Emissions|CO2|Energy|Supply|Petroleum Refining
+usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2030,194.7364322,Mt CO2/yr,FFCCom,FFC,FFC,United States,report_usrep_reeds_5.30.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
+usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2030,153.6205923,Mt CO2/yr,FFCRes,FFC,FFC,United States,report_usrep_reeds_5.30.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
+usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2030,821.9282869,Mt CO2/yr,FFCInd,FFC,FFC,United States,report_usrep_reeds_5.30.csv,Emissions|CO2|Energy|Demand|Industry
+usrr_wm_lowseq,wm,USREP-ReEDS,wm,Transportation,CO2,2030,1367.458785,Mt CO2/yr,FFCTrans,FFC,FFC,United States,report_usrep_reeds_5.30.csv,Emissions|CO2|Energy|Demand|Transportation
+usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2030,606.8283957,Mt CO2/yr,FFCElec,FFC,FFC,United States,report_usrep_reeds_5.30.csv,Emissions|CO2|Energy|Supply|Electricity
+usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2030,94.28326913,Mt CO2/yr,FFCInd,FFC,FFC,United States,report_usrep_reeds_5.30.csv,Emissions|CO2|Energy|Supply|Petroleum Refining
+usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2035,177.1270607,Mt CO2/yr,FFCCom,FFC,FFC,United States,report_usrep_reeds_5.30.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
+usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2035,132.3036928,Mt CO2/yr,FFCRes,FFC,FFC,United States,report_usrep_reeds_5.30.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
+usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2035,771.7642472,Mt CO2/yr,FFCInd,FFC,FFC,United States,report_usrep_reeds_5.30.csv,Emissions|CO2|Energy|Demand|Industry
+usrr_wm_lowseq,wm,USREP-ReEDS,wm,Transportation,CO2,2035,1221.676891,Mt CO2/yr,FFCTrans,FFC,FFC,United States,report_usrep_reeds_5.30.csv,Emissions|CO2|Energy|Demand|Transportation
+usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2035,407.5696111,Mt CO2/yr,FFCElec,FFC,FFC,United States,report_usrep_reeds_5.30.csv,Emissions|CO2|Energy|Supply|Electricity
+usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2035,82.97709076,Mt CO2/yr,FFCInd,FFC,FFC,United States,report_usrep_reeds_5.30.csv,Emissions|CO2|Energy|Supply|Petroleum Refining
+usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2040,165.933656,Mt CO2/yr,FFCCom,FFC,FFC,United States,report_usrep_reeds_5.30.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
+usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2040,130.9676773,Mt CO2/yr,FFCRes,FFC,FFC,United States,report_usrep_reeds_5.30.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
+usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2040,1000.963788,Mt CO2/yr,FFCInd,FFC,FFC,United States,report_usrep_reeds_5.30.csv,Emissions|CO2|Energy|Demand|Industry
+usrr_wm_lowseq,wm,USREP-ReEDS,wm,Transportation,CO2,2040,1182.664156,Mt CO2/yr,FFCTrans,FFC,FFC,United States,report_usrep_reeds_5.30.csv,Emissions|CO2|Energy|Demand|Transportation
+usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2040,453.3317358,Mt CO2/yr,FFCElec,FFC,FFC,United States,report_usrep_reeds_5.30.csv,Emissions|CO2|Energy|Supply|Electricity
+usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2040,76.21952146,Mt CO2/yr,FFCInd,FFC,FFC,United States,report_usrep_reeds_5.30.csv,Emissions|CO2|Energy|Supply|Petroleum Refining
+usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2045,144.9846608,Mt CO2/yr,FFCCom,FFC,FFC,United States,report_usrep_reeds_5.30.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
+usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2045,146.5656636,Mt CO2/yr,FFCRes,FFC,FFC,United States,report_usrep_reeds_5.30.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
+usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2045,1058.642331,Mt CO2/yr,FFCInd,FFC,FFC,United States,report_usrep_reeds_5.30.csv,Emissions|CO2|Energy|Demand|Industry
+usrr_wm_lowseq,wm,USREP-ReEDS,wm,Transportation,CO2,2045,1192.290262,Mt CO2/yr,FFCTrans,FFC,FFC,United States,report_usrep_reeds_5.30.csv,Emissions|CO2|Energy|Demand|Transportation
+usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2045,499.6813037,Mt CO2/yr,FFCElec,FFC,FFC,United States,report_usrep_reeds_5.30.csv,Emissions|CO2|Energy|Supply|Electricity
+usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2045,72.03760248,Mt CO2/yr,FFCInd,FFC,FFC,United States,report_usrep_reeds_5.30.csv,Emissions|CO2|Energy|Supply|Petroleum Refining
+usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2050,130.2844515,Mt CO2/yr,FFCCom,FFC,FFC,United States,report_usrep_reeds_5.30.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
+usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2050,176.3193986,Mt CO2/yr,FFCRes,FFC,FFC,United States,report_usrep_reeds_5.30.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
+usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2050,1108.131409,Mt CO2/yr,FFCInd,FFC,FFC,United States,report_usrep_reeds_5.30.csv,Emissions|CO2|Energy|Demand|Industry
+usrr_wm_lowseq,wm,USREP-ReEDS,wm,Transportation,CO2,2050,1220.103177,Mt CO2/yr,FFCTrans,FFC,FFC,United States,report_usrep_reeds_5.30.csv,Emissions|CO2|Energy|Demand|Transportation
+usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2050,592.6940178,Mt CO2/yr,FFCElec,FFC,FFC,United States,report_usrep_reeds_5.30.csv,Emissions|CO2|Energy|Supply|Electricity
+usrr_wm_lowseq,wm,USREP-ReEDS,wm,Energy,CO2,2050,69.13995056,Mt CO2/yr,FFCInd,FFC,FFC,United States,report_usrep_reeds_5.30.csv,Emissions|CO2|Energy|Supply|Petroleum Refining
 usrr_wm_lowseq,wm,lulucf,bau_low,LULUCF Sink,LULUCF Sink,2025,-743.0971115756233,MMT CO2e,LULUCF Sink,LULUCF Sink,LULUCF Sink,United States,lulucf_lts.xlsx,LandSink
 usrr_wm_lowseq,wm,lulucf,bau_low,LULUCF Sink,LULUCF Sink,2030,-743.0971115756233,MMT CO2e,LULUCF Sink,LULUCF Sink,LULUCF Sink,United States,lulucf_lts.xlsx,LandSink
 usrr_wm_lowseq,wm,lulucf,bau_low,LULUCF Sink,LULUCF Sink,2035,-659.263229427202,MMT CO2e,LULUCF Sink,LULUCF Sink,LULUCF Sink,United States,lulucf_lts.xlsx,LandSink

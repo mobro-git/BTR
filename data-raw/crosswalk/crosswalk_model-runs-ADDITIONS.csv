@@ -1,4 +1,3 @@
 datasrc,model,scenario
-database_basexdbWM_0529_24gcamreport_Processed.csv,GCAM 7.0,WM_0529_24
-database_basexdbWM_0529_24gcamreport_Processed.csv,GCAM 7.0,WM_051424
-database_basexdbWM_0529_24gcamreport_Processed.csv,GCAM 7.0,WM_052024_RPS
+report_usrep_reeds_5.30.csv,USREP-ReEDS,benchmark
+report_usrep_reeds_5.30.csv,USREP-ReEDS,wm
