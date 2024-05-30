@@ -1,2 +1,4 @@
 datasrc,model,scenario
-database_basexdbWM_050224gcamreport.xlsx,GCAM 7.0,WM_050224
+database_basexdbWM_0529_24gcamreport_Processed.csv,GCAM 7.0,WM_0529_24
+database_basexdbWM_0529_24gcamreport_Processed.csv,GCAM 7.0,WM_051424
+database_basexdbWM_0529_24gcamreport_Processed.csv,GCAM 7.0,WM_052024_RPS

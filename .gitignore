@@ -1,6 +1,6 @@
 .Rproj.user\
-.Rhistory\
+.Rhistory
 .RData\
 .Ruserdata\
 .Rproj.user
-_targets\
+_targets/*

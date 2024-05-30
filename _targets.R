@@ -126,6 +126,7 @@ tar_plan(
     map_dfr(data_files, ~read_process_data_file(.x, settings)) %>%
       arrange_standard()},
   # TODO: Figure out where to read in LTS and BR:VS data
+  # TODO: Add in check to make sure crosswalk-model-runs doesn't have duplicate model+scenario combinations
   
   data_long = make_data_long(data_loaded, settings),
   

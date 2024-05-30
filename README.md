@@ -4,18 +4,18 @@ Code for interactive exploration, QA, compilation, and visualization of emission
 
 ## File and Folder Organization:
 
-* /_targets -- Stores rData objects and metadata for completed 'targets' - !will only appear after the targets pipeline has run!
+* /_targets -- Stores .RData objects and metadata for completed 'targets', can be safely ignored - !will only appear after the targets pipeline has run!
 * /data-extra -- Data used in the pipeline, but not directly. It holds files that are used elsewhere or still need transformation before they're used in the pipeline.
 * /data-raw -- all raw data, templates, variable definitions, and crosswalks
   + /archive -- data not currently used in the pipeline
   + /calculated-var -- workbooks to define calculated variables for energy model reported variables
-  + /crosswalk -- crosswalks to define model and scenario names, map variables between usproj and model-runs workbooks, and define models and scenarios to be used for the full net GHG BTR projections
+  + /crosswalk -- crosswalks to define model and scenario names, map variables between usproj and model-runs workbooks, and define models and scenarios to be used for the full net-GHG BTR projections
   + /lulucf -- LULUCF carbon stock change projections, from EPA and USDA
   + /model-runs -- energy model projections for current BTR as well as results for comparison - !results MUST be in reporting template format! (see template below)
   + /ncbr_comparison -- past NatCom/BR/Climate Action Report projections for comparison
-  + /template -- reporting template for co2 fossil fuel combustion emissions and energy data, BTR2024 using EMF37_data_template_R2_v2.xlsx
-  + /usproj-data -- current BTR projections for non-co2 gasses and co2 emissions from IPPU and NEU using NEMS activity drivers - from EPA's usproj repository
-* /docs -- contains r markdowns and quarto reports
+  + /template -- reporting template for CO~2~fossil fuel combustion emissions and energy data, BTR2024 using EMF37_data_template_R2_v2.xlsx
+  + /usproj-data -- current BTR projections for non-CO~2~ gasses and CO~2~ emissions from IPPU and NEU using NEMS activity drivers - from EPA's usproj repository
+* /docs -- contains RMarkdown files and quarto reports
 * /figure-maps -- Workbooks to define and create comparison figures
 * /output -- output directory for data products, figures, and reports
 * /R -- package-like functions only supporting the data pipeline and functions are organized by subject matter
@@ -23,7 +23,7 @@ Code for interactive exploration, QA, compilation, and visualization of emission
 
 ## Getting Started:
 
-The data pipeline is managed via targets. The overall plan is listed in _targets.R. To run the project, from the console run: ```targets::tar_make()``` from the project working directory. (e.g., via opening the LEEP.Rproj file). Final results are html and text in /outputs. 
+The data pipeline is managed via [targets](https://github.com/ropensci/targets). The overall plan is listed in _targets.R. To run the project, from the console run: ```targets::tar_make()``` from the project working directory. (e.g., via opening the BTR.Rproj file). Final results are html and text in /output. 
 
 TO run the project interactively:
 1) Load packages: ```source("packages.R")```
@@ -50,13 +50,21 @@ The majority of the `_targets.R` file is nested within the `tar_plan()` function
 
 The `tar_plan()` list contains roughly four types of objects: 
 
-b) **settings**: a list of (sort of global) variables, e.g., all_scenarios. These variables are what we want to make available to all the `.R` and `.Rmd` files through the `tar_load(config)` command.
+a) **settings**: Contains BTR-version specific variables.
 
-a) **config**: a list of (sort of global) variables, e.g., all_scenarios. These variables are what we want to make available to all the `.R` and `.Rmd` files through the `tar_load(config)` command.
+b) **config**: a list of (sort of global) variables, e.g., all_scenarios. These variables are what we want to make available to all the `.R` and `.Rmd` files through the `tar_load(config)` command.
 
-b) **file objects**: these objects include the template, metadata, raw data files, and spreadsheet containing instructions on what new variables to create and what graphs to generate. These objects just track files and their locations, not what is in them. They are created using `tar_target(target_name, "filepath", format = "file")`. The last parameter, `format`, is what indicates that this target will track only the file, not what is in it. 
+c) **file objects**: these objects include the template, metadata, raw data files, and spreadsheet containing instructions on what new variables to create and what graphs to generate. These objects just track files and their locations, not what is in them. They are created using `tar_target(target_name, "filepath", format = "file")`. The last parameter, `format`, is what indicates that this target will track only the file, not what is in it.
 
-c) **functional and data objects**: these objects track or manipulate data. They can be created either using `tar_target()` or a more simplified format `target_name = whatever_you_do_to_create_the_target`. If you have a code chunk following the "=", you need to put the code within "{}" so that it executes correctly. 
+* i) Template + Crosswalks:
+* ii) Data Files:
+* iii) Data Processing:
+
+d) **functional and data objects**: these objects track or manipulate data. They can be created either using `tar_target()` or a more simplified format `target_name = example_function(object)`. If you have a code chunk following the "=", you need to put the code within "{}" so that it executes correctly.
+
+* i) Projections Compilation:
+* ii) Complete Projections:
+* iii) Summary Table Breakouts:
 
 There are many spots within the `_targets.R` file that contain pairs of file objects and functional/data objects, such as:
 
@@ -69,7 +77,7 @@ We use these pairs when we want to track both a file path and the data within th
 
 The first line assigns the path to a given file to a targets object in the format of "file" with a predetermined name. In our example, the target object is in the format of file and has the name of `emf_template_csv`, and it tracks the template `EMF37_data_template_R1_v5.xlsx`. If the template file ever changes, target objects with `emf_template_csv` as a dependency would automatically re-run. The second line of the code then actually read in the data using the `read_emf_template_xlsx` function.
 
-One target is created by each line of code: (1) `emf_template_csv` (2) `emf_template`. No two targets can have the same name. The first target is created using the function `tar_target()` while the second target omits that function and uses the second method of target creation, described above. If the `emf_template` target ran thorugh a chunk of code instead of just using one function (`read_emf_template_xlsx`), the code chunk would be within curly brackets {} and would look something like this:
+One target is created by each line of code: (1) `emf_template_csv` (2) `emf_template`. No two targets can have the same name. The first target is created using the function `tar_target()` while the second target omits that function and uses the second method of target creation, described above. If the `emf_template` target ran through a chunk of code instead of just using one function (`read_emf_template_xlsx`), the code chunk would be within curly brackets {} and would look something like this:
 `emf_template = {read_emf_template_xlsx(emf_template_csv) %>% filter(variable == "test_variable) %>% select(-region}`
 
 d) **rmarkdown files**: in the `_targets.R` file, we also see code like:
@@ -85,14 +93,14 @@ d) **rmarkdown files**: in the `_targets.R` file, we also see code like:
   ),
 ```
 
-Code like this renders the corresponding rmarkdown file. The first parameter names the target, the second one points to the file path of the rmarkdown, output_dir gives the file directory to save the rendered output, output_file specifies the file name, and params lets you set parameters that your rmakrdown has in the yaml header. To link dependencies between rmakrdown targets and other targets, use `tar_load()` within the markdown to pull in other targets.
+Code like this renders the corresponding .Rmd file. The first parameter names the target, the second one points to the file path of the .Rmd, output_dir gives the file directory to save the rendered output, output_file specifies the file name, and params lets you set parameters that the .Rmd file has in the YAML header. To link dependencies between RMarkdown targets and other targets, use `tar_load()` within the markdown to pull in other targets.
 
 
 ### 2) Relevant Commands
 
-To run the pipeline after loading the EMF37viz.Rproj, use `targets::tar_make()` command. 
+To run the pipeline after loading BTR.Rproj, use `targets::tar_make()` command. 
 
-To invalidate a pipeline (delete all caches), use `targets::tar_invalidate()` command. If you want to specify a specific target, use `tar_invalidate(target_name)`.
+To invalidate all targets in the pipeline (delete all caches in /_targets), use `targets::tar_invalidate(everything())` command. If you want to specify a specific target, use `tar_invalidate(target_name)`.
 
 To load a target object inside a function/file into your local environment, use `targets::tar_load(xxx)` command, where xxx denotes the target name. 
 
