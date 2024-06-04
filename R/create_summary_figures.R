@@ -48,11 +48,14 @@ br_project = function(ghgi, proj, targets = NULL, legend_position = c(0.15, 0.2)
          x = "",
          color = "",
          fill = "") +
-    scale_y_continuous(limits = c(0, 7000), expand = c(0, 0)) +
-    scale_x_continuous(breaks = c(2005, 2010, 2015, 2022, 2025, 2030, 2035), expand = c(0,0)) +
+    scale_y_continuous(limits = c(0, 7200), expand = c(0, 0),
+                       breaks = c(2000,4000,6000,round(ghgi$sum[1])),
+                       labels = comma) +
+    scale_x_continuous(breaks = c(2005, 2010, 2015, 2020, 2022, 2025, 2030, 2035, 2040), expand = c(0,0)) +
     guides(fill = guide_legend(nrow = 4, byrow = T)) +
     geom_hline(aes(yintercept = 0)) +
     theme_btr() +
+    #theme_minimal() +
     theme(
       legend.position = "inside",
       legend.position.inside = c(0.15, 0.2))

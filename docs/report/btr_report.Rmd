@@ -1,0 +1,97 @@
+---
+title: "BTR Report"
+output:
+  html_document:
+    toc: yes
+    theme: spacelab
+date: "`r Sys.time()`"
+---
+
+```{r,echo = FALSE, results = "show", warning = FALSE, message = FALSE, error = FALSE}
+knitr::opts_chunk$set(echo = FALSE, results = "show", warning = FALSE, message = FALSE, error = FALSE, 
+                      fig.align = "center", fig.width = 9, fig.height = 5)
+```
+
+```{r}
+library(targets)
+library(tarchetypes)
+tar_source()
+```
+
+```{r}
+tar_load(c(config,
+           settings,
+           data_long_clean,
+           figmap_nrgco2_stackbar,
+           figmap_nrgco2_timeseries,
+           figmap_nrgco2_diffbar,
+           figmap_draftbriefing_stackbar,
+           projections_all_sm))
+```
+
+```{r}
+source('packages.R')
+source("scripts/theming.R")
+```
+
+# Tables
+
+### Table 1: Historical and Projected U.S. GHG Emissions (2024 Policy Baseline), by Gas: 2005-2040 (MMTCO~2~e)
+```{r create df}
+gas_df <- create_summary_table('gas','wm', projections_all_sm, config)
+sector_df <- create_summary_table('usproj_sector', 'wm', projections_all_sm, config)
+```
+
+```{r gas summary}
+gas_table <- create_html_table(gas_df, 'Gas',config)
+gas_table
+```
+
+### Table 2: Historical and Projected U.S. GHG Emissions (2024 Policy Baseline), by Sector: 2005-2040 (MMTCO~2~e)
+```{r sector summary}
+sector_table <- create_html_table(sector_df, 'Sector',config)
+sector_table
+```
+
+# Figures
+
+
+### Figure 1: U.S. Net GHG Emissions Projections
+```{r data}
+net_ghg = projections_all_sm %>%
+  group_by(proj_name, grouping, year) %>%
+  summarise(sum = sum(sum)) %>%
+  filter(year %in% config$fives)
+
+ghgi = net_ghg %>% filter(proj_name == "ghgi")
+proj_no_connect = net_ghg %>% 
+  filter(proj_name != "ghgi")
+
+connect = ghgi[ghgi$year == 2022,]$sum
+baseline = ghgi[ghgi$year == 2005,]$sum
+
+proj_connect = proj_no_connect %>% 
+  group_by(proj_name) %>%
+  slice(1) %>%
+  mutate(
+    year = 2022,
+    sum = ghgi$sum[ghgi$year == 2022])
+
+proj = rbind(proj_no_connect, proj_connect) %>%
+  mutate(year = as.numeric(year))
+
+ndc_targets = data.frame(
+  year = c(2020, 2025, 2030),
+  ymin = c((baseline * (1-.169)), (baseline * (1-.26)), (baseline * (1-.50))),
+  ymax = c((baseline * (1-.171)), (baseline * (1-.28)), (baseline * (1-.52))),
+  grouping = c("17% Below 2005","26-28% Below 2005","50-52% Below 2005")
+)
+```
+
+```{r proj function}
+projections = br_project(ghgi, proj, targets = ndc_targets)
+projections
+
+```
+
+

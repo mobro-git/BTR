@@ -249,6 +249,12 @@ tar_plan(
              output_file = paste0("results_summary_",Sys.Date(),".html"),
              params = list(mode = "targets")),
   
+  tar_render(btr_report,
+             "docs/report/btr_report.Rmd",
+             output_dir = paste0('output/',settings$version,"/presentations/"),
+             output_file = paste0("btr_report_",Sys.Date(),".html"),
+             params = list(mode = "targets")),
+  
   nrgco2_sb = create_graph("nrgco2", "stacked_bar", config, settings, data_long_clean, figmap_nrgco2_stackbar, pngGraphs = TRUE),
   draftbriefing_sb = create_graph("draftbriefing", "stacked_bar", config, settings, data_long_clean, figmap_draftbriefing_stackbar, pngGraphs = TRUE),
   
