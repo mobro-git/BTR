@@ -201,3 +201,8 @@ stackbar,22,TRN Energy by Fuel,Final Energy|Transportation|Hydrogen,0,Hydrogen,u
 stackbar,22,TRN Energy by Fuel,Final Energy|Transportation|Oil,0,Oil,usa,model_wm,fives_proj ,scen_wm_ira,grid,stack,year,value,scenario,model,variable_rename,region,fixed
 stackbar,22,TRN Energy by Fuel,Final Energy|Transportation|Synthetic Gas,0,Synthetic Gas,usa,model_wm,fives_proj ,scen_wm_ira,grid,stack,year,value,scenario,model,variable_rename,region,fixed
 stackbar,22,TRN Energy by Fuel,Final Energy|Transportation|Synthetic Liquids,0,Synthetic Liquids,usa,model_wm,fives_proj ,scen_wm_ira,grid,stack,year,value,scenario,model,variable_rename,region,fixed
+stackbar,23,TRN Passenger CO2 Emissions,Emissions|CO2|Energy|Demand|Transportation|Passenger|Aviation,0,Aviation,usa,model_wm,fives_proj ,scen_wm_ira,grid,stack,year,value,scenario,model,variable_rename,region,fixed
+stackbar,23,TRN Passenger CO2 Emissions,Emissions|CO2|Energy|Demand|Transportation|Passenger|Other,0,Other,usa,model_wm,fives_proj ,scen_wm_ira,grid,stack,year,value,scenario,model,variable_rename,region,fixed
+stackbar,23,TRN Passenger CO2 Emissions,Emissions|CO2|Energy|Demand|Transportation|Passenger|Rail,0,Rail,usa,model_wm,fives_proj ,scen_wm_ira,grid,stack,year,value,scenario,model,variable_rename,region,fixed
+stackbar,23,TRN Passenger CO2 Emissions,Emissions|CO2|Energy|Demand|Transportation|Passenger|Road,0,Road,usa,model_wm,fives_proj ,scen_wm_ira,grid,stack,year,value,scenario,model,variable_rename,region,fixed
+stackbar,23,TRN Passenger CO2 Emissions,Emissions|CO2|Energy|Demand|Transportation|Passenger|Shipping,0,Shipping,usa,model_wm,fives_proj ,scen_wm_ira,grid,stack,year,value,scenario,model,variable_rename,region,fixed

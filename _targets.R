@@ -55,6 +55,7 @@ tar_plan(
     fives_proj = c(seq(2020,2050, by = 5)),
     annual_proj = c(seq(2020,2050, by = 1)),
     last_proj = 2040,
+    base_proj = c(2022,seq(2025,2050, by = 5)),
     
     annual_1990 = c(seq(1990,2040,by = 1)),
     annual_2010 = c(seq(2010,2040,by = 1)),
