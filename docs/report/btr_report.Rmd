@@ -132,7 +132,11 @@ proj_all_sm_sb_join <- proj_all_sm_sb_final %>%
   left_join(net_co2_df, by = c('proj_name','year')) %>%
   mutate(year = as.factor(year)) %>%
   mutate(gas = factor(gas, levels = c('CO2','Non-CO2','LULUCF Sink')))
-  
+
+
+fills <- c("CO2" =  "#0388B3",
+           "Non-CO2" = "#E6544D",
+           "LULUCF Sink" = "#16B231")
   
 
 ```

@@ -256,9 +256,7 @@ br_project_pct_change = function(ghgi, proj, targets = NULL, legend_position = c
 }
 
 ####
-fills <- c("CO2" =  "#0388B3",
-           "Non-CO2" = "#E6544D",
-           "LULUCF Sink" = "#16B231")
+
 
 
 br_project_sb <- function(proj_all_sm_sb_join, config){
@@ -273,7 +271,7 @@ br_project_sb <- function(proj_all_sm_sb_join, config){
                color = 'black',
                size = 1) +
     facet_grid(cols = vars(proj_name)) +
-    scale_y_continuous(labels = comma) +
+    scale_y_continuous(labels = comma, breaks = c(-1000,-500,0,2000,4000,6000)) +
   #  scale_x_continuous(breaks = config$base_proj) +
     labs(y = expression(paste("MMt ", CO[2], "e", sep = ""))) +
     guides(fill = guide_legend(order = 1),

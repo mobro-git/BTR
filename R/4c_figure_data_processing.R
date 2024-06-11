@@ -259,14 +259,24 @@ diff_bar_figure_specific_data_processing <- function(df, config) {
         group_by(model, region, scenario, unit, variable) %>%
         filter(ref_value %in% unique(year)) %>%
         mutate(diff = value - value[year == ref_value]) %>%
-        ungroup()}
+        ungroup() %>%
+        filter(year != ref_value)}
     else if (unique(df$ref_type) == "scenario") {
-          df = df %>%
-            group_by(model, region, year, unit, variable) %>%
-            filter(ref_value %in% unique(scenario)) %>%
-            mutate(diff = value - value[scenario == ref_value]) %>%
-            ungroup() %>%
-            filter(scenario != ref_value)}
+      df = df %>%
+        group_by(model, region, year, unit, variable) %>%
+        filter(ref_value %in% unique(scenario)) %>%
+        mutate(diff = value - value[scenario == ref_value]) %>%
+        ungroup() %>%
+        filter(scenario != ref_value)}
+    else if (unique(df$ref_type) == "model") {
+      df = df %>%
+        group_by(region, scenario, year, unit, variable) %>%
+        filter(ref_value %in% unique(model)) %>%
+        mutate(diff = value - value[model == ref_value]) %>%
+        ungroup() %>%
+        filter(model != ref_value)
+    }
+  
 
     if (nrow(df) == 0) {
       rlang::warn(paste("There is no observation for figure ", figure, ". Please check if there is any problem.", sep = ""))

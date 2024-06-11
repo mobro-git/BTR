@@ -342,3 +342,58 @@ filename <- paste0("btr_main_fig_pctchange05_",Sys.Date(),".png")
 ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_fig/",filename))
 
 ```
+
+
+## BTR Net-GHG Stackbar
+
+```{r}
+
+proj_all_sm_sb <- projections_all_sm %>%
+  mutate(gas = case_when(gas %in% c("CO2") ~ "CO2",
+                         !gas %in% c("CO2", 'LULUCF Sink') ~ "Non-CO2",
+                         gas %in% c("LULUCF Sink") ~ "LULUCF Sink")) %>%
+  group_by(proj_name,year,gas) %>%
+  summarise(mmtco2e = sum(sum), .groups = 'drop') %>%
+  filter(year >= config$base_year) %>%
+  filter(year %in% config$base_proj)
+
+no_ghgi <- proj_all_sm_sb %>% filter(!proj_name == 'ghgi')
+
+ghgi <- proj_all_sm_sb %>% filter(proj_name == 'ghgi')
+
+dfs <- list()
+
+for(name in unique(no_ghgi$proj_name)) {
+  df <- proj_all_sm_sb %>% filter(proj_name == name)
+  add_ghgi <- ghgi %>%
+    rbind(df) %>%
+    mutate(proj_name = name)
+  
+  dfs[[name]] <- add_ghgi
+
+}
+
+proj_all_sm_sb_final <- bind_rows(dfs)
+
+net_co2_df <- proj_all_sm_sb_final %>%
+  group_by(proj_name, year) %>%
+  summarise(net_co2 = sum(mmtco2e), .groups = 'drop')
+
+proj_all_sm_sb_join <- proj_all_sm_sb_final %>%
+  left_join(net_co2_df, by = c('proj_name','year')) %>%
+  mutate(year = as.factor(year)) %>%
+  mutate(gas = factor(gas, levels = c('CO2','Non-CO2','LULUCF Sink')))
+
+
+fills <- c("CO2" =  "#0388B3",
+           "Non-CO2" = "#E6544D",
+           "LULUCF Sink" = "#16B231")
+  
+
+```
+
+```{r}
+proj_all_stackbar <- br_project_sb(proj_all_sm_sb_join, config)
+proj_all_stackbar
+
+```
