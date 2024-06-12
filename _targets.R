@@ -249,6 +249,7 @@ tar_plan(
              output_dir = paste0('output/',settings$version,"/presentations/"),
              output_file = paste0("results_summary_",Sys.Date(),".html"),
              params = list(mode = "targets")),
+  # TODO: add github doc output second version of output to view html on github site
   
   tar_render(btr_report,
              "docs/report/btr_report.Rmd",
