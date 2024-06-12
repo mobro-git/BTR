@@ -23,6 +23,8 @@ create_graph <- function(presentation_title, presentation_plot_type, config, set
     subpalettes = NULL
   }
 
+  # TODO: make function to replace copied and pasted code chunks in pdf_plots and png_plots
+  
   if (pdfGraphs) {
     # full processing based on figure requests + create pdf of plots
     pdf_plots(overall_path, df, presentation_title, presentation_plot_type, subpalettes, config, sub, saveData)
