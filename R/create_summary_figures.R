@@ -259,7 +259,7 @@ br_project_pct_change = function(ghgi, proj, targets = NULL, legend_position = c
 
 
 
-br_project_sb <- function(proj_all_sm_sb_join, config){
+br_project_sb <- function(proj_all_sm_sb_join, config, fills){
   
   stackbar <- ggplot(proj_all_sm_sb_join, aes(year, mmtco2e)) +
     geom_bar(aes(fill = gas),

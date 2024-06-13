@@ -37,6 +37,7 @@ stacked_bar_grid_fn <- function(df, data_list, mapping_list) {
     geom_bar(aes(fill = .data[[data_list$color]]), position = mapping_list$position, stat="identity", color = "white", linewidth = 0.25) +
     facet_grid(rows = vars(.data[[data_list$facet1]]), cols = vars(.data[[data_list$facet2]]),
                space = "free_x", scales = mapping_list$scales) +
+   # geom_hline(yintercept = 0, color = 'black') +
     labs(title = mapping_list$title,
          #x = mapping_list$xlab,
          x = "",
