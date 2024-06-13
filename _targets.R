@@ -39,7 +39,6 @@ tar_plan(
     scen_wm = c("wm"),
     scen_wm_ira = c("wm","leep_IRA"),
     
-    
     # regions
     usa = "United States",
     

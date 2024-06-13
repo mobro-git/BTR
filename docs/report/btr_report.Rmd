@@ -142,7 +142,7 @@ fills <- c("CO2" =  "#0388B3",
 ```
 
 ```{r}
-proj_all_stackbar <- br_project_sb(proj_all_sm_sb_join, config)
+proj_all_stackbar <- br_project_sb(proj_all_sm_sb_join, config, fills)
 proj_all_stackbar
 
 ```
