@@ -30,9 +30,9 @@ tar_plan(
   
   config = list(
     # models
-    model_wam = c("GCAM-LTS","GCAM-PNNL","NEMS-OP"),
-    model_wm = c("GCAM","NEMS","USREP-ReEDS"),
-    model_sm = c("NEMS", "USREP-ReEDS"),
+    model_wam = c("GCAM-LTS","GCAM-PNNL","OP-NEMS"),
+    model_wm = c("GCAM","OP-NEMS","USREP-ReEDS"),
+    model_sm = c("OP-NEMS", "USREP-ReEDS"),
     
     # scenarios
     ghgi_scen = "wm", # Set usproj scenario to pull ghgi data
@@ -252,18 +252,18 @@ tar_plan(
              output_file = paste0("btr1_tables_figs.html_",Sys.Date(),".html"),
              params = list(mode = "targets")),
   
+  # tar_render(btr_report,
+  #            "docs/report/btr_report.Rmd",
+  #            output_dir = paste0('output/',settings$version,"/presentations/"),
+  #            output_file = paste0("btr_report_",Sys.Date(),".html"),
+  #            params = list(mode = "targets")),
+  
   tar_render(results_overview,
              "docs/report/results_overview.Rmd",
              output_dir = paste0('output/',settings$version,"/presentations/"),
              output_file = paste0("results_summary_",Sys.Date(),".html"),
-             params = list(mode = "targets")),
-  # TODO: add github doc output second version of output to view html on github site
-  
-  tar_render(btr_report,
-             "docs/report/btr_report.Rmd",
-             output_dir = paste0('output/',settings$version,"/presentations/"),
-             output_file = paste0("btr_report_",Sys.Date(),".html"),
              params = list(mode = "targets"))
+  # TODO: add github doc output second version of output to view html on github site
   
 )
 

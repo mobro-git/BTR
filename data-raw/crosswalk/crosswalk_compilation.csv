@@ -1,10 +1,10 @@
 proj_name,usproj_scen,ffc_model,ffc_scen,lulucf_model,lulucf_scen,grouping
-nems_wm_lowseq,wm,NEMS,wm,lulucf,bau_low,wm
+nems_wm_lowseq,wm,OP-NEMS,wm,lulucf,bau_low,wm
 gcam_wm_lowseq,wm,GCAM,wm,lulucf,bau_low,wm
 usrr_wm_lowseq,wm,USREP-ReEDS,wm,lulucf,bau_low,wm
-nems_ira_lowseq,wm,NEMS,leep_IRA,lulucf,bau_low,IRA
+nems_ira_lowseq,wm,OP-NEMS,leep_IRA,lulucf,bau_low,IRA
 gcam_ira_lowseq,wm,GCAM,leep_IRA,lulucf,bau_low,IRA
 usrr_ira_lowseq,wm,USREP-ReEDS,leep_IRA,lulucf,bau_low,IRA
-nems_wm_hiseq,wm,NEMS,wm,lulucf,bau_high,wm
+nems_wm_hiseq,wm,OP-NEMS,wm,lulucf,bau_high,wm
 gcam_wm_hiseq,wm,GCAM,wm,lulucf,bau_high,wm
 usrr_wm_hiseq,wm,USREP-ReEDS,wm,lulucf,bau_high,wm

@@ -1,7 +1,7 @@
 datasrc,model,scenario,model_new,scenario_new,notes
-OP-NEMS IRA 5cenario outputs w retire 07-19-23 - June cases.xlsx,OP-NEMS,OP IRA Moderate,NEMS,leep_IRA,LEEP report
-OP-NEMS IRA 5cenario outputs w retire 07-19-23 - June cases.xlsx,OP-NEMS,OP IRA Advanced,NEMS,leep_Opt-IRA.Adv,LEEP report
-OP-NEMS IRA 5cenario outputs w retire 07-19-23 - June cases.xlsx,OP-NEMS,OP No New Policies,NEMS,leep_No IRA,LEEP report
+OP-NEMS IRA 5cenario outputs w retire 07-19-23 - June cases.xlsx,OP-NEMS,OP IRA Moderate,OP-NEMS,leep_IRA,LEEP report
+OP-NEMS IRA 5cenario outputs w retire 07-19-23 - June cases.xlsx,OP-NEMS,OP IRA Advanced,OP-NEMS,leep_Opt-IRA.Adv,LEEP report
+OP-NEMS IRA 5cenario outputs w retire 07-19-23 - June cases.xlsx,OP-NEMS,OP No New Policies,OP-NEMS,leep_No IRA,LEEP report
 PNNL_GCAM6_IRA_EPA_LEEP_6_30_23.xlsx,GCAM6.0,IRA,GCAM,leep_IRA,LEEP report
 PNNL_GCAM6_IRA_EPA_LEEP_6_30_23.xlsx,GCAM6.0,NoIRA,GCAM,leep_No IRA,LEEP report
 PNNL_GCAM6_IRA_EPA_LEEP_6_30_23.xlsx,GCAM6.0,IRA_HighGrowth,GCAM,leep_High Growth,LEEP report
@@ -29,10 +29,10 @@ GCAM-LTS_ar5.csv,GCAM 5.3,AM.MedRem.RefCH4,GCAM-LTS,LTS9,LTS conversion used in 
 GCAM-LTS_ar5.csv,GCAM 5.3,AM.MedRem.RefInd,GCAM-LTS,LTS10,LTS conversion used in BRVS
 GCAM-LTS_ar5.csv,GCAM 5.3,AM.MedRem.RefPower,GCAM-LTS,LTS11,LTS conversion used in BRVS
 GCAM-LTS_ar5.csv,GCAM 5.3,AM.MedRem.RefTrans,GCAM-LTS,LTS12,LTS conversion used in BRVS
-OP-NEMS BTR Scenario with Measures Data 5-2-2024.xlsx,OP-NEMS,OP Moderate,NEMS,wm,btr - OP-NEMS BTR wm
 report_usrep_reeds_5.15.csv,USREP-ReEDS,test10_ref,USREP-ReEDS,ref_noira,"btr - similar to the LEEP ref - includes BIL and CAFE, no IRA, but with significant updates to ReEDS and changes to USREP"
 database_basexdbWM_0529_24gcamreport_Processed.csv,GCAM 7.0,WM_0529_24,GCAM,wm,btr - gcam 5/30/24
 database_basexdbWM_0529_24gcamreport_Processed.csv,GCAM 7.0,WM_051424,GCAM,wm_old,btr - gcam 5/30/24
 database_basexdbWM_0529_24gcamreport_Processed.csv,GCAM 7.0,WM_052024_RPS,GCAM,wm_old_rps,btr - gcam 5/30/24
 report_usrep_reeds_5.30.csv,USREP-ReEDS,benchmark,USREP-ReEDS,benchmark,
 report_usrep_reeds_5.30.csv,USREP-ReEDS,wm,USREP-ReEDS,wm,"btr - includes IRA , the infrastructure law, 111, ransportation standards, building efficiency standards"
+OP-NEMS BTR Scenario with Measures Data 6-14-2024.xlsx,OP-NEMS,OP Moderate,OP-NEMS,wm,btr - OP-NEMS BTR wm
