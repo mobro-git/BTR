@@ -431,7 +431,30 @@ Capacity
 ```
 
 ---
+# Model Comparision 
 
+## Reference Model: {.tabset}
+
+### GCAM
+
+```{r}
+diff_from_gcam = print_graph("diff_bar", config, data_long_clean, figmap_nrgco2_diffbar, 23, "United States", scenario_rename = TRUE)
+diff_from_gcam
+```
+
+### OP-NEMS
+
+```{r}
+diff_from_nems = print_graph("diff_bar", config, data_long_clean, figmap_nrgco2_diffbar, 25, "United States", scenario_rename = TRUE)
+diff_from_nems
+```
+
+### USREP-ReEDS
+
+```{r}
+diff_from_usrep = print_graph("diff_bar", config, data_long_clean, figmap_nrgco2_diffbar, 24, "United States", scenario_rename = TRUE)
+diff_from_usrep
+```
 # BTR Tables and Figures
 
 ```{r}
