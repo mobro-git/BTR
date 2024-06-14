@@ -73,7 +73,9 @@ get_pct_change_40_df <- function(data_long_clean, var_list, config){
     summarise(value = sum(value), .groups = 'drop') %>%
     filter(year %in% config$fives_sumtab) %>%
     group_by(model) %>% 
-    mutate(pct_change_40 = round(100*(1 - (value[year==2040]/value[year==2020])))) %>%
+    mutate(pct_change_40 = value[year==2040]/value[year==2020]) %>%
+    mutate(pct_change_40 = (pct_change_40-1)*100) %>%
+    mutate(pct_change_40 = round(pct_change_40)) %>%
     select(model, pct_change_40) %>%
     distinct()
   
@@ -94,29 +96,24 @@ get_pct_change_40_value_list <- function(pct_change_40_df) {
   }
   return(value_list)
 }
+
+get_value_list_from_var_list <- function(figmap_df, figure_num, var_list, data_long_clean, config) {
+  figure_subset_df <- get_figure_subset_df(figmap_df, figure_num)
+  pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list, config)
+  value_list <- get_pct_change_40_value_list(pct_change_40_df)
+  return(value_list)
+}
   
 ```
 
 ```{r}
 figure_subset_df <- get_figure_subset_df(figmap_nrgco2_stackbar,19)
-var_list <- unique(figure_subset_df$variable)
-pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
-nrgco2_value_list <- get_pct_change_40_value_list(pct_change_40_df)
+figure_subset_vars <- unique(figure_subset_df$variable)
+nrgco2_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 19, figure_subset_vars, data_long_clean, config)
 
-figure_subset_df <- get_figure_subset_df(figmap_nrgco2_timeseries,9)
-var_list <- c("Emissions|CO2|Energy|Demand|Buildings")
-pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
-buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
-
-figure_subset_df <- get_figure_subset_df(figmap_nrgco2_timeseries,9)
-var_list <- c("Emissions|CO2|Energy|Demand|Industry")
-pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
-industry_value_list <- get_pct_change_40_value_list(pct_change_40_df)
-
-figure_subset_df <- get_figure_subset_df(figmap_nrgco2_timeseries,9)
-var_list <- c("Emissions|CO2|Energy|Demand|Transportation")
-pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
-trn_value_list <- get_pct_change_40_value_list(pct_change_40_df)
+buildings_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 19, "Emissions|CO2|Energy|Demand|Buildings", data_long_clean, config)
+industry_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 19, "Emissions|CO2|Energy|Demand|Industry", data_long_clean, config)
+transportation_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 19, "Emissions|CO2|Energy|Demand|Transportation", data_long_clean, config)
 
 
 ```
@@ -124,9 +121,9 @@ trn_value_list <- get_pct_change_40_value_list(pct_change_40_df)
 
 In the "With Measures" scenarios, Energy CO~2~ emissions reductions range by model from 2020 to 2040:
 
-- GCAM: `r nrgco2_value_list[1]`%
-- OP-NEMS:`r nrgco2_value_list[2]`%
-- USREP-ReEDS: `r nrgco2_value_list[3]`%
+* GCAM: `r nrgco2_value_list[1]`%
+* OP-NEMS: `r nrgco2_value_list[2]`%
+* USREP-ReEDS: `r nrgco2_value_list[3]`%
 
 
 
@@ -138,9 +135,25 @@ model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timese
 model
 ```
 
-By sector, the following decrease ranges are estimated:
 
 
+
+By sector, emissions reductions are estimate to change from 2020 to 2040:
+
+* Buildings:
+  + GCAM: `r buildings_value_list[1]`%
+  + OP-NEMS: `r buildings_value_list[2]`%
+  + USREP-ReEDS: `r buildings_value_list[3]`%
+
+* Industry:
+  + GCAM: `r industry_value_list[1]`%
+  + OP-NEMS: `r industry_value_list[2]`%
+  + USREP-ReEDS: `r industry_value_list[3]`%
+
+* Transportation:
+  + GCAM: `r transportation_value_list[1]`%
+  + OP-NEMS: `r transportation_value_list[2]`%
+  + USREP-ReEDS: `r transportation_value_list[3]`%
 
 # Energy Consumption
 
@@ -151,55 +164,76 @@ By sector, the following decrease ranges are estimated:
 fuel = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 14, "United States", scenario_rename = TRUE)
 fuel
 ```
+
 ```{r}
 figure_subset_df <- get_figure_subset_df(figmap_nrgco2_stackbar,14)
-var_list <- unique(figure_subset_df$variable)
-pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
-buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
-```
+figure_subset_vars <- unique(figure_subset_df$variable)
+final_energy_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 14, figure_subset_vars, data_long_clean, config)
 
-```{r}
-var_list <- c("Final Energy|Coal")
-pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
-buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
-
-var_list <- c("Final Energy|Electricity")
-pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
-buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
-
-var_list <- c("Final Energy|Gas")
-pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
-buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
-
-var_list <- c("Final Energy|Oil")
-pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
-buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
+fe_coal_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 19, "Final Energy|Coal", data_long_clean, config)
+fe_electricity_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 19, "Final Energy|Electricity", data_long_clean, config)
+fe_gas_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 19, "Final Energy|Gas", data_long_clean, config)
+fe_oil_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 19, "Final Energy|Oil", data_long_clean, config)
 
 ```
 
+Energy consumption is estimated to change from 2020 to 2040:
+
+* GCAM: `r final_energy_value_list[1]`%
+* OP-NEMS: `r final_energy_value_list[2]`%
+* USREP-ReEDS: `r final_energy_value_list[3]`%
+
+By fuel-type, energy consumption is estimated to change from 2020 to 2040:
+
+* Coal:
+  + GCAM: `r fe_coal_value_list[1]`%
+  + OP-NEMS: `r fe_coal_value_list[2]`%
+  + USREP-ReEDS: `r fe_coal_value_list[3]`%
+
+* Electricity:
+  + GCAM: `r fe_electricity_value_list[1]`%
+  + OP-NEMS: `r fe_electricity_value_list[2]`%
+  + USREP-ReEDS: `r fe_electricity_value_list[3]`%
+
+* Gas:
+  + GCAM: `r fe_gas_value_list[1]`%
+  + OP-NEMS: `r fe_gas_value_list[2]`%
+  + USREP-ReEDS: `r fe_gas_value_list[3]`%
+  
+* Oil:
+  + GCAM: `r fe_oil_value_list[1]`%
+  + OP-NEMS: `r fe_oil_value_list[2]`%
+  + USREP-ReEDS: `r fe_oil_value_list[3]`%
 
 ### Sector
 ```{r}
 sector = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 17, "United States", scenario_rename = TRUE)
 sector
 ```
+
 ```{r}
-figure_subset_df <- get_figure_subset_df(figmap_nrgco2_stackbar,17)
-var_list <- c("Final Energy|Buildings")
-pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
-buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
-
-var_list <- c("Final Energy|Industry")
-pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
-buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
-
-var_list <- c("Final Energy|Transportation")
-pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
-buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
+fe_buildings_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 17, "Final Energy|Buildings", data_long_clean, config)
+fe_industry_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 17, "Final Energy|Industry", data_long_clean, config)
+fe_transportation_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 17, "Final Energy|Transportation", data_long_clean, config)
 
 ```
 
+By sector, energy consumption is estimated to change from 2020 to 2040:
 
+* Buildings:
+  + GCAM: `r fe_buildings_value_list[1]`%
+  + OP-NEMS: `r fe_buildings_value_list[2]`%
+  + USREP-ReEDS: `r fe_buildings_value_list[3]`%
+
+* Industry:
+  + GCAM: `r fe_industry_value_list[1]`%
+  + OP-NEMS: `r fe_industry_value_list[2]`%
+  + USREP-ReEDS: `r fe_industry_value_list[3]`%
+
+* Transportation:
+  + GCAM: `r fe_transportation_value_list[1]`%
+  + OP-NEMS: `r fe_transportation_value_list[2]`%
+  + USREP-ReEDS: `r fe_transportation_value_list[3]`%
 
 
 ### Sector
@@ -258,51 +292,53 @@ Model
 elec_gen = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 13, "United States", scenario_rename = TRUE)
 elec_gen
 ```
+
 ```{r}
 figure_subset_df <- get_figure_subset_df(figmap_nrgco2_stackbar,13)
+figure_subset_vars <- unique(figure_subset_df$variable)
+se_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 13, figure_subset_vars, data_long_clean, config)
 
-var_list <- c("Secondary Energy|Electricity|Biomass")
-pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
-buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
+se_coal_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 13, "Secondary Energy|Electricity|Coal", data_long_clean, config)
+se_gas_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 13, "Secondary Energy|Electricity|Gas", data_long_clean, config)
+se_oil_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 13, "Secondary Energy|Electricity|Oil", data_long_clean, config)
+se_solar_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 13, "Secondary Energy|Electricity|Solar", data_long_clean, config)
+se_wind_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 13, "Secondary Energy|Electricity|Wind", data_long_clean, config)
 
-var_list <- c("Secondary Energy|Electricity|Biomass")
-pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
-buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
-
-var_list <- c("Secondary Energy|Electricity|Biomass")
-pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
-buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
-
-var_list <- c("Secondary Energy|Electricity|Biomass")
-pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
-buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
-
-var_list <- c("Secondary Energy|Electricity|Biomass")
-pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
-buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
-
-var_list <- c("Secondary Energy|Electricity|Biomass")
-pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
-buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
-
-var_list <- c("Secondary Energy|Electricity|Biomass")
-pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
-buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
-
-var_list <- c("Secondary Energy|Electricity|Biomass")
-pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
-buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
-
-var_list <- c("Secondary Energy|Electricity|Biomass")
-pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
-buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
-
-var_list <- c("Secondary Energy|Electricity|Biomass")
-pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
-buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
 
 ```
 
+Electricity generation is estimated to increase from 2020 to 2040:
+
+* GCAM: `r se_value_list[1]`%
+* OP-NEMS: `r se_value_list[2]`%
+* USREP-ReEDS: `r se_value_list[3]`%
+
+By technology, electricity generation is estimated to change from 2020 to 2040:
+
+* Coal:
+  + GCAM: `r se_coal_value_list[1]`%
+  + OP-NEMS: `r se_coal_value_list[2]`%
+  + USREP-ReEDS: `r se_coal_value_list[3]`%
+
+* Gas:
+  + GCAM: `r se_gas_value_list[1]`%
+  + OP-NEMS: `r se_gas_value_list[2]`%
+  + USREP-ReEDS: `r se_gas_value_list[3]`%
+  
+* Oil:
+  + GCAM: `r se_oil_value_list[1]`%
+  + OP-NEMS: `r se_oil_value_list[2]`%
+
+* Solar:
+  + GCAM: `r se_solar_value_list[1]`%
+  + OP-NEMS: `r se_solar_value_list[2]`%
+  + USREP-ReEDS: `r se_solar_value_list[3]`%
+  
+* Wind:
+  + GCAM: `r se_wind_value_list[1]`%
+  + OP-NEMS: `r se_wind_value_list[2]`%
+  + USREP-ReEDS: `r se_wind_value_list[3]`%
+  
 
 ### Capacity
 ```{r}
@@ -310,7 +346,57 @@ Capacity = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_sta
 Capacity
 ```
 
+```{r}
+figure_subset_df <- get_figure_subset_df(figmap_nrgco2_stackbar,3)
+figure_subset_vars <- unique(figure_subset_df$variable)
+cap_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 3, figure_subset_vars, data_long_clean, config)
 
+cap_coal_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 3, "Capacity|Electricity|Coal", data_long_clean, config)
+cap_gas_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 3, "Capacity|Electricity|Gas", data_long_clean, config)
+cap_oil_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 3, "Capacity|Electricity|Oil", data_long_clean, config)
+cap_solar_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 3, "Capacity|Electricity|Solar", data_long_clean, config)
+cap_storage_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 3, "Capacity|Electricity|Storage Capacity", data_long_clean, config)
+cap_wind_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 3, "Capacity|Electricity|Wind", data_long_clean, config)
+
+
+```
+
+
+Electricity capacity is estimated to increase from 2020 to 2040:
+
+* GCAM: `r cap_value_list[1]`%
+* OP-NEMS: `r cap_value_list[2]`%
+* USREP-ReEDS: `r cap_value_list[3]`%
+
+By technology, electricity capacity is estimated to change from 2020 to 2040:
+
+* Coal:
+  + GCAM: `r cap_coal_value_list[1]`%
+  + OP-NEMS: `r cap_coal_value_list[2]`%
+  + USREP-ReEDS: `r cap_coal_value_list[3]`%
+
+* Gas:
+  + GCAM: `r cap_gas_value_list[1]`%
+  + OP-NEMS: `r cap_gas_value_list[2]`%
+  + USREP-ReEDS: `r cap_gas_value_list[3]`%
+  
+* Oil:
+  + GCAM: `r cap_oil_value_list[1]`%
+  + OP-NEMS: `r cap_oil_value_list[2]`%
+
+* Solar:
+  + GCAM: `r cap_solar_value_list[1]`%
+  + OP-NEMS: `r cap_solar_value_list[2]`%
+  + USREP-ReEDS: `r cap_solar_value_list[3]`%
+
+* Storage:
+  + OP-NEMS: `r cap_storage_value_list[1]`%
+  + USREP-ReEDS: `r cap_storage_value_list[2]`%
+  
+* Wind:
+  + GCAM: `r cap_wind_value_list[1]`%
+  + OP-NEMS: `r cap_wind_value_list[2]`%
+  + USREP-ReEDS: `r cap_wind_value_list[3]`%
 
 ## Electricity Production - Combustion {.tabset}
 
