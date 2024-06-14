@@ -2,7 +2,6 @@
 title: "BTR Results Overview"
 output:
   html_document:
-    keep_md: true
     toc: yes
     toc_float:
       toc_collapsed: true
@@ -24,13 +23,20 @@ tar_source()
 ```
 
 ```{r}
-tar_load(config)
-tar_load(settings)
-tar_load(data_long_clean)
-tar_load(figmap_nrgco2_stackbar)
-tar_load(figmap_nrgco2_timeseries)
-tar_load(figmap_nrgco2_diffbar)
-tar_load(figmap_draftbriefing_stackbar)
+tar_load(
+  c(
+    config,
+    settings,
+    data_long_clean,
+    figmap_nrgco2_stackbar,
+    figmap_nrgco2_timeseries,
+    figmap_nrgco2_diffbar,
+    figmap_draftbriefing_stackbar,
+    # dfs for statistics
+    total_gross_emissions,
+    total_net_emissions
+  )
+)
 ```
 
 ```{r}
@@ -39,12 +45,6 @@ source("scripts/theming.R")
 ```
 
 
-```{r}
-# Dataframes for Statistics
-
-tar_load(c(total_gross_emissions,
-         total_net_emissions))
-```
 
 # Emissions
 
@@ -63,7 +63,7 @@ get_figure_subset_df <- function(figmap_df, fig_num) {
     filter(figure_no == fig_num)
 }
 
-get_data_long_clean_sums <- function(data_long_clean, var_list,config){
+get_pct_change_40_df <- function(data_long_clean, var_list, config){
   
   df <- data_long_clean %>%
     filter(variable %in% var_list) %>%
@@ -71,56 +71,62 @@ get_data_long_clean_sums <- function(data_long_clean, var_list,config){
     filter(region == 'United States') %>%
     group_by(model,year) %>%
     summarise(value = sum(value), .groups = 'drop') %>%
-    filter(year %in% config$fives_sumtab)
+    filter(year %in% config$fives_sumtab) %>%
+    group_by(model) %>% 
+    mutate(pct_change_40 = round(100*(1 - (value[year==2040]/value[year==2020])))) %>%
+    select(model, pct_change_40) %>%
+    distinct()
   
-  df
 }
 
-get_range_max <- function(data_long_clean_sums){
-  values2020 <- data_long_clean_sums %>% filter(year == 2020)
-  values2040 <- data_long_clean_sums %>% filter(year == 2040)
-  range_max <- round((1-min(values2040$value)/max(values2020$value))*100)
-  range_max
+get_pct_change_40_value <- function(pct_change_40_df, model_name) {
+  model_df <- pct_change_40_df %>% filter(model == model_name)
+  value <- model_df$pct_change_40
 }
 
-get_range_min <- function(data_long_clean_sums){
-  values2020 <- data_long_clean_sums %>% filter(year == 2020)
-  values2040 <- data_long_clean_sums %>% filter(year == 2040)
-  range_min <- round((1-max(values2040$value)/min(values2020$value))*100)
-  range_min
+get_pct_change_40_value_list <- function(pct_change_40_df) {
+  models <- unique(pct_change_40_df$model)
+  value_list <- list()
+  
+  for(name in models) {
+    value <- get_pct_change_40_value(pct_change_40_df, name)
+    value_list[name] <- value
+  }
+  return(value_list)
 }
+  
 ```
 
 ```{r}
 figure_subset_df <- get_figure_subset_df(figmap_nrgco2_stackbar,19)
 var_list <- unique(figure_subset_df$variable)
-data_long_clean_sums <- get_data_long_clean_sums(data_long_clean, var_list,config)
-nrgco2_max <- get_range_max(data_long_clean_sums)
-nrgco2_min <- get_range_min(data_long_clean_sums)
+pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
+nrgco2_value_list <- get_pct_change_40_value_list(pct_change_40_df)
 
 figure_subset_df <- get_figure_subset_df(figmap_nrgco2_timeseries,9)
 var_list <- c("Emissions|CO2|Energy|Demand|Buildings")
-data_long_clean_sums <- get_data_long_clean_sums(data_long_clean, var_list,config)
-buildings_max <- get_range_max(data_long_clean_sums)
-buildings_min <- get_range_min(data_long_clean_sums)
+pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
+buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
 
 figure_subset_df <- get_figure_subset_df(figmap_nrgco2_timeseries,9)
 var_list <- c("Emissions|CO2|Energy|Demand|Industry")
-data_long_clean_sums <- get_data_long_clean_sums(data_long_clean, var_list,config)
-industry_max <- get_range_max(data_long_clean_sums)
-industry_min <- get_range_min(data_long_clean_sums)
+pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
+industry_value_list <- get_pct_change_40_value_list(pct_change_40_df)
 
 figure_subset_df <- get_figure_subset_df(figmap_nrgco2_timeseries,9)
 var_list <- c("Emissions|CO2|Energy|Demand|Transportation")
-data_long_clean_sums <- get_data_long_clean_sums(data_long_clean, var_list,config)
-trn_max <- get_range_max(data_long_clean_sums)
-trn_min <- get_range_min(data_long_clean_sums)
+pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
+trn_value_list <- get_pct_change_40_value_list(pct_change_40_df)
 
 
 ```
 
 
-In the "With Measures" scenarios, Energy CO~2~ emissions decrease ranges from `r nrgco2_min`% to `r nrgco2_max`% from 2020 to 2040.
+In the "With Measures" scenarios, Energy CO~2~ emissions reductions range by model from 2020 to 2040:
+
+- GCAM: `r nrgco2_value_list[1]`%
+- OP-NEMS:`r nrgco2_value_list[2]`%
+- USREP-ReEDS: `r nrgco2_value_list[3]`%
 
 
 
@@ -134,9 +140,7 @@ model
 
 By sector, the following decrease ranges are estimated:
 
-- Buildings: `r buildings_min`% to `r buildings_max`%
-- Industry: `r industry_min`% to `r industry_max`%
-- Transportation: `r trn_min`% to `r trn_max`%
+
 
 # Energy Consumption
 
@@ -150,60 +154,29 @@ fuel
 ```{r}
 figure_subset_df <- get_figure_subset_df(figmap_nrgco2_stackbar,14)
 var_list <- unique(figure_subset_df$variable)
-data_long_clean_sums <- get_data_long_clean_sums(data_long_clean, var_list,config)
-finalnrg_max <- get_range_max(data_long_clean_sums)
-finalnrg_min <- get_range_min(data_long_clean_sums)
+pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
+buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
 ```
 
 ```{r}
-var_list <- c("Final Energy|Biogas")
-data_long_clean_sums <- get_data_long_clean_sums(data_long_clean, var_list,config)
-biogas_max <- get_range_max(data_long_clean_sums)
-biogas_min <- get_range_min(data_long_clean_sums)
-
-var_list <- c("Final Energy|Biomass Liquids")
-data_long_clean_sums <- get_data_long_clean_sums(data_long_clean, var_list,config)
-biomass_liquids_max <- get_range_max(data_long_clean_sums)
-biomass_liquids_min <- get_range_min(data_long_clean_sums)
-
 var_list <- c("Final Energy|Coal")
-data_long_clean_sums <- get_data_long_clean_sums(data_long_clean, var_list,config)
-coal_max <- get_range_max(data_long_clean_sums)
-coal_min <- get_range_min(data_long_clean_sums)
+pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
+buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
 
 var_list <- c("Final Energy|Electricity")
-data_long_clean_sums <- get_data_long_clean_sums(data_long_clean, var_list,config)
-elec_max <- get_range_max(data_long_clean_sums)
-elec_min <- get_range_min(data_long_clean_sums)
+pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
+buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
 
 var_list <- c("Final Energy|Gas")
-data_long_clean_sums <- get_data_long_clean_sums(data_long_clean, var_list,config)
-gas_max <- get_range_max(data_long_clean_sums)
-gas_min <- get_range_min(data_long_clean_sums)
-
-var_list <- c("Final Energy|Hydrogen")
-data_long_clean_sums <- get_data_long_clean_sums(data_long_clean, var_list,config)
-h2_max <- get_range_max(data_long_clean_sums)
-h2_min <- get_range_min(data_long_clean_sums)
+pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
+buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
 
 var_list <- c("Final Energy|Oil")
-data_long_clean_sums <- get_data_long_clean_sums(data_long_clean, var_list,config)
-oil_max <- get_range_max(data_long_clean_sums)
-oil_min <- get_range_min(data_long_clean_sums)
+pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
+buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
 
 ```
 
-Overall, change in final energy consumption is estimated to range from `r finalnrg_min`% to `r finalnrg_max`% from 2020 to 2040.
-
-By fuel-type, the following changes in energy consumption are estimated from 2020 to 2040:
-
-- Biogas: `r biogas_min`% to `r biogas_max`%
-- Biomass Liquids: `r biomass_liquids_min`% to `r biomass_liquids_max`%
-- Coal: `r coal_min`% to `r coal_max`%
-- Electricity: `r elec_min`% to `r elec_max`%
-- Gas: `r gas_min`% to `r gas_max`%
-- Hydrogen: `r h2_min`% to `r h2_max`%
-- Oil: `r oil_min`% to `r oil_max`%
 
 ### Sector
 ```{r}
@@ -213,29 +186,21 @@ sector
 ```{r}
 figure_subset_df <- get_figure_subset_df(figmap_nrgco2_stackbar,17)
 var_list <- c("Final Energy|Buildings")
-data_long_clean_sums <- get_data_long_clean_sums(data_long_clean, var_list,config)
-fe_buildings_max <- get_range_max(data_long_clean_sums)
-fe_buildings_min <- get_range_min(data_long_clean_sums)
+pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
+buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
 
 var_list <- c("Final Energy|Industry")
-data_long_clean_sums <- get_data_long_clean_sums(data_long_clean, var_list,config)
-fe_industry_max <- get_range_max(data_long_clean_sums)
-fe_industry_min <- get_range_min(data_long_clean_sums)
+pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
+buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
 
 var_list <- c("Final Energy|Transportation")
-data_long_clean_sums <- get_data_long_clean_sums(data_long_clean, var_list,config)
-fe_trn_max <- get_range_max(data_long_clean_sums)
-fe_trn_min <- get_range_min(data_long_clean_sums)
+pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
+buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
+
 ```
 
 
-By sector, the following changes in energy consumption are estimated from 2020 to 2040:
 
-- Buildings: `r fe_buildings_min`% to `r fe_buildings_max`%
-- Industry: `r fe_industry_min`% to `r fe_industry_max`%
-- Transportation: `r fe_trn_min`% to `r fe_trn_max`%
-
-## Final Energy by Model {.tabset}
 
 ### Sector
 ```{r}
@@ -297,54 +262,45 @@ elec_gen
 figure_subset_df <- get_figure_subset_df(figmap_nrgco2_stackbar,13)
 
 var_list <- c("Secondary Energy|Electricity|Biomass")
-data_long_clean_sums <- get_data_long_clean_sums(data_long_clean, var_list,config)
-se_biomass_max <- get_range_max(data_long_clean_sums)
-se_biomass_min <- get_range_min(data_long_clean_sums)
+pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
+buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
 
 var_list <- c("Secondary Energy|Electricity|Biomass")
-data_long_clean_sums <- get_data_long_clean_sums(data_long_clean, var_list,config)
-se_biomass_max <- get_range_max(data_long_clean_sums)
-se_biomass_min <- get_range_min(data_long_clean_sums)
+pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
+buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
 
 var_list <- c("Secondary Energy|Electricity|Biomass")
-data_long_clean_sums <- get_data_long_clean_sums(data_long_clean, var_list,config)
-se_biomass_max <- get_range_max(data_long_clean_sums)
-se_biomass_min <- get_range_min(data_long_clean_sums)
+pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
+buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
 
 var_list <- c("Secondary Energy|Electricity|Biomass")
-data_long_clean_sums <- get_data_long_clean_sums(data_long_clean, var_list,config)
-se_biomass_max <- get_range_max(data_long_clean_sums)
-se_biomass_min <- get_range_min(data_long_clean_sums)
+pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
+buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
 
 var_list <- c("Secondary Energy|Electricity|Biomass")
-data_long_clean_sums <- get_data_long_clean_sums(data_long_clean, var_list,config)
-se_biomass_max <- get_range_max(data_long_clean_sums)
-se_biomass_min <- get_range_min(data_long_clean_sums)
+pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
+buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
 
 var_list <- c("Secondary Energy|Electricity|Biomass")
-data_long_clean_sums <- get_data_long_clean_sums(data_long_clean, var_list,config)
-se_biomass_max <- get_range_max(data_long_clean_sums)
-se_biomass_min <- get_range_min(data_long_clean_sums)
+pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
+buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
 
 var_list <- c("Secondary Energy|Electricity|Biomass")
-data_long_clean_sums <- get_data_long_clean_sums(data_long_clean, var_list,config)
-se_biomass_max <- get_range_max(data_long_clean_sums)
-se_biomass_min <- get_range_min(data_long_clean_sums)
+pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
+buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
 
 var_list <- c("Secondary Energy|Electricity|Biomass")
-data_long_clean_sums <- get_data_long_clean_sums(data_long_clean, var_list,config)
-se_biomass_max <- get_range_max(data_long_clean_sums)
-se_biomass_min <- get_range_min(data_long_clean_sums)
+pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
+buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
 
 var_list <- c("Secondary Energy|Electricity|Biomass")
-data_long_clean_sums <- get_data_long_clean_sums(data_long_clean, var_list,config)
-se_biomass_max <- get_range_max(data_long_clean_sums)
-se_biomass_min <- get_range_min(data_long_clean_sums)
+pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
+buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
 
 var_list <- c("Secondary Energy|Electricity|Biomass")
-data_long_clean_sums <- get_data_long_clean_sums(data_long_clean, var_list,config)
-se_biomass_max <- get_range_max(data_long_clean_sums)
-se_biomass_min <- get_range_min(data_long_clean_sums)
+pct_change_40_df <- get_pct_change_40_df(data_long_clean, var_list,config)
+buildings_value_list <- get_pct_change_40_value_list(pct_change_40_df)
+
 ```
 
 
@@ -599,15 +555,15 @@ proj_all_sm_sb_join <- proj_all_sm_sb_final %>%
   mutate(gas = factor(gas, levels = c('CO2','Non-CO2','LULUCF Sink')))
 
 
-fills <- c("CO2" =  "#0388B3",
-           "Non-CO2" = "#E6544D",
-           "LULUCF Sink" = "#16B231")
+# fills <- c("CO2" =  "#0388B3",
+#            "Non-CO2" = "#E6544D",
+#            "LULUCF Sink" = "#16B231")
   
 
 ```
 
 ```{r}
-proj_all_stackbar <- br_project_sb(proj_all_sm_sb_join, config, fills)
-proj_all_stackbar
+# proj_all_stackbar <- br_project_sb(proj_all_sm_sb_join, config, fills)
+# proj_all_stackbar
 
 ```
