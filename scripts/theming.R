@@ -215,6 +215,7 @@ color_map <- c(
   "Total" = "black",
   "AFOLU" = "m.green",
   "LULUCF" = "dark dark green",
+  "LULUCF Sink" = "dark dark green",
   "Biofeedstock" = "teal green",
   "Biofuels" = "teal green",
   "BECCS" = "m.violet",

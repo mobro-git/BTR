@@ -5,3 +5,6 @@ usrr_wm_lowseq,wm,USREP-ReEDS,wm,lulucf,bau_low,wm
 nems_ira_lowseq,wm,NEMS,leep_IRA,lulucf,bau_low,IRA
 gcam_ira_lowseq,wm,GCAM,leep_IRA,lulucf,bau_low,IRA
 usrr_ira_lowseq,wm,USREP-ReEDS,leep_IRA,lulucf,bau_low,IRA
+nems_wm_hiseq,wm,NEMS,wm,lulucf,bau_high,wm
+gcam_wm_hiseq,wm,GCAM,wm,lulucf,bau_high,wm
+usrr_wm_hiseq,wm,USREP-ReEDS,wm,lulucf,bau_high,wm

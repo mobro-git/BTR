@@ -64,5 +64,17 @@ create_subpalettes <- function(plot_list, config) {
   sub_palettes
 }
 
+create_subpalettes_df <- function(df, col) {
+
+    var_palette = unique(df[[col]])
+
+    names(var_palette) = var_palette
+    sub_palettes[["temp"]] = var_palette
+    sub_palettes = sub_palettes %>%
+      map(~find_color(.x, color_map))
+  
+  sub_palettes
+}
+
 
 

@@ -259,13 +259,16 @@ br_project_pct_change = function(ghgi, proj, targets = NULL, legend_position = c
 
 
 
-br_project_sb <- function(proj_all_sm_sb_join, config, fills){
+br_project_sb <- function(proj_all_sm_sb_join, config){
+  
+  palette = create_subpalettes_df(proj_all_sm_sb_join, "gas")
   
   stackbar <- ggplot(proj_all_sm_sb_join, aes(year, mmtco2e)) +
     geom_bar(aes(fill = gas),
              stat = 'identity') +
-    scale_fill_manual(values = fills,
-                      labels = c(expression('CO'[2]), expression('Non-CO'[2]), 'LULUCF Sink')) +
+    # scale_fill_manual(values = fills,
+    #                   labels = c(expression('CO'[2]), expression('Non-CO'[2]), 'LULUCF Sink')) +
+    scale_subpalette(sub_palettes, "temp") +
     geom_point(aes(year,net_co2)) +
     geom_hline(yintercept = 0,
                color = 'black',
@@ -280,15 +283,11 @@ br_project_sb <- function(proj_all_sm_sb_join, config, fills){
                                                     size = 3),
                                 title = NULL,
                                 label = expression(paste0('Net ',CO[2],'e')))) +
-    scale_color_manual(
-      values = c('net_co2' = 'black'),
-      name = NULL,
-      labels = c(expression(Net~CO[2]~e))
-    ) +
+    # scale_color_manual(
+    #   values = c('net_co2' = 'black'),
+    #   name = NULL,
+    #   labels = c(expression(Net~CO[2]~e))
+    # ) +
     theme_btr()
-    
-    
-    
-    
     
 }
