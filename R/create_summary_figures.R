@@ -257,9 +257,46 @@ br_project_pct_change = function(ghgi, proj, targets = NULL, legend_position = c
 
 ####
 
+net_ghg_sb_data_processing <- function(projections_all_sm, config) {
+  proj_all_sm_sb <- projections_all_sm %>%
+    mutate(gas = case_when(gas == "CO2" ~ "CO2",
+                           !gas %in% c("CO2", 'LULUCF Sink') ~ "Non-CO2",
+                           gas == "LULUCF Sink" ~ "LULUCF Sink")) %>%
+    group_by(proj_name,year,gas) %>%
+    summarise(mmtco2e = sum(sum), .groups = 'drop') %>%
+    filter(year >= config$base_year) %>%
+    filter(year %in% config$base_proj)
+  
+  no_ghgi <- proj_all_sm_sb %>% filter(!proj_name == 'ghgi')
+  
+  ghgi <- proj_all_sm_sb %>% filter(proj_name == 'ghgi')
+  
+  dfs <- list()
+  
+  for(name in unique(no_ghgi$proj_name)) {
+    df <- proj_all_sm_sb %>% filter(proj_name == name)
+    add_ghgi <- ghgi %>%
+      rbind(df) %>%
+      mutate(proj_name = name)
+    
+    dfs[[name]] <- add_ghgi
+    
+  }
+  
+  proj_all_sm_sb_final <- bind_rows(dfs)
+  
+  net_co2_df <- proj_all_sm_sb_final %>%
+    group_by(proj_name, year) %>%
+    summarise(net_co2 = sum(mmtco2e), .groups = 'drop')
+  
+  proj_all_sm_sb_join <- proj_all_sm_sb_final %>%
+    left_join(net_co2_df, by = c('proj_name','year')) %>%
+    mutate(year = as.factor(year)) %>%
+    mutate(gas = factor(gas, levels = c('CO2','Non-CO2','LULUCF Sink')))
+}
 
 
-br_project_sb <- function(proj_all_sm_sb_join, config, fills){
+br_project_net_ghg_sb <- function(proj_all_sm_sb_join, config, fills){
   
   palette = create_subpalettes_df(proj_all_sm_sb_join, "gas")
   
