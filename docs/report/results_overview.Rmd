@@ -404,6 +404,20 @@ diff_from_usrep = print_graph("diff_bar", config, data_long_clean, figmap_nrgco2
 diff_from_usrep
 ```
 
+## Input Assumptions {.tabset}
+
+### Population
+```{r}
+pop = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 12, "United States", scenario_rename = TRUE)
+pop
+```
+
+### GDP
+```{r}
+gdp = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 13, "United States", scenario_rename = TRUE)
+gdp
+```
+
 # BTR Tables and Figures
 
 ## Value Summary Tables {.tabset}

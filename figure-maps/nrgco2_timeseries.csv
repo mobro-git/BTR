@@ -55,3 +55,5 @@ timeseriesplot,11,Energy CO2 Emissions Accounting - supply breakout,Emissions|CO
 timeseriesplot,11,Energy CO2 Emissions Accounting - supply breakout,Emissions|CO2|Energy|Supply|Synthetic Gas,Synthetic Fuels,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
 timeseriesplot,11,Energy CO2 Emissions Accounting - supply breakout,Emissions|CO2|Energy|Supply|Synthetic Liquids,Synthetic Fuels,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
 timeseriesplot,11,Energy CO2 Emissions Accounting - supply breakout,Emissions|CO2|Energy|Supply|Electricity,Electricity,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,12,Population,Population,Population,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,13,GDP,GDP|MER,GDP,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
