@@ -184,13 +184,13 @@ By sector, energy consumption is estimated to change from 2020 to 2040:
   + USREP-ReEDS: `r fe_transportation_value_list[3]`%
 
 
-### Sector
+### Sector by Model
 ```{r}
 Sector = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 2, "United States", scenario_rename = TRUE)
 Sector
 ```
 
-### Fuel
+### Fuel by Model
 ```{r}
 Fuel = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 1, "United States", scenario_rename = TRUE)
 Fuel
@@ -215,6 +215,14 @@ Industry
 ```{r}
 Transportation = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 12, "United States", scenario_rename = TRUE)
 Transportation
+```
+
+## Percent Electricity
+
+```{r}
+Percent_Electricity = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 14, "United States", scenario_rename = TRUE,
+                                  level_var = c("Buildings", "Industry", "Transportation","Total Energy"))
+Percent_Electricity
 ```
 
 # Energy Production
@@ -581,13 +589,9 @@ ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_fig/",filename))
 ## BTR Net-GHG Stackbar
 
 ```{r net-ghg stackbar}
- fills <- c("CO2" =  "#0388B3",
-            "Non-CO2" = "#E6544D",
-            "LULUCF Sink" = "#16B231")
-
 net_ghg_sb_df <- net_ghg_sb_data_processing(projections_all_sm, config)
 
-net_ghg_stackbar <- br_project_net_ghg_sb(net_ghg_sb_df, config, fills)
+net_ghg_stackbar <- br_project_net_ghg_sb(net_ghg_sb_df, config)
 
 net_ghg_stackbar
 ```

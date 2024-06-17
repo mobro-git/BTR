@@ -296,7 +296,10 @@ net_ghg_sb_data_processing <- function(projections_all_sm, config) {
 }
 
 
-br_project_net_ghg_sb <- function(proj_all_sm_sb_join, config, fills){
+br_project_net_ghg_sb <- function(proj_all_sm_sb_join, config){
+  fills <- c("CO2" =  "#0388B3",
+             "Non-CO2" = "#E6544D",
+             "LULUCF Sink" = "#16B231")
   
   palette = create_subpalettes_df(proj_all_sm_sb_join, "gas")
   

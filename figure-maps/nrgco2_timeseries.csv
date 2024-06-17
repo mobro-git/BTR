@@ -1,7 +1,11 @@
 figure_type,figure_no,title_name,variable,variable_rename,flip_sign,regions,models,years,scenarios,type,x,y,facet1,facet2,color,page_filter,scales
-timeseriesplot,1,Final Energy by Fuel - Fossil,Final Energy|Coal,Coal,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
-timeseriesplot,1,Final Energy by Fuel - Fossil,Final Energy|Gas,Gas,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
-timeseriesplot,1,Final Energy by Fuel - Fossil,Final Energy|Oil,Oil,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,1,Final Energy by Fuel - Electricity,Final Energy|Coal,Coal,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,1,Final Energy by Fuel - Electricity,Final Energy|Gas,Gas,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,1,Final Energy by Fuel - Electricity,Final Energy|Oil,Oil,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,1,Final Energy by Fuel - Electricity,Final Energy|Biogas,Biogas,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,1,Final Energy by Fuel - Electricity,Final Energy|Biomass Liquids,Biomass Liquids,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,1,Final Energy by Fuel - Electricity,Final Energy|Electricity,Electricity,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,1,Final Energy by Fuel - Electricity,Final Energy|Hydrogen,Hydrogen,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
 timeseriesplot,2,Final Energy by Sector,Final Energy|Buildings,Buildings,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
 timeseriesplot,2,Final Energy by Sector,Final Energy|Industry,Industry,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
 timeseriesplot,2,Final Energy by Sector,Final Energy|Transportation,Transportation,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
@@ -57,3 +61,7 @@ timeseriesplot,11,Energy CO2 Emissions Accounting - supply breakout,Emissions|CO
 timeseriesplot,11,Energy CO2 Emissions Accounting - supply breakout,Emissions|CO2|Energy|Supply|Electricity,Electricity,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
 timeseriesplot,12,Population,Population,Population,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
 timeseriesplot,13,GDP,GDP|MER,GDP,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,14,Final Energy by Sector - Percent Electricity,Final Energy|Buildings|Percent Electricity,Buildings,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,14,Final Energy by Sector - Percent Electricity,Final Energy|Industry|Percent Electricity,Industry,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,14,Final Energy by Sector - Percent Electricity,Final Energy|Transportation|Percent Electricity,Transportation,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,14,Final Energy by Sector - Percent Electricity,Final Energy|Percent Electricity,Total Energy,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
