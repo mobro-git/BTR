@@ -186,7 +186,8 @@ By sector, energy consumption is estimated to change from 2020 to 2040:
 
 ### Sector by Model
 ```{r}
-Sector = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 2, "United States", scenario_rename = TRUE)
+Sector = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 2, "United States", scenario_rename = TRUE,
+                     level_var = c("Buildings", "Industry", "Transportation", "Total Energy"))
 Sector
 ```
 
@@ -221,7 +222,7 @@ Transportation
 
 ```{r}
 Percent_Electricity = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 14, "United States", scenario_rename = TRUE,
-                                  level_var = c("Buildings", "Industry", "Transportation","Total Energy"))
+                                  level_var = c("Buildings", "Industry", "Transportation","Total Electricity"))
 Percent_Electricity
 ```
 
@@ -353,6 +354,24 @@ By technology, electricity capacity is estimated to change from 2020 to 2040:
   + GCAM: `r cap_wind_value_list[1]`%
   + OP-NEMS: `r cap_wind_value_list[2]`%
   + USREP-ReEDS: `r cap_wind_value_list[3]`%
+
+### Generation by Model
+
+```{r}
+elec_model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 15, "United States", scenario_rename = TRUE,
+                         level_var = c("Coal", "Gas", "Oil","Solar", "Wind", "Total Electricity"))
+elec_model
+
+```
+
+### Capacity by Model
+
+```{r}
+elec_model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 16, "United States", scenario_rename = TRUE,
+                         level_var = c("Coal", "Gas", "Oil","Solar", "Wind", "Storage", "Total Electricity"))
+elec_model
+
+```
 
 ## Electricity Production - Combustion {.tabset}
 
