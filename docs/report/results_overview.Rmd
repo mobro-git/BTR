@@ -113,6 +113,12 @@ fuel = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackba
 fuel
 ```
 
+### Fuel by Model
+```{r}
+Fuel = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 1, "United States", scenario_rename = TRUE)
+Fuel
+```
+
 ```{r}
 figure_subset_df <- get_figure_subset_df(figmap_nrgco2_stackbar,14)
 figure_subset_vars <- unique(figure_subset_df$variable)
@@ -191,11 +197,7 @@ Sector = print_graph("time_series", config, data_long_clean, figmap_nrgco2_times
 Sector
 ```
 
-### Fuel by Model
-```{r}
-Fuel = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 1, "United States", scenario_rename = TRUE)
-Fuel
-```
+
 
 
 ## Final Energy by Sector {.tabset}
@@ -206,16 +208,37 @@ Buildings = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_st
 Buildings
 ```
 
+### Buildings by Model
+
+```{r}
+Buildings_bymodel = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 17, "United States", scenario_rename = TRUE)
+Buildings_bymodel
+```
+
 ### Industry
 ```{r}
 Industry = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 9, "United States", scenario_rename = TRUE)
 Industry
 ```
 
+### Industry by Model
+
+```{r}
+Industry_bymodel = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 18, "United States", scenario_rename = TRUE)
+Industry_bymodel
+```
+
 ### Transportation
 ```{r}
 Transportation = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 12, "United States", scenario_rename = TRUE)
 Transportation
+```
+
+### Transportation by Model
+
+```{r}
+Transportation_bymodel = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 19, "United States", scenario_rename = TRUE)
+Transportation_bymodel
 ```
 
 ## Percent Electricity
@@ -248,6 +271,15 @@ Model
 ```{r}
 elec_gen = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 13, "United States", scenario_rename = TRUE)
 elec_gen
+```
+
+### Generation by Model
+
+```{r}
+elec_model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 15, "United States", scenario_rename = TRUE,
+                         level_var = c("Coal", "Gas", "Oil","Solar", "Wind", "Total Electricity"))
+elec_model
+
 ```
 
 ```{r}
@@ -355,14 +387,7 @@ By technology, electricity capacity is estimated to change from 2020 to 2040:
   + OP-NEMS: `r cap_wind_value_list[2]`%
   + USREP-ReEDS: `r cap_wind_value_list[3]`%
 
-### Generation by Model
 
-```{r}
-elec_model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 15, "United States", scenario_rename = TRUE,
-                         level_var = c("Coal", "Gas", "Oil","Solar", "Wind", "Total Electricity"))
-elec_model
-
-```
 
 ### Capacity by Model
 
@@ -381,6 +406,12 @@ elec_gen = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_sta
 elec_gen
 ```
 
+### Generation by Model
+
+```{r}
+gen_by_model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 20, "United States", scenario_rename = TRUE)
+gen_by_model
+```
 
 ### Capacity
 ```{r}
@@ -388,7 +419,12 @@ Capacity = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_sta
 Capacity
 ```
 
+### Capacity by Model
 
+```{r}
+cap_by_model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 21, "United States", scenario_rename = TRUE)
+cap_by_model
+```
 
 ## Electricity Production - Non-Combustion {.tabset}
 
