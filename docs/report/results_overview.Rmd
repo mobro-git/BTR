@@ -457,7 +457,9 @@ sector_df <- create_summary_table('usproj_sector', 'wm', projections_all_sm, con
 ### Gas
 ```{r gas summary}
 gas_table <- create_html_table(gas_df, 'Gas',config)
-gas_table
+
+gas_table_merged <- create_html_table_merged(gas_df, 'Gas', config)
+gas_table_merged
 ```
 
 
@@ -470,7 +472,9 @@ gtsave(gas_table, paste0('output/',settings$version,"/tables_figs/results_tables
 ### Sector
 ```{r sector summary}
 sector_table <- create_html_table(sector_df, 'Sector',config)
-sector_table
+
+sector_table_merged <- create_html_table_merged(sector_df, 'Sector', config)
+sector_table_merged
 ```
 
 ```{r}

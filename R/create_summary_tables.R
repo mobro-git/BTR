@@ -447,6 +447,55 @@ create_html_table <- function(final_summary_table, stubhead, config){
   
 }
 
+create_html_table_merged <- function(final_summary_table, stubhead, config){
+  
+  hist_years <- c('2005','2010','2015','2020', config$base_year)
+  proj_col_order <- c('2025',
+                      '2030',
+                      '2035',
+                      '2040')
+  
+  merged = final_summary_table %>%
+    mutate(
+      `2025` = case_when(
+        `2025_low` == `2025_high` ~ `2025_high`,
+        `2025_low` != `2025_high` ~ paste0(`2025_low`," to ",`2025_high`)),
+      `2030` = case_when(
+        `2030_low` == `2030_high` ~ `2030_high`,
+        `2030_low` != `2030_high` ~ paste0(`2030_low`," to ",`2030_high`)),
+      `2035` = case_when(
+        `2035_low` == `2035_high` ~ `2035_high`,
+        `2035_low` != `2035_high` ~ paste0(`2035_low`," to ",`2035_high`)),
+      `2040` = case_when(
+        `2040_low` == `2040_high` ~ `2040_high`,
+        `2040_low` != `2040_high` ~ paste0(`2040_low`," to ",`2040_high`))
+    ) %>%
+    select(-contains("_"))
+      
+  bold1 = nrow(merged)-3
+  bold2 = nrow(merged)-1
+  
+  html_table <- merged  %>%
+    rename(!!stubhead := category) %>%
+    
+    gt() %>%
+    text_transform(locations = cells_body(columns = 1),
+                   fn = function(x) {
+                     subscript_numbers(x)
+                   }) %>% 
+    
+    cols_align('center', columns = everything()) %>%
+    cols_align('left', columns = stubhead) %>% 
+    
+    tab_spanner(label = "Historical ", columns = all_of(hist_years)) %>%
+    tab_spanner(label = "Projected", columns = all_of(proj_col_order)) %>%
+    tab_style(style = cell_borders(color = "#1F77AE", sides = c("bottom"),  weight = px(2)), #
+              locations = cells_body(rows = c(bold1,bold2))) %>%
 
+    gt_theme_nc_blue()
+  
+  html_table
+  
+}
 
 

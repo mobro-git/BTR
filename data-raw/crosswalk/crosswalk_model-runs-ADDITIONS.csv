@@ -1,2 +1,3 @@
 datasrc,model,scenario
-OP-NEMS BTR Scenario with Measures Data 6-14-2024.xlsx,OP-NEMS,OP Moderate
+report_btr_usrep_reeds_6.21.csv,USREP-ReEDS,btr_ref
+report_btr_usrep_reeds_6.21.csv,USREP-ReEDS,btr_wm
