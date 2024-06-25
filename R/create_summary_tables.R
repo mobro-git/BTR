@@ -11,7 +11,7 @@ gen_lulucf_sink_breakout <- function(projections_all_sm, config){
     filter(gas=='LULUCF Sink') %>%
     filter(year %in% config$table)
 
-  years_lulucf_sink <- as.character(unique(lulucf_sink_df$year))
+  years_lulucf_sink <- as.character(sort(unique(lulucf_sink_df$year)))
   lulucf_sink_hist <- lulucf_sink_df %>% filter(year <= config$base_year)
   years_lulucf_sink_hist <- as.character(unique(lulucf_sink_hist$year))
   

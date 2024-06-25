@@ -198,19 +198,7 @@ tar_plan(
   
   # Calculate Total Net Emissions and write ----
   tar_target(total_net_emissions, gen_total_net_emissions(gas_breakout, lulucf_sink_breakout, settings)),
-  
-  
-  #### 3) projections_net_ghg - projections_all_sm %>% group_by(proj_name) and summarize - net all emissions and sum, should just be one number. export to output csv
-  
-  ## Markdown
-  
-  #### 1) create gas and sector summary tables
-  #### 2) create basic projections figure - historic net ghg and full projection range 
-  
-  # group compilation
-  
-  
-  
+
   ### QA/QC ----
   
   check_nrg_excl_trn_acct = {
@@ -219,7 +207,6 @@ tar_plan(
       pivot_wider(names_from = variable) %>%
       mutate(diff = `BTR|Emissions|CO2|Energy excl TRN Sum` - `BTR|Emissions|CO2|Energy excl TRN Subtract`)
   },
-  
   
   ### Figure mapping --------------
   
@@ -240,23 +227,11 @@ tar_plan(
   nrgco2_cu = create_graph("nrgco2", "cone_uncertainty", config, settings, data_long_clean, figmap_nrgco2_cone, pngGraphs = TRUE),
   
   # markdowns
-  tar_render(ncbr_btr_comparison,
-             "docs/report/ncbr_btr_comparison.Rmd",
-             output_dir = paste0('output/',settings$version,"/tables_figs/results_pages/"),
-             output_file = "ncbr_btr_comparison.html",
-             params = list(mode = "targets")),
-  
   tar_render(btr_tables_figs,
-             "docs/report/btr1_tables_figs.Rmd",
-             output_dir = paste0('output/',settings$version,"/tables_figs/results_pages/"),
-             output_file = paste0("btr1_tables_figs.html_",Sys.Date(),".html"),
+             "docs/report/btr_tables_figs.Rmd",
+             output_dir = paste0('output/',settings$version,"/tables_figs/"),
+             output_file = paste0("btr_tables_figs.html_",Sys.Date(),".html"),
              params = list(mode = "targets")),
-  
-  # tar_render(btr_report,
-  #            "docs/report/btr_report.Rmd",
-  #            output_dir = paste0('output/',settings$version,"/presentations/"),
-  #            output_file = paste0("btr_report_",Sys.Date(),".html"),
-  #            params = list(mode = "targets")),
   
   tar_render(results_overview,
              "docs/report/results_overview.Rmd",

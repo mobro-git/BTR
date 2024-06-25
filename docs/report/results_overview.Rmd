@@ -601,12 +601,11 @@ ndc_targets = data.frame(
 ```{r proj function}
 projections = br_project(ghgi, proj, config, targets = ndc_targets)
 projections
-
 ```
 
 ```{r}
 filename <- paste0("btr_main_fig_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_fig/",filename))
+ggsave(paste0('output/',settings$version,"/results_overview/",filename))
 ```
 
 
@@ -641,10 +640,6 @@ ndc_targets = data.frame(
   ymax = c(-.17, -.26, -.5),
   grouping = c("17% Below 2005","26-28% Below 2005","50-52% Below 2005")
 )
-
-
-
-
 ```
 
 ### Percent Change from 2005
@@ -656,7 +651,7 @@ projections_pct_change
 
 ```{r}
 filename <- paste0("btr_main_fig_pctchange05_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_fig/",filename))
+ggsave(paste0('output/',settings$version,"/results_overview/",filename))
 ```
 
 
