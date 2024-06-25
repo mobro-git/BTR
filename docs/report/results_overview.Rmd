@@ -422,7 +422,7 @@ Capacity
 ### Capacity by Model
 
 ```{r}
-cap_by_model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 21, "United States", scenario_rename = TRUE)
+cap_by_model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 22, "United States", scenario_rename = TRUE)
 cap_by_model
 ```
 
@@ -434,6 +434,12 @@ elec_gen = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_sta
 elec_gen
 ```
 
+### Generation by Model
+
+```{r}
+gen_by_model_nc = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 23, "United States", scenario_rename = TRUE)
+gen_by_model_nc
+```
 
 ### Capacity
 ```{r}
@@ -441,6 +447,12 @@ Capacity = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_sta
 Capacity
 ```
 
+### Capacity by Model
+
+```{r}
+cap_by_model_nc = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 21, "United States", scenario_rename = TRUE)
+cap_by_model_nc
+```
 ---
 # Model Comparision 
 
