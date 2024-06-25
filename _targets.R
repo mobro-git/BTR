@@ -235,8 +235,8 @@ tar_plan(
   
   tar_render(results_overview,
              "docs/report/results_overview.Rmd",
-             output_dir = paste0('output/',settings$version,"/presentations/"),
-             output_file = paste0("results_summary_",Sys.Date(),".html"),
+             output_dir = paste0('output/',settings$version,"/results_overview/"),
+             output_file = paste0("results_overview_",Sys.Date(),".html"),
              params = list(mode = "targets"))
   # TODO: add github doc output second version of output to view html on github site
   
