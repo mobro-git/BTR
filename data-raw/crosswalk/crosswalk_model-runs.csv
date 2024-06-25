@@ -33,6 +33,6 @@ report_usrep_reeds_5.15.csv,USREP-ReEDS,test10_ref,,,"btr - similar to the LEEP 
 database_basexdbWM_0529_24gcamreport_Processed.csv,GCAM 7.0,WM_0529_24,GCAM,wm,btr - gcam 5/30/24
 database_basexdbWM_0529_24gcamreport_Processed.csv,GCAM 7.0,WM_051424,GCAM,wm_old,btr - gcam 5/30/24
 database_basexdbWM_0529_24gcamreport_Processed.csv,GCAM 7.0,WM_052024_RPS,GCAM,wm_old_rps,btr - gcam 5/30/24
-OP-NEMS BTR Scenario with Measures Data 6-14-2024.xlsx,OP-NEMS,OP Moderate,OP-NEMS,wm,btr - OP-NEMS BTR wm
+OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,OP-NEMS,OP Moderate,OP-NEMS,wm,btr - OP-NEMS BTR wm
 report_btr_usrep_reeds_6.21.csv,USREP-ReEDS,btr_ref,USREP-ReEDS,ref,
 report_btr_usrep_reeds_6.21.csv,USREP-ReEDS,btr_wm,USREP-ReEDS,wm,
