@@ -429,6 +429,7 @@ cap_by_model
 ## Electricity Production - Non-Combustion {.tabset}
 
 ### Generation
+
 ```{r}
 elec_gen = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 7, "United States", scenario_rename = TRUE)
 elec_gen
@@ -442,9 +443,10 @@ gen_by_model_nc
 ```
 
 ### Capacity
+
 ```{r}
-Capacity = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 5, "United States", scenario_rename = TRUE)
-Capacity
+Capacity_nc = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 5, "United States", scenario_rename = TRUE)
+Capacity_nc
 ```
 
 ### Capacity by Model
@@ -453,6 +455,7 @@ Capacity
 cap_by_model_nc = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 21, "United States", scenario_rename = TRUE)
 cap_by_model_nc
 ```
+
 ---
 # Model Comparision 
 
