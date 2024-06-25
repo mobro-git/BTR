@@ -86,7 +86,7 @@ tar_plan(
   tar_target(usproj_files, dir_ls(usproj_data_folder), format = "file"),
   
   # Past projections and drivers
-  tar_target(past_proj_csv, "data-raw/ncbr_comparison/netghg_ncbr_comparisons.csv", format = "file"),
+  tar_target(past_proj_csv, "data-raw/ncbr_comparison/total_gross_ghg_ncbr_comparisons.csv", format = "file"),
   tar_target(past_proj, read_csv(past_proj_csv)),
   
   tar_target(past_driver_csv, "data-raw/ncbr_comparison/tbl_5-6_drivers_comparison.csv", format = "file"),
