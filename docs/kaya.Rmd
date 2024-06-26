@@ -1,0 +1,75 @@
+---
+title: "KAYA Analysis"
+output:
+  html_document:
+    toc: yes
+    toc_float:
+      toc_collapsed: true
+    toc_depth: 3
+    theme: spacelab
+date: "`r Sys.time()`"
+---
+
+```{r,echo = FALSE, results = "show", warning = FALSE, message = FALSE, error = FALSE}
+knitr::opts_chunk$set(echo = FALSE, results = "show", warning = FALSE, message = FALSE, error = FALSE, 
+                      fig.align = "center", fig.width = 9, fig.height = 5)
+```
+
+```{r}
+library(targets)
+library(tarchetypes)
+tar_source()
+
+tar_load(
+  c(
+    config,
+    settings,
+    data_long_clean
+    )
+  )
+
+source('packages.R')
+source("scripts/theming.R")
+```
+
+```{r}
+
+dat = data_long_clean |> 
+  filter(variable %in% c("Emissions|CO2|Energy", "Final Energy", "GDP|MER", "Population")) |>
+  select(-unit) |> 
+  spread(variable, value) |> 
+  mutate(EmissPerEnergy = `Emissions|CO2|Energy`/`Final Energy`,
+         EnergyPerGDP = `Final Energy`/`GDP|MER`,
+         GDPPerCap = `GDP|MER`/`Population`) 
+
+dat2 = dat |> 
+  filter(year == 2020) |> 
+  select(-`Emissions|CO2|Energy`, -`Final Energy`, -`GDP|MER`) |> 
+  rename(EmissPerEnergyBase = EmissPerEnergy,
+         EnergyPerGDPBase = EnergyPerGDP,
+         GDPPerCapBase = GDPPerCap,
+         PopulationBase = Population) |> 
+  select(-year)
+
+dat3 = dat |> 
+  left_join(dat2) |> 
+  select(-`Emissions|CO2|Energy`, -`Final Energy`, -`GDP|MER`) |> 
+  mutate(EmissPerEnergyIn = EmissPerEnergy/EmissPerEnergyBase,
+         EnergyPerGDPIn = EnergyPerGDP/EnergyPerGDPBase,
+         GDPPerCapIn = GDPPerCap/GDPPerCapBase,
+         PopulationIn = Population/PopulationBase) |> 
+  filter(region == "United States") |> 
+  select(model,scenario,year,datasrc,region,EmissPerEnergyIn,EnergyPerGDPIn,GDPPerCapIn,PopulationIn) |> 
+  pivot_longer(cols = 6:9, names_to = "var", values_to = "value")
+  
+```
+
+```{r}
+Kaya = function(dat3,mod,scen){
+  dat3 |> 
+    filter(model == mod & scenario == scen) |> 
+    ggplot()+
+    geom_line(aes(x=year, y =value, color = var))+
+    theme_custom()
+}
+```

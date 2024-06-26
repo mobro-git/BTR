@@ -139,6 +139,9 @@ tar_plan(
                                          config,
                                          settings), 
   
+  # indexed version of data_long_clean. index_var determines which variables are indexed, only these are included
+  data_long_index = index_data_long(data_long_clean, index_var),
+  
   # _usproj data long ----
   
   usproj_data_loaded = {
