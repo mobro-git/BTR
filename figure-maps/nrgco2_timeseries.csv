@@ -115,3 +115,10 @@ timeseriesplot,22,Electricity Capacity - Combustion,Capacity|Electricity|Oil|w/o
 timeseriesplot,23,Electricity Generation - Non-Combustion,Secondary Energy|Electricity|Nuclear,Nuclear,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
 timeseriesplot,23,Electricity Generation - Non-Combustion,Secondary Energy|Electricity|Solar,Solar,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
 timeseriesplot,23,Electricity Generation - Non-Combustion,Secondary Energy|Electricity|Wind,Wind,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,24,Final Energy by Fuel - Electricity,Final Energy|Coal,Coal,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,24,Final Energy by Fuel - Electricity,Final Energy|Gas,Gas,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,24,Final Energy by Fuel - Electricity,Final Energy|Oil,Oil,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,24,Final Energy by Fuel - Electricity,Final Energy|Biogas,Biogas,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,24,Final Energy by Fuel - Electricity,Final Energy|Biomass Liquids,Biomass Liquids,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,24,Final Energy by Fuel - Electricity,Final Energy|Electricity,Electricity,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,24,Final Energy by Fuel - Electricity,Final Energy|Hydrogen,Hydrogen,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y

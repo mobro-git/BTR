@@ -13,6 +13,7 @@ date: "`r Sys.time()`"
 ```{r,echo = FALSE, results = "show", warning = FALSE, message = FALSE, error = FALSE}
 knitr::opts_chunk$set(echo = FALSE, results = "show", warning = FALSE, message = FALSE, error = FALSE, 
                       fig.align = "center", fig.width = 9, fig.height = 5)
+
 ```
 
 ```{r}
@@ -107,6 +108,16 @@ fuel
 
 ```{r}
 Fuel = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 1, "United States", scenario_rename = TRUE)
+
+Fuel
+
+```
+
+### Fuel by Model - 
+
+```{r}
+Fuel = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 24, "United States", scenario_rename = TRUE)
+
 Fuel
 ```
 
@@ -249,7 +260,7 @@ Fuel
 
 ### Model
 
-```{r}
+```{r, fig.width=12}
 Model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 8, "United States", scenario_rename = TRUE)
 Model
 ```
@@ -265,7 +276,7 @@ elec_gen
 
 ### Generation by Model
 
-```{r}
+```{r, fig.width=12}
 elec_model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 15, "United States", scenario_rename = TRUE,
                          level_var = c("Coal", "Gas", "Oil","Solar", "Wind", "Total Electricity"))
 elec_model
@@ -369,7 +380,7 @@ By technology, electricity capacity is estimated to change from 2020 to 2040:
 
 ### Capacity by Model
 
-```{r}
+```{r, fig.width=12}
 elec_model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 16, "United States", scenario_rename = TRUE,
                          level_var = c("Coal", "Gas", "Oil","Solar", "Wind", "Storage", "Total Electricity"))
 elec_model
@@ -387,7 +398,7 @@ elec_gen
 
 ### Generation by Model
 
-```{r}
+```{r, fig.width=12}
 gen_by_model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 20, "United States", scenario_rename = TRUE)
 gen_by_model
 ```
@@ -401,7 +412,7 @@ Capacity
 
 ### Capacity by Model
 
-```{r}
+```{r, fig.width=12}
 cap_by_model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 22, "United States", scenario_rename = TRUE)
 cap_by_model
 ```
@@ -640,7 +651,7 @@ ggsave(paste0('output/',settings$version,"/results_overview/",filename))
 
 ## BTR Net-GHG Stackbar
 
-```{r net-ghg stackbar}
+```{r, fig.width=15}
 net_ghg_sb_df <- net_ghg_sb_data_processing(projections_all_sm, config)
 
 net_ghg_stackbar <- br_project_net_ghg_sb(net_ghg_sb_df, config)
