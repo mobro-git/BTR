@@ -224,10 +224,11 @@ tar_plan(
   # figure map outputs
   nrgco2_sb = create_graph("nrgco2", "stacked_bar", config, settings, data_long_clean, figmap_nrgco2_stackbar, pngGraphs = TRUE),
   draftbriefing_sb = create_graph("draftbriefing", "stacked_bar", config, settings, data_long_clean, figmap_draftbriefing_stackbar, pngGraphs = TRUE),
-  
+
   nrgco2_db = create_graph("nrgco2", "diff_bar", config, settings, data_long_clean, figmap_nrgco2_diffbar, pngGraphs = TRUE),
   nrgco2_ts = create_graph("nrgco2", "time_series", config, settings, data_long_clean, figmap_nrgco2_timeseries, pngGraphs = TRUE),
   nrgco2_cu = create_graph("nrgco2", "cone_uncertainty", config, settings, data_long_clean, figmap_nrgco2_cone, pngGraphs = TRUE),
+  
   kaya_ts = create_graph("Kaya", "time_series", config, settings, data_long_index, figmap_kaya_timeseries, pngGraphs = TRUE),
     
   # markdowns

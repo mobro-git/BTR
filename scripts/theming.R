@@ -246,6 +246,13 @@ color_map <- c(
   "CO2 Emissions" = "dark salmon",
   "Residual Emissions" = "teal blue",
   
+  # kaya
+  "Population" = "teal blue",
+  "GDP / Capita" = "dark salmon",
+  "Energy / GDP" = "teal green",
+  "Emissions / Energy" = "light slate",
+  
+  
   #emissions accounting
   "Net CO2" = "very dark teal",
   "Gross Positive CO2" = "dark salmon",
