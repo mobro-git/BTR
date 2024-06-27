@@ -14,7 +14,8 @@ get_pct_change_40_df <- function(data_long_clean, var_list, config){
     group_by(model,year) %>%
     summarise(value = sum(value), .groups = 'drop') %>%
     filter(year %in% config$fives_sumtab) %>%
-    group_by(model) %>% 
+    complete(model, year = config$fives_proj) %>%
+    group_by(model) %>%
     mutate(pct_change_40 = value[year==2040]/value[year==2020]) %>%
     mutate(pct_change_40 = (pct_change_40-1)*100) %>%
     mutate(pct_change_40 = round(pct_change_40)) %>%

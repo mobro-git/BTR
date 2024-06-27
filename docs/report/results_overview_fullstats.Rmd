@@ -293,6 +293,33 @@ se_wind_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 13, "
 
 ```
 
+Electricity generation is estimated to increase from 2020 to 2040:
+
+-   GCAM: `r se_value_list[1]`%
+-   OP-NEMS: `r se_value_list[2]`%
+-   USREP-ReEDS: `r se_value_list[3]`%
+
+By technology, electricity generation is estimated to change from 2020 to 2040:
+
+-   Coal:
+    -   GCAM: `r se_coal_value_list[1]` %
+    -   OP-NEMS: `r se_coal_value_list[2]`"%
+    -   USREP-ReEDS: `` `r se_coal_value_list[3]` ``%
+-   Gas:
+    -   GCAM: `r se_gas_value_list[1]`%
+    -   OP-NEMS: `r se_gas_value_list[2]`%
+    -   USREP-ReEDS: `r se_gas_value_list[3]`%
+-   Oil:
+    -   GCAM: `r se_oil_value_list[1]`%
+    -   OP-NEMS: `r se_oil_value_list[2]`%
+-   Solar:
+    -   GCAM: `r se_solar_value_list[1]`%
+    -   OP-NEMS: `r se_solar_value_list[2]`%
+    -   USREP-ReEDS: `r se_solar_value_list[3]`%
+-   Wind:
+    -   GCAM: `r se_wind_value_list[1]`%
+    -   OP-NEMS: `r se_wind_value_list[2]`%
+    -   USREP-ReEDS: `r se_wind_value_list[3]`%
 
 ### Capacity
 
