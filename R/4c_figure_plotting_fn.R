@@ -45,7 +45,7 @@ check_dat_before_plotting <- function(dat) {
                                    ".Please recheck the code.", sep = ""))
     } else if (((length(unique(dat$unit))!=1) && (!unique(dat$figure_type) %in% c("scatterplot", "corrplot")))) {
       # multiple units
-      rlang::warn(paste('there are multiple units for ', unique(dat$title_name), ". Figure not printed.", sep = ""))
+      rlang::abort(message = paste('there are multiple units for ', unique(dat$title_name), ". Figure not printed.", sep = ""))
       FALSE
     }
     else {
@@ -216,7 +216,8 @@ call_plot_fn <- function(df, figure, selected, sub_palettes, graph_type, plot_fn
     color = unique(df$color),
     shape = unique(df$shape), # Only usable in the scatter plot functions for the shape of the data indications (like triangle, etc.)
     facet = unique(df$facet1),
-    facet1 = unique(df$facet1), facet2 = unique(df$facet2))
+    facet1 = unique(df$facet1), 
+    facet2 = unique(df$facet2))
 
   mapping_list = list(
     xlab = unique(df$x), ylab= unique(df$unit),

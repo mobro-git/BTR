@@ -1,3 +1,5 @@
 datasrc,model,scenario
-report_btr_usrep_reeds_6.21.csv,USREP-ReEDS,btr_ref
-report_btr_usrep_reeds_6.21.csv,USREP-ReEDS,btr_wm
+062624gcamreport_Processed.csv,GCAM 7.0,WM_062624
+062624gcamreport_Processed.csv,GCAM 7.0,WM_IRAEGU_062624
+062624gcamreport_Processed.csv,GCAM 7.0,WM_IRATRN_062624
+062624gcamreport_Processed.csv,GCAM 7.0,WM_IRAonly_062624

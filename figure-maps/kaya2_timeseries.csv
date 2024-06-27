@@ -1,9 +1,0 @@
-figure_type,figure_no,title_name,variable,variable_rename,flip_sign,regions,models,years,scenarios,type,x,y,facet1,facet2,color,page_filter,scales
-timeseries,1,Kaya,Emissions / Energy,Emissions / Energy,0,usa,model_wm,fives_proj,wm,grid,year,value,scenario,model,variable_rename,region,fixed
-timeseries,1,Kaya,Energy / GDP,Energy / GDP,0,usa,model_wm,fives_proj,wm,grid,year,value,scenario,model,variable_rename,region,fixed
-timeseries,1,Kaya,GDP / Capita,GDP / Capita,0,usa,model_wm,fives_proj,wm,grid,year,value,scenario,model,variable_rename,region,fixed
-timeseries,1,Kaya,Population,Population,0,usa,model_wm,fives_proj,wm,grid,year,value,scenario,model,variable_rename,region,fixed
-timeseries,2,Kaya,Emissions|CO2,CO2,0,usa,model_wm,fives_proj,wm,grid,year,value,scenario,model,variable_rename,region,fixed
-timeseries,2,Kaya,Emissions|CO2|Energy,Energy,0,usa,model_wm,fives_proj,wm,grid,year,value,scenario,model,variable_rename,region,fixed
-timeseries,2,Kaya,Emissions|CO2|Energy|Demand|Transportation,Trans,0,usa,model_wm,fives_proj,wm,grid,year,value,scenario,model,variable_rename,region,fixed
-timeseries,2,Kaya,Emissions|CO2|Energy|Demand|Buildings,Buildings,0,usa,model_wm,fives_proj,wm,grid,year,value,scenario,model,variable_rename,region,fixed

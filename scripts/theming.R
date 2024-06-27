@@ -25,7 +25,7 @@ master_palette <- c(
   "light orange" = "#FDD56D",
   "very dark teal" = "#2A4849",
   "dark salmon" = "#E6544D",
-  "purple" = "#8F507F",
+  "mauve" = "#8F507F",
   "dark gray blue" = "#595764",
   "teal blue" = "#0388B3",
   "teal green" = "#2EAD96",
@@ -248,10 +248,9 @@ color_map <- c(
   
   # kaya
   "Population" = "teal blue",
-  "GDP / Capita" = "dark salmon",
-  "Energy / GDP" = "teal green",
-  "Emissions / Energy" = "light slate",
-  
+  "GDP / Capita" = "dark m.yellow",
+  "Energy / GDP" = "dark salmon",
+  "Emissions / Energy" = "m.green",
   
   #emissions accounting
   "Net CO2" = "very dark teal",
