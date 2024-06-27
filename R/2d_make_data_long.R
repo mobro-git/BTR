@@ -488,6 +488,7 @@ index_data_long <- function(data_long, index_var) {
       filter(any(!!sym(new_record$ref_type) == new_record$ref_value)) %>%
       mutate(value = value/value[!!sym(new_record$ref_type) == new_record$ref_value]) %>%
       #mutate(variable = paste(new_record$variable,"|Index",sep="")) %>%
+      # TODO: either rewrite this code to use the unit in the index_variables.csv or paste("Index to ",ref_value) or something like that
       mutate(unit = "Index",
              datasrc = "index_variables") %>%
       ungroup() %>%

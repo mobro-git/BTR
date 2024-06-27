@@ -72,4 +72,6 @@ Kaya = function(dat3,mod,scen){
     geom_line(aes(x=year, y =value, color = var))+
     theme_custom()
 }
+
+Kaya(dat3,"OP-NEMS","wm")
 ```
