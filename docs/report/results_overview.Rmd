@@ -111,7 +111,7 @@ Fuel = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeser
 Fuel
 ```
 
-### Fuel by Model - 
+### Fuel by Model - Zoom
 
 ```{r}
 Fuel = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 24, "United States", scenario_rename = TRUE)
@@ -261,6 +261,14 @@ Model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timese
 Model
 ```
 
+### Model - Zoom
+
+```{r}
+Model_zoom = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 25, "United States", scenario_rename = TRUE)
+Model_zoom
+
+```
+
 ## Electricity Production {.tabset}
 
 ### Generation
@@ -279,10 +287,21 @@ elec_model
 
 ```
 
+### Generation by Model - Zoom
+
+```{r, fig.width=12}
+elec_model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 27, "United States", scenario_rename = TRUE,
+                         level_var = c("Coal", "Gas", "Oil","Solar", "Wind", "Total Electricity"))
+elec_model
+
+```
+
 ```{r}
 figure_subset_df <- get_figure_subset_df(figmap_nrgco2_stackbar,13)
 figure_subset_vars <- unique(figure_subset_df$variable)
 se_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 13, figure_subset_vars, data_long_clean, config)
+se_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 13, "Secondary Energy|Electricity", data_long_clean, config)
+
 
 se_coal_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 13, "Secondary Energy|Electricity|Coal", data_long_clean, config)
 se_gas_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 13, "Secondary Energy|Electricity|Gas", data_long_clean, config)
@@ -354,6 +373,15 @@ elec_model
 
 ```
 
+### Capacity by Model - Zoom
+
+```{r}
+elec_model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 26, "United States", scenario_rename = TRUE,
+                         level_var = c("Coal", "Gas", "Oil","Solar", "Wind", "Storage", "Total Electricity"))
+elec_model
+
+```
+
 ## Electricity Production - Combustion {.tabset}
 
 ### Generation
@@ -370,6 +398,13 @@ gen_by_model = print_graph("time_series", config, data_long_clean, figmap_nrgco2
 gen_by_model
 ```
 
+### Generation by Model - Zoom
+
+```{r}
+gen_by_model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 28, "United States", scenario_rename = TRUE)
+gen_by_model
+```
+
 ### Capacity
 
 ```{r}
@@ -381,6 +416,13 @@ Capacity
 
 ```{r, fig.width=12}
 cap_by_model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 22, "United States", scenario_rename = TRUE)
+cap_by_model
+```
+
+### Capacity by Model - Zoom
+
+```{r}
+cap_by_model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 29, "United States", scenario_rename = TRUE)
 cap_by_model
 ```
 
