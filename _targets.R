@@ -210,6 +210,8 @@ tar_plan(
       mutate(diff = `BTR|Emissions|CO2|Energy excl TRN Sum` - `BTR|Emissions|CO2|Energy excl TRN Subtract`)
   },
   
+  check_lts_comp_var = check_lts_comp_var(data_long_clean,summation_var,settings),
+  
   ### Figure mapping --------------
   
   tar_map(
