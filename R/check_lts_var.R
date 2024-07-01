@@ -16,11 +16,11 @@ check_lts_comp_var = function(data_long_clean, summation_var,settings){
       complete(variable,model) %>% 
       filter(!is.na(model)) %>% 
       mutate(scenario = "wm",
-             value = ifelse(!is.na(value), "X", 0)) %>% 
+             value = ifelse(!is.na(value), "reported", "unreported")) %>% 
       select(variable,model,value) %>% 
       spread(model,value) 
     
-      write.csv(vars2,paste0("output/",settings$version,"/interim_data/check_lts_var.csv"), row.names = FALSE)
+    write.csv(vars2,paste0("output/",settings$version,"/interim_data/check_lts_var.csv"), row.names = FALSE)
     
     return(vars2)
 }

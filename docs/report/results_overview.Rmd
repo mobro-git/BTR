@@ -673,60 +673,60 @@ net_ghg_stackbar
 ## Data
 
 ```{r}
-sector_vars = c("Emissions|CO2|Energy|Demand|Buildings|Total",
-                         "Emissions|CO2|Energy|Demand|Transportation|Total",
-                         "Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total",
-                         "Emissions|CO2|Energy|Supply|Electricity")
-lts_vars = c("Emissions|CO2|Energy|Demand|Buildings|TotalDI",
-                         "Emissions|CO2|Energy|Demand|Transportation|TotalDI",
-                         "Emissions|CO2|Energy|Demand|Industry|TotalDI",
-                         "Emissions|CO2|Energy|Supply|Electricity")
-
-# ghgi 23 data
-ghgi_df = clean_data %>%
-  filter(model == "EPA-GHGI") %>%
-  filter(year %in% 2005:2021) %>%
-  filter(variable %in% sector_vars)
-
-# LTS models and variables used for sector figures
-lts_df = clean_data %>%
-  filter(model %in% c("GCAM-LTS", "NEMS-OP-LTS")) %>%
-  filter(year %in% c(2025, 2030, 2035)) %>%
-  filter(variable %in% lts_vars) %>%
-  # change names to match template update variable names
-  mutate(variable = case_when(
-    str_detect(variable, "Buildings") ~ "Emissions|CO2|Energy|Demand|Buildings|Total",
-    str_detect(variable, "Transportation") ~ "Emissions|CO2|Energy|Demand|Transportation|Total",
-    str_detect(variable, "Industry") ~ "Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total",
-    TRUE~variable))
-
-# models used in the projections and variables used for sector figures
-proj_models = c("EPS-EI","GCAM-CGS","GCAM-PNNL","MARKAL-NETL","NEMS-OP","NEMS-RHG","REGEN-EPRI","RIO-REPEAT","USREP-ReEDS")
-proj_df = clean_data %>%
-  filter(model %in% proj_models) %>%
-  filter(year %in% c(2030, 2035)) %>%
-  filter(scenario == "IRA") %>%
-  filter(variable %in% sector_vars)
-
-# 2030 and 2035 projections medians
-median_df = proj_df %>%
-  group_by(year,variable) %>%
-  summarise(value = median(value)) %>%
-  mutate(model = "median",
-         scenario = "IRA",
-         unit = "Mt CO2/yr",
-         datasrc = "median calc",
-         region = "United States") %>%
-  select(names(proj_df))
-
-# merge three datasets together
-sector_df = rbind(ghgi_df, lts_df, proj_df, median_df) %>%
-  mutate(type = case_when(
-    str_detect(model, "LTS") ~ "LTS",
-    model %in% proj_models ~ "proj",
-    model == "EPA-GHGI" ~ "GHGI",
-    model == "median" ~ "median",
-    TRUE~model))
+# sector_vars = c("Emissions|CO2|Energy|Demand|Buildings|Total",
+#                          "Emissions|CO2|Energy|Demand|Transportation|Total",
+#                          "Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total",
+#                          "Emissions|CO2|Energy|Supply|Electricity")
+# lts_vars = c("Emissions|CO2|Energy|Demand|Buildings|TotalDI",
+#                          "Emissions|CO2|Energy|Demand|Transportation|TotalDI",
+#                          "Emissions|CO2|Energy|Demand|Industry|TotalDI",
+#                          "Emissions|CO2|Energy|Supply|Electricity")
+# 
+# # ghgi 23 data
+# ghgi_df = clean_data %>%
+#   filter(model == "EPA-GHGI") %>%
+#   filter(year %in% 2005:2021) %>%
+#   filter(variable %in% sector_vars)
+# 
+# # LTS models and variables used for sector figures
+# lts_df = clean_data %>%
+#   filter(model %in% c("GCAM-LTS", "NEMS-OP-LTS")) %>%
+#   filter(year %in% c(2025, 2030, 2035)) %>%
+#   filter(variable %in% lts_vars) %>%
+#   # change names to match template update variable names
+#   mutate(variable = case_when(
+#     str_detect(variable, "Buildings") ~ "Emissions|CO2|Energy|Demand|Buildings|Total",
+#     str_detect(variable, "Transportation") ~ "Emissions|CO2|Energy|Demand|Transportation|Total",
+#     str_detect(variable, "Industry") ~ "Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total",
+#     TRUE~variable))
+# 
+# # models used in the projections and variables used for sector figures
+# proj_models = c("EPS-EI","GCAM-CGS","GCAM-PNNL","MARKAL-NETL","NEMS-OP","NEMS-RHG","REGEN-EPRI","RIO-REPEAT","USREP-ReEDS")
+# proj_df = clean_data %>%
+#   filter(model %in% proj_models) %>%
+#   filter(year %in% c(2030, 2035)) %>%
+#   filter(scenario == "IRA") %>%
+#   filter(variable %in% sector_vars)
+# 
+# # 2030 and 2035 projections medians
+# median_df = proj_df %>%
+#   group_by(year,variable) %>%
+#   summarise(value = median(value)) %>%
+#   mutate(model = "median",
+#          scenario = "IRA",
+#          unit = "Mt CO2/yr",
+#          datasrc = "median calc",
+#          region = "United States") %>%
+#   select(names(proj_df))
+# 
+# # merge three datasets together
+# sector_df = rbind(ghgi_df, lts_df, proj_df, median_df) %>%
+#   mutate(type = case_when(
+#     str_detect(model, "LTS") ~ "LTS",
+#     model %in% proj_models ~ "proj",
+#     model == "EPA-GHGI" ~ "GHGI",
+#     model == "median" ~ "median",
+#     TRUE~model))
 ```
 
 ## Figures
