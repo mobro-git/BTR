@@ -6,6 +6,26 @@
 2,Emissions|CO2|Energy|Demand|Buildings|Total,Emissions|CO2|Energy|Demand|Buildings|Indirect,Mt CO2/yr,1
 3,Emissions|CO2|Energy|Demand|Industry|Total,Emissions|CO2|Energy|Demand|Industry,Mt CO2/yr,1
 3,Emissions|CO2|Energy|Demand|Industry|Total,Emissions|CO2|Energy|Demand|Industry|Indirect,Mt CO2/yr,1
+101,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Emissions|CO2|Energy|Demand|Industry,Mt CO2/yr,1
+101,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Emissions|CO2|Energy|Supply|Biogas,Mt CO2/yr,1
+101,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Emissions|CO2|Energy|Supply|Biomass Liqids,Mt CO2/yr,1
+101,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Emissions|CO2|Energy|Supply|Gas,Mt CO2/yr,1
+101,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Emissions|CO2|Energy|Supply|Heat,Mt CO2/yr,1
+101,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Emissions|CO2|Energy|Supply|Hydrogen,Mt CO2/yr,1
+101,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Emissions|CO2|Energy|Supply|Petroleum Refining,Mt CO2/yr,1
+101,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Emissions|CO2|Energy|Supply|Synthetic Gas,Mt CO2/yr,1
+101,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Emissions|CO2|Energy|Supply|Synthetic Liquids,Mt CO2/yr,1
+101,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Emissions|CO2|Energy|Supply|Indirect,Mt CO2/yr,1
+101,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Emissions|CO2|Energy|Demand|Industry|Indirect,Mt CO2/yr,1
+102,Emissions|CO2|Energy|Demand|Industry and Fuel Production,Emissions|CO2|Energy|Demand|Industry,Mt CO2/yr,1
+102,Emissions|CO2|Energy|Demand|Industry and Fuel Production,Emissions|CO2|Energy|Supply|Biogas,Mt CO2/yr,1
+102,Emissions|CO2|Energy|Demand|Industry and Fuel Production,Emissions|CO2|Energy|Supply|Biomass Liqids,Mt CO2/yr,1
+102,Emissions|CO2|Energy|Demand|Industry and Fuel Production,Emissions|CO2|Energy|Supply|Gas,Mt CO2/yr,1
+102,Emissions|CO2|Energy|Demand|Industry and Fuel Production,Emissions|CO2|Energy|Supply|Heat,Mt CO2/yr,1
+102,Emissions|CO2|Energy|Demand|Industry and Fuel Production,Emissions|CO2|Energy|Supply|Hydrogen,Mt CO2/yr,1
+102,Emissions|CO2|Energy|Demand|Industry and Fuel Production,Emissions|CO2|Energy|Supply|Petroleum Refining,Mt CO2/yr,1
+102,Emissions|CO2|Energy|Demand|Industry and Fuel Production,Emissions|CO2|Energy|Supply|Synthetic Gas,Mt CO2/yr,1
+102,Emissions|CO2|Energy|Demand|Industry and Fuel Production,Emissions|CO2|Energy|Supply|Synthetic Liquids,Mt CO2/yr,1
 4,Emissions|CO2|Energy|Demand|Transportation|Total,Emissions|CO2|Energy|Demand|Transportation,Mt CO2/yr,1
 4,Emissions|CO2|Energy|Demand|Transportation|Total,Emissions|CO2|Energy|Demand|Transportation|Indirect,Mt CO2/yr,1
 6,Emissions|CO2|CDR,Carbon Sequestration|LULUCF,Mt CO2/yr,1
