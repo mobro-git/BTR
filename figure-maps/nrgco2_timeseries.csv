@@ -122,3 +122,42 @@ timeseriesplot,24,Final Energy by Fuel - Electricity,Final Energy|Biogas,Biogas,
 timeseriesplot,24,Final Energy by Fuel - Electricity,Final Energy|Biomass Liquids,Biomass Liquids,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
 timeseriesplot,24,Final Energy by Fuel - Electricity,Final Energy|Electricity,Electricity,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
 timeseriesplot,24,Final Energy by Fuel - Electricity,Final Energy|Hydrogen,Hydrogen,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,25,Secondary Energy,Secondary Energy|Biogas,Biogas,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,25,Secondary Energy,Secondary Energy|Biomass Liquids,Biomass Liquids,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,25,Secondary Energy,Secondary Energy|Electricity,Electricity,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,25,Secondary Energy,Secondary Energy|Hydrogen,Hydrogen,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,25,Secondary Energy,Secondary Energy|Petroleum Refining,Refining,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,25,Secondary Energy,Secondary Energy|Synthetic Gas,Synthetic Gas,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,25,Secondary Energy,Secondary Energy|Synthetic Liquids,Synthetic Liquids,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,26,Electricity Capacity,Capacity|Electricity|Coal,Coal,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,26,Electricity Capacity,Capacity|Electricity|Gas,Gas,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,26,Electricity Capacity,Capacity|Electricity|Oil,Oil,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,26,Electricity Capacity,Capacity|Electricity|Solar,Solar,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,26,Electricity Capacity,Capacity|Electricity|Storage Capacity,Storage,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,26,Electricity Capacity,Capacity|Electricity|Wind,Wind,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,26,Electricity Capacity,Capacity|Electricity,Total Electricity,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,27,Electricity Generation,Secondary Energy|Electricity|Coal,Coal,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,27,Electricity Generation,Secondary Energy|Electricity|Gas,Gas,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,27,Electricity Generation,Secondary Energy|Electricity|Oil,Oil,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,27,Electricity Generation,Secondary Energy|Electricity|Solar,Solar,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,27,Electricity Generation,Secondary Energy|Electricity|Wind,Wind,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,27,Electricity Generation,Secondary Energy|Electricity,Total Electricity,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,28,Electricity Generation - Combustion,Secondary Energy|Electricity|Biomass|w/ CCS,Biomass w/ CCS,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,28,Electricity Generation - Combustion,Secondary Energy|Electricity|Biomass|w/o CCS,Biomass w/o CCS,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,28,Electricity Generation - Combustion,Secondary Energy|Electricity|Coal|w/ CCS,Coal w/ CCS,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,28,Electricity Generation - Combustion,Secondary Energy|Electricity|Coal|w/o CCS,Coal w/o CCS,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,28,Electricity Generation - Combustion,Secondary Energy|Electricity|Gas|w/ CCS,Gas w/ CCS,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,28,Electricity Generation - Combustion,Secondary Energy|Electricity|Gas|w/o CCS,Gas w/o CCS,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,28,Electricity Generation - Combustion,Secondary Energy|Electricity|Oil|w/ CCS,Oil w/ CCS,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,28,Electricity Generation - Combustion,Secondary Energy|Electricity|Oil|w/o CCS,Oil w/o CCS,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,28,Electricity Generation - Combustion,Secondary Energy|Electricity|Hydrogen,Hydrogen,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,28,Electricity Generation - Combustion,Secondary Energy|Electricity|Synthetic Gas,Synthetic Gas,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,28,Electricity Generation - Combustion,Secondary Energy|Electricity|Synthetic Liquids,Synthetic Liquids,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,29,Electricity Capacity - Combustion,Capacity|Electricity|Biomass|w/ CCS,Biomass w/ CCS,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,29,Electricity Capacity - Combustion,Capacity|Electricity|Biomass|w/o CCS,Biomass w/o CCS,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,29,Electricity Capacity - Combustion,Capacity|Electricity|Coal|w/ CCS,Coal w/ CCS,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,29,Electricity Capacity - Combustion,Capacity|Electricity|Coal|w/o CCS,Coal w/o CCS,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,29,Electricity Capacity - Combustion,Capacity|Electricity|Gas|w/ CCS,Gas w/ CCS,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,29,Electricity Capacity - Combustion,Capacity|Electricity|Gas|w/o CCS,Gas w/o CCS,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,29,Electricity Capacity - Combustion,Capacity|Electricity|Oil|w/ CCS,Oil w/ CCS,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,29,Electricity Capacity - Combustion,Capacity|Electricity|Oil|w/o CCS,Oil w/o CCS,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
