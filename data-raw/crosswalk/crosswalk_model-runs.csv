@@ -1,38 +1,52 @@
-datasrc,model,scenario,model_new,scenario_new,notes
-OP-NEMS IRA 5cenario outputs w retire 07-19-23 - June cases.xlsx,OP-NEMS,OP IRA Moderate,OP-NEMS,leep_IRA,LEEP report
-OP-NEMS IRA 5cenario outputs w retire 07-19-23 - June cases.xlsx,OP-NEMS,OP IRA Advanced,OP-NEMS,leep_Opt-IRA.Adv,LEEP report
-OP-NEMS IRA 5cenario outputs w retire 07-19-23 - June cases.xlsx,OP-NEMS,OP No New Policies,OP-NEMS,leep_No IRA,LEEP report
-PNNL_GCAM6_IRA_EPA_LEEP_6_30_23.xlsx,GCAM6.0,IRA,GCAM,leep_IRA,LEEP report
-PNNL_GCAM6_IRA_EPA_LEEP_6_30_23.xlsx,GCAM6.0,NoIRA,GCAM,leep_No IRA,LEEP report
-PNNL_GCAM6_IRA_EPA_LEEP_6_30_23.xlsx,GCAM6.0,IRA_HighGrowth,GCAM,leep_High Growth,LEEP report
-PNNL_GCAM6_IRA_EPA_LEEP_6_30_23.xlsx,GCAM6.0,IRA_LowGrowth,GCAM,leep_Low Growth,LEEP report
-PNNL_GCAM6_IRA_EPA_LEEP_6_30_23.xlsx,GCAM6.0,IRA_AdvancedTech,GCAM,leep_All Advanced,LEEP report
-PNNL_GCAM6_IRA_EPA_LEEP_6_30_23.xlsx,GCAM6.0,IRA_HighEnergySupply,GCAM,leep_Low Energy Price,LEEP report
-PNNL_GCAM6_IRA_EPA_LEEP_6_30_23.xlsx,GCAM6.0,IRA_LowEnergySupply,GCAM,leep_High Energy Price,LEEP report
-usrep_reeds_allscen.csv,USREP-ReEDS,ira_mid,USREP-ReEDS,leep_IRA,LEEP report
-usrep_reeds_allscen.csv,USREP-ReEDS,reference-noIRA,USREP-ReEDS,leep_No IRA,LEEP report
-usrep_reeds_allscen.csv,USREP-ReEDS,ira_low,USREP-ReEDS,leep_IRA.Low,LEEP report
-usrep_reeds_allscen.csv,USREP-ReEDS,ira_high,USREP-ReEDS,leep_IRA.High,LEEP report
-usrep_reeds_allscen.csv,USREP-ReEDS,ira_low_adv,USREP-ReEDS,leep_Pess-IRA.Adv,LEEP report
-usrep_reeds_allscen.csv,USREP-ReEDS,ira_mid_adv,USREP-ReEDS,leep_All Advanced,LEEP report
-usrep_reeds_allscen.csv,USREP-ReEDS,ira_high_adv,USREP-ReEDS,leep_Opt-IRA.Adv,LEEP report
-usrep_reeds_allscen.csv,USREP-ReEDS,ira_mid_constr,USREP-ReEDS,leep_Constrained Deployment,LEEP report
-GCAM-LTS_ar5.csv,GCAM 5.3,AM.HiRem.AdvPwr,GCAM-LTS,LTS1,LTS conversion used in BRVS
-GCAM-LTS_ar5.csv,GCAM 5.3,AM.LowRem.AllAdv,GCAM-LTS,LTS2,LTS conversion used in BRVS
-GCAM-LTS_ar5.csv,GCAM 5.3,AM.MedRem.AllAdv,GCAM-LTS,LTS3,LTS conversion used in BRVS
-GCAM-LTS_ar5.csv,GCAM 5.3,AM.MedRem.AllAdv.OGhighprice,GCAM-LTS,LTS4,LTS conversion used in BRVS
-GCAM-LTS_ar5.csv,GCAM 5.3,AM.MedRem.AllAdv.OGlowprice,GCAM-LTS,LTS5,LTS conversion used in BRVS
-GCAM-LTS_ar5.csv,GCAM 5.3,AM.MedRem.AllAdv.SEhigh,GCAM-LTS,LTS6,LTS conversion used in BRVS
-GCAM-LTS_ar5.csv,GCAM 5.3,AM.MedRem.AllAdv.SElow,GCAM-LTS,LTS7,LTS conversion used in BRVS
-GCAM-LTS_ar5.csv,GCAM 5.3,AM.MedRem.RefBldg,GCAM-LTS,LTS8,LTS conversion used in BRVS
-GCAM-LTS_ar5.csv,GCAM 5.3,AM.MedRem.RefCH4,GCAM-LTS,LTS9,LTS conversion used in BRVS
-GCAM-LTS_ar5.csv,GCAM 5.3,AM.MedRem.RefInd,GCAM-LTS,LTS10,LTS conversion used in BRVS
-GCAM-LTS_ar5.csv,GCAM 5.3,AM.MedRem.RefPower,GCAM-LTS,LTS11,LTS conversion used in BRVS
-GCAM-LTS_ar5.csv,GCAM 5.3,AM.MedRem.RefTrans,GCAM-LTS,LTS12,LTS conversion used in BRVS
-OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,OP-NEMS,OP Moderate,OP-NEMS,wm,btr - OP-NEMS BTR wm
-report_btr_usrep_reeds_6.21.csv,USREP-ReEDS,btr_ref,USREP-ReEDS,ref,
-report_btr_usrep_reeds_6.21.csv,USREP-ReEDS,btr_wm,USREP-ReEDS,wm,
-062624gcamreport_Processed.csv,GCAM 7.0,WM_062624,GCAM,wm,full wm scenario
-062624gcamreport_Processed.csv,GCAM 7.0,WM_IRAEGU_062624,GCAM,wm_iraegu,"IRA + EGU, no TRN"
-062624gcamreport_Processed.csv,GCAM 7.0,WM_IRATRN_062624,GCAM,wm_iratrn,"IRA + TRN, no EGU"
-062624gcamreport_Processed.csv,GCAM 7.0,WM_IRAonly_062624,GCAM,wm_iraonly,IRA only
+datasrc,model,scenario,model_new,scenario_new,notes,notes2
+GCAM-LTS_netghg_ar5.csv,GCAM 5.3,AM.HiRem.AdvPwr,LTS-NetGHG,LTS1,LTS conversion used in BRVS - Net GHG only,lts
+GCAM-LTS_netghg_ar5.csv,GCAM 5.3,AM.LowRem.AllAdv,LTS-NetGHG,LTS2,LTS conversion used in BRVS - Net GHG only,lts
+GCAM-LTS_netghg_ar5.csv,GCAM 5.3,AM.MedRem.AllAdv,LTS-NetGHG,LTS3,LTS conversion used in BRVS - Net GHG only,lts
+GCAM-LTS_netghg_ar5.csv,GCAM 5.3,AM.MedRem.AllAdv.OGhighprice,LTS-NetGHG,LTS4,LTS conversion used in BRVS - Net GHG only,lts
+GCAM-LTS_netghg_ar5.csv,GCAM 5.3,AM.MedRem.AllAdv.OGlowprice,LTS-NetGHG,LTS5,LTS conversion used in BRVS - Net GHG only,lts
+GCAM-LTS_netghg_ar5.csv,GCAM 5.3,AM.MedRem.AllAdv.SEhigh,LTS-NetGHG,LTS6,LTS conversion used in BRVS - Net GHG only,lts
+GCAM-LTS_netghg_ar5.csv,GCAM 5.3,AM.MedRem.AllAdv.SElow,LTS-NetGHG,LTS7,LTS conversion used in BRVS - Net GHG only,lts
+GCAM-LTS_netghg_ar5.csv,GCAM 5.3,AM.MedRem.RefBldg,LTS-NetGHG,LTS8,LTS conversion used in BRVS - Net GHG only,lts
+GCAM-LTS_netghg_ar5.csv,GCAM 5.3,AM.MedRem.RefCH4,LTS-NetGHG,LTS9,LTS conversion used in BRVS - Net GHG only,lts
+GCAM-LTS_netghg_ar5.csv,GCAM 5.3,AM.MedRem.RefInd,LTS-NetGHG,LTS10,LTS conversion used in BRVS - Net GHG only,lts
+GCAM-LTS_netghg_ar5.csv,GCAM 5.3,AM.MedRem.RefPower,LTS-NetGHG,LTS11,LTS conversion used in BRVS - Net GHG only,lts
+GCAM-LTS_netghg_ar5.csv,GCAM 5.3,AM.MedRem.RefTrans,LTS-NetGHG,LTS12,LTS conversion used in BRVS - Net GHG only,lts
+LTS_data_small.xlsx,OP-NEMS,AM.HiRem.AdvPwr,OP-NEMS-LTS,LTS1,Template reporting for LTS,lts
+LTS_data_small.xlsx,OP-NEMS,AM.LowRem.AllAdv,OP-NEMS-LTS,LTS2,Template reporting for LTS,lts
+LTS_data_small.xlsx,GCAM 5.3,AM.HiRem.AdvPwr,GCAM-LTS,LTS1,Template reporting for LTS,lts
+LTS_data_small.xlsx,GCAM 5.3,AM.LowRem.AllAdv,GCAM-LTS,LTS2,Template reporting for LTS,lts
+LTS_data_small.xlsx,GCAM 5.3,AM.MedRem.AllAdv,GCAM-LTS,LTS3,Template reporting for LTS,lts
+LTS_data_small.xlsx,GCAM 5.3,AM.MedRem.AllAdv.OGhighprice,GCAM-LTS,LTS4,Template reporting for LTS,lts
+LTS_data_small.xlsx,GCAM 5.3,AM.MedRem.AllAdv.OGlowprice,GCAM-LTS,LTS5,Template reporting for LTS,lts
+LTS_data_small.xlsx,GCAM 5.3,AM.MedRem.AllAdv.SEhigh,GCAM-LTS,LTS6,Template reporting for LTS,lts
+LTS_data_small.xlsx,GCAM 5.3,AM.MedRem.AllAdv.SElow,GCAM-LTS,LTS7,Template reporting for LTS,lts
+LTS_data_small.xlsx,GCAM 5.3,AM.MedRem.RefBldg,GCAM-LTS,LTS8,Template reporting for LTS,lts
+LTS_data_small.xlsx,GCAM 5.3,AM.MedRem.RefInd,GCAM-LTS,LTS9,Template reporting for LTS,lts
+LTS_data_small.xlsx,GCAM 5.3,AM.MedRem.RefCH4,GCAM-LTS,LTS10,Template reporting for LTS,lts
+LTS_data_small.xlsx,GCAM 5.3,AM.MedRem.RefPower,GCAM-LTS,LTS11,Template reporting for LTS,lts
+LTS_data_small.xlsx,GCAM 5.3,AM.MedRem.RefTrans,GCAM-LTS,LTS12,Template reporting for LTS,lts
+OP-NEMS IRA 5cenario outputs w retire 07-19-23 - June cases.xlsx,OP-NEMS,OP No New Policies,OP-NEMS,leep_No_IRA,LEEP report,leep
+OP-NEMS IRA 5cenario outputs w retire 07-19-23 - June cases.xlsx,OP-NEMS,OP IRA Moderate,OP-NEMS,leep_IRA,LEEP report,leep
+OP-NEMS IRA 5cenario outputs w retire 07-19-23 - June cases.xlsx,OP-NEMS,OP IRA Advanced,OP-NEMS,leep_Opt-IRA.Adv,LEEP report,leep
+PNNL_GCAM6_IRA_EPA_LEEP_6_30_23.xlsx,GCAM6.0,IRA,GCAM,leep_IRA,LEEP report,leep
+PNNL_GCAM6_IRA_EPA_LEEP_6_30_23.xlsx,GCAM6.0,IRA_AdvancedTech,GCAM,leep_IRA_AdvancedTech,LEEP report,leep
+PNNL_GCAM6_IRA_EPA_LEEP_6_30_23.xlsx,GCAM6.0,IRA_HighEnergySupply,GCAM,leep_IRA_HighEnergySupply,LEEP report,leep
+PNNL_GCAM6_IRA_EPA_LEEP_6_30_23.xlsx,GCAM6.0,IRA_HighGrowth,GCAM,leep_IRA_HighGrowth,LEEP report,leep
+PNNL_GCAM6_IRA_EPA_LEEP_6_30_23.xlsx,GCAM6.0,IRA_LowEnergySupply,GCAM,leep_IRA_LowEnergySupply,LEEP report,leep
+PNNL_GCAM6_IRA_EPA_LEEP_6_30_23.xlsx,GCAM6.0,IRA_LowGrowth,GCAM,leep_IRA_LowGrowth,LEEP report,leep
+PNNL_GCAM6_IRA_EPA_LEEP_6_30_23.xlsx,GCAM6.0,NoIRA,GCAM,leep_No_IRA,LEEP report,leep
+usrep_reeds_allscen.csv,USREP-ReEDS,reference-noIRA,USREP-ReEDS,leep_No IRA,LEEP report,leep
+usrep_reeds_allscen.csv,USREP-ReEDS,ira_mid,USREP-ReEDS,leep_IRA,LEEP report,leep
+usrep_reeds_allscen.csv,USREP-ReEDS,ira_low,USREP-ReEDS,leep_IRA.Low,LEEP report,leep
+usrep_reeds_allscen.csv,USREP-ReEDS,ira_high,USREP-ReEDS,leep_IRA.High,LEEP report,leep
+usrep_reeds_allscen.csv,USREP-ReEDS,ira_low_adv,USREP-ReEDS,leep_Pess-IRA.Adv,LEEP report,leep
+usrep_reeds_allscen.csv,USREP-ReEDS,ira_mid_adv,USREP-ReEDS,leep_All Advanced,LEEP report,leep
+usrep_reeds_allscen.csv,USREP-ReEDS,ira_high_adv,USREP-ReEDS,leep_Opt-IRA.Adv,LEEP report,leep
+usrep_reeds_allscen.csv,USREP-ReEDS,ira_mid_constr,USREP-ReEDS,leep_Constrained Deployment,LEEP report,leep
+062624gcamreport_Processed.csv,GCAM 7.0,WM_062624,GCAM,wm,full wm scenario,btr
+062624gcamreport_Processed.csv,GCAM 7.0,WM_IRAEGU_062624,GCAM,wm_iraegu,"IRA + EGU, no TRN",btr
+062624gcamreport_Processed.csv,GCAM 7.0,WM_IRATRN_062624,GCAM,wm_iratrn,"IRA + TRN, no EGU",btr
+062624gcamreport_Processed.csv,GCAM 7.0,WM_IRAonly_062624,GCAM,wm_iraonly,IRA only,btr
+report_btr_usrep_reeds_6.21.csv,USREP-ReEDS,btr_ref,USREP-ReEDS,ref,no IRA or wm,btr
+report_btr_usrep_reeds_6.21.csv,USREP-ReEDS,btr_wm,USREP-ReEDS,wm,full wm scenario,btr
+OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,OP-NEMS,OP Moderate,OP-NEMS,wm,btr - OP-NEMS BTR wm,btr

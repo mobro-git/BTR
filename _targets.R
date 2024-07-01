@@ -30,9 +30,8 @@ tar_plan(
   
   config = list(
     # models
-    model_wam = c("GCAM-LTS","GCAM-PNNL","OP-NEMS"),
     model_wm = c("GCAM","OP-NEMS","USREP-ReEDS"),
-    model_sm = c("OP-NEMS", "USREP-ReEDS"),
+    model_lts = c("GCAM-LTS","OP-NEMS-LTS"),
     
     # scenarios
     ghgi_scen = "wm", # Set usproj scenario to pull ghgi data
@@ -223,8 +222,6 @@ tar_plan(
   
   # figure map outputs
   nrgco2_sb = create_graph("nrgco2", "stacked_bar", config, settings, data_long_clean, figmap_nrgco2_stackbar, pngGraphs = TRUE),
-  draftbriefing_sb = create_graph("draftbriefing", "stacked_bar", config, settings, data_long_clean, figmap_draftbriefing_stackbar, pngGraphs = TRUE),
-
   nrgco2_db = create_graph("nrgco2", "diff_bar", config, settings, data_long_clean, figmap_nrgco2_diffbar, pngGraphs = TRUE),
   nrgco2_ts = create_graph("nrgco2", "time_series", config, settings, data_long_clean, figmap_nrgco2_timeseries, pngGraphs = TRUE),
   nrgco2_cu = create_graph("nrgco2", "cone_uncertainty", config, settings, data_long_clean, figmap_nrgco2_cone, pngGraphs = TRUE),

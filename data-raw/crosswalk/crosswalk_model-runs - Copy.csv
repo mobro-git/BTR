@@ -1,0 +1,21 @@
+datasrc,model,scenario,model_new,scenario_new,notes
+OP-NEMS IRA 5cenario outputs w retire 07-19-23 - June cases.xlsx,OP-NEMS,OP IRA Moderate,OP-NEMS,leep_IRA,LEEP report
+OP-NEMS IRA 5cenario outputs w retire 07-19-23 - June cases.xlsx,OP-NEMS,OP IRA Advanced,OP-NEMS,leep_Opt-IRA.Adv,LEEP report
+OP-NEMS IRA 5cenario outputs w retire 07-19-23 - June cases.xlsx,OP-NEMS,OP No New Policies,OP-NEMS,leep_No IRA,LEEP report
+PNNL_GCAM6_IRA_EPA_LEEP_6_30_23.xlsx,GCAM6.0,IRA,GCAM,leep_IRA,LEEP report
+PNNL_GCAM6_IRA_EPA_LEEP_6_30_23.xlsx,GCAM6.0,NoIRA,GCAM,leep_No IRA,LEEP report
+PNNL_GCAM6_IRA_EPA_LEEP_6_30_23.xlsx,GCAM6.0,IRA_HighGrowth,GCAM,leep_High Growth,LEEP report
+PNNL_GCAM6_IRA_EPA_LEEP_6_30_23.xlsx,GCAM6.0,IRA_LowGrowth,GCAM,leep_Low Growth,LEEP report
+PNNL_GCAM6_IRA_EPA_LEEP_6_30_23.xlsx,GCAM6.0,IRA_AdvancedTech,GCAM,leep_All Advanced,LEEP report
+PNNL_GCAM6_IRA_EPA_LEEP_6_30_23.xlsx,GCAM6.0,IRA_HighEnergySupply,GCAM,leep_Low Energy Price,LEEP report
+PNNL_GCAM6_IRA_EPA_LEEP_6_30_23.xlsx,GCAM6.0,IRA_LowEnergySupply,GCAM,leep_High Energy Price,LEEP report
+usrep_reeds_allscen.csv,USREP-ReEDS,ira_mid,USREP-ReEDS,leep_IRA,LEEP report
+usrep_reeds_allscen.csv,USREP-ReEDS,reference-noIRA,USREP-ReEDS,leep_No IRA,LEEP report
+usrep_reeds_allscen.csv,USREP-ReEDS,ira_low,USREP-ReEDS,leep_IRA.Low,LEEP report
+usrep_reeds_allscen.csv,USREP-ReEDS,ira_high,USREP-ReEDS,leep_IRA.High,LEEP report
+usrep_reeds_allscen.csv,USREP-ReEDS,ira_low_adv,USREP-ReEDS,leep_Pess-IRA.Adv,LEEP report
+usrep_reeds_allscen.csv,USREP-ReEDS,ira_mid_adv,USREP-ReEDS,leep_All Advanced,LEEP report
+usrep_reeds_allscen.csv,USREP-ReEDS,ira_high_adv,USREP-ReEDS,leep_Opt-IRA.Adv,LEEP report
+usrep_reeds_allscen.csv,USREP-ReEDS,ira_mid_constr,USREP-ReEDS,leep_Constrained Deployment,LEEP report
+report_btr_usrep_reeds_6.21.csv,USREP-ReEDS,btr_ref,USREP-ReEDS,ref,
+report_btr_usrep_reeds_6.21.csv,USREP-ReEDS,btr_wm,USREP-ReEDS,wm,
