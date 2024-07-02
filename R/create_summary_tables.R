@@ -459,16 +459,16 @@ create_html_table_merged <- function(final_summary_table, stubhead, config){
     mutate(
       `2025` = case_when(
         `2025_low` == `2025_high` ~ `2025_high`,
-        `2025_low` != `2025_high` ~ paste0(`2025_low`," to ",`2025_high`)),
+        `2025_low` != `2025_high` ~ paste0(`2025_low`," - ",`2025_high`)),
       `2030` = case_when(
         `2030_low` == `2030_high` ~ `2030_high`,
-        `2030_low` != `2030_high` ~ paste0(`2030_low`," to ",`2030_high`)),
+        `2030_low` != `2030_high` ~ paste0(`2030_low`," - ",`2030_high`)),
       `2035` = case_when(
         `2035_low` == `2035_high` ~ `2035_high`,
-        `2035_low` != `2035_high` ~ paste0(`2035_low`," to ",`2035_high`)),
+        `2035_low` != `2035_high` ~ paste0(`2035_low`," - ",`2035_high`)),
       `2040` = case_when(
         `2040_low` == `2040_high` ~ `2040_high`,
-        `2040_low` != `2040_high` ~ paste0(`2040_low`," to ",`2040_high`))
+        `2040_low` != `2040_high` ~ paste0(`2040_low`," - ",`2040_high`))
     ) %>%
     select(-contains("_"))
       
