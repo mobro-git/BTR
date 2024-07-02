@@ -24,3 +24,34 @@ check_lts_comp_var = function(data_long_clean, summation_var,settings){
     
     return(vars2)
 }
+
+read_ghgi_tables <- function(ghgi_filepath) {
+  ghgi_data <- read_csv(ghgi_filepath, skip = 1) %>%
+    drop_na() %>% 
+    filter(`End-Use Sector` %in% c('Transportation',
+                                   'Industrial',
+                                   'Residential',
+                                   'Commercial')) %>%
+    mutate(datasrc = ghgi_filepath)
+}
+
+
+ghgi_nrgco2_xw <- function(ghgi_data, data_long_clean) {
+  
+  ghgi_long <- ghgi_data %>%
+    pivot_longer(cols = !c(`End-Use Sector`,datasrc), names_to = 'year', values_to = 'value') %>%
+    mutate(year = as.numeric(year)) %>% 
+    mutate(model = 'EPA-GHGI') %>%
+    mutate(variable = case_when(`End-Use Sector` == 'Transportation' ~ "Emissions|CO2|Energy|Demand|Transportation|Total",
+                                `End-Use Sector` == 'Industrial' ~ "Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total",
+                                `End-Use Sector` == 'Residential' ~ "Emissions|CO2|Energy|Demand|Buildings|Total",
+                                `End-Use Sector` == 'Commercial' ~ "Emissions|CO2|Energy|Demand|Buildings|Total")) %>%
+    group_by(year,variable,model, datasrc) %>%
+    summarise(value = sum(value), .groups = 'drop') %>% 
+    mutate(unit = "Mt CO2/yr",
+           scenario = 'historic',
+           region = 'United States') %>%
+    select(names(data_long_clean))
+
+  
+}

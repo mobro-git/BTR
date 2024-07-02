@@ -679,16 +679,16 @@ lts_vars = c("Emissions|CO2|Energy|Demand|Buildings|TotalDI",
                          "Emissions|CO2|Energy|Demand|Industry|TotalDI",
                          "Emissions|CO2|Energy|Supply|Electricity")
 
-# ghgi 23 data
-ghgi_df = clean_data %>%
-  filter(model == "EPA-GHGI") %>%
-  filter(year %in% 2005:2021) %>%
+# ghgi 24 data
+ghgi_df = ghgi_nrgco2 %>%
+  filter(model == config$model_hist) %>%
+  filter(year %in% config$hist) %>%
   filter(variable %in% sector_vars)
 
 # LTS models and variables used for sector figures
 lts_df = data_long_clean %>%
-  filter(model %in% c("GCAM-LTS", "OP-NEMS-LTS")) %>%
-  filter(year %in% c(2025, 2030, 2035)) %>%
+  filter(model %in% config$model_lts) %>%
+  filter(year %in% config$fives_proj_sm) %>%
   filter(variable %in% lts_vars) %>%
   # change names to match template update variable names
   mutate(variable = case_when(
@@ -701,8 +701,8 @@ lts_df = data_long_clean %>%
 proj_models = config$model_wm
 proj_df = data_long_clean %>%
   filter(model %in% proj_models) %>%
-  filter(year %in% c(2030, 2035)) %>%
-  filter(scenario == "IRA") %>%
+  filter(year %in% config$fives_proj_sm) %>%
+  filter(scenario == "wm") %>%
   filter(variable %in% sector_vars)
 
 # 2030 and 2035 projections medians
