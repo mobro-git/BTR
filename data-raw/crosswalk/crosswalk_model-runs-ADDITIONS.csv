@@ -1,9 +1,5 @@
 datasrc,model,scenario
-usrep_reeds_allscen.csv,USREP-ReEDS,reference-noIRA
-usrep_reeds_allscen.csv,USREP-ReEDS,ira_mid
-usrep_reeds_allscen.csv,USREP-ReEDS,ira_low
-usrep_reeds_allscen.csv,USREP-ReEDS,ira_high
-usrep_reeds_allscen.csv,USREP-ReEDS,ira_low_adv
-usrep_reeds_allscen.csv,USREP-ReEDS,ira_mid_adv
-usrep_reeds_allscen.csv,USREP-ReEDS,ira_high_adv
-usrep_reeds_allscen.csv,USREP-ReEDS,ira_mid_constr
+062624gcamreport_Processed_TESTING123.csv,GCAM 7.0,WM_062624
+062624gcamreport_Processed_TESTING123.csv,GCAM 7.0,WM_IRAEGU_062624
+062624gcamreport_Processed_TESTING123.csv,GCAM 7.0,WM_IRATRN_062624
+062624gcamreport_Processed_TESTING123.csv,GCAM 7.0,WM_IRAonly_062624

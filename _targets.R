@@ -67,8 +67,13 @@ tar_plan(
   ##### Template + Crosswalks ---------------------------------------------------
   
   # BTR reporting template
-  tar_target(template_xlsx, "data-raw/template/EMF37_data_template_R2_v2.xlsx", format = "file"),
-  tar_target(template, read_emf_template_xlsx(template_xlsx)),
+  tar_target(template_original_xlsx, "data-raw/template/EMF37_data_template_R2_v2.xlsx", format = "file"),
+  tar_target(template_original, read_emf_template_xlsx(template_original_xlsx)),
+  
+  tar_target(template_additions_csv, "data-raw/template/template_additions.xlsx", format = "file"),
+  tar_target(template_additions, read_emf_template_xlsx(template_additions_csv)),
+  
+  tar_target(template, rbind(template_original,template_additions)),
   
   # scenario+model crosswalks
   tar_target(crosswalk_model_runs_csv, "data-raw/crosswalk/crosswalk_model-runs.csv", format = "file"),

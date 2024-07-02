@@ -13,7 +13,6 @@ date: "`r Sys.time()`"
 ```{r,echo = FALSE, results = "show", warning = FALSE, message = FALSE, error = FALSE}
 knitr::opts_chunk$set(echo = FALSE, results = "show", warning = FALSE, message = FALSE, error = FALSE, 
                       fig.align = "center", fig.width = 9, fig.height = 5)
-
 ```
 
 ```{r}
@@ -60,8 +59,6 @@ nrgco2_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 19, fi
 buildings_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 19, "Emissions|CO2|Energy|Demand|Buildings", data_long_clean, config)
 industry_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 19, "Emissions|CO2|Energy|Demand|Industry", data_long_clean, config)
 transportation_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 19, "Emissions|CO2|Energy|Demand|Transportation", data_long_clean, config)
-
-
 ```
 
 In the "With Measures" scenarios, Energy CO~2~ emissions reductions range by model from 2020 to 2040:
@@ -673,91 +670,91 @@ net_ghg_stackbar
 ## Data
 
 ```{r}
-# sector_vars = c("Emissions|CO2|Energy|Demand|Buildings|Total",
-#                          "Emissions|CO2|Energy|Demand|Transportation|Total",
-#                          "Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total",
-#                          "Emissions|CO2|Energy|Supply|Electricity")
-# lts_vars = c("Emissions|CO2|Energy|Demand|Buildings|TotalDI",
-#                          "Emissions|CO2|Energy|Demand|Transportation|TotalDI",
-#                          "Emissions|CO2|Energy|Demand|Industry|TotalDI",
-#                          "Emissions|CO2|Energy|Supply|Electricity")
-# 
-# # ghgi 23 data
-# ghgi_df = clean_data %>%
-#   filter(model == "EPA-GHGI") %>%
-#   filter(year %in% 2005:2021) %>%
-#   filter(variable %in% sector_vars)
-# 
-# # LTS models and variables used for sector figures
-# lts_df = clean_data %>%
-#   filter(model %in% c("GCAM-LTS", "NEMS-OP-LTS")) %>%
-#   filter(year %in% c(2025, 2030, 2035)) %>%
-#   filter(variable %in% lts_vars) %>%
-#   # change names to match template update variable names
-#   mutate(variable = case_when(
-#     str_detect(variable, "Buildings") ~ "Emissions|CO2|Energy|Demand|Buildings|Total",
-#     str_detect(variable, "Transportation") ~ "Emissions|CO2|Energy|Demand|Transportation|Total",
-#     str_detect(variable, "Industry") ~ "Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total",
-#     TRUE~variable))
-# 
-# # models used in the projections and variables used for sector figures
-# proj_models = c("EPS-EI","GCAM-CGS","GCAM-PNNL","MARKAL-NETL","NEMS-OP","NEMS-RHG","REGEN-EPRI","RIO-REPEAT","USREP-ReEDS")
-# proj_df = clean_data %>%
-#   filter(model %in% proj_models) %>%
-#   filter(year %in% c(2030, 2035)) %>%
-#   filter(scenario == "IRA") %>%
-#   filter(variable %in% sector_vars)
-# 
-# # 2030 and 2035 projections medians
-# median_df = proj_df %>%
-#   group_by(year,variable) %>%
-#   summarise(value = median(value)) %>%
-#   mutate(model = "median",
-#          scenario = "IRA",
-#          unit = "Mt CO2/yr",
-#          datasrc = "median calc",
-#          region = "United States") %>%
-#   select(names(proj_df))
-# 
-# # merge three datasets together
-# sector_df = rbind(ghgi_df, lts_df, proj_df, median_df) %>%
-#   mutate(type = case_when(
-#     str_detect(model, "LTS") ~ "LTS",
-#     model %in% proj_models ~ "proj",
-#     model == "EPA-GHGI" ~ "GHGI",
-#     model == "median" ~ "median",
-#     TRUE~model))
+sector_vars = c("Emissions|CO2|Energy|Demand|Buildings|Total",
+                         "Emissions|CO2|Energy|Demand|Transportation|Total",
+                         "Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total",
+                         "Emissions|CO2|Energy|Supply|Electricity")
+lts_vars = c("Emissions|CO2|Energy|Demand|Buildings|TotalDI",
+                         "Emissions|CO2|Energy|Demand|Transportation|TotalDI",
+                         "Emissions|CO2|Energy|Demand|Industry|TotalDI",
+                         "Emissions|CO2|Energy|Supply|Electricity")
+
+# ghgi 23 data
+ghgi_df = clean_data %>%
+  filter(model == "EPA-GHGI") %>%
+  filter(year %in% 2005:2021) %>%
+  filter(variable %in% sector_vars)
+
+# LTS models and variables used for sector figures
+lts_df = data_long_clean %>%
+  filter(model %in% c("GCAM-LTS", "OP-NEMS-LTS")) %>%
+  filter(year %in% c(2025, 2030, 2035)) %>%
+  filter(variable %in% lts_vars) %>%
+  # change names to match template update variable names
+  mutate(variable = case_when(
+    str_detect(variable, "Buildings") ~ "Emissions|CO2|Energy|Demand|Buildings|Total",
+    str_detect(variable, "Transportation") ~ "Emissions|CO2|Energy|Demand|Transportation|Total",
+    str_detect(variable, "Industry") ~ "Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total",
+    TRUE~variable))
+
+# models used in the projections and variables used for sector figures
+proj_models = config$model_wm
+proj_df = data_long_clean %>%
+  filter(model %in% proj_models) %>%
+  filter(year %in% c(2030, 2035)) %>%
+  filter(scenario == "IRA") %>%
+  filter(variable %in% sector_vars)
+
+# 2030 and 2035 projections medians
+median_df = proj_df %>%
+  group_by(year,variable) %>%
+  summarise(value = median(value)) %>%
+  mutate(model = "median",
+         scenario = "wm",
+         unit = "Mt CO2/yr",
+         datasrc = "median calc",
+         region = "United States") %>%
+  select(names(proj_df))
+
+# merge three datasets together
+sector_df = rbind(ghgi_df, lts_df, proj_df, median_df) %>%
+  mutate(type = case_when(
+    str_detect(model, "LTS") ~ "LTS",
+    model %in% proj_models ~ "proj",
+    model == "EPA-GHGI" ~ "GHGI",
+    model == "median" ~ "median",
+    TRUE~model))
 ```
 
 ## Figures
 
 ```{r}
-# # buildings
-# buildings = br_sectors(sector_df, 
-#                        "Emissions|CO2|Energy|Demand|Buildings|Total", 
-#                        expression(paste("Buildings Emissions (MMt C", O[2], ")")))
 # buildings
-# savefig(buildings, "sector_compare_buildings")
-# 
-# # electricity
-# electricity = br_sectors(sector_df, 
-#                        "Emissions|CO2|Energy|Supply|Electricity", 
-#                        expression(paste("Electricity Emissions (MMt C", O[2], ")")))
+buildings = br_sectors(sector_df,
+                       "Emissions|CO2|Energy|Demand|Buildings|Total",
+                       expression(paste("Buildings Emissions (MMt C", O[2], ")")))
+buildings
+savefig(buildings, "sector_compare_buildings")
+
 # electricity
-# savefig(electricity, "sector_compare_electricity")
-# 
-# # transportation
-# transportation = br_sectors(sector_df, 
-#                        "Emissions|CO2|Energy|Demand|Transportation|Total", 
-#                        expression(paste("Transportation Emissions (MMt C", O[2], ")")))
+electricity = br_sectors(sector_df,
+                       "Emissions|CO2|Energy|Supply|Electricity",
+                       expression(paste("Electricity Emissions (MMt C", O[2], ")")))
+electricity
+savefig(electricity, "sector_compare_electricity")
+
 # transportation
-# savefig(transportation, "sector_compare_transportation")
-# 
-# # industry
-# industry = br_sectors(sector_df, 
-#                        "Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total", 
-#                        expression(paste("Industry Emissions (MMt C", O[2], ")")))
+transportation = br_sectors(sector_df,
+                       "Emissions|CO2|Energy|Demand|Transportation|Total",
+                       expression(paste("Transportation Emissions (MMt C", O[2], ")")))
+transportation
+savefig(transportation, "sector_compare_transportation")
+
 # industry
-# savefig(industry, "sector_compare_industry")
+industry = br_sectors(sector_df,
+                       "Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total",
+                       expression(paste("Industry Emissions (MMt C", O[2], ")")))
+industry
+savefig(industry, "sector_compare_industry")
 ```
 
