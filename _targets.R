@@ -26,12 +26,14 @@ tar_plan(
     scen_mapping = read_scen_mapping(crosswalk_model_runs_csv),
     template = template,
     calculated_var = all_calculated
+    # TODO: Add base year and proj reporting range (1990, 2005?) to settings?
   ), 
   
   config = list(
     # models
     model_wm = c("GCAM","OP-NEMS","USREP-ReEDS"),
     model_lts = c("GCAM-LTS","OP-NEMS-LTS"),
+    model_hist = "EPA-GHGI",
     
     # scenarios
     ghgi_scen = "wm", # Set usproj scenario to pull ghgi data
@@ -46,11 +48,14 @@ tar_plan(
     fives = c(seq(2005,2022,by = 1),seq(2025,2040,by = 5)),
     fives_sumtab = c(seq(2005,2020,by = 5),2022,seq(2025,2040,by = 5)),
     annual = c(seq(2005,2040,by = 1)),
+    hist = c(seq(2005,2022, by = 1)),
     
     fives_lts = c(seq(2005,2022,by = 1),seq(2025,2050,by = 5)),
     annual_lts = c(seq(2005,2050,by = 1)),
     
     fives_proj = c(seq(2020,2050, by = 5)),
+    fives_proj_sm = c(seq(2025,2040, by = 5)),
+    
     annual_proj = c(seq(2020,2050, by = 1)),
     last_proj = 2040,
     base_proj = c(2022,seq(2025,2050, by = 5)),
@@ -145,6 +150,13 @@ tar_plan(
   
   # indexed version of data_long_clean. index_var determines which variables are indexed, only these are included
   data_long_index = index_data_long(data_long_clean, index_var),
+  
+  
+  # read in ghgi energy co2 table 2-5
+  tar_target(ghgi_filepath, "data-raw/ghgi_2024_ch2/Table 2-5.csv", format = "file"),
+  ghgi_data = read_ghgi_tables(ghgi_filepath),
+  ghgi_nrgco2 = ghgi_nrgco2_xw(ghgi_data, data_long_clean),
+  
   
   # _usproj data long ----
   
