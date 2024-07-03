@@ -1,7 +1,9 @@
 # sector comparison between projections and lts
 br_sectors = function(sector_df, var_choice, ytitle) {
   
-  df = sector_df %>% filter(variable == var_choice)
+  df = sector_df %>%
+    filter(variable == var_choice) %>%
+    filter(region == 'United States')
   
   ghgi = df %>% filter(type == "GHGI")
   ghgi_2022 = ghgi %>% filter(year == 2022)
@@ -23,7 +25,7 @@ br_sectors = function(sector_df, var_choice, ytitle) {
     mutate(year = as.numeric(year),
            type = "LTS")
   
-  proj = df %>% filter(type == "proj")
+  proj = df %>%filter(type == "proj")
   median = df %>% filter(type == "median")
   
   lts_col = "#96BBA4"

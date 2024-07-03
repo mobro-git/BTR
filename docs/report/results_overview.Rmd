@@ -704,7 +704,8 @@ proj_df = data_long_clean %>%
   filter(model %in% proj_models) %>%
   filter(year %in% config$fives_proj_sm) %>%
   filter(scenario == "wm") %>%
-  filter(variable %in% sector_vars)
+  filter(variable %in% sector_vars) %>%
+  filter(region == 'United States')
 
 # 2030 and 2035 projections medians
 median_df = proj_df %>%
