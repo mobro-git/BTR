@@ -395,6 +395,9 @@ create_summary_table <- function(category, grouping, projections_all_sm, config)
   numeric_cols <- sapply(final_summary_table,is.numeric)
   final_summary_table[, numeric_cols] <- lapply(final_summary_table[, numeric_cols], scales::comma)
   
+  final_summary_table[] <- lapply(final_summary_table, function(x) gsub("-","(", x))
+  final_summary_table[] <- lapply(final_summary_table, function(x) ifelse(grepl("\\(", x), paste0(x, ")"), x))
+  
   return(final_summary_table)
 }
 

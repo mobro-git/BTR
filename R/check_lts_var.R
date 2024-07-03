@@ -55,3 +55,4 @@ ghgi_nrgco2_xw <- function(ghgi_data, data_long_clean) {
 
   
 }
+
