@@ -45,7 +45,7 @@ br_sectors = function(sector_df, var_choice, ytitle) {
     labs(title = "", 
          y = ytitle, 
          x = "") +
-    scale_y_continuous(limits = c(0,2500), expand = c(0,0)) +
+    scale_y_continuous(limits = c(0,2500), expand = c(0,0), labels = comma) +
     scale_x_continuous(breaks = c(2005, 2022, 2025, 2030, 2035)) + 
     geom_hline(aes(yintercept=0)) +
     nolegend
