@@ -46,7 +46,7 @@ ghgi_nrgco2_xw <- function(ghgi_data, data_long_clean) {
                                 `End-Use Sector` == 'Industrial' ~ "Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total",
                                 `End-Use Sector` == 'Residential' ~ "Emissions|CO2|Energy|Demand|Buildings|Total",
                                 `End-Use Sector` == 'Commercial' ~ "Emissions|CO2|Energy|Demand|Buildings|Total")) %>%
-    group_by(year,variable,model, datasrc) %>%
+    group_by(year,variable,model,datasrc) %>%
     summarise(value = sum(value), .groups = 'drop') %>% 
     mutate(unit = "Mt CO2/yr",
            scenario = 'historic',

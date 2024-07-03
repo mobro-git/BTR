@@ -30,7 +30,8 @@ tar_load(
     projections_all_sm,
     figmap_nrgco2_stackbar,
     figmap_nrgco2_timeseries,
-    figmap_nrgco2_diffbar
+    figmap_nrgco2_diffbar,
+    ghgi_nrgco2
     )
   )
 ```
@@ -667,7 +668,7 @@ net_ghg_stackbar
 
 # Sector Analysis
 
-## Data
+## Figures {.tabset}
 
 ```{r}
 sector_vars = c("Emissions|CO2|Energy|Demand|Buildings|Total",
@@ -726,35 +727,48 @@ sector_df = rbind(ghgi_df, lts_df, proj_df, median_df) %>%
     TRUE~model))
 ```
 
-## Figures
-
 ```{r}
 # buildings
 buildings = br_sectors(sector_df,
                        "Emissions|CO2|Energy|Demand|Buildings|Total",
                        expression(paste("Buildings Emissions (MMt C", O[2], ")")))
-buildings
-savefig(buildings, "sector_compare_buildings")
 
 # electricity
-electricity = br_sectors(sector_df,
-                       "Emissions|CO2|Energy|Supply|Electricity",
-                       expression(paste("Electricity Emissions (MMt C", O[2], ")")))
-electricity
-savefig(electricity, "sector_compare_electricity")
+# electricity = br_sectors(sector_df,
+#                        "Emissions|CO2|Energy|Supply|Electricity",
+#                        expression(paste("Electricity Emissions (MMt C", O[2], ")")))
 
 # transportation
 transportation = br_sectors(sector_df,
                        "Emissions|CO2|Energy|Demand|Transportation|Total",
                        expression(paste("Transportation Emissions (MMt C", O[2], ")")))
-transportation
-savefig(transportation, "sector_compare_transportation")
 
 # industry
 industry = br_sectors(sector_df,
                        "Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total",
                        expression(paste("Industry Emissions (MMt C", O[2], ")")))
-industry
-savefig(industry, "sector_compare_industry")
 ```
 
+### Buildings
+
+```{r}
+buildings
+```
+
+### Electricity
+
+```{r}
+#electricity
+```
+
+### Transportation
+
+```{r}
+transportation
+```
+
+### Industry
+
+```{r}
+industry
+```
