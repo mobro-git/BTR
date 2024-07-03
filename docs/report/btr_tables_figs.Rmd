@@ -23,25 +23,46 @@ tar_source()
 tar_load(c(projections_all_sm, config))
 ```
 
-## Value Summary Tables
+# BTR Tables and Figures
 
-```{r create df}
-gas_df <- create_summary_table('gas','wm', projections_all_sm, config)
-sector_df <- create_summary_table('usproj_sector', 'wm', projections_all_sm, config)
-```
+## Value Summary Tables {.tabset}
 
+### Gas
 
 ```{r gas summary}
+gas_df <- create_summary_table('gas','wm', projections_all_sm, config)
+
 gas_table <- create_html_table(gas_df, 'Gas',config)
-gas_table
+
+gas_table_merged <- create_html_table_merged(gas_df, 'Gas', config)
+gas_table_merged
 ```
+
+```{r}
+filename <- paste0("gas_table_",Sys.Date(),".png")
+gtsave(gas_table, paste0('output/',settings$version,"/tables_figs/results_tables/estimated_values/",filename))
+```
+
+### Sector
 
 ```{r sector summary}
+sector_df <- create_summary_table('usproj_sector', 'wm', projections_all_sm, config)
+
 sector_table <- create_html_table(sector_df, 'Sector',config)
-sector_table
+
+sector_table_merged <- create_html_table_merged(sector_df, 'Sector', config)
+sector_table_merged
 ```
 
-## 2005 Percent Change Table
+```{r}
+
+filename <- paste0("sector_table_",Sys.Date(),".png")
+gtsave(sector_table, paste0('output/',settings$version,"/tables_figs/results_tables/estimated_values/",filename))
+```
+
+## 2005 Percent Change Table {.tabset}
+
+### Gas
 
 ```{r, pct change by gas}
 pct_change_table_gas <- create_pct_change_table('gas', 'wm', projections_all_sm, config)
@@ -49,13 +70,27 @@ pct_change_html_gas <- create_pct_change_html_table(pct_change_table_gas, 'Gas',
 pct_change_html_gas
 ```
 
+```{r}
+
+filename <- paste0("gas_table_pctchange05_",Sys.Date(),".png")
+gtsave(pct_change_html_gas, paste0('output/',settings$version,"/tables_figs/results_tables/percent_change_2005/",filename))
+```
+
+### Sector
+
 ```{r, pct change by sector}
 pct_change_table_sector <- create_pct_change_table('usproj_sector', 'wm', projections_all_sm, config)
 pct_change_html_sector <- create_pct_change_html_table(pct_change_table_sector, 'Sector', config)
 pct_change_html_sector
 ```
 
-## BTR Main Plot
+```{r}
+
+filename <- paste0("sector_table_pctchange05_",Sys.Date(),".png")
+gtsave(pct_change_html_sector, paste0('output/',settings$version,"/tables_figs/results_tables/percent_change_2005/",filename))
+```
+
+## BTR Main Plot {.tabset}
 
 ```{r data}
 net_ghg = projections_all_sm %>%
@@ -88,8 +123,221 @@ ndc_targets = data.frame(
 )
 ```
 
+### Net GHG Emissions
+
 ```{r proj function}
 projections = br_project(ghgi, proj, config, targets = ndc_targets)
 projections
 ```
 
+```{r}
+filename <- paste0("btr_main_fig_",Sys.Date(),".png")
+ggsave(paste0('output/',settings$version,"/results_overview/",filename))
+```
+
+```{r}
+net_ghg = projections_all_sm %>%
+  group_by(proj_name, grouping, year) %>%
+  summarise(sum = sum(sum),.groups = 'drop') %>%
+  filter(year %in% config$fives) %>%
+  mutate(pct_change_05 = round((sum/sum[year==2005]-1),2))
+
+
+ghgi = net_ghg %>% filter(proj_name == "ghgi")
+proj_no_connect = net_ghg %>% 
+  filter(proj_name != "ghgi")
+
+connect = ghgi[ghgi$year == 2022,]$pct_change_05
+baseline = ghgi[ghgi$year == 2005,]$pct_change_05
+
+proj_connect = proj_no_connect %>% 
+  group_by(proj_name) %>%
+  slice(1) %>%
+  mutate(
+    year = 2022,
+    pct_change_05 = ghgi$pct_change_05[ghgi$year == 2022])
+
+proj = rbind(proj_no_connect, proj_connect) %>%
+  mutate(year = as.numeric(year))
+
+ndc_targets = data.frame(
+  year = c(2020, 2025, 2030),
+  ymin = c(-.17, -.28, -.52),
+  ymax = c(-.17, -.26, -.5),
+  grouping = c("17% Below 2005","26-28% Below 2005","50-52% Below 2005")
+)
+```
+
+### Percent Change from 2005
+
+```{r}
+projections_pct_change = br_project_pct_change(ghgi, proj, targets = ndc_targets)
+projections_pct_change
+```
+
+```{r}
+filename <- paste0("btr_main_fig_pctchange05_",Sys.Date(),".png")
+ggsave(paste0('output/',settings$version,"/results_overview/",filename))
+```
+
+## BTR Net-GHG Stackbar
+
+```{r, fig.width=15}
+net_ghg_sb_df <- net_ghg_sb_data_processing(projections_all_sm, config)
+
+net_ghg_stackbar <- br_project_net_ghg_sb(net_ghg_sb_df, config)
+
+net_ghg_stackbar
+```
+
+# Kaya Analysis
+
+```{r}
+dat = data_long_clean |> 
+  filter(variable %in% c("Emissions|CO2|Energy", "Final Energy", "GDP|MER", "Population")) |>
+  select(-unit) |> 
+  spread(variable, value) |> 
+  mutate(EmissPerEnergy = `Emissions|CO2|Energy`/`Final Energy`,
+         EnergyPerGDP = `Final Energy`/`GDP|MER`,
+         GDPPerCap = `GDP|MER`/`Population`) 
+
+dat2 = dat |> 
+  filter(year == 2020) |> 
+  select(-`Emissions|CO2|Energy`, -`Final Energy`, -`GDP|MER`) |> 
+  rename(EmissPerEnergyBase = EmissPerEnergy,
+         EnergyPerGDPBase = EnergyPerGDP,
+         GDPPerCapBase = GDPPerCap,
+         PopulationBase = Population) |> 
+  select(-year)
+
+dat3 = dat |> 
+  left_join(dat2) |> 
+  select(-`Emissions|CO2|Energy`, -`Final Energy`, -`GDP|MER`) |> 
+  mutate(EmissPerEnergyIn = EmissPerEnergy/EmissPerEnergyBase,
+         EnergyPerGDPIn = EnergyPerGDP/EnergyPerGDPBase,
+         GDPPerCapIn = GDPPerCap/GDPPerCapBase,
+         PopulationIn = Population/PopulationBase) |> 
+  filter(region == "United States") |> 
+  select(model,scenario,year,datasrc,region,EmissPerEnergyIn,EnergyPerGDPIn,GDPPerCapIn,PopulationIn) |> 
+  pivot_longer(cols = 6:9, names_to = "var", values_to = "value")
+```
+
+```{r}
+Kaya = function(dat3,mod,scen){
+  dat3 |> 
+    filter(model == mod & scenario == scen) |> 
+    ggplot()+
+    geom_line(aes(x=year, y =value, color = var))+
+    theme_custom()
+}
+
+Kaya(dat3,"OP-NEMS","wm")
+```
+
+# Sector Analysis
+
+## Figures {.tabset}
+
+```{r}
+sector_vars = c("Emissions|CO2|Energy|Demand|Buildings|Total",
+                         "Emissions|CO2|Energy|Demand|Transportation|Total",
+                         "Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total",
+                         "Emissions|CO2|Energy|Supply|Electricity")
+lts_vars = c("Emissions|CO2|Energy|Demand|Buildings|TotalDI",
+                         "Emissions|CO2|Energy|Demand|Transportation|TotalDI",
+                         "Emissions|CO2|Energy|Demand|Industry|TotalDI",
+                         "Emissions|CO2|Energy|Supply|Electricity")
+
+# ghgi 24 data
+ghgi_df = ghgi_nrgco2 %>%
+  filter(model == config$model_hist) %>%
+  filter(year %in% config$hist) %>%
+  filter(variable %in% sector_vars)
+
+# LTS models and variables used for sector figures
+lts_df = data_long_clean %>%
+  filter(model %in% config$model_lts) %>%
+  filter(year %in% config$fives_proj_sm) %>%
+  filter(variable %in% lts_vars) %>%
+  # change names to match template update variable names
+  mutate(variable = case_when(
+    str_detect(variable, "Buildings") ~ "Emissions|CO2|Energy|Demand|Buildings|Total",
+    str_detect(variable, "Transportation") ~ "Emissions|CO2|Energy|Demand|Transportation|Total",
+    str_detect(variable, "Industry") ~ "Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total",
+    TRUE~variable))
+
+# models used in the projections and variables used for sector figures
+proj_models = config$model_wm
+proj_df = data_long_clean %>%
+  filter(model %in% proj_models) %>%
+  filter(year %in% config$fives_proj_sm) %>%
+  filter(scenario == "wm") %>%
+  filter(variable %in% sector_vars) %>%
+  filter(region == 'United States')
+
+# 2030 and 2035 projections medians
+median_df = proj_df %>%
+  group_by(year,variable) %>%
+  summarise(value = median(value)) %>%
+  mutate(model = "median",
+         scenario = "wm",
+         unit = "Mt CO2/yr",
+         datasrc = "median calc",
+         region = "United States") %>%
+  select(names(proj_df))
+
+# merge three datasets together
+sector_df = rbind(ghgi_df, lts_df, proj_df, median_df) %>%
+  mutate(type = case_when(
+    str_detect(model, "LTS") ~ "LTS",
+    model %in% proj_models ~ "proj",
+    model == "EPA-GHGI" ~ "GHGI",
+    model == "median" ~ "median",
+    TRUE~model))
+```
+
+```{r}
+# buildings
+buildings = br_sectors(sector_df,
+                       "Emissions|CO2|Energy|Demand|Buildings|Total",
+                       expression(paste("Buildings Emissions (MMt C", O[2], ")")))
+
+# electricity
+# electricity = br_sectors(sector_df,
+#                        "Emissions|CO2|Energy|Supply|Electricity",
+#                        expression(paste("Electricity Emissions (MMt C", O[2], ")")))
+
+# transportation
+transportation = br_sectors(sector_df,
+                       "Emissions|CO2|Energy|Demand|Transportation|Total",
+                       expression(paste("Transportation Emissions (MMt C", O[2], ")")))
+
+# industry
+industry = br_sectors(sector_df,
+                       "Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total",
+                       expression(paste("Industry Emissions (MMt C", O[2], ")")))
+```
+
+### Buildings
+
+```{r}
+buildings
+```
+
+### Electricity
+
+```{r}
+#electricity
+```
+
+### Transportation
+
+```{r}
+transportation
+```
+
+### Industry
+
+```{r}
+industry
+```

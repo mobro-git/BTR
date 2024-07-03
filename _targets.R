@@ -34,10 +34,12 @@ tar_plan(
     model_wm = c("GCAM","OP-NEMS","USREP-ReEDS"),
     model_lts = c("GCAM-LTS","OP-NEMS-LTS"),
     model_hist = "EPA-GHGI",
+    model_wm_hist = c("GCAM","OP-NEMS","USREP-ReEDS","EPA-GHGI"),
     
     # scenarios
     ghgi_scen = "wm", # Set usproj scenario to pull ghgi data
     scen_wm = c("wm"),
+    scen_wm_hist = c("wm","Historic"),
     scen_wm_ira = c("wm","leep_IRA"),
     
     # regions
@@ -139,7 +141,7 @@ tar_plan(
   
   data_long = make_data_long(data_loaded, settings),
   
-  data_long_clean = make_data_long_clean(data_long,
+  data_long_clean_no_hist = make_data_long_clean(data_long,
                                          ratio_var,
                                          summation_var,
                                          cumulative_var,
@@ -148,9 +150,10 @@ tar_plan(
                                          config,
                                          settings), 
   
+  data_long_clean = paste_hist(data_long_clean_no_hist, ghgi_comp_tab, c("wm","leep_IRA")),
+  
   # indexed version of data_long_clean. index_var determines which variables are indexed, only these are included
   data_long_index = index_data_long(data_long_clean, index_var),
-  
   
   # read in ghgi energy co2 table 2-5
   tar_target(ghgi_filepath, "data-raw/ghgi_2024_ch2/Table 2-5.csv", format = "file"),
@@ -169,8 +172,21 @@ tar_plan(
   # usproj w/o historical data
   usproj_data_long = gen_usproj_projections(usproj_data_long_all, config), 
   
-  # _ghgi data ----
+  # _ghgi data 
+  
+  # __from usproj----
   ghgi_cat = gen_usproj_ghgi(usproj_data_long_all, config),
+  
+  # __from compiled_tables_2024 ----
+  tar_target(ghgi_comp_tab_csv, "data-extra/ghgi/EPA-GHGI_wide_wnotes_2024.csv", format = "file"),
+  
+  ghgi_comp_tab = {
+    read_csv(ghgi_comp_tab_csv) %>%
+      mutate(datasrc = ghgi_comp_tab_csv) %>%
+      pivot_longer(cols = `1990`:`2022`, names_to = "year", values_to = "value") %>%
+      mutate(year = as.numeric(year)) %>%
+      select(names(data_long_clean_no_hist))
+    },
   
   # load lulucf ----
   tar_target(lulucf_folder, "data-raw/lulucf/", format = "file"),
@@ -246,6 +262,7 @@ tar_plan(
   nrgco2_cu = create_graph("nrgco2", "cone_uncertainty", config, settings, data_long_clean, figmap_nrgco2_cone, pngGraphs = TRUE),
   
   kaya_ts = create_graph("Kaya", "time_series", config, settings, data_long_index, figmap_kaya_timeseries, saveData = TRUE),
+  nrgco2hist = create_graph("nrgco2hist", "time_series", config, settings, data_long_clean, figmap_nrgco2hist_timeseries),
     
   # markdowns
   tar_render(btr_tables_figs,

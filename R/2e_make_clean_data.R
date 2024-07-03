@@ -85,7 +85,14 @@ unit_conversion = function(df) {
 
 }
 
-make_data_long_clean <- function(data_long,ratio_var,summation_var,cumulative_var,annual_growth_rate_var,per_diff_var,config,settings) {
+make_data_long_clean <- function(data_long,
+                                 ratio_var,
+                                 summation_var,
+                                 cumulative_var,
+                                 annual_growth_rate_var,
+                                 per_diff_var,
+                                 config,
+                                 settings) {
   
   data_long_clean = data_long %>%
     filter(year >= 2020) %>%

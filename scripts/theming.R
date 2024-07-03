@@ -136,6 +136,7 @@ color_map <- c(
   "OP-NEMS" = "navyD",
   "GCAM" = "limeD",
   "USREP-ReEDS" = "brownD",
+  "EPA-GHGI" = "light orange",
   
   # fuels
   "Fossil" = "very dark blue",
