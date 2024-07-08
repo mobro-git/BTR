@@ -20,7 +20,22 @@ source('packages.R')
 library(targets)
 library(tarchetypes)
 tar_source()
-tar_load(c(projections_all_sm, config))
+```
+
+```{r}
+tar_load(
+  c(
+    config,
+    settings,
+    data_long_clean,
+    projections_all_sm,
+    figmap_nrgco2_stackbar,
+    figmap_nrgco2_timeseries,
+    figmap_nrgco2_diffbar,
+    ghgi_nrgco2,
+    total_gross_emissions
+    )
+  )
 ```
 
 # TOC to fill out
@@ -360,4 +375,62 @@ transportation
 ```{r}
 industry
 ```
+
+## Table 3: NCBR Comparison
+
+```{r}
+
+# Load in past NCBR data
+br_comp_df <- read_csv('data-raw/ncbr_comparison/total_gross_ghg_ncbr_comparisons.csv')
+
+
+# gross_totals_df <- br_comp_df %>%
+#   filter(category == 'GrossTotal',
+#          gas == 'Total')
+gross_totals_df <- br_comp_df
+
+# Pivot BTR total gross emissions long
+
+tge_long <- total_gross_emissions %>%
+  pivot_longer(cols = 3:11, names_to = 'year') %>%
+  group_by(year) %>%
+  mutate(min = min(value),
+         max = max(value),
+         Projection = '2024 BTR') %>%
+  select(Projection,year,min,max) %>%
+  distinct()
+
+# Isolate min and max values for proj years and rbind
+tge_long_min <- tge_long %>%
+  mutate(Projection = '2024 BTR Low') %>%
+  rename(value = min) %>% 
+  select(Projection,year,value) %>%
+  pivot_wider(names_from = year,
+              values_from = value)
+
+tge_long_max <- tge_long %>%
+  mutate(Projection = '2024 BTR High') %>%
+  rename(value = max) %>% 
+  select(Projection,year,value) %>%
+  pivot_wider(names_from = year,
+              values_from = value)
+
+btr_gross_df <- tge_long_max %>% rbind(tge_long_min)
+
+
+# Rbind past NCBRs with BTR
+tge_rbind <- btr_gross_df %>%
+  bind_rows(gross_totals_df) %>%
+  select(Projection, '2005','2010','2015','2020','2025','2030','2035','2040')
+
+
+ncbr_comp_table <- tge_rbind %>%
+  gt() %>% 
+  gt_theme_nc_blue()
+
+ncbr_comp_table
+
+```
+
+## Figure: NCBR Comparison
 
