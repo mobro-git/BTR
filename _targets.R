@@ -131,36 +131,6 @@ tar_plan(
                                   annual_growth_rate_var = annual_growth_rate_var,
                                   per_diff_var = per_diff_var)),
   
-  # _modeled-data long ----
-  
-  data_loaded = {
-    map_dfr(data_files, ~read_process_data_file(.x, settings)) %>%
-      arrange_standard()},
-  # TODO: Figure out where to read in LTS and BR:VS data
-  # TODO: Add in check to make sure crosswalk-model-runs doesn't have duplicate model+scenario combinations
-  
-  data_long = make_data_long(data_loaded, settings),
-  
-  data_long_clean_no_hist = make_data_long_clean(data_long,
-                                         ratio_var,
-                                         summation_var,
-                                         cumulative_var,
-                                         annual_growth_rate_var,
-                                         per_diff_var,
-                                         config,
-                                         settings), 
-  
-  data_long_clean = paste_hist(data_long_clean_no_hist, ghgi_comp_tab, c("wm","leep_IRA")),
-  
-  # indexed version of data_long_clean. index_var determines which variables are indexed, only these are included
-  data_long_index = index_data_long(data_long_clean, index_var),
-  
-  # read in ghgi energy co2 table 2-5
-  tar_target(ghgi_filepath, "data-raw/ghgi_2024_ch2/Table 2-5.csv", format = "file"),
-  ghgi_data = read_ghgi_tables(ghgi_filepath),
-  ghgi_nrgco2 = ghgi_nrgco2_xw(ghgi_data, data_long_clean),
-  
-  
   # _usproj data long ----
   
   usproj_data_loaded = {
@@ -174,11 +144,11 @@ tar_plan(
   
   # _ghgi data 
   
-  # __from usproj----
+  #      from usproj
   ghgi_cat = gen_usproj_ghgi(usproj_data_long_all, config),
   
-  # __from compiled_tables_2024 ----
-  tar_target(ghgi_comp_tab_csv, "data-extra/ghgi/EPA-GHGI_wide_wnotes_2024.csv", format = "file"),
+  #      from compiled_tables_2024
+  tar_target(ghgi_comp_tab_csv, "data-raw/ghgi/EPA-GHGI_wide_wnotes_2024.csv", format = "file"),
   
   ghgi_comp_tab = {
     read_csv(ghgi_comp_tab_csv) %>%
@@ -187,6 +157,30 @@ tar_plan(
       mutate(year = as.numeric(year)) %>%
       select(names(data_long_clean_no_hist))
     },
+  
+  # _modeled-data long ----
+  
+  data_loaded = {
+    map_dfr(data_files, ~read_process_data_file(.x, settings)) %>%
+      arrange_standard()},
+  # TODO: Figure out where to read in LTS and BR:VS data
+  # TODO: Add in check to make sure crosswalk-model-runs doesn't have duplicate model+scenario combinations
+  
+  data_long = make_data_long(data_loaded, settings),
+  
+  data_long_clean_no_hist = make_data_long_clean(data_long,
+                                                 ratio_var,
+                                                 summation_var,
+                                                 cumulative_var,
+                                                 annual_growth_rate_var,
+                                                 per_diff_var,
+                                                 config,
+                                                 settings), 
+  
+  data_long_clean = paste_hist(data_long_clean_no_hist, ghgi_comp_tab, c("wm","leep_IRA")),
+  
+  # indexed version of data_long_clean. index_var determines which variables are indexed, only these are included
+  data_long_index = index_data_long(data_long_clean, index_var),
   
   # load lulucf ----
   tar_target(lulucf_folder, "data-raw/lulucf/", format = "file"),
@@ -262,6 +256,10 @@ tar_plan(
   nrgco2_cu = create_graph("nrgco2", "cone_uncertainty", config, settings, data_long_clean, figmap_nrgco2_cone, pngGraphs = TRUE),
   
   kaya_ts = create_graph("Kaya", "time_series", config, settings, data_long_index, figmap_kaya_timeseries, saveData = TRUE),
+  
+  # TODO: remove variables we dont have historical data for
+  # TODO: add historical data from EIA for energy variables
+  # TODO: create versions of the stacked bar figures that have historical data for 2020
   nrgco2hist = create_graph("nrgco2hist", "time_series", config, settings, data_long_clean, figmap_nrgco2hist_timeseries),
     
   # markdowns
@@ -276,6 +274,6 @@ tar_plan(
              output_dir = paste0('output/',settings$version,"/results_overview/"),
              output_file = paste0("results_overview_",Sys.Date(),".html"),
              params = list(mode = "targets"))
-  # TODO: add github doc output second version of output to view html on github site
+  # TODO: (low priority) add github doc output second version of output to view html on github site
   
 )
