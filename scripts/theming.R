@@ -304,7 +304,16 @@ color_map <- c(
   "Quintile 2" = "hue2",
   "Quintile 3" = "hue3",
   "Quintile 4" = "hue4",
-  "Quintile 5" = "hue5") %>%
+  "Quintile 5" = "hue5",
+  
+  # NCBR Vintages
+  '2022 NC' = '',
+  '2021 NC' = '',
+  '2016 BR' = '',
+  '2014 NC' = '',
+  '2010 NC' = '',
+  '2006 NC' = ''
+  ) %>%
   find_color(master_palette)
 
 sub_palettes <- list(

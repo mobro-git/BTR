@@ -23,6 +23,11 @@ tar_source()
 ```
 
 ```{r}
+source('packages.R')
+source("scripts/theming.R")
+```
+
+```{r}
 tar_load(
   c(
     config,
