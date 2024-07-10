@@ -129,7 +129,8 @@ master_palette <- c(
 
 color_map <- c(
   # scenarios
-  
+  "wm" = "blueD",
+  "IRA" = "apricotD",
   
   # models
   
@@ -306,13 +307,22 @@ color_map <- c(
   "Quintile 4" = "hue4",
   "Quintile 5" = "hue5",
   
+  # NDC Targets
+  "17% Below 2005" = "dark m.yellow",
+  "26-28% Below 2005" = "m.green", 
+  "50-52% Below 2005" = "m.indigo",
+  
   # NCBR Vintages
-  '2022 NC' = '',
-  '2021 NC' = '',
-  '2016 BR' = '',
-  '2014 NC' = '',
-  '2010 NC' = '',
-  '2006 NC' = ''
+  "2024 BTR High" = "m.green",
+  "2024 BTR Low" = "m.green",
+  "2024 BTR" = "m.green",
+  '2022 NC' = 'teal blue',
+  '2021 NC' = 'teal green',
+  '2016 BR' = 'dark salmon',
+  '2014 NC' = 'light orange',
+  '2010 NC' = 'very dark blue',
+  '2006 NC' = 'hue1',
+  'ghgi' = "black"
   ) %>%
   find_color(master_palette)
 

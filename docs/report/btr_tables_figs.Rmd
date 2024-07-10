@@ -384,15 +384,8 @@ industry
 ## Table 3: NCBR Comparison
 
 ```{r}
-
 # Load in past NCBR data
-br_comp_df <- read_csv('data-raw/ncbr_comparison/total_gross_ghg_ncbr_comparisons.csv')
-
-
-# gross_totals_df <- br_comp_df %>%
-#   filter(category == 'GrossTotal',
-#          gas == 'Total')
-gross_totals_df <- br_comp_df
+ncbr_comp_data_hist <- read_csv('data-raw/ncbr_comparison/total_gross_ghg_ncbr_comparisons.csv')
 
 # Pivot BTR total gross emissions long
 
@@ -420,8 +413,7 @@ tge_long_max <- tge_long %>%
   pivot_wider(names_from = year,
               values_from = value)
 
-btr_gross_df <- tge_long_max %>% rbind(tge_long_min)
-
+btr_highlow_df <- tge_long_max %>% rbind(tge_long_min)
 
 # Rbind past NCBRs with BTR
 tge_rbind <- btr_gross_df %>%
@@ -439,3 +431,6 @@ ncbr_comp_table
 
 ## Figure: NCBR Comparison
 
+```{r}
+
+```

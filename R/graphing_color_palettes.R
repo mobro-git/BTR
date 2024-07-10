@@ -25,6 +25,20 @@ scale_subpalette <- function(palettes, sub_pal, aesthetics = c("colour","fill"),
   
 }
 
+# create scale_manual pallets with a character vector and bypass the figure map
+scale_subpalette_single <- function(var_palette, aesthetics = c("colour","fill"), ...) {
+  
+    names(var_palette) = var_palette
+    sub_palettes[["palette_single"]] = var_palette
+    sub_palettes = sub_palettes %>%
+      map(~find_color(.x, color_map))
+    
+  scale_fill_manual(values = sub_palettes[["palette_single"]],
+                    aesthetics = aesthetics,
+                    ...)
+  
+}
+
 scale_subpalette2 <- function(sub_pal, ...) {
   
   pal_val <- sub_palettes[[sub_pal]]
@@ -64,17 +78,6 @@ create_subpalettes <- function(plot_list, config) {
   sub_palettes
 }
 
-create_subpalettes_df <- function(df, col) {
-
-    var_palette = unique(df[[col]])
-
-    names(var_palette) = var_palette
-    sub_palettes[["temp"]] = var_palette
-    sub_palettes = sub_palettes %>%
-      map(~find_color(.x, color_map))
-  
-  sub_palettes
-}
 
 
 

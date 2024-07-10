@@ -13,16 +13,11 @@ ncbr_comparison_figure <- function(ncbr_comp_data_hist, btr_highlow_df) {
               ymin = min(value)) %>%
     mutate(year = as.numeric(year))
   
-  palette <- c('2022 NC' = 'red',
-               '2021 NC' = 'blue',
-               '2016 BR' = 'darkgreen',
-               '2014 NC' = 'purple',
-               '2010 NC' = 'yellow',
-               '2006 NC' = 'orange')
+  var_palette = c(unique(ncbr_hist_long$Projection),unique(btr_long$Projection))
   
   figure <- ggplot() +
     geom_line(ncbr_hist_long, mapping = aes(year,value, group = Projection, color = Projection),size = 0.7) +
-    scale_color_manual(values = palette) +
+    scale_subpalette_single(var_palette) +
     theme_btr()
   
   figure
