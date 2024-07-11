@@ -36,7 +36,7 @@ tar_load(
     figmap_nrgco2_stackbar,
     figmap_nrgco2_timeseries,
     figmap_nrgco2_diffbar,
-    ghgi_nrgco2,
+    ghgi_comp_tab,
     total_gross_emissions
     )
   )
@@ -287,7 +287,7 @@ lts_vars = c("Emissions|CO2|Energy|Demand|Buildings|TotalDI",
                          "Emissions|CO2|Energy|Supply|Electricity")
 
 # ghgi 24 data
-ghgi_df = ghgi_nrgco2 %>%
+ghgi_df = ghgi_comp_tab %>%
   filter(model == config$model_hist) %>%
   filter(year %in% config$hist) %>%
   filter(variable %in% sector_vars)
