@@ -311,7 +311,7 @@ br_project_net_ghg_sb <- function(proj_all_sm_sb_join, config){
              "Non-CO2" = "#E6544D",
              "LULUCF Sink" = "#16B231")
   
-  palette = create_subpalettes_df(proj_all_sm_sb_join, "gas")
+  #palette = create_subpalettes_df(proj_all_sm_sb_join, "gas")
   
   stackbar <- ggplot(proj_all_sm_sb_join, aes(year, mmtco2e)) +
     geom_bar(aes(fill = gas),

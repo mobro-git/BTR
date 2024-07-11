@@ -416,21 +416,23 @@ tge_long <- total_gross_emissions %>%
 # btr_highlow_df <- tge_long_max %>% rbind(tge_long_min)
 
 # Rbind past NCBRs with BTR
-tge_rbind <- btr_highlow_df %>%
-  bind_rows(ncbr_comp_data_hist) %>%
-  select(Projection, '2005','2010','2015','2020','2025','2030','2035','2040')
-
-
-ncbr_comp_table <- tge_rbind %>%
-  gt() %>% 
-  gt_theme_nc_blue()
-
-ncbr_comp_table
+# tge_rbind <- btr_highlow_df %>%
+#   bind_rows(ncbr_comp_data_hist) %>%
+#   select(Projection, '2005','2010','2015','2020','2025','2030','2035','2040')
+# 
+# 
+# ncbr_comp_table <- tge_rbind %>%
+#   gt() %>% 
+#   gt_theme_nc_blue()
+# 
+# ncbr_comp_table
 
 ```
 
 ## Figure: NCBR Comparison
 
 ```{r}
+fig <- ncbr_comparison_figure(ncbr_comp_data_hist, tge_long, config)
+fig
 
 ```
