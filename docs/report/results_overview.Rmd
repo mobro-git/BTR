@@ -30,8 +30,7 @@ tar_load(
     projections_all_sm,
     figmap_nrgco2_stackbar,
     figmap_nrgco2_timeseries,
-    figmap_nrgco2_diffbar,
-    ghgi_nrgco2
+    figmap_nrgco2_diffbar
     )
   )
 ```
