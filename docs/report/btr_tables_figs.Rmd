@@ -442,7 +442,7 @@ ncbr_comp_table_df <- tge_all_long %>%
 ```
 
 ## Figure: NCBR Comparison
-
+TODO: Create another version with data back to 1990.
 ```{r}
 fig <- ncbr_comparison_figure(ncbr_comp_data_hist, tge_all_long, config)
 fig
