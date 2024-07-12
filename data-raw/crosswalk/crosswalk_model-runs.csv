@@ -47,6 +47,6 @@ usrep_reeds_allscen.csv,USREP-ReEDS,ira_mid_constr,USREP-ReEDS,leep_Constrained 
 062624gcamreport_Processed.csv,GCAM 7.0,WM_IRAEGU_062624,GCAM,wm_iraegu,"IRA + EGU, no TRN",btr
 062624gcamreport_Processed.csv,GCAM 7.0,WM_IRATRN_062624,GCAM,wm_iratrn,"IRA + TRN, no EGU",btr
 062624gcamreport_Processed.csv,GCAM 7.0,WM_IRAonly_062624,GCAM,wm_iraonly,IRA only,btr
-report_btr_usrep_reeds_6.21.csv,USREP-ReEDS,btr_ref,USREP-ReEDS,ref,no IRA or wm,btr
-report_btr_usrep_reeds_6.21.csv,USREP-ReEDS,btr_wm,USREP-ReEDS,wm,full wm scenario,btr
 OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,OP-NEMS,OP Moderate,OP-NEMS,wm,btr - OP-NEMS BTR wm,btr
+usrep_reeds_btr_7.12.csv,USREP-ReEDS,btr1_ref,USREP-ReEDS,ref,,btr
+usrep_reeds_btr_7.12.csv,USREP-ReEDS,btr1_wm,USREP-ReEDS,wm,,btr

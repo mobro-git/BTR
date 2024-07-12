@@ -40,3 +40,4 @@ library(naniar)
 library(gt)
 library(scales)
 
+library(webshot2)

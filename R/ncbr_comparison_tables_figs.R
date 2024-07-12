@@ -1,5 +1,5 @@
 
-ncbr_comparison_figure <- function(ncbr_comp_data_hist, tge_long, config) {
+ncbr_comparison_figure <- function(ncbr_comp_data_hist, tge_all_long, config) {
   
   ncbr_hist_long <- ncbr_comp_data_hist %>% 
     pivot_longer(cols = 2:20, names_to = "year", values_to = "value") %>%
@@ -8,9 +8,9 @@ ncbr_comparison_figure <- function(ncbr_comp_data_hist, tge_long, config) {
   # btr_long <- btr_highlow_df %>% 
   #   pivot_longer(cols = 2:10, names_to = "year", values_to = "value")
   
-  proj_range_ncbr_comp <- tge_long  %>%
+  proj_range_ncbr_comp <- tge_all_long  %>%
     mutate(year = as.numeric(year)) %>% 
-    group_by(year) %>%
+    group_by(year, Projection) %>%
     summarise(ymax = max(value),
               ymin = min(value),
               med = median(value)) %>%
@@ -18,6 +18,7 @@ ncbr_comparison_figure <- function(ncbr_comp_data_hist, tge_long, config) {
   
   var_palette = c(unique(ncbr_hist_long$Projection),unique(proj_range_ncbr_comp$Projection))
   
+  #TODO: FLIP LEGEND ORDER, new to old desc
   figure <- ggplot() +
     geom_line(ncbr_hist_long, mapping = aes(year,value, group = Projection, color = Projection),size = 0.7) +
     geom_ribbon(proj_range_ncbr_comp, mapping = aes(x = year,ymax = ymax, ymin = ymin,

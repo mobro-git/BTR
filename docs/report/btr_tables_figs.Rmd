@@ -170,7 +170,7 @@ projections
 
 ```{r}
 filename <- paste0("btr_main_fig_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/results_overview/",filename))
+ggsave(paste0('output/',settings$version,"/results_overview/btr_figs/",filename))
 ```
 
 ```{r}
@@ -215,7 +215,7 @@ projections_pct_change
 
 ```{r}
 filename <- paste0("btr_main_fig_pctchange05_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/results_overview/",filename))
+ggsave(paste0('output/',settings$version,"/results_overview/btr_figs/",filename))
 ```
 
 ## BTR Net-GHG Stackbar
@@ -386,17 +386,29 @@ industry
 # Load in past NCBR data
 ncbr_comp_data_hist <- read_csv('data-raw/ncbr_comparison/total_gross_ghg_ncbr_comparisons.csv')
 
+ncbr_data_hist_long <- ncbr_comp_data_hist %>% 
+  pivot_longer(cols = 2:20, names_to = 'year')
+
 # Pivot BTR total gross emissions long
 
-tge_long <- total_gross_emissions %>%
-  pivot_longer(cols = 3:11, names_to = 'year') 
-# %>%
-#   group_by(year) %>%
-#   mutate(min = min(value),
-#          max = max(value),
-#          Projection = '2024 BTR') %>%
-#   select(Projection,year,min,max) %>%
-#   distinct()
+tge_all_long <- total_gross_emissions %>%
+  pivot_longer(cols = 3:11, names_to = 'year') %>%
+  mutate(Projection = '2024 BTR') %>%
+  select(names(ncbr_data_hist_long)) %>%
+  distinct() %>%
+  rbind(ncbr_data_hist_long) %>%
+  filter(year %in% config$fives_proj_sm)
+
+ncbr_comp_table_df <- tge_all_long %>% 
+  pivot_wider(names_from = year,
+              values_from = value)
+
+ncbr_comp_table_df <- tge_all_long %>% 
+  group_by(Projection,year) %>%
+  mutate(min = min(value),
+         max = max(value)) %>%
+  select(Projection,year,min,max) %>%
+  distinct()
 
 # Isolate min and max values for proj years and rbind
 # tge_long_min <- tge_long %>%
@@ -432,7 +444,7 @@ tge_long <- total_gross_emissions %>%
 ## Figure: NCBR Comparison
 
 ```{r}
-fig <- ncbr_comparison_figure(ncbr_comp_data_hist, tge_long, config)
+fig <- ncbr_comparison_figure(ncbr_comp_data_hist, tge_all_long, config)
 fig
 
 ```
