@@ -318,10 +318,15 @@ color_map <- c(
   "2024 BTR" = "m.green",
   '2022 NC' = 'teal blue',
   '2021 NC' = 'teal green',
+  '2021 CAR' = 'teal green',
   '2016 BR' = 'dark salmon',
+  '2016 CAR' = 'dark salmon',
   '2014 NC' = 'light orange',
+  '2014 CAR' = 'light orange',
   '2010 NC' = 'very dark blue',
+  '2010 CAR' = 'very dark blue',
   '2006 NC' = 'hue1',
+  '2006 CAR' = 'hue1',
   'ghgi' = "black"
   ) %>%
   find_color(master_palette)

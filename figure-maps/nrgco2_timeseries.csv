@@ -83,13 +83,16 @@ timeseriesplot,17,Final Energy - Buildings,Final Energy|Buildings|Coal,Coal,0,us
 timeseriesplot,17,Final Energy - Buildings,Final Energy|Buildings|Gas,Gas,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
 timeseriesplot,17,Final Energy - Buildings,Final Energy|Buildings|Oil,Oil,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
 timeseriesplot,17,Final Energy - Buildings,Final Energy|Buildings|Electricity,Electricity,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,17,Final Energy - Buildings,Final Energy|Buildings,Total Energy,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
 timeseriesplot,18,Final Energy - Industry,Final Energy|Industry|Coal,Coal,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
 timeseriesplot,18,Final Energy - Industry,Final Energy|Industry|Gas,Gas,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
 timeseriesplot,18,Final Energy - Industry,Final Energy|Industry|Oil,Oil,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
 timeseriesplot,18,Final Energy - Industry,Final Energy|Industry|Electricity,Electricity,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,18,Final Energy - Industry,Final Energy|Industry,Total Energy,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
 timeseriesplot,19,Final Energy - Transportation,Final Energy|Transportation|Gas,Gas,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
 timeseriesplot,19,Final Energy - Transportation,Final Energy|Transportation|Oil,Oil,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
 timeseriesplot,19,Final Energy - Transportation,Final Energy|Transportation|Electricity,Electricity,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,19,Final Energy - Transportation,Final Energy|Transportation,Total Energy,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
 timeseriesplot,20,Electricity Generation - Combustion,Secondary Energy|Electricity|Biomass|w/ CCS,Biomass w/ CCS,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
 timeseriesplot,20,Electricity Generation - Combustion,Secondary Energy|Electricity|Biomass|w/o CCS,Biomass w/o CCS,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
 timeseriesplot,20,Electricity Generation - Combustion,Secondary Energy|Electricity|Coal|w/ CCS,Coal w/ CCS,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
@@ -161,3 +164,22 @@ timeseriesplot,29,Electricity Capacity - Combustion,Capacity|Electricity|Gas|w/ 
 timeseriesplot,29,Electricity Capacity - Combustion,Capacity|Electricity|Gas|w/o CCS,Gas w/o CCS,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
 timeseriesplot,29,Electricity Capacity - Combustion,Capacity|Electricity|Oil|w/ CCS,Oil w/ CCS,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
 timeseriesplot,29,Electricity Capacity - Combustion,Capacity|Electricity|Oil|w/o CCS,Oil w/o CCS,0,usa,model_wm,fives_proj,scen_wm,wrap,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,30,Energy CO2 Emissions by Fuel,Emissions|CO2|Energy|Coal,Coal,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,30,Energy CO2 Emissions by Fuel,Emissions|CO2|Energy|Gas,Gas,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,30,Energy CO2 Emissions by Fuel,Emissions|CO2|Energy|Oil,Oil,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,31,"Final Energy - Buildings, Residential",Final Energy|Buildings|Residential,Total Energy,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,31,"Final Energy - Buildings, Residential",Final Energy|Buildings|Residential|Biogas,Biogas,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,31,"Final Energy - Buildings, Residential",Final Energy|Buildings|Residential|Biomass Liquids,Biomass Liquids,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,31,"Final Energy - Buildings, Residential",Final Energy|Buildings|Residential|Biomass Solids,Biomass Solids,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,31,"Final Energy - Buildings, Residential",Final Energy|Buildings|Residential|Electricity,Electricity,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,31,"Final Energy - Buildings, Residential",Final Energy|Buildings|Residential|Gas,Gas,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,31,"Final Energy - Buildings, Residential",Final Energy|Buildings|Residential|Hydrogen,Hydrogen,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,31,"Final Energy - Buildings, Residential",Final Energy|Buildings|Residential|Oil,Oil,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,32,"Final Energy - Buildings, Commercial",Final Energy|Buildings|Commercial,Total Energy,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,32,"Final Energy - Buildings, Commercial",Final Energy|Buildings|Commercial|Biogas,Biogas,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,32,"Final Energy - Buildings, Commercial",Final Energy|Buildings|Commercial|Biomass Liquids,Biomass Liquids,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,32,"Final Energy - Buildings, Commercial",Final Energy|Buildings|Commercial|Biomass Solids,Biomass Solids,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,32,"Final Energy - Buildings, Commercial",Final Energy|Buildings|Commercial|Electricity,Electricity,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,32,"Final Energy - Buildings, Commercial",Final Energy|Buildings|Commercial|Gas,Gas,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,32,"Final Energy - Buildings, Commercial",Final Energy|Buildings|Commercial|Hydrogen,Hydrogen,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,32,"Final Energy - Buildings, Commercial",Final Energy|Buildings|Commercial|Oil,Oil,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y

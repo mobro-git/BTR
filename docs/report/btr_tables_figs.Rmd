@@ -17,13 +17,10 @@ knitr::opts_chunk$set(echo = FALSE, results = "show", warning = FALSE, message =
 
 ```{r}
 source('packages.R')
+source("scripts/theming.R")
 library(targets)
 library(tarchetypes)
 tar_source()
-```
-
-```{r}
-source("scripts/theming.R")
 ```
 
 ```{r}
@@ -78,7 +75,7 @@ gas_table_merged
 
 ```{r}
 filename <- paste0("gas_table_",Sys.Date(),".png")
-gtsave(gas_table, paste0('output/',settings$version,"/tables_figs/results_tables/estimated_values/",filename))
+gtsave(gas_table_merged, paste0('output/',settings$version,"/tables_figs/results_tables/estimated_values/",filename))
 ```
 
 ### Sector
@@ -95,7 +92,7 @@ sector_table_merged
 ```{r}
 
 filename <- paste0("sector_table_",Sys.Date(),".png")
-gtsave(sector_table, paste0('output/',settings$version,"/tables_figs/results_tables/estimated_values/",filename))
+gtsave(sector_table_merged, paste0('output/',settings$version,"/tables_figs/results_tables/estimated_values/",filename))
 ```
 
 ## 2005 Percent Change Table {.tabset}
@@ -397,7 +394,9 @@ tge_all_long <- total_gross_emissions %>%
   select(names(ncbr_data_hist_long)) %>%
   distinct() %>%
   rbind(ncbr_data_hist_long) %>%
-  filter(year %in% config$fives_proj_sm)
+  mutate(year = as.numeric(year))
+#%>%
+ # filter(year %in% config$fives_proj_sm)
 
 ncbr_comp_table_df <- tge_all_long %>% 
   pivot_wider(names_from = year,
@@ -448,3 +447,23 @@ fig <- ncbr_comparison_figure(ncbr_comp_data_hist, tge_all_long, config)
 fig
 
 ```
+
+## NCBR Comparision Figure: From 1990
+
+```{r}
+ncbr_90 <- read_csv("data-raw/ncbr_comparison/past_nc_br_comparison_data.csv")
+
+tge_90 <- ncbr_90 %>% filter(category == 'GrossTotal',
+                          gas == 'Total')
+
+tge_90_long <- tge_90 %>% pivot_longer(cols = 8:53,
+                                       names_to = 'year') %>%
+  rename(Projection = publication) %>% 
+  select(Projection,year,value) %>%
+  mutate(year = as.numeric(year))
+
+fig <- ncbr_comp_fig_1990(tge_90_long, tge_all_long, config)
+fig
+
+```
+
