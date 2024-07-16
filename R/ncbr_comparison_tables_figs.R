@@ -87,3 +87,5 @@ ncbr_comp_fig_1990 <- function(tge_90_long, tge_all_long, config) {
   figure
 }
 
+ncbr_comp_table <- function(tge_btr){}
+

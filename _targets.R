@@ -51,6 +51,7 @@ tar_plan(
     fives_sumtab = c(seq(2005,2020,by = 5),2022,seq(2025,2040,by = 5)),
     annual = c(seq(2005,2040,by = 1)),
     hist = c(seq(2005,2022, by = 1)),
+  #  seq_ncbr_comp = 
     
     fives_lts = c(seq(2005,2022,by = 1),seq(2025,2050,by = 5)),
     annual_lts = c(seq(2005,2050,by = 1)),

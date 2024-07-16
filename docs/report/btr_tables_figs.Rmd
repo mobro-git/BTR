@@ -17,10 +17,10 @@ knitr::opts_chunk$set(echo = FALSE, results = "show", warning = FALSE, message =
 
 ```{r}
 source('packages.R')
-source("scripts/theming.R")
 library(targets)
 library(tarchetypes)
 tar_source()
+source("scripts/theming.R")
 ```
 
 ```{r}
@@ -387,6 +387,11 @@ ncbr_data_hist_long <- ncbr_comp_data_hist %>%
   pivot_longer(cols = 2:20, names_to = 'year')
 
 # Pivot BTR total gross emissions long
+
+tge_btr <- projections_all_sm %>% 
+  filter(!gas == 'LULUCF Sink') %>%
+  group_by(proj_name, grouping, year) %>%
+  summarise(value = sum(sum),.groups = 'drop')
 
 tge_all_long <- total_gross_emissions %>%
   pivot_longer(cols = 3:11, names_to = 'year') %>%
