@@ -11,7 +11,7 @@ add_pct_change_05 <- function(dataframe) {
 }
 
 
-create_pct_change_table <- function(category, grouping, projections_all_sm, config) {
+create_pct_change_table <- function(category, grouping, projections_all_sm, config, settings) {
   
   col_order <- c('category','year','low','high')
 
@@ -116,12 +116,12 @@ create_pct_change_table <- function(category, grouping, projections_all_sm, conf
   else{rlang::abort('Enter "gas" or "usproj_sector" into as category.')}
   
   
-  pct_change_table_df_high_low <- create_high_low_df(pct_change_table_df, config)
+  pct_change_table_df_high_low <- create_high_low_df(pct_change_table_df, settings)
   pct_change_table_df_high_low <- pct_change_table_df_high_low[order_index,]
   
   
-  total_gross_emissions_high_low <- create_high_low_df(summary_total_gross, config)
-  total_net_emissions_high_low <- create_high_low_df(summary_total_net, config)
+  total_gross_emissions_high_low <- create_high_low_df(summary_total_gross, settings)
+  total_net_emissions_high_low <- create_high_low_df(summary_total_net, settings)
   
   
   summary_lulucf_sink <- summary %>% filter(category == 'LULUCF Sink') %>%
@@ -131,7 +131,7 @@ create_pct_change_table <- function(category, grouping, projections_all_sm, conf
     select(category, year, low, high) %>%
     distinct()
   
-  lulucf_sink_high_low <- create_high_low_df(summary_lulucf_sink, config)
+  lulucf_sink_high_low <- create_high_low_df(summary_lulucf_sink, settings)
   proj_col_order <- c('2025_low',
                       '2025_high',
                       '2030_low',
@@ -159,9 +159,9 @@ create_pct_change_table <- function(category, grouping, projections_all_sm, conf
 }
 
 # Create html table in the style of gt()
-create_pct_change_html_table <- function(final_summary_table, stubhead, config){
+create_pct_change_html_table <- function(final_summary_table, stubhead, settings){
   
-  hist_years <- c('2005','2010','2015','2020', config$base_year)
+  hist_years <- c('2005','2010','2015','2020', settings$base_year)
   proj_col_order <- c('2025_low',
                       '2025_high',
                       '2030_low',

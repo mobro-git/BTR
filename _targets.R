@@ -23,6 +23,7 @@ tar_plan(
   
   settings = list(
     version = "2024_BTR1",
+    base_year = 2022,
     scen_mapping = read_scen_mapping(crosswalk_model_runs_csv),
     template = template,
     calculated_var = all_calculated
@@ -46,14 +47,14 @@ tar_plan(
     usa = "United States",
     
     # years
-    base_year = 2022, 
-    fives = c(seq(2005,2022,by = 1),seq(2025,2040,by = 5)),
-    fives_sumtab = c(seq(2005,2020,by = 5),2022,seq(2025,2040,by = 5)),
+    fives = c(seq(2005,settings$base_year,by = 1),seq(2025,2040,by = 5)),
+    fives_sumtab = c(seq(2005,2020,by = 5),settings$base_year,seq(2025,2040,by = 5)),
     annual = c(seq(2005,2040,by = 1)),
-    hist = c(seq(2005,2022, by = 1)),
-  #  seq_ncbr_comp = 
+    hist = c(seq(2005,settings$base_year, by = 1)),
+    seq_ncbr_comp = c(seq(1990,2020,by=5)),
+    seq_ncbr_comp_sm = c(seq(2005,2040,by=5)),
     
-    fives_lts = c(seq(2005,2022,by = 1),seq(2025,2050,by = 5)),
+    fives_lts = c(seq(2005,settings$base_year,by = 1),seq(2025,2050,by = 5)),
     annual_lts = c(seq(2005,2050,by = 1)),
     
     fives_proj = c(seq(2020,2050, by = 5)),
@@ -61,12 +62,12 @@ tar_plan(
     
     annual_proj = c(seq(2020,2050, by = 1)),
     last_proj = 2040,
-    base_proj = c(2022,seq(2025,2050, by = 5)),
+    base_proj = c(settings$base_year,seq(2025,2050, by = 5)),
     
     annual_1990 = c(seq(1990,2040,by = 1)),
     annual_2010 = c(seq(2010,2040,by = 1)),
-    table = c(2005, 2010, 2015, 2020, 2022, 2025, 2030 , 2035, 2040),
-    table_sm = c(2005, 2010, 2015, 2020, 2022, 2025, 2030 , 2035),
+    table = c(seq(2005, 2020, by=5),settings$base_year,seq(2025,2040,by=5)),
+    table_sm = c(2005, 2010, 2015, 2020, settings$base_year, 2025, 2030 , 2035),
     
     # ordering
     gas_order = c("CO2", "CH4", "N2O", "HFCs", "PFCs", "SF6", "NF3"),
@@ -142,12 +143,12 @@ tar_plan(
   usproj_data_long_all = make_usproj_data_long(usproj_data_loaded, settings), 
   
   # usproj w/o historical data
-  usproj_data_long = gen_usproj_projections(usproj_data_long_all, config), 
+  usproj_data_long = gen_usproj_projections(usproj_data_long_all, settings), 
   
   # _ghgi data 
   
   #      from usproj
-  ghgi_cat = gen_usproj_ghgi(usproj_data_long_all, config),
+  ghgi_cat = gen_usproj_ghgi(usproj_data_long_all, config, settings),
   
   #      from compiled_tables_2024
   tar_target(ghgi_comp_tab_csv, "data-raw/ghgi/EPA-GHGI_wide_wnotes_2024.csv", format = "file"),
@@ -203,26 +204,26 @@ tar_plan(
   
   ffc_raw_data = get_ffc_model_runs(data_long_clean, var_crosswalk, usproj_data_long),
   
-  usproj_all = add_ffc_lulucf(ffc_raw_data, lulucf_data, usproj_data_long, var_crosswalk, config),
+  usproj_all = add_ffc_lulucf(ffc_raw_data, lulucf_data, usproj_data_long, var_crosswalk, settings),
   
   # crosswalk compilation
   tar_target(crosswalk_compilation_csv, "data-raw/crosswalk/crosswalk_compilation.csv", format = "file"),
   tar_target(crosswalk_compilation, read_csv(crosswalk_compilation_csv)), # TODO: CHECK FOR MODELS AND SCENARIOS!
   
   # _complete projections ----
-  projections_all = map_proj_name_v2(usproj_all, crosswalk_compilation, config, settings),
+  projections_all = map_proj_name_v2(usproj_all, crosswalk_compilation, settings),
   projections_ghgi = add_historical_data(ghgi_cat, projections_all), # bind ghgi historical data to projections
   projections_all_sm = gen_proj_all_sm(projections_ghgi, settings), # gas and sector sums for each projection
   # TODO: Find out why Transportation CO2 is missing
   
   # _summary table breakouts ----
-  lulucf_sink_breakout = gen_lulucf_sink_breakout(projections_all_sm, config),
+  lulucf_sink_breakout = gen_lulucf_sink_breakout(projections_all_sm, config, settings),
   
   gas_dataset = gen_gas_dataset(projections_all_sm, config),
-  gas_breakout = gen_gas_breakout(gas_dataset, config, category_order = config$gas_order),
+  gas_breakout = gen_gas_breakout(gas_dataset, config, settings, category_order = config$gas_order),
   
   sector_dataset = gen_sector_dataset(projections_all_sm, config),
-  sector_breakout = gen_sector_breakout(sector_dataset, config, category_order = config$sector_order),
+  sector_breakout = gen_sector_breakout(sector_dataset, config, settings, category_order = config$sector_order),
   
   # Sum Total Gross Emissions ----
   tar_target(total_gross_emissions, gen_total_gross_emissions(gas_breakout)),

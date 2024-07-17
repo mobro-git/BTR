@@ -646,7 +646,7 @@ ggsave(paste0('output/',settings$version,"/results_overview/",filename))
 ## BTR Net-GHG Stackbar
 
 ```{r, fig.width=15}
-net_ghg_sb_df <- net_ghg_sb_data_processing(projections_all_sm, config)
+net_ghg_sb_df <- net_ghg_sb_data_processing(projections_all_sm, config, settings)
 
 net_ghg_stackbar <- br_project_net_ghg_sb(net_ghg_sb_df, config)
 

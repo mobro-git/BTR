@@ -1,5 +1,5 @@
 
-ncbr_comparison_figure <- function(ncbr_comp_data_hist, tge_all_long, config) {
+ncbr_comparison_figure <- function(ncbr_comp_data_hist, tge_all_long, settings) {
   
   ncbr_hist_long <- ncbr_comp_data_hist %>% 
     pivot_longer(cols = 2:20, names_to = "year", values_to = "value") %>%
@@ -13,7 +13,7 @@ ncbr_comparison_figure <- function(ncbr_comp_data_hist, tge_all_long, config) {
               ymin = min(value),
               med = median(value)) %>%
     filter(Projection == '2024 BTR',
-           year >= config$base_year)
+           year >= settings$base_year)
   
   var_palette = c(unique(ncbr_hist_long$Projection),unique(proj_range_ncbr_comp$Projection))
   
@@ -26,7 +26,7 @@ ncbr_comparison_figure <- function(ncbr_comp_data_hist, tge_all_long, config) {
                                                   color = Projection),
                 alpha = 0.4 ,
                 size = 0.7) +
-    geom_vline(xintercept = config$base_year,
+    geom_vline(xintercept = settings$base_year,
                linetype = 'dashed',
                color = "black",
                # size = 0.4,
@@ -46,7 +46,7 @@ ncbr_comparison_figure <- function(ncbr_comp_data_hist, tge_all_long, config) {
 }
 
 
-ncbr_comp_fig_1990 <- function(tge_90_long, tge_all_long, config) {
+ncbr_comp_fig_1990 <- function(tge_90_long, tge_all_long, settings) {
   
   ncbr_hist_btr <- tge_all_long %>% filter(Projection == '2024 BTR',
                                            year <= 2022)
@@ -57,7 +57,7 @@ ncbr_comp_fig_1990 <- function(tge_90_long, tge_all_long, config) {
               ymin = min(value),
               med = median(value)) %>%
     filter(Projection == '2024 BTR',
-           year >= config$base_year)
+           year >= settings$base_year)
   
   var_palette = c(unique(tge_90_long$Projection),unique(proj_range_ncbr_comp$Projection))
   
@@ -69,7 +69,7 @@ ncbr_comp_fig_1990 <- function(tge_90_long, tge_all_long, config) {
                                                     color = Projection),
                 alpha = 0.4 ,
                 size = 0.7) +
-    geom_vline(xintercept = config$base_year,
+    geom_vline(xintercept = settings$base_year,
                linetype = 'dashed',
                color = "black",
                # size = 0.4,

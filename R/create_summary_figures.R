@@ -22,7 +22,7 @@ theme_btr <- function() {
   theme
 }
 
-br_project = function(ghgi, proj, config, targets = NULL, legend_position = c(0.15, 0.2), legend_off = NULL) {
+br_project = function(ghgi, proj, settings, targets = NULL, legend_position = c(0.15, 0.2), legend_off = NULL) {
   
   proj_range = proj %>%
     group_by(year, grouping) %>%
@@ -51,7 +51,7 @@ br_project = function(ghgi, proj, config, targets = NULL, legend_position = c(0.
                 alpha = 0.4 ,
                 size = 0.7
     ) +
-    geom_vline(xintercept = config$base_year,
+    geom_vline(xintercept = settings$base_year,
                linetype = 'dashed',
                color = "black",
               # size = 0.4,
@@ -267,14 +267,14 @@ br_project_pct_change = function(ghgi, proj, targets = NULL, legend_position = c
 
 ####
 
-net_ghg_sb_data_processing <- function(projections_all_sm, config) {
+net_ghg_sb_data_processing <- function(projections_all_sm, config, settings) {
   proj_all_sm_sb <- projections_all_sm %>%
     mutate(gas = case_when(gas == "CO2" ~ "CO2",
                            !gas %in% c("CO2", 'LULUCF Sink') ~ "Non-CO2",
                            gas == "LULUCF Sink" ~ "LULUCF Sink")) %>%
     group_by(proj_name,year,gas) %>%
     summarise(mmtco2e = sum(sum), .groups = 'drop') %>%
-    filter(year >= config$base_year) %>%
+    filter(year >= settings$base_year) %>%
     filter(year %in% config$base_proj)
   
   no_ghgi <- proj_all_sm_sb %>% filter(!proj_name == 'ghgi')

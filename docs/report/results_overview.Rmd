@@ -25,7 +25,6 @@ tar_source()
 tar_load(
   c(
     config,
-    settings,
     data_long_clean,
     projections_all_sm,
     figmap_nrgco2_stackbar,
@@ -91,7 +90,6 @@ By sector, emissions reductions are estimate to change from 2020 to 2040:
     -   USREP-ReEDS: `r transportation_value_list[3]`%
 
 ## Energy CO2 Emissions by Fuel {.tabset}
-TODO: Add emissions by fuels
 
 ### Fuel
 
@@ -225,8 +223,6 @@ Buildings
 ```
 
 ### Buildings by Model
-TODO: Add Total facet to breakouts
-TODO: Add residential/commercial breakout
 
 ```{r}
 Buildings_bymodel = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 17, "United States", scenario_rename = TRUE,
@@ -271,8 +267,6 @@ Buildings
 ```
 
 ### Buildings, Residential by Model
-TODO: Add Total facet to breakouts
-TODO: Add residential/commercial breakout
 
 ```{r}
 Buildings_bymodel = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 31, "United States", scenario_rename = TRUE)
@@ -287,8 +281,6 @@ Buildings
 ```
 
 ### Buildings, Commercial by Model
-TODO: Add Total facet to breakouts
-TODO: Add residential/commercial breakout
 
 ```{r}
 Buildings_bymodel = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 32, "United States", scenario_rename = TRUE)

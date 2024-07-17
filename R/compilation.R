@@ -16,13 +16,13 @@ get_ffc_model_runs = function(data_long_clean, var_crosswalk, usproj_data_long) 
 
 # add ffc co2 emissions projections from model-runs and lulucf sink projections to usproj_data_long
 
-add_ffc_lulucf = function(ffc_raw_data,lulucf_data,usproj_data_long,var_crosswalk,config) {
+add_ffc_lulucf = function(ffc_raw_data,lulucf_data,usproj_data_long,var_crosswalk,settings) {
   
   usproj_no_ffc_lulucf_proj = usproj_data_long %>%
     # remove FFC and LULUCF projections, keep only historic data - *****EXCEPT KEEP FFCUST PROJECTIONS (not in crosswalk)*****
     filter(!(
       usproj_category %in% unique(var_crosswalk$usproj_category) &
-        year > config$base_year)) %>%
+        year > settings$base_year)) %>%
     mutate(btr_var = "") %>%
     rbind(ffc_raw_data)
   
@@ -53,7 +53,7 @@ add_ffc_lulucf = function(ffc_raw_data,lulucf_data,usproj_data_long,var_crosswal
 #     scenario <- row$scenario
 #     year <- row$year
 #     
-#     if (year > config$base_year) {
+#     if (year > settings$base_year) {
 #       if (model == 'usproj') {
 #         proj_names[i] <- 'usproj'
 #       }
@@ -72,12 +72,12 @@ add_ffc_lulucf = function(ffc_raw_data,lulucf_data,usproj_data_long,var_crosswal
 #  
 # }
 
-map_proj_name_v2 = function(usproj_all, crosswalk_compilation, config, settings) {
+map_proj_name_v2 = function(usproj_all, crosswalk_compilation, settings) {
   
   #Filter out non-national estimates
   proj_usa <- usproj_all %>% 
     filter(region == 'United States' &
-             year > config$base_year)
+             year > settings$base_year)
   
   # Create empty list
   projections <- list()

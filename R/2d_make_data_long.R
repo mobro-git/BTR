@@ -89,7 +89,7 @@ make_usproj_data_long <- function(usproj_data_loaded, settings) {
   
 }
 
-gen_usproj_ghgi <- function(usproj_data_long_all, config){
+gen_usproj_ghgi <- function(usproj_data_long_all, config, settings){
   
   scen <- config$ghgi_scen
   if(! scen %in% usproj_data_long_all$scenario){
@@ -97,7 +97,7 @@ gen_usproj_ghgi <- function(usproj_data_long_all, config){
   }
   
   usproj_ghgi <- usproj_data_long_all %>% 
-    filter(year <= config$base_year) %>% 
+    filter(year <= settings$base_year) %>% 
     filter(scenario == scen) %>%
     mutate(proj_name = "ghgi",
            model = "ghgi",
@@ -105,9 +105,9 @@ gen_usproj_ghgi <- function(usproj_data_long_all, config){
   
 }
 
-gen_usproj_projections <- function(usproj_data_long_all, config){
+gen_usproj_projections <- function(usproj_data_long_all, settings){
   
-  usproj_projections <- usproj_data_long_all %>% filter(year > config$base_year)
+  usproj_projections <- usproj_data_long_all %>% filter(year > settings$base_year)
     
 }
 

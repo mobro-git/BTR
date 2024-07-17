@@ -20,23 +20,23 @@ source('packages.R')
 library(targets)
 library(tarchetypes)
 tar_source()
-source("scripts/theming.R")
 ```
 
 ```{r}
+
 tar_load(
   c(
     config,
     settings,
     data_long_clean,
     projections_all_sm,
-    figmap_nrgco2_stackbar,
-    figmap_nrgco2_timeseries,
-    figmap_nrgco2_diffbar,
-    ghgi_comp_tab,
-    total_gross_emissions
+    total_gross_emissions,
+    ghgi_comp_tab
     )
   )
+
+source("scripts/theming.R")
+
 ```
 
 # TOC to fill out
@@ -45,8 +45,8 @@ tar_load(
 ✓ Table 1 Historical and Projected GHG Emissions by gas 
 ✓ Table 2 Historical and Projected GHG Emissions by sector
 - Figure 2 Current Measures CO2 Projections for Forestry and Land Use
-- Table 3 Comparison of Total Gross GHG Emissions under Policy Baseline Projections to Previous US Climate Action and Biennial Reports (data-raw/ncbr_comparison/total_gross_ghg_ncbr_comparisons.csv)
-- Figure 3 Comparison of 2024 "With Measures" Baseline to Previous "With Measures" Projections (data-raw/ncbr_comparison/total_gross_ghg_ncbr_comparisons.csv)
+✓ Table 3 Comparison of Total Gross GHG Emissions under Policy Baseline Projections to Previous US Climate Action and Biennial Reports (data-raw/ncbr_comparison/total_gross_ghg_ncbr_comparisons.csv)
+✓ Figure 3 Comparison of 2024 "With Measures" Baseline to Previous "With Measures" Projections (data-raw/ncbr_comparison/total_gross_ghg_ncbr_comparisons.csv)
 - Figure 4 Comparison of Energy-Related CO2 Projections "With Measures" Baseline range to Previous AEO projections (still need to pull data for this)
 - Figure 5 Normalized Kaya Identity Factors Used for Assessing the Effects of New Policies and Measures (data-raw/ncbr_comparison/kaya_check_usproj_br5_ar4.xlsx)
 - Table 4 Estimates of the Total Effect of New Policies and Measures and Technological Change (Morgan to figure out breakouts)
@@ -65,11 +65,11 @@ tar_load(
 ### Gas
 
 ```{r gas summary}
-gas_df <- create_summary_table('gas','wm', projections_all_sm, config)
+gas_df <- create_summary_table('gas','wm', projections_all_sm, config, settings)
 
-gas_table <- create_html_table(gas_df, 'Gas',config)
+gas_table <- create_html_table(gas_df, 'Gas', settings)
 
-gas_table_merged <- create_html_table_merged(gas_df, 'Gas', config)
+gas_table_merged <- create_html_table_merged(gas_df, 'Gas', settings)
 gas_table_merged
 ```
 
@@ -81,11 +81,11 @@ gtsave(gas_table_merged, paste0('output/',settings$version,"/tables_figs/results
 ### Sector
 
 ```{r sector summary}
-sector_df <- create_summary_table('usproj_sector', 'wm', projections_all_sm, config)
+sector_df <- create_summary_table('usproj_sector', 'wm', projections_all_sm, config, settings)
 
-sector_table <- create_html_table(sector_df, 'Sector',config)
+sector_table <- create_html_table(sector_df, 'Sector', settings)
 
-sector_table_merged <- create_html_table_merged(sector_df, 'Sector', config)
+sector_table_merged <- create_html_table_merged(sector_df, 'Sector', settings)
 sector_table_merged
 ```
 
@@ -100,8 +100,8 @@ gtsave(sector_table_merged, paste0('output/',settings$version,"/tables_figs/resu
 ### Gas
 
 ```{r, pct change by gas}
-pct_change_table_gas <- create_pct_change_table('gas', 'wm', projections_all_sm, config)
-pct_change_html_gas <- create_pct_change_html_table(pct_change_table_gas, 'Gas', config)
+pct_change_table_gas <- create_pct_change_table('gas', 'wm', projections_all_sm, config, settings)
+pct_change_html_gas <- create_pct_change_html_table(pct_change_table_gas, 'Gas', settings)
 pct_change_html_gas
 ```
 
@@ -114,8 +114,8 @@ gtsave(pct_change_html_gas, paste0('output/',settings$version,"/tables_figs/resu
 ### Sector
 
 ```{r, pct change by sector}
-pct_change_table_sector <- create_pct_change_table('usproj_sector', 'wm', projections_all_sm, config)
-pct_change_html_sector <- create_pct_change_html_table(pct_change_table_sector, 'Sector', config)
+pct_change_table_sector <- create_pct_change_table('usproj_sector', 'wm', projections_all_sm, config, settings)
+pct_change_html_sector <- create_pct_change_html_table(pct_change_table_sector, 'Sector', settings)
 pct_change_html_sector
 ```
 
@@ -137,15 +137,15 @@ ghgi = net_ghg %>% filter(proj_name == "ghgi")
 proj_no_connect = net_ghg %>% 
   filter(proj_name != "ghgi")
 
-connect = ghgi[ghgi$year == 2022,]$sum
+connect = ghgi[ghgi$year == settings$base_year,]$sum
 baseline = ghgi[ghgi$year == 2005,]$sum
 
 proj_connect = proj_no_connect %>% 
   group_by(proj_name) %>%
   slice(1) %>%
   mutate(
-    year = 2022,
-    sum = ghgi$sum[ghgi$year == 2022])
+    year = settings$base_year,
+    sum = ghgi$sum[ghgi$year == settings$base_year])
 
 proj = rbind(proj_no_connect, proj_connect) %>%
   mutate(year = as.numeric(year))
@@ -161,7 +161,7 @@ ndc_targets = data.frame(
 ### Net GHG Emissions
 
 ```{r proj function}
-projections = br_project(ghgi, proj, config, targets = ndc_targets)
+projections = br_project(ghgi, proj, settings, targets = ndc_targets)
 projections
 ```
 
@@ -182,15 +182,15 @@ ghgi = net_ghg %>% filter(proj_name == "ghgi")
 proj_no_connect = net_ghg %>% 
   filter(proj_name != "ghgi")
 
-connect = ghgi[ghgi$year == 2022,]$pct_change_05
+connect = ghgi[ghgi$year == settings$base_year,]$pct_change_05
 baseline = ghgi[ghgi$year == 2005,]$pct_change_05
 
 proj_connect = proj_no_connect %>% 
   group_by(proj_name) %>%
   slice(1) %>%
   mutate(
-    year = 2022,
-    pct_change_05 = ghgi$pct_change_05[ghgi$year == 2022])
+    year = settings$base_year,
+    pct_change_05 = ghgi$pct_change_05[ghgi$year == settings$base_year])
 
 proj = rbind(proj_no_connect, proj_connect) %>%
   mutate(year = as.numeric(year))
@@ -218,7 +218,7 @@ ggsave(paste0('output/',settings$version,"/results_overview/btr_figs/",filename)
 ## BTR Net-GHG Stackbar
 
 ```{r, fig.width=15}
-net_ghg_sb_df <- net_ghg_sb_data_processing(projections_all_sm, config)
+net_ghg_sb_df <- net_ghg_sb_data_processing(projections_all_sm, config, settings)
 
 net_ghg_stackbar <- br_project_net_ghg_sb(net_ghg_sb_df, config)
 
@@ -384,6 +384,156 @@ industry
 ncbr_comp_data_hist <- read_csv('data-raw/ncbr_comparison/total_gross_ghg_ncbr_comparisons.csv')
 
 ncbr_data_hist_long <- ncbr_comp_data_hist %>% 
+  pivot_longer(cols = 2:20, names_to = 'year') %>%
+  mutate(year = as.numeric(year),
+         high = value) %>%
+  rename(low = value)
+
+```
+
+
+```{r}
+col_order <- c('category', 'year', 'low', 'high')
+category = 'gas'
+grouping = 'wm'
+
+summary <- projections_all_sm %>%
+  rename(category = .data[[category]]) %>%
+  filter(grouping == grouping) %>%
+  filter(year %in% config$seq_ncbr_comp_sm) %>%
+  group_by(proj_name, category, year) %>%
+  summarise(cat_sum = sum(sum), .groups = 'drop')
+
+summary_total_gross <- summary %>%
+  filter(!category == 'LULUCF Sink') %>%
+  group_by(proj_name, year) %>%
+  summarise(value = sum(cat_sum), .groups = 'drop') %>%
+  group_by(year) %>%
+  mutate(low = min(value), high = max(value)) %>%
+  select(year, low, high) %>%
+  distinct() %>%
+  mutate(category = 'Total Gross Emissions') %>%
+  select(all_of(col_order)) %>%
+  rename(Projection = category) %>%
+  mutate(Projection = '2024 BTR')
+
+tge_all_long_high_low <- summary_total_gross %>%
+  rbind(ncbr_data_hist_long) %>%
+  filter(year %in% config$seq_ncbr_comp_sm) %>%
+  drop_na() %>%
+  rename(Publication = Projection)
+
+proj_years <- c('2025', '2030', '2035', '2040')
+hist_years <- c('2005', '2010', '2015', '2020')
+proj_col_order <- c(
+  '2025_low',
+  '2025_high',
+  '2030_low',
+  '2030_high',
+  '2035_low',
+  '2035_high',
+  '2040_low',
+  '2040_high'
+)
+
+df_low <- tge_all_long_high_low %>%
+  select(Publication, year, low) %>%
+  pivot_wider(names_from = 'year', values_from = 'low')
+
+
+df_high <- tge_all_long_high_low %>%
+  select(Publication, year, high) %>%
+  pivot_wider(names_from = 'year', values_from = 'high')
+
+df_merged <- merge(df_low[, c('Publication', proj_years)],
+                   df_high[, c('Publication', proj_years)],
+                   by = 'Publication',
+                   suffix = c('', '_high'))
+
+for (year in proj_years) {
+  colnames(df_merged)[colnames(df_merged) == year] <- paste0(year, '_low')
+  colnames(df_merged)[colnames(df_merged) == paste0(year, '_high')] <- paste0(year, '_high')
+}
+
+df_merge_final <- merge(df_low %>% select(Publication, all_of(hist_years)), df_merged) %>%
+  select(Publication, all_of(hist_years), all_of(proj_col_order)) %>%
+  mutate_if(is.numeric, round)
+
+numeric_cols <- sapply(df_merge_final, is.numeric)
+df_merge_final[, numeric_cols] <- lapply(df_merge_final[, numeric_cols], scales::comma)
+
+ncbr_table_df <- df_merge_final
+for (col in names(ncbr_table_df)) {
+  ncbr_table_df <- ncbr_table_df %>%
+    mutate(col = as.character(col)) %>%
+    select(names(df_merge_final)) %>%
+    arrange(desc(Publication))
+}
+
+```
+
+```{r}
+proj_col_order <- c('2025', '2030', '2035', '2040')
+stubhead <- 'Publication'
+
+merged = ncbr_table_df %>%
+  mutate(
+    `2025` = case_when(
+      `2025_low` == `2025_high` ~ `2025_high`,
+      `2025_low` != `2025_high` ~ paste0(`2025_low`, " - ", `2025_high`)
+    ),
+    `2030` = case_when(
+      `2030_low` == `2030_high` ~ `2030_high`,
+      `2030_low` != `2030_high` ~ paste0(`2030_low`, " - ", `2030_high`)
+    ),
+    `2035` = case_when(
+      `2035_low` == `2035_high` ~ `2035_high`,
+      `2035_low` != `2035_high` ~ paste0(`2035_low`, " - ", `2035_high`)
+    ),
+    `2040` = case_when(
+      `2040_low` == `2040_high` ~ `2040_high`,
+      `2040_low` != `2040_high` ~ paste0(`2040_low`, " - ", `2040_high`)
+    )
+  ) %>%
+  select(-contains("_"))
+
+bold1 = nrow(merged) - 3
+bold2 = nrow(merged) - 1
+bold3 = nrow(merged) - 5
+
+
+ncbr_comp_table <- merged %>%
+  
+  gt() %>%
+  cols_align('center', columns = everything()) %>%
+  cols_align('left', columns = stubhead) %>%
+  tab_style(
+    style = cell_borders(
+      color = "#1F77AE",
+      sides = c("bottom"),
+      weight = px(2)
+    ),
+    #
+    locations = cells_body(rows = c(bold1, bold2, bold3))
+  ) %>%
+  
+  gt_theme_nc_blue()
+
+ncbr_comp_table
+
+
+```
+
+```{r}
+filename <- paste0("ncbr_comp_table_",Sys.Date(),".png")
+gtsave(ncbr_comp_table, paste0('output/',settings$version,"/tables_figs/results_tables/estimated_values/",filename))
+```
+
+```{r}
+# Load in past NCBR data
+ncbr_comp_data_hist <- read_csv('data-raw/ncbr_comparison/total_gross_ghg_ncbr_comparisons.csv')
+
+ncbr_data_hist_long <- ncbr_comp_data_hist %>% 
   pivot_longer(cols = 2:20, names_to = 'year')
 
 # Pivot BTR total gross emissions long
@@ -394,7 +544,7 @@ tge_btr <- projections_all_sm %>%
   summarise(value = sum(sum),.groups = 'drop')
 
 tge_all_long <- total_gross_emissions %>%
-  pivot_longer(cols = 3:11, names_to = 'year') %>%
+  pivot_longer(cols = 3:10, names_to = 'year') %>%
   mutate(Projection = '2024 BTR') %>%
   select(names(ncbr_data_hist_long)) %>%
   distinct() %>%
@@ -414,41 +564,12 @@ ncbr_comp_table_df <- tge_all_long %>%
   select(Projection,year,min,max) %>%
   distinct()
 
-# Isolate min and max values for proj years and rbind
-# tge_long_min <- tge_long %>%
-#   mutate(Projection = '2024 BTR Low') %>%
-#   rename(value = min) %>% 
-#   select(Projection,year,value) %>%
-#   pivot_wider(names_from = year,
-#               values_from = value)
-# 
-# tge_long_max <- tge_long %>%
-#   mutate(Projection = '2024 BTR High') %>%
-#   rename(value = max) %>% 
-#   select(Projection,year,value) %>%
-#   pivot_wider(names_from = year,
-#               values_from = value)
-# 
-# btr_highlow_df <- tge_long_max %>% rbind(tge_long_min)
-
-# Rbind past NCBRs with BTR
-# tge_rbind <- btr_highlow_df %>%
-#   bind_rows(ncbr_comp_data_hist) %>%
-#   select(Projection, '2005','2010','2015','2020','2025','2030','2035','2040')
-# 
-# 
-# ncbr_comp_table <- tge_rbind %>%
-#   gt() %>% 
-#   gt_theme_nc_blue()
-# 
-# ncbr_comp_table
-
 ```
 
 ## Figure: NCBR Comparison
 TODO: Create another version with data back to 1990.
 ```{r}
-fig <- ncbr_comparison_figure(ncbr_comp_data_hist, tge_all_long, config)
+fig <- ncbr_comparison_figure(ncbr_comp_data_hist, tge_all_long, settings)
 fig
 
 ```
@@ -467,8 +588,7 @@ tge_90_long <- tge_90 %>% pivot_longer(cols = 8:53,
   select(Projection,year,value) %>%
   mutate(year = as.numeric(year))
 
-fig <- ncbr_comp_fig_1990(tge_90_long, tge_all_long, config)
+fig <- ncbr_comp_fig_1990(tge_90_long, tge_all_long, settings)
 fig
 
 ```
-

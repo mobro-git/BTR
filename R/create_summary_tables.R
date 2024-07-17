@@ -3,7 +3,7 @@
 ## ..then combine to create final table
 ##################
 
-gen_lulucf_sink_breakout <- function(projections_all_sm, config){
+gen_lulucf_sink_breakout <- function(projections_all_sm, config, settings){
   
   lulucf_sink_df <- projections_all_sm %>%
     #ungroup() %>% 
@@ -12,18 +12,18 @@ gen_lulucf_sink_breakout <- function(projections_all_sm, config){
     filter(year %in% config$table)
 
   years_lulucf_sink <- as.character(sort(unique(lulucf_sink_df$year)))
-  lulucf_sink_hist <- lulucf_sink_df %>% filter(year <= config$base_year)
+  lulucf_sink_hist <- lulucf_sink_df %>% filter(year <= settings$base_year)
   years_lulucf_sink_hist <- as.character(unique(lulucf_sink_hist$year))
   
   ghgi_subset <-
     lulucf_sink_df %>%
     filter(proj_name == 'ghgi') %>%
-    filter(year <= config$base_year)
+    filter(year <= settings$base_year)
   
   proj_subset <-
     lulucf_sink_df %>%
     filter(!proj_name == 'ghgi') %>%
-    filter(year > config$base_year)
+    filter(year > settings$base_year)
   
   ghgi_subset_wide <- ghgi_subset %>%
     pivot_wider(names_from = year, values_from = sum) %>%
@@ -52,13 +52,13 @@ gen_gas_dataset <- function(projections_all_sm, config) {
   
 }
 
-gen_gas_breakout <- function(gas_dataset, config, category_order) {
+gen_gas_breakout <- function(gas_dataset, config, settings, category_order) {
   
   
   processed_dfs <- list()
   
-  years_proj <- as.character(config$table[config$table > config$base_year])
-  years_hist <- as.character(config$table[config$table <= config$base_year])
+  years_proj <- as.character(config$table[config$table > settings$base_year])
+  years_hist <- as.character(config$table[config$table <= settings$base_year])
   
   
   for(value in category_order) {
@@ -66,9 +66,9 @@ gen_gas_breakout <- function(gas_dataset, config, category_order) {
     subset_df <- gas_dataset %>% filter(gas == value)
     
     ghgi_subset <-
-      subset_df %>% filter(proj_name == 'ghgi') %>% filter(year <= config$base_year)
+      subset_df %>% filter(proj_name == 'ghgi') %>% filter(year <= settings$base_year)
     proj_subset <-
-      subset_df %>% filter(!proj_name == 'ghgi') %>% filter(year > config$base_year)
+      subset_df %>% filter(!proj_name == 'ghgi') %>% filter(year > settings$base_year)
     
     ghgi_subset_wide <- ghgi_subset %>% pivot_wider(names_from = year,
                                                     values_from = mmtco2e) %>% ungroup() %>% select(years_hist)
@@ -103,13 +103,13 @@ gen_sector_dataset <- function(projections_all_sm, config) {
   
 }
 
-gen_sector_breakout <- function(sector_dataset, config, category_order) {
+gen_sector_breakout <- function(sector_dataset, config, settings, category_order) {
   
   
   processed_dfs <- list()
   
-  years_proj <- as.character(config$table[config$table > config$base_year])
-  years_hist <- as.character(config$table[config$table <= config$base_year])
+  years_proj <- as.character(config$table[config$table > settings$base_year])
+  years_hist <- as.character(config$table[config$table <= settings$base_year])
   
   
   for(value in category_order) {
@@ -117,9 +117,9 @@ gen_sector_breakout <- function(sector_dataset, config, category_order) {
     subset_df <- sector_dataset %>% filter(usproj_sector == value)
     
     ghgi_subset <-
-      subset_df %>% filter(proj_name == 'ghgi') %>% filter(year <= config$base_year)
+      subset_df %>% filter(proj_name == 'ghgi') %>% filter(year <= settings$base_year)
     proj_subset <-
-      subset_df %>% filter(!proj_name == 'ghgi') %>% filter(year > config$base_year)
+      subset_df %>% filter(!proj_name == 'ghgi') %>% filter(year > settings$base_year)
     
     ghgi_subset_wide <- ghgi_subset %>% pivot_wider(names_from = year,
                                                     values_from = mmtco2e) %>% ungroup() %>% select(years_hist)
@@ -228,11 +228,11 @@ create_sector_table_df <- function(sector_breakout_df,
 
 ## Create HTML tables
 
-create_high_low_df <- function(summary_subset, config){
+create_high_low_df <- function(summary_subset, settings){
   # Function to create low/high year columns from table row subsets
   
   proj_years <- c('2025','2030','2035','2040')
-  hist_years <- c('2005','2010','2015','2020', config$base_year)
+  hist_years <- c('2005','2010','2015','2020', settings$base_year)
   proj_col_order <- c('2025_low',
                       '2025_high',
                       '2030_low',
@@ -276,7 +276,7 @@ subscript_numbers <- function(string) {
 }
 
 
-create_summary_table <- function(category, grouping, projections_all_sm, config) {
+create_summary_table <- function(category, grouping, projections_all_sm, config, settings) {
   
   col_order <- c('category','year','low','high')
   
@@ -364,12 +364,12 @@ create_summary_table <- function(category, grouping, projections_all_sm, config)
   }
   else{rlang::abort('Enter "gas" or "usproj_sector" into as category.')}
   
-  summary_table_df_high_low <- create_high_low_df(summary_table_df, config)
+  summary_table_df_high_low <- create_high_low_df(summary_table_df, settings)
   summary_table_df_high_low <- summary_table_df_high_low[order_index,]
   
   
-  total_gross_emissions_high_low <- create_high_low_df(summary_total_gross, config)
-  total_net_emissions_high_low <- create_high_low_df(summary_total_net, config)
+  total_gross_emissions_high_low <- create_high_low_df(summary_total_gross, settings)
+  total_net_emissions_high_low <- create_high_low_df(summary_total_net, settings)
   
   
   summary_lulucf_sink <- summary %>% filter(category == 'LULUCF Sink')%>%
@@ -381,7 +381,7 @@ create_summary_table <- function(category, grouping, projections_all_sm, config)
     select(category, year, low, high) %>%
     distinct()
   
-  lulucf_sink_high_low <- create_high_low_df(summary_lulucf_sink, config)
+  lulucf_sink_high_low <- create_high_low_df(summary_lulucf_sink, settings)
   
   final_summary_table <- summary_table_df_high_low %>%
     rbind(total_gross_emissions_high_low) %>% 
@@ -403,9 +403,9 @@ create_summary_table <- function(category, grouping, projections_all_sm, config)
 
 #######################################################
 
-create_html_table <- function(final_summary_table, stubhead, config){
+create_html_table <- function(final_summary_table, stubhead, settings){
   
-  hist_years <- c('2005','2010','2015','2020', config$base_year)
+  hist_years <- c('2005','2010','2015','2020', settings$base_year)
   proj_col_order <- c('2025_low',
                       '2025_high',
                       '2030_low',
@@ -450,9 +450,9 @@ create_html_table <- function(final_summary_table, stubhead, config){
   
 }
 
-create_html_table_merged <- function(final_summary_table, stubhead, config){
+create_html_table_merged <- function(final_summary_table, stubhead, settings){
   
-  hist_years <- c('2005','2010','2015','2020', config$base_year)
+  hist_years <- c('2005','2010','2015','2020', settings$base_year)
   proj_col_order <- c('2025',
                       '2030',
                       '2035',
