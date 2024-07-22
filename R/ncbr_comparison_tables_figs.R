@@ -15,17 +15,25 @@ ncbr_comparison_figure <- function(ncbr_comp_data_hist, tge_all_long, settings) 
     filter(Projection == '2024 BTR',
            year >= settings$base_year)
   
+  tge_ends <- tge_all_long %>%
+    filter(year == max(year),
+           proj_name %in% c('usrr_wm_hiseq',
+                            'gcam_wm_hiseq',
+                            'nems_wm_hiseq'))
+  
   var_palette = c(unique(ncbr_hist_long$Projection),unique(proj_range_ncbr_comp$Projection))
   
   #TODO: FLIP LEGEND ORDER, new to old desc
   figure <- ggplot() +
     geom_line(ncbr_hist_long, mapping = aes(year,value, group = Projection, color = Projection),size = 0.7) +
     geom_line(ncbr_hist_btr,mapping = aes(year,value, group = Projection, color = Projection),size = 0.7 ) +
+    geom_text_repel(tge_ends, mapping = aes(year,value, label = proj_name)) +
     geom_ribbon(proj_range_ncbr_comp, mapping = aes(x = year,ymax = ymax, ymin = ymin,
                                                   fill = Projection, 
                                                   color = Projection),
                 alpha = 0.4 ,
                 size = 0.7) +
+    geom_line(proj_range_ncbr_comp,mapping = aes(year,med, group = Projection, color = Projection),size = 0.7 ) +
     geom_vline(xintercept = settings$base_year,
                linetype = 'dashed',
                color = "black",
@@ -59,16 +67,24 @@ ncbr_comp_fig_1990 <- function(tge_90_long, tge_all_long, settings) {
     filter(Projection == '2024 BTR',
            year >= settings$base_year)
   
+  tge_ends <- tge_all_long %>%
+    filter(year == max(year),
+           proj_name %in% c('usrr_wm_hiseq',
+                            'gcam_wm_hiseq',
+                            'nems_wm_hiseq'))
+  
   var_palette = c(unique(tge_90_long$Projection),unique(proj_range_ncbr_comp$Projection))
   
   figure <- ggplot() +
     geom_line(tge_90_long, mapping = aes(year,value, group = Projection, color = Projection),size = 0.7) +
     geom_line(ncbr_hist_btr,mapping = aes(year,value, group = Projection, color = Projection),size = 0.7 ) +
+    geom_text_repel(tge_ends, mapping = aes(year,value, label = proj_name)) +
     geom_ribbon(proj_range_ncbr_comp, mapping = aes(x = year,ymax = ymax, ymin = ymin,
                                                     fill = Projection, 
                                                     color = Projection),
                 alpha = 0.4 ,
                 size = 0.7) +
+    geom_line(proj_range_ncbr_comp,mapping = aes(year,med, group = Projection, color = Projection),size = 0.7 ) +
     geom_vline(xintercept = settings$base_year,
                linetype = 'dashed',
                color = "black",

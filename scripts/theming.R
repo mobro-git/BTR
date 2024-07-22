@@ -327,7 +327,15 @@ color_map <- c(
   '2010 CAR' = 'very dark blue',
   '2006 NC' = 'hue1',
   '2006 CAR' = 'hue1',
-  'ghgi' = "black"
+  'ghgi' = "black",
+  
+  
+  # Kaya Variables
+  "EmissPerEnergyIn" = "m.green",
+  "EnergyPerGDPIn" = "teal blue",
+  "GDPPerCapIn" = "dark salmon",
+  "PopulationIn" = "very dark blue"
+  
   ) %>%
   find_color(master_palette)
 

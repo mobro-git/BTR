@@ -6,6 +6,11 @@ output:
     highlight: tango
     fontsize: 12
     fig_caption: false
+    toc: yes
+    toc_float:
+      toc_collapsed: true
+    toc_depth: 3
+    theme: spacelab
 params:
   mode: "interactive"
 ---
@@ -75,7 +80,7 @@ gas_table_merged
 
 ```{r}
 filename <- paste0("gas_table_",Sys.Date(),".png")
-gtsave(gas_table_merged, paste0('output/',settings$version,"/tables_figs/results_tables/estimated_values/",filename))
+gtsave(gas_table_merged, paste0('output/',settings$version,"/tables_figs/results_tables/by_gas_sector/",filename))
 ```
 
 ### Sector
@@ -92,7 +97,7 @@ sector_table_merged
 ```{r}
 
 filename <- paste0("sector_table_",Sys.Date(),".png")
-gtsave(sector_table_merged, paste0('output/',settings$version,"/tables_figs/results_tables/estimated_values/",filename))
+gtsave(sector_table_merged, paste0('output/',settings$version,"/tables_figs/results_tables/by_gas_sector/",filename))
 ```
 
 ## 2005 Percent Change Table {.tabset}
@@ -255,18 +260,51 @@ dat3 = dat |>
   filter(region == "United States") |> 
   select(model,scenario,year,datasrc,region,EmissPerEnergyIn,EnergyPerGDPIn,GDPPerCapIn,PopulationIn) |> 
   pivot_longer(cols = 6:9, names_to = "var", values_to = "value")
+
+dat_range <- dat3 %>%
+  filter(scenario == 'wm') %>%
+  filter(var %in% c('EnergyPerGDPIn', 'EmissPerEnergyIn')) %>%
+  filter(year %in% config$fives_proj) %>% 
+  group_by(year, var) %>%
+  summarise(ymax = max(value),
+              ymin = min(value),
+              med = median(value))
+
+dat4 <- dat3 %>%
+  filter(scenario == 'wm') %>%
+  filter(!var %in% c('EnergyPerGDPIn', 'EmissPerEnergyIn')) %>%
+  filter(year %in% config$fives_proj) %>%
+  group_by(year, var) %>%
+  summarise(med = median(value))
+
+var_palette = c(unique(dat_range$var),unique(dat4$var))
+
 ```
 
 ```{r}
-Kaya = function(dat3,mod,scen){
-  dat3 |> 
-    filter(model == mod & scenario == scen) |> 
-    ggplot()+
-    geom_line(aes(x=year, y =value, color = var))+
-    theme_custom()
+Kaya <- function(dat_range, dat4, var_palette){
+  ggplot() +
+    geom_line(dat4, mapping = aes(year,med, group = var, color = var),size = 0.7) +
+    geom_ribbon(dat_range, mapping = aes(x = year,ymax = ymax, ymin = ymin,
+                                                  fill = var, 
+                                                  color = var),
+                alpha = 0.4 ,
+                size = 0.7) +
+    scale_subpalette_single(var_palette) +
+    labs(x = 'Year',
+         y = 'Kaya Factor Index') +
+    theme_btr() +
+    theme(
+      legend.position = "inside",
+      legend.position.inside = c(0.15, 0.2))
 }
 
-Kaya(dat3,"OP-NEMS","wm")
+fig <- Kaya(dat_range, dat4, var_palette)
+fig
+```
+```{r}
+filename <- paste0("kaya_fig_",Sys.Date(),".png")
+ggsave(paste0('output/',settings$version,"/tables_figs/kaya/",filename))
 ```
 
 # Sector Analysis
@@ -338,9 +376,9 @@ buildings = br_sectors(sector_df,
                        expression(paste("Buildings Emissions (MMt C", O[2], ")")))
 
 # electricity
-# electricity = br_sectors(sector_df,
-#                        "Emissions|CO2|Energy|Supply|Electricity",
-#                        expression(paste("Electricity Emissions (MMt C", O[2], ")")))
+electricity = br_sectors(sector_df,
+                       "Emissions|CO2|Energy|Supply|Electricity",
+                       expression(paste("Electricity Emissions (MMt C", O[2], ")")))
 
 # transportation
 transportation = br_sectors(sector_df,
@@ -362,7 +400,7 @@ buildings
 ### Electricity
 
 ```{r}
-#electricity
+electricity
 ```
 
 ### Transportation
@@ -526,7 +564,7 @@ ncbr_comp_table
 
 ```{r}
 filename <- paste0("ncbr_comp_table_",Sys.Date(),".png")
-gtsave(ncbr_comp_table, paste0('output/',settings$version,"/tables_figs/results_tables/estimated_values/",filename))
+gtsave(ncbr_comp_table, paste0('output/',settings$version,"/tables_figs/results_tables/ncbr_comparison/table/",filename))
 ```
 
 ```{r}
@@ -534,7 +572,9 @@ gtsave(ncbr_comp_table, paste0('output/',settings$version,"/tables_figs/results_
 ncbr_comp_data_hist <- read_csv('data-raw/ncbr_comparison/total_gross_ghg_ncbr_comparisons.csv')
 
 ncbr_data_hist_long <- ncbr_comp_data_hist %>% 
-  pivot_longer(cols = 2:20, names_to = 'year')
+  pivot_longer(cols = 2:20, names_to = 'year') %>%
+  mutate(proj_name = Projection) %>%
+  select(proj_name, everything())
 
 # Pivot BTR total gross emissions long
 
@@ -546,7 +586,7 @@ tge_btr <- projections_all_sm %>%
 tge_all_long <- total_gross_emissions %>%
   pivot_longer(cols = 3:10, names_to = 'year') %>%
   mutate(Projection = '2024 BTR') %>%
-  select(names(ncbr_data_hist_long)) %>%
+  select(proj_name,names(ncbr_data_hist_long)) %>%
   distinct() %>%
   rbind(ncbr_data_hist_long) %>%
   mutate(year = as.numeric(year))
@@ -573,6 +613,10 @@ fig <- ncbr_comparison_figure(ncbr_comp_data_hist, tge_all_long, settings)
 fig
 
 ```
+```{r}
+filename <- paste0("ncbr_comp_fig_",Sys.Date(),".png")
+ggsave(paste0('output/',settings$version,"/tables_figs/results_tables/ncbr_comparison/",filename))
+```
 
 ## NCBR Comparision Figure: From 1990
 
@@ -591,4 +635,8 @@ tge_90_long <- tge_90 %>% pivot_longer(cols = 8:53,
 fig <- ncbr_comp_fig_1990(tge_90_long, tge_all_long, settings)
 fig
 
+```
+```{r}
+filename <- paste0("ncbr_comp90_fig_",Sys.Date(),".png")
+ggsave(paste0('output/',settings$version,"/tables_figs/results_tables/ncbr_comparison/",filename))
 ```
