@@ -234,6 +234,13 @@ net_ghg_stackbar
 
 # Kaya Analysis
 
+# TODO: updated KAYA figure
+- David's updated KAYA workbook for gdp, pop, and energy
+- BR_voluntarysupplement workbook (in data-raw/ncbr comp folder) for BR Total Gross Emissions
+---- need to add historical data for BR5 - 2022 GHGI through 2020
+- BTR2024 total gross emissions (range) from projections_all_sm, gpd, energy, pop data_long_clean
+- will need to calculate the emissions/energy for BTR24, the other 3 ratio variables should be present in data_long_clean
+
 ```{r}
 dat = data_long_clean |> 
   filter(variable %in% c("Emissions|CO2|Energy", "Final Energy", "GDP|MER", "Population")) |>
