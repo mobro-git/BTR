@@ -129,7 +129,7 @@ master_palette <- c(
 
 color_map <- c(
   # scenarios
-  "wm" = "blueD",
+  "wm" = "teal blue",
   "IRA" = "apricotD",
   
   # models
@@ -313,10 +313,10 @@ color_map <- c(
   "50-52% Below 2005" = "m.indigo",
   
   # NCBR Vintages
-  "2024 BTR High" = "m.green",
-  "2024 BTR Low" = "m.green",
-  "2024 BTR" = "m.green",
-  '2022 NC' = 'teal blue',
+  "2024 BTR High" = "teal blue",
+  "2024 BTR Low" = "teal blue",
+  "2024 BTR" = "teal blue",
+  '2022 NC' = 'm.green',
   '2021 NC' = 'teal green',
   '2021 CAR' = 'teal green',
   '2016 BR' = 'dark salmon',

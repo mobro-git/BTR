@@ -44,7 +44,8 @@ gen_lulucf_sink_breakout <- function(projections_all_sm, config, settings){
 
 gen_gas_dataset <- function(projections_all_sm, config) {
   
-  years_sum <- projections_all_sm %>% filter(year %in% config$table)
+  years_sum <- projections_all_sm 
+  
   gas_dataset <- years_sum %>%
     group_by(proj_name, gas, year) %>%
     summarise(mmtco2e = sum(sum),.groups='drop') %>% 
@@ -54,6 +55,8 @@ gen_gas_dataset <- function(projections_all_sm, config) {
 
 gen_gas_breakout <- function(gas_dataset, config, settings, category_order) {
   
+  gas_dataset <- gas_dataset %>%
+    filter(year %in% config$table)
   
   processed_dfs <- list()
   
@@ -148,10 +151,11 @@ gen_sector_breakout <- function(sector_dataset, config, settings, category_order
 
 
 
-gen_total_gross_emissions <- function(gas_breakout){
+gen_total_gross_emissions <- function(gas_dataset){
   
-  summarized_df <- gas_breakout %>% group_by(proj_name) %>% 
-    summarise(across(where(is.numeric), sum, na.rm=TRUE),.groups='drop') %>% 
+  summarized_df <- gas_dataset %>%
+    group_by(proj_name, year) %>% 
+    summarise(value = sum(mmtco2e),.groups='drop') %>% 
     mutate(source = 'Total Gross Emissions') %>% 
     select(proj_name,source, everything())
   

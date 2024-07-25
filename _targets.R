@@ -66,6 +66,7 @@ tar_plan(
     base_proj_20 = c(2020,settings$base_year,seq(2025,2050, by = 5)),
     
     annual_1990 = c(seq(1990,2040,by = 1)),
+    annual_1990_fives = c(seq(1990,settings$base_year,by = 1), seq(2025,2040, by = 5)),
     annual_2010 = c(seq(2010,2040,by = 1)),
     table = c(seq(2005, 2020, by=5),settings$base_year,seq(2025,2040,by=5)),
     table_sm = c(2005, 2010, 2015, 2020, settings$base_year, 2025, 2030 , 2035),
@@ -227,7 +228,7 @@ tar_plan(
   sector_breakout = gen_sector_breakout(sector_dataset, config, settings, category_order = config$sector_order),
   
   # Sum Total Gross Emissions ----
-  tar_target(total_gross_emissions, gen_total_gross_emissions(gas_breakout)),
+  tar_target(total_gross_emissions, gen_total_gross_emissions(gas_dataset)),
   
   # Calculate Total Net Emissions and write ----
   tar_target(total_net_emissions, gen_total_net_emissions(gas_breakout, lulucf_sink_breakout, settings)),

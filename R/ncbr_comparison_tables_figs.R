@@ -1,11 +1,12 @@
 
-ncbr_comparison_figure <- function(ncbr_comp_data_hist, tge_all_long, settings) {
+ncbr_comparison_figure <- function(ncbr_comp_data_hist, tge_all_long, settings, config) {
   
   ncbr_hist_long <- ncbr_comp_data_hist %>% 
     pivot_longer(cols = 2:20, names_to = "year", values_to = "value") %>%
     mutate(year = as.numeric(year))
   ncbr_hist_btr <- tge_all_long %>% filter(Projection == '2024 BTR',
-                                           year <= 2022)
+                                           year <= 2022,
+                                           year %in% config$fives)
   
   proj_range_ncbr_comp <- tge_all_long %>%
     group_by(Projection, year) %>%
@@ -13,7 +14,8 @@ ncbr_comparison_figure <- function(ncbr_comp_data_hist, tge_all_long, settings) 
               ymin = min(value),
               med = median(value)) %>%
     filter(Projection == '2024 BTR',
-           year >= settings$base_year)
+           year >= settings$base_year,
+           year %in% config$fives)
   
   tge_ends <- tge_all_long %>%
     filter(year == max(year),
@@ -27,7 +29,7 @@ ncbr_comparison_figure <- function(ncbr_comp_data_hist, tge_all_long, settings) 
   figure <- ggplot() +
     geom_line(ncbr_hist_long, mapping = aes(year,value, group = Projection, color = Projection),size = 0.7) +
     geom_line(ncbr_hist_btr,mapping = aes(year,value, group = Projection, color = Projection),size = 0.7 ) +
-    geom_text_repel(tge_ends, mapping = aes(year,value, label = proj_name)) +
+    #geom_text_repel(tge_ends, mapping = aes(year,value, label = proj_name)) +
     geom_ribbon(proj_range_ncbr_comp, mapping = aes(x = year,ymax = ymax, ymin = ymin,
                                                   fill = Projection, 
                                                   color = Projection),
@@ -54,10 +56,11 @@ ncbr_comparison_figure <- function(ncbr_comp_data_hist, tge_all_long, settings) 
 }
 
 
-ncbr_comp_fig_1990 <- function(tge_90_long, tge_all_long, settings) {
+ncbr_comp_fig_1990 <- function(tge_90_long, tge_all_long, settings, config) {
   
   ncbr_hist_btr <- tge_all_long %>% filter(Projection == '2024 BTR',
-                                           year <= 2022)
+                                           year <= settings$base_year,
+                                           year %in% config$annual_1990_fives)
   
   proj_range_ncbr_comp <- tge_all_long %>%
     group_by(Projection, year) %>%
@@ -65,7 +68,8 @@ ncbr_comp_fig_1990 <- function(tge_90_long, tge_all_long, settings) {
               ymin = min(value),
               med = median(value)) %>%
     filter(Projection == '2024 BTR',
-           year >= settings$base_year)
+           year >= settings$base_year,
+           year %in% config$annual_1990_fives)
   
   tge_ends <- tge_all_long %>%
     filter(year == max(year),
@@ -78,13 +82,13 @@ ncbr_comp_fig_1990 <- function(tge_90_long, tge_all_long, settings) {
   figure <- ggplot() +
     geom_line(tge_90_long, mapping = aes(year,value, group = Projection, color = Projection),size = 0.7) +
     geom_line(ncbr_hist_btr,mapping = aes(year,value, group = Projection, color = Projection),size = 0.7 ) +
-    geom_text_repel(tge_ends, mapping = aes(year,value, label = proj_name)) +
+  #  geom_text_repel(tge_ends, mapping = aes(year,value, label = proj_name)) +
     geom_ribbon(proj_range_ncbr_comp, mapping = aes(x = year,ymax = ymax, ymin = ymin,
                                                     fill = Projection, 
                                                     color = Projection),
                 alpha = 0.4 ,
                 size = 0.7) +
-    geom_line(proj_range_ncbr_comp,mapping = aes(year,med, group = Projection, color = Projection),size = 0.7 ) +
+   # geom_line(proj_range_ncbr_comp,mapping = aes(year,med, group = Projection, color = Projection),size = 0.7 ) +
     geom_vline(xintercept = settings$base_year,
                linetype = 'dashed',
                color = "black",

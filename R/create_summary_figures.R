@@ -40,7 +40,7 @@ br_project = function(ghgi, proj, settings, targets = NULL, legend_position = c(
   
   projections = ggplot() +
     # Historic
-    geom_line(ghgi,mapping = aes(x = year, y = sum, group = proj_name, color = grouping),size = 0.7
+    geom_line(ghgi,mapping = aes(x = year, y = sum, color = 'black'),size = 0.7
     ) +
     # WM
     geom_line(proj,mapping = aes(x = year, y = sum, group = proj_name, color = grouping),alpha = 0.5,size = 0.7
@@ -163,6 +163,13 @@ br_project_pct_change = function(ghgi, proj, targets = NULL, legend_position = c
               .groups = 'drop') %>%
     mutate(year = as.numeric(year))
   
+  var_palette = unique(c(
+    unique(proj_range$grouping),
+    unique(ghgi$grouping),
+    unique(proj$grouping),
+    unique(targets$grouping)
+  ))
+  
   projections = ggplot() +
     # Historic
     geom_line(ghgi,mapping = aes(x = year, y = pct_change_05, group = proj_name),color = "black",size = 0.7
@@ -182,6 +189,7 @@ br_project_pct_change = function(ghgi, proj, targets = NULL, legend_position = c
          fill = "") +
     scale_y_continuous(limits = c(-1, 0.05), expand = c(0, 0)) +
     scale_x_continuous(breaks = c(2005, 2010, 2015, 2022, 2025, 2030, 2035), expand = c(0,0)) +
+    scale_subpalette_single(var_palette) +
     guides(fill = guide_legend(nrow = 4, byrow = T)) +
     geom_hline(aes(yintercept = 0)) +
     theme_btr() +

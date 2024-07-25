@@ -153,7 +153,8 @@ proj_connect = proj_no_connect %>%
     sum = ghgi$sum[ghgi$year == settings$base_year])
 
 proj = rbind(proj_no_connect, proj_connect) %>%
-  mutate(year = as.numeric(year))
+  mutate(year = as.numeric(year)) %>%
+  filter(grouping == 'wm')
 
 ndc_targets = data.frame(
   year = c(2020, 2025, 2030),
@@ -198,7 +199,8 @@ proj_connect = proj_no_connect %>%
     pct_change_05 = ghgi$pct_change_05[ghgi$year == settings$base_year])
 
 proj = rbind(proj_no_connect, proj_connect) %>%
-  mutate(year = as.numeric(year))
+  mutate(year = as.numeric(year)) %>%
+  filter(grouping == 'wm')
 
 ndc_targets = data.frame(
   year = c(2020, 2025, 2030),
@@ -293,7 +295,6 @@ Kaya <- function(dat_range, dat4, var_palette){
     scale_subpalette_single(var_palette) +
     labs(x = 'Year',
          y = 'Kaya Factor Index') +
-    theme_btr() +
     theme(
       legend.position = "inside",
       legend.position.inside = c(0.15, 0.2))
@@ -584,10 +585,8 @@ tge_btr <- projections_all_sm %>%
   summarise(value = sum(sum),.groups = 'drop')
 
 tge_all_long <- total_gross_emissions %>%
-  pivot_longer(cols = 3:10, names_to = 'year') %>%
   mutate(Projection = '2024 BTR') %>%
   select(proj_name,names(ncbr_data_hist_long)) %>%
-  distinct() %>%
   rbind(ncbr_data_hist_long) %>%
   mutate(year = as.numeric(year))
 #%>%
@@ -607,9 +606,9 @@ ncbr_comp_table_df <- tge_all_long %>%
 ```
 
 ## Figure: NCBR Comparison
-TODO: Create another version with data back to 1990.
+
 ```{r}
-fig <- ncbr_comparison_figure(ncbr_comp_data_hist, tge_all_long, settings)
+fig <- ncbr_comparison_figure(ncbr_comp_data_hist, tge_all_long, settings, config)
 fig
 
 ```
@@ -632,7 +631,7 @@ tge_90_long <- tge_90 %>% pivot_longer(cols = 8:53,
   select(Projection,year,value) %>%
   mutate(year = as.numeric(year))
 
-fig <- ncbr_comp_fig_1990(tge_90_long, tge_all_long, settings)
+fig <- ncbr_comp_fig_1990(tge_90_long, tge_all_long, settings, config)
 fig
 
 ```
