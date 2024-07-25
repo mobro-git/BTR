@@ -173,7 +173,7 @@ projections
 
 ```{r}
 filename <- paste0("btr_main_fig_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/results_overview/btr_figs/",filename))
+ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_figs/",filename))
 ```
 
 ```{r}
@@ -219,7 +219,7 @@ projections_pct_change
 
 ```{r}
 filename <- paste0("btr_main_fig_pctchange05_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/results_overview/btr_figs/",filename))
+ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_figs/",filename))
 ```
 
 ## BTR Net-GHG Stackbar
@@ -645,4 +645,49 @@ fig
 ```{r}
 filename <- paste0("ncbr_comp90_fig_",Sys.Date(),".png")
 ggsave(paste0('output/',settings$version,"/tables_figs/results_tables/ncbr_comparison/",filename))
+```
+
+## Energy Emissions Fig
+
+```{r}
+
+nrg_emissions <- projections_all_sm %>%
+  filter(usproj_sector == 'Energy') %>%
+  group_by(proj_name, year) %>%
+  summarise(value = sum(sum)) %>%
+  filter(year %in% config$annual_1990_fives)
+
+ghgi <- nrg_emissions %>%
+  filter(year <= settings$base_year)
+
+proj <- nrg_emissions %>%
+  group_by(year) %>% 
+  filter(year >= settings$base_year)%>%
+    summarise(ymax = max(value),
+              ymin = min(value),
+              med = median(value),
+              .groups = 'drop')
+
+nrg_color <- "#2EAD96"
+
+fig <- 
+  ggplot() +
+  geom_line(ghgi, mapping = aes(x = year, y = value, color = proj_name), color = nrg_color, size = 0.7) +
+  geom_ribbon(proj, mapping = aes(x = year,ymax = ymax, ymin = ymin),
+              color = nrg_color,
+              fill = nrg_color,
+              alpha = 0.4 ,
+              size = 0.7)+
+    labs(x = 'Year',
+         y = expression(paste("MMt ", CO[2], "e", sep = ""))) +
+    scale_y_continuous(labels = scales::comma) +
+    scale_x_continuous(breaks = c(seq(1990,2020,by=5), 2022, seq(2025,2040,by=5)), expand = c(0,0)) +
+    theme_btr()
+  
+fig
+```
+
+```{r}
+filename <- paste0("nrg_emissions_fig_",Sys.Date(),".png")
+ggsave(paste0('output/',settings$version,"/tables_figs/nrg_emissions/",filename))
 ```
