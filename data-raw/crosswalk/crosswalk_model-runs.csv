@@ -43,10 +43,10 @@ usrep_reeds_allscen.csv,USREP-ReEDS,ira_low_adv,USREP-ReEDS,leep_Pess-IRA.Adv,LE
 usrep_reeds_allscen.csv,USREP-ReEDS,ira_mid_adv,USREP-ReEDS,leep_All Advanced,LEEP report,leep
 usrep_reeds_allscen.csv,USREP-ReEDS,ira_high_adv,USREP-ReEDS,leep_Opt-IRA.Adv,LEEP report,leep
 usrep_reeds_allscen.csv,USREP-ReEDS,ira_mid_constr,USREP-ReEDS,leep_Constrained Deployment,LEEP report,leep
-062624gcamreport_Processed.csv,GCAM 7.0,WM_062624,GCAM,wm,full wm scenario,btr
-062624gcamreport_Processed.csv,GCAM 7.0,WM_IRAEGU_062624,GCAM,wm_iraegu,"IRA + EGU, no TRN",btr
-062624gcamreport_Processed.csv,GCAM 7.0,WM_IRATRN_062624,GCAM,wm_iratrn,"IRA + TRN, no EGU",btr
-062624gcamreport_Processed.csv,GCAM 7.0,WM_IRAonly_062624,GCAM,wm_iraonly,IRA only,btr
 OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,OP-NEMS,OP Moderate,OP-NEMS,wm,btr - OP-NEMS BTR wm,btr
 usrep_reeds_btr_7.12.csv,USREP-ReEDS,btr1_ref,USREP-ReEDS,ref,,btr
 usrep_reeds_btr_7.12.csv,USREP-ReEDS,btr1_wm,USREP-ReEDS,wm,,btr
+072524gcamreport_Processed.csv,GCAM 7.0,WM_072524,GCAM,wm,,btr
+072524gcamreport_Processed.csv,GCAM 7.0,WM_IRAEGU_072524,GCAM,wm_iraegu,,btr
+072524gcamreport_Processed.csv,GCAM 7.0,WM_IRATRN_072524,GCAM,wm_iratrn,,btr
+072524gcamreport_Processed.csv,GCAM 7.0,WM_IRAonly_072524,GCAM,wm_iraonly,,btr

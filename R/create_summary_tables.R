@@ -163,9 +163,9 @@ gen_total_gross_emissions <- function(gas_dataset){
 }
 
 
-gen_total_net_emissions <- function(gas_breakout,lulucf_sink_breakout,settings){
+gen_total_net_emissions <- function(gas_dataset,lulucf_sink_breakout,settings){
   
-  cols_gas_breakout <- colnames(gas_breakout)
+  cols_gas_breakout <- colnames(gas_dataset)
   
   # Add NA columns missing in LULUCF that are present in projections
   missing_cols <- setdiff(cols_gas_breakout, colnames(lulucf_sink_breakout))
@@ -173,7 +173,7 @@ gen_total_net_emissions <- function(gas_breakout,lulucf_sink_breakout,settings){
   
   lulucf_sink_breakout <- lulucf_sink_breakout[, cols_gas_breakout]
   
-  combined_df <- bind_rows(gas_breakout, lulucf_sink_breakout)
+  combined_df <- bind_rows(gas_dataset, lulucf_sink_breakout)
   
   tne_df <- combined_df %>%
     gen_total_gross_emissions() %>% 

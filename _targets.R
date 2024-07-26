@@ -231,7 +231,7 @@ tar_plan(
   tar_target(total_gross_emissions, gen_total_gross_emissions(gas_dataset)),
   
   # Calculate Total Net Emissions and write ----
-  tar_target(total_net_emissions, gen_total_net_emissions(gas_breakout, lulucf_sink_breakout, settings)),
+  tar_target(total_net_emissions, gen_total_net_emissions(gas_dataset, lulucf_sink_breakout, settings)),
 
   ### QA/QC ----
   
