@@ -706,12 +706,10 @@ data_wm_usa <- data_long_clean %>% filter(scenario == 'wm',
 var_df <- data_wm_usa %>% filter(variable %in% var_list)
 
 var_df_clean <- var_df %>%
-  group_by(year,variable) %>%
-  mutate(min = min(value),
-         max = max(value)) %>%
-  select(year, variable,unit, min, max) %>%
+  select(model, year, variable, value) %>%
   filter(year %in% config$fives_sumtab) %>%
-  distinct()
+  distinct() %>%
+  mutate(across(where(is.numeric), round, 1))
 return(var_df_clean)
 }
 
@@ -724,26 +722,16 @@ be_df <- get_value_breakout(data_long_clean, var_list, config)
 Fuel Usage in Buildings Residential vs. Commercial
 
 ```{r}
-var_list <-  c('Final Energy|Buildings|Residential|Biogas',
-                                                             'Final Energy|Buildings|Residential|Biomass Liquids',
-                                                             'Final Energy|Buildings|Residential|Biomass Solids',
-                                                             'Final Energy|Buildings|Residential|Electricity',
-                                                             'Final Energy|Buildings|Residential|Gas',
-                                                             'Final Energy|Buildings|Residential|Hydrogen',
-                                                             'Final Energy|Buildings|Residential|Oil')
+var_list <-  c('Final Energy|Buildings|Residential|Electricity',
+               'Final Energy|Buildings|Residential')
 
 br_df <- get_value_breakout(data_long_clean, var_list, config)
 
 ```
 
 ```{r}
-var_list <-  c('Final Energy|Buildings|Commercial|Biogas',
-                                                             'Final Energy|Buildings|Commercial|Biomass Liquids',
-                                                             'Final Energy|Buildings|Commercial|Biomass Solids',
-                                                             'Final Energy|Buildings|Commercial|Electricity',
-                                                             'Final Energy|Buildings|Commercial|Gas',
-                                                             'Final Energy|Buildings|Commercial|Hydrogen',
-                                                             'Final Energy|Buildings|Commercial|Oil')
+var_list <-  c('Final Energy|Buildings|Commercial|Electricity',
+               'Final Energy|Buildings|Commercial')
 
 bc_df <- get_value_breakout(data_long_clean, var_list, config)
 
@@ -759,6 +747,14 @@ var_list <- df$variable
 eg_df <- get_value_breakout(data_long_clean, var_list, config)
 
 ```
+
+
+```{r}
+var_list <- c('Secondary Energy|Electricity|Wind','Secondary Energy|Electricity|Solar','Secondary Energy|Electricity')
+sw_df <- get_value_breakout(data_long_clean, var_list, config)
+
+```
+
 
 Primary Energy Coal
 ```{r}
