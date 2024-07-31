@@ -551,3 +551,76 @@ gdp = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseri
 gdp
 ```
 
+
+# Ad-hoc tables/figs
+
+Buildings and electricity emissions table
+
+```{r}
+get_value_breakout <- function(data_long_clean, var_list, config) {
+data_wm_usa <- data_long_clean %>% filter(scenario == 'wm',
+                                             region == 'United States')
+
+var_df <- data_wm_usa %>% filter(variable %in% var_list)
+
+var_df_clean <- var_df %>%
+  select(model, year, variable, value) %>%
+  filter(year %in% config$fives_sumtab) %>%
+  distinct() %>%
+  mutate(across(where(is.numeric), round, 1))
+return(var_df_clean)
+}
+
+var_list <- c('Emissions|CO2|Energy|Demand|Buildings',
+              'Emissions|CO2|Energy|Supply|Electricity')
+
+be_df <- get_value_breakout(data_long_clean, var_list, config)
+```
+
+Fuel Usage in Buildings Residential vs. Commercial
+
+```{r}
+var_list <-  c('Final Energy|Buildings|Residential|Electricity',
+               'Final Energy|Buildings|Residential')
+
+br_df <- get_value_breakout(data_long_clean, var_list, config)
+
+```
+
+```{r}
+var_list <-  c('Final Energy|Buildings|Commercial|Electricity',
+               'Final Energy|Buildings|Commercial')
+
+bc_df <- get_value_breakout(data_long_clean, var_list, config)
+
+```
+
+Electricity generation breakout
+
+```{r}
+df <- figmap_nrgco2_stackbar %>% filter(figure_no == 13)
+
+var_list <- df$variable
+
+eg_df <- get_value_breakout(data_long_clean, var_list, config)
+```
+
+```{r}
+var_list <- c('Secondary Energy|Electricity|Wind','Secondary Energy|Electricity|Solar','Secondary Energy|Electricity')
+sw_df <- get_value_breakout(data_long_clean, var_list, config)
+```
+
+Primary Energy Coal
+```{r}
+var_list <- 'Primary Energy|Coal'
+
+pec_df <- get_value_breakout(data_long_clean,var_list, config)
+```
+
+Vehicle sales
+```{r}
+var_list <- "Energy Service|Transportation|EV|Sales Share"
+
+vs_df <- get_value_breakout(data_long_clean,var_list, config)
+```
+
