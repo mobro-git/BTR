@@ -96,6 +96,7 @@ make_data_long_clean <- function(data_long,
   
   data_long_clean = data_long %>%
     filter(year >= 2020) %>%
+    filter(region == "United States") %>% 
     complete_implicit_na() %>%
     manual_data_update() %>%
     make_calculated_vars(ratio_var,

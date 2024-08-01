@@ -25,6 +25,7 @@ tar_source()
 tar_load(
   c(
     config,
+    settings,
     data_long_clean,
     projections_all_sm,
     figmap_nrgco2_stackbar,
