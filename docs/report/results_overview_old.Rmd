@@ -44,22 +44,12 @@ source("scripts/theming.R")
 
 ## Energy CO2 Emissions by Sector {.tabset}
 
-### Model
-
-```{r}
-model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 9, "United States", scenario_rename = TRUE,
-            level_var = c("Buildings", "Industry", "Transportation", "Supply", "Total Energy"))
-model
-```
-
 ### Sector
 
 ```{r}
 sector = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 19, "United States", scenario_rename = TRUE)
 sector
 ```
-
-### Stats
 
 ```{r}
 figure_subset_df <- get_figure_subset_df(figmap_nrgco2_stackbar,19)
@@ -73,33 +63,34 @@ transportation_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar
 
 In the "With Measures" scenarios, Energy CO~2~ emissions reductions range by model from 2020 to 2040:
 
--   GCAM: `r nrgco2_value_list$GCAM`%
--   OP-NEMS: `r nrgco2_value_list$"OP-NEMS"`%
--   USREP-ReEDS: `r nrgco2_value_list$"USREP-ReEDS"`%
-
-By sector, emissions reductions are estimate to change from 2020 to 2040:
-
--   Buildings:
-    -   GCAM: `r buildings_value_list$GCAM`%
-    -   OP-NEMS: `r buildings_value_list$"OP-NEMS"`%
-    -   USREP-ReEDS: `r buildings_value_list$"USREP-ReEDS"`%
--   Industry:
-    -   GCAM: `r industry_value_list$GCAM`%
-    -   OP-NEMS: `r industry_value_list$"OP-NEMS"`%
-    -   USREP-ReEDS: `r industry_value_list$"USREP-ReEDS"`%
--   Transportation:
-    -   GCAM: `r transportation_value_list$GCAM`%
-    -   OP-NEMS: `r transportation_value_list$"OP-NEMS"`%
-    -   USREP-ReEDS: `r transportation_value_list$"USREP-ReEDS"`%
-
-## Energy CO2 Emissions by Fuel {.tabset}
+-   GCAM: `r nrgco2_value_list[1]`%
+-   OP-NEMS: `r nrgco2_value_list[2]`%
+-   USREP-ReEDS: `r nrgco2_value_list[3]`%
 
 ### Model
 
 ```{r}
-model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 30, "United States")
+model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 9, "United States", scenario_rename = TRUE,
+            level_var = c("Buildings", "Industry", "Transportation", "Supply", "Total Energy"))
 model
 ```
+
+By sector, emissions reductions are estimate to change from 2020 to 2040:
+
+-   Buildings:
+    -   GCAM: `r buildings_value_list[1]`%
+    -   OP-NEMS: `r buildings_value_list[2]`%
+    -   USREP-ReEDS: `r buildings_value_list[3]`%
+-   Industry:
+    -   GCAM: `r industry_value_list[1]`%
+    -   OP-NEMS: `r industry_value_list[2]`%
+    -   USREP-ReEDS: `r industry_value_list[3]`%
+-   Transportation:
+    -   GCAM: `r transportation_value_list[1]`%
+    -   OP-NEMS: `r transportation_value_list[2]`%
+    -   USREP-ReEDS: `r transportation_value_list[3]`%
+
+## Energy CO2 Emissions by Fuel {.tabset}
 
 ### Fuel
 
@@ -107,8 +98,6 @@ model
 sector = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 24, "United States", scenario_rename = TRUE)
 sector
 ```
-
-### Stats 
 
 ```{r}
 figure_subset_df <- get_figure_subset_df(figmap_nrgco2_stackbar,24)
@@ -120,9 +109,16 @@ industry_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 24, 
 transportation_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 24, "Emissions|CO2|Energy|Oil", data_long_clean, config)
 ```
 
+### Model
+
+```{r}
+model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 30, "United States")
+model
+```
+
 # Energy Consumption
 
-## Final Energy by Fuel {.tabset}
+## Final Energy {.tabset}
 
 ### Fuel
 
@@ -131,21 +127,19 @@ fuel = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackba
 fuel
 ```
 
-### Model
+### Fuel by Model
 
 ```{r}
 Fuel = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 1, "United States", scenario_rename = TRUE)
 Fuel
 ```
 
-### Model - Zoom
+### Fuel by Model - Zoom
 
 ```{r}
 Fuel = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 24, "United States", scenario_rename = TRUE)
 Fuel
 ```
-
-### Stats 
 
 ```{r}
 figure_subset_df <- get_figure_subset_df(figmap_nrgco2_stackbar,14)
@@ -160,38 +154,28 @@ fe_oil_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 14, "F
 
 Energy consumption is estimated to change from 2020 to 2040:
 
--   GCAM: `r final_energy_value_list$GCAM`%
--   OP-NEMS: `r final_energy_value_list$"OP-NEMS"`%
--   USREP-ReEDS: `r final_energy_value_list$"USREP-ReEDS"`%
+-   GCAM: `r final_energy_value_list[1]`%
+-   OP-NEMS: `r final_energy_value_list[2]`%
+-   USREP-ReEDS: `r final_energy_value_list[3]`%
 
 By fuel-type, energy consumption is estimated to change from 2020 to 2040:
 
 -   Coal:
-    -   GCAM: `r fe_coal_value_list$GCAM`%
-    -   OP-NEMS: `r fe_coal_value_list$"OP-NEMS"`%
-    -   USREP-ReEDS: `r fe_coal_value_list$"USREP-ReEDS"`%
+    -   GCAM: `r fe_coal_value_list[1]`%
+    -   OP-NEMS: `r fe_coal_value_list[2]`%
+    -   USREP-ReEDS: `r fe_coal_value_list[3]`%
 -   Electricity:
-    -   GCAM: `r fe_electricity_value_list$GCAM`%
-    -   OP-NEMS: `r fe_electricity_value_list$"OP-NEMS"`%
-    -   USREP-ReEDS: `r fe_electricity_value_list$"USREP-ReEDS"`%
+    -   GCAM: `r fe_electricity_value_list[1]`%
+    -   OP-NEMS: `r fe_electricity_value_list[2]`%
+    -   USREP-ReEDS: `r fe_electricity_value_list[3]`%
 -   Gas:
-    -   GCAM: `r fe_gas_value_list$GCAM`%
-    -   OP-NEMS: `r fe_gas_value_list$"OP-NEMS"`%
-    -   USREP-ReEDS: `r fe_gas_value_list$"USREP-ReEDS"`%
+    -   GCAM: `r fe_gas_value_list[1]`%
+    -   OP-NEMS: `r fe_gas_value_list[2]`%
+    -   USREP-ReEDS: `r fe_gas_value_list[3]`%
 -   Oil:
-    -   GCAM: `r fe_oil_value_list$GCAM`%
-    -   OP-NEMS: `r fe_oil_value_list$"OP-NEMS"`%
-    -   USREP-ReEDS: `r fe_oil_value_list$"USREP-ReEDS"`%
-
-## Final Energy by Sector {.tabset}
-
-### Model
-
-```{r}
-Sector = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 2, "United States", scenario_rename = TRUE,
-                     level_var = c("Buildings", "Industry", "Transportation", "Total Energy"))
-Sector
-```
+    -   GCAM: `r fe_oil_value_list[1]`%
+    -   OP-NEMS: `r fe_oil_value_list[2]`%
+    -   USREP-ReEDS: `r fe_oil_value_list[3]`%
 
 ### Sector
 
@@ -200,34 +184,46 @@ sector = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stack
 sector
 ```
 
-### Stats
-
 ```{r}
 fe_buildings_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 17, "Final Energy|Buildings", data_long_clean, config)
 fe_industry_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 17, "Final Energy|Industry", data_long_clean, config)
 fe_transportation_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 17, "Final Energy|Transportation", data_long_clean, config)
+
 ```
 
 By sector, energy consumption is estimated to change from 2020 to 2040:
 
 -   Buildings:
-    -   GCAM: `r fe_buildings_value_list$GCAM`%
-    -   OP-NEMS: `r fe_buildings_value_list$"OP-NEMS"`%
-    -   USREP-ReEDS: `r fe_buildings_value_list$"USREP-ReEDS"`%
+    -   GCAM: `r fe_buildings_value_list[1]`%
+    -   OP-NEMS: `r fe_buildings_value_list[2]`%
+    -   USREP-ReEDS: `r fe_buildings_value_list[3]`%
 -   Industry:
-    -   GCAM: `r fe_industry_value_list$GCAM`%
-    -   OP-NEMS: `r fe_industry_value_list$"OP-NEMS"`%
-    -   USREP-ReEDS: `r fe_industry_value_list$"USREP-ReEDS"`%
+    -   GCAM: `r fe_industry_value_list[1]`%
+    -   OP-NEMS: `r fe_industry_value_list[2]`%
+    -   USREP-ReEDS: `r fe_industry_value_list[3]`%
 -   Transportation:
-    -   GCAM: `r fe_transportation_value_list$GCAM`%
-    -   OP-NEMS: `r fe_transportation_value_list$"OP-NEMS"`%
-    -   USREP-ReEDS: `r fe_transportation_value_list$"USREP-ReEDS"`%
+    -   GCAM: `r fe_transportation_value_list[1]`%
+    -   OP-NEMS: `r fe_transportation_value_list[2]`%
+    -   USREP-ReEDS: `r fe_transportation_value_list[3]`%
 
-## Final Energy by Sector 
+### Sector by Model
 
-### Buildings {.tabset}
+```{r}
+Sector = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 2, "United States", scenario_rename = TRUE,
+                     level_var = c("Buildings", "Industry", "Transportation", "Total Energy"))
+Sector
+```
 
-#### Model
+## Final Energy by Sector {.tabset}
+
+### Buildings
+
+```{r}
+Buildings = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 8, "United States", scenario_rename = TRUE)
+Buildings
+```
+
+### Buildings by Model
 
 ```{r}
 Buildings_bymodel = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 17, "United States", scenario_rename = TRUE,
@@ -235,74 +231,62 @@ Buildings_bymodel = print_graph("time_series", config, data_long_clean, figmap_n
 Buildings_bymodel
 ```
 
-#### Buildings
-
-```{r}
-Buildings = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 8, "United States", scenario_rename = TRUE)
-Buildings
-```
-
-#### Residential by Model
-
-```{r}
-Buildings_bymodel = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 31, "United States", scenario_rename = TRUE)
-Buildings_bymodel
-```
-
-#### Residential
-
-```{r}
-Buildings = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 25, "United States", scenario_rename = TRUE)
-Buildings
-```
-
-#### Commercial by Model
-
-```{r}
-Buildings_bymodel = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 32, "United States", scenario_rename = TRUE)
-Buildings_bymodel
-```
-
-#### Commercial
-
-```{r}
-Buildings = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 26, "United States", scenario_rename = TRUE)
-Buildings
-```
-
-### Industry {.tabset}
-
-#### Model
-
-```{r}
-Industry_bymodel = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 18, "United States", scenario_rename = TRUE)
-Industry_bymodel
-```
-
-#### Industry
+### Industry
 
 ```{r}
 Industry = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 9, "United States", scenario_rename = TRUE)
 Industry
 ```
 
-### Transportation {.tabset}
-TODO: Add facets vehicle type sales share/stock share, tabs freight/passenger
-
-#### Model
+### Industry by Model
 
 ```{r}
-Transportation_bymodel = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 19, "United States", scenario_rename = TRUE)
-Transportation_bymodel
+Industry_bymodel = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 18, "United States", scenario_rename = TRUE)
+Industry_bymodel
 ```
 
-#### Transportation
+### Transportation
+TODO: Add facets vehicle type sales share/stock share, tabs freight/passenger
 
 ```{r}
 Transportation = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 12, "United States", scenario_rename = TRUE)
 Transportation
 ```
 
+### Transportation by Model
+
+```{r}
+Transportation_bymodel = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 19, "United States", scenario_rename = TRUE)
+Transportation_bymodel
+```
+
+### Buildings, Residential
+
+```{r}
+Buildings = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 25, "United States", scenario_rename = TRUE)
+Buildings
+```
+
+### Buildings, Residential by Model
+
+```{r}
+Buildings_bymodel = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 31, "United States", scenario_rename = TRUE)
+Buildings_bymodel
+```
+
+### Buildings, Commercial
+
+```{r}
+Buildings = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 26, "United States", scenario_rename = TRUE)
+Buildings
+```
+
+### Buildings, Commercial by Model
+
+```{r}
+Buildings_bymodel = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 32, "United States", scenario_rename = TRUE)
+Buildings_bymodel
+```
 ## Percent Electricity
 
 ```{r}
@@ -314,6 +298,13 @@ Percent_Electricity
 # Energy Production
 
 ## Secondary Energy {.tabset}
+
+### Fuel
+
+```{r}
+Fuel = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 15, "United States", scenario_rename = TRUE)
+Fuel
+```
 
 ### Model
 
@@ -330,18 +321,16 @@ Model_zoom
 
 ```
 
-### Fuel
+## Electricity Production {.tabset}
+
+### Generation
 
 ```{r}
-Fuel = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 15, "United States", scenario_rename = TRUE)
-Fuel
+elec_gen = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 13, "United States", scenario_rename = TRUE)
+elec_gen
 ```
 
-## Electricity Production 
-
-### Generation {.tabset}
-
-#### Model
+### Generation by Model
 
 ```{r, fig.width=12}
 elec_model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 15, "United States", scenario_rename = TRUE,
@@ -350,7 +339,7 @@ elec_model
 
 ```
 
-#### Model - Zoom
+### Generation by Model - Zoom
 
 ```{r, fig.width=12}
 elec_model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 27, "United States", scenario_rename = TRUE,
@@ -358,15 +347,6 @@ elec_model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_t
 elec_model
 
 ```
-
-#### Generation
-
-```{r}
-elec_gen = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 13, "United States", scenario_rename = TRUE)
-elec_gen
-```
-
-#### Stats
 
 ```{r}
 figure_subset_df <- get_figure_subset_df(figmap_nrgco2_stackbar,13)
@@ -381,35 +361,16 @@ se_oil_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 13, "S
 se_solar_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 13, "Secondary Energy|Electricity|Solar", data_long_clean, config)
 se_wind_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 13, "Secondary Energy|Electricity|Wind", data_long_clean, config)
 
-```
-
-### Capacity {.tabset}
-
-#### Model
-
-```{r, fig.width=12}
-elec_model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 16, "United States", scenario_rename = TRUE,
-                         level_var = c("Coal", "Gas", "Oil","Solar", "Wind", "Storage", "Total Electricity"))
-elec_model
 
 ```
 
-#### Model - Zoom
 
-```{r}
-elec_model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 26, "United States", scenario_rename = TRUE,
-                         level_var = c("Coal", "Gas", "Oil","Solar", "Wind", "Storage", "Total Electricity"))
-elec_model
-```
-
-#### Capacity
+### Capacity
 
 ```{r}
 Capacity = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 3, "United States", scenario_rename = TRUE)
 Capacity
 ```
-
-#### Stats
 
 ```{r}
 figure_subset_df <- get_figure_subset_df(figmap_nrgco2_stackbar,3)
@@ -426,36 +387,54 @@ cap_wind_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 3, "
 
 Electricity capacity is estimated to increase from 2020 to 2040:
 
--   GCAM: `r cap_value_list$GCAM`%
--   OP-NEMS: `r cap_value_list$"OP-NEMS"`%
--   USREP-ReEDS: `r cap_value_list$"USREP-ReEDS"`%
+-   GCAM: `r cap_value_list[1]`%
+-   OP-NEMS: `r cap_value_list[2]`%
+-   USREP-ReEDS: `r cap_value_list[3]`%
 
 By technology, electricity capacity is estimated to change from 2020 to 2040:
 
 -   Coal:
-    -   GCAM: `r cap_coal_value_list$GCAM`%
-    -   OP-NEMS: `r cap_coal_value_list$"OP-NEMS"`%
-    -   USREP-ReEDS: `r cap_coal_value_list$"USREP-ReEDS"`%
+    -   GCAM: `r cap_coal_value_list[1]`%
+    -   OP-NEMS: `r cap_coal_value_list[2]`%
+    -   USREP-ReEDS: `r cap_coal_value_list[3]`%
 -   Gas:
-    -   GCAM: `r cap_gas_value_list$GCAM`%
-    -   OP-NEMS: `r cap_gas_value_list$"OP-NEMS"`%
-    -   USREP-ReEDS: `r cap_gas_value_list$"USREP-ReEDS"`%
+    -   GCAM: `r cap_gas_value_list[1]`%
+    -   OP-NEMS: `r cap_gas_value_list[2]`%
+    -   USREP-ReEDS: `r cap_gas_value_list[3]`%
 -   Oil:
-    -   GCAM: `r cap_oil_value_list$GCAM`%
-    -   OP-NEMS: `r cap_oil_value_list$"OP-NEMS"`%
+    -   GCAM: `r cap_oil_value_list[1]`%
+    -   OP-NEMS: `r cap_oil_value_list[2]`%
 -   Solar:
-    -   GCAM: `r cap_solar_value_list$GCAM`%
-    -   OP-NEMS: `r cap_solar_value_list$"OP-NEMS"`%
-    -   USREP-ReEDS: `r cap_solar_value_list$"USREP-ReEDS"`%
+    -   GCAM: `r cap_solar_value_list[1]`%
+    -   OP-NEMS: `r cap_solar_value_list[2]`%
+    -   USREP-ReEDS: `r cap_solar_value_list[3]`%
 -   Storage:
-    -   OP-NEMS: `r cap_storage_value_list$GCAM`%
-    -   USREP-ReEDS: `r cap_storage_value_list$"OP-NEMS"`%
+    -   OP-NEMS: `r cap_storage_value_list[1]`%
+    -   USREP-ReEDS: `r cap_storage_value_list[2]`%
 -   Wind:
-    -   GCAM: `r cap_wind_value_list$GCAM`%
-    -   OP-NEMS: `r cap_wind_value_list$"OP-NEMS"`%
-    -   USREP-ReEDS: `r cap_wind_value_list$"USREP-ReEDS"`%
+    -   GCAM: `r cap_wind_value_list[1]`%
+    -   OP-NEMS: `r cap_wind_value_list[2]`%
+    -   USREP-ReEDS: `r cap_wind_value_list[3]`%
 
-## Combustion {.tabset}
+### Capacity by Model
+
+```{r, fig.width=12}
+elec_model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 16, "United States", scenario_rename = TRUE,
+                         level_var = c("Coal", "Gas", "Oil","Solar", "Wind", "Storage", "Total Electricity"))
+elec_model
+
+```
+
+### Capacity by Model - Zoom
+
+```{r}
+elec_model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 26, "United States", scenario_rename = TRUE,
+                         level_var = c("Coal", "Gas", "Oil","Solar", "Wind", "Storage", "Total Electricity"))
+elec_model
+
+```
+
+## Electricity Production - Combustion {.tabset}
 
 ### Generation
 
@@ -499,7 +478,7 @@ cap_by_model = print_graph("time_series", config, data_long_clean, figmap_nrgco2
 cap_by_model
 ```
 
-## Non-Combustion {.tabset}
+## Electricity Production - Non-Combustion {.tabset}
 
 ### Generation
 
@@ -573,6 +552,7 @@ gdp = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseri
 gdp
 ```
 
+
 # Ad-hoc tables/figs
 
 Buildings and electricity emissions table
@@ -596,7 +576,6 @@ var_list <- c('Emissions|CO2|Energy|Demand|Buildings',
               'Emissions|CO2|Energy|Supply|Electricity')
 
 be_df <- get_value_breakout(data_long_clean, var_list, config)
-be_df
 ```
 
 Fuel Usage in Buildings Residential vs. Commercial
@@ -606,6 +585,7 @@ var_list <-  c('Final Energy|Buildings|Residential|Electricity',
                'Final Energy|Buildings|Residential')
 
 br_df <- get_value_breakout(data_long_clean, var_list, config)
+
 ```
 
 ```{r}
@@ -613,6 +593,7 @@ var_list <-  c('Final Energy|Buildings|Commercial|Electricity',
                'Final Energy|Buildings|Commercial')
 
 bc_df <- get_value_breakout(data_long_clean, var_list, config)
+
 ```
 
 Electricity generation breakout
