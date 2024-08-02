@@ -575,7 +575,7 @@ gdp
 
 # Ad-hoc tables/figs
 
-Buildings and electricity emissions table
+Buildings and electricity emissions reductions in 2040 compared to 2005
 
 ```{r}
 get_value_breakout <- function(data_long_clean, var_list, config) {
@@ -596,26 +596,65 @@ var_list <- c('Emissions|CO2|Energy|Demand|Buildings',
               'Emissions|CO2|Energy|Supply|Electricity')
 
 be_df <- get_value_breakout(data_long_clean, var_list, config)
-be_df
+be_df2 = be_df %>% 
+  spread(year,value) %>% 
+  group_by(variable) %>% 
+  rename(base ="2005",
+         target = "2040") %>% 
+  mutate(reduction =1 - (target/max(base, na.rm = "yes"))) %>% 
+  ungroup() %>% 
+  filter(model != "EPA-GHGI") %>% 
+  select(model,variable,reduction) %>% 
+  spread(model,reduction)
+
+grid.table(be_df2)
 ```
 
-Fuel Usage in Buildings Residential vs. Commercial
+Share of fuel usage in Residential Buildings
 
 ```{r}
 var_list <-  c('Final Energy|Buildings|Residential|Electricity',
+               'Final Energy|Buildings|Residential|Gas',
                'Final Energy|Buildings|Residential')
 
 br_df <- get_value_breakout(data_long_clean, var_list, config)
-```
 
+br_df2 = br_df %>%
+  filter(variable != "Final Energy|Buildings|Residential") %>% 
+  left_join(br_df %>% 
+              filter(variable == "Final Energy|Buildings|Residential") %>%
+              select(-variable) %>% 
+              rename(total = value)) %>% 
+  mutate(Share = value/total) %>% 
+  select(-value,-total) %>% 
+  filter(year == 2040) %>% 
+  spread(model,Share)
+
+grid.table(br_df2)
+```
+Share of fuel usage in Commercial Buildings
 ```{r}
 var_list <-  c('Final Energy|Buildings|Commercial|Electricity',
+               'Final Energy|Buildings|Commercial|Gas',
                'Final Energy|Buildings|Commercial')
 
 bc_df <- get_value_breakout(data_long_clean, var_list, config)
+
+bc_df2 = bc_df %>%
+  filter(variable != "Final Energy|Buildings|Commercial") %>% 
+  left_join(bc_df %>% 
+              filter(variable == "Final Energy|Buildings|Commercial") %>%
+              select(-variable) %>% 
+              rename(total = value)) %>% 
+  mutate(Share = value/total) %>% 
+  select(-value,-total) %>% 
+  filter(year == 2040) %>% 
+  spread(model,Share)
+
+grid.table(bc_df2)
 ```
 
-Electricity generation breakout
+Share of Wind and Solar in elec gen in 2040
 
 ```{r}
 df <- figmap_nrgco2_stackbar %>% filter(figure_no == 13)
@@ -623,24 +662,59 @@ df <- figmap_nrgco2_stackbar %>% filter(figure_no == 13)
 var_list <- df$variable
 
 eg_df <- get_value_breakout(data_long_clean, var_list, config)
+  
 ```
 
 ```{r}
 var_list <- c('Secondary Energy|Electricity|Wind','Secondary Energy|Electricity|Solar','Secondary Energy|Electricity')
 sw_df <- get_value_breakout(data_long_clean, var_list, config)
+
+sw_df2 = sw_df %>% 
+  filter(variable %in% c('Secondary Energy|Electricity|Wind','Secondary
+                         Energy|Electricity|Solar')) %>% 
+  group_by(model,year) %>% 
+  summarise(value = sum(value)) %>% 
+  left_join(sw_df %>% 
+              filter(variable == 'Secondary Energy|Electricity') %>% 
+              select(-variable) %>% 
+              rename(total = value)) %>% 
+  mutate(Share = value/total) %>% 
+  select(-value,-total) %>% 
+  filter(year == 2040) %>% 
+  spread(model,Share)
+
+grid.table(sw_df2)
 ```
 
-Primary Energy Coal
+Reduction in coal to electricity in 2040 compared to model's 2020
 ```{r}
-var_list <- 'Primary Energy|Coal'
+var_list <- 'Secondary Energy|Electricity|Input|Coal'
 
 pec_df <- get_value_breakout(data_long_clean,var_list, config)
+pec_df2 = pec_df %>% 
+  spread(year, value) %>% 
+  rename(base ="2020",
+         target = "2040") %>% 
+  mutate(reduction =1 - (target/base)) %>% 
+  select(model,variable,reduction) %>% 
+  spread(model,reduction)
+
+grid.table(pec_df2)
 ```
 
-Vehicle sales
+Vehicle sales share in 2040
 ```{r}
-var_list <- "Energy Service|Transportation|EV|Sales Share"
+var_list <- c("Energy Service|Transportation|Passenger|BEV|Sales Share",
+              "Energy Service|Transportation|Passenger|PHEV|Sales Share",
+              "Energy Service|Transportation|Passenger|ICE|Sales Share")
 
 vs_df <- get_value_breakout(data_long_clean,var_list, config)
+
+vs_df2 = vs_df %>% 
+  filter(year ==2040) %>% 
+  spread(model,value) 
+
+grid.table(pec_df2)
+  
 ```
 
