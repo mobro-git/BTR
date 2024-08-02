@@ -7,7 +7,7 @@ output:
       toc_collapsed: true
     toc_depth: 3
     theme: spacelab
-date: "`r Sys.time()`"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
 ---
 
 ```{r,echo = FALSE, results = "show", warning = FALSE, message = FALSE, error = FALSE}
