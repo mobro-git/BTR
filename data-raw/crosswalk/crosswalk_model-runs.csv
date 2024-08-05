@@ -48,7 +48,6 @@ OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,OP-NEMS,OP Moderate,OP-NE
 072524gcamreport_Processed.csv,GCAM 7.0,WM_IRAEGU_072524,GCAM,wm_iraegu,,btr
 072524gcamreport_Processed.csv,GCAM 7.0,WM_IRATRN_072524,GCAM,wm_iratrn,,btr
 072524gcamreport_Processed.csv,GCAM 7.0,WM_IRAonly_072524,GCAM,wm_iraonly,,btr
-report_btr_usrep-reeds_7.30.csv,USREP-ReEDS,btr2_ref,,,,
-report_btr_usrep-reeds_7.30.csv,USREP-ReEDS,btr2_wm,USREP-ReEDS,wm,btr - USREP reeds BTR wm,btr
-report_btr_usrep-reeds_7.30.csv,USREP-ReEDS,btr2_ira_trn,,,,
-report_btr_usrep-reeds_7.30.csv,USREP-ReEDS,btr2_trn,,,,
+emf_usrep_reeds_btr_8.2.csv,USREP-ReEDS,btr3_ref,USREP-ReEDS,ref,,btr
+emf_usrep_reeds_btr_8.2.csv,USREP-ReEDS,btr3_wm_low,USREP-ReEDS,wm_low,,btr
+emf_usrep_reeds_btr_8.2.csv,USREP-ReEDS,btr3_wm_mid,USREP-ReEDS,wm,,btr
