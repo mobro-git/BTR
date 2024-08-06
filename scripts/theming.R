@@ -130,6 +130,8 @@ master_palette <- c(
 color_map <- c(
   # scenarios
   "wm" = "teal blue",
+  "2024 Policy Baseline" = "teal blue",
+  "Historical" = "black",
   "IRA" = "apricotD",
   
   # models

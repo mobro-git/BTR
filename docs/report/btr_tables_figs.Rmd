@@ -139,7 +139,9 @@ net_ghg = projections_all_sm %>%
   summarise(sum = sum(sum)) %>%
   filter(year %in% config$fives)
 
-ghgi = net_ghg %>% filter(proj_name == "ghgi")
+ghgi = net_ghg %>% 
+  filter(proj_name == "ghgi") %>% 
+  mutate(grouping = "Historical")
 proj_no_connect = net_ghg %>% 
   filter(proj_name != "ghgi")
 
@@ -155,7 +157,8 @@ proj_connect = proj_no_connect %>%
 
 proj = rbind(proj_no_connect, proj_connect) %>%
   mutate(year = as.numeric(year)) %>%
-  filter(grouping == 'wm')
+  filter(grouping == 'wm') %>%
+  mutate(grouping = "2024 Policy Baseline")
 
 ndc_targets = data.frame(
   year = c(2020, 2025, 2030),
@@ -185,7 +188,9 @@ net_ghg = projections_all_sm %>%
   mutate(pct_change_05 = round((sum/sum[year==2005]-1),2))
 
 
-ghgi = net_ghg %>% filter(proj_name == "ghgi")
+ghgi = net_ghg %>% 
+  filter(proj_name == "ghgi") %>%
+  mutate(grouping = "Historical")
 proj_no_connect = net_ghg %>% 
   filter(proj_name != "ghgi")
 
@@ -201,7 +206,8 @@ proj_connect = proj_no_connect %>%
 
 proj = rbind(proj_no_connect, proj_connect) %>%
   mutate(year = as.numeric(year)) %>%
-  filter(grouping == 'wm')
+  filter(grouping == 'wm') %>%
+  mutate(grouping = "2024 Policy Baseline")
 
 ndc_targets = data.frame(
   year = c(2020, 2025, 2030),
@@ -238,7 +244,7 @@ net_ghg_stackbar
 # TODO: updated KAYA figure
 - David's updated KAYA workbook for gdp, pop, and energy
 - BR_voluntarysupplement workbook (in data-raw/ncbr comp folder) for BR Total Gross Emissions
----- need to add historical data for BR5 - 2022 GHGI through 2020
+
 - BTR2024 total gross emissions (range) from projections_all_sm, gpd, energy, pop data_long_clean
 - will need to calculate the emissions/energy for BTR24, the other 3 ratio variables should be present in data_long_clean
 
@@ -311,6 +317,7 @@ Kaya <- function(dat_range, dat4, var_palette){
 fig <- Kaya(dat_range, dat4, var_palette)
 fig
 ```
+
 ```{r}
 filename <- paste0("kaya_fig_",Sys.Date(),".png")
 ggsave(paste0('output/',settings$version,"/tables_figs/kaya/",filename))
@@ -428,7 +435,7 @@ industry
 
 ```{r}
 # Load in past NCBR data
-ncbr_comp_data_hist <- read_csv('data-raw/ncbr_comparison/total_gross_ghg_ncbr_comparisons.csv')
+ncbr_comp_data_hist <- read_csv('data-raw/ncbr_comparison/total_gross_ghg_ncbr_comparisons_ar4.csv')
 
 ncbr_data_hist_long <- ncbr_comp_data_hist %>% 
   pivot_longer(cols = 2:20, names_to = 'year') %>%
@@ -578,7 +585,7 @@ gtsave(ncbr_comp_table, paste0('output/',settings$version,"/tables_figs/results_
 
 ```{r}
 # Load in past NCBR data
-ncbr_comp_data_hist <- read_csv('data-raw/ncbr_comparison/total_gross_ghg_ncbr_comparisons.csv')
+ncbr_comp_data_hist <- read_csv('data-raw/ncbr_comparison/total_gross_ghg_ncbr_comparisons_ar4.csv')
 
 ncbr_data_hist_long <- ncbr_comp_data_hist %>% 
   pivot_longer(cols = 2:20, names_to = 'year') %>%

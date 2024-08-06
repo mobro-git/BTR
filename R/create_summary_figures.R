@@ -31,16 +31,21 @@ br_project = function(ghgi, proj, settings, targets = NULL, legend_position = c(
               med = median(sum)) %>%
     mutate(year = as.numeric(year))
   
-  var_palette = unique(c(
-    unique(proj_range$grouping),
+  # var_palette = unique(c(
+  #   unique(ghgi$grouping),
+  #   unique(proj$grouping),
+  #   unique(proj_range$grouping),
+  #   unique(targets$grouping)
+  # ))
+  
+  var_palette = c(
     unique(ghgi$grouping),
     unique(proj$grouping),
-    unique(targets$grouping)
-  ))
+    unique(targets$grouping))
   
   projections = ggplot() +
     # Historic
-    geom_line(ghgi,mapping = aes(x = year, y = sum, color = 'black'),size = 0.7
+    geom_line(ghgi,mapping = aes(x = year, y = sum, color = grouping),size = 0.7
     ) +
     # WM
     geom_line(proj,mapping = aes(x = year, y = sum, group = proj_name, color = grouping),alpha = 0.5,size = 0.7
@@ -163,16 +168,21 @@ br_project_pct_change = function(ghgi, proj, targets = NULL, legend_position = c
               .groups = 'drop') %>%
     mutate(year = as.numeric(year))
   
-  var_palette = unique(c(
-    unique(proj_range$grouping),
+  # var_palette = unique(c(
+  #   unique(ghgi$grouping),
+  #   unique(proj$grouping),
+  #   unique(proj_range$grouping),
+  #   unique(targets$grouping)
+  # ))
+  
+  var_palette = c(
     unique(ghgi$grouping),
     unique(proj$grouping),
-    unique(targets$grouping)
-  ))
+    unique(targets$grouping))
   
   projections = ggplot() +
     # Historic
-    geom_line(ghgi,mapping = aes(x = year, y = pct_change_05, group = proj_name),color = "black",size = 0.7
+    geom_line(ghgi,mapping = aes(x = year, y = pct_change_05, group = proj_name, color = grouping),size = 0.7
     ) +
     # WM
     geom_line(proj,mapping = aes(x = year, y = pct_change_05, group = proj_name, color = grouping),alpha = 0.5,size = 0.7
