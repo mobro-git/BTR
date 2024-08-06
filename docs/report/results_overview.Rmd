@@ -27,7 +27,7 @@ tar_load(
     config,
     settings,
     data_long_clean,
-    projections_all_sm,
+    projections_all_sm, 
     figmap_nrgco2_stackbar,
     figmap_nrgco2_timeseries,
     figmap_nrgco2_diffbar

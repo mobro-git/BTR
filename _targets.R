@@ -60,6 +60,8 @@ tar_plan(
     fives_proj = c(seq(2020,2050, by = 5)),
     fives_proj_sm = c(seq(2025,2040, by = 5)),
     
+    kaya = c(seq(1990,settings$base_year,by=1),seq(2025,2050,by = 5)),
+    
     annual_proj = c(seq(2020,2050, by = 1)),
     last_proj = 2040,
     base_proj = c(settings$base_year,seq(2025,2050, by = 5)),
@@ -102,11 +104,16 @@ tar_plan(
   tar_target(usproj_files, dir_ls(usproj_data_folder), format = "file"),
   
   # Past projections and drivers
-  tar_target(past_proj_csv, "data-raw/ncbr_comparison/total_gross_ghg_ncbr_comparisons.csv", format = "file"),
+  tar_target(past_proj_csv, "data-raw/ncbr_comparison/total_gross_ghg_ncbr_comparisons_ar5.csv", format = "file"),
   tar_target(past_proj, read_csv(past_proj_csv)),
   
   tar_target(past_driver_csv, "data-raw/ncbr_comparison/tbl_5-6_drivers_comparison.csv", format = "file"),
   tar_target(past_driver, read_csv(past_driver_csv)),
+  
+  tar_target(past_kaya_no_emissions_xlsx, "data-raw/ncbr_comparison/kaya_comparison_2024_btr1_ar5.xlsx", format = "file"),
+  tar_target(past_kaya_no_emissions, read_xlsx(past_kaya_no_emissions_xlsx)),
+  
+  kaya_comparison = full_kaya_comparison(past_kaya_no_emissions,past_proj,total_gross_emissions),
   
   #### Data Processing -----------------------
   
@@ -228,11 +235,11 @@ tar_plan(
   sector_breakout = gen_sector_breakout(sector_dataset, config, settings, category_order = config$sector_order),
   
   # Sum Total Gross Emissions ----
-  tar_target(total_gross_emissions, gen_total_gross_emissions(gas_dataset)),
+  tar_target(total_gross_emissions, gen_total_gross_emissions(gas_dataset, config)),
   
   # Calculate Total Net Emissions and write ----
-  tar_target(total_net_emissions, gen_total_net_emissions(gas_dataset, lulucf_sink_breakout, settings)),
-
+  tar_target(total_net_emissions, gen_total_net_emissions(gas_dataset, lulucf_sink_breakout, settings, config)),
+  
   ### QA/QC ----
   
   check_nrg_excl_trn_acct = {

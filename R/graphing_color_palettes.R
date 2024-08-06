@@ -35,6 +35,8 @@ scale_subpalette_single <- function(var_palette, aesthetics = c("colour","fill")
     
   scale_fill_manual(values = sub_palettes[["palette_single"]],
                     aesthetics = aesthetics,
+                    breaks = names(sub_palettes[["palette_single"]]),
+                    labels = names(sub_palettes[["palette_single"]]),
                     ...)
   
 }

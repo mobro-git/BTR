@@ -151,19 +151,18 @@ gen_sector_breakout <- function(sector_dataset, config, settings, category_order
 
 
 
-gen_total_gross_emissions <- function(gas_dataset){
+gen_total_gross_emissions <- function(gas_dataset,config){
   
   summarized_df <- gas_dataset %>%
+    filter(year %in% config$kaya) %>%
     group_by(proj_name, year) %>% 
     summarise(value = sum(mmtco2e),.groups='drop') %>% 
     mutate(source = 'Total Gross Emissions') %>% 
     select(proj_name,source, everything())
-  
-  
 }
 
 
-gen_total_net_emissions <- function(gas_dataset,lulucf_sink_breakout,settings){
+gen_total_net_emissions <- function(gas_dataset,lulucf_sink_breakout,settings,config){
   
   cols_gas_breakout <- colnames(gas_dataset)
   
@@ -176,7 +175,7 @@ gen_total_net_emissions <- function(gas_dataset,lulucf_sink_breakout,settings){
   combined_df <- bind_rows(gas_dataset, lulucf_sink_breakout)
   
   tne_df <- combined_df %>%
-    gen_total_gross_emissions() %>% 
+    gen_total_gross_emissions(config) %>% 
     mutate(source = 'Total Net Emissions') %>% 
     select(proj_name,source, everything())
   
