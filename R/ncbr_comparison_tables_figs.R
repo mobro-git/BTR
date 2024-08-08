@@ -1,16 +1,17 @@
 
 ncbr_comparison_figure <- function(ncbr_comp_ribbon, tge_all_long, settings, config) {
   
-  ncbr_hist_btr <- tge_all_long %>% filter(Report == 'btr_2024',
+  ncbr_hist_btr <- tge_all_long %>% filter(Report == '2024 BTR',
                                            Year <= 2022,
                                            Year %in% config$fives)
   
-  ncbr_hist_long <- tge_all_long %>% filter(!Report == 'btr_2024',
-                                            Year <= 2022,
+  ncbr_hist_long <- tge_all_long %>% filter(!Report == '2024 BTR',
+                                            Year <= 2035,
                                             Year %in% config$fives)
   
   ncbr_ribbon_clean <- ncbr_comp_ribbon %>% 
-    filter(Year %in% config$fives)
+    filter(Year %in% config$fives,
+           Report == '2024 BTR')
   
   # tge_ends <- tge_all_long %>%
   #   filter(Year == max(Year),
@@ -52,16 +53,17 @@ ncbr_comparison_figure <- function(ncbr_comp_ribbon, tge_all_long, settings, con
 
 ncbr_comp_fig_1990 <- function(ncbr_comp_ribbon, tge_all_long, settings, config) {
   
-  ncbr_hist_btr <- tge_all_long %>% filter(Report == 'btr_2024',
+  ncbr_hist_btr <- tge_all_long %>% filter(Report == '2024 BTR',
                                            Year <= 2022,
                                            Year %in% config$annual_1990_fives)
   
-  ncbr_hist_long <- tge_all_long %>% filter(!Report == 'btr_2024',
-                                            Year <= 2022,
+  ncbr_hist_long <- tge_all_long %>% filter(!Report == '2024 BTR',
+                                            Year <= 2035,
                                             Year %in% config$annual_1990_fives)
   
   ncbr_ribbon_clean <- ncbr_comp_ribbon %>% 
-    filter(Year %in% config$annual_1990_fives)
+    filter(Year %in% config$annual_1990_fives,
+           Report == '2024 BTR')
   
   # tge_ends <- tge_all_long %>%
   #   filter(Year == max(Year),
@@ -90,7 +92,7 @@ ncbr_comp_fig_1990 <- function(ncbr_comp_ribbon, tge_all_long, settings, config)
          y = expression(paste("Total Gross GHG Emissions (MMt ", CO[2], "e)", sep = ""))) +
     scale_subpalette_single(var_palette) +
     scale_y_continuous(labels = scales::comma) +
-    scale_x_continuous(breaks = c(2005, 2010, 2015, 2020, 2022, 2025, 2030, 2035, 2040), expand = c(0,0)) +
+    scale_x_continuous(breaks = c(1990,1995,2000,2005, 2010, 2015, 2020, 2022, 2025, 2030, 2035, 2040), expand = c(0,0)) +
     theme_btr() +
     theme(
       legend.position = "inside",

@@ -445,7 +445,12 @@ past_proj_clean_hilow <- past_proj %>%
   rename(Value = Emissions) %>%
   group_by(Report,Year) %>%
   mutate(low = min(Value),
-         high = max (Value)) %>%
+         high = max (Value),
+         Report = case_when(Report == "btr_2024" ~ "2024 BTR",
+                            Report == "car_2014" ~ "2014 CAR",
+                            Report == "br_2016" ~ "2016 BR",
+                            Report == "br_2021" ~ "2021 BR",
+                            Report == "br_2022" ~ "2022 BR")) %>%
   select(Report,Year,low,high)
 
 
@@ -480,7 +485,6 @@ summary_total_gross <- summary %>%
 tge_all_long_high_low <- summary_total_gross %>%
   rename(Report = Projection,
          Year = year) %>%
-  mutate(Report = 'btr_2024') %>%
   rbind(past_proj_clean_hilow) %>%
   filter(Year %in% config$seq_ncbr_comp_sm) %>%
   drop_na() %>%
@@ -605,7 +609,12 @@ tge_all_long <- tge_btr %>%
   rename(Year = year) %>% 
   select(names(past_proj_clean)) %>%
   rbind(past_proj_clean) %>%
-  mutate(Year = as.numeric(Year))
+  mutate(Year = as.numeric(Year),
+         Report = case_when(Report == "btr_2024" ~ "2024 BTR",
+                            Report == "car_2014" ~ "2014 CAR",
+                            Report == "br_2016" ~ "2016 BR",
+                            Report == "br_2021" ~ "2021 BR",
+                            Report == "br_2022" ~ "2022 BR"))
 #%>%
  # filter(year %in% config$fives_proj_sm)
 
