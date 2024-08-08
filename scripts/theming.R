@@ -319,8 +319,10 @@ color_map <- c(
   "2024 BTR Low" = "teal blue",
   "2024 BTR" = "teal blue",
   '2022 NC' = 'm.green',
+  '2022 BR' = 'm.green',
   '2021 NC' = 'teal green',
   '2021 CAR' = 'teal green',
+  '2021 BR' = 'teal green',
   '2016 BR' = 'dark salmon',
   '2016 CAR' = 'dark salmon',
   '2014 NC' = 'light orange',
@@ -331,7 +333,16 @@ color_map <- c(
   '2006 CAR' = 'hue1',
   'ghgi' = "black",
   
-  
+  "btr_2024" = "teal blue",
+  'br_2022' = 'm.green',
+  'br_2021' = 'teal green',
+  'br_2016' = 'dark salmon',
+  'car_2014' = 'light orange',
+  'nc_2010' = 'very dark blue',
+  'car_2010' = 'very dark blue',
+  'nc_2006' = 'hue1',
+  'car_2006' = 'hue1',
+
   # Kaya Variables
   "EmissPerEnergyIn" = "m.green",
   "EnergyPerGDPIn" = "teal blue",

@@ -37,7 +37,8 @@ tar_load(
     projections_all_sm,
     total_gross_emissions,
     ghgi_comp_tab,
-    figmap_nrgco2_stackbar
+    figmap_nrgco2_stackbar,
+    past_proj
     )
   )
 
@@ -435,13 +436,23 @@ industry
 
 ```{r}
 # Load in past NCBR data
-ncbr_comp_data_hist <- read_csv('data-raw/ncbr_comparison/total_gross_ghg_ncbr_comparisons_ar4.csv')
+past_proj_clean <- past_proj %>%
+  select(Report, Year, Emissions) %>%
+  rename(Value = Emissions)
 
-ncbr_data_hist_long <- ncbr_comp_data_hist %>% 
-  pivot_longer(cols = 2:20, names_to = 'year') %>%
-  mutate(year = as.numeric(year),
-         high = value) %>%
-  rename(low = value)
+past_proj_clean_hilow <- past_proj %>%
+  select(Report, Year, Emissions) %>%
+  rename(Value = Emissions) %>%
+  group_by(Report,Year) %>%
+  mutate(low = min(Value),
+         high = max (Value),
+         Report = case_when(Report == "btr_2024" ~ "2024 BTR",
+                            Report == "car_2014" ~ "2014 CAR",
+                            Report == "br_2016" ~ "2016 BR",
+                            Report == "br_2021" ~ "2021 BR",
+                            Report == "br_2022" ~ "2022 BR")) %>%
+  select(Report,Year,low,high)
+
 
 ```
 
@@ -472,10 +483,12 @@ summary_total_gross <- summary %>%
   mutate(Projection = '2024 BTR')
 
 tge_all_long_high_low <- summary_total_gross %>%
-  rbind(ncbr_data_hist_long) %>%
-  filter(year %in% config$seq_ncbr_comp_sm) %>%
+  rename(Report = Projection,
+         Year = year) %>%
+  rbind(past_proj_clean_hilow) %>%
+  filter(Year %in% config$seq_ncbr_comp_sm) %>%
   drop_na() %>%
-  rename(Publication = Projection)
+  rename(Publication = Report)
 
 proj_years <- c('2025', '2030', '2035', '2040')
 hist_years <- c('2005', '2010', '2015', '2020')
@@ -491,13 +504,13 @@ proj_col_order <- c(
 )
 
 df_low <- tge_all_long_high_low %>%
-  select(Publication, year, low) %>%
-  pivot_wider(names_from = 'year', values_from = 'low')
+  select(Publication, Year, low) %>%
+  pivot_wider(names_from = 'Year', values_from = 'low')
 
 
 df_high <- tge_all_long_high_low %>%
-  select(Publication, year, high) %>%
-  pivot_wider(names_from = 'year', values_from = 'high')
+  select(Publication, Year, high) %>%
+  pivot_wider(names_from = 'Year', values_from = 'high')
 
 df_merged <- merge(df_low[, c('Publication', proj_years)],
                    df_high[, c('Publication', proj_years)],
@@ -561,15 +574,16 @@ ncbr_comp_table <- merged %>%
   gt() %>%
   cols_align('center', columns = everything()) %>%
   cols_align('left', columns = stubhead) %>%
-  tab_style(
-    style = cell_borders(
-      color = "#1F77AE",
-      sides = c("bottom"),
-      weight = px(2)
-    ),
-    #
-    locations = cells_body(rows = c(bold1, bold2, bold3))
-  ) %>%
+  # tab_style(
+  #   style = cell_borders(
+  #     color = "#1F77AE",
+  #     sides = c("bottom"),
+  #     weight = px(2)
+  #   ),
+  #   #
+  #   locations = cells_body(rows = c(bold1, bold2, bold3))
+  # ) %>% 
+
   
   gt_theme_nc_blue()
 
@@ -584,38 +598,32 @@ gtsave(ncbr_comp_table, paste0('output/',settings$version,"/tables_figs/results_
 ```
 
 ```{r}
-# Load in past NCBR data
-ncbr_comp_data_hist <- read_csv('data-raw/ncbr_comparison/total_gross_ghg_ncbr_comparisons_ar4.csv')
-
-ncbr_data_hist_long <- ncbr_comp_data_hist %>% 
-  pivot_longer(cols = 2:20, names_to = 'year') %>%
-  mutate(proj_name = Projection) %>%
-  select(proj_name, everything())
-
-# Pivot BTR total gross emissions long
 
 tge_btr <- projections_all_sm %>% 
   filter(!gas == 'LULUCF Sink') %>%
   group_by(proj_name, grouping, year) %>%
-  summarise(value = sum(sum),.groups = 'drop')
+  summarise(Value = sum(sum),.groups = 'drop')
 
-tge_all_long <- total_gross_emissions %>%
-  mutate(Projection = '2024 BTR') %>%
-  select(proj_name,names(ncbr_data_hist_long)) %>%
-  rbind(ncbr_data_hist_long) %>%
-  mutate(year = as.numeric(year))
+tge_all_long <- tge_btr %>%
+  mutate(Report = 'btr_2024') %>%
+  rename(Year = year) %>% 
+  select(names(past_proj_clean)) %>%
+  rbind(past_proj_clean) %>%
+  mutate(Year = as.numeric(Year),
+         Report = case_when(Report == "btr_2024" ~ "2024 BTR",
+                            Report == "car_2014" ~ "2014 CAR",
+                            Report == "br_2016" ~ "2016 BR",
+                            Report == "br_2021" ~ "2021 BR",
+                            Report == "br_2022" ~ "2022 BR"))
 #%>%
  # filter(year %in% config$fives_proj_sm)
 
-ncbr_comp_table_df <- tge_all_long %>% 
-  pivot_wider(names_from = year,
-              values_from = value)
 
-ncbr_comp_table_df <- tge_all_long %>% 
-  group_by(Projection,year) %>%
-  mutate(min = min(value),
-         max = max(value)) %>%
-  select(Projection,year,min,max) %>%
+ncbr_comp_ribbon <- tge_all_long %>% 
+  group_by(Report,Year) %>%
+  mutate(min = min(Value),
+         max = max(Value)) %>%
+  select(Report,Year,min,max) %>%
   distinct()
 
 ```
@@ -623,7 +631,7 @@ ncbr_comp_table_df <- tge_all_long %>%
 ## Figure: NCBR Comparison
 
 ```{r}
-fig <- ncbr_comparison_figure(ncbr_comp_data_hist, tge_all_long, settings, config)
+fig <- ncbr_comparison_figure(ncbr_comp_ribbon, tge_all_long, settings, config)
 fig
 
 ```
@@ -635,18 +643,7 @@ ggsave(paste0('output/',settings$version,"/tables_figs/results_tables/ncbr_compa
 ## NCBR Comparision Figure: From 1990
 
 ```{r}
-ncbr_90 <- read_csv("data-raw/ncbr_comparison/past_nc_br_comparison_data.csv")
-
-tge_90 <- ncbr_90 %>% filter(category == 'GrossTotal',
-                          gas == 'Total')
-
-tge_90_long <- tge_90 %>% pivot_longer(cols = 8:53,
-                                       names_to = 'year') %>%
-  rename(Projection = publication) %>% 
-  select(Projection,year,value) %>%
-  mutate(year = as.numeric(year))
-
-fig <- ncbr_comp_fig_1990(tge_90_long, tge_all_long, settings, config)
+fig <- ncbr_comp_fig_1990(ncbr_comp_ribbon, tge_all_long, settings, config)
 fig
 
 ```
