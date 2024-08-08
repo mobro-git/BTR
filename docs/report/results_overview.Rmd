@@ -686,16 +686,19 @@ sw_df2 = sw_df %>%
 grid.table(sw_df2)
 ```
 
-Reduction in coal to electricity in 2040 compared to model's 2020
+Reduction in coal to electricity in 2040 compared to model's EIA 2023
 ```{r}
 var_list <- 'Secondary Energy|Electricity|Input|Coal'
 
 pec_df <- get_value_breakout(data_long_clean,var_list, config)
+
+Coal2023 = 7241.636*1000000000000*1.05506e-15
+
 pec_df2 = pec_df %>% 
   spread(year, value) %>% 
   rename(base ="2020",
          target = "2040") %>% 
-  mutate(reduction =1 - (target/base)) %>% 
+  mutate(reduction =1 - (target/Coal2023)) %>% 
   select(model,variable,reduction) %>% 
   spread(model,reduction)
 
@@ -714,7 +717,7 @@ vs_df2 = vs_df %>%
   filter(year ==2040) %>% 
   spread(model,value) 
 
-grid.table(pec_df2)
+grid.table(vs_df2)
   
 ```
 
