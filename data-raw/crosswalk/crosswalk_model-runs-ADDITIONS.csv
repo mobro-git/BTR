@@ -1,4 +1,2 @@
 datasrc,model,scenario
-emf_usrep_reeds_btr_8.2.csv,USREP-ReEDS,btr3_ref
-emf_usrep_reeds_btr_8.2.csv,USREP-ReEDS,btr3_wm_low
-emf_usrep_reeds_btr_8.2.csv,USREP-ReEDS,btr3_wm_mid
+OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,OP-NEMS,OP Moderate

@@ -113,7 +113,7 @@ tar_plan(
   tar_target(past_kaya_no_emissions_xlsx, "data-raw/ncbr_comparison/kaya_comparison_2024_btr1_ar5.xlsx", format = "file"),
   tar_target(past_kaya_no_emissions, read_xlsx(past_kaya_no_emissions_xlsx)),
   
-  kaya_comparison = full_kaya_comparison(past_kaya_no_emissions,past_proj,total_gross_emissions),
+  kaya_comparison = full_kaya_comparison(past_kaya_no_emissions,past_proj,total_gross_emissions,data_long_clean),
   
   #### Data Processing -----------------------
   

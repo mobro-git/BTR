@@ -38,6 +38,8 @@ ggplot() +
   ylim(c(3000,9000)) 
 
 tge_all_ar5_sm = rbind(tge_2014,tge_2016,tge_2021,tge_2022) %>%
-  mutate(notes = "Data pulled from data-raw/ncbr_comparison/AllReports_AllARs_usproj.csv in BTR repo. AllReports_AllARs_usproj.csv created in the usproj repo")
+  mutate(
+    variable = "Total Gross GHG Emissions",
+    notes = "Data pulled from data-raw/ncbr_comparison/AllReports_AllARs_usproj.csv in BTR repo. AllReports_AllARs_usproj.csv created in the usproj repo")
 
 write_csv(tge_all_ar5_sm, "data-raw/ncbr_comparison/total_gross_ghg_ncbr_comparisons_ar5.csv")
