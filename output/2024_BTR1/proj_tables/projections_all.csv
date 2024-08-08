@@ -1,172 +1,172 @@
 proj_name,grouping,model,scenario,usproj_sector,gas,year,value,unit,usproj_category,usproj_source,usproj_subsource,region,datasrc,btr_var
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2023,254.38604699999996,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2023,336.335144,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2023,742.7896127037747,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2023,1794.92923,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2023,1397.029297,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2023,223.6375412962253,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2024,247.350617,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2024,316.16986099999997,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2024,743.2860295906403,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2024,1776.4491449999998,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2024,1362.21582,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2024,213.0149954093597,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2025,248.31021199999998,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2025,316.472168,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2025,722.5001835913715,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2025,1762.84272,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2025,1302.968628,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2025,213.1935114086286,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2026,249.29339600000003,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2026,316.53442299999995,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2026,733.5476070366103,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2026,1734.8233089999999,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2026,1190.950439,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2026,217.70593296338959,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2027,249.29241900000005,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2027,316.2211,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2027,742.1845102073655,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2027,1707.49086,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2027,1041.843506,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2027,210.19863879263445,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2028,250.15918000000005,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2028,315.535248,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2028,752.0334568406225,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2028,1676.139471,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2028,912.304016,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2028,208.73279415937745,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2029,250.281449,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2029,314.03302,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2029,756.979044309872,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2029,1638.01688,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2029,789.441589,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2029,208.32400969012807,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2030,250.02085899999997,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2030,311.317489,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2030,761.3701676170385,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2030,1593.611931,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2030,670.204956,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2030,207.2997843829615,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2031,249.70158400000003,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2031,308.100464,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2031,767.4713088445417,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2031,1546.604267,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2031,612.404358,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2031,204.22450715545827,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2032,249.28100600000002,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2032,304.89245600000004,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2032,775.9126049464473,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2032,1495.9325680000002,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2032,568.434814,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2032,201.75811005355268,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2033,248.78814699999998,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2033,302.06692499999997,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2033,782.3494169514715,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2033,1447.156311,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2033,528.962219,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2033,197.78615804852842,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2034,248.258072,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2034,299.18748400000004,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2034,788.8049302310418,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2034,1399.439045,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2034,484.387177,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2034,195.11530476895825,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2035,247.702453,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2035,296.416733,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2035,796.7225415391806,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2035,1352.578327,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2035,455.511902,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2035,190.3224874608194,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2036,247.045227,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2036,293.770752,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2036,804.1572084627276,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2036,1301.7448840000002,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2036,464.424255,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2036,189.97993753727243,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2037,246.26698300000004,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2037,291.234467,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2037,820.0457151040289,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2037,1259.295952,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2037,463.891083,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2037,186.26466389597113,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2038,245.25424200000003,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2038,288.724914,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2038,828.352747274578,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2038,1215.7740629999998,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2038,464.750366,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2038,182.12233472542198,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2039,244.29768399999998,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2039,286.373566,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2039,835.6098834747092,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2039,1177.106255,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2039,410.240234,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2039,181.3104195252907,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2040,243.20459699999998,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2040,284.219207,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2040,843.9549043024042,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2040,1141.612389,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2040,402.080261,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2040,189.3134066975958,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2041,242.35249299999998,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2041,282.23432099999997,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2041,851.7435825059281,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2041,1114.120498,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2041,403.460236,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2041,182.68468649407188,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2042,241.607071,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2042,280.40960700000005,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2042,862.9562116053779,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2042,1090.28389,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2042,414.123657,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2042,179.65401839462206,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2043,240.92789499999998,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2043,278.793319,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2043,873.4362578523583,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2043,1068.87159,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2043,422.646454,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2043,180.69251114764162,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2044,240.349457,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2044,277.359955,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2044,878.1164938736508,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2044,1049.9002150000001,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2044,421.164429,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2044,181.0993721263492,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2045,239.80513000000002,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2045,276.074211,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2045,886.5833068208146,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2045,1034.516693,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2045,416.338715,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2045,180.76213617918526,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2046,239.32521100000002,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2046,274.885651,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2046,898.0011150434781,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2046,1023.18943,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2046,418.013489,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2046,180.0156239565218,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2047,238.78423299999997,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2047,273.76268,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2047,907.1203901230227,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2047,1014.9437640000001,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2047,422.204163,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2047,180.42917087697728,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2048,238.17664299999998,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2048,272.689407,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2048,910.3278786855578,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2048,1005.9200359999999,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2048,421.065735,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2048,180.54339031444218,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2049,237.559502,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2049,271.667671,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2049,911.9138773792927,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2049,997.5921629999999,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2049,411.330353,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2049,181.4715136207073,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2050,237.129882,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2050,270.77812900000004,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2050,910.9700106252579,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2050,992.7233879999999,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2050,406.753876,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2050,178.32905337474213,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2023,254.38604699999996,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2023,336.335144,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2023,742.7896127037747,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2023,1794.92923,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2023,1397.029297,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2023,223.6375412962253,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2024,247.350617,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2024,316.16986099999997,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2024,743.2860295906403,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2024,1776.4491449999998,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2024,1362.21582,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2024,213.0149954093597,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2025,248.31021199999998,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2025,316.472168,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2025,722.5001835913715,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2025,1762.84272,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2025,1302.968628,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2025,213.1935114086286,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2026,249.29339600000003,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2026,316.53442299999995,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2026,733.5476070366103,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2026,1734.8233089999999,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2026,1190.950439,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2026,217.70593296338959,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2027,249.29241900000005,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2027,316.2211,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2027,742.1845102073655,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2027,1707.49086,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2027,1041.843506,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2027,210.19863879263445,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2028,250.15918000000005,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2028,315.535248,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2028,752.0334568406225,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2028,1676.139471,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2028,912.304016,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2028,208.73279415937745,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2029,250.281449,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2029,314.03302,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2029,756.979044309872,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2029,1638.01688,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2029,789.441589,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2029,208.32400969012807,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2030,250.02085899999997,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2030,311.317489,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2030,761.3701676170385,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2030,1593.611931,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2030,670.204956,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2030,207.2997843829615,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2031,249.70158400000003,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2031,308.100464,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2031,767.4713088445417,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2031,1546.604267,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2031,612.404358,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2031,204.22450715545827,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2032,249.28100600000002,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2032,304.89245600000004,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2032,775.9126049464473,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2032,1495.9325680000002,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2032,568.434814,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2032,201.75811005355268,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2033,248.78814699999998,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2033,302.06692499999997,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2033,782.3494169514715,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2033,1447.156311,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2033,528.962219,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2033,197.78615804852842,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2034,248.258072,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2034,299.18748400000004,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2034,788.8049302310418,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2034,1399.439045,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2034,484.387177,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2034,195.11530476895825,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2035,247.702453,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2035,296.416733,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2035,796.7225415391806,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2035,1352.578327,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2035,455.511902,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2035,190.3224874608194,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2036,247.045227,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2036,293.770752,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2036,804.1572084627276,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2036,1301.7448840000002,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2036,464.424255,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2036,189.97993753727243,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2037,246.26698300000004,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2037,291.234467,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2037,820.0457151040289,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2037,1259.295952,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2037,463.891083,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2037,186.26466389597113,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2038,245.25424200000003,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2038,288.724914,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2038,828.352747274578,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2038,1215.7740629999998,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2038,464.750366,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2038,182.12233472542198,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2039,244.29768399999998,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2039,286.373566,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2039,835.6098834747092,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2039,1177.106255,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2039,410.240234,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2039,181.3104195252907,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2040,243.20459699999998,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2040,284.219207,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2040,843.9549043024042,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2040,1141.612389,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2040,402.080261,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2040,189.3134066975958,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2041,242.35249299999998,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2041,282.23432099999997,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2041,851.7435825059281,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2041,1114.120498,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2041,403.460236,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2041,182.68468649407188,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2042,241.607071,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2042,280.40960700000005,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2042,862.9562116053779,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2042,1090.28389,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2042,414.123657,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2042,179.65401839462206,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2043,240.92789499999998,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2043,278.793319,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2043,873.4362578523583,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2043,1068.87159,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2043,422.646454,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2043,180.69251114764162,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2044,240.349457,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2044,277.359955,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2044,878.1164938736508,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2044,1049.9002150000001,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2044,421.164429,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2044,181.0993721263492,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2045,239.80513000000002,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2045,276.074211,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2045,886.5833068208146,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2045,1034.516693,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2045,416.338715,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2045,180.76213617918526,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2046,239.32521100000002,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2046,274.885651,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2046,898.0011150434781,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2046,1023.18943,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2046,418.013489,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2046,180.0156239565218,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2047,238.78423299999997,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2047,273.76268,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2047,907.1203901230227,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2047,1014.9437640000001,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2047,422.204163,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2047,180.42917087697728,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2048,238.17664299999998,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2048,272.689407,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2048,910.3278786855578,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2048,1005.9200359999999,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2048,421.065735,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2048,180.54339031444218,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2049,237.559502,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2049,271.667671,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2049,911.9138773792927,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2049,997.5921629999999,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2049,411.330353,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2049,181.4715136207073,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2050,237.129882,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2050,270.77812900000004,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2050,910.9700106252579,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_lowseq,wm,OP-NEMS,wm,Transportation,CO2,2050,992.7233879999999,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2050,406.753876,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_lowseq,wm,OP-NEMS,wm,Energy,CO2,2050,178.32905337474213,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
 nems_wm_lowseq,wm,lulucf,bau_low,LULUCF Sink,LULUCF Sink,2025,-743.0971115756233,MMT CO2e,LULUCF Sink,LULUCF Sink,LULUCF Sink,United States,lulucf_lts.xlsx,LandSink
 nems_wm_lowseq,wm,lulucf,bau_low,LULUCF Sink,LULUCF Sink,2030,-743.0971115756233,MMT CO2e,LULUCF Sink,LULUCF Sink,LULUCF Sink,United States,lulucf_lts.xlsx,LandSink
 nems_wm_lowseq,wm,lulucf,bau_low,LULUCF Sink,LULUCF Sink,2035,-659.263229427202,MMT CO2e,LULUCF Sink,LULUCF Sink,LULUCF Sink,United States,lulucf_lts.xlsx,LandSink
@@ -13965,174 +13965,174 @@ usrr_ira_lowseq,IRA,usproj,wm,IPPU,CO2,2047,0.25,MMTCO2e,Zinc,Zinc,Zinc,United S
 usrr_ira_lowseq,IRA,usproj,wm,IPPU,CO2,2048,0.24,MMTCO2e,Zinc,Zinc,Zinc,United States,usproj_emissions_2024_wide_for_btr_ta_6-14_usprojRUN06242024.csv,
 usrr_ira_lowseq,IRA,usproj,wm,IPPU,CO2,2049,0.23,MMTCO2e,Zinc,Zinc,Zinc,United States,usproj_emissions_2024_wide_for_btr_ta_6-14_usprojRUN06242024.csv,
 usrr_ira_lowseq,IRA,usproj,wm,IPPU,CO2,2050,0.22,MMTCO2e,Zinc,Zinc,Zinc,United States,usproj_emissions_2024_wide_for_btr_ta_6-14_usprojRUN06242024.csv,
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2023,254.38604699999996,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2023,336.335144,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2023,742.7896127037747,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2023,1794.92923,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2023,1397.029297,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2023,223.6375412962253,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2024,247.350617,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2024,316.16986099999997,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2024,743.2860295906403,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2024,1776.4491449999998,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2024,1362.21582,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2024,213.0149954093597,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2025,248.31021199999998,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2025,316.472168,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2025,722.5001835913715,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2025,1762.84272,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2025,1302.968628,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2025,213.1935114086286,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2026,249.29339600000003,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2026,316.53442299999995,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2026,733.5476070366103,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2026,1734.8233089999999,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2026,1190.950439,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2026,217.70593296338959,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2027,249.29241900000005,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2027,316.2211,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2027,742.1845102073655,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2027,1707.49086,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2027,1041.843506,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2027,210.19863879263445,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2028,250.15918000000005,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2028,315.535248,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2028,752.0334568406225,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2028,1676.139471,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2028,912.304016,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2028,208.73279415937745,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2029,250.281449,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2029,314.03302,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2029,756.979044309872,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2029,1638.01688,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2029,789.441589,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2029,208.32400969012807,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2030,250.02085899999997,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2030,311.317489,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2030,761.3701676170385,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2030,1593.611931,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2030,670.204956,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2030,207.2997843829615,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2031,249.70158400000003,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2031,308.100464,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2031,767.4713088445417,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2031,1546.604267,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2031,612.404358,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2031,204.22450715545827,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2032,249.28100600000002,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2032,304.89245600000004,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2032,775.9126049464473,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2032,1495.9325680000002,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2032,568.434814,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2032,201.75811005355268,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2033,248.78814699999998,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2033,302.06692499999997,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2033,782.3494169514715,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2033,1447.156311,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2033,528.962219,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2033,197.78615804852842,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2034,248.258072,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2034,299.18748400000004,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2034,788.8049302310418,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2034,1399.439045,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2034,484.387177,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2034,195.11530476895825,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2035,247.702453,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2035,296.416733,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2035,796.7225415391806,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2035,1352.578327,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2035,455.511902,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2035,190.3224874608194,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2036,247.045227,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2036,293.770752,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2036,804.1572084627276,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2036,1301.7448840000002,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2036,464.424255,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2036,189.97993753727243,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2037,246.26698300000004,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2037,291.234467,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2037,820.0457151040289,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2037,1259.295952,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2037,463.891083,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2037,186.26466389597113,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2038,245.25424200000003,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2038,288.724914,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2038,828.352747274578,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2038,1215.7740629999998,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2038,464.750366,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2038,182.12233472542198,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2039,244.29768399999998,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2039,286.373566,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2039,835.6098834747092,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2039,1177.106255,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2039,410.240234,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2039,181.3104195252907,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2040,243.20459699999998,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2040,284.219207,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2040,843.9549043024042,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2040,1141.612389,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2040,402.080261,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2040,189.3134066975958,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2041,242.35249299999998,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2041,282.23432099999997,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2041,851.7435825059281,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2041,1114.120498,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2041,403.460236,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2041,182.68468649407188,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2042,241.607071,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2042,280.40960700000005,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2042,862.9562116053779,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2042,1090.28389,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2042,414.123657,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2042,179.65401839462206,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2043,240.92789499999998,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2043,278.793319,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2043,873.4362578523583,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2043,1068.87159,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2043,422.646454,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2043,180.69251114764162,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2044,240.349457,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2044,277.359955,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2044,878.1164938736508,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2044,1049.9002150000001,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2044,421.164429,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2044,181.0993721263492,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2045,239.80513000000002,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2045,276.074211,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2045,886.5833068208146,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2045,1034.516693,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2045,416.338715,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2045,180.76213617918526,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2046,239.32521100000002,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2046,274.885651,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2046,898.0011150434781,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2046,1023.18943,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2046,418.013489,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2046,180.0156239565218,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2047,238.78423299999997,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2047,273.76268,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2047,907.1203901230227,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2047,1014.9437640000001,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2047,422.204163,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2047,180.42917087697728,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2048,238.17664299999998,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2048,272.689407,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2048,910.3278786855578,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2048,1005.9200359999999,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2048,421.065735,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2048,180.54339031444218,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2049,237.559502,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2049,271.667671,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2049,911.9138773792927,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2049,997.5921629999999,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2049,411.330353,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2049,181.4715136207073,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2050,237.129882,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2050,270.77812900000004,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2050,910.9700106252579,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
-nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2050,992.7233879999999,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2050,406.753876,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
-nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2050,178.32905337474213,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS BTR Scenario with Measures Data 6-24-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2023,254.38604699999996,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2023,336.335144,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2023,742.7896127037747,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2023,1794.92923,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2023,1397.029297,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2023,223.6375412962253,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2024,247.350617,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2024,316.16986099999997,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2024,743.2860295906403,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2024,1776.4491449999998,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2024,1362.21582,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2024,213.0149954093597,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2025,248.31021199999998,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2025,316.472168,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2025,722.5001835913715,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2025,1762.84272,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2025,1302.968628,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2025,213.1935114086286,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2026,249.29339600000003,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2026,316.53442299999995,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2026,733.5476070366103,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2026,1734.8233089999999,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2026,1190.950439,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2026,217.70593296338959,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2027,249.29241900000005,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2027,316.2211,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2027,742.1845102073655,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2027,1707.49086,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2027,1041.843506,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2027,210.19863879263445,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2028,250.15918000000005,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2028,315.535248,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2028,752.0334568406225,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2028,1676.139471,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2028,912.304016,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2028,208.73279415937745,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2029,250.281449,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2029,314.03302,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2029,756.979044309872,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2029,1638.01688,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2029,789.441589,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2029,208.32400969012807,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2030,250.02085899999997,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2030,311.317489,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2030,761.3701676170385,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2030,1593.611931,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2030,670.204956,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2030,207.2997843829615,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2031,249.70158400000003,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2031,308.100464,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2031,767.4713088445417,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2031,1546.604267,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2031,612.404358,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2031,204.22450715545827,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2032,249.28100600000002,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2032,304.89245600000004,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2032,775.9126049464473,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2032,1495.9325680000002,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2032,568.434814,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2032,201.75811005355268,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2033,248.78814699999998,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2033,302.06692499999997,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2033,782.3494169514715,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2033,1447.156311,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2033,528.962219,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2033,197.78615804852842,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2034,248.258072,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2034,299.18748400000004,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2034,788.8049302310418,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2034,1399.439045,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2034,484.387177,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2034,195.11530476895825,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2035,247.702453,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2035,296.416733,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2035,796.7225415391806,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2035,1352.578327,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2035,455.511902,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2035,190.3224874608194,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2036,247.045227,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2036,293.770752,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2036,804.1572084627276,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2036,1301.7448840000002,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2036,464.424255,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2036,189.97993753727243,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2037,246.26698300000004,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2037,291.234467,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2037,820.0457151040289,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2037,1259.295952,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2037,463.891083,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2037,186.26466389597113,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2038,245.25424200000003,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2038,288.724914,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2038,828.352747274578,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2038,1215.7740629999998,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2038,464.750366,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2038,182.12233472542198,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2039,244.29768399999998,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2039,286.373566,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2039,835.6098834747092,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2039,1177.106255,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2039,410.240234,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2039,181.3104195252907,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2040,243.20459699999998,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2040,284.219207,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2040,843.9549043024042,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2040,1141.612389,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2040,402.080261,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2040,189.3134066975958,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2041,242.35249299999998,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2041,282.23432099999997,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2041,851.7435825059281,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2041,1114.120498,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2041,403.460236,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2041,182.68468649407188,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2042,241.607071,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2042,280.40960700000005,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2042,862.9562116053779,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2042,1090.28389,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2042,414.123657,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2042,179.65401839462206,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2043,240.92789499999998,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2043,278.793319,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2043,873.4362578523583,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2043,1068.87159,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2043,422.646454,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2043,180.69251114764162,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2044,240.349457,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2044,277.359955,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2044,878.1164938736508,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2044,1049.9002150000001,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2044,421.164429,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2044,181.0993721263492,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2045,239.80513000000002,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2045,276.074211,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2045,886.5833068208146,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2045,1034.516693,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2045,416.338715,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2045,180.76213617918526,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2046,239.32521100000002,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2046,274.885651,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2046,898.0011150434781,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2046,1023.18943,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2046,418.013489,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2046,180.0156239565218,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2047,238.78423299999997,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2047,273.76268,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2047,907.1203901230227,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2047,1014.9437640000001,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2047,422.204163,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2047,180.42917087697728,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2048,238.17664299999998,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2048,272.689407,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2048,910.3278786855578,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2048,1005.9200359999999,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2048,421.065735,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2048,180.54339031444218,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2049,237.559502,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2049,271.667671,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2049,911.9138773792927,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2049,997.5921629999999,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2049,411.330353,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2049,181.4715136207073,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2050,237.129882,Mt CO2/yr,FFCCom,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Commercial
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2050,270.77812900000004,Mt CO2/yr,FFCRes,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Buildings|Residential
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2050,910.9700106252579,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Industry
+nems_wm_hiseq,wm,OP-NEMS,wm,Transportation,CO2,2050,992.7233879999999,Mt CO2/yr,FFCTrans,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Demand|Transportation
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2050,406.753876,Mt CO2/yr,FFCElec,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Electricity
+nems_wm_hiseq,wm,OP-NEMS,wm,Energy,CO2,2050,178.32905337474213,Mt CO2/yr,FFCInd,FFC,FFC,United States,OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,Emissions|CO2|Energy|Supply|Petroleum Refining
 nems_wm_hiseq,wm,lulucf,bau_high,LULUCF Sink,LULUCF Sink,2025,-743.0971115756233,MMT CO2e,LULUCF Sink,LULUCF Sink,LULUCF Sink,United States,lulucf_lts.xlsx,LandSink
 nems_wm_hiseq,wm,lulucf,bau_high,LULUCF Sink,LULUCF Sink,2030,-883.9032739526958,MMT CO2e,LULUCF Sink,LULUCF Sink,LULUCF Sink,United States,lulucf_lts.xlsx,LandSink
 nems_wm_hiseq,wm,lulucf,bau_high,LULUCF Sink,LULUCF Sink,2035,-952.2065479053917,MMT CO2e,LULUCF Sink,LULUCF Sink,LULUCF Sink,United States,lulucf_lts.xlsx,LandSink
