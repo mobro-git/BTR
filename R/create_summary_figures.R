@@ -48,8 +48,8 @@ br_project = function(ghgi, proj, settings, targets = NULL, legend_position = c(
     geom_line(ghgi,mapping = aes(x = year, y = sum, color = grouping),size = 0.7
     ) +
     # WM
-    geom_line(proj,mapping = aes(x = year, y = sum, group = proj_name, color = grouping),alpha = 0.5,size = 0.7
-    ) +
+   # geom_line(proj,mapping = aes(x = year, y = sum, group = proj_name, color = grouping),alpha = 0.5,size = 0.7
+    #) +
     geom_ribbon(proj_range,mapping = aes(x = year,ymax = ymax, ymin = ymin,
                                          fill = grouping, 
                                          color = grouping),

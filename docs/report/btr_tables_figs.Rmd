@@ -594,7 +594,7 @@ ncbr_comp_table
 
 ```{r}
 filename <- paste0("ncbr_comp_table_",Sys.Date(),".png")
-gtsave(ncbr_comp_table, paste0('output/',settings$version,"/tables_figs/results_tables/ncbr_comparison/table/",filename))
+gtsave(ncbr_comp_table, paste0('output/',settings$version,"/tables_figs/results_tables/ncbr_comparison/",filename))
 ```
 
 ```{r}
@@ -637,7 +637,7 @@ fig
 ```
 ```{r}
 filename <- paste0("ncbr_comp_fig_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs/results_tables/ncbr_comparison/",filename))
+ggsave(paste0('output/',settings$version,"/tables_figs/ncbr_comparison/",filename))
 ```
 
 ## NCBR Comparision Figure: From 1990
