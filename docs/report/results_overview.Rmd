@@ -40,9 +40,9 @@ source('packages.R')
 source("scripts/theming.R")
 ```
 
-# Emissions
+# Energy CO2 Emissions
 
-## Energy CO2 Emissions by Sector {.tabset}
+## Sector {.tabset}
 
 ### Model
 
@@ -92,7 +92,7 @@ By sector, emissions reductions are estimate to change from 2020 to 2040:
     -   OP-NEMS: `r transportation_value_list$"OP-NEMS"`%
     -   USREP-ReEDS: `r transportation_value_list$"USREP-ReEDS"`%
 
-## Energy CO2 Emissions by Fuel {.tabset}
+## Fuel {.tabset}
 
 ### Model
 
@@ -122,30 +122,32 @@ transportation_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar
 
 # Energy Consumption
 
-## Final Energy by Fuel {.tabset}
+## Final Energy
 
-### Fuel
+### Fuel {.tabset}
+
+#### Fuel
 
 ```{r}
 fuel = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 14, "United States", scenario_rename = TRUE)
 fuel
 ```
 
-### Model
+#### Model
 
 ```{r}
 Fuel = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 1, "United States", scenario_rename = TRUE)
 Fuel
 ```
 
-### Model - Zoom
+#### Model - Zoom
 
 ```{r}
 Fuel = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 24, "United States", scenario_rename = TRUE)
 Fuel
 ```
 
-### Stats 
+#### Stats 
 
 ```{r}
 figure_subset_df <- get_figure_subset_df(figmap_nrgco2_stackbar,14)
@@ -183,9 +185,9 @@ By fuel-type, energy consumption is estimated to change from 2020 to 2040:
     -   OP-NEMS: `r fe_oil_value_list$"OP-NEMS"`%
     -   USREP-ReEDS: `r fe_oil_value_list$"USREP-ReEDS"`%
 
-## Final Energy by Sector {.tabset}
+### Sector {.tabset}
 
-### Model
+#### Model
 
 ```{r}
 Sector = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 2, "United States", scenario_rename = TRUE,
@@ -193,14 +195,14 @@ Sector = print_graph("time_series", config, data_long_clean, figmap_nrgco2_times
 Sector
 ```
 
-### Sector
+#### Sector
 
 ```{r}
 sector = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 17, "United States", scenario_rename = TRUE)
 sector
 ```
 
-### Stats
+#### Stats
 
 ```{r}
 fe_buildings_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 17, "Final Energy|Buildings", data_long_clean, config)
@@ -223,7 +225,7 @@ By sector, energy consumption is estimated to change from 2020 to 2040:
     -   OP-NEMS: `r fe_transportation_value_list$"OP-NEMS"`%
     -   USREP-ReEDS: `r fe_transportation_value_list$"USREP-ReEDS"`%
 
-## Final Energy by Sector 
+## Sectoral Detail
 
 ### Buildings {.tabset}
 
