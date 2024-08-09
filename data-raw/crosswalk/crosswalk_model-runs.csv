@@ -43,11 +43,11 @@ usrep_reeds_allscen.csv,USREP-ReEDS,ira_low_adv,USREP-ReEDS,leep_Pess-IRA.Adv,LE
 usrep_reeds_allscen.csv,USREP-ReEDS,ira_mid_adv,USREP-ReEDS,leep_All Advanced,LEEP report,leep
 usrep_reeds_allscen.csv,USREP-ReEDS,ira_high_adv,USREP-ReEDS,leep_Opt-IRA.Adv,LEEP report,leep
 usrep_reeds_allscen.csv,USREP-ReEDS,ira_mid_constr,USREP-ReEDS,leep_Constrained Deployment,LEEP report,leep
-072524gcamreport_Processed.csv,GCAM 7.0,WM_072524,GCAM,wm,,btr
-072524gcamreport_Processed.csv,GCAM 7.0,WM_IRAEGU_072524,GCAM,wm_iraegu,,btr
-072524gcamreport_Processed.csv,GCAM 7.0,WM_IRATRN_072524,GCAM,wm_iratrn,,btr
-072524gcamreport_Processed.csv,GCAM 7.0,WM_IRAonly_072524,GCAM,wm_iraonly,,btr
 emf_usrep_reeds_btr_8.2.csv,USREP-ReEDS,btr3_ref,USREP-ReEDS,ref,,btr
 emf_usrep_reeds_btr_8.2.csv,USREP-ReEDS,btr3_wm_low,USREP-ReEDS,wm_low,low buildings implementation,btr
 emf_usrep_reeds_btr_8.2.csv,USREP-ReEDS,btr3_wm_mid,USREP-ReEDS,wm,mid buildings implementation,btr
 OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,OP-NEMS,OP Moderate,OP-NEMS,wm,btr - OP-NEMS BTR wm,btr
+080824gcamreport_Processed.csv,GCAM 7.0,WM_080824,GCAM,wm,,
+080824gcamreport_Processed.csv,GCAM 7.0,WM_IRAEGU_080824,GCAM,wm_iraegu,,
+080824gcamreport_Processed.csv,GCAM 7.0,WM_IRATRN_080824,GCAM,wm_iratrn,,
+080824gcamreport_Processed.csv,GCAM 7.0,WM_IRAonly_080824,GCAM,wm_iraonly,,

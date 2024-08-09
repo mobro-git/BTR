@@ -1,2 +1,5 @@
 datasrc,model,scenario
-OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,OP-NEMS,OP Moderate
+080824gcamreport_Processed.csv,GCAM 7.0,WM_080824
+080824gcamreport_Processed.csv,GCAM 7.0,WM_IRAEGU_080824
+080824gcamreport_Processed.csv,GCAM 7.0,WM_IRATRN_080824
+080824gcamreport_Processed.csv,GCAM 7.0,WM_IRAonly_080824

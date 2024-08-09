@@ -2413,48 +2413,48 @@ nems_wm_lowseq,wm,usproj,wm,IPPU,CO2,2047,0.25,MMTCO2e,Zinc,Zinc,Zinc,United Sta
 nems_wm_lowseq,wm,usproj,wm,IPPU,CO2,2048,0.24,MMTCO2e,Zinc,Zinc,Zinc,United States,usproj_emissions_2024_wide_for_btr_ta_6-14_usprojRUN06242024.csv,
 nems_wm_lowseq,wm,usproj,wm,IPPU,CO2,2049,0.23,MMTCO2e,Zinc,Zinc,Zinc,United States,usproj_emissions_2024_wide_for_btr_ta_6-14_usprojRUN06242024.csv,
 nems_wm_lowseq,wm,usproj,wm,IPPU,CO2,2050,0.22,MMTCO2e,Zinc,Zinc,Zinc,United States,usproj_emissions_2024_wide_for_btr_ta_6-14_usprojRUN06242024.csv,
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2025,200.143825888459,Mt CO2/yr,FFCCom,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2025,248.882718955079,Mt CO2/yr,FFCRes,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2025,605.404584279066,Mt CO2/yr,FFCInd,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Industry
-gcam_wm_lowseq,wm,GCAM,wm,Transportation,CO2,2025,1772.03042367745,Mt CO2/yr,FFCTrans,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Transportation
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2025,1089.81305118206,Mt CO2/yr,FFCElec,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Electricity
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2025,2.17341542197917,Mt CO2/yr,FFCInd,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Hydrogen
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2025,163.917118852265,Mt CO2/yr,FFCInd,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Petroleum Refining
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2030,203.441630562361,Mt CO2/yr,FFCCom,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2030,227.037882021698,Mt CO2/yr,FFCRes,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2030,635.414566183822,Mt CO2/yr,FFCInd,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Industry
-gcam_wm_lowseq,wm,GCAM,wm,Transportation,CO2,2030,1537.79003491953,Mt CO2/yr,FFCTrans,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Transportation
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2030,882.629244494017,Mt CO2/yr,FFCElec,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Electricity
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2030,2.50310125061998,Mt CO2/yr,FFCInd,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Hydrogen
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2030,148.138156618706,Mt CO2/yr,FFCInd,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Petroleum Refining
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2035,204.673045752042,Mt CO2/yr,FFCCom,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2035,229.692096801284,Mt CO2/yr,FFCRes,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2035,653.417400286093,Mt CO2/yr,FFCInd,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Industry
-gcam_wm_lowseq,wm,GCAM,wm,Transportation,CO2,2035,1246.32746668278,Mt CO2/yr,FFCTrans,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Transportation
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2035,550.576363774112,Mt CO2/yr,FFCElec,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Electricity
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2035,3.47378153908512,Mt CO2/yr,FFCInd,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Hydrogen
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2035,128.581061150135,Mt CO2/yr,FFCInd,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Petroleum Refining
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2040,214.279754433129,Mt CO2/yr,FFCCom,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2040,241.579416880933,Mt CO2/yr,FFCRes,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2040,686.848847902094,Mt CO2/yr,FFCInd,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Industry
-gcam_wm_lowseq,wm,GCAM,wm,Transportation,CO2,2040,1058.73009640825,Mt CO2/yr,FFCTrans,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Transportation
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2040,498.995783234669,Mt CO2/yr,FFCElec,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Electricity
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2040,4.77686909574605,Mt CO2/yr,FFCInd,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Hydrogen
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2040,116.472543201537,Mt CO2/yr,FFCInd,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Petroleum Refining
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2045,216.112866103198,Mt CO2/yr,FFCCom,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2045,250.690641722367,Mt CO2/yr,FFCRes,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2045,700.07019629046,Mt CO2/yr,FFCInd,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Industry
-gcam_wm_lowseq,wm,GCAM,wm,Transportation,CO2,2045,948.740952947086,Mt CO2/yr,FFCTrans,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Transportation
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2045,489.726698390625,Mt CO2/yr,FFCElec,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Electricity
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2045,5.13250425665825,Mt CO2/yr,FFCInd,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Hydrogen
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2045,101.922340739141,Mt CO2/yr,FFCInd,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Petroleum Refining
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2050,219.437463730811,Mt CO2/yr,FFCCom,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2050,256.008221134963,Mt CO2/yr,FFCRes,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2050,706.126744337336,Mt CO2/yr,FFCInd,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Industry
-gcam_wm_lowseq,wm,GCAM,wm,Transportation,CO2,2050,850.124965590066,Mt CO2/yr,FFCTrans,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Transportation
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2050,482.274932889146,Mt CO2/yr,FFCElec,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Electricity
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2050,5.95579808939794,Mt CO2/yr,FFCInd,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Hydrogen
-gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2050,86.5539831363386,Mt CO2/yr,FFCInd,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Petroleum Refining
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2025,197.349399827276,Mt CO2/yr,FFCCom,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2025,244.376311409602,Mt CO2/yr,FFCRes,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2025,614.328666395098,Mt CO2/yr,FFCInd,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Industry
+gcam_wm_lowseq,wm,GCAM,wm,Transportation,CO2,2025,1743.67933204787,Mt CO2/yr,FFCTrans,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Transportation
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2025,1081.02149266407,Mt CO2/yr,FFCElec,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Electricity
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2025,2.17078096169755,Mt CO2/yr,FFCInd,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Hydrogen
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2025,161.772869694227,Mt CO2/yr,FFCInd,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Petroleum Refining
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2030,200.966469641647,Mt CO2/yr,FFCCom,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2030,222.873488842305,Mt CO2/yr,FFCRes,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2030,641.847310882891,Mt CO2/yr,FFCInd,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Industry
+gcam_wm_lowseq,wm,GCAM,wm,Transportation,CO2,2030,1511.29417492212,Mt CO2/yr,FFCTrans,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Transportation
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2030,877.687852704669,Mt CO2/yr,FFCElec,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Electricity
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2030,2.49641088260022,Mt CO2/yr,FFCInd,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Hydrogen
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2030,146.144901362715,Mt CO2/yr,FFCInd,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Petroleum Refining
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2035,202.753911442457,Mt CO2/yr,FFCCom,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2035,225.189801723387,Mt CO2/yr,FFCRes,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2035,655.437534086347,Mt CO2/yr,FFCInd,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Industry
+gcam_wm_lowseq,wm,GCAM,wm,Transportation,CO2,2035,1228.09326002216,Mt CO2/yr,FFCTrans,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Transportation
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2035,548.791119936927,Mt CO2/yr,FFCElec,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Electricity
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2035,3.46645133418807,Mt CO2/yr,FFCInd,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Hydrogen
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2035,127.172205398727,Mt CO2/yr,FFCInd,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Petroleum Refining
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2040,210.123732033975,Mt CO2/yr,FFCCom,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2040,229.864215583478,Mt CO2/yr,FFCRes,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2040,659.313042071443,Mt CO2/yr,FFCInd,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Industry
+gcam_wm_lowseq,wm,GCAM,wm,Transportation,CO2,2040,1050.63525502108,Mt CO2/yr,FFCTrans,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Transportation
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2040,517.432611047598,Mt CO2/yr,FFCElec,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Electricity
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2040,4.82739228345705,Mt CO2/yr,FFCInd,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Hydrogen
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2040,115.378220746326,Mt CO2/yr,FFCInd,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Petroleum Refining
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2045,211.863299887045,Mt CO2/yr,FFCCom,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2045,235.461458068855,Mt CO2/yr,FFCRes,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2045,673.218870945984,Mt CO2/yr,FFCInd,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Industry
+gcam_wm_lowseq,wm,GCAM,wm,Transportation,CO2,2045,950.470430242361,Mt CO2/yr,FFCTrans,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Transportation
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2045,522.523793570652,Mt CO2/yr,FFCElec,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Electricity
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2045,5.13195388116835,Mt CO2/yr,FFCInd,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Hydrogen
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2045,100.814688384071,Mt CO2/yr,FFCInd,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Petroleum Refining
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2050,215.872468162219,Mt CO2/yr,FFCCom,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2050,239.525428399773,Mt CO2/yr,FFCRes,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2050,687.5362841987,Mt CO2/yr,FFCInd,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Industry
+gcam_wm_lowseq,wm,GCAM,wm,Transportation,CO2,2050,865.842571875393,Mt CO2/yr,FFCTrans,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Transportation
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2050,525.916793410746,Mt CO2/yr,FFCElec,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Electricity
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2050,5.93961391613721,Mt CO2/yr,FFCInd,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Hydrogen
+gcam_wm_lowseq,wm,GCAM,wm,Energy,CO2,2050,86.4884698480871,Mt CO2/yr,FFCInd,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Petroleum Refining
 gcam_wm_lowseq,wm,lulucf,bau_low,LULUCF Sink,LULUCF Sink,2025,-743.0971115756233,MMT CO2e,LULUCF Sink,LULUCF Sink,LULUCF Sink,United States,lulucf_lts.xlsx,LandSink
 gcam_wm_lowseq,wm,lulucf,bau_low,LULUCF Sink,LULUCF Sink,2030,-743.0971115756233,MMT CO2e,LULUCF Sink,LULUCF Sink,LULUCF Sink,United States,lulucf_lts.xlsx,LandSink
 gcam_wm_lowseq,wm,lulucf,bau_low,LULUCF Sink,LULUCF Sink,2035,-659.263229427202,MMT CO2e,LULUCF Sink,LULUCF Sink,LULUCF Sink,United States,lulucf_lts.xlsx,LandSink
@@ -16379,48 +16379,48 @@ nems_wm_hiseq,wm,usproj,wm,IPPU,CO2,2047,0.25,MMTCO2e,Zinc,Zinc,Zinc,United Stat
 nems_wm_hiseq,wm,usproj,wm,IPPU,CO2,2048,0.24,MMTCO2e,Zinc,Zinc,Zinc,United States,usproj_emissions_2024_wide_for_btr_ta_6-14_usprojRUN06242024.csv,
 nems_wm_hiseq,wm,usproj,wm,IPPU,CO2,2049,0.23,MMTCO2e,Zinc,Zinc,Zinc,United States,usproj_emissions_2024_wide_for_btr_ta_6-14_usprojRUN06242024.csv,
 nems_wm_hiseq,wm,usproj,wm,IPPU,CO2,2050,0.22,MMTCO2e,Zinc,Zinc,Zinc,United States,usproj_emissions_2024_wide_for_btr_ta_6-14_usprojRUN06242024.csv,
-gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2025,200.143825888459,Mt CO2/yr,FFCCom,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
-gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2025,248.882718955079,Mt CO2/yr,FFCRes,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
-gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2025,605.404584279066,Mt CO2/yr,FFCInd,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Industry
-gcam_wm_hiseq,wm,GCAM,wm,Transportation,CO2,2025,1772.03042367745,Mt CO2/yr,FFCTrans,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Transportation
-gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2025,1089.81305118206,Mt CO2/yr,FFCElec,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Electricity
-gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2025,2.17341542197917,Mt CO2/yr,FFCInd,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Hydrogen
-gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2025,163.917118852265,Mt CO2/yr,FFCInd,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Petroleum Refining
-gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2030,203.441630562361,Mt CO2/yr,FFCCom,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
-gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2030,227.037882021698,Mt CO2/yr,FFCRes,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
-gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2030,635.414566183822,Mt CO2/yr,FFCInd,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Industry
-gcam_wm_hiseq,wm,GCAM,wm,Transportation,CO2,2030,1537.79003491953,Mt CO2/yr,FFCTrans,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Transportation
-gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2030,882.629244494017,Mt CO2/yr,FFCElec,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Electricity
-gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2030,2.50310125061998,Mt CO2/yr,FFCInd,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Hydrogen
-gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2030,148.138156618706,Mt CO2/yr,FFCInd,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Petroleum Refining
-gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2035,204.673045752042,Mt CO2/yr,FFCCom,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
-gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2035,229.692096801284,Mt CO2/yr,FFCRes,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
-gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2035,653.417400286093,Mt CO2/yr,FFCInd,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Industry
-gcam_wm_hiseq,wm,GCAM,wm,Transportation,CO2,2035,1246.32746668278,Mt CO2/yr,FFCTrans,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Transportation
-gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2035,550.576363774112,Mt CO2/yr,FFCElec,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Electricity
-gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2035,3.47378153908512,Mt CO2/yr,FFCInd,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Hydrogen
-gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2035,128.581061150135,Mt CO2/yr,FFCInd,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Petroleum Refining
-gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2040,214.279754433129,Mt CO2/yr,FFCCom,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
-gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2040,241.579416880933,Mt CO2/yr,FFCRes,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
-gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2040,686.848847902094,Mt CO2/yr,FFCInd,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Industry
-gcam_wm_hiseq,wm,GCAM,wm,Transportation,CO2,2040,1058.73009640825,Mt CO2/yr,FFCTrans,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Transportation
-gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2040,498.995783234669,Mt CO2/yr,FFCElec,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Electricity
-gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2040,4.77686909574605,Mt CO2/yr,FFCInd,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Hydrogen
-gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2040,116.472543201537,Mt CO2/yr,FFCInd,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Petroleum Refining
-gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2045,216.112866103198,Mt CO2/yr,FFCCom,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
-gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2045,250.690641722367,Mt CO2/yr,FFCRes,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
-gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2045,700.07019629046,Mt CO2/yr,FFCInd,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Industry
-gcam_wm_hiseq,wm,GCAM,wm,Transportation,CO2,2045,948.740952947086,Mt CO2/yr,FFCTrans,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Transportation
-gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2045,489.726698390625,Mt CO2/yr,FFCElec,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Electricity
-gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2045,5.13250425665825,Mt CO2/yr,FFCInd,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Hydrogen
-gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2045,101.922340739141,Mt CO2/yr,FFCInd,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Petroleum Refining
-gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2050,219.437463730811,Mt CO2/yr,FFCCom,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
-gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2050,256.008221134963,Mt CO2/yr,FFCRes,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
-gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2050,706.126744337336,Mt CO2/yr,FFCInd,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Industry
-gcam_wm_hiseq,wm,GCAM,wm,Transportation,CO2,2050,850.124965590066,Mt CO2/yr,FFCTrans,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Transportation
-gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2050,482.274932889146,Mt CO2/yr,FFCElec,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Electricity
-gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2050,5.95579808939794,Mt CO2/yr,FFCInd,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Hydrogen
-gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2050,86.5539831363386,Mt CO2/yr,FFCInd,FFC,FFC,United States,072524gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Petroleum Refining
+gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2025,197.349399827276,Mt CO2/yr,FFCCom,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
+gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2025,244.376311409602,Mt CO2/yr,FFCRes,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
+gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2025,614.328666395098,Mt CO2/yr,FFCInd,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Industry
+gcam_wm_hiseq,wm,GCAM,wm,Transportation,CO2,2025,1743.67933204787,Mt CO2/yr,FFCTrans,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Transportation
+gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2025,1081.02149266407,Mt CO2/yr,FFCElec,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Electricity
+gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2025,2.17078096169755,Mt CO2/yr,FFCInd,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Hydrogen
+gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2025,161.772869694227,Mt CO2/yr,FFCInd,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Petroleum Refining
+gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2030,200.966469641647,Mt CO2/yr,FFCCom,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
+gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2030,222.873488842305,Mt CO2/yr,FFCRes,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
+gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2030,641.847310882891,Mt CO2/yr,FFCInd,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Industry
+gcam_wm_hiseq,wm,GCAM,wm,Transportation,CO2,2030,1511.29417492212,Mt CO2/yr,FFCTrans,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Transportation
+gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2030,877.687852704669,Mt CO2/yr,FFCElec,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Electricity
+gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2030,2.49641088260022,Mt CO2/yr,FFCInd,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Hydrogen
+gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2030,146.144901362715,Mt CO2/yr,FFCInd,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Petroleum Refining
+gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2035,202.753911442457,Mt CO2/yr,FFCCom,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
+gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2035,225.189801723387,Mt CO2/yr,FFCRes,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
+gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2035,655.437534086347,Mt CO2/yr,FFCInd,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Industry
+gcam_wm_hiseq,wm,GCAM,wm,Transportation,CO2,2035,1228.09326002216,Mt CO2/yr,FFCTrans,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Transportation
+gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2035,548.791119936927,Mt CO2/yr,FFCElec,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Electricity
+gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2035,3.46645133418807,Mt CO2/yr,FFCInd,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Hydrogen
+gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2035,127.172205398727,Mt CO2/yr,FFCInd,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Petroleum Refining
+gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2040,210.123732033975,Mt CO2/yr,FFCCom,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
+gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2040,229.864215583478,Mt CO2/yr,FFCRes,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
+gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2040,659.313042071443,Mt CO2/yr,FFCInd,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Industry
+gcam_wm_hiseq,wm,GCAM,wm,Transportation,CO2,2040,1050.63525502108,Mt CO2/yr,FFCTrans,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Transportation
+gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2040,517.432611047598,Mt CO2/yr,FFCElec,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Electricity
+gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2040,4.82739228345705,Mt CO2/yr,FFCInd,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Hydrogen
+gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2040,115.378220746326,Mt CO2/yr,FFCInd,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Petroleum Refining
+gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2045,211.863299887045,Mt CO2/yr,FFCCom,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
+gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2045,235.461458068855,Mt CO2/yr,FFCRes,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
+gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2045,673.218870945984,Mt CO2/yr,FFCInd,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Industry
+gcam_wm_hiseq,wm,GCAM,wm,Transportation,CO2,2045,950.470430242361,Mt CO2/yr,FFCTrans,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Transportation
+gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2045,522.523793570652,Mt CO2/yr,FFCElec,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Electricity
+gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2045,5.13195388116835,Mt CO2/yr,FFCInd,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Hydrogen
+gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2045,100.814688384071,Mt CO2/yr,FFCInd,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Petroleum Refining
+gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2050,215.872468162219,Mt CO2/yr,FFCCom,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Commercial
+gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2050,239.525428399773,Mt CO2/yr,FFCRes,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Buildings|Residential
+gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2050,687.5362841987,Mt CO2/yr,FFCInd,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Industry
+gcam_wm_hiseq,wm,GCAM,wm,Transportation,CO2,2050,865.842571875393,Mt CO2/yr,FFCTrans,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Demand|Transportation
+gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2050,525.916793410746,Mt CO2/yr,FFCElec,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Electricity
+gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2050,5.93961391613721,Mt CO2/yr,FFCInd,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Hydrogen
+gcam_wm_hiseq,wm,GCAM,wm,Energy,CO2,2050,86.4884698480871,Mt CO2/yr,FFCInd,FFC,FFC,United States,080824gcamreport_Processed.csv,Emissions|CO2|Energy|Supply|Petroleum Refining
 gcam_wm_hiseq,wm,lulucf,bau_high,LULUCF Sink,LULUCF Sink,2025,-743.0971115756233,MMT CO2e,LULUCF Sink,LULUCF Sink,LULUCF Sink,United States,lulucf_lts.xlsx,LandSink
 gcam_wm_hiseq,wm,lulucf,bau_high,LULUCF Sink,LULUCF Sink,2030,-883.9032739526958,MMT CO2e,LULUCF Sink,LULUCF Sink,LULUCF Sink,United States,lulucf_lts.xlsx,LandSink
 gcam_wm_hiseq,wm,lulucf,bau_high,LULUCF Sink,LULUCF Sink,2035,-952.2065479053917,MMT CO2e,LULUCF Sink,LULUCF Sink,LULUCF Sink,United States,lulucf_lts.xlsx,LandSink
