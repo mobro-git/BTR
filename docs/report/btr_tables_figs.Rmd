@@ -296,6 +296,32 @@ var_palette = c(unique(dat_range$var),unique(dat4$var))
 ```
 
 ```{r}
+
+##### use real historic data 
+##### use Each model's internal rate of change for energy
+##### leave emissions as is for now and see how it looks
+
+tar_load(kaya_comparison) 
+
+kaya_data_range = kaya_data %>% 
+  filter(br_version == "2024") %>% 
+  select(-value,-base) %>% 
+  spread(scenario, indexed)
+
+
+ggplot()+
+  geom_line(data = kaya_data ,
+            aes(x = year, y = indexed, color = variable)) +
+  geom_ribbon(data = kaya_data_range, 
+              aes(x=year, ymin = min, ymax = max, fill = variable))+
+  xlim(2005,2040) + ylim(0.5,1.6) + facet_wrap(~br_version)
+  ggsave("C:/Users/mzwerlin/OneDrive - Environmental Protection Agency (EPA)/Profile/Pictures/Kaya.png", height = 8,width =16)
+
+  
+```
+
+
+```{r}
 Kaya <- function(dat_range, dat4, var_palette){
   ggplot() +
     geom_line(dat4, mapping = aes(year,med, group = var, color = var),size = 0.7) +
