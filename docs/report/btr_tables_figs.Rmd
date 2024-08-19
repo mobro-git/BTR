@@ -134,7 +134,7 @@ gtsave(pct_change_html_sector, paste0('output/',settings$version,"/tables_figs/r
 
 ## BTR Main Plot {.tabset}
 
-```{r data}
+```{r}
 net_ghg = projections_all_sm %>%
   group_by(proj_name, grouping, year) %>%
   summarise(sum = sum(sum)) %>%
@@ -174,7 +174,7 @@ ndc_targets = data.frame(
 
 ### Net GHG Emissions
 
-```{r proj function}
+```{r}
 projections = br_project(ghgi, proj, settings, targets = ndc_targets)
 projections
 ```
@@ -415,20 +415,81 @@ tar_load(kaya_comparison)
 kaya_data_range = kaya_comparison %>% 
   filter(br_version == "2024") %>% 
   select(-value,-base) %>% 
-  spread(scenario, indexed)
+  spread(scenario, indexed) %>%
+  mutate(
+    variable = case_when(
+      variable == "EmissPerEnergy" ~ "Emissions/Energy",
+      variable == "EnergyPerGDP" ~ "Energy/GDP",
+      variable == "GDPPerCap" ~ "GDP/Capita",
+      TRUE~variable),
+    br_version = case_when(
+      br_version == "2022" ~ "2022 BR",
+      br_version == "2024" ~ "2024 BTR",
+      TRUE ~ br_version)) %>%
+  filter(year <= 2040 & year >=2005)
 
+kaya_comp_renamed = kaya_comparison  %>%
+  mutate(
+    variable = case_when(
+      variable == "EmissPerEnergy" ~ "Emissions/Energy",
+      variable == "EnergyPerGDP" ~ "Energy/GDP",
+      variable == "GDPPerCap" ~ "GDP/Capita",
+      TRUE~variable),
+    br_version = case_when(
+      br_version == "2022" ~ "2022 BR",
+      br_version == "2024" ~ "2024 BTR",
+      TRUE ~ br_version)) %>%
+  filter(!(br_version == "2024 BTR" & variable %in% c("Emissions/Energy","Energy/GDP") & year >2022)) %>%
+  filter(year <= 2040 & year >=2005)
 
-ggplot()+
-  geom_line(data = kaya_comparison ,
+var_palette = unique(kaya_data_range$variable)
+
+multipanel_kaya = ggplot()+
+  geom_line(data = kaya_comp_renamed,
             aes(x = year, y = indexed, color = variable)) +
   geom_ribbon(data = kaya_data_range, 
               aes(x=year, ymin = min, ymax = max, fill = variable))+
+  xlim(2005,2040) + 
+  ylim(0.5,1.6) + 
+  facet_wrap(~br_version) +
+  scale_subpalette_single(var_palette) +
+  theme_btr() +
+  labs(y="Key Factor Index \n(2015 = 1.0)")
+multipanel_kaya
+ggsave(paste0('output/',settings$version,"/tables_figs/kaya/kaya_multipanel.png"), width = )
 
-  filename <- paste0("kaya_fig_facet_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs/kaya/",filename), height = 8,width =16)
-  
+line_size = 0.7
+
+singlepanel_kaya = ggplot()+
+  geom_line(data = (kaya_comp_renamed %>% 
+                      filter(br_version %in% c("2022 BR","2024 BTR")) %>%
+                      filter(!(br_version == "2022 BR" & year >2035))),
+            aes(x = year, y = indexed, color = variable, linetype = br_version),
+            size = line_size) +
+  geom_ribbon(data = kaya_data_range, 
+              aes(x=year, ymin = min, ymax = max, fill = variable, color = variable),
+              alpha = 0.4,
+              outline.type = "both",
+              size = line_size)+
+  ylim(0.5,1.6) + 
+  scale_subpalette_single(var_palette) +
+  scale_linetype_manual(values = c("2022 BR" = "dotted", "2024 BTR" = "solid")) +
+  theme_btr() +
+  labs(y="Key Factor Index \n(2015 = 1.0)") +
+  bottom1 +
+  scale_x_continuous(breaks = config$table,expand = c(0,0)) +
+  geom_vline(xintercept = settings$base_year,
+               linetype = 'dashed',
+               color = "black",
+              # size = 0.4,
+               alpha = 0.5
+              ) +
+  theme(panel.grid.minor.x = element_blank()) +
+  guides(color = guide_legend(override.aes = list(alpha = 1))) +
+  theme(legend.background = element_rect(color = NA))
+singlepanel_kaya
+ggsave(paste0('output/',settings$version,"/tables_figs/kaya/kaya_singlepanel.png"), width = )
 ```
-
 
 ```{r}
 Kaya <- function(dat_range, dat4, var_palette){

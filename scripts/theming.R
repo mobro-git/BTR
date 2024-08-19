@@ -17,7 +17,6 @@ blank_theme <- theme_minimal()+
     plot.title=element_text(size=14, face="bold")
   )
 
-
 # Color Palette
 
 master_palette <- c(
@@ -250,12 +249,6 @@ color_map <- c(
   "CO2 Emissions" = "dark salmon",
   "Residual Emissions" = "teal blue",
   
-  # kaya
-  "Population" = "teal blue",
-  "GDP / Capita" = "dark m.yellow",
-  "Energy / GDP" = "dark salmon",
-  "Emissions / Energy" = "m.green",
-  
   #emissions accounting
   "Net CO2" = "very dark teal",
   "Gross Positive CO2" = "dark salmon",
@@ -347,7 +340,13 @@ color_map <- c(
   "EmissPerEnergyIn" = "m.green",
   "EnergyPerGDPIn" = "teal blue",
   "GDPPerCapIn" = "dark salmon",
-  "PopulationIn" = "very dark blue"
+  "PopulationIn" = "very dark blue",
+  
+  # kaya
+  "Population" = "teal blue",
+  "GDP/Capita" = "dark m.yellow",
+  "Energy/GDP" = "dark salmon",
+  "Emissions/Energy" = "m.green",
   
   ) %>%
   find_color(master_palette)

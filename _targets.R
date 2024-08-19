@@ -113,8 +113,6 @@ tar_plan(
   tar_target(past_kaya_no_emissions_xlsx, "data-raw/ncbr_comparison/kaya_comparison_2024_btr1_ar5.xlsx", format = "file"),
   tar_target(past_kaya_no_emissions, read_xlsx(past_kaya_no_emissions_xlsx)),
   
-  kaya_comparison = full_kaya_comparison(past_kaya_no_emissions,past_proj,total_gross_emissions,data_long_clean),
-  
   #### Data Processing -----------------------
   
   # _calculated variables ----
@@ -194,7 +192,11 @@ tar_plan(
   # indexed version of data_long_clean. index_var determines which variables are indexed, only these are included
   data_long_index = index_data_long(data_long_clean, index_var),
   
-  # load lulucf ----
+  # KAYA Compilation ----
+  
+  kaya_comparison = full_kaya_comparison(past_kaya_no_emissions,past_proj,total_gross_emissions,data_long_clean),
+  
+  # LULUCF ----
   tar_target(lulucf_folder, "data-raw/lulucf/", format = "file"),
   tar_target(lulucf_files, dir_ls(lulucf_folder), format = "file"),
   
