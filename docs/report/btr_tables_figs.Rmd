@@ -158,7 +158,7 @@ proj_connect = proj_no_connect %>%
 
 proj = rbind(proj_no_connect, proj_connect) %>%
   mutate(year = as.numeric(year)) %>%
-  filter(grouping %in% c("IRA", 'wm')) %>%
+  filter(grouping %in% c('wm')) %>%
   mutate(grouping = case_when(
     grouping == "wm"~"2024 Policy Baseline",
     grouping == "IRA" ~ "LEEP",
@@ -211,6 +211,109 @@ proj = rbind(proj_no_connect, proj_connect) %>%
   mutate(year = as.numeric(year)) %>%
   filter(grouping == 'wm') %>%
   mutate(grouping = "2024 Policy Baseline")
+
+ndc_targets = data.frame(
+  year = c(2020, 2025, 2030),
+  ymin = c(-.17, -.28, -.52),
+  ymax = c(-.17, -.26, -.5),
+  grouping = c("17% Below 2005","26-28% Below 2005","50-52% Below 2005")
+)
+```
+
+### Percent Change from 2005
+
+```{r}
+projections_pct_change = br_project_pct_change(ghgi, proj, targets = ndc_targets)
+projections_pct_change
+```
+
+```{r}
+filename <- paste0("btr_main_fig_pctchange05_",Sys.Date(),".png")
+ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_figs/",filename))
+```
+
+## BTR Main Plot w/ LEEP Report Comparison {.tabset}
+
+```{r data}
+net_ghg = projections_all_sm %>%
+  group_by(proj_name, grouping, year) %>%
+  summarise(sum = sum(sum)) %>%
+  filter(year %in% config$fives)
+
+ghgi = net_ghg %>% 
+  filter(proj_name == "ghgi") %>% 
+  mutate(grouping = "Historical")
+proj_no_connect = net_ghg %>% 
+  filter(proj_name != "ghgi")
+
+connect = ghgi[ghgi$year == settings$base_year,]$sum
+baseline = ghgi[ghgi$year == 2005,]$sum
+
+proj_connect = proj_no_connect %>% 
+  group_by(proj_name) %>%
+  slice(1) %>%
+  mutate(
+    year = settings$base_year,
+    sum = ghgi$sum[ghgi$year == settings$base_year])
+
+proj = rbind(proj_no_connect, proj_connect) %>%
+  mutate(year = as.numeric(year)) %>%
+  filter(grouping %in% c("IRA", 'wm')) %>%
+  mutate(grouping = case_when(
+    grouping == "wm"~"2024 Policy Baseline",
+    grouping == "IRA" ~ "LEEP",
+    TRUE~grouping))
+
+ndc_targets = data.frame(
+  year = c(2020, 2025, 2030),
+  ymin = c((baseline * (1-.169)), (baseline * (1-.26)), (baseline * (1-.50))),
+  ymax = c((baseline * (1-.171)), (baseline * (1-.28)), (baseline * (1-.52))),
+  grouping = c("17% Below 2005","26-28% Below 2005","50-52% Below 2005")
+)
+```
+
+### Net GHG Emissions
+
+```{r proj function}
+projections = br_project(ghgi, proj, settings, targets = ndc_targets)
+projections
+```
+
+```{r}
+filename <- paste0("btr_main_fig_",Sys.Date(),".png")
+ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_figs/",filename))
+```
+
+```{r}
+net_ghg = projections_all_sm %>%
+  group_by(proj_name, grouping, year) %>%
+  summarise(sum = sum(sum),.groups = 'drop') %>%
+  filter(year %in% config$fives) %>%
+  mutate(pct_change_05 = round((sum/sum[year==2005]-1),2))
+
+ghgi = net_ghg %>% 
+  filter(proj_name == "ghgi") %>%
+  mutate(grouping = "Historical")
+proj_no_connect = net_ghg %>% 
+  filter(proj_name != "ghgi")
+
+connect = ghgi[ghgi$year == settings$base_year,]$pct_change_05
+baseline = ghgi[ghgi$year == 2005,]$pct_change_05
+
+proj_connect = proj_no_connect %>% 
+  group_by(proj_name) %>%
+  slice(1) %>%
+  mutate(
+    year = settings$base_year,
+    pct_change_05 = ghgi$pct_change_05[ghgi$year == settings$base_year])
+
+proj = rbind(proj_no_connect, proj_connect) %>%
+  mutate(year = as.numeric(year)) %>%
+  filter(grouping %in% c("IRA",'wm')) %>%
+  mutate(grouping = case_when(
+    grouping == "wm"~"2024 Policy Baseline",
+    grouping == "IRA" ~ "LEEP",
+    TRUE~grouping))
 
 ndc_targets = data.frame(
   year = c(2020, 2025, 2030),
@@ -303,6 +406,9 @@ var_palette = c(unique(dat_range$var),unique(dat4$var))
 ##### use real historic data 
 ##### use Each model's internal rate of change for energy
 ##### leave emissions as is for now and see how it looks
+
+
+# TODO: we should use annual projections for br2024 for pop and gdp/capita, see if this makes a difference in smoothing out the gdp/cap trend
 
 tar_load(kaya_comparison) 
 
@@ -682,10 +788,11 @@ ggsave(paste0('output/',settings$version,"/tables_figs/results_tables/ncbr_compa
 ```{r}
 
 nrg_emissions <- projections_all_sm %>%
-  filter(usproj_sector == 'Energy') %>%
-  group_by(proj_name, year) %>%
-  summarise(value = sum(sum)) %>%
-  filter(year %in% config$annual_1990_fives)
+  filter(usproj_sector %in% c('Energy','Transportation') & gas == "CO2") %>%
+  filter(grouping %in% c('ghgi','wm')) %>%
+  group_by(proj_name, year, grouping) %>%
+  summarise(nrg_trn_co2 = sum(sum)) %>%
+  filter(year %in% config$annual_1990_fives) 
 
 ghgi <- nrg_emissions %>%
   filter(year <= settings$base_year)
@@ -693,16 +800,16 @@ ghgi <- nrg_emissions %>%
 proj <- nrg_emissions %>%
   group_by(year) %>% 
   filter(year >= settings$base_year)%>%
-    summarise(ymax = max(value),
-              ymin = min(value),
-              med = median(value),
+    summarise(ymax = max(nrg_trn_co2),
+              ymin = min(nrg_trn_co2),
+              med = median(nrg_trn_co2),
               .groups = 'drop')
 
 nrg_color <- "#2EAD96"
 
 fig <- 
   ggplot() +
-  geom_line(ghgi, mapping = aes(x = year, y = value, color = proj_name), color = nrg_color, size = 0.7) +
+  geom_line(ghgi, mapping = aes(x = year, y = nrg_trn_co2, color = proj_name), color = nrg_color, size = 0.7) +
   geom_ribbon(proj, mapping = aes(x = year,ymax = ymax, ymin = ymin),
               color = nrg_color,
               fill = nrg_color,
