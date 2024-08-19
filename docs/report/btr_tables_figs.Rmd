@@ -303,20 +303,21 @@ var_palette = c(unique(dat_range$var),unique(dat4$var))
 
 tar_load(kaya_comparison) 
 
-kaya_data_range = kaya_data %>% 
+kaya_data_range = kaya_comparison %>% 
   filter(br_version == "2024") %>% 
   select(-value,-base) %>% 
   spread(scenario, indexed)
 
 
 ggplot()+
-  geom_line(data = kaya_data ,
+  geom_line(data = kaya_comparison ,
             aes(x = year, y = indexed, color = variable)) +
   geom_ribbon(data = kaya_data_range, 
               aes(x=year, ymin = min, ymax = max, fill = variable))+
   xlim(2005,2040) + ylim(0.5,1.6) + facet_wrap(~br_version)
-  ggsave("C:/Users/mzwerlin/OneDrive - Environmental Protection Agency (EPA)/Profile/Pictures/Kaya.png", height = 8,width =16)
 
+  filename <- paste0("kaya_fig_facet_",Sys.Date(),".png")
+ggsave(paste0('output/',settings$version,"/tables_figs/kaya/",filename), height = 8,width =16)
   
 ```
 
