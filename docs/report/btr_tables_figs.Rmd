@@ -314,8 +314,9 @@ ggplot()+
             aes(x = year, y = indexed, color = variable)) +
   geom_ribbon(data = kaya_data_range, 
               aes(x=year, ymin = min, ymax = max, fill = variable))+
-  xlim(2005,2040) + ylim(0.5,1.6) + facet_wrap(~br_version)
-  ggsave("C:/Users/mzwerlin/OneDrive - Environmental Protection Agency (EPA)/Profile/Pictures/Kaya.png", height = 8,width =16)
+  xlim(2005,2040) + ylim(0.5,1.6) + facet_wrap(~br_version)+
+  ggtitle("Kaya Analysis Faceted by Report Year (Indexed to 2015)")+
+  ylab("")+xlab("Year")
 
   
 ```
