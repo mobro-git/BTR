@@ -158,8 +158,11 @@ proj_connect = proj_no_connect %>%
 
 proj = rbind(proj_no_connect, proj_connect) %>%
   mutate(year = as.numeric(year)) %>%
-  filter(grouping == 'wm') %>%
-  mutate(grouping = "2024 Policy Baseline")
+  filter(grouping %in% c("IRA", 'wm')) %>%
+  mutate(grouping = case_when(
+    grouping == "wm"~"2024 Policy Baseline",
+    grouping == "IRA" ~ "LEEP",
+    TRUE~grouping))
 
 ndc_targets = data.frame(
   year = c(2020, 2025, 2030),
@@ -434,24 +437,28 @@ industry = br_sectors(sector_df,
 
 ```{r}
 buildings
+ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/buildings_comparison.png"))
 ```
 
 ## Electricity
 
 ```{r}
 electricity
+ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/electricity_comparison.png"))
 ```
 
 ## Transportation
 
 ```{r}
 transportation
+ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/transportation_comparison.png"))
 ```
 
 ## Industry
 
 ```{r}
 industry
+ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/industry_comparison.png"))
 ```
 
 # Past Report Comparison 
@@ -482,6 +489,8 @@ past_proj_clean_hilow <- past_proj %>%
 col_order <- c('category', 'year', 'low', 'high')
 category = 'gas'
 grouping = 'wm'
+
+# TODO: something is really wrong here, emissions are getting reallllllly high when we aggregate, maybe something to do with grouping == grouping?
 
 summary <- projections_all_sm %>%
   rename(category = .data[[category]]) %>%
