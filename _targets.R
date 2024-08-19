@@ -39,7 +39,7 @@ tar_plan(
     
     # scenarios
     ghgi_scen = "wm", # Set usproj scenario to pull ghgi data
-    scen_wm = c("wm"),
+    scen_wm = c("wm"), #, "leep_IRA"
     scen_wm_hist = c("wm","Historic"),
     scen_wm_ira = c("wm","leep_IRA"),
     
@@ -248,6 +248,9 @@ tar_plan(
       pivot_wider(names_from = variable) %>%
       mutate(diff = `BTR|Emissions|CO2|Energy excl TRN Sum` - `BTR|Emissions|CO2|Energy excl TRN Subtract`)
   },
+  
+  check_primary_nrg_df = check_primary_nrg_df(data_long_clean,config),
+  check_primary_nrg_fig = check_primary_nrg_fig(check_primary_nrg_df),
   
   check_lts_comp_var = check_lts_comp_var(data_long_clean,summation_var,settings),
   

@@ -723,3 +723,24 @@ grid.table(vs_df2)
   
 ```
 
+# Non-CO2
+
+```{r}
+tar_load(projections_all_sm)
+
+nonco2 = projections_all_sm %>% 
+  filter(grouping == "wm") %>%
+  filter(usproj_sector != "LULUCF Sink") %>%
+  filter(!(str_detect(proj_name, "usrr") & usproj_sector %in% c("Transportation","Energy") & year %in% c(2045, 2050))) %>%
+  filter(!(usproj_sector == "Energy" & !year %in% c(2020, 2025, 2030, 2035, 2040, 2045, 2050))) %>%
+  filter(year <= 2040)
+
+ggplot() +
+  geom_line(data = nonco2, aes(x=year,y=sum,group=proj_name,color=gas)) +
+  facet_grid(gas~usproj_sector, scales = "free_y") +
+  labs(y = "Mt CO2e") +
+  nolegend +
+  theme_bw()
+```
+
+
