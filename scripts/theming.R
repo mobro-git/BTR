@@ -346,7 +346,7 @@ color_map <- c(
   "Population" = "teal blue",
   "GDP/Capita" = "dark m.yellow",
   "Energy/GDP" = "dark salmon",
-  "Emissions/Energy" = "m.green",
+  "Emissions/Energy" = "m.green"
   
   ) %>%
   find_color(master_palette)

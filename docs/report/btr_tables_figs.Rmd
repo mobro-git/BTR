@@ -509,7 +509,7 @@ Kaya <- function(dat_range, dat4, var_palette){
 }
 
 fig <- Kaya(dat_range, dat4, var_palette)
-fig
+#fig
 ```
 
 ```{r}
@@ -574,7 +574,7 @@ sector_df = rbind(ghgi_df, lts_df, proj_df, median_df) %>%
     model %in% proj_models ~ "proj",
     model == "EPA-GHGI" ~ "GHGI",
     model == "median" ~ "median",
-    TRUE~model))
+    TRUE~model)) 
 ```
 
 ```{r}
@@ -626,6 +626,42 @@ ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/transport
 industry
 ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/industry_comparison.png"))
 ```
+
+```{r}
+# Stats for Emissions Projections and Trends by Sector DRAFT SECTION
+
+# Energy
+nrg_ch4 <- projections_all_sm %>% filter(grouping == 'wm',gas == 'CH4',usproj_sector == 'Energy',year %in% config$table) %>% select(year, sum, pct_change_05) %>% distinct()
+
+nrg_co2 <- projections_all_sm %>% filter(grouping == 'wm',gas == 'CH4',usproj_sector == 'Energy',year %in% config$table) %>% select(year, sum, pct_change_05) %>% distinct()
+
+# Electricity
+gen_subset_sector_df <- function(sector_df, var_choice) {
+  sector_df %>%
+    filter(variable == var_choice,
+           region == 'United States',
+           scenario %in% c('Historic','wm'),
+           year %in% config$table) %>%
+    select(year,value) %>% 
+    mutate(pct_change_05 = round((value/value[year==2005]-1),2)) %>%
+    distinct()
+}
+  
+elec_df = gen_subset_sector_df(sector_df, "Emissions|CO2|Energy|Supply|Electricity")
+
+industry_df <- gen_subset_sector_df(sector_df, "Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total")
+
+trn_df <- gen_subset_sector_df(sector_df, "Emissions|CO2|Energy|Demand|Transportation|Total")
+
+buildings_df <- gen_subset_sector_df(sector_df, "Emissions|CO2|Energy|Demand|Buildings|Total")
+
+View(elec_df)
+View(industry_df)
+View(trn_df)
+View(buildings_df)
+
+```
+
 
 # Past Report Comparison 
 
@@ -876,10 +912,10 @@ fig <-
               alpha = 0.4 ,
               size = 0.7)+
     labs(x = 'Year',
-         y = expression(paste("MMt ", CO[2], "e", sep = ""))) +
+         y = expression(paste("MMt ", CO[2], sep = ""))) +
     scale_y_continuous(labels = scales::comma) +
     scale_x_continuous(breaks = c(seq(1990,2020,by=5), 2022, seq(2025,2040,by=5)), expand = c(0,0)) +
-    theme_btr()
+    theme_btr() 
   
 fig
 ```

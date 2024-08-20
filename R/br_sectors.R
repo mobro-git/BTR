@@ -3,7 +3,8 @@ br_sectors = function(sector_df, var_choice, ytitle) {
   
   df = sector_df %>%
     filter(variable == var_choice) %>%
-    filter(region == 'United States')
+    filter(region == 'United States') %>%
+    mutate(pct_change_05 = round((value/value[year==2005]-1),2))
   
   ghgi = df %>% filter(type == "GHGI")
   ghgi_2022 = ghgi %>% filter(year == 2022)

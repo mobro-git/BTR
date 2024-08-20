@@ -17,8 +17,9 @@ theme_btr <- function() {
           axis.title.x = element_blank(),
           strip.text.x = element_text(size = 10, color = "black",face = "bold"),
           strip.text.y = element_text(size = 9, color = "black",face = "bold"),
-          strip.background = element_rect(fill=NA, linewidth=1))
-  
+          strip.background = element_rect(fill=NA, linewidth=1),
+          panel.grid.minor.x = element_blank())
+
   theme
 }
 
