@@ -17,7 +17,6 @@ params:
 
 ```{r,echo = FALSE, results = "show", warning = FALSE, message = FALSE, error = FALSE}
 knitr::opts_chunk$set(echo = FALSE, results = "show", warning = FALSE, message = FALSE, error = FALSE, fig.align = "center", fig.width = 9, fig.height = 7)
-
 ```
 
 ```{r}
@@ -662,8 +661,7 @@ View(buildings_df)
 
 ```
 
-
-# Past Report Comparison 
+# Past Report Comparison
 
 ## Total Gross Emissions {.tabset}
 
@@ -862,6 +860,7 @@ ncbr_comp_ribbon <- tge_all_long %>%
 fig <- ncbr_comparison_figure(ncbr_comp_ribbon, tge_all_long, settings, config)
 fig
 ```
+
 ```{r}
 filename <- paste0("ncbr_comp_fig_",Sys.Date(),".png")
 ggsave(paste0('output/',settings$version,"/tables_figs/ncbr_comparison/",filename))
@@ -874,6 +873,7 @@ fig <- ncbr_comp_fig_1990(ncbr_comp_ribbon, tge_all_long, settings, config)
 fig
 
 ```
+
 ```{r}
 filename <- paste0("ncbr_comp90_fig_",Sys.Date(),".png")
 ggsave(paste0('output/',settings$version,"/tables_figs/results_tables/ncbr_comparison/",filename))
@@ -925,6 +925,6 @@ filename <- paste0("nrg_emissions_fig_",Sys.Date(),".png")
 ggsave(paste0('output/',settings$version,"/tables_figs/nrg_emissions/",filename))
 ```
 
-# LULUCF Sink Range 
+# LULUCF Sink Range
 
 *TBD*
