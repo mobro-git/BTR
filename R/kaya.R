@@ -52,14 +52,24 @@ full_kaya_comparison <- function(past_kaya_no_emissions,past_proj,total_gross_em
     mutate(variable = "energy",
            br_version = "2024") %>% 
     filter(year>2020)%>% 
-    #Add on historical GDP, Pop and Energy Data
+    #Add on historical Energy Data
     rbind(data.frame(model = c("GCAM","OP-NEMS","USREP-ReEDS")) %>% 
             cross_join(past_kaya_no_emissions %>% 
                          filter(br_version =="2022 BR"))  %>% 
             gather(year,value,7:67) %>% 
             select(-notes,-version, -unit) %>% 
             mutate(br_version = "2024") %>%
-            filter(year < 2023)) %>% 
+            filter(year < 2023,
+                   variable == "energy")) %>% 
+    #Add on historical GDP and Pop Data
+    rbind(data.frame(model = c("GCAM","OP-NEMS","USREP-ReEDS")) %>% 
+            cross_join(past_kaya_no_emissions %>% 
+                         filter(br_version =="2022 BR"))  %>% 
+            gather(year,value,7:67) %>% 
+            select(-notes,-version, -unit) %>% 
+            mutate(br_version = "2024") %>%
+            filter(year < 2021,
+                   variable != "energy")) %>% 
     #Add projected emissions
     rbind(total_gross_emissions %>%
             filter(proj_name %in% c("gcam_wm_lowseq","usrr_wm_lowseq","nems_wm_lowseq")) %>% 
