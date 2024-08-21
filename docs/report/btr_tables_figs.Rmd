@@ -412,7 +412,7 @@ var_palette = c(unique(dat_range$var),unique(dat4$var))
 
 tar_load(kaya_comparison) 
 
-kaya_data_range = kaya_comparison %>% 
+kaya_data_range = kaya_data %>% 
   filter(br_version == "2024") %>% 
   select(-value,-base) %>% 
   spread(scenario, indexed) %>%
@@ -428,7 +428,7 @@ kaya_data_range = kaya_comparison %>%
       TRUE ~ br_version)) %>%
   filter(year <= 2040 & year >=2005)
 
-kaya_comp_renamed = kaya_comparison  %>%
+kaya_comp_renamed = kaya_data  %>%
   mutate(
     variable = case_when(
       variable == "EmissPerEnergy" ~ "Emissions/Energy",
