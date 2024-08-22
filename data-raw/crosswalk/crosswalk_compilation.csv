@@ -11,6 +11,6 @@ nems_wm_hiseq,wm,OP-NEMS,wm,lulucf,bau_high,wm_oldlulucf
 nems_wm_lowseq,wm,OP-NEMS,wm,lulucf,bau_low,wm_oldlulucf
 usrr_wm_hiseq,wm,USREP-ReEDS,wm,lulucf,bau_high,wm_oldlulucf
 usrr_wm_lowseq,wm,USREP-ReEDS,wm,lulucf,bau_low,wm_oldlulucf
-gcam_wm_nfs,wm,GCAM,wm,lulucf_nfs,wm,wm
-nems_wm_nfs,wm,OP-NEMS,wm,lulucf_nfs,wm,wm
-usrr_wm_nfs,wm,USREP-ReEDS,wm,lulucf_nfs,wm,wm
+gcam_wm_nfs,wm,GCAM,wm,lulucf_nfs,wm_nfs,wm
+nems_wm_nfs,wm,OP-NEMS,wm,lulucf_nfs,wm_nfs,wm
+usrr_wm_nfs,wm,USREP-ReEDS,wm,lulucf_nfs,wm_nfs,wm
