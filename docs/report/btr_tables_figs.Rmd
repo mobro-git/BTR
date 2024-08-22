@@ -180,7 +180,7 @@ projections
 
 ```{r}
 filename <- paste0("btr_main_fig_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_figs/",filename))
+ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_figs/",filename), create.dir = TRUE)
 ```
 
 ```{r}
@@ -228,7 +228,7 @@ projections_pct_change
 
 ```{r}
 filename <- paste0("btr_main_fig_pctchange05_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_figs/",filename))
+ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_figs/",filename), create.dir = TRUE)
 ```
 
 ## BTR Main Plot w/ LEEP Report Comparison {.tabset}
@@ -280,7 +280,7 @@ projections
 
 ```{r}
 filename <- paste0("btr_main_fig_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_figs/",filename))
+ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_figs/",filename), create.dir = TRUE)
 ```
 
 ```{r}
@@ -331,7 +331,7 @@ projections_pct_change
 
 ```{r}
 filename <- paste0("btr_main_fig_pctchange05_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_figs/",filename))
+ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_figs/",filename), create.dir = TRUE)
 ```
 
 ## BTR Net-GHG Stackbar
@@ -411,7 +411,7 @@ var_palette = c(unique(dat_range$var),unique(dat4$var))
 
 tar_load(kaya_comparison) 
 
-kaya_data_range = kaya_data %>% 
+kaya_data_range = kaya_comparison %>% 
   filter(br_version == "2024") %>% 
   select(-value,-base) %>% 
   spread(scenario, indexed) %>%
@@ -427,7 +427,7 @@ kaya_data_range = kaya_data %>%
       TRUE ~ br_version)) %>%
   filter(year <= 2040 & year >=2005)
 
-kaya_comp_renamed = kaya_data  %>%
+kaya_comp_renamed = kaya_comparison  %>%
   mutate(
     variable = case_when(
       variable == "EmissPerEnergy" ~ "Emissions/Energy",
@@ -455,7 +455,7 @@ multipanel_kaya = ggplot()+
   theme_btr() +
   labs(y="Key Factor Index \n(2015 = 1.0)")
 multipanel_kaya
-ggsave(paste0('output/',settings$version,"/tables_figs/kaya/kaya_multipanel.png"), width = )
+ggsave(paste0('output/',settings$version,"/tables_figs/kaya/kaya_multipanel.png"), width = 5, create.dir = TRUE)
 
 line_size = 0.7
 
@@ -487,7 +487,7 @@ singlepanel_kaya = ggplot()+
   guides(color = guide_legend(override.aes = list(alpha = 1))) +
   theme(legend.background = element_rect(color = NA))
 singlepanel_kaya
-ggsave(paste0('output/',settings$version,"/tables_figs/kaya/kaya_singlepanel.png"), width = )
+ggsave(paste0('output/',settings$version,"/tables_figs/kaya/kaya_singlepanel.png"), width = 5, create.dir = TRUE)
 ```
 
 ```{r}
@@ -513,7 +513,7 @@ fig <- Kaya(dat_range, dat4, var_palette)
 
 ```{r}
 filename <- paste0("kaya_fig_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs/kaya/",filename))
+ggsave(paste0('output/',settings$version,"/tables_figs/kaya/",filename), create.dir = TRUE)
 ```
 
 # Sector Analysis {.tabset}
@@ -602,14 +602,14 @@ industry = br_sectors(sector_df,
 
 ```{r}
 buildings
-ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/buildings_comparison.png"))
+ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/buildings_comparison.png"), create.dir = TRUE)
 ```
 
 ## Electricity
 
 ```{r}
 electricity
-ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/electricity_comparison.png"))
+ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/electricity_comparison.png"), create.dir = TRUE)
 ```
 
 ## Transportation
@@ -623,7 +623,7 @@ ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/transport
 
 ```{r}
 industry
-ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/industry_comparison.png"))
+ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/industry_comparison.png"), create.dir = TRUE)
 ```
 
 ```{r}
@@ -654,10 +654,10 @@ trn_df <- gen_subset_sector_df(sector_df, "Emissions|CO2|Energy|Demand|Transport
 
 buildings_df <- gen_subset_sector_df(sector_df, "Emissions|CO2|Energy|Demand|Buildings|Total")
 
-View(elec_df)
-View(industry_df)
-View(trn_df)
-View(buildings_df)
+# View(elec_df)
+# View(industry_df)
+# View(trn_df)
+# View(buildings_df)
 
 ```
 
@@ -863,7 +863,7 @@ fig
 
 ```{r}
 filename <- paste0("ncbr_comp_fig_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs/ncbr_comparison/",filename))
+ggsave(paste0('output/',settings$version,"/tables_figs/ncbr_comparison/",filename), create.dir = TRUE)
 ```
 
 ### Figure: From 1990
@@ -922,7 +922,7 @@ fig
 
 ```{r}
 filename <- paste0("nrg_emissions_fig_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs/nrg_emissions/",filename))
+ggsave(paste0('output/',settings$version,"/tables_figs/nrg_emissions/",filename), create.dir = TRUE)
 ```
 
 # LULUCF Sink Range

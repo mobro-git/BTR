@@ -279,14 +279,14 @@ subscript_numbers <- function(string) {
 }
 
 
-create_summary_table <- function(category, grouping, projections_all_sm, config, settings) {
+create_summary_table <- function(category, group, projections_all_sm, config, settings) {
   
   col_order <- c('category','year','low','high')
   
   
   summary <- projections_all_sm %>%
     rename(category = .data[[category]]) %>% 
-    filter(grouping == grouping) %>%
+    filter(grouping %in% c(group, 'ghgi')) %>%
     filter(year %in% config$table) %>% 
     group_by(proj_name,category, year) %>%
     summarise(cat_sum = sum(sum),.groups='drop')
