@@ -5,13 +5,16 @@ ncbr_comparison_figure <- function(ncbr_comp_ribbon, tge_all_long, settings, con
                                            Year <= 2022,
                                            Year %in% config$fives)
   
-  ncbr_hist_long <- tge_all_long %>% filter(!Report == '2024 BTR',
+  ncbr_hist_long <- tge_all_long %>% filter(!Report %in% c('2024 BTR','2023 BR Voluntary Supplement'),
                                             Year <= 2035,
                                             Year %in% config$fives)
   
   ncbr_ribbon_clean <- ncbr_comp_ribbon %>% 
     filter(Year %in% config$fives,
            Report == '2024 BTR')
+  ncbr_brvs_ribbon_clean <- ncbr_comp_ribbon %>% 
+    filter(Year %in% config$fives,
+           Report == '2023 BR Voluntary Supplement')
   
   # tge_ends <- tge_all_long %>%
   #   filter(Year == max(Year),
@@ -29,6 +32,11 @@ ncbr_comparison_figure <- function(ncbr_comp_ribbon, tge_all_long, settings, con
     geom_ribbon(ncbr_ribbon_clean, mapping = aes(x = Year,ymax = max, ymin = min,
                                                   fill = Report, 
                                                   color = Report),
+                alpha = 0.4 ,
+                size = 0.7) +
+    geom_ribbon(ncbr_brvs_ribbon_clean, mapping = aes(x = Year,ymax = max, ymin = min,
+                                                 fill = Report, 
+                                                 color = Report),
                 alpha = 0.4 ,
                 size = 0.7) +
     geom_vline(xintercept = settings$base_year,
