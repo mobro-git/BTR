@@ -48,11 +48,11 @@ data_from_graph <- function(plot_type, config, emf_data_long, figmap, figure_num
 
 # allows use of pipeline graphing to print one figure and return a ggplot object that can then be edited
 
-print_graph <- function(plot_type, config, emf_data_long, figmap, figure_num, reg,
+print_graph <- function(plot_type, config, data_long_clean, figmap, figure_num, reg = "United States",
                         scenario_rename = FALSE,level_var = NULL, level_scen = NULL, level_mod = NULL) {
 
   # select the key variables, flip values, and merge with specific figure requests
-  df <- preliminary_data_processing_for_plotting(emf_data_long, figmap)
+  df <- preliminary_data_processing_for_plotting(data_long_clean, figmap)
 
   # assign color palettes
   subpalettes = create_subpalettes(figmap, config)
@@ -76,6 +76,7 @@ print_graph <- function(plot_type, config, emf_data_long, figmap, figure_num, re
         mutate(scenario = case_when(
           scenario == "wm" ~ "With Measures",
           scenario == "wam" ~ "With Additional Measures",
+          scenario == "leep_IRA" ~ "LEEP",
           TRUE~scenario))
     }
 

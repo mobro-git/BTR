@@ -273,6 +273,7 @@ tar_plan(
   nrgco2_cu = create_graph("nrgco2", "cone_uncertainty", config, settings, data_long_clean, figmap_nrgco2_cone, pngGraphs = TRUE),
   
   kaya_ts = create_graph("Kaya", "time_series", config, settings, data_long_index, figmap_kaya_timeseries, saveData = TRUE),
+  leepcompare_ts = create_graph("leepcompare", "time_series", config, settings, data_long_clean, figmap_leepcompare_timeseries),
   
   # TODO: remove variables we dont have historical data for
   # TODO: add historical data from EIA for energy variables
@@ -290,7 +291,12 @@ tar_plan(
              "docs/report/results_overview.Rmd",
              output_dir = paste0('output/',settings$version,"/results_overview/"),
              output_file = paste0("results_overview_",Sys.Date(),".html"),
+             params = list(mode = "targets")),
+  
+  tar_render(leepcompare,
+             "docs/report/leep_comparison_nrgco2.Rmd",
+             output_dir = paste0('output/',settings$version,"/results_overview/"),
+             output_file = paste0("leepcompare_",Sys.Date(),".html"),
              params = list(mode = "targets"))
-  # TODO: (low priority) add github doc output second version of output to view html on github site
   
 )

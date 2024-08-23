@@ -1,0 +1,252 @@
+---
+title: "Comparison of BTR1 With Measures and LEEP Projections"
+output:
+  html_document:
+    toc: yes
+    toc_float:
+      toc_collapsed: true
+    toc_depth: 3
+    theme: spacelab
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+---
+
+```{r,echo = FALSE, results = "show", warning = FALSE, message = FALSE, error = FALSE}
+knitr::opts_chunk$set(echo = FALSE, results = "show", warning = FALSE, message = FALSE, error = FALSE, 
+                      fig.align = "center", fig.width = 9, fig.height = 5)
+```
+
+```{r}
+library(targets)
+library(tarchetypes)
+tar_source()
+```
+
+```{r}
+tar_load(
+  c(
+    config,
+    settings,
+    data_long_clean,
+    projections_all_sm, 
+    figmap_leepcompare_timeseries
+    )
+  )
+```
+
+```{r}
+source('packages.R')
+source("scripts/theming.R")
+```
+
+# Energy CO2 Emissions {.tabset}
+
+## Sector 
+
+```{r}
+model = print_graph("time_series", config, data_long_clean, figmap_leepcompare_timeseries, 9, "United States", scenario_rename = FALSE,
+            level_var = c("Buildings", "Industry", "Transportation", "Supply", "Total Energy"))
+model
+```
+
+## Fuel
+
+```{r}
+model = print_graph("time_series", config, data_long_clean, figmap_leepcompare_timeseries, 30, "United States")
+model
+```
+
+# Energy Consumption
+
+## Final Energy {.tabset}
+
+### Fuel 
+
+```{r}
+Fuel = print_graph("time_series", config, data_long_clean, figmap_leepcompare_timeseries, 1, "United States", scenario_rename = FALSE)
+Fuel
+```
+
+### Fuel - Zoom
+
+```{r}
+Fuel = print_graph("time_series", config, data_long_clean, figmap_leepcompare_timeseries, 24, "United States", scenario_rename = FALSE)
+Fuel
+```
+
+### Sector 
+
+```{r}
+Sector = print_graph("time_series", config, data_long_clean, figmap_leepcompare_timeseries, 2, "United States", scenario_rename = FALSE,
+                     level_var = c("Buildings", "Industry", "Transportation", "Total Energy"))
+Sector
+```
+
+## Sectoral Detail {.tabset}
+
+### Buildings Total
+
+```{r}
+Buildings_bymodel = print_graph("time_series", config, data_long_clean, figmap_leepcompare_timeseries, 17, "United States", scenario_rename = FALSE,
+                                level_var = c("Coal", "Gas", "Oil", 'Electricity',"Total Energy"))
+Buildings_bymodel
+```
+
+### Residential
+
+```{r}
+Buildings_bymodel = print_graph("time_series", config, data_long_clean, figmap_leepcompare_timeseries, 31, "United States", scenario_rename = FALSE)
+Buildings_bymodel
+```
+
+### Commercial 
+
+```{r}
+Buildings_bymodel = print_graph("time_series", config, data_long_clean, figmap_leepcompare_timeseries, 32, "United States", scenario_rename = FALSE)
+Buildings_bymodel
+```
+
+### Industry 
+
+```{r}
+Industry_bymodel = print_graph("time_series", config, data_long_clean, figmap_leepcompare_timeseries, 18, "United States", scenario_rename = FALSE)
+Industry_bymodel
+```
+
+### Transportation 
+
+```{r}
+Transportation_bymodel = print_graph("time_series", config, data_long_clean, figmap_leepcompare_timeseries, 19, "United States", scenario_rename = FALSE)
+Transportation_bymodel
+```
+
+## Percent Electricity
+
+```{r}
+Percent_Electricity = print_graph("time_series", config, data_long_clean, figmap_leepcompare_timeseries, 14, "United States", scenario_rename = FALSE,
+                                  level_var = c("Buildings", "Industry", "Transportation","Total Electricity"))
+Percent_Electricity
+```
+
+# Energy Production
+
+## Secondary Energy {.tabset}
+
+### Model
+
+```{r, fig.width=12}
+Model = print_graph("time_series", config, data_long_clean, figmap_leepcompare_timeseries, 8, "United States", scenario_rename = FALSE)
+Model
+```
+
+### Model - Zoom
+
+```{r}
+Model_zoom = print_graph("time_series", config, data_long_clean, figmap_leepcompare_timeseries, 25, "United States", scenario_rename = FALSE)
+Model_zoom
+
+```
+
+## Electricity Production {.tabset}
+
+### Generation 
+
+```{r, fig.width=12}
+elec_model = print_graph("time_series", config, data_long_clean, figmap_leepcompare_timeseries, 15, "United States", scenario_rename = FALSE,
+                         level_var = c("Coal", "Gas", "Oil","Solar", "Wind", "Total Electricity"))
+elec_model
+
+```
+
+### Generation - Zoom
+
+```{r, fig.width=12}
+elec_model = print_graph("time_series", config, data_long_clean, figmap_leepcompare_timeseries, 27, "United States", scenario_rename = FALSE,
+                         level_var = c("Coal", "Gas", "Oil","Solar", "Wind", "Total Electricity"))
+elec_model
+
+```
+
+### Capacity 
+
+```{r, fig.width=12}
+elec_model = print_graph("time_series", config, data_long_clean, figmap_leepcompare_timeseries, 16, "United States", scenario_rename = FALSE,
+                         level_var = c("Coal", "Gas", "Oil","Solar", "Wind", "Storage", "Total Electricity"))
+elec_model
+
+```
+
+### Capacity - Zoom
+
+```{r}
+elec_model = print_graph("time_series", config, data_long_clean, figmap_leepcompare_timeseries, 26, "United States", scenario_rename = FALSE,
+                         level_var = c("Coal", "Gas", "Oil","Solar", "Wind", "Storage", "Total Electricity"))
+elec_model
+```
+
+## Combustion {.tabset}
+
+### Generation by Model
+
+```{r, fig.width=12}
+gen_by_model = print_graph("time_series", config, data_long_clean, figmap_leepcompare_timeseries, 20, "United States", scenario_rename = FALSE)
+gen_by_model
+```
+
+### Generation by Model - Zoom
+
+```{r}
+gen_by_model = print_graph("time_series", config, data_long_clean, figmap_leepcompare_timeseries, 28, "United States", scenario_rename = FALSE)
+gen_by_model
+```
+
+### Capacity by Model
+
+```{r, fig.width=12}
+cap_by_model = print_graph("time_series", config, data_long_clean, figmap_leepcompare_timeseries, 22, "United States", scenario_rename = FALSE)
+cap_by_model
+```
+
+### Capacity by Model - Zoom
+
+```{r}
+cap_by_model = print_graph("time_series", config, data_long_clean, figmap_leepcompare_timeseries, 29, "United States", scenario_rename = FALSE)
+cap_by_model
+```
+
+## Non-Combustion {.tabset}
+
+### Generation by Model
+
+```{r}
+gen_by_model_nc = print_graph("time_series", config, data_long_clean, figmap_leepcompare_timeseries, 23, "United States", scenario_rename = FALSE)
+gen_by_model_nc
+```
+
+### Capacity by Model
+
+```{r}
+cap_by_model_nc = print_graph("time_series", config, data_long_clean, figmap_leepcompare_timeseries, 21, "United States", scenario_rename = FALSE)
+cap_by_model_nc
+```
+
+
+------------------------------------------------------------------------
+
+# Model Comparision
+
+## Input Assumptions {.tabset}
+
+### Population
+
+```{r}
+pop = print_graph("time_series", config, data_long_clean, figmap_leepcompare_timeseries, 12, "United States", scenario_rename = FALSE)
+pop
+```
+
+### GDP
+
+```{r}
+gdp = print_graph("time_series", config, data_long_clean, figmap_leepcompare_timeseries, 13, "United States", scenario_rename = FALSE)
+gdp
+```
+
