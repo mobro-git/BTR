@@ -349,7 +349,12 @@ color_map <- c(
   "Population" = "teal blue",
   "GDP/Capita" = "dark m.yellow",
   "Energy/GDP" = "dark salmon",
-  "Emissions/Energy" = "m.green"
+  "Emissions/Energy" = "m.green",
+  
+  # Sector Analysis
+  "Long-Term Strategy" = "m.green",
+  "2024 Policy Baseline" = "teal blue",
+  "Median Value" = "teal blue"
   
   ) %>%
   find_color(master_palette)
