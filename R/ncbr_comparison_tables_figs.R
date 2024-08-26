@@ -94,7 +94,7 @@ ncbr_comparison_figure <- function(ncbr_comp_ribbon, tge_all_long, settings, con
       theme_btr() +
       theme(
         legend.position = "inside",
-        legend.position.inside = c(0.15, 0.2)) 
+        legend.position.inside = c(0.23, 0.2)) 
   }
     
   figure
