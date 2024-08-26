@@ -854,7 +854,12 @@ ncbr_comp_ribbon <- tge_all_long %>%
 
 # ADDING IN BR Voluntary Supplement
 
-tge_all_long_with_brvs = read_xlsx("data-extra/BR Voluntary Supplement 2023/totalgrossemissions.xlsx") %>%
+brvs_tge_all = read_xlsx("data-extra/BR Voluntary Supplement 2023/totalgrossemissions.xlsx")
+
+brvs_tge_subset_btr = brvs_tge_all %>%
+  filter(brvs_proj %in% c("GCAM-PNNLTotal Gross Emissions","USREP-ReEDSTotal Gross Emissions","NEMS-OPTotal Gross Emissions"))
+
+tge_all_long_with_brvs = brvs_tge_all %>%
   pivot_longer(cols = 2:36, names_to = "Year", values_to = "Value") %>%
   rename(Report = brvs_proj) %>%
   mutate(Report = "2023 BR Voluntary Supplement",
@@ -869,6 +874,20 @@ ncbr_comp_ribbon_with_brvs <- tge_all_long_with_brvs %>%
   select(Report,Year,min,max) %>%
   distinct()  
 
+tge_all_long_with_brvs_subset = brvs_tge_subset_btr %>%
+  pivot_longer(cols = 2:36, names_to = "Year", values_to = "Value") %>%
+  rename(Report = brvs_proj) %>%
+  mutate(Report = "2023 BR Voluntary Supplement",
+         Year = as.numeric(Year)) %>%
+  select(names(tge_all_long)) %>%
+  rbind(tge_all_long)
+
+ncbr_comp_ribbon_with_brvs_subset <- tge_all_long_with_brvs_subset %>% 
+  group_by(Report,Year) %>%
+  mutate(min = min(Value),
+         max = max(Value)) %>%
+  select(Report,Year,min,max) %>%
+  distinct()  
 ```
 
 ### Figure
@@ -886,7 +905,7 @@ ggsave(paste0('output/',settings$version,"/tables_figs/ncbr_comparison/",filenam
 ### Figure with BRVS
 
 ```{r}
-fig <- ncbr_comparison_figure(ncbr_comp_ribbon_with_brvs, tge_all_long_with_brvs, settings, config)
+fig <- ncbr_comparison_figure(ncbr_comp_ribbon_with_brvs, tge_all_long_with_brvs, settings, config, brvs = TRUE, brvs_name = "2023 BR Voluntary Supplement - All Models")
 fig
 ```
 
@@ -895,6 +914,17 @@ filename <- paste0("ncbr_comp_fig_with_brvs",Sys.Date(),".png")
 ggsave(paste0('output/',settings$version,"/tables_figs/ncbr_comparison/",filename), create.dir = TRUE)
 ```
 
+### Figure with BRVS
+
+```{r}
+fig <- ncbr_comparison_figure(ncbr_comp_ribbon_with_brvs_subset, tge_all_long_with_brvs_subset, settings, config, brvs = TRUE, brvs_name = "2023 BR Voluntary Supplement - BTR Subset")
+fig
+```
+
+```{r}
+filename <- paste0("ncbr_comp_fig_with_brvs_subset",Sys.Date(),".png")
+ggsave(paste0('output/',settings$version,"/tables_figs/ncbr_comparison/",filename), create.dir = TRUE)
+```
 
 ### Figure: From 1990
 
