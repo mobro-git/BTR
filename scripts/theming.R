@@ -353,8 +353,12 @@ color_map <- c(
   
   # Sector Analysis
   "Long-Term Strategy" = "m.green",
-  "2024 Policy Baseline" = "teal blue",
-  "Median Value" = "teal blue"
+  "Median Value" = "teal blue",
+  
+  #BRVS
+  "2023 BR Voluntary Supplement - All Models" = "hue1",
+  "2023 BR Voluntary Supplement - BTR Subset" = "hue1",
+  "2023 BR Voluntary Supplement" = "hue1"
   
   ) %>%
   find_color(master_palette)

@@ -690,8 +690,6 @@ col_order <- c('category', 'year', 'low', 'high')
 category = 'gas'
 grouping = 'wm'
 
-# TODO: something is really wrong here, emissions are getting reallllllly high when we aggregate, maybe something to do with grouping == grouping?
-
 summary <- projections_all_sm %>%
   rename(category = .data[[category]]) %>%
   filter(grouping == grouping) %>%
