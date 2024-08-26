@@ -669,11 +669,10 @@ buildings_df <- gen_subset_sector_df(sector_df, "Emissions|CO2|Energy|Demand|Bui
 # Load in past NCBR data
 past_proj_clean <- past_proj %>%
   select(Report, Year, Emissions) %>%
-  rename(Value = Emissions)
-
-past_proj_clean_hilow <- past_proj %>%
-  select(Report, Year, Emissions) %>%
   rename(Value = Emissions) %>%
+  filter(Year <= 2035)
+
+past_proj_clean_hilow <- past_proj_clean %>%
   group_by(Report,Year) %>%
   mutate(low = min(Value),
          high = max (Value),
