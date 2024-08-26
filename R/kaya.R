@@ -68,7 +68,7 @@ full_kaya_comparison <- function(past_kaya_no_emissions,past_proj,total_gross_em
             gather(year,value,7:67) %>% 
             select(-notes,-version, -unit) %>% 
             mutate(br_version = "2024") %>%
-            filter(year < 2021,
+            filter(year < 2020,
                    variable != "energy")) %>% 
     #Add projected emissions
     rbind(total_gross_emissions %>%
@@ -93,7 +93,7 @@ full_kaya_comparison <- function(past_kaya_no_emissions,past_proj,total_gross_em
                          filter(scenario == "wm",
                                 variable %in% c("GDP|MER", "Population"),
                                 model == "OP-NEMS",
-                                year %in% c(seq(2025,2050,5))) %>% 
+                                year %in% c(2020,2021,2022,seq(2025,2050,5))) %>% 
                          select(unit,year,variable,value) %>% 
                          mutate(br_version = "2024")) %>% 
             mutate(variable = gsub("GDP\\|MER","gdp",variable)) %>% 
