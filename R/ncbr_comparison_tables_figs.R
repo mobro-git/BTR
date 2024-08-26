@@ -28,9 +28,16 @@ ncbr_comparison_figure <- function(ncbr_comp_ribbon, tge_all_long, settings, con
   #          proj_name %in% c('usrr_wm_hiseq',
   #                           'gcam_wm_hiseq',
   #                           'nems_wm_hiseq'))
+  var_palette = sort((unique(tge_all_long$Report)), decreasing = TRUE)
   
-  var_palette = c(unique(tge_all_long$Report))
-  
+  if(!is.null(brvs_name)) {
+    tge_all_long_rename <- tge_all_long %>%
+      mutate(Report = case_when(
+        Report == "2023 BR Voluntary Supplement" ~ brvs_name,
+        TRUE ~ Report
+      ))
+    var_palette = sort(unique(tge_all_long_rename$Report), decreasing = TRUE)
+  }
   #TODO: FLIP LEGEND ORDER, new to old desc
   if(brvs == FALSE){
   

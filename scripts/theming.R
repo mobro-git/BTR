@@ -356,7 +356,7 @@ color_map <- c(
   "Median Value" = "teal blue",
   
   #BRVS
-  "2023 BR Voluntary Supplement - All Models" = "hue1",
+  "2023 BR Voluntary Supplement: All Models" = "hue1",
   "2023 BR Voluntary Supplement - BTR Subset" = "hue1",
   "2023 BR Voluntary Supplement" = "hue1"
   

@@ -903,7 +903,7 @@ ggsave(paste0('output/',settings$version,"/tables_figs/ncbr_comparison/",filenam
 ### Figure with BRVS
 
 ```{r}
-fig <- ncbr_comparison_figure(ncbr_comp_ribbon_with_brvs, tge_all_long_with_brvs, settings, config, brvs = TRUE, brvs_name = "2023 BR Voluntary Supplement - All Models")
+fig <- ncbr_comparison_figure(ncbr_comp_ribbon_with_brvs, tge_all_long_with_brvs, settings, config, brvs = TRUE, brvs_name = "2023 BR Voluntary Supplement")
 fig
 ```
 
