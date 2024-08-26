@@ -17,7 +17,6 @@ params:
 
 ```{r,echo = FALSE, results = "show", warning = FALSE, message = FALSE, error = FALSE}
 knitr::opts_chunk$set(echo = FALSE, results = "show", warning = FALSE, message = FALSE, error = FALSE, fig.align = "center", fig.width = 9, fig.height = 7)
-
 ```
 
 ```{r}
@@ -181,7 +180,7 @@ projections
 
 ```{r}
 filename <- paste0("btr_main_fig_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_figs/",filename))
+ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_figs/",filename), create.dir = TRUE)
 ```
 
 ```{r}
@@ -229,7 +228,7 @@ projections_pct_change
 
 ```{r}
 filename <- paste0("btr_main_fig_pctchange05_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_figs/",filename))
+ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_figs/",filename), create.dir = TRUE)
 ```
 
 ## BTR Main Plot w/ LEEP Report Comparison {.tabset}
@@ -281,7 +280,7 @@ projections
 
 ```{r}
 filename <- paste0("btr_main_fig_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_figs/",filename))
+ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_figs/",filename), create.dir = TRUE)
 ```
 
 ```{r}
@@ -332,7 +331,7 @@ projections_pct_change
 
 ```{r}
 filename <- paste0("btr_main_fig_pctchange05_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_figs/",filename))
+ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_figs/",filename), create.dir = TRUE)
 ```
 
 ## BTR Net-GHG Stackbar
@@ -456,7 +455,7 @@ multipanel_kaya = ggplot()+
   theme_btr() +
   labs(y="Key Factor Index \n(2015 = 1.0)")
 multipanel_kaya
-ggsave(paste0('output/',settings$version,"/tables_figs/kaya/kaya_multipanel.png"), width = )
+ggsave(paste0('output/',settings$version,"/tables_figs/kaya/kaya_multipanel.png"), width = 5, create.dir = TRUE)
 
 line_size = 0.7
 
@@ -488,7 +487,7 @@ singlepanel_kaya = ggplot()+
   guides(color = guide_legend(override.aes = list(alpha = 1))) +
   theme(legend.background = element_rect(color = NA))
 singlepanel_kaya
-ggsave(paste0('output/',settings$version,"/tables_figs/kaya/kaya_singlepanel.png"), width = )
+ggsave(paste0('output/',settings$version,"/tables_figs/kaya/kaya_singlepanel.png"), width = 5, create.dir = TRUE)
 ```
 
 ```{r}
@@ -514,7 +513,7 @@ fig <- Kaya(dat_range, dat4, var_palette)
 
 ```{r}
 filename <- paste0("kaya_fig_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs/kaya/",filename))
+ggsave(paste0('output/',settings$version,"/tables_figs/kaya/",filename), create.dir = TRUE)
 ```
 
 # Sector Analysis {.tabset}
@@ -603,14 +602,14 @@ industry = br_sectors(sector_df,
 
 ```{r}
 buildings
-ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/buildings_comparison.png"))
+ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/buildings_comparison.png"), create.dir = TRUE)
 ```
 
 ## Electricity
 
 ```{r}
 electricity
-ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/electricity_comparison.png"))
+ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/electricity_comparison.png"), create.dir = TRUE)
 ```
 
 ## Transportation
@@ -624,7 +623,7 @@ ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/transport
 
 ```{r}
 industry
-ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/industry_comparison.png"))
+ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/industry_comparison.png"), create.dir = TRUE)
 ```
 
 ```{r}
@@ -655,15 +654,14 @@ trn_df <- gen_subset_sector_df(sector_df, "Emissions|CO2|Energy|Demand|Transport
 
 buildings_df <- gen_subset_sector_df(sector_df, "Emissions|CO2|Energy|Demand|Buildings|Total")
 
-View(elec_df)
-View(industry_df)
-View(trn_df)
-View(buildings_df)
+# View(elec_df)
+# View(industry_df)
+# View(trn_df)
+# View(buildings_df)
 
 ```
 
-
-# Past Report Comparison 
+# Past Report Comparison
 
 ## Total Gross Emissions {.tabset}
 
@@ -671,11 +669,10 @@ View(buildings_df)
 # Load in past NCBR data
 past_proj_clean <- past_proj %>%
   select(Report, Year, Emissions) %>%
-  rename(Value = Emissions)
-
-past_proj_clean_hilow <- past_proj %>%
-  select(Report, Year, Emissions) %>%
   rename(Value = Emissions) %>%
+  filter(Year <= 2035)
+
+past_proj_clean_hilow <- past_proj_clean %>%
   group_by(Report,Year) %>%
   mutate(low = min(Value),
          high = max (Value),
@@ -862,9 +859,10 @@ ncbr_comp_ribbon <- tge_all_long %>%
 fig <- ncbr_comparison_figure(ncbr_comp_ribbon, tge_all_long, settings, config)
 fig
 ```
+
 ```{r}
 filename <- paste0("ncbr_comp_fig_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs/ncbr_comparison/",filename))
+ggsave(paste0('output/',settings$version,"/tables_figs/ncbr_comparison/",filename), create.dir = TRUE)
 ```
 
 ### Figure: From 1990
@@ -874,6 +872,7 @@ fig <- ncbr_comp_fig_1990(ncbr_comp_ribbon, tge_all_long, settings, config)
 fig
 
 ```
+
 ```{r}
 filename <- paste0("ncbr_comp90_fig_",Sys.Date(),".png")
 ggsave(paste0('output/',settings$version,"/tables_figs/results_tables/ncbr_comparison/",filename))
@@ -922,9 +921,9 @@ fig
 
 ```{r}
 filename <- paste0("nrg_emissions_fig_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs/nrg_emissions/",filename))
+ggsave(paste0('output/',settings$version,"/tables_figs/nrg_emissions/",filename), create.dir = TRUE)
 ```
 
-# LULUCF Sink Range 
+# LULUCF Sink Range
 
 *TBD*

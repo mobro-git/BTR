@@ -126,3 +126,13 @@ create_folders <- function(paths) {
            dir.create(x))
 }
 
+tar_refresh <- function(tar_obj) {
+  
+  tar_lbl <- rlang::ensym(tar_obj) |> rlang::as_label()
+  tar_invalidate(tar_lbl)
+  tar_make(all_of(tar_lbl))
+  tar_load_raw(tar_lbl) #TODO: figure out why this doesnt work, not a big deal but would be nice :) 
+  
+  cli::cli_bullets(c(paste("* Invalidated, made, and loaded target ", tar_lbl)))
+  tar_lbl
+}

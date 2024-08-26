@@ -47,7 +47,8 @@ emf_usrep_reeds_btr_8.2.csv,USREP-ReEDS,btr3_ref,USREP-ReEDS,ref,,btr
 emf_usrep_reeds_btr_8.2.csv,USREP-ReEDS,btr3_wm_low,USREP-ReEDS,wm_low,low buildings implementation,btr
 emf_usrep_reeds_btr_8.2.csv,USREP-ReEDS,btr3_wm_mid,USREP-ReEDS,wm,mid buildings implementation,btr
 OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,OP-NEMS,OP Moderate,OP-NEMS,wm,btr - OP-NEMS BTR wm,btr
-080824gcamreport_Processed.csv,GCAM 7.0,WM_080824,GCAM,wm,,
-080824gcamreport_Processed.csv,GCAM 7.0,WM_IRAEGU_080824,GCAM,wm_iraegu,,
-080824gcamreport_Processed.csv,GCAM 7.0,WM_IRATRN_080824,GCAM,wm_iratrn,,
-080824gcamreport_Processed.csv,GCAM 7.0,WM_IRAonly_080824,GCAM,wm_iraonly,,
+082124gcamreport_Processed.csv,GCAM 7.0,WM_082124,GCAM,wm,btr- gcam,btr
+082124gcamreport_Processed.csv,GCAM 7.0,WM_IRAEGU_082124,GCAM,wm_iraegu,,btr
+082124gcamreport_Processed.csv,GCAM 7.0,WM_IRATRN_082124,GCAM,wm_iratrn,,btr
+082124gcamreport_Processed.csv,GCAM 7.0,WM_IRAonly_082124,GCAM,wm_iraonly,,btr
+USREP-ReEDS additional Reporting Variables 8.13.xlsx,USREP-ReEDS,wm,USREP-ReEDS,wm,vehicle stock and sales variables,btr

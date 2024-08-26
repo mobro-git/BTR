@@ -1,0 +1,42 @@
+---
+title: "testing123"
+format: html
+execute:
+  echo: FALSE
+  warning: FALSE
+  message: FALSE
+---
+
+```{r}
+#|label: setup
+
+library(here)
+source(here::here("packages.R"))
+tar_source(files = here::here("R"))
+source(here::here("scripts/theming.R"))
+```
+
+```{r}
+#|label: data load 
+tar_load(
+  c(
+    config,
+    settings,
+    data_long_clean,
+    projections_all_sm,
+    total_gross_emissions,
+    ghgi_comp_tab,
+    figmap_nrgco2_stackbar,
+    past_proj
+    ),
+  store = here::here("_targets")
+  )
+```
+
+```{r}
+
+```
+
+# 
+
+## 

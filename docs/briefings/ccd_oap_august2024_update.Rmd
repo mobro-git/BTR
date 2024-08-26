@@ -1,0 +1,313 @@
+---
+pagetitle: "Total Gross Emissions Comparison with BRVS"
+output:
+  html_document:
+    number_sections: false
+    highlight: tango
+    fontsize: 12
+    fig_caption: false
+    toc: yes
+    toc_float:
+      toc_collapsed: true
+    toc_depth: 3
+    theme: spacelab
+params:
+  mode: "interactive"
+---
+
+```{r,echo = FALSE, results = "show", warning = FALSE, message = FALSE, error = FALSE}
+knitr::opts_chunk$set(echo = FALSE, results = "show", warning = FALSE, message = FALSE, error = FALSE, fig.align = "center", fig.width = 9, fig.height = 7)
+```
+
+```{r}
+source('packages.R')
+library(targets)
+library(tarchetypes)
+tar_source()
+```
+
+```{r}
+
+tar_load(
+  c(
+    config,
+    settings,
+    data_long_clean,
+    projections_all_sm,
+    total_gross_emissions,
+    ghgi_comp_tab,
+    figmap_nrgco2_stackbar,
+    past_proj
+    )
+  )
+
+source("scripts/theming.R")
+
+```
+
+# Past Report Comparison
+
+## Total Gross Emissions {.tabset}
+
+```{r}
+# Load in past NCBR data
+past_proj_clean <- past_proj %>%
+  select(Report, Year, Emissions) %>%
+  rename(Value = Emissions)
+
+past_proj_clean_hilow <- past_proj %>%
+  select(Report, Year, Emissions) %>%
+  rename(Value = Emissions) %>%
+  group_by(Report,Year) %>%
+  mutate(low = min(Value),
+         high = max (Value),
+         Report = case_when(Report == "btr_2024" ~ "2024 BTR",
+                            Report == "car_2014" ~ "2014 CAR",
+                            Report == "br_2016" ~ "2016 BR",
+                            Report == "br_2021" ~ "2021 BR",
+                            Report == "br_2022" ~ "2022 BR")) %>%
+  select(Report,Year,low,high)
+```
+
+```{r}
+col_order <- c('category', 'year', 'low', 'high')
+category = 'gas'
+grouping = 'wm'
+
+summary <- projections_all_sm %>%
+  rename(category = .data[[category]]) %>%
+  filter(grouping == grouping) %>%
+  filter(year %in% config$seq_ncbr_comp_sm) %>%
+  group_by(proj_name, category, year) %>%
+  summarise(cat_sum = sum(sum), .groups = 'drop')
+
+summary_total_gross <- summary %>%
+  filter(!category == 'LULUCF Sink') %>%
+  group_by(proj_name, year) %>%
+  summarise(value = sum(cat_sum), .groups = 'drop') %>%
+  group_by(year) %>%
+  mutate(low = min(value), high = max(value)) %>%
+  select(year, low, high) %>%
+  distinct() %>%
+  mutate(category = 'Total Gross Emissions') %>%
+  select(all_of(col_order)) %>%
+  rename(Projection = category) %>%
+  mutate(Projection = '2024 BTR')
+
+tge_all_long_high_low <- summary_total_gross %>%
+  rename(Report = Projection,
+         Year = year) %>%
+  rbind(past_proj_clean_hilow) %>%
+  filter(Year %in% config$seq_ncbr_comp_sm) %>%
+  drop_na() %>%
+  rename(Publication = Report)
+
+proj_years <- c('2025', '2030', '2035', '2040')
+hist_years <- c('2005', '2010', '2015', '2020')
+proj_col_order <- c(
+  '2025_low',
+  '2025_high',
+  '2030_low',
+  '2030_high',
+  '2035_low',
+  '2035_high',
+  '2040_low',
+  '2040_high'
+)
+
+df_low <- tge_all_long_high_low %>%
+  select(Publication, Year, low) %>%
+  pivot_wider(names_from = 'Year', values_from = 'low')
+
+df_high <- tge_all_long_high_low %>%
+  select(Publication, Year, high) %>%
+  pivot_wider(names_from = 'Year', values_from = 'high')
+
+df_merged <- merge(df_low[, c('Publication', proj_years)],
+                   df_high[, c('Publication', proj_years)],
+                   by = 'Publication',
+                   suffix = c('', '_high'))
+
+for (year in proj_years) {
+  colnames(df_merged)[colnames(df_merged) == year] <- paste0(year, '_low')
+  colnames(df_merged)[colnames(df_merged) == paste0(year, '_high')] <- paste0(year, '_high')
+}
+
+df_merge_final <- merge(df_low %>% select(Publication, all_of(hist_years)), df_merged) %>%
+  select(Publication, all_of(hist_years), all_of(proj_col_order)) %>%
+  mutate_if(is.numeric, round)
+
+numeric_cols <- sapply(df_merge_final, is.numeric)
+df_merge_final[, numeric_cols] <- lapply(df_merge_final[, numeric_cols], scales::comma)
+
+ncbr_table_df <- df_merge_final
+for (col in names(ncbr_table_df)) {
+  ncbr_table_df <- ncbr_table_df %>%
+    mutate(col = as.character(col)) %>%
+    select(names(df_merge_final)) %>%
+    arrange(desc(Publication))
+}
+```
+
+### Table
+
+```{r}
+proj_col_order <- c('2025', '2030', '2035', '2040')
+stubhead <- 'Publication'
+
+merged = ncbr_table_df %>%
+  mutate(
+    `2025` = case_when(
+      `2025_low` == `2025_high` ~ `2025_high`,
+      `2025_low` != `2025_high` ~ paste0(`2025_low`, " - ", `2025_high`)
+    ),
+    `2030` = case_when(
+      `2030_low` == `2030_high` ~ `2030_high`,
+      `2030_low` != `2030_high` ~ paste0(`2030_low`, " - ", `2030_high`)
+    ),
+    `2035` = case_when(
+      `2035_low` == `2035_high` ~ `2035_high`,
+      `2035_low` != `2035_high` ~ paste0(`2035_low`, " - ", `2035_high`)
+    ),
+    `2040` = case_when(
+      `2040_low` == `2040_high` ~ `2040_high`,
+      `2040_low` != `2040_high` ~ paste0(`2040_low`, " - ", `2040_high`)
+    )
+  ) %>%
+  select(-contains("_"))
+
+bold1 = nrow(merged) - 3
+bold2 = nrow(merged) - 1
+bold3 = nrow(merged) - 5
+
+ncbr_comp_table <- merged %>%
+  
+  gt() %>%
+  cols_align('center', columns = everything()) %>%
+  cols_align('left', columns = stubhead) %>%
+  # tab_style(
+  #   style = cell_borders(
+  #     color = "#1F77AE",
+  #     sides = c("bottom"),
+  #     weight = px(2)
+  #   ),
+  #   #
+  #   locations = cells_body(rows = c(bold1, bold2, bold3))
+  # ) %>% 
+
+  
+  gt_theme_nc_blue()
+
+ncbr_comp_table
+```
+
+```{r}
+filename <- paste0("ncbr_comp_table_",Sys.Date(),".png")
+gtsave(ncbr_comp_table, paste0('output/',settings$version,"/tables_figs/results_tables/ncbr_comparison/",filename))
+```
+
+```{r}
+tge_btr <- projections_all_sm %>% 
+  filter(!gas == 'LULUCF Sink') %>%
+  group_by(proj_name, grouping, year) %>%
+  summarise(Value = sum(sum),.groups = 'drop')
+
+tge_all_long <- tge_btr %>%
+  mutate(Report = 'btr_2024') %>%
+  rename(Year = year) %>% 
+  select(names(past_proj_clean)) %>%
+  rbind(past_proj_clean) %>%
+  mutate(Year = as.numeric(Year),
+         Report = case_when(Report == "btr_2024" ~ "2024 BTR",
+                            Report == "car_2014" ~ "2014 CAR",
+                            Report == "br_2016" ~ "2016 BR",
+                            Report == "br_2021" ~ "2021 BR",
+                            Report == "br_2022" ~ "2022 BR"))
+#%>%
+ # filter(year %in% config$fives_proj_sm)
+
+
+ncbr_comp_ribbon <- tge_all_long %>% 
+  group_by(Report,Year) %>%
+  mutate(min = min(Value),
+         max = max(Value)) %>%
+  select(Report,Year,min,max) %>%
+  distinct()
+
+# ADDING IN BR Voluntary Supplement
+
+brvs_tge_all = read_xlsx("data-extra/BR Voluntary Supplement 2023/totalgrossemissions.xlsx")
+
+brvs_tge_subset_btr = brvs_tge_all %>%
+  filter(brvs_proj %in% c("GCAM-PNNLTotal Gross Emissions","USREP-ReEDSTotal Gross Emissions","NEMS-OPTotal Gross Emissions"))
+
+tge_all_long_with_brvs = brvs_tge_all %>%
+  pivot_longer(cols = 2:36, names_to = "Year", values_to = "Value") %>%
+  rename(Report = brvs_proj) %>%
+  mutate(Report = "2023 BR Voluntary Supplement",
+         Year = as.numeric(Year)) %>%
+  select(names(tge_all_long)) %>%
+  rbind(tge_all_long)
+
+ncbr_comp_ribbon_with_brvs <- tge_all_long_with_brvs %>% 
+  group_by(Report,Year) %>%
+  mutate(min = min(Value),
+         max = max(Value)) %>%
+  select(Report,Year,min,max) %>%
+  distinct()  
+
+tge_all_long_with_brvs_subset = brvs_tge_subset_btr %>%
+  pivot_longer(cols = 2:36, names_to = "Year", values_to = "Value") %>%
+  rename(Report = brvs_proj) %>%
+  mutate(Report = "2023 BR Voluntary Supplement",
+         Year = as.numeric(Year)) %>%
+  select(names(tge_all_long)) %>%
+  rbind(tge_all_long)
+
+ncbr_comp_ribbon_with_brvs_subset <- tge_all_long_with_brvs_subset %>% 
+  group_by(Report,Year) %>%
+  mutate(min = min(Value),
+         max = max(Value)) %>%
+  select(Report,Year,min,max) %>%
+  distinct()  
+```
+
+### BTR Report Version
+
+```{r}
+fig <- ncbr_comparison_figure(ncbr_comp_ribbon, tge_all_long, settings, config)
+fig
+```
+
+### Figure: From 1990
+
+```{r}
+fig <- ncbr_comp_fig_1990(ncbr_comp_ribbon, tge_all_long, settings, config)
+fig
+```
+
+### Figure with BRVS
+
+```{r}
+fig <- ncbr_comparison_figure(ncbr_comp_ribbon_with_brvs, tge_all_long_with_brvs, settings, config, brvs = TRUE, brvs_name = "2023 BR Voluntary Supplement - All")
+fig
+```
+
+```{r}
+filename <- paste0("ncbr_comp_fig_with_brvs_all_models",Sys.Date(),".png")
+ggsave(paste0('output/',settings$version,"/tables_figs/ncbr_comparison/",filename), create.dir = TRUE)
+```
+
+### Figure with BRVS
+
+```{r}
+fig <- ncbr_comparison_figure(ncbr_comp_ribbon_with_brvs_subset, tge_all_long_with_brvs_subset, settings, config, brvs = TRUE, brvs_name = "2023 BR Voluntary Supplement - BTR Subset")
+fig
+```
+
+```{r}
+filename <- paste0("ncbr_comp_fig_with_brvs_subset",Sys.Date(),".png")
+ggsave(paste0('output/',settings$version,"/tables_figs/ncbr_comparison/",filename), create.dir = TRUE)
+```
+
+

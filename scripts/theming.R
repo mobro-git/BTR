@@ -129,9 +129,12 @@ master_palette <- c(
 color_map <- c(
   # scenarios
   "wm" = "teal blue",
+  "With Measures" = "teal blue",
   "2024 Policy Baseline" = "teal blue",
   "Historical" = "black",
-  "IRA" = "apricotD",
+  "leep_IRA" = "redD",
+  "IRA" = "redD",
+  "LEEP" = "redD",
   
   # models
   
@@ -346,7 +349,16 @@ color_map <- c(
   "Population" = "teal blue",
   "GDP/Capita" = "dark m.yellow",
   "Energy/GDP" = "dark salmon",
-  "Emissions/Energy" = "m.green"
+  "Emissions/Energy" = "m.green",
+  
+  # Sector Analysis
+  "Long-Term Strategy" = "m.green",
+  "Median Value" = "teal blue",
+  
+  #BRVS
+  "2023 BR Voluntary Supplement: All Models" = "hue1",
+  "2023 BR Voluntary Supplement - BTR Subset" = "hue1",
+  "2023 BR Voluntary Supplement" = "hue1"
   
   ) %>%
   find_color(master_palette)

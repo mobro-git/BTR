@@ -16,7 +16,8 @@ br_sectors = function(sector_df, var_choice, ytitle) {
       value = ghgi_2022$value,
       year = 2022,
       datasrc = "copied from GHGI")
-  lts = rbind(lts_no2022, lts_2022)
+  lts = rbind(lts_no2022, lts_2022) %>%
+    mutate(type = "Long-Term Strategy")
   
   lts_range = lts %>%
     group_by(year) %>%
@@ -24,33 +25,41 @@ br_sectors = function(sector_df, var_choice, ytitle) {
               ymin = min(value), 
               med = median(value)) %>%
     mutate(year = as.numeric(year),
-           type = "LTS")
+           type = "Long-Term Strategy")
   
-  proj = df %>%filter(type == "proj")
-  median = df %>% filter(type == "median")
+  proj = df %>%
+    filter(type == "proj") %>%
+    mutate(type = "2024 Policy Baseline")
+  
+  median = df %>% filter(type == "median")%>%
+    mutate(type = "Median Value")
   
   lts_col = "#96BBA4"
   proj_col = "#0388B3"
+  var_palette  = c("2024 Policy Baseline","Median Value",'Long-Term Strategy')
   
   ggplot() +
     # Historic
     geom_line(data = ghgi, aes(x = year, y = value), size = 0.7, color = "black") +
     # LTS
-    geom_line(data = lts, aes(x = year, y = value, group = interaction(model, scenario)), size = 0.7, color = lts_col) +
-    geom_ribbon(data = lts_range, aes(x=year, ymax=ymax, ymin=ymin), color = lts_col, fill = lts_col, alpha = 0.4 , size = 0.7) +
+    geom_line(data = lts, aes(x = year, y = value, group = interaction(model, scenario), color = type), size = 0.7) +
+    geom_ribbon(data = lts_range, aes(x=year, ymax=ymax, ymin=ymin, fill = type), alpha = 0.4 , size = 0.7) +
     # Projections
-    geom_point(data = proj, aes(x = year, y = value), color = proj_col) +
+    geom_point(data = proj, aes(x = year, y = value, color = type)) +
     # Medians
-    geom_segment(data = median, aes(x = year - 1, xend = year + 1, y = value, yend = value),
-                 color = proj_col, position = position_dodge2(width = 0.5), linewidth = 1) +
+    geom_segment(data = median, aes(x = year - 1, xend = year + 1, y = value, yend = value, color = type),
+                 position = position_dodge2(width = 0.5), linewidth = 1) +
+    scale_subpalette_single(var_palette) +
     # theming
     theme_custom() +
     labs(title = "", 
          y = ytitle, 
          x = "") +
     scale_y_continuous(limits = c(0,2500), expand = c(0,0), labels = comma) +
-    scale_x_continuous(breaks = c(2005, 2022, 2025, 2030, 2035)) + 
+    scale_x_continuous(breaks = c(2005, 2022, 2025, 2030, 2035, 2040)) + 
     geom_hline(aes(yintercept=0)) +
-    nolegend
+    theme(
+      legend.position = "inside",
+      legend.position.inside = c(0.15, 0.2))
   
 }
