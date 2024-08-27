@@ -707,11 +707,29 @@ pec_df2 = pec_df %>%
 grid.table(pec_df2)
 ```
 
-Vehicle sales share in 2040
+Passenger Vehicle sales share in 2040
 ```{r}
 var_list <- c("Energy Service|Transportation|Passenger|BEV|Sales Share",
+              "Energy Service|Transportation|Passenger|FCEV|Sales Share",
               "Energy Service|Transportation|Passenger|PHEV|Sales Share",
               "Energy Service|Transportation|Passenger|ICE|Sales Share")
+
+vs_df <- get_value_breakout(data_long_clean, var_list, config)
+
+vs_df2 = vs_df %>% 
+  filter(year ==2040) %>% 
+  spread(model,value) 
+
+grid.table(vs_df2)
+  
+```
+
+Freight Vehicle sales share in 2040
+```{r}
+var_list <- c("Energy Service|Transportation|Freight|BEV|Sales Share",
+              "Energy Service|Transportation|Freight|FCEV|Sales Share",
+              "Energy Service|Transportation|Freight|PHEV|Sales Share",
+              "Energy Service|Transportation|Freight|ICE|Sales Share")
 
 vs_df <- get_value_breakout(data_long_clean, var_list, config)
 

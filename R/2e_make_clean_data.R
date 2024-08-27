@@ -33,7 +33,15 @@ complete_implicit_na = function(df) {
 
 manual_data_update <- function(df) {
 
-  return(df)
+  percent = df %>%
+    filter(unit == "%" & !model %in% c("GCAM")) %>%
+    mutate(value = value * 100)
+  
+  df_replaced = df %>%
+    filter(!(unit == "%" & !model %in% c("GCAM"))) %>%
+    rbind(percent)
+    
+  return(df_replaced)
 
 }
 
