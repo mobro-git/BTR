@@ -713,7 +713,7 @@ var_list <- c("Energy Service|Transportation|Passenger|BEV|Sales Share",
               "Energy Service|Transportation|Passenger|PHEV|Sales Share",
               "Energy Service|Transportation|Passenger|ICE|Sales Share")
 
-vs_df <- get_value_breakout(data_long_clean,var_list, config)
+vs_df <- get_value_breakout(data_long_clean, var_list, config)
 
 vs_df2 = vs_df %>% 
   filter(year ==2040) %>% 
