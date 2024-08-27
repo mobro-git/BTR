@@ -293,6 +293,12 @@ tar_plan(
              output_file = paste0("results_overview_",Sys.Date(),".html"),
              params = list(mode = "targets")),
   
+  tar_render(ncbr_comp_brvs,
+            "docs/report/ncbr_comp_brvs.Rmd",
+            output_dir = paste0('output/',settings$version,"/results_overview/"),
+            output_file = paste0("ncbr_comp_brvs_",Sys.Date(),".html"),
+            params = list(mode = "targets")),
+  
   tar_render(leepcompare,
              "docs/report/leep_comparison_nrgco2.Rmd",
              output_dir = paste0('output/',settings$version,"/results_overview/"),
