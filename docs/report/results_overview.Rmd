@@ -56,6 +56,12 @@ sector = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stack
 sector
 ```
 
+### Supply-Breakout
+```{r}
+model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 10, "United States")
+model
+```
+
 ### Stats
 
 ```{r}
@@ -301,14 +307,6 @@ Transportation = print_graph("stacked_bar", config, data_long_clean, figmap_nrgc
 Transportation
 ```
 
-## Percent Electricity
-
-```{r}
-Percent_Electricity = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 14, "United States", scenario_rename = TRUE,
-                                  level_var = c("Buildings", "Industry", "Transportation","Total Electricity"))
-Percent_Electricity
-```
-
 ### Vehicle Share {.tabset}
 
 #### Sales Share 
@@ -362,6 +360,15 @@ ggplot(data = df) +
         axis.title.x = element_blank(),
         axis.text.x = element_text(angle = 45, hjust=1),
         panel.spacing.x = unit(4, "mm"))
+```
+
+
+## Percent Electricity
+
+```{r}
+Percent_Electricity = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 14, "United States", scenario_rename = TRUE,
+                                  level_var = c("Buildings", "Industry", "Transportation","Total Electricity"))
+Percent_Electricity
 ```
 
 
