@@ -357,7 +357,7 @@ ggplot(data = df) +
   theme_custom() +
   scale_y_continuous(labels = scales::percent)  +
   labs(title = 'Vehicle Stock Share') +
-  theme(title = element_blank(),
+  theme(
         axis.title.y = element_blank(),
         axis.title.x = element_blank(),
         axis.text.x = element_text(angle = 45, hjust=1),
