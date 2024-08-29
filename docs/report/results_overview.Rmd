@@ -19,6 +19,8 @@ knitr::opts_chunk$set(echo = FALSE, results = "show", warning = FALSE, message =
 library(targets)
 library(tarchetypes)
 tar_source()
+source('packages.R')
+source("scripts/theming.R")
 ```
 
 ```{r}
@@ -33,11 +35,6 @@ tar_load(
     figmap_nrgco2_diffbar
     )
   )
-```
-
-```{r}
-source('packages.R')
-source("scripts/theming.R")
 ```
 
 # Energy CO2 Emissions
@@ -120,7 +117,7 @@ industry_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 24, 
 transportation_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 24, "Emissions|CO2|Energy|Oil", data_long_clean, config)
 ```
 
-# Energy Consumption
+# Demand
 
 ## Final Energy
 
@@ -289,7 +286,6 @@ Industry
 ```
 
 ### Transportation {.tabset}
-TODO: Add facets vehicle type sales share/stock share, tabs freight/passenger
 
 #### Model
 
@@ -313,7 +309,38 @@ Percent_Electricity = print_graph("time_series", config, data_long_clean, figmap
 Percent_Electricity
 ```
 
-# Energy Production
+### Vehicle Share {.tabset}
+
+#### Sales Share 
+
+```{r}
+df1 = data_from_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 33, "United States", scenario_rename = TRUE) %>%
+  mutate(facet = "freight")
+df2 = data_from_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 34, "United States", scenario_rename = TRUE) %>%
+  mutate(facet = "passenger")
+df = rbind(df1,df2)
+
+ggplot(data = df) +
+  geom_line(aes(x=year,y=value,color=model)) +
+  facet_grid(facet~variable_rename)
+```
+
+#### Stock Share 
+
+```{r}
+df1 = data_from_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 35, "United States", scenario_rename = TRUE) %>%
+  mutate(facet = "freight")
+df2 = data_from_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 36, "United States", scenario_rename = TRUE) %>%
+  mutate(facet = "passenger")
+df = rbind(df1,df2)
+
+ggplot(data = df) +
+  geom_line(aes(x=year,y=value,color=model)) +
+  facet_grid(facet~variable_rename)
+```
+
+
+# Supply
 
 ## Secondary Energy {.tabset}
 
@@ -531,6 +558,19 @@ cap_by_model_nc = print_graph("time_series", config, data_long_clean, figmap_nrg
 cap_by_model_nc
 ```
 
+## Primary Energy 
+
+### Fossil {.tabset}
+
+```{r}
+# nrgco2_timeseries figure 6
+```
+
+### Non-Fossil {.tabset}
+
+```{r}
+# nrgco2_timeseries figure 7
+```
 
 ------------------------------------------------------------------------
 
@@ -760,5 +800,4 @@ ggplot() +
   nolegend +
   theme_bw()
 ```
-
 
