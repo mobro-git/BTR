@@ -203,3 +203,21 @@ timeseriesplot,36,Passenger Vehicles Stock Share,Energy Service|Transportation|P
 timeseriesplot,36,Passenger Vehicles Stock Share,Energy Service|Transportation|Passenger|HEV|Stock Share,HEV,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
 timeseriesplot,36,Passenger Vehicles Stock Share,Energy Service|Transportation|Passenger|ICE|Stock Share,ICE,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
 timeseriesplot,36,Passenger Vehicles Stock Share,Energy Service|Transportation|Passenger|PHEV|Stock Share,PHEV,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,37,Generation Inputs,Secondary Energy|Electricity|Input|Biogas,Biogas,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,37,Generation Inputs,Secondary Energy|Electricity|Input|Biomass Solids,Biomass Solids,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,37,Generation Inputs,Secondary Energy|Electricity|Input|Coal,Coal,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,37,Generation Inputs,Secondary Energy|Electricity|Input|Gas,Gas,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,37,Generation Inputs,Secondary Energy|Electricity|Input|Hydrogen,Hydrogen,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,37,Generation Inputs,Secondary Energy|Electricity|Input|Oil,Oil,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,37,Generation Inputs,Secondary Energy|Electricity|Input|Synthetic Gas,Synthetic Gas,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,37,Generation Inputs,Secondary Energy|Electricity|Input|Synthetic Liquids,Synthetic Liquids,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,38,Generation Inputs - w/ and w/o CCS,Secondary Energy|Electricity|Input|Biogas|w/ CCS,Biogas w/ CCS,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,38,Generation Inputs - w/ and w/o CCS,Secondary Energy|Electricity|Input|Biogas|w/o CCS,Biogas w/o CCS,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,38,Generation Inputs - w/ and w/o CCS,Secondary Energy|Electricity|Input|Biomass Solids|w/ CCS,Biomass Solids w/ CCS,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,38,Generation Inputs - w/ and w/o CCS,Secondary Energy|Electricity|Input|Biomass Solids|w/o CCS,Biomass Solids w/o CCS,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,38,Generation Inputs - w/ and w/o CCS,Secondary Energy|Electricity|Input|Coal|w/ CCS,Coal w/ CCS,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,38,Generation Inputs - w/ and w/o CCS,Secondary Energy|Electricity|Input|Coal|w/o CCS,Coal w/o CCS,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,38,Generation Inputs - w/ and w/o CCS,Secondary Energy|Electricity|Input|Gas|w/ CCS,Gas w/ CCS,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,38,Generation Inputs - w/ and w/o CCS,Secondary Energy|Electricity|Input|Gas|w/o CCS,Gas w/o CCS,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,38,Generation Inputs - w/ and w/o CCS,Secondary Energy|Electricity|Input|Oil|w/ CCS,Oil w/ CCS,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,38,Generation Inputs - w/ and w/o CCS,Secondary Energy|Electricity|Input|Oil|w/o CCS,Oil w/o CCS,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
