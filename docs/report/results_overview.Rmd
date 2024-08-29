@@ -315,28 +315,53 @@ Percent_Electricity
 
 ```{r}
 df1 = data_from_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 33, "United States", scenario_rename = TRUE) %>%
-  mutate(facet = "freight")
+  mutate(facet = "Freight")
 df2 = data_from_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 34, "United States", scenario_rename = TRUE) %>%
-  mutate(facet = "passenger")
+  mutate(facet = "Passenger")
 df = rbind(df1,df2)
 
+var_palette <- unique(df$model)
+
 ggplot(data = df) +
-  geom_line(aes(x=year,y=value,color=model)) +
-  facet_grid(facet~variable_rename)
+  geom_line(aes(x=year,y=value, colour = model), size = 1) +
+  facet_grid(facet~variable_rename) +
+  scale_color_manual(values = c("GCAM" = "#bfef45",
+                                'OP-NEMS' = "#000075",
+                                'USREP-ReEDS' = "#9a6324")) +
+  theme_custom() +
+  scale_y_continuous(labels = scales::percent)  +
+  labs(title = 'Vehicle Sales Share') +
+  theme(
+        axis.title.y = element_blank(),
+        axis.title.x = element_blank(),
+        axis.text.x = element_text(angle = 45, hjust=1),
+        panel.spacing.x = unit(4, "mm"))
+
 ```
 
 #### Stock Share 
 
 ```{r}
 df1 = data_from_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 35, "United States", scenario_rename = TRUE) %>%
-  mutate(facet = "freight")
+  mutate(facet = "Freight")
 df2 = data_from_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 36, "United States", scenario_rename = TRUE) %>%
-  mutate(facet = "passenger")
+  mutate(facet = "Passenger")
 df = rbind(df1,df2)
 
 ggplot(data = df) +
-  geom_line(aes(x=year,y=value,color=model)) +
-  facet_grid(facet~variable_rename)
+  geom_line(aes(x=year,y=value, colour = model), size = 1) +
+  facet_grid(facet~variable_rename) +
+  scale_color_manual(values = c("GCAM" = "#bfef45",
+                                'OP-NEMS' = "#000075",
+                                'USREP-ReEDS' = "#9a6324")) +
+  theme_custom() +
+  scale_y_continuous(labels = scales::percent)  +
+  labs(title = 'Vehicle Stock Share') +
+  theme(title = element_blank(),
+        axis.title.y = element_blank(),
+        axis.title.x = element_blank(),
+        axis.text.x = element_text(angle = 45, hjust=1),
+        panel.spacing.x = unit(4, "mm"))
 ```
 
 
@@ -558,18 +583,22 @@ cap_by_model_nc = print_graph("time_series", config, data_long_clean, figmap_nrg
 cap_by_model_nc
 ```
 
-## Primary Energy 
+## Primary Energy {.tabset}
 
-### Fossil {.tabset}
+### Fossil 
 
 ```{r}
 # nrgco2_timeseries figure 6
+primary_energy_ffc <- print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 6, "United States", scenario_rename = TRUE)
+primary_energy_ffc
 ```
 
-### Non-Fossil {.tabset}
+### Non-Fossil
 
 ```{r}
 # nrgco2_timeseries figure 7
+primary_energy_nonffc <- print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 7, "United States", scenario_rename = TRUE)
+primary_energy_nonffc
 ```
 
 ------------------------------------------------------------------------
