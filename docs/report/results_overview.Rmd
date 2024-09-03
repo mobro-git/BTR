@@ -590,7 +590,7 @@ var_df_clean <- var_df %>%
   select(model, year, variable, value) %>%
   filter(year %in% config$fives_sumtab) %>%
   distinct() %>%
-  mutate(across(where(is.numeric), round, 1))
+  mutate(across(where(is.numeric), round, 2))
 return(var_df_clean)
 }
 
