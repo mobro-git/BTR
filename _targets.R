@@ -206,7 +206,8 @@ tar_plan(
   lulucf_btr_data_raw = make_btr_lulucf_net_total(lulucf_btr_data_raw_breakouts),
   
   tar_target(lulucf_folder, "data-raw/lulucf/", format = "file"),
-  tar_target(lulucf_files, dir_ls(lulucf_folder), format = "file"),
+  tar_target(lulucf_files_with_check, list_lulucf_files(lulucf_folder,lulucf_btr_data_raw)),
+  tar_target(lulucf_files, lulucf_files_with_check, format = "file"),
   
   tar_target(lulucf_crosswalk_csv, "data-raw/crosswalk/crosswalk_lulucf_all.csv", format = "file"),
   tar_target(lulucf_crosswalk, read_csv(lulucf_crosswalk_csv)), # TODO: add check to make sure that all model-scenario combos are accounted for (e.g. the check we have in read_process_data_file that creates the models-runs-crosswalk additions file)
