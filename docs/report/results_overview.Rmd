@@ -19,6 +19,8 @@ knitr::opts_chunk$set(echo = FALSE, results = "show", warning = FALSE, message =
 library(targets)
 library(tarchetypes)
 tar_source()
+source('packages.R')
+source("scripts/theming.R")
 ```
 
 ```{r}
@@ -35,11 +37,6 @@ tar_load(
   )
 ```
 
-```{r}
-source('packages.R')
-source("scripts/theming.R")
-```
-
 # Energy CO2 Emissions
 
 ## Sector {.tabset}
@@ -47,16 +44,19 @@ source("scripts/theming.R")
 ### Model
 
 ```{r}
-model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 9, "United States", scenario_rename = TRUE,
+print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 9, "United States", scenario_rename = TRUE,
             level_var = c("Buildings", "Industry", "Transportation", "Supply", "Total Energy"))
-model
 ```
 
 ### Sector
 
 ```{r}
-sector = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 19, "United States", scenario_rename = TRUE)
-sector
+print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 19, "United States", scenario_rename = TRUE)
+```
+
+### Supply-Breakout
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 10, "United States")
 ```
 
 ### Stats
@@ -97,15 +97,13 @@ By sector, emissions reductions are estimate to change from 2020 to 2040:
 ### Model
 
 ```{r}
-model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 30, "United States")
-model
+print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 30, "United States")
 ```
 
 ### Fuel
 
 ```{r}
-sector = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 24, "United States", scenario_rename = TRUE)
-sector
+print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 24, "United States", scenario_rename = TRUE)
 ```
 
 ### Stats 
@@ -120,7 +118,22 @@ industry_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 24, 
 transportation_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 24, "Emissions|CO2|Energy|Oil", data_long_clean, config)
 ```
 
-# Energy Consumption
+## CCS {.tabset}
+
+### Topline
+
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 39, "United States", scenario_rename = TRUE)
+```
+
+### Supply & Demand
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 40, "United States", scenario_rename = TRUE)
+```
+
+# Demand
 
 ## Final Energy
 
@@ -129,22 +142,19 @@ transportation_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar
 #### Fuel
 
 ```{r}
-fuel = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 14, "United States", scenario_rename = TRUE)
-fuel
+print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 14, "United States", scenario_rename = TRUE)
 ```
 
 #### Model
 
 ```{r}
-Fuel = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 1, "United States", scenario_rename = TRUE)
-Fuel
+print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 1, "United States", scenario_rename = TRUE)
 ```
 
 #### Model - Zoom
 
 ```{r}
-Fuel = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 24, "United States", scenario_rename = TRUE)
-Fuel
+print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 24, "United States", scenario_rename = TRUE)
 ```
 
 #### Stats 
@@ -190,16 +200,14 @@ By fuel-type, energy consumption is estimated to change from 2020 to 2040:
 #### Model
 
 ```{r}
-Sector = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 2, "United States", scenario_rename = TRUE,
+print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 2, "United States", scenario_rename = TRUE,
                      level_var = c("Buildings", "Industry", "Transportation", "Total Energy"))
-Sector
 ```
 
 #### Sector
 
 ```{r}
-sector = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 17, "United States", scenario_rename = TRUE)
-sector
+print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 17, "United States", scenario_rename = TRUE)
 ```
 
 #### Stats
@@ -232,44 +240,38 @@ By sector, energy consumption is estimated to change from 2020 to 2040:
 #### Model
 
 ```{r}
-Buildings_bymodel = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 17, "United States", scenario_rename = TRUE,
+print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 17, "United States", scenario_rename = TRUE,
                                 level_var = c("Coal", "Gas", "Oil", 'Electricity',"Total Energy"))
-Buildings_bymodel
 ```
 
 #### Buildings
 
 ```{r}
-Buildings = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 8, "United States", scenario_rename = TRUE)
-Buildings
+print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 8, "United States", scenario_rename = TRUE)
 ```
 
 #### Residential by Model
 
 ```{r}
-Buildings_bymodel = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 31, "United States", scenario_rename = TRUE)
-Buildings_bymodel
+print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 31, "United States", scenario_rename = TRUE)
 ```
 
 #### Residential
 
 ```{r}
-Buildings = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 25, "United States", scenario_rename = TRUE)
-Buildings
+print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 25, "United States", scenario_rename = TRUE)
 ```
 
 #### Commercial by Model
 
 ```{r}
-Buildings_bymodel = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 32, "United States", scenario_rename = TRUE)
-Buildings_bymodel
+print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 32, "United States", scenario_rename = TRUE)
 ```
 
 #### Commercial
 
 ```{r}
-Buildings = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 26, "United States", scenario_rename = TRUE)
-Buildings
+print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 26, "United States", scenario_rename = TRUE)
 ```
 
 ### Industry {.tabset}
@@ -277,66 +279,112 @@ Buildings
 #### Model
 
 ```{r}
-Industry_bymodel = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 18, "United States", scenario_rename = TRUE)
-Industry_bymodel
+print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 18, "United States", scenario_rename = TRUE)
 ```
 
 #### Industry
 
 ```{r}
-Industry = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 9, "United States", scenario_rename = TRUE)
-Industry
+print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 9, "United States", scenario_rename = TRUE)
 ```
 
 ### Transportation {.tabset}
-TODO: Add facets vehicle type sales share/stock share, tabs freight/passenger
 
 #### Model
 
 ```{r}
-Transportation_bymodel = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 19, "United States", scenario_rename = TRUE)
-Transportation_bymodel
+print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 19, "United States", scenario_rename = TRUE)
 ```
 
 #### Transportation
 
 ```{r}
-Transportation = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 12, "United States", scenario_rename = TRUE)
-Transportation
+print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 12, "United States", scenario_rename = TRUE)
+```
+
+### Vehicle Share {.tabset}
+
+#### Sales Share 
+
+```{r}
+df1 = data_from_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 33, "United States", scenario_rename = TRUE) %>%
+  mutate(facet = "Freight")
+df2 = data_from_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 34, "United States", scenario_rename = TRUE) %>%
+  mutate(facet = "Passenger")
+df = rbind(df1,df2)
+
+var_palette <- unique(df$model)
+
+ggplot(data = df) +
+  geom_line(aes(x=year,y=value, colour = model), size = 1) +
+  facet_grid(facet~variable_rename) +
+  scale_color_manual(values = c("GCAM" = "#bfef45",
+                                'OP-NEMS' = "#000075",
+                                'USREP-ReEDS' = "#9a6324")) +
+  theme_custom() +
+  scale_y_continuous(labels = scales::percent)  +
+  labs(title = 'Vehicle Sales Share') +
+  theme(
+        axis.title.y = element_blank(),
+        axis.title.x = element_blank(),
+        axis.text.x = element_text(angle = 45, hjust=1),
+        panel.spacing.x = unit(4, "mm"))
+
+```
+
+#### Stock Share 
+
+```{r}
+df1 = data_from_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 35, "United States", scenario_rename = TRUE) %>%
+  mutate(facet = "Freight")
+df2 = data_from_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 36, "United States", scenario_rename = TRUE) %>%
+  mutate(facet = "Passenger")
+df = rbind(df1,df2)
+
+ggplot(data = df) +
+  geom_line(aes(x=year,y=value, colour = model), size = 1) +
+  facet_grid(facet~variable_rename) +
+  scale_color_manual(values = c("GCAM" = "#bfef45",
+                                'OP-NEMS' = "#000075",
+                                'USREP-ReEDS' = "#9a6324")) +
+  theme_custom() +
+  scale_y_continuous(labels = scales::percent)  +
+  labs(title = 'Vehicle Stock Share') +
+  theme(
+        axis.title.y = element_blank(),
+        axis.title.x = element_blank(),
+        axis.text.x = element_text(angle = 45, hjust=1),
+        panel.spacing.x = unit(4, "mm"))
 ```
 
 ## Percent Electricity
 
 ```{r}
-Percent_Electricity = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 14, "United States", scenario_rename = TRUE,
+print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 14, "United States", scenario_rename = TRUE,
                                   level_var = c("Buildings", "Industry", "Transportation","Total Electricity"))
-Percent_Electricity
 ```
 
-# Energy Production
+
+# Supply
 
 ## Secondary Energy {.tabset}
 
 ### Model
 
 ```{r, fig.width=12}
-Model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 8, "United States", scenario_rename = TRUE)
-Model
+print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 8, "United States", scenario_rename = TRUE)
 ```
 
 ### Model - Zoom
 
 ```{r}
-Model_zoom = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 25, "United States", scenario_rename = TRUE)
-Model_zoom
-
+print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 25, "United States", scenario_rename = TRUE)
 ```
 
 ### Fuel
 
 ```{r}
-Fuel = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 15, "United States", scenario_rename = TRUE)
-Fuel
+print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 15, "United States", scenario_rename = TRUE)
 ```
 
 ## Electricity Production 
@@ -346,26 +394,21 @@ Fuel
 #### Model
 
 ```{r, fig.width=12}
-elec_model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 15, "United States", scenario_rename = TRUE,
+print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 15, "United States", scenario_rename = TRUE,
                          level_var = c("Coal", "Gas", "Oil","Solar", "Wind", "Total Electricity"))
-elec_model
-
 ```
 
 #### Model - Zoom
 
 ```{r, fig.width=12}
-elec_model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 27, "United States", scenario_rename = TRUE,
+print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 27, "United States", scenario_rename = TRUE,
                          level_var = c("Coal", "Gas", "Oil","Solar", "Wind", "Total Electricity"))
-elec_model
-
 ```
 
 #### Generation
 
 ```{r}
-elec_gen = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 13, "United States", scenario_rename = TRUE)
-elec_gen
+print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 13, "United States", scenario_rename = TRUE)
 ```
 
 #### Stats
@@ -385,30 +428,40 @@ se_wind_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 13, "
 
 ```
 
+### Generation Inputs {.tabset}
+
+#### Totals
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 37, "United States", scenario_rename = TRUE)
+```
+
+#### w/ and w/o CCS
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 38, "United States", scenario_rename = TRUE)
+```
+
 ### Capacity {.tabset}
 
 #### Model
 
 ```{r, fig.width=12}
-elec_model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 16, "United States", scenario_rename = TRUE,
+print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 16, "United States", scenario_rename = TRUE,
                          level_var = c("Coal", "Gas", "Oil","Solar", "Wind", "Storage", "Total Electricity"))
-elec_model
-
 ```
 
 #### Model - Zoom
 
 ```{r}
-elec_model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 26, "United States", scenario_rename = TRUE,
+print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 26, "United States", scenario_rename = TRUE,
                          level_var = c("Coal", "Gas", "Oil","Solar", "Wind", "Storage", "Total Electricity"))
-elec_model
 ```
 
 #### Capacity
 
 ```{r}
-Capacity = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 3, "United States", scenario_rename = TRUE)
-Capacity
+print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 3, "United States", scenario_rename = TRUE)
 ```
 
 #### Stats
@@ -462,43 +515,37 @@ By technology, electricity capacity is estimated to change from 2020 to 2040:
 ### Generation
 
 ```{r}
-elec_gen = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 6, "United States", scenario_rename = TRUE)
-elec_gen
+print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 6, "United States", scenario_rename = TRUE)
 ```
 
 ### Generation by Model
 
 ```{r, fig.width=12}
-gen_by_model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 20, "United States", scenario_rename = TRUE)
-gen_by_model
+print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 20, "United States", scenario_rename = TRUE)
 ```
 
 ### Generation by Model - Zoom
 
 ```{r}
-gen_by_model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 28, "United States", scenario_rename = TRUE)
-gen_by_model
+print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 28, "United States", scenario_rename = TRUE)
 ```
 
 ### Capacity
 
 ```{r}
-Capacity = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 4, "United States", scenario_rename = TRUE)
-Capacity
+print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 4, "United States", scenario_rename = TRUE)
 ```
 
 ### Capacity by Model
 
 ```{r, fig.width=12}
-cap_by_model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 22, "United States", scenario_rename = TRUE)
-cap_by_model
+print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 22, "United States", scenario_rename = TRUE)
 ```
 
 ### Capacity by Model - Zoom
 
 ```{r}
-cap_by_model = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 29, "United States", scenario_rename = TRUE)
-cap_by_model
+print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 29, "United States", scenario_rename = TRUE)
 ```
 
 ## Non-Combustion {.tabset}
@@ -506,31 +553,40 @@ cap_by_model
 ### Generation
 
 ```{r}
-elec_gen = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 7, "United States", scenario_rename = TRUE)
-elec_gen
+print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 7, "United States", scenario_rename = TRUE)
 ```
 
 ### Generation by Model
 
 ```{r}
-gen_by_model_nc = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 23, "United States", scenario_rename = TRUE)
-gen_by_model_nc
+print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 23, "United States", scenario_rename = TRUE)
 ```
 
 ### Capacity
 
 ```{r}
-Capacity_nc = print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 5, "United States", scenario_rename = TRUE)
-Capacity_nc
+print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 5, "United States", scenario_rename = TRUE)
 ```
 
 ### Capacity by Model
 
 ```{r}
-cap_by_model_nc = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 21, "United States", scenario_rename = TRUE)
-cap_by_model_nc
+print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 21, "United States", scenario_rename = TRUE)
 ```
 
+## Primary Energy {.tabset}
+
+### Fossil 
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 6, "United States", scenario_rename = TRUE)
+```
+
+### Non-Fossil
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 7, "United States", scenario_rename = TRUE)
+```
 
 ------------------------------------------------------------------------
 
@@ -541,22 +597,19 @@ cap_by_model_nc
 ### GCAM
 
 ```{r}
-diff_from_gcam = print_graph("diff_bar", config, data_long_clean, figmap_nrgco2_diffbar, 23, "United States", scenario_rename = TRUE)
-diff_from_gcam
+print_graph("diff_bar", config, data_long_clean, figmap_nrgco2_diffbar, 23, "United States", scenario_rename = TRUE)
 ```
 
 ### OP-NEMS
 
 ```{r}
-diff_from_nems = print_graph("diff_bar", config, data_long_clean, figmap_nrgco2_diffbar, 25, "United States", scenario_rename = TRUE)
-diff_from_nems
+print_graph("diff_bar", config, data_long_clean, figmap_nrgco2_diffbar, 25, "United States", scenario_rename = TRUE)
 ```
 
 ### USREP-ReEDS
 
 ```{r}
-diff_from_usrep = print_graph("diff_bar", config, data_long_clean, figmap_nrgco2_diffbar, 24, "United States", scenario_rename = TRUE)
-diff_from_usrep
+print_graph("diff_bar", config, data_long_clean, figmap_nrgco2_diffbar, 24, "United States", scenario_rename = TRUE)
 ```
 
 ## Input Assumptions {.tabset}
@@ -564,15 +617,13 @@ diff_from_usrep
 ### Population
 
 ```{r}
-pop = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 12, "United States", scenario_rename = TRUE)
-pop
+print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 12, "United States", scenario_rename = TRUE)
 ```
 
 ### GDP
 
 ```{r}
-gdp = print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 13, "United States", scenario_rename = TRUE)
-gdp
+print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 13, "United States", scenario_rename = TRUE)
 ```
 
 # Ad-hoc tables/figs
@@ -740,25 +791,4 @@ vs_df2 = vs_df %>%
 grid.table(vs_df2)
   
 ```
-
-# Non-CO2
-
-```{r}
-tar_load(projections_all_sm)
-
-nonco2 = projections_all_sm %>% 
-  filter(grouping == "wm") %>%
-  filter(usproj_sector != "LULUCF Sink") %>%
-  filter(!(str_detect(proj_name, "usrr") & usproj_sector %in% c("Transportation","Energy") & year %in% c(2045, 2050))) %>%
-  filter(!(usproj_sector == "Energy" & !year %in% c(2020, 2025, 2030, 2035, 2040, 2045, 2050))) %>%
-  filter(year <= 2040)
-
-ggplot() +
-  geom_line(data = nonco2, aes(x=year,y=sum,group=proj_name,color=gas)) +
-  facet_grid(gas~usproj_sector, scales = "free_y") +
-  labs(y = "Mt CO2e") +
-  nolegend +
-  theme_bw()
-```
-
 

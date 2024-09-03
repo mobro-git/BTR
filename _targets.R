@@ -197,11 +197,20 @@ tar_plan(
   kaya_comparison = full_kaya_comparison(past_kaya_no_emissions,past_proj,total_gross_emissions,data_long_clean),
   
   # LULUCF ----
-  tar_target(lulucf_folder, "data-raw/lulucf/", format = "file"),
-  tar_target(lulucf_files, dir_ls(lulucf_folder), format = "file"),
+  tar_target(lulucf_data_extra_xlsx, "data-extra/USDA NFS Raw Data/LULUCF projections DRAFT compilation 82924.xlsx", format = "file"),
   
-  tar_target(lulucf_crosswalk_csv, "data-raw/crosswalk/crosswalk_lulucf.csv", format = "file"),
-  tar_target(lulucf_crosswalk, read_csv(lulucf_crosswalk_csv)), 
+  tar_target(lulucf_btr_crosswalk_csv, "data-raw/crosswalk/crosswalk_lulucf_btr.csv", format = "file"),
+  lulucf_btr_crosswalk = read_csv(lulucf_btr_crosswalk_csv),
+  
+  lulucf_btr_data_raw_breakouts = make_btr_lulucf_data_raw(lulucf_data_extra_xlsx,lulucf_btr_crosswalk,settings),
+  lulucf_btr_data_raw = make_btr_lulucf_net_total(lulucf_btr_data_raw_breakouts),
+  
+  tar_target(lulucf_folder, "data-raw/lulucf/", format = "file"),
+  tar_target(lulucf_files_with_check, list_lulucf_files(lulucf_folder,lulucf_btr_data_raw)),
+  tar_target(lulucf_files, lulucf_files_with_check, format = "file"),
+  
+  tar_target(lulucf_crosswalk_csv, "data-raw/crosswalk/crosswalk_lulucf_all.csv", format = "file"),
+  tar_target(lulucf_crosswalk, read_csv(lulucf_crosswalk_csv)), # TODO: add check to make sure that all model-scenario combos are accounted for (e.g. the check we have in read_process_data_file that creates the models-runs-crosswalk additions file)
   
   lulucf_data = {
     map_dfr(lulucf_files, ~read_lulucf_data_file(.x, lulucf_crosswalk, var_crosswalk)) %>%
@@ -267,12 +276,12 @@ tar_plan(
   ### Outputs ----
   
   # figure map outputs
-  nrgco2_sb = create_graph("nrgco2", "stacked_bar", config, settings, data_long_clean, figmap_nrgco2_stackbar, pngGraphs = TRUE),
-  nrgco2_db = create_graph("nrgco2", "diff_bar", config, settings, data_long_clean, figmap_nrgco2_diffbar, pngGraphs = TRUE),
-  nrgco2_ts = create_graph("nrgco2", "time_series", config, settings, data_long_clean, figmap_nrgco2_timeseries, pngGraphs = TRUE),
-  nrgco2_cu = create_graph("nrgco2", "cone_uncertainty", config, settings, data_long_clean, figmap_nrgco2_cone, pngGraphs = TRUE),
+  nrgco2_sb = create_graph("nrgco2", "stacked_bar", config, settings, data_long_clean, figmap_nrgco2_stackbar),
+  nrgco2_db = create_graph("nrgco2", "diff_bar", config, settings, data_long_clean, figmap_nrgco2_diffbar),
+  nrgco2_ts = create_graph("nrgco2", "time_series", config, settings, data_long_clean, figmap_nrgco2_timeseries),
+  nrgco2_cu = create_graph("nrgco2", "cone_uncertainty", config, settings, data_long_clean, figmap_nrgco2_cone),
   
-  kaya_ts = create_graph("Kaya", "time_series", config, settings, data_long_index, figmap_kaya_timeseries, saveData = TRUE),
+  kaya_ts = create_graph("Kaya", "time_series", config, settings, data_long_index, figmap_kaya_timeseries),
   leepcompare_ts = create_graph("leepcompare", "time_series", config, settings, data_long_clean, figmap_leepcompare_timeseries),
   
   # TODO: remove variables we dont have historical data for

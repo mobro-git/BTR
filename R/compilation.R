@@ -79,11 +79,14 @@ map_proj_name_v2 = function(usproj_all, crosswalk_compilation, settings) {
     filter(region == 'United States' &
              year > settings$base_year)
   
-  # Create empty list
-  projections <- list()
-  
   # shorthand name
   xw = crosswalk_compilation
+  
+  # checks to make sure all selected components are present in usproj_all
+  check = check_combos_present(usproj_all, xw)
+  
+  # Create empty list
+  projections <- list()
   
   #Loop through each row of projections
   for(i in 1:nrow(xw)){
@@ -148,3 +151,93 @@ gen_proj_all_sm <- function(projections_ghgi, settings){
   return(projections_all_sm)
 
 }
+
+# lulucf compilation for btr from data-extra big workbook
+
+make_btr_lulucf_data_raw = function(lulucf_data_extra_xlsx,
+                                    lulucf_btr_crosswalk,
+                                    settings) {
+  
+  # pull in LULUCF TABLE FOR PIPELINE sheet from data-extra and transform to lulucf comp format
+  data_extra_long = read_xlsx(lulucf_data_extra_xlsx, sheet = "LULUCF TABLE FOR PIPELINE") %>%
+    pivot_longer(cols = 6:ncol(.),
+                 names_to = "year",
+                 values_to = "value") %>%
+    filter(year > settings$base_year)
+  
+  # Create empty list
+  projections <- list()
+  
+  # shorthand name
+  xw = lulucf_btr_crosswalk
+  
+  # Loop through each row of projections
+  for (i in 1:nrow(xw)) {
+    row <- xw[i, ]
+    
+    proj_i_csc = data_extra_long %>%
+      filter(model == row$csc_model & scenario == row$scenario)
+    
+    proj_i_ch4 = data_extra_long %>%
+      filter(model == row$ch4_model & scenario == row$scenario & str_detect(variable, "CH4"))
+    
+    proj_i_n2o = data_extra_long %>%
+      filter(model == row$n2o_model & scenario == row$scenario & str_detect(variable, "N2O"))
+    
+    proj_i = rbind(proj_i_csc, proj_i_ch4, proj_i_n2o) %>%
+      mutate(lulucf_name = row$lulucf_name,
+             grouping = row$grouping) %>%
+      select(lulucf_name, grouping, everything())
+    
+    projections[[i]] = proj_i
+    
+  }
+  
+  lulucf_projections_all = bind_rows(projections)
+  
+  return(lulucf_projections_all)
+  
+}
+
+# sum btr lulucf carbon stock change, ch4, and n2o breakouts into net total lulucf
+make_btr_lulucf_net_total = function(lulucf_btr_data_raw_breakouts) {
+  
+  lulucf_btr_data_raw_sum = lulucf_btr_data_raw_breakouts %>%
+    group_by(lulucf_name, scenario, region, unit, year) %>%
+    summarise(value = sum(value),
+              variable = "Emissions|LULUCF|Net Total") %>%
+    rename(model = lulucf_name) %>%
+    select(model, scenario, year, value, region, unit, variable)
+  
+  write_csv(lulucf_btr_data_raw_sum, "data-raw/lulucf/lulucf_btr_data_from_data-extra.csv")
+  
+}
+
+check_combos_present = function(usproj_all, xw) {
+  
+  # unique model/scenario combos in usproj_all to match against
+  all_combos = rbind(
+    distinct((usproj_all %>% filter(model == "usproj")),model,scenario),
+    distinct((usproj_all %>% filter(usproj_category %in% c("FFCTrn", "FFCCom", "FFCRes","FFCElc","FFCInd"))),model,scenario),
+    distinct((usproj_all %>% filter(usproj_category == "LULUCF Sink")),model,scenario)
+  )
+  
+  # unique model/scenario combos listed in the xw that need to be present in all_combos
+  needed_combos = rbind(
+    distinct((select(xw, usproj_scen) %>% mutate(model = "usproj") %>% rename(scenario=usproj_scen) %>% select(model,scenario))),
+    distinct((select(xw,ffc_model,ffc_scen) %>% rename(model=ffc_model, scenario=ffc_scen) %>% select(model,scenario))),
+    distinct((select(xw,lulucf_model,lulucf_scen) %>% rename(model=lulucf_model, scenario=lulucf_scen) %>% select(model,scenario)))
+  )
+  
+  diff = needed_combos %>% anti_join(all_combos)
+  
+  if (nrow(diff) > 0) {
+    print(diff)
+    rlang::abort(message = paste("Model/scenario combinations in the crosswalk are not present in usproj_all. Please check that you've selected appropriate component model/scenario combinations in the crosswalk", sep = ""),
+                 class = 'compilation_combos_check')
+  }
+  
+}
+
+
+

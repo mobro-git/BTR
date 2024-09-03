@@ -254,3 +254,16 @@ check_omissions = function(data_raw, data_long, template_original, template) {
 
 }
 
+# function to list lulucf files and set a dependency
+list_lulucf_files = function(lulucf_folder,lulucf_btr_data_raw) {
+  
+  verify_dependency = lulucf_btr_data_raw
+  
+  dir = dir_ls(lulucf_folder)
+  return(dir)
+  
+}
+  
+  
+  
+  
