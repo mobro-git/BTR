@@ -179,10 +179,10 @@ make_btr_lulucf_data_raw = function(lulucf_data_extra_xlsx,
       filter(model == row$csc_model & scenario == row$scenario)
     
     proj_i_ch4 = data_extra_long %>%
-      filter(model == row$ch4_model & scenario == row$scenario)
+      filter(model == row$ch4_model & scenario == row$scenario & str_detect(variable, "CH4"))
     
     proj_i_n2o = data_extra_long %>%
-      filter(model == row$n2o_model & scenario == row$scenario)
+      filter(model == row$n2o_model & scenario == row$scenario & str_detect(variable, "N2O"))
     
     proj_i = rbind(proj_i_csc, proj_i_ch4, proj_i_n2o) %>%
       mutate(lulucf_name = row$lulucf_name,
