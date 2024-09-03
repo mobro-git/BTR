@@ -1,0 +1,10 @@
+datasrc,model,scenario,model_new,scenario_new
+lulucf_lts.xlsx,lulucf_lts,LOW BAU,lts,bau_low
+lulucf_lts.xlsx,lulucf_lts,HIGH BAU,lts,bau_high
+lulucf_lts.xlsx,lulucf_lts,Low Range WAM,lts,wam_low
+lulucf_lts.xlsx,lulucf_lts,High Range WAM,lts,wam_high
+lulucf_br5.xlsx,lulucf_br5,wm_hi,br5,wm_hi
+lulucf_br5.xlsx,lulucf_br5,wm_lo,br5,wm_lo
+lulucf_btr_data_from_data-extra.csv,fasom,wm,fasom,wm
+lulucf_btr_data_from_data-extra.csv,gtm,wm,gtm,wm
+lulucf_btr_data_from_data-extra.csv,nfs,wm,nfs,wm

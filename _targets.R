@@ -197,11 +197,19 @@ tar_plan(
   kaya_comparison = full_kaya_comparison(past_kaya_no_emissions,past_proj,total_gross_emissions,data_long_clean),
   
   # LULUCF ----
+  tar_target(lulucf_data_extra_xlsx, "data-extra/USDA NFS Raw Data/LULUCF projections DRAFT compilation 82924.xlsx", format = "file"),
+  
+  tar_target(lulucf_btr_crosswalk_csv, "data-raw/crosswalk/crosswalk_lulucf_btr.csv", format = "file"),
+  lulucf_btr_crosswalk = read_csv(lulucf_btr_crosswalk_csv),
+  
+  lulucf_btr_data_raw_breakouts = make_btr_lulucf_data_raw(lulucf_data_extra_xlsx,lulucf_btr_crosswalk,settings),
+  lulucf_btr_data_raw = make_btr_lulucf_net_total(lulucf_btr_data_raw_breakouts),
+  
   tar_target(lulucf_folder, "data-raw/lulucf/", format = "file"),
   tar_target(lulucf_files, dir_ls(lulucf_folder), format = "file"),
   
-  tar_target(lulucf_crosswalk_csv, "data-raw/crosswalk/crosswalk_lulucf.csv", format = "file"),
-  tar_target(lulucf_crosswalk, read_csv(lulucf_crosswalk_csv)), 
+  tar_target(lulucf_crosswalk_csv, "data-raw/crosswalk/crosswalk_lulucf_all.csv", format = "file"),
+  tar_target(lulucf_crosswalk, read_csv(lulucf_crosswalk_csv)), # TODO: add check to make sure that all model-scenario combos are accounted for (e.g. the check we have in read_process_data_file that creates the models-runs-crosswalk additions file)
   
   lulucf_data = {
     map_dfr(lulucf_files, ~read_lulucf_data_file(.x, lulucf_crosswalk, var_crosswalk)) %>%
