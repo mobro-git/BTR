@@ -118,6 +118,21 @@ industry_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 24, 
 transportation_value_list <- get_value_list_from_var_list(figmap_nrgco2_stackbar, 24, "Emissions|CO2|Energy|Oil", data_long_clean, config)
 ```
 
+## CCS {.tabset}
+
+### Topline
+
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 39, "United States", scenario_rename = TRUE)
+```
+
+### Supply & Demand
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 40, "United States", scenario_rename = TRUE)
+```
+
 # Demand
 
 ## Final Energy
