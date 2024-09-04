@@ -545,7 +545,12 @@ lts_vars = c("Emissions|CO2|Energy|Demand|Buildings|TotalDI",
 ghgi_df = ghgi_comp_tab %>%
   filter(model == config$model_hist) %>%
   filter(year %in% config$hist) %>%
-  filter(variable %in% sector_vars)
+  filter(variable %in% c(sector_vars,"Emissions|CO2|Energy|Demand|Industry|Total")) %>%
+  mutate(variable = case_when(
+    variable == "Emissions|CO2|Energy|Demand|Industry|Total" ~ "Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total",
+    TRUE~variable
+  ))
+# TODO: need to pull fuel production emissions from GHGI and create a new variable so that it can be included here for historical emissions
 
 # LTS models and variables used for sector figures
 lts_df = data_long_clean %>%
