@@ -131,6 +131,19 @@ filename <- paste0("sector_table_pctchange05_",Sys.Date(),".png")
 gtsave(pct_change_html_sector, paste0('output/',settings$version,"/tables_figs/results_tables/percent_change_2005/",filename))
 ```
 
+## Stats
+
+```{r}
+# % reduction from 2005 for 2025, 2030, 2035, 2040
+## Buildings CO2 Direct emissions
+## Buildings CO2 Indirect emissions
+## Buildings CO2 Total emissions
+
+# data_long_clean Emissions|CO2|Energy|Demand|Buildings|Total
+test = data_long_clean %>% 
+  filter(variable == "Emissions|CO2|Energy|Demand|Buildings|Total" & scenario == "wm")
+```
+
 ## BTR Main Plot {.tabset}
 
 ```{r}
