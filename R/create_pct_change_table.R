@@ -27,7 +27,7 @@ create_pct_change_table <- function(category, group, projections_all_sm, config,
   
   summary_total_gross <- projections_all_sm %>%
     rename(category = .data[[category]]) %>% 
-    filter(grouping == grouping) %>%
+    filter(grouping %in% c(group, 'ghgi')) %>%
     filter(year %in% config$table) %>% 
     group_by(proj_name,category, year) %>%
     summarise(cat_sum = sum(sum),.groups='drop') %>%
@@ -50,7 +50,7 @@ create_pct_change_table <- function(category, group, projections_all_sm, config,
   
   summary_total_net <- projections_all_sm %>%
     rename(category = .data[[category]]) %>% 
-    filter(grouping == grouping) %>%
+    filter(grouping %in% c(group, 'ghgi')) %>%
     filter(year %in% config$table) %>% 
     group_by(proj_name,category, year) %>%
     summarise(cat_sum = sum(sum),.groups='drop') %>%
