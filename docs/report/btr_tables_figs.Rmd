@@ -140,8 +140,43 @@ gtsave(pct_change_html_sector, paste0('output/',settings$version,"/tables_figs/r
 ## Buildings CO2 Total emissions
 
 # data_long_clean Emissions|CO2|Energy|Demand|Buildings|Total
-test = data_long_clean %>% 
-  filter(variable == "Emissions|CO2|Energy|Demand|Buildings|Total" & scenario == "wm")
+BuildEmiss = data_long_clean %>% 
+  filter(variable %in% c("Emissions|CO2|Energy|Demand|Buildings",
+                         "Emissions|CO2|Energy|Demand|Buildings|Indirect",
+                         "Emissions|CO2|Energy|Demand|Buildings|Total") &
+           scenario == "wm" &
+           model!= "EPA-GHGI") %>% 
+  left_join(data_long_clean %>% 
+              filter(variable %in% c("Emissions|CO2|Energy|Demand|Buildings",
+                                     "Emissions|CO2|Energy|Demand|Buildings|Indirect",
+                                     "Emissions|CO2|Energy|Demand|Buildings|Total") &
+                       scenario == "wm" &
+                       model == "EPA-GHGI" &
+                       year == 2005) %>% 
+              select(variable, base = value)) %>% 
+  mutate(reduction = 1- (value/base)) %>% 
+  filter(year %in% c(2025,2030,2035,2040)) %>% 
+  select(model, year, variable, reduction)
+
+Indirect = BuildEmiss %>% 
+  filter(variable == "Emissions|CO2|Energy|Demand|Buildings|Indirect") %>% 
+  mutate(variable = "Indirect") %>% 
+  spread(year,reduction)
+
+Direct = BuildEmiss %>% 
+  filter(variable == "Emissions|CO2|Energy|Demand|Buildings") %>% 
+  mutate(variable = "Direct") %>% 
+  spread(year,reduction)
+
+Total = BuildEmiss %>% 
+  filter(variable == "Emissions|CO2|Energy|Demand|Buildings|Total") %>% 
+  mutate(variable = "Total") %>% 
+  spread(year,reduction)
+
+print("Buildings Stats")
+Indirect
+Direct
+Total
 ```
 
 ## BTR Main Plot {.tabset}
