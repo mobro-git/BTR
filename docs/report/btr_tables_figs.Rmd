@@ -180,7 +180,7 @@ projections
 
 ```{r}
 filename <- paste0("btr_main_fig_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_figs/",filename), create.dir = TRUE)
+ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_figs/main_fig/",filename), create.dir = TRUE, height = 5.5)
 ```
 
 ```{r}
@@ -228,7 +228,7 @@ projections_pct_change
 
 ```{r}
 filename <- paste0("btr_main_fig_pctchange05_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_figs/",filename), create.dir = TRUE)
+ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_figs/pct_change/",filename), create.dir = TRUE, height = 6)
 ```
 
 ## BTR Main Plot w/ LEEP Report Comparison {.tabset}
@@ -274,13 +274,13 @@ ndc_targets = data.frame(
 ### Net GHG Emissions
 
 ```{r proj function}
-projections = br_project(ghgi, proj, settings, targets = ndc_targets)
+projections_leep = br_project(ghgi, proj, settings, targets = ndc_targets)
 projections
 ```
 
 ```{r}
-filename <- paste0("btr_main_fig_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_figs/",filename), create.dir = TRUE)
+filename <- paste0("btr_main_fig_leep_",Sys.Date(),".png")
+ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_figs/main_fig_leep/",filename), create.dir = TRUE, height = 6)
 ```
 
 ```{r}
@@ -331,7 +331,7 @@ projections_pct_change
 
 ```{r}
 filename <- paste0("btr_main_fig_pctchange05_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_figs/",filename), create.dir = TRUE)
+ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_figs/main_fig_leep/",filename), create.dir = TRUE)
 ```
 
 ## BTR Net-GHG Stackbar
@@ -602,28 +602,28 @@ industry = br_sectors(sector_df,
 
 ```{r}
 buildings
-ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/buildings_comparison.png"), create.dir = TRUE)
+ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/buildings_comparison.png"), create.dir = TRUE, height = 4.5)
 ```
 
 ## Electricity
 
 ```{r}
 electricity
-ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/electricity_comparison.png"), create.dir = TRUE)
+ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/electricity_comparison.png"), create.dir = TRUE, height = 4.5)
 ```
 
 ## Transportation
 
 ```{r}
 transportation
-ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/transportation_comparison.png"))
+ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/transportation_comparison.png"), height = 4.5)
 ```
 
 ## Industry
 
 ```{r}
 industry
-ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/industry_comparison.png"), create.dir = TRUE)
+ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/industry_comparison.png"), create.dir = TRUE, height = 4.5)
 ```
 
 ```{r}
@@ -944,7 +944,7 @@ fig
 
 ```{r}
 filename <- paste0("nrg_emissions_fig_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs/nrg_emissions/",filename), create.dir = TRUE)
+ggsave(paste0('output/',settings$version,"/tables_figs/nrg_emissions/",filename), create.dir = TRUE,height = 4.5)
 ```
 
 # LULUCF Sink Range
