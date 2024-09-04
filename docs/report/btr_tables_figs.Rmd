@@ -949,4 +949,64 @@ ggsave(paste0('output/',settings$version,"/tables_figs/nrg_emissions/",filename)
 
 # LULUCF Sink Range
 
-*TBD*
+```{r}
+
+lulucf_co2_hist <- read_xlsx(
+  "data-extra/USDA NFS Raw Data/LULUCF projections DRAFT compilation 82924.xlsx",
+  sheet = "Table 6-2",
+  skip = 1,
+  n_max = 32
+) %>% filter(`Gas/Land-Use Category` == 'Carbon Stock Change (CO2)a')
+
+
+lulucf_co2_hist_long <- lulucf_co2_hist %>%
+  pivot_longer(cols = 2:34, names_to = 'year') %>%
+  select(year, value)
+
+lulucf_nfs <- read_xlsx("data-extra/USDA NFS Raw Data/LULUCF projections DRAFT compilation 82924.xlsx",
+                        sheet = "LULUCF TABLE FOR PIPELINE") %>%
+  filter(model == 'NFS') %>%
+  pivot_longer(cols = 6:11, names_to = 'year') %>%
+  select(year, value)
+
+lulucf_plot_data <- lulucf_co2_hist_long %>% rbind(lulucf_nfs) %>%
+  mutate(
+    year = as.numeric(year),
+    value = as.numeric(value),
+    group = case_when(
+      year <= settings$base_year ~ 'hist',
+      year > settings$base_year ~ 'proj'
+    )
+  ) %>%
+  filter(year <= 2040, year >= 2000)
+
+```
+
+```{r}
+
+lulucf_fig <- ggplot(data = lulucf_plot_data, aes(x = year, y = value)) +
+  geom_point(color = '#0097FF') +
+  geom_line(color = '#0097FF') +
+  labs(y = expression(paste("MMt C", O[2]))) +
+  geom_vline(
+    xintercept = 2022,
+    linetype = 'dashed',
+    color = "black",
+    # size = 0.4,
+    alpha = 0.5
+  ) +
+  scale_x_continuous(breaks = c(2000, 2005, 2010, settings$base_year, 2025, 2030, 2035, 2040)) +
+  scale_y_continuous(labels = scales::comma) +
+  theme_btr()
+lulucf_fig
+
+```
+```{r}
+filename <- paste0("lulucf_fig_", Sys.Date(), ".png")
+ggsave(paste0('output/', settings$version, "/tables_figs/lulucf/", filename),
+  create.dir = TRUE,
+  height = 4.5
+)
+
+```
+
