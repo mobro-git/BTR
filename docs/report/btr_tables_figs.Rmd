@@ -1074,8 +1074,14 @@ df <- data_long_clean %>%
     mutate(pct_change_05 = round((value/value[year==2005]-1),2),
            value = round(value,2)) %>%
   filter(year %in% config$table) %>%
-  select(model, year, pct_change_05, value)
-return(df)
+  select(model, year, pct_change_05)
+
+df <- df[order(df$year),]
+
+df_wide <- df %>% pivot_wider(names_from = 'year',
+                              values_from = 'pct_change_05')
+
+return(df_wide)
 }
 
 elec <- section_pct_change_05(data_long_clean,
@@ -1105,13 +1111,13 @@ buildings_com <- section_pct_change_05(data_long_clean,
 ### Electricity
 ```{r}
 create_stats_table <- function(df) {
-df <- df[order(df$year),]
 
-table <- gt(df) %>% fmt_percent(columns = pct_change_05,
+table <- gt(df) %>% fmt_percent(columns = 2:10,
                          decimals = 0) %>%
-  cols_label(pct_change_05 = "% Change from 2005") %>%
-  cols_align(align = 'center',
-             columns = pct_change_05)
+  sub_missing(missing_text = "-") %>% 
+  cols_align(align = 'center') %>%
+  cols_align(align = "left",
+             columns = "model")
 return(table)
 }
 
@@ -1166,11 +1172,11 @@ df <- data_long_clean %>%
 
 df <- df[order(df$year),]
 
-table <- gt(df) %>% fmt_percent(columns = value,
-                         decimals = 0) %>%
-  cols_label(value = "Electric Vehicle Sales Stock") %>%
-  cols_align(align = 'center',
-             columns = value)
+df_wide <- df %>% pivot_wider(names_from = 'year',
+                              values_from = 'value')
+
+table <- gt(df_wide) %>% fmt_percent(columns = 2:3,
+                         decimals = 0) 
 return(table)
 }
 
