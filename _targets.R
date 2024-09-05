@@ -202,7 +202,7 @@ tar_plan(
   tar_target(lulucf_btr_crosswalk_csv, "data-raw/crosswalk/crosswalk_lulucf_btr.csv", format = "file"),
   lulucf_btr_crosswalk = read_csv(lulucf_btr_crosswalk_csv),
   
-  lulucf_btr_data_raw_breakouts = make_btr_lulucf_data_raw(lulucf_data_extra_xlsx,lulucf_btr_crosswalk,settings),
+  lulucf_btr_data_raw_breakouts = make_btr_lulucf_data_raw(lulucf_data_extra_xlsx,lulucf_btr_crosswalk,settings), # TODO: add check to make sure that all model-scenario combos are accounted for (e.g. the check we have in read_process_data_file that creates the models-runs-crosswalk additions file)
   lulucf_btr_data_raw = make_btr_lulucf_net_total(lulucf_btr_data_raw_breakouts),
   
   tar_target(lulucf_folder, "data-raw/lulucf/", format = "file"),
@@ -210,11 +210,11 @@ tar_plan(
   tar_target(lulucf_files, lulucf_files_with_check, format = "file"),
   
   tar_target(lulucf_crosswalk_csv, "data-raw/crosswalk/crosswalk_lulucf_all.csv", format = "file"),
-  tar_target(lulucf_crosswalk, read_csv(lulucf_crosswalk_csv)), # TODO: add check to make sure that all model-scenario combos are accounted for (e.g. the check we have in read_process_data_file that creates the models-runs-crosswalk additions file)
+  tar_target(lulucf_crosswalk, read_csv(lulucf_crosswalk_csv)), 
   
   lulucf_data = {
     map_dfr(lulucf_files, ~read_lulucf_data_file(.x, lulucf_crosswalk, var_crosswalk)) %>%
-      arrange_standard()},
+      arrange_standard()}, 
   
   ### Projections Compilation --------------
   

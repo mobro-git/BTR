@@ -14,3 +14,6 @@ usrr_wm_lowseq,wm,USREP-ReEDS,wm,lts,bau_low,wm_ltslulucf
 gcam_wm_nfs,wm,GCAM,wm,nfs,wm,wm
 nems_wm_nfs,wm,OP-NEMS,wm,nfs,wm,wm
 usrr_wm_nfs,wm,USREP-ReEDS,wm,nfs,wm,wm
+gcam_wm_gtm,wm,GCAM,wm,gtm,wm,wm
+nems_wm_gtm,wm,OP-NEMS,wm,gtm,wm,wm
+usrr_wm_gtm,wm,USREP-ReEDS,wm,gtm,wm,wm

@@ -1,4 +1,10 @@
 model,scenario,year,value,region,unit,variable
+gtm,wm,2025,-819.8314484455731,United States,MMT CO2eq,Emissions|LULUCF|Net Total
+gtm,wm,2030,-875.1611956030731,United States,MMT CO2eq,Emissions|LULUCF|Net Total
+gtm,wm,2035,-1067.4967620667944,United States,MMT CO2eq,Emissions|LULUCF|Net Total
+gtm,wm,2040,-1259.8294836228324,United States,MMT CO2eq,Emissions|LULUCF|Net Total
+gtm,wm,2045,-1040.3218391997486,United States,MMT CO2eq,Emissions|LULUCF|Net Total
+gtm,wm,2050,-820.8113557503018,United States,MMT CO2eq,Emissions|LULUCF|Net Total
 nfs,wm,2025,-673.8450684051815,United States,MMT CO2eq,Emissions|LULUCF|Net Total
 nfs,wm,2030,-648.1230342176492,United States,MMT CO2eq,Emissions|LULUCF|Net Total
 nfs,wm,2035,-757.7158806780677,United States,MMT CO2eq,Emissions|LULUCF|Net Total
