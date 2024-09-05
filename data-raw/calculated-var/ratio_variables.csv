@@ -13,3 +13,5 @@ Emissions|CO2|Energy|Demand|Transportation|Share Indirect,Emissions|CO2|Energy|D
 Emissions / Energy,Emissions|CO2|Energy,Final Energy,MMCO2/EJ
 Energy / GDP,Final Energy,GDP|MER,EJ/Dollar
 GDP / Capita,GDP|MER,Population,Dollar/pop
+Final Energy|Buildings|Commercial|Percent Electricity,Final Energy|Buildings|Commercial|Electricity,Final Energy|Buildings|Commercial,%
+Final Energy|Buildings|Residential|Percent Electricity,Final Energy|Buildings|Residential|Electricity,Final Energy|Buildings|Residential,%

@@ -108,6 +108,7 @@ gtsave(sector_table_merged, paste0('output/',settings$version,"/tables_figs/resu
 ### Gas
 
 ```{r, pct change by gas}
+# TODO: @morgan update these % reduction tables to look 
 pct_change_table_gas <- create_pct_change_table('gas', 'wm', projections_all_sm, config, settings)
 pct_change_html_gas <- create_pct_change_html_table(pct_change_table_gas, 'Gas', settings)
 pct_change_html_gas
@@ -740,13 +741,11 @@ past_proj_clean_hilow <- past_proj_clean %>%
 ```{r}
 col_order <- c('category', 'year', 'low', 'high')
 category = 'gas'
-grouping = 'wm'
-
-# TODO: something is really wrong here, emissions are getting reallllllly high when we aggregate, maybe something to do with grouping == grouping?
+group = 'wm'
 
 summary <- projections_all_sm %>%
   rename(category = .data[[category]]) %>%
-  filter(grouping == grouping) %>%
+  filter(grouping %in% c(group,'ghgi')) %>%
   filter(year %in% config$seq_ncbr_comp_sm) %>%
   group_by(proj_name, category, year) %>%
   summarise(cat_sum = sum(sum), .groups = 'drop')
@@ -988,6 +987,12 @@ fig <-
               size = 0.7)+
     labs(x = 'Year',
          y = expression(paste("MMt ", CO[2], sep = ""))) +
+    geom_vline(
+      xintercept = 2022,
+      linetype = 'dashed',
+      color = "black",
+      # size = 0.4,
+      alpha = 0.5) +
     scale_y_continuous(labels = scales::comma) +
     scale_x_continuous(breaks = c(seq(1990,2020,by=5), 2022, seq(2025,2040,by=5)), expand = c(0,0)) +
     theme_btr() 
@@ -1037,9 +1042,9 @@ lulucf_plot_data <- lulucf_co2_hist_long %>% rbind(lulucf_nfs) %>%
 
 ```{r}
 
-lulucf_fig <- ggplot(data = lulucf_plot_data, aes(x = year, y = value)) +
-  geom_point(color = '#0097FF') +
-  geom_line(color = '#0097FF') +
+lulucf_fig <- ggplot(mapping = aes(x = year, y = value)) +
+  geom_point(data = (lulucf_plot_data %>% filter(year >= 2022)), color = '#0097FF') +
+  geom_line(data = lulucf_plot_data, color = '#0097FF') +
   labs(y = expression(paste("MMt C", O[2]))) +
   geom_vline(
     xintercept = 2022,
@@ -1059,10 +1064,10 @@ lulucf_fig
 filename <- paste0("lulucf_fig_", Sys.Date(), ".png")
 ggsave(paste0('output/', settings$version, "/tables_figs/lulucf/", filename),
   create.dir = TRUE,
-  height = 4.5
-)
-
+  height = 4.5)
 ```
+
+# Energy CO2 emissions reductions from 2005
 
 ```{r}
 section_pct_change_05 <- function(data_long_clean, var, config) {
@@ -1098,5 +1103,19 @@ buildings_res <- section_pct_change_05(data_long_clean,
 buildings_com <- section_pct_change_05(data_long_clean,
                                        'Emissions|CO2|Energy|Demand|Buildings|Commercial',
                                        config)
+# energy-related co2 emissions
+nrgco2 = projections_all_sm %>%
+  filter(grouping %in% c("wm","ghgi")) %>%
+  filter(year %in% c(2005, 2025, 2030, 2035, 2040)) %>%
+  filter(gas == "CO2" & usproj_sector == "Energy") %>%
+  group_by(grouping,year,usproj_sector) %>%
+  summarize(min = min(pct_change_05),
+            max = max(pct_change_05))
 
+# buildings - res and com % electricity of total demand
+com_res_elecrif = data_long_clean %>%
+  filter(scenario == "wm",
+         variable %in% c("Final Energy|Buildings|Residential|Percent Electricity",
+                         "Final Energy|Buildings|Commercial|Percent Electricity"),
+         year == 2040)
 ```
