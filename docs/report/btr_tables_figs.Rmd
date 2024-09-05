@@ -1049,6 +1049,7 @@ lulucf_fig <- ggplot(data = lulucf_plot_data, aes(x = year, y = value)) +
     alpha = 0.5
   ) +
   scale_x_continuous(breaks = c(2000, 2005, 2010, settings$base_year, 2025, 2030, 2035, 2040)) +
+  expand_limits(y = c(0,-1100)) +
   scale_y_continuous(labels = scales::comma) +
   theme_btr()
 lulucf_fig
@@ -1063,3 +1064,39 @@ ggsave(paste0('output/', settings$version, "/tables_figs/lulucf/", filename),
 
 ```
 
+```{r}
+section_pct_change_05 <- function(data_long_clean, var, config) {
+
+df <- data_long_clean %>%
+  filter(variable == var,
+         scenario == 'wm') %>%
+  select(model,year,value)%>%
+    mutate(pct_change_05 = round((value/value[year==2005]-1),2)) %>%
+  filter(year %in% config$table)
+return(df)
+}
+
+elec <- section_pct_change_05(data_long_clean,
+                              'Emissions|CO2|Energy|Supply|Electricity',
+                              config)
+
+industry <- section_pct_change_05(data_long_clean,
+                                  'Emissions|CO2|Energy|Demand|Industry',
+                                  config)
+
+buildings <- section_pct_change_05(data_long_clean,
+                                   'Emissions|CO2|Energy|Demand|Buildings',
+                                   config)
+
+transportation <- section_pct_change_05(data_long_clean,
+                                        'Emissions|CO2|Energy|Demand|Transportation', config)
+
+buildings_res <- section_pct_change_05(data_long_clean,
+                                       'Emissions|CO2|Energy|Demand|Buildings|Residential',
+                                       config)
+
+buildings_com <- section_pct_change_05(data_long_clean,
+                                       'Emissions|CO2|Energy|Demand|Buildings|Commercial',
+                                       config)
+
+```
