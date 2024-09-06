@@ -1257,13 +1257,10 @@ zev_share_table(data_long_clean,"Energy Service|Transportation|Passenger|ICE|Sal
 ### Freight
 ```{r}
 zev_share_table(data_long_clean,"Energy Service|Transportation|Freight|ICE|Sales Share")
-
 ```
 
-## Energy-rleated CO2 emissions
-
+## Energy-related CO2 emissions
 ```{r}
-# energy-related co2 emissions
 nrgco2 = projections_all_sm %>%
   filter(grouping %in% c("wm","ghgi")) %>%
   filter(year %in% c(2005, 2025, 2030, 2035, 2040)) %>%
@@ -1271,19 +1268,37 @@ nrgco2 = projections_all_sm %>%
   group_by(grouping,year,usproj_sector) %>%
   summarize(min = min(pct_change_05),
             max = max(pct_change_05))
+nrgco2
+```
 
-# buildings - res and com % electricity of total demand
+## Energy-related ch4 emissions
+```{r}
+nrgch4 = projections_all_sm %>%
+  filter(grouping %in% c("wm","ghgi")) %>%
+  filter(year %in% c(2005, 2025, 2030, 2035, 2040)) %>%
+  filter(gas == "CH4" & usproj_sector == "Energy") %>%
+  group_by(grouping,year,usproj_sector) %>%
+  summarize(min = min(pct_change_05),
+            max = max(pct_change_05))
+nrgch4
+```
+
+## buildings - res and com % electricity of total demand
+
+```{r}
 com_elecrif = data_long_clean %>%
   filter(scenario == "wm",
          variable %in% c("Final Energy|Buildings|Commercial|Percent Electricity"),
          year %in% config$table) %>%
   select(model, year, value)
+com_electrif
 
 res_elecrif = data_long_clean %>%
   filter(scenario == "wm",
          variable %in% c("Final Energy|Buildings|Residential|Percent Electricity"),
          year %in% config$table) %>%
   select(model, year, value)
+res_electrif
 ```
 
 # Ad-hoc tables/figs
