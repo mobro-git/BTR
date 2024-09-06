@@ -1076,10 +1076,9 @@ lulucf_fig <- ggplot(mapping = aes(x = year, y = value)) +
     # size = 0.4,
     alpha = 0.5
   ) +
-  scale_x_continuous(breaks = c(2000, 2005, 2010, settings$base_year, 2025, 2030, 2035, 2040)) +
+  scale_x_continuous(breaks = c(2000, 2005, 2010, settings$base_year, 2025, 2030, 2035, 2040),expand = c(0,0)) +
   expand_limits(y = c(0,-1500)) +
-  scale_y_continuous(labels = scales::comma, breaks = c(0,-500,-1000,-1500), expand = c(0, 0)) +
-  scale_x_continuous(expand = c(0,0)) +
+  scale_y_continuous(labels = scales::comma, breaks = c(0,-500,-1000,-1500)) +
   theme_btr()
 lulucf_fig
 
@@ -1274,11 +1273,17 @@ nrgco2 = projections_all_sm %>%
             max = max(pct_change_05))
 
 # buildings - res and com % electricity of total demand
-com_res_elecrif = data_long_clean %>%
+com_elecrif = data_long_clean %>%
   filter(scenario == "wm",
-         variable %in% c("Final Energy|Buildings|Residential|Percent Electricity",
-                         "Final Energy|Buildings|Commercial|Percent Electricity"),
-         year == 2040)
+         variable %in% c("Final Energy|Buildings|Commercial|Percent Electricity"),
+         year %in% config$table) %>%
+  select(model, year, value)
+
+res_elecrif = data_long_clean %>%
+  filter(scenario == "wm",
+         variable %in% c("Final Energy|Buildings|Residential|Percent Electricity"),
+         year %in% config$table) %>%
+  select(model, year, value)
 ```
 
 # Ad-hoc tables/figs
