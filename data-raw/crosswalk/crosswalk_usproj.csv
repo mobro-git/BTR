@@ -1,3 +1,3 @@
 datasrc,model,scenario,notes
-usproj_emissions_2024_wide_for_btr_ta_6-14_usprojRUN06242024.csv,usproj,wm,newest usproj btr outputs with 6/14 NEMS run drivers
-usproj_emissions_2024_wide_for_btr_05022024_usprojRUN06132024.csv,usproj,wm_old,"update to new inventory, add FFCUST projections"
+usproj_emissions_2024_wide_for_btr_ta_6-14_usprojRUN06242024.csv,usproj,wm_old,"usproj before updates to a non-co2, sf6, and nf3"
+usproj_emissions_2024_wide_for_btr_ta_6-14_usprojRUN09062024.csv,usproj,wm,
