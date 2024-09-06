@@ -828,6 +828,70 @@ filename <- paste0("ncbr_comp_table_",Sys.Date(),".png")
 gtsave(ncbr_comp_table, paste0('output/',settings$version,"/tables_figs/results_tables/ncbr_comparison/",filename))
 ```
 
+### Table Long Names
+
+```{r}
+proj_col_order <- c('2025', '2030', '2035', '2040')
+stubhead <- 'Publication'
+
+merged_longnames = ncbr_table_df %>%
+  mutate(
+    `2025` = case_when(
+      `2025_low` == `2025_high` ~ `2025_high`,
+      `2025_low` != `2025_high` ~ paste0(`2025_low`, " - ", `2025_high`)
+    ),
+    `2030` = case_when(
+      `2030_low` == `2030_high` ~ `2030_high`,
+      `2030_low` != `2030_high` ~ paste0(`2030_low`, " - ", `2030_high`)
+    ),
+    `2035` = case_when(
+      `2035_low` == `2035_high` ~ `2035_high`,
+      `2035_low` != `2035_high` ~ paste0(`2035_low`, " - ", `2035_high`)
+    ),
+    `2040` = case_when(
+      `2040_low` == `2040_high` ~ `2040_high`,
+      `2040_low` != `2040_high` ~ paste0(`2040_low`, " - ", `2040_high`)
+    )
+  ) %>%
+  mutate(Publication = case_when(
+    Publication == "2024 BTR" ~ "2024 Policy Baseline",
+    Publication == "2022 BR" ~ "2022 Biennial Report",
+    Publication == "2021 BR" ~ "2021 Biennial Report",
+    Publication == "2016 BR" ~ "2016 Biennial Report",
+    Publication == "2014 CAR" ~ "2014 Climate Action Report"
+  )) %>% 
+  select(-contains("_"))
+
+bold1 = nrow(merged) - 3
+bold2 = nrow(merged) - 1
+bold3 = nrow(merged) - 5
+
+ncbr_comp_table_longnames <- merged_longnames %>%
+  
+  gt() %>%
+  cols_align('center', columns = everything()) %>%
+  cols_align('left', columns = stubhead) %>%
+  # tab_style(
+  #   style = cell_borders(
+  #     color = "#1F77AE",
+  #     sides = c("bottom"),
+  #     weight = px(2)
+  #   ),
+  #   #
+  #   locations = cells_body(rows = c(bold1, bold2, bold3))
+  # ) %>% 
+
+  
+  gt_theme_nc_blue()
+
+ncbr_comp_table_longnames
+```
+
+```{r}
+filename <- paste0("ncbr_comp_table_longnames",Sys.Date(),".png")
+gtsave(ncbr_comp_table, paste0('output/',settings$version,"/tables_figs/results_tables/ncbr_comparison/longnames/",filename))
+```
+
 ```{r}
 tge_btr <- projections_all_sm %>% 
   filter(!gas == 'LULUCF Sink') %>%
@@ -973,30 +1037,36 @@ lulucf_co2_hist_long <- lulucf_co2_hist %>%
   pivot_longer(cols = 2:34, names_to = 'year') %>%
   select(year, value)
 
-lulucf_nfs <- read_xlsx("data-extra/USDA NFS Raw Data/LULUCF projections DRAFT compilation 82924.xlsx",
+lulucf_proj <- read_xlsx("data-extra/USDA NFS Raw Data/LULUCF projections DRAFT compilation 82924.xlsx",
                         sheet = "LULUCF TABLE FOR PIPELINE") %>%
-  filter(model == 'NFS') %>%
+  filter(variable == 'Emissions|LULUCF|Carbon Stock Change') %>%
   pivot_longer(cols = 6:11, names_to = 'year') %>%
   select(year, value)
 
-lulucf_plot_data <- lulucf_co2_hist_long %>% rbind(lulucf_nfs) %>%
+lulucf_plot_data <- lulucf_co2_hist_long %>% rbind(lulucf_proj) %>%
   mutate(
     year = as.numeric(year),
-    value = as.numeric(value),
-    group = case_when(
-      year <= settings$base_year ~ 'hist',
-      year > settings$base_year ~ 'proj'
-    )
+    value = as.numeric(value)
   ) %>%
   filter(year <= 2040, year >= 2000)
+
 
 ```
 
 ```{r}
+lulucf_plot_proj <- lulucf_plot_data %>%
+  filter(year >= 2022) %>%
+  group_by(year) %>%
+  mutate(min = min(value),
+         max = max(value))
+
+lulucf_plot_hist <- lulucf_plot_data %>% filter(year < 2025)
+color_id <- '#0097FF'
 
 lulucf_fig <- ggplot(mapping = aes(x = year, y = value)) +
-  geom_point(data = (lulucf_plot_data %>% filter(year >= 2022)), color = '#0097FF') +
-  geom_line(data = lulucf_plot_data, color = '#0097FF') +
+  geom_line(data = lulucf_plot_hist, color = color_id) +
+  geom_ribbon(data = lulucf_plot_proj, aes(ymin = min, ymax = max),color = color_id, fill = color_id, alpha = 0.4) +
+  geom_point(data = lulucf_plot_data, color = color_id) +
   labs(y = expression(paste("MMt C", O[2]))) +
   geom_vline(
     xintercept = 2022,
