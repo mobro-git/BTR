@@ -276,7 +276,7 @@ ndc_targets = data.frame(
 
 ```{r proj function}
 projections_leep = br_project(ghgi, proj, settings, targets = ndc_targets)
-projections
+projections_leep
 ```
 
 ```{r}
