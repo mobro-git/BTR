@@ -1,19 +1,28 @@
 ncbr_comparison_figure_longnames <- function(ncbr_comp_ribbon, tge_all_long, settings, config, brvs = FALSE, brvs_name = NULL) {
   
-  ncbr_hist_btr <- tge_all_long %>% filter(Report == '2024 BTR',
-                                           Year <= 2022,
-                                           Year %in% config$fives)
+  tge_all_long_longnames <- tge_all_long %>%
+    mutate(
+      Report = case_when(
+        Report == "2024 BTR" ~ "2024 Policy Baseline",
+        Report == "2022 BR" ~ "2022 Biennial Report",
+        Report == "2021 BR" ~ "2021 Biennial Report",
+        Report == "2016 BR" ~ "2016 Biennial Report",
+        Report == "2014 CAR" ~ "2014 Climate Action Report"
+      )
+    )
+  ncbr_hist_btr <- tge_all_long_longnames %>%
+    filter(Report == '2024 Policy Baseline', Year <= 2022, Year %in% config$fives)
   
-  if(brvs == TRUE){exclude = c('2024 BTR','2023 BR Voluntary Supplement')}
-  if(brvs == FALSE){exclude = '2024 BTR'}
+  if(brvs == TRUE){exclude = c('2024 Policy Baseline','2023 BR Voluntary Supplement')}
+  if(brvs == FALSE){exclude = '2024 Policy Baseline'}
   
-  ncbr_hist_long <- tge_all_long %>% filter(!Report %in% exclude,
-                                            Year <= 2035,
-                                            Year %in% config$fives)
+  ncbr_hist_long <- tge_all_long_longnames %>% filter(!Report %in% exclude, Year <= 2035, Year %in% config$fives) 
   
   ncbr_ribbon_clean <- ncbr_comp_ribbon %>% 
     filter(Year %in% config$fives,
-           Report == '2024 BTR')
+           Report == '2024 BTR') %>%
+    mutate(Report = "2024 Policy Baseline")
+    
   
   if(brvs == TRUE){
     ncbr_brvs_ribbon_clean <- ncbr_comp_ribbon %>% 
@@ -22,15 +31,15 @@ ncbr_comparison_figure_longnames <- function(ncbr_comp_ribbon, tge_all_long, set
       mutate(Report = brvs_name)
   }
   
-  # tge_ends <- tge_all_long %>%
+  # tge_ends <- tge_all_long_longnames %>%
   #   filter(Year == max(Year),
   #          proj_name %in% c('usrr_wm_hiseq',
   #                           'gcam_wm_hiseq',
   #                           'nems_wm_hiseq'))
-  var_palette = sort((unique(tge_all_long$Report)), decreasing = TRUE)
+  var_palette = sort((unique(tge_all_long_longnames$Report)), decreasing = TRUE)
   
   if(!is.null(brvs_name)) {
-    tge_all_long_rename <- tge_all_long %>%
+    tge_all_long_rename <- tge_all_long_longnames %>%
       mutate(Report = case_when(
         Report == "2023 BR Voluntary Supplement" ~ brvs_name,
         TRUE ~ Report

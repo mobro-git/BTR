@@ -27,7 +27,7 @@ tar_plan(
     scen_mapping = read_scen_mapping(crosswalk_model_runs_csv),
     template = template,
     calculated_var = all_calculated
-    # TODO: Add base year and proj reporting range (1990, 2005?) to settings?
+    # TODO: Add end_year to settings
   ), 
   
   config = list(
@@ -173,9 +173,7 @@ tar_plan(
   data_loaded = {
     map_dfr(data_files, ~read_process_data_file(.x, settings)) %>%
       arrange_standard()},
-  # TODO: Figure out where to read in LTS and BR:VS data
-  # TODO: Add in check to make sure crosswalk-model-runs doesn't have duplicate model+scenario combinations
-  
+
   data_long = make_data_long(data_loaded, settings),
   
   data_long_clean_no_hist = make_data_long_clean(data_long,
@@ -202,7 +200,9 @@ tar_plan(
   tar_target(lulucf_btr_crosswalk_csv, "data-raw/crosswalk/crosswalk_lulucf_btr.csv", format = "file"),
   lulucf_btr_crosswalk = read_csv(lulucf_btr_crosswalk_csv),
   
-  lulucf_btr_data_raw_breakouts = make_btr_lulucf_data_raw(lulucf_data_extra_xlsx,lulucf_btr_crosswalk,settings), # TODO: add check to make sure that all model-scenario combos are accounted for (e.g. the check we have in read_process_data_file that creates the models-runs-crosswalk additions file)
+  lulucf_btr_data_raw_breakouts = make_btr_lulucf_data_raw(lulucf_data_extra_xlsx,lulucf_btr_crosswalk,settings), 
+  # TODO: add check to make sure that all model-scenario combos are accounted for (e.g. the check we have in read_process_data_file that creates the models-runs-crosswalk additions file)
+  
   lulucf_btr_data_raw = make_btr_lulucf_net_total(lulucf_btr_data_raw_breakouts),
   
   tar_target(lulucf_folder, "data-raw/lulucf/", format = "file"),
@@ -234,8 +234,7 @@ tar_plan(
   projections_all = map_proj_name_v2(usproj_all, crosswalk_compilation, settings),
   projections_ghgi = add_historical_data(ghgi_cat, projections_all), # bind ghgi historical data to projections
   projections_all_sm = gen_proj_all_sm(projections_ghgi, settings), # gas and sector sums for each projection
-  # TODO: Find out why Transportation CO2 is missing
-  
+
   # _summary table breakouts ----
   lulucf_sink_breakout = gen_lulucf_sink_breakout(projections_all_sm, config, settings),
   

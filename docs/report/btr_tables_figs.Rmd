@@ -45,27 +45,6 @@ source("scripts/theming.R")
 
 ```
 
-```{r todo}
-# # TOC to fill out
-# 
-# ✓ Figure 1 US Net GHG Emissions Projections 
-# ✓ Table 1 Historical and Projected GHG Emissions by gas 
-# ✓ Table 2 Historical and Projected GHG Emissions by sector
-# - Figure 2 Current Measures CO2 Projections for Forestry and Land Use
-# ✓ Table 3 Comparison of Total Gross GHG Emissions under Policy Baseline Projections to Previous US Climate Action and Biennial Reports (data-raw/ncbr_comparison/total_gross_ghg_ncbr_comparisons.csv)
-# ✓ Figure 3 Comparison of 2024 "With Measures" Baseline to Previous "With Measures" Projections (data-raw/ncbr_comparison/total_gross_ghg_ncbr_comparisons.csv)
-# - Figure 4 Comparison of Energy-Related CO2 Projections "With Measures" Baseline range to Previous AEO projections (still need to pull data for this)
-# - Figure 5 Normalized Kaya Identity Factors Used for Assessing the Effects of New Policies and Measures (data-raw/ncbr_comparison/kaya_check_usproj_br5_ar4.xlsx)
-# - Table 4 Estimates of the Total Effect of New Policies and Measures and Technological Change (Morgan to figure out breakouts)
-# - Sectoral CO2 emissions figures comparing BTR1 projections to LTS
-# 
-# 
-# ### Figures to add
-# 
-# 1) total gross ghg emissions comparison figure - add range of gross ghg for BTR1 - 
-# 2) 
-```
-
 # BTR Tables and Figures
 
 ## Value Summary Tables {.tabset}
@@ -346,12 +325,6 @@ net_ghg_stackbar
 # Kaya Analysis
 
 ```{r}
-# # TODO: updated KAYA figure
-# - David's updated KAYA workbook for gdp, pop, and energy
-# - BR_voluntarysupplement workbook (in data-raw/ncbr comp folder) for BR Total Gross Emissions
-# 
-# - BTR2024 total gross emissions (range) from projections_all_sm, gpd, energy, pop data_long_clean
-# - will need to calculate the emissions/energy for BTR24, the other 3 ratio variables should be present in data_long_clean
 
 dat = data_long_clean |> 
   filter(variable %in% c("Emissions|CO2|Energy", "Final Energy", "GDP|MER", "Population")) |>
@@ -931,6 +904,18 @@ fig
 ```{r}
 filename <- paste0("ncbr_comp_fig_",Sys.Date(),".png")
 ggsave(paste0('output/',settings$version,"/tables_figs/ncbr_comparison/",filename), create.dir = TRUE)
+```
+
+### Figure Long Names
+
+```{r}
+fig_longnames <- ncbr_comparison_figure_longnames(ncbr_comp_ribbon, tge_all_long, settings, config)
+fig_longnames
+```
+
+```{r}
+filename <- paste0("ncbr_comp_fig_",Sys.Date(),".png")
+ggsave(paste0('output/',settings$version,"/tables_figs/ncbr_comparison/longnames/",filename), create.dir = TRUE)
 ```
 
 ### Figure: From 1990

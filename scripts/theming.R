@@ -338,6 +338,13 @@ color_map <- c(
   'car_2010' = 'very dark blue',
   'nc_2006' = 'hue1',
   'car_2006' = 'hue1',
+  
+  "2024 Policy Baseline" = "teal blue",
+  "2022 Biennial Report" = 'm.green',
+  "2021 Biennial Report" = 'teal green',
+  "2016 Biennial Report" = 'dark salmon',
+  "2014 Climate Action Report" = 'light orange',
+  
 
   # Kaya Variables
   "EmissPerEnergyIn" = "m.green",
