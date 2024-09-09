@@ -1136,24 +1136,7 @@ kable(Total)
 ## Energy CO2 emissions reductions from 2005 {.tabset}
 
 ```{r}
-section_pct_change_05 <- function(data_long_clean, var, config) {
 
-df <- data_long_clean %>%
-  filter(variable == var,
-         scenario == 'wm') %>%
-  select(model,year,value)%>%
-    mutate(pct_change_05 = round((value/value[year==2005]-1),2),
-           value = round(value,2)) %>%
-  filter(year %in% config$table) %>%
-  select(model, year, pct_change_05)
-
-df <- df[order(df$year),]
-
-df_wide <- df %>% pivot_wider(names_from = 'year',
-                              values_from = 'pct_change_05')
-
-return(df_wide)
-}
 
 elec <- section_pct_change_05(data_long_clean,
                               'Emissions|CO2|Energy|Supply|Electricity',
@@ -1181,16 +1164,7 @@ buildings_com <- section_pct_change_05(data_long_clean,
 
 ### Electricity
 ```{r}
-create_stats_table <- function(df) {
 
-table <- gt(df) %>% fmt_percent(columns = 2:10,
-                         decimals = 0) %>%
-  sub_missing(missing_text = "-") %>% 
-  cols_align(align = 'center') %>%
-  cols_align(align = "left",
-             columns = "model")
-return(table)
-}
 
 elec_table <- create_stats_table(elec)
 elec_table
@@ -1233,24 +1207,6 @@ transportation_table
 ### Passenger
 
 ```{r}
-zev_share_table <- function(data_long_clean, ice_var) {
-df <- data_long_clean %>% 
-  filter(variable == ice_var,
-         scenario == "wm",
-         year %in% c(2030,2040)) %>%
-  mutate(value = round(1-value,2)) %>% 
-  select(model,year,value)
-
-df <- df[order(df$year),]
-
-df_wide <- df %>% pivot_wider(names_from = 'year',
-                              values_from = 'value')
-
-table <- gt(df_wide) %>% fmt_percent(columns = 2:3,
-                         decimals = 0) 
-return(table)
-}
-
 zev_share_table(data_long_clean,"Energy Service|Transportation|Passenger|ICE|Sales Share")
 ```
 
@@ -1259,45 +1215,87 @@ zev_share_table(data_long_clean,"Energy Service|Transportation|Passenger|ICE|Sal
 zev_share_table(data_long_clean,"Energy Service|Transportation|Freight|ICE|Sales Share")
 ```
 
-## Energy-related CO2 emissions
+## Energy-Related Emissions Compared to 2005 {.tabset}
+
+### CO2
+
 ```{r}
 nrgco2 = projections_all_sm %>%
   filter(grouping %in% c("wm","ghgi")) %>%
   filter(year %in% c(2005, 2025, 2030, 2035, 2040)) %>%
   filter(gas == "CO2" & usproj_sector == "Energy") %>%
-  group_by(grouping,year,usproj_sector) %>%
-  summarize(min = min(pct_change_05),
-            max = max(pct_change_05))
-nrgco2
+  select(proj_name,year,pct_change_05) %>%
+  distinct()
+
+nrgco2 <- nrgco2[order(nrgco2$year),]
+  
+  nrgco2_wide <- nrgco2 %>% 
+    filter(!year == 2005) %>%
+    pivot_wider(names_from = 'year',
+                                values_from = 'pct_change_05')
+ 
+nrgco2_table <- create_stats_table(nrgco2_wide)
+nrgco2_table
 ```
 
-## Energy-related ch4 emissions
+### CH4
+
 ```{r}
 nrgch4 = projections_all_sm %>%
   filter(grouping %in% c("wm","ghgi")) %>%
   filter(year %in% c(2005, 2025, 2030, 2035, 2040)) %>%
   filter(gas == "CH4" & usproj_sector == "Energy") %>%
-  group_by(grouping,year,usproj_sector) %>%
-  summarize(min = min(pct_change_05),
-            max = max(pct_change_05))
-nrgch4
+  select(proj_name,year,pct_change_05) %>%
+  distinct()
+
+nrgch4 <- nrgch4[order(nrgch4$year),]
+  
+  nrgch4_wide <- nrgch4 %>% 
+    filter(!year == 2005) %>%
+    pivot_wider(names_from = 'year',
+                                values_from = 'pct_change_05')
+ 
+nrgch4_table <- create_stats_table(nrgch4_wide)
+nrgch4_table
 ```
 
-## buildings - res and com % electricity of total demand
+## buildings - res and com % electricity of total demand {.tabset}
+
+### Commercial
 
 ```{r}
-com_elecrif = data_long_clean %>%
+com_electrif = data_long_clean %>%
   filter(scenario == "wm",
          variable %in% c("Final Energy|Buildings|Commercial|Percent Electricity"),
          year %in% config$table) %>%
   select(model, year, value)
-com_electrif
 
-res_elecrif = data_long_clean %>%
+com_electrif <- com_electrif[order(com_electrif$year),]
+
+com_electrif_wide <- com_electrif %>% pivot_wider(names_from = 'year',
+                                                  values_from = 'value')
+
+com_electrif <- create_stats_table(com_electrif_wide)
+
+com_electrif
+```
+
+### Residential
+
+```{r}
+res_electrif = data_long_clean %>%
   filter(scenario == "wm",
          variable %in% c("Final Energy|Buildings|Residential|Percent Electricity"),
          year %in% config$table) %>%
   select(model, year, value)
+
+res_electrif <- res_electrif[order(res_electrif$year),]
+
+res_electrif_wide <- res_electrif %>% pivot_wider(names_from = 'year',
+                                                  values_from = 'value')
+
+res_electrif <- create_stats_table(res_electrif_wide)
+
 res_electrif
 ```
 
