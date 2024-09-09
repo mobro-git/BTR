@@ -889,7 +889,7 @@ ncbr_comp_table_longnames
 
 ```{r}
 filename <- paste0("ncbr_comp_table_longnames",Sys.Date(),".png")
-gtsave(ncbr_comp_table, paste0('output/',settings$version,"/tables_figs/results_tables/ncbr_comparison/longnames/",filename))
+gtsave(ncbr_comp_table_longnames, paste0('output/',settings$version,"/tables_figs/results_tables/ncbr_comparison/longnames/",filename))
 ```
 
 ```{r}
