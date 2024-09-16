@@ -1,0 +1,1451 @@
+---
+pagetitle: "2024 Biennial Transparency Report Projections Chapter: Historical and Projected GHG Tables & Figures"
+output:
+  html_document:
+    number_sections: false
+    highlight: tango
+    fontsize: 12
+    fig_caption: false
+    toc: yes
+    toc_float:
+      toc_collapsed: true
+    toc_depth: 3
+    theme: spacelab
+params:
+  mode: "interactive"
+---
+
+```{r,echo = FALSE, results = "show", warning = FALSE, message = FALSE, error = FALSE}
+knitr::opts_chunk$set(echo = FALSE, results = "show", warning = FALSE, message = FALSE, error = FALSE, fig.align = "center", fig.width = 9, fig.height = 7)
+```
+
+```{r}
+source('packages.R')
+library(targets)
+library(tarchetypes)
+tar_source()
+```
+
+```{r}
+
+tar_load(
+  c(
+    config,
+    settings,
+    data_long_clean,
+    projections_all_sm,
+    total_gross_emissions,
+    ghgi_comp_tab,
+    figmap_nrgco2_stackbar,
+    past_proj
+    )
+  )
+
+source("scripts/theming.R")
+
+```
+
+# BTR Tables and Figures
+
+## Value Summary Tables {.tabset}
+
+### Gas
+
+```{r gas summary}
+gas_df <- create_summary_table50('gas','wm', projections_all_sm, config, settings)
+
+gas_table <- create_html_table50(gas_df, 'Gas', settings)
+
+gas_table_merged <- create_html_table_merged50(gas_df, 'Gas', settings)
+gas_table_merged
+```
+
+```{r}
+filename <- paste0("gas_table_",Sys.Date(),".png")
+gtsave(gas_table_merged, paste0('output/',settings$version,"/tables_figs/results_tables/by_gas_sector/",filename))
+```
+
+### Sector
+
+```{r sector summary}
+sector_df <- create_summary_table50('usproj_sector', 'wm', projections_all_sm, config, settings)
+
+sector_table <- create_html_table50(sector_df, 'Sector', settings)
+
+sector_table_merged <- create_html_table_merged50(sector_df, 'Sector', settings)
+sector_table_merged
+```
+
+```{r}
+
+filename <- paste0("sector_table_",Sys.Date(),".png")
+gtsave(sector_table_merged, paste0('output/',settings$version,"/tables_figs/results_tables/by_gas_sector/",filename))
+```
+
+## 2005 Percent Change Table {.tabset}
+
+### Gas
+
+```{r, pct change by gas}
+# TODO: @morgan update these % reduction tables to look like the gas and sector tables - i want historical trends in there and for the ranges to be presented with "-"
+pct_change_table_gas <- create_pct_change_table50('gas', 'wm', projections_all_sm, config, settings)
+pct_change_html_gas <- create_pct_change_html_table50(pct_change_table_gas, 'Gas', settings)
+pct_change_html_gas
+```
+
+```{r}
+filename <- paste0("gas_table_pctchange05_",Sys.Date(),".png")
+gtsave(pct_change_html_gas, paste0('output/',settings$version,"/tables_figs/results_tables/percent_change_2005/",filename))
+```
+
+### Sector
+
+```{r, pct change by sector}
+pct_change_table_sector <- create_pct_change_table50('usproj_sector', 'wm', projections_all_sm, config, settings)
+pct_change_html_sector <- create_pct_change_html_table50(pct_change_table_sector, 'Sector', settings)
+pct_change_html_sector
+```
+
+```{r}
+filename <- paste0("sector_table_pctchange05_",Sys.Date(),".png")
+gtsave(pct_change_html_sector, paste0('output/',settings$version,"/tables_figs/results_tables/percent_change_2005/",filename))
+```
+
+## BTR Main Plot {.tabset}
+
+```{r}
+net_ghg = projections_all_sm %>%
+  group_by(proj_name, grouping, year) %>%
+  summarise(sum = sum(sum)) %>%
+  filter(year %in% config$fives50)
+
+ghgi = net_ghg %>% 
+  filter(proj_name == "ghgi") %>% 
+  mutate(grouping = "Historical")
+proj_no_connect = net_ghg %>% 
+  filter(proj_name != "ghgi")
+
+connect = ghgi[ghgi$year == settings$base_year,]$sum
+baseline = ghgi[ghgi$year == 2005,]$sum
+
+proj_connect = proj_no_connect %>% 
+  group_by(proj_name) %>%
+  slice(1) %>%
+  mutate(
+    year = settings$base_year,
+    sum = ghgi$sum[ghgi$year == settings$base_year])
+
+proj = rbind(proj_no_connect, proj_connect) %>%
+  mutate(year = as.numeric(year)) %>%
+  filter(grouping %in% c('wm')) %>%
+  mutate(grouping = case_when(
+    grouping == "wm"~"2024 Policy Baseline",
+    grouping == "IRA" ~ "LEEP",
+    TRUE~grouping))
+
+ndc_targets = data.frame(
+  year = c(2020, 2025, 2030),
+  ymin = c((baseline * (1-.169)), (baseline * (1-.26)), (baseline * (1-.50))),
+  ymax = c((baseline * (1-.171)), (baseline * (1-.28)), (baseline * (1-.52))),
+  grouping = c("17% Below 2005","26-28% Below 2005","50-52% Below 2005")
+)
+```
+
+### Net GHG Emissions
+
+```{r}
+projections = br_project50(ghgi, proj, settings, targets = ndc_targets)
+projections
+```
+
+```{r}
+filename <- paste0("btr_main_fig_",Sys.Date(),".png")
+ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_figs/main_fig/",filename), create.dir = TRUE, height = 5.5)
+```
+
+```{r}
+net_ghg = projections_all_sm %>%
+  group_by(proj_name, grouping, year) %>%
+  summarise(sum = sum(sum),.groups = 'drop') %>%
+  filter(year %in% config$fives) %>%
+  mutate(pct_change_05 = round((sum/sum[year==2005]-1),2))
+
+ghgi = net_ghg %>% 
+  filter(proj_name == "ghgi") %>%
+  mutate(grouping = "Historical")
+proj_no_connect = net_ghg %>% 
+  filter(proj_name != "ghgi")
+
+connect = ghgi[ghgi$year == settings$base_year,]$pct_change_05
+baseline = ghgi[ghgi$year == 2005,]$pct_change_05
+
+proj_connect = proj_no_connect %>% 
+  group_by(proj_name) %>%
+  slice(1) %>%
+  mutate(
+    year = settings$base_year,
+    pct_change_05 = ghgi$pct_change_05[ghgi$year == settings$base_year])
+
+proj = rbind(proj_no_connect, proj_connect) %>%
+  mutate(year = as.numeric(year)) %>%
+  filter(grouping == 'wm') %>%
+  mutate(grouping = "2024 Policy Baseline")
+
+ndc_targets = data.frame(
+  year = c(2020, 2025, 2030),
+  ymin = c(-.17, -.28, -.52),
+  ymax = c(-.17, -.26, -.5),
+  grouping = c("17% Below 2005","26-28% Below 2005","50-52% Below 2005")
+)
+```
+
+### Percent Change from 2005
+
+```{r}
+projections_pct_change = br_project_pct_change50(ghgi, proj, targets = ndc_targets)
+projections_pct_change
+```
+
+```{r}
+filename <- paste0("btr_main_fig_pctchange05_",Sys.Date(),".png")
+ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_figs/pct_change/",filename), create.dir = TRUE, height = 6)
+```
+
+## BTR Main Plot w/ LEEP Report Comparison {.tabset}
+
+```{r data}
+net_ghg = projections_all_sm %>%
+  group_by(proj_name, grouping, year) %>%
+  summarise(sum = sum(sum)) %>%
+  filter(year %in% config$fives)
+
+ghgi = net_ghg %>% 
+  filter(proj_name == "ghgi") %>% 
+  mutate(grouping = "Historical")
+proj_no_connect = net_ghg %>% 
+  filter(proj_name != "ghgi")
+
+connect = ghgi[ghgi$year == settings$base_year,]$sum
+baseline = ghgi[ghgi$year == 2005,]$sum
+
+proj_connect = proj_no_connect %>% 
+  group_by(proj_name) %>%
+  slice(1) %>%
+  mutate(
+    year = settings$base_year,
+    sum = ghgi$sum[ghgi$year == settings$base_year])
+
+proj = rbind(proj_no_connect, proj_connect) %>%
+  mutate(year = as.numeric(year)) %>%
+  filter(grouping %in% c("IRA", 'wm')) %>%
+  mutate(grouping = case_when(
+    grouping == "wm"~"2024 Policy Baseline",
+    grouping == "IRA" ~ "LEEP",
+    TRUE~grouping))
+
+ndc_targets = data.frame(
+  year = c(2020, 2025, 2030),
+  ymin = c((baseline * (1-.169)), (baseline * (1-.26)), (baseline * (1-.50))),
+  ymax = c((baseline * (1-.171)), (baseline * (1-.28)), (baseline * (1-.52))),
+  grouping = c("17% Below 2005","26-28% Below 2005","50-52% Below 2005")
+)
+```
+
+### Net GHG Emissions
+
+```{r proj function}
+projections_leep = br_project(ghgi, proj, settings, targets = ndc_targets)
+projections_leep
+```
+
+```{r}
+filename <- paste0("btr_main_fig_leep_",Sys.Date(),".png")
+ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_figs/main_fig_leep/",filename), create.dir = TRUE, height = 6)
+```
+
+```{r}
+net_ghg = projections_all_sm %>%
+  group_by(proj_name, grouping, year) %>%
+  summarise(sum = sum(sum),.groups = 'drop') %>%
+  filter(year %in% config$fives) %>%
+  mutate(pct_change_05 = round((sum/sum[year==2005]-1),2))
+
+ghgi = net_ghg %>% 
+  filter(proj_name == "ghgi") %>%
+  mutate(grouping = "Historical")
+proj_no_connect = net_ghg %>% 
+  filter(proj_name != "ghgi")
+
+connect = ghgi[ghgi$year == settings$base_year,]$pct_change_05
+baseline = ghgi[ghgi$year == 2005,]$pct_change_05
+
+proj_connect = proj_no_connect %>% 
+  group_by(proj_name) %>%
+  slice(1) %>%
+  mutate(
+    year = settings$base_year,
+    pct_change_05 = ghgi$pct_change_05[ghgi$year == settings$base_year])
+
+proj = rbind(proj_no_connect, proj_connect) %>%
+  mutate(year = as.numeric(year)) %>%
+  filter(grouping %in% c("IRA",'wm')) %>%
+  mutate(grouping = case_when(
+    grouping == "wm"~"2024 Policy Baseline",
+    grouping == "IRA" ~ "LEEP",
+    TRUE~grouping))
+
+ndc_targets = data.frame(
+  year = c(2020, 2025, 2030),
+  ymin = c(-.17, -.28, -.52),
+  ymax = c(-.17, -.26, -.5),
+  grouping = c("17% Below 2005","26-28% Below 2005","50-52% Below 2005")
+)
+```
+
+### Percent Change from 2005
+
+```{r}
+projections_pct_change = br_project_pct_change(ghgi, proj, targets = ndc_targets)
+projections_pct_change
+```
+
+```{r}
+filename <- paste0("btr_main_fig_pctchange05_",Sys.Date(),".png")
+ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_figs/main_fig_leep/",filename), create.dir = TRUE)
+```
+
+## BTR Net-GHG Stackbar
+
+```{r, fig.width=15}
+net_ghg_sb_df <- net_ghg_sb_data_processing(projections_all_sm, config, settings)
+net_ghg_stackbar <- br_project_net_ghg_sb(net_ghg_sb_df, config)
+net_ghg_stackbar
+```
+
+# Kaya Analysis
+
+```{r}
+
+dat = data_long_clean |> 
+  filter(variable %in% c("Emissions|CO2|Energy", "Final Energy", "GDP|MER", "Population")) |>
+  select(-unit) |> 
+  spread(variable, value) |> 
+  mutate(EmissPerEnergy = `Emissions|CO2|Energy`/`Final Energy`,
+         EnergyPerGDP = `Final Energy`/`GDP|MER`,
+         GDPPerCap = `GDP|MER`/`Population`) 
+
+dat2 = dat |> 
+  filter(year == 2020) |> 
+  select(-`Emissions|CO2|Energy`, -`Final Energy`, -`GDP|MER`) |> 
+  rename(EmissPerEnergyBase = EmissPerEnergy,
+         EnergyPerGDPBase = EnergyPerGDP,
+         GDPPerCapBase = GDPPerCap,
+         PopulationBase = Population) |> 
+  select(-year)
+
+dat3 = dat |> 
+  left_join(dat2) |> 
+  select(-`Emissions|CO2|Energy`, -`Final Energy`, -`GDP|MER`) |> 
+  mutate(EmissPerEnergyIn = EmissPerEnergy/EmissPerEnergyBase,
+         EnergyPerGDPIn = EnergyPerGDP/EnergyPerGDPBase,
+         GDPPerCapIn = GDPPerCap/GDPPerCapBase,
+         PopulationIn = Population/PopulationBase) |> 
+  filter(region == "United States") |> 
+  select(model,scenario,year,datasrc,region,EmissPerEnergyIn,EnergyPerGDPIn,GDPPerCapIn,PopulationIn) |> 
+  pivot_longer(cols = 6:9, names_to = "var", values_to = "value")
+
+dat_range <- dat3 %>%
+  filter(scenario == 'wm') %>%
+  filter(var %in% c('EnergyPerGDPIn', 'EmissPerEnergyIn')) %>%
+  filter(year %in% config$fives_proj) %>% 
+  group_by(year, var) %>%
+  summarise(ymax = max(value),
+              ymin = min(value),
+              med = median(value))
+
+dat4 <- dat3 %>%
+  filter(scenario == 'wm') %>%
+  filter(!var %in% c('EnergyPerGDPIn', 'EmissPerEnergyIn')) %>%
+  filter(year %in% config$fives_proj) %>%
+  group_by(year, var) %>%
+  summarise(med = median(value))
+
+var_palette = c(unique(dat_range$var),unique(dat4$var))
+
+```
+
+```{r}
+
+##### use real historic data 
+##### use Each model's internal rate of change for energy
+##### leave emissions as is for now and see how it looks
+
+
+# TODO: we should use annual projections for br2024 for pop and gdp/capita, see if this makes a difference in smoothing out the gdp/cap trend
+
+tar_load(kaya_comparison) 
+
+kaya_data_range = kaya_comparison %>% 
+  filter(br_version == "2024") %>% 
+  select(-value,-base) %>% 
+  spread(scenario, indexed) %>%
+  mutate(
+    variable = case_when(
+      variable == "EmissPerEnergy" ~ "Emissions/Energy",
+      variable == "EnergyPerGDP" ~ "Energy/GDP",
+      variable == "GDPPerCap" ~ "GDP/Capita",
+      TRUE~variable),
+    br_version = case_when(
+      br_version == "2022" ~ "2022 BR",
+      br_version == "2024" ~ "2024 BTR",
+      TRUE ~ br_version)) %>%
+  filter(year <= 2040 & year >=2005)
+
+kaya_comp_renamed = kaya_comparison  %>%
+  mutate(
+    variable = case_when(
+      variable == "EmissPerEnergy" ~ "Emissions/Energy",
+      variable == "EnergyPerGDP" ~ "Energy/GDP",
+      variable == "GDPPerCap" ~ "GDP/Capita",
+      TRUE~variable),
+    br_version = case_when(
+      br_version == "2022" ~ "2022 BR",
+      br_version == "2024" ~ "2024 BTR",
+      TRUE ~ br_version)) %>%
+  filter(!(br_version == "2024 BTR" & variable %in% c("Emissions/Energy","Energy/GDP") & year >2022)) %>%
+  filter(year <= 2040 & year >=2005)
+
+var_palette = unique(kaya_data_range$variable)
+
+multipanel_kaya = ggplot()+
+  geom_line(data = kaya_comp_renamed,
+            aes(x = year, y = indexed, color = variable)) +
+  geom_ribbon(data = kaya_data_range, 
+              aes(x=year, ymin = min, ymax = max, fill = variable))+
+  xlim(2005,2040) + 
+  ylim(0.5,1.6) + 
+  facet_wrap(~br_version) +
+  scale_subpalette_single(var_palette) +
+  theme_btr() +
+  labs(y="Key Factor Index \n(2015 = 1.0)")
+multipanel_kaya
+ggsave(paste0('output/',settings$version,"/tables_figs/kaya/kaya_multipanel.png"), width = 5, create.dir = TRUE)
+
+line_size = 0.7
+
+singlepanel_kaya = ggplot()+
+  geom_line(data = (kaya_comp_renamed %>% 
+                      filter(br_version %in% c("2022 BR","2024 BTR")) %>%
+                      filter(!(br_version == "2022 BR" & year >2035))),
+            aes(x = year, y = indexed, color = variable, linetype = br_version),
+            size = line_size) +
+  geom_ribbon(data = kaya_data_range, 
+              aes(x=year, ymin = min, ymax = max, fill = variable, color = variable),
+              alpha = 0.4,
+              outline.type = "both",
+              size = line_size)+
+  ylim(0.5,1.6) + 
+  scale_subpalette_single(var_palette) +
+  scale_linetype_manual(values = c("2022 BR" = "dotted", "2024 BTR" = "solid")) +
+  theme_btr() +
+  labs(y="Key Factor Index \n(2015 = 1.0)") +
+  bottom1 +
+  scale_x_continuous(breaks = config$table,expand = c(0,0)) +
+  geom_vline(xintercept = settings$base_year,
+               linetype = 'dashed',
+               color = "black",
+              # size = 0.4,
+               alpha = 0.5
+              ) +
+  theme(panel.grid.minor.x = element_blank()) +
+  guides(color = guide_legend(override.aes = list(alpha = 1))) +
+  theme(legend.background = element_rect(color = NA))
+singlepanel_kaya
+ggsave(paste0('output/',settings$version,"/tables_figs/kaya/kaya_singlepanel.png"), width = 5, create.dir = TRUE)
+```
+
+```{r}
+Kaya <- function(dat_range, dat4, var_palette){
+  ggplot() +
+    geom_line(dat4, mapping = aes(year,med, group = var, color = var),size = 0.7) +
+    geom_ribbon(dat_range, mapping = aes(x = year,ymax = ymax, ymin = ymin,
+                                                  fill = var, 
+                                                  color = var),
+                alpha = 0.4 ,
+                size = 0.7) +
+    scale_subpalette_single(var_palette) +
+    labs(x = 'Year',
+         y = 'Kaya Factor Index') +
+    theme(
+      legend.position = "inside",
+      legend.position.inside = c(0.15, 0.2))
+}
+
+fig <- Kaya(dat_range, dat4, var_palette)
+#fig
+```
+
+```{r}
+filename <- paste0("kaya_fig_",Sys.Date(),".png")
+ggsave(paste0('output/',settings$version,"/tables_figs/kaya/",filename), create.dir = TRUE)
+```
+
+# Sector Analysis {.tabset}
+
+```{r}
+sector_vars = c("Emissions|CO2|Energy|Demand|Buildings|Total",
+                         "Emissions|CO2|Energy|Demand|Transportation|Total",
+                         "Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total",
+                         "Emissions|CO2|Energy|Supply|Electricity")
+lts_vars = c("Emissions|CO2|Energy|Demand|Buildings|TotalDI",
+                         "Emissions|CO2|Energy|Demand|Transportation|TotalDI",
+                         "Emissions|CO2|Energy|Demand|Industry|TotalDI",
+                         "Emissions|CO2|Energy|Supply|Electricity")
+
+# ghgi 24 data
+ghgi_df = ghgi_comp_tab %>%
+  filter(model == config$model_hist) %>%
+  filter(year %in% config$hist) %>%
+  filter(variable %in% c(sector_vars,"Emissions|CO2|Energy|Demand|Industry|Total")) %>%
+  mutate(variable = case_when(
+    variable == "Emissions|CO2|Energy|Demand|Industry|Total" ~ "Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total",
+    TRUE~variable
+  ))
+# TODO: need to pull fuel production emissions from GHGI and create a new variable so that it can be included here for historical emissions
+
+# LTS models and variables used for sector figures
+lts_df = data_long_clean %>%
+  filter(model %in% config$model_lts) %>%
+  filter(year %in% config$fives_proj_sm) %>%
+  filter(variable %in% lts_vars) %>%
+  # change names to match template update variable names
+  mutate(variable = case_when(
+    str_detect(variable, "Buildings") ~ "Emissions|CO2|Energy|Demand|Buildings|Total",
+    str_detect(variable, "Transportation") ~ "Emissions|CO2|Energy|Demand|Transportation|Total",
+    str_detect(variable, "Industry") ~ "Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total",
+    TRUE~variable))
+
+# models used in the projections and variables used for sector figures
+proj_models = config$model_wm
+proj_df = data_long_clean %>%
+  filter(model %in% proj_models) %>%
+  filter(year %in% config$fives_proj_sm) %>%
+  filter(scenario == "wm") %>%
+  filter(variable %in% sector_vars) %>%
+  filter(region == 'United States')
+
+# 2030 and 2035 projections medians
+median_df = proj_df %>%
+  group_by(year,variable) %>%
+  summarise(value = median(value)) %>%
+  mutate(model = "median",
+         scenario = "wm",
+         unit = "Mt CO2/yr",
+         datasrc = "median calc",
+         region = "United States") %>%
+  select(names(proj_df))
+
+# merge three datasets together
+sector_df = rbind(ghgi_df, lts_df, proj_df, median_df) %>%
+  mutate(type = case_when(
+    str_detect(model, "LTS") ~ "LTS",
+    model %in% proj_models ~ "proj",
+    model == "EPA-GHGI" ~ "GHGI",
+    model == "median" ~ "median",
+    TRUE~model)) 
+```
+
+```{r}
+# buildings
+buildings = br_sectors(sector_df,
+                       "Emissions|CO2|Energy|Demand|Buildings|Total",
+                       expression(paste("Buildings Emissions (MMt C", O[2], ")")))
+
+# electricity
+electricity = br_sectors(sector_df,
+                       "Emissions|CO2|Energy|Supply|Electricity",
+                       expression(paste("Electricity Emissions (MMt C", O[2], ")")))
+
+# transportation
+transportation = br_sectors(sector_df,
+                       "Emissions|CO2|Energy|Demand|Transportation|Total",
+                       expression(paste("Transportation Emissions (MMt C", O[2], ")")))
+
+# industry
+industry = br_sectors(sector_df,
+                       "Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total",
+                       expression(paste("Industry Emissions (MMt C", O[2], ")")))
+```
+
+## Buildings
+
+```{r}
+buildings
+ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/buildings_comparison.png"), create.dir = TRUE, height = 4.5)
+```
+
+## Electricity
+
+```{r}
+electricity
+ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/electricity_comparison.png"), create.dir = TRUE, height = 4.5)
+```
+
+## Transportation
+
+```{r}
+transportation
+ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/transportation_comparison.png"), height = 4.5)
+```
+
+## Industry
+
+```{r}
+industry
+ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/industry_comparison.png"), create.dir = TRUE, height = 4.5)
+```
+
+```{r}
+# Stats for Emissions Projections and Trends by Sector DRAFT SECTION
+
+# Energy
+nrg_ch4 <- projections_all_sm %>% filter(grouping == 'wm',gas == 'CH4',usproj_sector == 'Energy',year %in% config$table) %>% select(year, sum, pct_change_05) %>% distinct()
+
+nrg_co2 <- projections_all_sm %>% filter(grouping == 'wm',gas == 'CH4',usproj_sector == 'Energy',year %in% config$table) %>% select(year, sum, pct_change_05) %>% distinct()
+
+# Electricity
+gen_subset_sector_df <- function(sector_df, var_choice) {
+  sector_df %>%
+    filter(variable == var_choice,
+           region == 'United States',
+           scenario %in% c('Historic','wm'),
+           year %in% config$table) %>%
+    select(year,value) %>% 
+    mutate(pct_change_05 = round((value/value[year==2005]-1),2)) %>%
+    distinct()
+}
+  
+elec_df = gen_subset_sector_df(sector_df, "Emissions|CO2|Energy|Supply|Electricity")
+
+industry_df <- gen_subset_sector_df(sector_df, "Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total")
+
+trn_df <- gen_subset_sector_df(sector_df, "Emissions|CO2|Energy|Demand|Transportation|Total")
+
+buildings_df <- gen_subset_sector_df(sector_df, "Emissions|CO2|Energy|Demand|Buildings|Total")
+
+# View(elec_df)
+# View(industry_df)
+# View(trn_df)
+# View(buildings_df)
+
+```
+
+# Past Report Comparison
+
+## Total Gross Emissions {.tabset}
+
+```{r}
+# Load in past NCBR data
+past_proj_clean <- past_proj %>%
+  select(Report, Year, Emissions) %>%
+  rename(Value = Emissions) %>%
+  filter(Year <= 2035)
+
+past_proj_clean_hilow <- past_proj_clean %>%
+  group_by(Report,Year) %>%
+  mutate(low = min(Value),
+         high = max (Value),
+         Report = case_when(Report == "btr_2024" ~ "2024 BTR",
+                            Report == "car_2014" ~ "2014 CAR",
+                            Report == "br_2016" ~ "2016 BR",
+                            Report == "br_2021" ~ "2021 BR",
+                            Report == "br_2022" ~ "2022 BR")) %>%
+  select(Report,Year,low,high)
+```
+
+```{r}
+col_order <- c('category', 'year', 'low', 'high')
+category = 'gas'
+group = 'wm'
+
+summary <- projections_all_sm %>%
+  rename(category = .data[[category]]) %>%
+  filter(grouping %in% c(group,'ghgi')) %>%
+  filter(year %in% config$seq_ncbr_comp_sm) %>%
+  group_by(proj_name, category, year) %>%
+  summarise(cat_sum = sum(sum), .groups = 'drop')
+
+summary_total_gross <- summary %>%
+  filter(!category == 'LULUCF Sink') %>%
+  group_by(proj_name, year) %>%
+  summarise(value = sum(cat_sum), .groups = 'drop') %>%
+  group_by(year) %>%
+  mutate(low = min(value), high = max(value)) %>%
+  select(year, low, high) %>%
+  distinct() %>%
+  mutate(category = 'Total Gross Emissions') %>%
+  select(all_of(col_order)) %>%
+  rename(Projection = category) %>%
+  mutate(Projection = '2024 BTR')
+
+tge_all_long_high_low <- summary_total_gross %>%
+  rename(Report = Projection,
+         Year = year) %>%
+  rbind(past_proj_clean_hilow) %>%
+  filter(Year %in% config$seq_ncbr_comp_sm) %>%
+  drop_na() %>%
+  rename(Publication = Report)
+
+proj_years <- c('2025', '2030', '2035', '2040')
+hist_years <- c('2005', '2010', '2015', '2020')
+proj_col_order <- c(
+  '2025_low',
+  '2025_high',
+  '2030_low',
+  '2030_high',
+  '2035_low',
+  '2035_high',
+  '2040_low',
+  '2040_high'
+)
+
+df_low <- tge_all_long_high_low %>%
+  select(Publication, Year, low) %>%
+  pivot_wider(names_from = 'Year', values_from = 'low')
+
+
+df_high <- tge_all_long_high_low %>%
+  select(Publication, Year, high) %>%
+  pivot_wider(names_from = 'Year', values_from = 'high')
+
+df_merged <- merge(df_low[, c('Publication', proj_years)],
+                   df_high[, c('Publication', proj_years)],
+                   by = 'Publication',
+                   suffix = c('', '_high'))
+
+for (year in proj_years) {
+  colnames(df_merged)[colnames(df_merged) == year] <- paste0(year, '_low')
+  colnames(df_merged)[colnames(df_merged) == paste0(year, '_high')] <- paste0(year, '_high')
+}
+
+df_merge_final <- merge(df_low %>% select(Publication, all_of(hist_years)), df_merged) %>%
+  select(Publication, all_of(hist_years), all_of(proj_col_order)) %>%
+  mutate_if(is.numeric, round)
+
+numeric_cols <- sapply(df_merge_final, is.numeric)
+df_merge_final[, numeric_cols] <- lapply(df_merge_final[, numeric_cols], scales::comma)
+
+ncbr_table_df <- df_merge_final
+for (col in names(ncbr_table_df)) {
+  ncbr_table_df <- ncbr_table_df %>%
+    mutate(col = as.character(col)) %>%
+    select(names(df_merge_final)) %>%
+    arrange(desc(Publication))
+}
+```
+
+### Table
+
+```{r}
+proj_col_order <- c('2025', '2030', '2035', '2040')
+stubhead <- 'Publication'
+
+merged = ncbr_table_df %>%
+  mutate(
+    `2025` = case_when(
+      `2025_low` == `2025_high` ~ `2025_high`,
+      `2025_low` != `2025_high` ~ paste0(`2025_low`, " - ", `2025_high`)
+    ),
+    `2030` = case_when(
+      `2030_low` == `2030_high` ~ `2030_high`,
+      `2030_low` != `2030_high` ~ paste0(`2030_low`, " - ", `2030_high`)
+    ),
+    `2035` = case_when(
+      `2035_low` == `2035_high` ~ `2035_high`,
+      `2035_low` != `2035_high` ~ paste0(`2035_low`, " - ", `2035_high`)
+    ),
+    `2040` = case_when(
+      `2040_low` == `2040_high` ~ `2040_high`,
+      `2040_low` != `2040_high` ~ paste0(`2040_low`, " - ", `2040_high`)
+    )
+  ) %>%
+  select(-contains("_"))
+
+bold1 = nrow(merged) - 3
+bold2 = nrow(merged) - 1
+bold3 = nrow(merged) - 5
+
+ncbr_comp_table <- merged %>%
+  
+  gt() %>%
+  cols_align('center', columns = everything()) %>%
+  cols_align('left', columns = stubhead) %>%
+  # tab_style(
+  #   style = cell_borders(
+  #     color = "#1F77AE",
+  #     sides = c("bottom"),
+  #     weight = px(2)
+  #   ),
+  #   #
+  #   locations = cells_body(rows = c(bold1, bold2, bold3))
+  # ) %>% 
+
+  
+  gt_theme_nc_blue()
+
+ncbr_comp_table
+```
+
+```{r}
+filename <- paste0("ncbr_comp_table_",Sys.Date(),".png")
+gtsave(ncbr_comp_table, paste0('output/',settings$version,"/tables_figs/results_tables/ncbr_comparison/",filename))
+```
+
+### Table Long Names
+
+```{r}
+proj_col_order <- c('2025', '2030', '2035', '2040')
+stubhead <- 'Publication'
+
+merged_longnames = ncbr_table_df %>%
+  mutate(
+    `2025` = case_when(
+      `2025_low` == `2025_high` ~ `2025_high`,
+      `2025_low` != `2025_high` ~ paste0(`2025_low`, " - ", `2025_high`)
+    ),
+    `2030` = case_when(
+      `2030_low` == `2030_high` ~ `2030_high`,
+      `2030_low` != `2030_high` ~ paste0(`2030_low`, " - ", `2030_high`)
+    ),
+    `2035` = case_when(
+      `2035_low` == `2035_high` ~ `2035_high`,
+      `2035_low` != `2035_high` ~ paste0(`2035_low`, " - ", `2035_high`)
+    ),
+    `2040` = case_when(
+      `2040_low` == `2040_high` ~ `2040_high`,
+      `2040_low` != `2040_high` ~ paste0(`2040_low`, " - ", `2040_high`)
+    )
+  ) %>%
+  mutate(Publication = case_when(
+    Publication == "2024 BTR" ~ "2024 Policy Baseline",
+    Publication == "2022 BR" ~ "2022 Biennial Report",
+    Publication == "2021 BR" ~ "2021 Biennial Report",
+    Publication == "2016 BR" ~ "2016 Biennial Report",
+    Publication == "2014 CAR" ~ "2014 Climate Action Report"
+  )) %>% 
+  select(-contains("_"))
+
+bold1 = nrow(merged) - 3
+bold2 = nrow(merged) - 1
+bold3 = nrow(merged) - 5
+
+ncbr_comp_table_longnames <- merged_longnames %>%
+  
+  gt() %>%
+  cols_align('center', columns = everything()) %>%
+  cols_align('left', columns = stubhead) %>%
+  # tab_style(
+  #   style = cell_borders(
+  #     color = "#1F77AE",
+  #     sides = c("bottom"),
+  #     weight = px(2)
+  #   ),
+  #   #
+  #   locations = cells_body(rows = c(bold1, bold2, bold3))
+  # ) %>% 
+
+  
+  gt_theme_nc_blue()
+
+ncbr_comp_table_longnames
+```
+
+```{r}
+filename <- paste0("ncbr_comp_table_longnames",Sys.Date(),".png")
+gtsave(ncbr_comp_table_longnames, paste0('output/',settings$version,"/tables_figs/results_tables/ncbr_comparison/longnames/",filename))
+```
+
+```{r}
+tge_btr <- projections_all_sm %>% 
+  filter(!gas == 'LULUCF Sink') %>%
+  group_by(proj_name, grouping, year) %>%
+  summarise(Value = sum(sum),.groups = 'drop')
+
+tge_all_long <- tge_btr %>%
+  mutate(Report = 'btr_2024') %>%
+  rename(Year = year) %>% 
+  select(names(past_proj_clean)) %>%
+  rbind(past_proj_clean) %>%
+  mutate(Year = as.numeric(Year),
+         Report = case_when(Report == "btr_2024" ~ "2024 BTR",
+                            Report == "car_2014" ~ "2014 CAR",
+                            Report == "br_2016" ~ "2016 BR",
+                            Report == "br_2021" ~ "2021 BR",
+                            Report == "br_2022" ~ "2022 BR"))
+#%>%
+ # filter(year %in% config$fives_proj_sm)
+
+
+ncbr_comp_ribbon <- tge_all_long %>% 
+  group_by(Report,Year) %>%
+  mutate(min = min(Value),
+         max = max(Value)) %>%
+  select(Report,Year,min,max) %>%
+  distinct()
+```
+
+### Figure
+
+```{r}
+fig <- ncbr_comparison_figure(ncbr_comp_ribbon, tge_all_long, settings, config)
+fig
+```
+
+```{r}
+filename <- paste0("ncbr_comp_fig_",Sys.Date(),".png")
+ggsave(paste0('output/',settings$version,"/tables_figs/ncbr_comparison/",filename), create.dir = TRUE)
+```
+
+### Figure Long Names
+
+```{r}
+fig_longnames <- ncbr_comparison_figure_longnames(ncbr_comp_ribbon, tge_all_long, settings, config)
+fig_longnames
+```
+
+```{r}
+filename <- paste0("ncbr_comp_fig_",Sys.Date(),".png")
+ggsave(paste0('output/',settings$version,"/tables_figs/ncbr_comparison/longnames/",filename), create.dir = TRUE)
+```
+
+### Figure: From 1990
+
+```{r}
+fig <- ncbr_comp_fig_1990(ncbr_comp_ribbon, tge_all_long, settings, config)
+fig
+
+```
+
+```{r}
+filename <- paste0("ncbr_comp90_fig_",Sys.Date(),".png")
+ggsave(paste0('output/',settings$version,"/tables_figs/results_tables/ncbr_comparison/",filename))
+```
+
+### Figure: Gas and Sector Breakouts
+
+```{r}
+nonco2 = projections_all_sm %>% 
+  filter(grouping == "wm") %>%
+  filter(usproj_sector != "LULUCF Sink") %>%
+  filter(!(str_detect(proj_name, "usrr") & usproj_sector %in% c("Transportation","Energy") & year %in% c(2045, 2050))) %>%
+  filter(!(usproj_sector == "Energy" & !year %in% c(2020, 2025, 2030, 2035, 2040, 2045, 2050))) %>%
+  filter(year <= 2040)
+
+ggplot() +
+  geom_line(data = nonco2, aes(x=year,y=sum,group=proj_name,color=gas), linewidth = 1) +
+  facet_grid(usproj_sector~gas, scales = "free_y") +
+  labs(y = "Mt CO2e") +
+  theme_btr() +
+  nolegend
+```
+
+```{r}
+filename <- paste0("ncbr_tge_gas_and_sector_breakouts_fig_",Sys.Date(),".png")
+ggsave(paste0('output/',settings$version,"/tables_figs/results_tables/ncbr_comparison/",filename))
+```
+
+# Energy CO2 Emissions Range
+
+```{r}
+
+nrg_emissions <- projections_all_sm %>%
+  filter(usproj_sector %in% c('Energy','Transportation') & gas == "CO2") %>%
+  filter(grouping %in% c('ghgi','wm')) %>%
+  group_by(proj_name, year, grouping) %>%
+  summarise(nrg_trn_co2 = sum(sum)) %>%
+  filter(year %in% config$annual_1990_fives) 
+
+ghgi <- nrg_emissions %>%
+  filter(year <= settings$base_year)
+
+proj <- nrg_emissions %>%
+  group_by(year) %>% 
+  filter(year >= settings$base_year)%>%
+    summarise(ymax = max(nrg_trn_co2),
+              ymin = min(nrg_trn_co2),
+              med = median(nrg_trn_co2),
+              .groups = 'drop')
+
+nrg_color <- "#2EAD96"
+
+fig <- 
+  ggplot() +
+  geom_line(ghgi, mapping = aes(x = year, y = nrg_trn_co2, color = proj_name), color = nrg_color, size = 0.7) +
+  geom_ribbon(proj, mapping = aes(x = year,ymax = ymax, ymin = ymin),
+              color = nrg_color,
+              fill = nrg_color,
+              alpha = 0.4 ,
+              size = 0.7)+
+    labs(x = 'Year',
+         y = expression(paste("MMt ", CO[2], sep = ""))) +
+    geom_vline(
+      xintercept = 2022,
+      linetype = 'dashed',
+      color = "black",
+      # size = 0.4,
+      alpha = 0.5) +
+    scale_y_continuous(labels = scales::comma) +
+    scale_x_continuous(breaks = c(seq(1990,2020,by=5), 2022, seq(2025,2040,by=5)), expand = c(0,0)) +
+    theme_btr() 
+  
+fig
+```
+
+```{r}
+filename <- paste0("nrg_emissions_fig_",Sys.Date(),".png")
+ggsave(paste0('output/',settings$version,"/tables_figs/nrg_emissions/",filename), create.dir = TRUE,height = 4.5)
+```
+
+# LULUCF Sink Range
+
+```{r}
+
+lulucf_co2_hist <- read_xlsx(
+  "data-extra/USDA NFS Raw Data/LULUCF projections DRAFT compilation 82924.xlsx",
+  sheet = "Table 6-2",
+  skip = 1,
+  n_max = 32
+) %>% filter(`Gas/Land-Use Category` == 'Carbon Stock Change (CO2)a')
+
+
+lulucf_co2_hist_long <- lulucf_co2_hist %>%
+  pivot_longer(cols = 2:34, names_to = 'year') %>%
+  select(year, value)
+
+lulucf_proj <- read_xlsx("data-extra/USDA NFS Raw Data/LULUCF projections DRAFT compilation 82924.xlsx",
+                        sheet = "LULUCF TABLE FOR PIPELINE") %>%
+  filter(variable == 'Emissions|LULUCF|Carbon Stock Change') %>%
+  pivot_longer(cols = 6:11, names_to = 'year') %>%
+  select(year, value)
+
+lulucf_plot_data <- lulucf_co2_hist_long %>% rbind(lulucf_proj) %>%
+  mutate(
+    year = as.numeric(year),
+    value = as.numeric(value)
+  ) %>%
+  filter(year <= 2040, year >= 2000)
+
+
+```
+
+```{r}
+lulucf_plot_proj <- lulucf_plot_data %>%
+  filter(year >= 2022) %>%
+  group_by(year) %>%
+  mutate(min = min(value),
+         max = max(value))
+
+lulucf_plot_hist <- lulucf_plot_data %>% filter(year < 2025)
+color_id <- '#0097FF'
+
+lulucf_fig <- ggplot(mapping = aes(x = year, y = value)) +
+  geom_line(data = lulucf_plot_hist, color = color_id,size = 0.7) +
+  geom_ribbon(data = lulucf_plot_proj, aes(ymin = min, ymax = max),color = color_id, fill = color_id, alpha = 0.4,
+              size = 0.7) +
+ # geom_point(data = lulucf_plot_data, color = color_id) +
+  labs(y = expression(paste("MMt C", O[2]))) +
+  geom_vline(
+    xintercept = 2022,
+    linetype = 'dashed',
+    color = "black",
+    # size = 0.4,
+    alpha = 0.5
+  ) +
+  scale_x_continuous(breaks = c(2000, 2005, 2010, settings$base_year, 2025, 2030, 2035, 2040),expand = c(0,0)) +
+  expand_limits(y = c(0,-1500)) +
+  scale_y_continuous(labels = scales::comma, breaks = c(0,-500,-1000,-1500)) +
+  theme_btr()
+lulucf_fig
+
+```
+```{r}
+filename <- paste0("lulucf_fig_", Sys.Date(), ".png")
+ggsave(paste0('output/', settings$version, "/tables_figs/lulucf/", filename),
+  create.dir = TRUE,
+  height = 4.5)
+```
+
+# Stats
+
+## Buildings Emissions Reductions - Direct and Indirect 
+
+```{r}
+BuildEmiss = data_long_clean %>% 
+  filter(variable %in% c("Emissions|CO2|Energy|Demand|Buildings",
+                         "Emissions|CO2|Energy|Demand|Buildings|Indirect",
+                         "Emissions|CO2|Energy|Demand|Buildings|Total") &
+           scenario == "wm" &
+           model!= "EPA-GHGI") %>% 
+  left_join(data_long_clean %>% 
+              filter(variable %in% c("Emissions|CO2|Energy|Demand|Buildings",
+                                     "Emissions|CO2|Energy|Demand|Buildings|Indirect",
+                                     "Emissions|CO2|Energy|Demand|Buildings|Total") &
+                       scenario == "wm" &
+                       model == "EPA-GHGI" &
+                       year == 2005) %>% 
+              select(variable, base = value)) %>% 
+  mutate(reduction = 1- (value/base)) %>% 
+  filter(year %in% c(2025,2030,2035,2040)) %>% 
+  select(model, year, variable, reduction)
+
+Indirect = BuildEmiss %>% 
+  filter(variable == "Emissions|CO2|Energy|Demand|Buildings|Indirect") %>% 
+  mutate(variable = "Indirect") %>% 
+  spread(year,reduction)
+
+Direct = BuildEmiss %>% 
+  filter(variable == "Emissions|CO2|Energy|Demand|Buildings") %>% 
+  mutate(variable = "Direct") %>% 
+  spread(year,reduction)
+
+Total = BuildEmiss %>% 
+  filter(variable == "Emissions|CO2|Energy|Demand|Buildings|Total") %>% 
+  mutate(variable = "Total") %>% 
+  spread(year,reduction)
+
+kable(Indirect)
+kable(Direct)
+kable(Total)
+```
+
+## Energy CO2 emissions reductions from 2005 {.tabset}
+
+```{r}
+
+
+elec <- section_pct_change_05(data_long_clean,
+                              'Emissions|CO2|Energy|Supply|Electricity',
+                              config)
+
+industry <- section_pct_change_05(data_long_clean,
+                                  'Emissions|CO2|Energy|Demand|Industry',
+                                  config)
+
+buildings <- section_pct_change_05(data_long_clean,
+                                   'Emissions|CO2|Energy|Demand|Buildings',
+                                   config)
+
+transportation <- section_pct_change_05(data_long_clean,
+                                        'Emissions|CO2|Energy|Demand|Transportation', config)
+
+buildings_res <- section_pct_change_05(data_long_clean,
+                                       'Emissions|CO2|Energy|Demand|Buildings|Residential',
+                                       config)
+
+buildings_com <- section_pct_change_05(data_long_clean,
+                                       'Emissions|CO2|Energy|Demand|Buildings|Commercial',
+                                       config)
+```
+
+### Electricity
+```{r}
+
+
+elec_table <- create_stats_table(elec)
+elec_table
+```
+
+### Industry
+```{r}
+industry_table <- create_stats_table(industry)
+industry_table
+```
+
+### Buildings
+```{r}
+buildings_table <- create_stats_table(buildings)
+buildings_table
+
+```
+
+### Commercial
+```{r}
+buildings_com_table <- create_stats_table(buildings_com)
+buildings_com_table
+```
+
+### Residential
+```{r}
+buildings_res_table <- create_stats_table(buildings_res)
+buildings_res_table
+
+```
+
+### Transportation
+```{r}
+transportation_table <- create_stats_table(transportation)
+transportation_table
+```
+
+## Electric Vehicle Shares {.tabset}
+
+### Passenger
+
+```{r}
+zev_share_table(data_long_clean,"Energy Service|Transportation|Passenger|ICE|Sales Share")
+```
+
+### Freight
+```{r}
+zev_share_table(data_long_clean,"Energy Service|Transportation|Freight|ICE|Sales Share")
+```
+
+## Energy-Related Emissions Compared to 2005 {.tabset}
+
+### CO2
+
+```{r}
+nrgco2 = projections_all_sm %>%
+  filter(grouping %in% c("wm","ghgi")) %>%
+  filter(year %in% c(2005, 2025, 2030, 2035, 2040)) %>%
+  filter(gas == "CO2" & usproj_sector == "Energy") %>%
+  select(proj_name,year,pct_change_05) %>%
+  distinct()
+
+nrgco2 <- nrgco2[order(nrgco2$year),]
+  
+  nrgco2_wide <- nrgco2 %>% 
+    filter(!year == 2005) %>%
+    pivot_wider(names_from = 'year',
+                                values_from = 'pct_change_05')
+ 
+nrgco2_table <- create_stats_table(nrgco2_wide)
+nrgco2_table
+```
+
+### CH4
+
+```{r}
+nrgch4 = projections_all_sm %>%
+  filter(grouping %in% c("wm","ghgi")) %>%
+  filter(year %in% c(2005, 2025, 2030, 2035, 2040)) %>%
+  filter(gas == "CH4" & usproj_sector == "Energy") %>%
+  select(proj_name,year,pct_change_05) %>%
+  distinct()
+
+nrgch4 <- nrgch4[order(nrgch4$year),]
+  
+  nrgch4_wide <- nrgch4 %>% 
+    filter(!year == 2005) %>%
+    pivot_wider(names_from = 'year',
+                                values_from = 'pct_change_05')
+ 
+nrgch4_table <- create_stats_table(nrgch4_wide)
+nrgch4_table
+```
+
+## buildings - res and com % electricity of total demand {.tabset}
+
+### Commercial
+
+```{r}
+com_electrif = data_long_clean %>%
+  filter(scenario == "wm",
+         variable %in% c("Final Energy|Buildings|Commercial|Percent Electricity"),
+         year %in% config$table) %>%
+  select(model, year, value)
+
+com_electrif <- com_electrif[order(com_electrif$year),]
+
+com_electrif_wide <- com_electrif %>% pivot_wider(names_from = 'year',
+                                                  values_from = 'value')
+
+com_electrif <- create_stats_table(com_electrif_wide)
+
+com_electrif
+```
+
+### Residential
+
+```{r}
+res_electrif = data_long_clean %>%
+  filter(scenario == "wm",
+         variable %in% c("Final Energy|Buildings|Residential|Percent Electricity"),
+         year %in% config$table) %>%
+  select(model, year, value)
+
+res_electrif <- res_electrif[order(res_electrif$year),]
+
+res_electrif_wide <- res_electrif %>% pivot_wider(names_from = 'year',
+                                                  values_from = 'value')
+
+res_electrif <- create_stats_table(res_electrif_wide)
+
+res_electrif
+```
+
+# Ad-hoc tables/figs
+
+Buildings and electricity emissions reductions in 2040 compared to 2005
+
+```{r}
+get_value_breakout <- function(data_long_clean, var_list, config) {
+data_wm_usa <- data_long_clean %>% filter(scenario == 'wm',
+                                             region == 'United States')
+
+var_df <- data_wm_usa %>% filter(variable %in% var_list)
+
+var_df_clean <- var_df %>%
+  select(model, year, variable, value) %>%
+  filter(year %in% config$fives_sumtab) %>%
+  distinct() %>%
+  mutate(across(where(is.numeric), round, 2))
+return(var_df_clean)
+}
+
+var_list <- c('Emissions|CO2|Energy|Demand|Buildings',
+              'Emissions|CO2|Energy|Supply|Electricity')
+
+be_df <- get_value_breakout(data_long_clean, var_list, config)
+be_df2 = be_df %>% 
+  spread(year,value) %>% 
+  group_by(variable) %>% 
+  rename(base ="2005",
+         target = "2040") %>% 
+  mutate(reduction =1 - (target/max(base, na.rm = "yes"))) %>% 
+  ungroup() %>% 
+  filter(model != "EPA-GHGI") %>% 
+  select(model,variable,reduction) %>% 
+  spread(model,reduction)
+
+grid.table(be_df2)
+```
+
+Share of fuel usage in Residential Buildings
+
+```{r}
+var_list <-  c('Final Energy|Buildings|Residential|Electricity',
+               'Final Energy|Buildings|Residential|Gas',
+               'Final Energy|Buildings|Residential')
+
+br_df <- get_value_breakout(data_long_clean, var_list, config)
+
+br_df2 = br_df %>%
+  filter(variable != "Final Energy|Buildings|Residential") %>% 
+  left_join(br_df %>% 
+              filter(variable == "Final Energy|Buildings|Residential") %>%
+              select(-variable) %>% 
+              rename(total = value)) %>% 
+  mutate(Share = value/total) %>% 
+  select(-value,-total) %>% 
+  filter(year == 2040) %>% 
+  spread(model,Share)
+
+grid.table(br_df2)
+```
+Share of fuel usage in Commercial Buildings
+```{r}
+var_list <-  c('Final Energy|Buildings|Commercial|Electricity',
+               'Final Energy|Buildings|Commercial|Gas',
+               'Final Energy|Buildings|Commercial')
+
+bc_df <- get_value_breakout(data_long_clean, var_list, config)
+
+bc_df2 = bc_df %>%
+  filter(variable != "Final Energy|Buildings|Commercial") %>% 
+  left_join(bc_df %>% 
+              filter(variable == "Final Energy|Buildings|Commercial") %>%
+              select(-variable) %>% 
+              rename(total = value)) %>% 
+  mutate(Share = value/total) %>% 
+  select(-value,-total) %>% 
+  filter(year == 2040) %>% 
+  spread(model,Share)
+
+grid.table(bc_df2)
+```
+
+Share of Wind and Solar in elec gen in 2040
+
+```{r}
+df <- figmap_nrgco2_stackbar %>% filter(figure_no == 13)
+
+var_list <- df$variable
+
+eg_df <- get_value_breakout(data_long_clean, var_list, config)
+  
+```
+
+```{r}
+var_list <- c('Secondary Energy|Electricity|Wind','Secondary Energy|Electricity|Solar','Secondary Energy|Electricity')
+sw_df <- get_value_breakout(data_long_clean, var_list, config)
+
+sw_df2 = sw_df %>% 
+  filter(variable %in% c('Secondary Energy|Electricity|Wind','Secondary
+                         Energy|Electricity|Solar')) %>% 
+  group_by(model,year) %>% 
+  summarise(value = sum(value)) %>% 
+  left_join(sw_df %>% 
+              filter(variable == 'Secondary Energy|Electricity') %>% 
+              select(-variable) %>% 
+              rename(total = value)) %>% 
+  mutate(Share = value/total) %>% 
+  select(-value,-total) %>% 
+  filter(year == 2040) %>% 
+  spread(model,Share)
+
+grid.table(sw_df2)
+```
+
+Reduction in coal to electricity in 2040 compared to model's EIA 2023
+```{r}
+var_list <- 'Secondary Energy|Electricity|Input|Coal'
+
+pec_df <- get_value_breakout(data_long_clean,var_list, config)
+
+Coal2023 = 7241.636*1000000000000*1.05506e-15
+
+pec_df2 = pec_df %>% 
+  spread(year, value) %>% 
+  rename(base ="2020",
+         target = "2040") %>% 
+  mutate(reduction =1 - (target/Coal2023)) %>% 
+  select(model,variable,reduction) %>% 
+  spread(model,reduction)
+
+grid.table(pec_df2)
+```
+
+Passenger Vehicle sales share in 2040
+```{r}
+var_list <- c("Energy Service|Transportation|Passenger|BEV|Sales Share",
+              "Energy Service|Transportation|Passenger|FCEV|Sales Share",
+              "Energy Service|Transportation|Passenger|PHEV|Sales Share",
+              "Energy Service|Transportation|Passenger|ICE|Sales Share")
+
+vs_df <- get_value_breakout(data_long_clean, var_list, config)
+
+vs_df2 = vs_df %>% 
+  filter(year ==2040) %>% 
+  spread(model,value) 
+
+grid.table(vs_df2)
+  
+```
+
+Freight Vehicle sales share in 2040
+```{r}
+var_list <- c("Energy Service|Transportation|Freight|BEV|Sales Share",
+              "Energy Service|Transportation|Freight|FCEV|Sales Share",
+              "Energy Service|Transportation|Freight|PHEV|Sales Share",
+              "Energy Service|Transportation|Freight|ICE|Sales Share")
+
+vs_df <- get_value_breakout(data_long_clean, var_list, config)
+
+vs_df2 = vs_df %>% 
+  filter(year ==2040) %>% 
+  spread(model,value) 
+
+grid.table(vs_df2)
+```
+
