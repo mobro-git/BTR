@@ -41,6 +41,13 @@ tar_load(
     )
   )
 
+# Drop USREP-ReEDS results for 2045 and 2050
+projections_all_sm <- projections_all_sm %>%
+  filter(!(grepl("usrr", proj_name) & year %in% c('2045','2050')))
+
+total_gross_emissions <- total_gross_emissions %>%
+  filter(!(grepl("usrr", proj_name) & year %in% c('2045','2050')))
+
 source("scripts/theming.R")
 
 ```
