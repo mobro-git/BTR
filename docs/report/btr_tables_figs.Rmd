@@ -383,9 +383,9 @@ var_palette = c(unique(dat_range$var),unique(dat4$var))
 
 # TODO: we should use annual projections for br2024 for pop and gdp/capita, see if this makes a difference in smoothing out the gdp/cap trend
 
-tar_load(kaya_comparison) 
+tar_load(kaya_comparison50) 
 
-kaya_data_range = kaya_comparison %>% 
+kaya_data_range = kaya_comparison50 %>% 
   filter(br_version == "2024") %>% 
   select(-value,-base) %>% 
   spread(scenario, indexed) %>%
@@ -399,9 +399,9 @@ kaya_data_range = kaya_comparison %>%
       br_version == "2022" ~ "2022 BR",
       br_version == "2024" ~ "2024 BTR",
       TRUE ~ br_version)) %>%
-  filter(year <= 2040 & year >=2005)
+  filter(year <= 2050 & year >=2005)
 
-kaya_comp_renamed = kaya_comparison  %>%
+kaya_comp_renamed = kaya_comparison50  %>%
   mutate(
     variable = case_when(
       variable == "EmissPerEnergy" ~ "Emissions/Energy",
@@ -413,7 +413,7 @@ kaya_comp_renamed = kaya_comparison  %>%
       br_version == "2024" ~ "2024 BTR",
       TRUE ~ br_version)) %>%
   filter(!(br_version == "2024 BTR" & variable %in% c("Emissions/Energy","Energy/GDP") & year >2022)) %>%
-  filter(year <= 2040 & year >=2005)
+  filter(year <= 2050 & year >=2005)
 
 var_palette = unique(kaya_data_range$variable)
 
@@ -422,7 +422,7 @@ multipanel_kaya = ggplot()+
             aes(x = year, y = indexed, color = variable)) +
   geom_ribbon(data = kaya_data_range, 
               aes(x=year, ymin = min, ymax = max, fill = variable))+
-  xlim(2005,2040) + 
+  xlim(2005,2050) + 
   ylim(0.5,1.6) + 
   facet_wrap(~br_version) +
   scale_subpalette_single(var_palette) +
@@ -443,14 +443,14 @@ singlepanel_kaya = ggplot()+
               aes(x=year, ymin = min, ymax = max, fill = variable, color = variable),
               alpha = 0.4,
               outline.type = "both",
-              size = line_size)+
+              size = line_size) +
   ylim(0.5,1.6) + 
   scale_subpalette_single(var_palette) +
   scale_linetype_manual(values = c("2022 BR" = "dotted", "2024 BTR" = "solid")) +
   theme_btr() +
   labs(y="Key Factor Index \n(2015 = 1.0)") +
   bottom1 +
-  scale_x_continuous(breaks = config$table,expand = c(0,0)) +
+  scale_x_continuous(breaks = config$table50,expand = c(0,0)) +
   geom_vline(xintercept = settings$base_year,
                linetype = 'dashed',
                color = "black",

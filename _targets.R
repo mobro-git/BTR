@@ -54,6 +54,8 @@ tar_plan(
     hist = c(seq(2005,settings$base_year, by = 1)),
     seq_ncbr_comp = c(seq(1990,2020,by=5)),
     seq_ncbr_comp_sm = c(seq(2005,2040,by=5)),
+    seq_ncbr_comp_sm50 = c(seq(2005,2050,by=5)),
+    
     
     fives_lts = c(seq(2005,settings$base_year,by = 1),seq(2025,2050,by = 5)),
     annual_lts = c(seq(2005,2050,by = 1)),
@@ -70,6 +72,7 @@ tar_plan(
     
     annual_1990 = c(seq(1990,2040,by = 1)),
     annual_1990_fives = c(seq(1990,settings$base_year,by = 1), seq(2025,2040, by = 5)),
+    annual_1990_fives50 = c(seq(1990,settings$base_year,by = 1), seq(2025,2050, by = 5)),
     annual_2010 = c(seq(2010,2040,by = 1)),
     table = c(seq(2005, 2020, by=5),settings$base_year,seq(2025,2040,by=5)),
     table_sm = c(2005, 2010, 2015, 2020, settings$base_year, 2025, 2030 , 2035),
@@ -195,6 +198,7 @@ tar_plan(
   # KAYA Compilation ----
   
   kaya_comparison = full_kaya_comparison(past_kaya_no_emissions,past_proj,total_gross_emissions,data_long_clean),
+  kaya_comparison50 = full_kaya_comparison50(past_kaya_no_emissions,past_proj,total_gross_emissions,data_long_clean),
   
   # LULUCF ----
   tar_target(lulucf_data_extra_xlsx, "data-extra/USDA NFS Raw Data/LULUCF projections DRAFT compilation 82924.xlsx", format = "file"),
@@ -313,6 +317,12 @@ tar_plan(
              "docs/report/leep_comparison_nrgco2.Rmd",
              output_dir = paste0('output/',settings$version,"/results_overview/"),
              output_file = paste0("leepcompare_",Sys.Date(),".html"),
+             params = list(mode = "targets")),
+  
+  tar_render(btr_tables_figs_to2050,
+             "docs/report/btr_tables_figs_to2050.Rmd",
+             output_dir = paste0('output/',settings$version,"/tables_figs/to2050/"),
+             output_file = paste0("btr_tables_figs_to2050_",Sys.Date(),".html"),
              params = list(mode = "targets"))
   
 )
