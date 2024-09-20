@@ -950,6 +950,28 @@ ggplot() +
 ```
 
 ```{r}
+
+fig <- tge_breakout_figure(projections_ghgi, sector_select = 'Energy')
+fig
+```
+# TODO: Line break at 2022, geom_vline at 2022
+
+```{r}
+fig <- tge_breakout_figure(projections_ghgi)
+fig
+```
+
+```{r}
+fig <- tge_breakout_figure(projections_ghgi, gas_select = 'CH4', sector_select = 'Waste')
+fig
+```
+```{r}
+fig <- tge_breakout_figure(projections_ghgi,sector_select = 'IPPU',
+                           gas_select = 'HFCs')
+fig
+```
+
+```{r}
 filename <- paste0("ncbr_tge_gas_and_sector_breakouts_fig_",Sys.Date(),".png")
 ggsave(paste0('output/',settings$version,"/tables_figs/results_tables/ncbr_comparison/",filename))
 ```
