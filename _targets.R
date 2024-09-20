@@ -319,6 +319,7 @@ tar_plan(
              output_file = paste0("leepcompare_",Sys.Date(),".html"),
              params = list(mode = "targets")),
   
+  #TODO: fix the 2020-2022 sector analysis figures that go out to 2050
   tar_render(btr_tables_figs_to2050,
              "docs/report/btr_tables_figs_to2050.Rmd",
              output_dir = paste0('output/',settings$version,"/tables_figs/to2050/"),
