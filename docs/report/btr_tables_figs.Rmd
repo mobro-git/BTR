@@ -954,10 +954,11 @@ filename <- paste0("ncbr_tge_gas_and_sector_breakouts_fig_",Sys.Date(),".png")
 ggsave(paste0('output/',settings$version,"/tables_figs/results_tables/ncbr_comparison/",filename))
 ```
 
-# Energy CO2 Emissions Range
+# Energy and Transportation CO2 Emissions Range {.tabset}
+
+## Figure
 
 ```{r}
-
 nrg_emissions <- projections_all_sm %>%
   filter(usproj_sector %in% c('Energy','Transportation') & gas == "CO2") %>%
   filter(grouping %in% c('ghgi','wm')) %>%
@@ -1006,10 +1007,39 @@ filename <- paste0("nrg_emissions_fig_",Sys.Date(),".png")
 ggsave(paste0('output/',settings$version,"/tables_figs/nrg_emissions/",filename), create.dir = TRUE,height = 4.5)
 ```
 
-# LULUCF Sink Range
+## Stats
 
 ```{r}
+nrgtrnco2_noref = projections_all_sm %>%
+  filter(grouping %in% c("wm","ghgi")) %>%
+  filter(year %in% c(2005, 2025, 2030, 2035, 2040)) %>%
+  filter(gas == "CO2" & usproj_sector %in% c("Energy","Transportation")) %>%
+  group_by(proj_name,year) %>%
+  summarise(sum = sum(sum))
 
+ref = nrgtrnco2_noref %>%
+  filter(year == 2005) %>%
+  pull(sum)
+
+nrgtrnco2 = nrgtrnco2_noref %>%
+  mutate(`2005` = ref) %>%
+  mutate(pct_change_05 = ((sum-`2005`)/`2005`)) %>%
+  select(proj_name,year,pct_change_05) %>%
+  distinct()
+
+nrgtrnco2 <- nrgtrnco2[order(nrgtrnco2$year),]
+  
+nrgtrnco2_wide <- nrgtrnco2 %>%
+  filter(!year == 2005) %>%
+  pivot_wider(names_from = 'year', values_from = 'pct_change_05')
+
+nrgtrnco2_table <- create_stats_table(nrgtrnco2_wide)
+nrgtrnco2_table
+```
+
+# LULUCF Sink Range {.tabset}
+
+```{r}
 lulucf_co2_hist <- read_xlsx(
   "data-extra/USDA NFS Raw Data/LULUCF projections DRAFT compilation 82924.xlsx",
   sheet = "Table 6-2",
@@ -1034,9 +1064,9 @@ lulucf_plot_data <- lulucf_co2_hist_long %>% rbind(lulucf_proj) %>%
     value = as.numeric(value)
   ) %>%
   filter(year <= 2040, year >= 2000)
-
-
 ```
+
+## Figure
 
 ```{r}
 lulucf_plot_proj <- lulucf_plot_data %>%
@@ -1066,13 +1096,26 @@ lulucf_fig <- ggplot(mapping = aes(x = year, y = value)) +
   scale_y_continuous(labels = scales::comma, breaks = c(0,-500,-1000,-1500)) +
   theme_btr()
 lulucf_fig
-
 ```
 ```{r}
 filename <- paste0("lulucf_fig_", Sys.Date(), ".png")
 ggsave(paste0('output/', settings$version, "/tables_figs/lulucf/", filename),
   create.dir = TRUE,
   height = 4.5)
+```
+
+## Stats
+
+```{r}
+ref = lulucf_plot_data %>% filter(year == 2005) %>% pull(value)
+lulucf_stats_data = lulucf_plot_data %>%
+  filter(year %in% c(2005, 2022, 2025, 2030, 2035, 2040)) %>%
+  mutate(`2005` = ref) %>%
+  mutate(pct_change_05 = ((value-`2005`)/`2005`)) %>%
+  group_by(year) %>%
+  summarise(min = min(pct_change_05),
+            max = max(pct_change_05))
+gt(lulucf_stats_data)
 ```
 
 # Stats
@@ -1214,10 +1257,9 @@ nrgco2 = projections_all_sm %>%
 
 nrgco2 <- nrgco2[order(nrgco2$year),]
   
-  nrgco2_wide <- nrgco2 %>% 
-    filter(!year == 2005) %>%
-    pivot_wider(names_from = 'year',
-                                values_from = 'pct_change_05')
+nrgco2_wide <- nrgco2 %>%
+  filter(!year == 2005) %>%
+  pivot_wider(names_from = 'year', values_from = 'pct_change_05')
  
 nrgco2_table <- create_stats_table(nrgco2_wide)
 nrgco2_table
