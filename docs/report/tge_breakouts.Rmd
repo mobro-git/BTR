@@ -44,7 +44,10 @@ tar_load(
 source("scripts/theming.R")
 
 ```
+
 # Gas and Sector Breakouts
+
+## Main Grid
 
 ```{r}
 nonco2 = projections_all_sm %>% 
@@ -62,6 +65,46 @@ ggplot() +
   nolegend
 ```
 
+## Agriculture {.tabset}
+
+### Main
+
+```{r}
+
+fig <- tge_breakout_figure(projections_ghgi, sector_select = 'Agriculture')
+fig
+
+```
+
+### CH4
+
+```{r}
+fig <- tge_breakout_figure(projections_ghgi, sector_select = 'Agriculture', gas_select = 'CH4')
+
+fig
+```
+
+### CO2
+
+```{r}
+fig <- tge_breakout_figure(projections_ghgi, sector_select = 'Agriculture', gas_select = 'CO2')
+
+fig
+```
+
+### N2O
+
+```{r}
+fig <- tge_breakout_figure(projections_ghgi, sector_select = 'Agriculture', gas_select = 'N2O')
+
+fig
+```
+
+
+## Energy {.tabset}
+
+### Main
+
 ```{r}
 
 fig <- tge_breakout_figure(projections_ghgi, sector_select = 'Energy')
@@ -69,14 +112,158 @@ fig
 
 ```
 
+### CH4
+
 ```{r}
-fig <- tge_breakout_figure(projections_ghgi, gas_select = 'CH4', sector_select = 'Waste')
+fig <- tge_breakout_figure(projections_ghgi, sector_select = 'Energy', gas_select = 'CH4')
+
 fig
 ```
 
+### CO2
+
 ```{r}
-fig <- tge_breakout_figure(projections_ghgi,
-                           sector_select = 'IPPU',
-                           gas_select = 'HFCs')
+fig <- tge_breakout_figure(projections_ghgi, sector_select = 'Energy', gas_select = 'CO2')
+
+fig
+```
+
+### N2O
+
+```{r}
+fig <- tge_breakout_figure(projections_ghgi, sector_select = 'Energy', gas_select = 'N2O')
+
+fig
+```
+
+
+## Industrial Processes {.tabset}
+
+### Main
+
+```{r}
+
+fig <- tge_breakout_figure(projections_ghgi, sector_select = 'IPPU')
+fig
+
+```
+
+### CH4
+
+```{r}
+fig <- tge_breakout_figure(projections_ghgi, sector_select = 'IPPU', gas_select = 'CH4')
+
+fig
+```
+
+### CO2
+
+```{r}
+fig <- tge_breakout_figure(projections_ghgi, sector_select = 'IPPU', gas_select = 'CO2')
+
+fig
+```
+
+### HFCs
+
+```{r}
+fig <- tge_breakout_figure(projections_ghgi, sector_select = 'IPPU', gas_select = 'HFCs')
+
+fig
+```
+
+### N2O
+
+```{r}
+fig <- tge_breakout_figure(projections_ghgi, sector_select = 'IPPU', gas_select = 'N2O')
+
+fig
+```
+
+### NF3
+
+```{r}
+fig <- tge_breakout_figure(projections_ghgi, sector_select = 'IPPU', gas_select = 'NF3')
+
+fig
+```
+
+### PFCs
+
+```{r}
+fig <- tge_breakout_figure(projections_ghgi, sector_select = 'IPPU', gas_select = 'PFCs')
+
+fig
+```
+
+
+### SF6
+
+```{r}
+fig <- tge_breakout_figure(projections_ghgi, sector_select = 'IPPU', gas_select = 'SF6')
+
+fig
+```
+
+## Transportation {.tabset}
+
+### Main
+
+```{r}
+
+fig <- tge_breakout_figure(projections_ghgi, sector_select = 'Transportation')
+fig
+
+```
+
+### CH4
+
+```{r}
+fig <- tge_breakout_figure(projections_ghgi, sector_select = 'Transportation', gas_select = 'CH4')
+
+fig
+```
+
+### CO2
+
+```{r}
+fig <- tge_breakout_figure(projections_ghgi, sector_select = 'Transportation', gas_select = 'CO2')
+
+fig
+```
+
+### N2O
+
+```{r}
+fig <- tge_breakout_figure(projections_ghgi, sector_select = 'Transportation', gas_select = 'N2O')
+
+fig
+```
+
+## Waste {.tabset}
+
+### Main
+
+```{r}
+
+fig <- tge_breakout_figure(projections_ghgi, sector_select = 'Waste')
+fig
+
+```
+
+### CH4
+
+```{r}
+fig <- tge_breakout_figure(projections_ghgi, sector_select = 'Waste', gas_select = 'CH4')
+
+fig
+```
+
+
+### N2O
+
+```{r}
+fig <- tge_breakout_figure(projections_ghgi, sector_select = 'Waste', gas_select = 'N2O')
+
 fig
 ```

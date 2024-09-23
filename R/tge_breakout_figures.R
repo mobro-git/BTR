@@ -1,18 +1,20 @@
 
 tge_breakout_figure <- function(projections_ghgi, group = 'wm', sector_select = NULL, gas_select = NULL) {
   
+  projections_ghgi <- projections_ghgi %>% filter(year >= 2005)
+  
   if(is.null(sector_select) & is.null(gas_select)) {
     
    nonco2 = projections_ghgi %>% 
   filter(grouping == "wm") %>%
   filter(usproj_sector != "LULUCF Sink") %>%
   filter(!(str_detect(proj_name, "usrr") & usproj_sector %in% c("Transportation","Energy") & year %in% c(2045, 2050))) %>%
-  filter(!(usproj_sector == "Energy" & !year %in% c(2020, 2025, 2030, 2035, 2040, 2045, 2050))) %>%
-  filter(year <= 2040)
-
+  filter(!(usproj_sector == "Energy" & !year %in% c(2020, 2025, 2030, 2035, 2040, 2045, 2050)))
+   
   fig <- ggplot() +
-  geom_line(data = nonco2, aes(x=year,y=value,group=proj_name,color=gas), linewidth = 1) +
+  geom_line(data = nonco2, aes(x=year,y=sum,group=proj_name,color=gas), linewidth = 1) +
   facet_grid(usproj_sector~gas, scales = "free_y") +
+    scale_x_continuous(breaks = c(2005, 2010, 2015, 2020, 2022, 2025, 2030, 2035, 2040, 2045, 2050), expand = c(0,0)) +
   labs(y = "Mt CO2e") +
   theme_btr() +
   nolegend
@@ -66,6 +68,7 @@ tge_breakout_figure <- function(projections_ghgi, group = 'wm', sector_select = 
                # size = 0.4,
                alpha = 0.5) +
     facet_wrap(usproj_sector~color_col, scales = "free_y") +
+    scale_x_continuous(breaks = c(2005, 2015, 2022, 2030, 2040, 2050), expand = c(0,0)) +
     labs(title = paste(sector_select, gas_select, sep = ':'),y = "Mt CO2e") +
     theme_btr() +
     nolegend  
