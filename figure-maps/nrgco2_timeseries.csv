@@ -245,3 +245,5 @@ timeseriesplot,40,CCS Energy Supply & Demand,Carbon Sequestration|CCS|Fossil|Ene
 timeseriesplot,40,CCS Energy Supply & Demand,Carbon Sequestration|CCS|Fossil|Energy|Supply|Petroleum Refining,Fos Petroleum Refining,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
 timeseriesplot,40,CCS Energy Supply & Demand,Carbon Sequestration|CCS|Fossil|Energy|Supply|Synthetic Gas,Fos Synthetic Gas,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
 timeseriesplot,40,CCS Energy Supply & Demand,Carbon Sequestration|CCS|Fossil|Energy|Supply|Synthetic Liquids,Fos Synthetic Liquids,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,41,Energy CO2 Buildings Breakout,Emissions|CO2|Energy|Demand|Buildings|Commercial,Commercial,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y
+timeseriesplot,41,Energy CO2 Buildings Breakout,Emissions|CO2|Energy|Demand|Buildings|Residential,Residential,0,usa,model_wm,fives_proj,scen_wm,grid,year,value,scenario,variable_rename,model,region,free_y

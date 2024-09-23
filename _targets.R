@@ -324,6 +324,12 @@ tar_plan(
              "docs/report/btr_tables_figs_to2050.Rmd",
              output_dir = paste0('output/',settings$version,"/tables_figs/to2050/"),
              output_file = paste0("btr_tables_figs_to2050_",Sys.Date(),".html"),
+             params = list(mode = "targets")),
+  
+  tar_render(tge_breakouts,
+             "docs/report/tge_breakouts.Rmd",
+             output_dir = paste0('output/',settings$version,"/tables_figs/tge_breakouts/"),
+             output_file = paste0("btr_tge_breakouts_",Sys.Date(),".html"),
              params = list(mode = "targets"))
   
 )

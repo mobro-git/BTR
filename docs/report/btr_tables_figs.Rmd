@@ -17,7 +17,9 @@ params:
 
 ```{r,echo = FALSE, results = "show", warning = FALSE, message = FALSE, error = FALSE}
 knitr::opts_chunk$set(echo = FALSE, results = "show", warning = FALSE, message = FALSE, error = FALSE, fig.align = "center", fig.width = 9, fig.height = 7)
-```
+
+
+``` 
 
 ```{r}
 source('packages.R')
@@ -931,45 +933,7 @@ filename <- paste0("ncbr_comp90_fig_",Sys.Date(),".png")
 ggsave(paste0('output/',settings$version,"/tables_figs/results_tables/ncbr_comparison/",filename))
 ```
 
-### Figure: Gas and Sector Breakouts
 
-```{r}
-nonco2 = projections_all_sm %>% 
-  filter(grouping == "wm") %>%
-  filter(usproj_sector != "LULUCF Sink") %>%
-  filter(!(str_detect(proj_name, "usrr") & usproj_sector %in% c("Transportation","Energy") & year %in% c(2045, 2050))) %>%
-  filter(!(usproj_sector == "Energy" & !year %in% c(2020, 2025, 2030, 2035, 2040, 2045, 2050))) %>%
-  filter(year <= 2040)
-
-ggplot() +
-  geom_line(data = nonco2, aes(x=year,y=sum,group=proj_name,color=gas), linewidth = 1) +
-  facet_grid(usproj_sector~gas, scales = "free_y") +
-  labs(y = "Mt CO2e") +
-  theme_btr() +
-  nolegend
-```
-
-```{r}
-
-fig <- tge_breakout_figure(projections_ghgi, sector_select = 'Energy')
-fig
-```
-# TODO: Line break at 2022, geom_vline at 2022
-
-```{r}
-fig <- tge_breakout_figure(projections_ghgi)
-fig
-```
-
-```{r}
-fig <- tge_breakout_figure(projections_ghgi, gas_select = 'CH4', sector_select = 'Waste')
-fig
-```
-```{r}
-fig <- tge_breakout_figure(projections_ghgi,sector_select = 'IPPU',
-                           gas_select = 'HFCs')
-fig
-```
 
 ```{r}
 filename <- paste0("ncbr_tge_gas_and_sector_breakouts_fig_",Sys.Date(),".png")

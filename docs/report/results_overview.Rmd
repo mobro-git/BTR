@@ -59,6 +59,13 @@ print_graph("stacked_bar", config, data_long_clean, figmap_nrgco2_stackbar, 19, 
 print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 10, "United States")
 ```
 
+
+### Buildings-Breakout
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 41, "United States")
+```
+
+
 ### Stats
 
 ```{r}
