@@ -1,2 +1,9 @@
 datasrc,model,scenario
-BTR OP Sensitivities-High OGS Case 9-27-2024.xlsx,OP-NEMS,High OGS
+report_emf_all.csv,USREP-ReEDS,btr_ref
+report_emf_all.csv,USREP-ReEDS,btr_wm
+report_emf_all.csv,USREP-ReEDS,btr_wm_adv
+report_emf_all.csv,USREP-ReEDS,btr_wm_adv_max
+report_emf_all.csv,USREP-ReEDS,btr_wm_adv_max_old
+report_emf_all.csv,USREP-ReEDS,btr_ref_old
+report_emf_all.csv,USREP-ReEDS,btr_wm_old
+report_emf_all.csv,USREP-ReEDS,btr_wm_adv_old

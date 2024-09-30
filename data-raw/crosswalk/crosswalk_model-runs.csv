@@ -43,8 +43,6 @@ usrep_reeds_allscen.csv,USREP-ReEDS,ira_low_adv,USREP-ReEDS,leep_Pess-IRA.Adv,LE
 usrep_reeds_allscen.csv,USREP-ReEDS,ira_mid_adv,USREP-ReEDS,leep_All Advanced,LEEP report,leep
 usrep_reeds_allscen.csv,USREP-ReEDS,ira_high_adv,USREP-ReEDS,leep_Opt-IRA.Adv,LEEP report,leep
 usrep_reeds_allscen.csv,USREP-ReEDS,ira_mid_constr,USREP-ReEDS,leep_Constrained Deployment,LEEP report,leep
-report_usrep_reeds_btr_9.3.csv,USREP-ReEDS,btr4_ref_new,USREP-ReEDS,ref,,btr
-report_usrep_reeds_btr_9.3.csv,USREP-ReEDS,btr4_wm,USREP-ReEDS,wm,,btr
 OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,OP-NEMS,OP Moderate,OP-NEMS,wm,btr - OP-NEMS BTR wm,btr
 082124gcamreport_Processed.csv,GCAM 7.0,WM_082124,GCAM,wm,btr- gcam,btr
 082124gcamreport_Processed.csv,GCAM 7.0,WM_IRAEGU_082124,GCAM,wm_iraegu,,btr
@@ -54,3 +52,11 @@ USREP-ReEDS additional Reporting Variables 8.13.xlsx,USREP-ReEDS,wm,USREP-ReEDS,
 BTR OP Sensitivities-Advanced Case 9-27-2024.xlsx,OP-NEMS,OP Advanced,OP-NEMS,wm_adv,OP-NEMS sensitivities,
 BTR OP Sensitivities-High OGS Case 9-27-2024.xlsx,OP-NEMS,High OGS,OP-NEMS,wm_highogs,OP-NEMS sensitivities,
 BTR OP Sensitivities-Low OGS Case 9-27-2024.xlsx,OP-NEMS,Low OGS,OP-NEMS,wm_lowogs,OP-NEMS sensitivities,
+report_emf_all.csv,USREP-ReEDS,btr_ref,USREP-ReEDS,ref,,
+report_emf_all.csv,USREP-ReEDS,btr_wm,USREP-ReEDS,wm,,
+report_emf_all.csv,USREP-ReEDS,btr_wm_adv,USREP-ReEDS,wm_adv,,
+report_emf_all.csv,USREP-ReEDS,btr_wm_adv_max,USREP-ReEDS,wm_adv_max,,
+report_emf_all.csv,USREP-ReEDS,btr_wm_adv_max_old,USREP-ReEDS,max_old,old reeds,
+report_emf_all.csv,USREP-ReEDS,btr_ref_old,USREP-ReEDS,ref_old,old reeds,
+report_emf_all.csv,USREP-ReEDS,btr_wm_old,USREP-ReEDS,wm_old,old reeds,
+report_emf_all.csv,USREP-ReEDS,btr_wm_adv_old,USREP-ReEDS,wm_adv_old,old reeds,
