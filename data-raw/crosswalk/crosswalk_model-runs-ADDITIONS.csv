@@ -1,9 +1,3 @@
 datasrc,model,scenario
-report_emf_all.csv,USREP-ReEDS,btr_ref
-report_emf_all.csv,USREP-ReEDS,btr_wm
-report_emf_all.csv,USREP-ReEDS,btr_wm_adv
-report_emf_all.csv,USREP-ReEDS,btr_wm_adv_max
-report_emf_all.csv,USREP-ReEDS,btr_wm_adv_max_old
-report_emf_all.csv,USREP-ReEDS,btr_ref_old
-report_emf_all.csv,USREP-ReEDS,btr_wm_old
-report_emf_all.csv,USREP-ReEDS,btr_wm_adv_old
+report_usrep_reeds_btr_9.3.csv,USREP-ReEDS,btr4_ref_new
+report_usrep_reeds_btr_9.3.csv,USREP-ReEDS,btr4_wm
