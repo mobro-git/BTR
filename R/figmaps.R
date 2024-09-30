@@ -99,7 +99,7 @@ import_figure_csv <- function(plot_list, figure_type, figmap_csv, config, settin
     }
   }
 
-  
+  # TODO: Add checks for valid facet type and facet values
   status = df %>%
     assert_figure_csv_has_standard_columns(figure_type) %>%
     assert_vars_in_template_or_calculated(figure_type, settings) %>%
@@ -141,7 +141,7 @@ standard_ref_stackbar_cols <- c(standard_fig_cols, "ref_model")
 
 standard_diffbar_cols <- c(standard_fig_cols, "ref_type", "ref_value", "show_net")
 
-standard_timeseries_cols <- standard_fig_cols
+standard_timeseries_cols <- c(standard_fig_cols, "linetype")
 
 standard_cone_cols <- c(standard_fig_cols, "range")
 

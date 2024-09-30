@@ -51,3 +51,6 @@ OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,OP-NEMS,OP Moderate,OP-NEM
 082124gcamreport_Processed.csv,GCAM 7.0,WM_IRATRN_082124,GCAM,wm_iratrn,,btr
 082124gcamreport_Processed.csv,GCAM 7.0,WM_IRAonly_082124,GCAM,wm_iraonly,,btr
 USREP-ReEDS additional Reporting Variables 8.13.xlsx,USREP-ReEDS,wm,USREP-ReEDS,wm,vehicle stock and sales variables,btr
+BTR OP Sensitivities-Advanced Case 9-27-2024.xlsx,OP-NEMS,OP Advanced,OP-NEMS,wm_adv,OP-NEMS sensitivities,
+BTR OP Sensitivities-High OGS Case 9-27-2024.xlsx,OP-NEMS,High OGS,OP-NEMS,wm_highogs,OP-NEMS sensitivities,
+BTR OP Sensitivities-Low OGS Case 9-27-2024.xlsx,OP-NEMS,Low OGS,OP-NEMS,wm_lowogs,OP-NEMS sensitivities,

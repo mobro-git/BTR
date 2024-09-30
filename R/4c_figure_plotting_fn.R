@@ -215,6 +215,7 @@ call_plot_fn <- function(df, figure, selected, sub_palettes, graph_type, plot_fn
     x = unique(df$x), y = unique(df$y),
     color = unique(df$color),
     shape = unique(df$shape), # Only usable in the scatter plot functions for the shape of the data indications (like triangle, etc.)
+    linetype = unique(df$linetype), # Only usable in timeseries functions for scenario comparison
     facet = unique(df$facet1),
     facet1 = unique(df$facet1), 
     facet2 = unique(df$facet2))

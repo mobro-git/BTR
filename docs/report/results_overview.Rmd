@@ -48,6 +48,11 @@ print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 9,
             level_var = c("Buildings", "Industry", "Transportation", "Supply", "Total Energy"))
 ```
 
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 42, "United States", scenario_rename = TRUE,
+            level_var = c("Buildings", "Industry", "Transportation", "Supply", "Total Energy"))
+```
+
 ### Sector
 
 ```{r}
