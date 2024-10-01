@@ -289,6 +289,8 @@ tar_plan(
   
   kaya_ts = create_graph("Kaya", "time_series", config, settings, data_long_index, figmap_kaya_timeseries),
   leepcompare_ts = create_graph("leepcompare", "time_series", config, settings, data_long_clean, figmap_leepcompare_timeseries),
+  sens_ts = create_graph("sens", "time_series", config, settings, data_long_clean, figmap_sens_timeseries),
+  
   
   # TODO: remove variables we dont have historical data for
   # TODO: add historical data from EIA for energy variables
@@ -331,6 +333,12 @@ tar_plan(
              "docs/report/tge_breakouts.Rmd",
              output_dir = paste0('output/',settings$version,"/tables_figs/tge_breakouts/"),
              output_file = paste0("btr_tge_breakouts_",Sys.Date(),".html"),
+             params = list(mode = "targets")),
+  
+  tar_render(results_overview_sens,
+             "docs/report/results_overview_sens.Rmd",
+             output_dir = paste0('output/',settings$version,"/results_overview_sens/"),
+             output_file = paste0("results_overview_sens",Sys.Date(),".html"),
              params = list(mode = "targets"))
   
 )

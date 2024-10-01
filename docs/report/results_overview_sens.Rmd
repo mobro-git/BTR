@@ -1,0 +1,365 @@
+---
+title: "BTR Results Overview W/ Sensitivities"
+output:
+  html_document:
+    toc: yes
+    toc_float:
+      toc_collapsed: true
+    toc_depth: 3
+    theme: spacelab
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+---
+
+```{r,echo = FALSE, results = "show", warning = FALSE, message = FALSE, error = FALSE}
+knitr::opts_chunk$set(echo = FALSE, results = "show", warning = FALSE, message = FALSE, error = FALSE, 
+                      fig.align = "center", fig.width = 9, fig.height = 5)
+```
+
+```{r}
+library(targets)
+library(tarchetypes)
+tar_source()
+source('packages.R')
+source("scripts/theming.R")
+```
+
+```{r}
+tar_load(
+  c(
+    config,
+    settings,
+    data_long_clean,
+    projections_all_sm, 
+    figmap_sens_timeseries
+    )
+  )
+```
+
+# Energy CO2 Emissions
+
+## Sector {.tabset}
+
+### Model
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 9, "United States", scenario_rename = TRUE,
+            level_var = c("Buildings", "Industry", "Transportation", "Supply", "Total Energy"))
+
+df <- data_from_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 9, "United States")
+```
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 42, "United States", scenario_rename = TRUE,
+            level_var = c("Buildings", "Industry", "Transportation", "Supply", "Total Energy"))
+```
+
+
+### Supply-Breakout
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 10, "United States")
+```
+
+
+### Buildings-Breakout
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 41, "United States")
+```
+
+## Fuel {.tabset}
+
+### Model
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 30, "United States")
+```
+
+## CCS {.tabset}
+
+### Topline
+
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 39, "United States", scenario_rename = TRUE)
+```
+
+### Supply & Demand
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 40, "United States", scenario_rename = TRUE)
+```
+
+# Demand
+
+## Final Energy
+
+### Fuel {.tabset}
+
+#### Model
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 1, "United States", scenario_rename = TRUE)
+```
+
+#### Model - Zoom
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 24, "United States", scenario_rename = TRUE)
+```
+
+
+### Sector {.tabset}
+
+#### Model
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 2, "United States", scenario_rename = TRUE,
+                     level_var = c("Buildings", "Industry", "Transportation", "Total Energy"))
+```
+
+
+## Sectoral Detail
+
+### Buildings {.tabset}
+
+#### Model
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 17, "United States", scenario_rename = TRUE,
+                                level_var = c("Coal", "Gas", "Oil", 'Electricity',"Total Energy"))
+```
+
+
+#### Residential by Model
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 31, "United States", scenario_rename = TRUE)
+```
+
+
+#### Commercial by Model
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 32, "United States", scenario_rename = TRUE)
+```
+
+
+### Industry {.tabset}
+
+#### Model
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 18, "United States", scenario_rename = TRUE)
+```
+
+### Transportation {.tabset}
+
+#### Model
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 19, "United States", scenario_rename = TRUE)
+```
+
+
+### Vehicle Share {.tabset}
+
+#### Sales Share 
+
+```{r}
+df1 = data_from_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 33, "United States", scenario_rename = TRUE) %>%
+  mutate(facet = "Freight")
+df2 = data_from_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 34, "United States", scenario_rename = TRUE) %>%
+  mutate(facet = "Passenger")
+df = rbind(df1,df2)
+
+var_palette <- unique(df$model)
+
+ggplot(data = df) +
+  geom_line(aes(x=year,y=value, colour = model), size = 1) +
+  facet_grid(facet~variable_rename) +
+  scale_color_manual(values = c("GCAM" = "#bfef45",
+                                'OP-NEMS' = "#000075",
+                                'USREP-ReEDS' = "#9a6324")) +
+  theme_custom() +
+  scale_y_continuous(labels = scales::percent)  +
+  labs(title = 'Vehicle Sales Share') +
+  theme(
+        axis.title.y = element_blank(),
+        axis.title.x = element_blank(),
+        axis.text.x = element_text(angle = 45, hjust=1),
+        panel.spacing.x = unit(4, "mm"))
+
+```
+
+#### Stock Share 
+
+```{r}
+df1 = data_from_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 35, "United States", scenario_rename = TRUE) %>%
+  mutate(facet = "Freight")
+df2 = data_from_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 36, "United States", scenario_rename = TRUE) %>%
+  mutate(facet = "Passenger")
+df = rbind(df1,df2)
+
+ggplot(data = df) +
+  geom_line(aes(x=year,y=value, colour = model), size = 1) +
+  facet_grid(facet~variable_rename) +
+  scale_color_manual(values = c("GCAM" = "#bfef45",
+                                'OP-NEMS' = "#000075",
+                                'USREP-ReEDS' = "#9a6324")) +
+  theme_custom() +
+  scale_y_continuous(labels = scales::percent)  +
+  labs(title = 'Vehicle Stock Share') +
+  theme(
+        axis.title.y = element_blank(),
+        axis.title.x = element_blank(),
+        axis.text.x = element_text(angle = 45, hjust=1),
+        panel.spacing.x = unit(4, "mm"))
+```
+
+## Percent Electricity
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 14, "United States", scenario_rename = TRUE,
+                                  level_var = c("Buildings", "Industry", "Transportation","Total Electricity"))
+```
+
+
+# Supply
+
+## Secondary Energy {.tabset}
+
+### Model
+
+```{r, fig.width=12}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 8, "United States", scenario_rename = TRUE)
+```
+
+### Model - Zoom
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 25, "United States", scenario_rename = TRUE)
+```
+
+
+## Electricity Production 
+
+### Generation {.tabset}
+
+#### Model
+
+```{r, fig.width=12}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 15, "United States", scenario_rename = TRUE,
+                         level_var = c("Coal", "Gas", "Oil","Solar", "Wind", "Total Electricity"))
+```
+
+#### Model - Zoom
+
+```{r, fig.width=12}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 27, "United States", scenario_rename = TRUE,
+                         level_var = c("Coal", "Gas", "Oil","Solar", "Wind", "Total Electricity"))
+```
+
+### Generation Inputs {.tabset}
+
+#### Totals
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 37, "United States", scenario_rename = TRUE)
+```
+
+#### w/ and w/o CCS
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 38, "United States", scenario_rename = TRUE)
+```
+
+### Capacity {.tabset}
+
+#### Model
+
+```{r, fig.width=12}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 16, "United States", scenario_rename = TRUE,
+                         level_var = c("Coal", "Gas", "Oil","Solar", "Wind", "Storage", "Total Electricity"))
+```
+
+#### Model - Zoom
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 26, "United States", scenario_rename = TRUE,
+                         level_var = c("Coal", "Gas", "Oil","Solar", "Wind", "Storage", "Total Electricity"))
+```
+
+
+## Combustion {.tabset}
+
+### Generation by Model
+
+```{r, fig.width=12}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 20, "United States", scenario_rename = TRUE)
+```
+
+### Generation by Model - Zoom
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 28, "United States", scenario_rename = TRUE)
+```
+
+
+
+### Capacity by Model
+
+```{r, fig.width=12}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 22, "United States", scenario_rename = TRUE)
+```
+
+### Capacity by Model - Zoom
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 29, "United States", scenario_rename = TRUE)
+```
+
+## Non-Combustion {.tabset}
+
+
+
+### Generation by Model
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 23, "United States", scenario_rename = TRUE)
+```
+
+
+
+### Capacity by Model
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 21, "United States", scenario_rename = TRUE)
+```
+
+## Primary Energy {.tabset}
+
+### Fossil 
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 6, "United States", scenario_rename = TRUE)
+```
+
+### Non-Fossil
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 7, "United States", scenario_rename = TRUE)
+```
+
+## Input Assumptions {.tabset}
+
+### Population
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 12, "United States", scenario_rename = TRUE)
+```
+
+### GDP
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 13, "United States", scenario_rename = TRUE)
+```
+
