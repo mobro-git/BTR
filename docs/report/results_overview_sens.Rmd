@@ -48,11 +48,6 @@ print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 9, "
 df <- data_from_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 9, "United States")
 ```
 
-```{r}
-print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 42, "United States", scenario_rename = TRUE,
-            level_var = c("Buildings", "Industry", "Transportation", "Supply", "Total Energy"))
-```
-
 
 ### Supply-Breakout
 ```{r}
