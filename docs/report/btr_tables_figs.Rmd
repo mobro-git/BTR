@@ -583,28 +583,28 @@ industry = br_sectors(sector_df,
 
 ```{r}
 buildings
-ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/buildings_comparison.png"), create.dir = TRUE, height = 4.5)
+ggsave(plot = buildings,filename = paste0('output/',settings$version,"/tables_figs/sector_analysis/buildings_comparison",Sys.Date(),".png"), create.dir = TRUE, height = 4.5)
 ```
 
 ## Electricity
 
 ```{r}
 electricity
-ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/electricity_comparison.png"), create.dir = TRUE, height = 4.5)
+ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/electricity_comparison",Sys.Date(),".png"), create.dir = TRUE, height = 4.5)
 ```
 
 ## Transportation
 
 ```{r}
 transportation
-ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/transportation_comparison.png"), height = 4.5)
+ggsave(transportation,paste0('output/',settings$version,"/tables_figs/sector_analysis/transportation_comparison",Sys.Date(),".png"), height = 4.5)
 ```
 
 ## Industry
 
 ```{r}
 industry
-ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/industry_comparison.png"), create.dir = TRUE, height = 4.5)
+ggsave(industry, paste0('output/',settings$version,"/tables_figs/sector_analysis/industry_comparison",Sys.Date(),".png"), create.dir = TRUE, height = 4.5)
 ```
 
 ```{r}
@@ -1470,10 +1470,10 @@ var_list <- c("Energy Service|Transportation|Freight|BEV|Sales Share",
 
 vs_df <- get_value_breakout(data_long_clean, var_list, config)
 
-vs_df2 = vs_df %>% 
-  filter(year ==2040) %>% 
-  spread(model,value) 
+# vs_df2 = vs_df %>% 
+#   filter(year ==2040) %>% 
+#   spread(model,value) 
 
-grid.table(vs_df2)
+# grid.table(vs_df2)
 ```
 
