@@ -597,15 +597,16 @@ ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/electrici
 
 ```{r}
 transportation
-ggsave(transportation,paste0('output/',settings$version,"/tables_figs/sector_analysis/transportation_comparison",Sys.Date(),".png"), height = 4.5)
+ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/transportation_comparison",Sys.Date(),".png"), height = 4.5)
 ```
 
 ## Industry
 
 ```{r}
 industry
-ggsave(industry, paste0('output/',settings$version,"/tables_figs/sector_analysis/industry_comparison",Sys.Date(),".png"), create.dir = TRUE, height = 4.5)
+ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/industry_comparison",Sys.Date(),".png"), create.dir = TRUE, height = 4.5)
 ```
+
 
 ```{r}
 # Stats for Emissions Projections and Trends by Sector DRAFT SECTION
@@ -1476,4 +1477,3 @@ vs_df <- get_value_breakout(data_long_clean, var_list, config)
 
 # grid.table(vs_df2)
 ```
-
