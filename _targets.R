@@ -42,7 +42,7 @@ tar_plan(
     scen_wm = c("wm"), #, "leep_IRA"
     scen_wm_hist = c("wm","Historic"),
     scen_wm_ira = c("wm","leep_IRA"),
-    scen_wm_sensitivities = c("wm", "wm_adv", "wm_highogs","wm_lowogs", "wm_adv_max", "wm_new"),
+    scen_wm_sensitivities = c("wm", "wm_adv", "wm_highogs","wm_lowogs", "wm_adv_max", "wm_highfuelcost", "wm_lowcostre", "wm_lowcostre_highfuelcost"),
     
     # regions
     usa = "United States",
@@ -202,7 +202,7 @@ tar_plan(
   kaya_comparison50 = full_kaya_comparison50(past_kaya_no_emissions,past_proj,total_gross_emissions,data_long_clean),
   
   # LULUCF ----
-  tar_target(lulucf_data_extra_xlsx, "data-extra/USDA NFS Raw Data/LULUCF projections DRAFT compilation 82924.xlsx", format = "file"),
+  tar_target(lulucf_data_extra_xlsx, "data-extra/USDA NFS Raw Data/LULUCF projections DRAFT compilation 10 3 2024.xlsx", format = "file"),
   
   tar_target(lulucf_btr_crosswalk_csv, "data-raw/crosswalk/crosswalk_lulucf_btr.csv", format = "file"),
   lulucf_btr_crosswalk = read_csv(lulucf_btr_crosswalk_csv),

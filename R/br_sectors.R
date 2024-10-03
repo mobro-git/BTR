@@ -223,7 +223,7 @@ br_sectors_callout_lts_panels = function(sector_df, lts_mod, lts_scen) {
                         expression(paste("Industry Emissions (MMt C", O[2], ")")),
                         lts_mod = lts_mod, lts_scen = lts_scen)
   
-  panels = (buildings + electricity)/(transportation + industry)
+  panels = (electricity + buildings)/(transportation + industry)
   panels
   
 }

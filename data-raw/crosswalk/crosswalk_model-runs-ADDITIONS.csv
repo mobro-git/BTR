@@ -1,3 +1,4 @@
 datasrc,model,scenario
-report_usrep_reeds_btr_9.3.csv,USREP-ReEDS,btr4_ref_new
-report_usrep_reeds_btr_9.3.csv,USREP-ReEDS,btr4_wm
+092524gcamreport_Processed.csv,GCAM 7.0,WM_092524_highFuelCost
+092524gcamreport_Processed.csv,GCAM 7.0,WM_092524_LowCostRE23
+092524gcamreport_Processed.csv,GCAM 7.0,WM_092524_LowCostRE23_highFuelCost
