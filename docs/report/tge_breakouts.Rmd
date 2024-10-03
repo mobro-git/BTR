@@ -266,4 +266,36 @@ fig
 fig <- tge_breakout_figure(projections_ghgi, sector_select = 'Waste', gas_select = 'N2O')
 
 fig
+
 ```
+
+
+# Ad-hoc
+
+```{r}
+df <- projections_all_sm %>%
+  filter(grouping == 'wm',
+         gas == 'CO2',
+         usproj_sector %in% c('Transportation','Energy'),
+         year %in% config$table) %>%
+  group_by(year,gas,usproj_sector) %>%
+  summarise(max = max(sum),
+            min = min(sum))
+
+fig <- ggplot() +
+  geom_ribbon(df, mapping = aes(x = year, ymin = min, ymax = max), fill = 'blue', color = 'blue', alpha = .7) +
+  #geom_line(data = df, aes(x=year,y=sum,group=proj_name,color=gas), linewidth = 1) +
+  facet_grid(usproj_sector~gas, scales = "free_y") +
+   scale_x_continuous(breaks = c(2005, 2010, 2015, 2020, 2022, 2025, 2030, 2035, 2040, 2045, 2050), expand = c(0,0)) +
+  labs(y = "Mt CO2e") +
+  scale_y_continuous(labels = scales::comma) +
+  theme_btr() +
+  nolegend
+
+fig
+
+ggsave(paste0('output/',settings$version,"/tables_figs/tge_breakouts/co2_facet.png"), width = 5, create.dir = TRUE)
+
+```
+
+
