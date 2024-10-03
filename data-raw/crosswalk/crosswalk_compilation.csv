@@ -17,3 +17,13 @@ usrr_wm_nfs,wm,USREP-ReEDS,wm,nfs,wm,wm
 gcam_wm_gtm,wm,GCAM,wm,gtm,wm,wm
 nems_wm_gtm,wm,OP-NEMS,wm,gtm,wm,wm
 usrr_wm_gtm,wm,USREP-ReEDS,wm,gtm,wm,wm
+nems_wm_adv_gtm,wm,OP-NEMS,wm_adv,gtm,wm,wm_sens
+nems_wm_highogs_gtm,wm,OP-NEMS,wm_highogs,gtm,wm,wm_sens
+nems_wm_lowogs_gtm,wm,OP-NEMS,wm_lowogs,gtm,wm,wm_sens
+usrr_wm_adv_gtm,wm,USREP-ReEDS,wm_adv,gtm,wm,wm_sens
+usrr_wm_adv_max_gtm,wm,USREP-ReEDS,wm_adv_max,gtm,wm,wm_sens
+nems_wm_adv_nfs,wm,OP-NEMS,wm_adv,nfs,wm,wm_sens
+nems_wm_highogs_nfs,wm,OP-NEMS,wm_highogs,nfs,wm,wm_sens
+nems_wm_lowogs_nfs,wm,OP-NEMS,wm_lowogs,nfs,wm,wm_sens
+usrr_wm_adv_nfs,wm,USREP-ReEDS,wm_adv,nfs,wm,wm_sens
+usrr_wm_adv_max_nfs,wm,USREP-ReEDS,wm_adv_max,nfs,wm,wm_sens
