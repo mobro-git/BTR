@@ -61,10 +61,8 @@ source("scripts/theming.R")
 
 ```{r gas summary}
 gas_df <- create_summary_table('gas','wm_sens', projections_all_sm, config, settings)
-
-gas_table <- create_html_table(gas_df, 'Gas', settings)
-
 gas_table_merged <- create_html_table_merged(gas_df, 'Gas', settings)
+
 gas_table_merged
 ```
 
@@ -77,15 +75,12 @@ gtsave(gas_table_merged, paste0('output/',settings$version,"/tables_figs_sens/re
 
 ```{r sector summary}
 sector_df <- create_summary_table('usproj_sector', 'wm_sens', projections_all_sm, config, settings)
-
-sector_table <- create_html_table(sector_df, 'Sector', settings)
-
 sector_table_merged <- create_html_table_merged(sector_df, 'Sector', settings)
+
 sector_table_merged
 ```
 
 ```{r}
-
 filename <- paste0("sector_table_",Sys.Date(),".png")
 gtsave(sector_table_merged, paste0('output/',settings$version,"/tables_figs_sens/results_tables/by_gas_sector/",filename))
 ```
@@ -95,28 +90,29 @@ gtsave(sector_table_merged, paste0('output/',settings$version,"/tables_figs_sens
 ### Gas
 
 ```{r, pct change by gas}
-# TODO: @morgan update these % reduction tables to look like the gas and sector tables - i want historical trends in there and for the ranges to be presented with "-"
 pct_change_table_gas <- create_pct_change_table('gas', 'wm_sens', projections_all_sm, config, settings)
-pct_change_html_gas <- create_pct_change_html_table(pct_change_table_gas, 'Gas', settings)
-pct_change_html_gas
+pct_change_html_gas_merged <- create_html_table_merged_pct_change(pct_change_table_gas, 'Gas', settings)
+
+pct_change_html_gas_merged
 ```
 
 ```{r}
 filename <- paste0("gas_table_pctchange05_",Sys.Date(),".png")
-gtsave(pct_change_html_gas, paste0('output/',settings$version,"/tables_figs_sens/results_tables/percent_change_2005/",filename))
+gtsave(pct_change_html_gas_merged, paste0('output/',settings$version,"/tables_figs_sens/results_tables/percent_change_2005/",filename))
 ```
 
 ### Sector
 
 ```{r, pct change by sector}
 pct_change_table_sector <- create_pct_change_table('usproj_sector', 'wm_sens', projections_all_sm, config, settings)
-pct_change_html_sector <- create_pct_change_html_table(pct_change_table_sector, 'Sector', settings)
-pct_change_html_sector
+pct_change_html_sector_merged <- create_html_table_merged_pct_change(pct_change_table_sector, 'Sector', settings)
+
+pct_change_html_sector_merged
 ```
 
 ```{r}
 filename <- paste0("sector_table_pctchange05_",Sys.Date(),".png")
-gtsave(pct_change_html_sector, paste0('output/',settings$version,"/tables_figs_sens_sens/results_tables/percent_change_2005/",filename))
+gtsave(pct_change_html_sector_merged, paste0('output/',settings$version,"/tables_figs/results_tables/percent_change_2005/",filename))
 ```
 
 ## BTR Main Plot {.tabset}
@@ -1133,24 +1129,26 @@ BuildEmiss = data_long_clean %>%
   filter(year %in% c(2025,2030,2035,2040)) %>% 
   select(model, year, variable, reduction)
 
-Indirect = BuildEmiss %>% 
-  filter(variable == "Emissions|CO2|Energy|Demand|Buildings|Indirect") %>% 
-  mutate(variable = "Indirect") %>% 
-  spread(year,reduction)
+# TODO: config$scen_wm_sensitivities breaks this
 
-Direct = BuildEmiss %>% 
-  filter(variable == "Emissions|CO2|Energy|Demand|Buildings") %>% 
-  mutate(variable = "Direct") %>% 
-  spread(year,reduction)
-
-Total = BuildEmiss %>% 
-  filter(variable == "Emissions|CO2|Energy|Demand|Buildings|Total") %>% 
-  mutate(variable = "Total") %>% 
-  spread(year,reduction)
-
-kable(Indirect)
-kable(Direct)
-kable(Total)
+# Indirect = BuildEmiss %>% 
+#   filter(variable == "Emissions|CO2|Energy|Demand|Buildings|Indirect") %>% 
+#   mutate(variable = "Indirect") %>% 
+#   spread(year,reduction)
+# 
+# Direct = BuildEmiss %>% 
+#   filter(variable == "Emissions|CO2|Energy|Demand|Buildings") %>% 
+#   mutate(variable = "Direct") %>% 
+#   spread(year,reduction)
+# 
+# Total = BuildEmiss %>% 
+#   filter(variable == "Emissions|CO2|Energy|Demand|Buildings|Total") %>% 
+#   mutate(variable = "Total") %>% 
+#   spread(year,reduction)
+# 
+# kable(Indirect)
+# kable(Direct)
+# kable(Total)
 ```
 
 ## Energy CO2 emissions reductions from 2005 {.tabset}
@@ -1341,18 +1339,20 @@ var_list <- c('Emissions|CO2|Energy|Demand|Buildings',
               'Emissions|CO2|Energy|Supply|Electricity')
 
 be_df <- get_value_breakout(data_long_clean, var_list, config)
-be_df2 = be_df %>% 
-  spread(year,value) %>% 
-  group_by(variable) %>% 
-  rename(base ="2005",
-         target = "2040") %>% 
-  mutate(reduction =1 - (target/max(base, na.rm = "yes"))) %>% 
-  ungroup() %>% 
-  filter(model != "EPA-GHGI") %>% 
-  select(model,variable,reduction) %>% 
-  spread(model,reduction)
 
-grid.table(be_df2)
+# TODO: config$scen_wm_sensitivities breaks this
+# be_df2 = be_df %>% 
+#   spread(year,value) %>% 
+#   group_by(variable) %>% 
+#   rename(base ="2005",
+#          target = "2040") %>% 
+#   mutate(reduction =1 - (target/max(base, na.rm = "yes"))) %>% 
+#   ungroup() %>% 
+#   filter(model != "EPA-GHGI") %>% 
+#   select(model,variable,reduction) %>% 
+#   spread(model,reduction)
+# 
+# grid.table(be_df2)
 ```
 
 Share of fuel usage in Residential Buildings
@@ -1364,18 +1364,20 @@ var_list <-  c('Final Energy|Buildings|Residential|Electricity',
 
 br_df <- get_value_breakout(data_long_clean, var_list, config)
 
-br_df2 = br_df %>%
-  filter(variable != "Final Energy|Buildings|Residential") %>% 
-  left_join(br_df %>% 
-              filter(variable == "Final Energy|Buildings|Residential") %>%
-              select(-variable) %>% 
-              rename(total = value)) %>% 
-  mutate(Share = value/total) %>% 
-  select(-value,-total) %>% 
-  filter(year == 2040) %>% 
-  spread(model,Share)
+# TODO: config$scen_wm_sensitivities breaks this
 
-grid.table(br_df2)
+# br_df2 = br_df %>%
+#   filter(variable != "Final Energy|Buildings|Residential") %>% 
+#   left_join(br_df %>% 
+#               filter(variable == "Final Energy|Buildings|Residential") %>%
+#               select(-variable) %>% 
+#               rename(total = value)) %>% 
+#   mutate(Share = value/total) %>% 
+#   select(-value,-total) %>% 
+#   filter(year == 2040) %>% 
+#   spread(model,Share)
+# 
+# grid.table(br_df2)
 ```
 Share of fuel usage in Commercial Buildings
 ```{r}
@@ -1385,18 +1387,20 @@ var_list <-  c('Final Energy|Buildings|Commercial|Electricity',
 
 bc_df <- get_value_breakout(data_long_clean, var_list, config)
 
-bc_df2 = bc_df %>%
-  filter(variable != "Final Energy|Buildings|Commercial") %>% 
-  left_join(bc_df %>% 
-              filter(variable == "Final Energy|Buildings|Commercial") %>%
-              select(-variable) %>% 
-              rename(total = value)) %>% 
-  mutate(Share = value/total) %>% 
-  select(-value,-total) %>% 
-  filter(year == 2040) %>% 
-  spread(model,Share)
+# TODO: Spread error
 
-grid.table(bc_df2)
+# bc_df2 = bc_df %>%
+#   filter(variable != "Final Energy|Buildings|Commercial") %>% 
+#   left_join(bc_df %>% 
+#               filter(variable == "Final Energy|Buildings|Commercial") %>%
+#               select(-variable) %>% 
+#               rename(total = value)) %>% 
+#   mutate(Share = value/total) %>% 
+#   select(-value,-total) %>% 
+#   filter(year == 2040) %>% 
+#   spread(model,Share)
+# 
+# grid.table(bc_df2)
 ```
 
 Share of Wind and Solar in elec gen in 2040
@@ -1414,21 +1418,23 @@ eg_df <- get_value_breakout(data_long_clean, var_list, config)
 var_list <- c('Secondary Energy|Electricity|Wind','Secondary Energy|Electricity|Solar','Secondary Energy|Electricity')
 sw_df <- get_value_breakout(data_long_clean, var_list, config)
 
-sw_df2 = sw_df %>% 
-  filter(variable %in% c('Secondary Energy|Electricity|Wind','Secondary
-                         Energy|Electricity|Solar')) %>% 
-  group_by(model,year) %>% 
-  summarise(value = sum(value)) %>% 
-  left_join(sw_df %>% 
-              filter(variable == 'Secondary Energy|Electricity') %>% 
-              select(-variable) %>% 
-              rename(total = value)) %>% 
-  mutate(Share = value/total) %>% 
-  select(-value,-total) %>% 
-  filter(year == 2040) %>% 
-  spread(model,Share)
+# TODO: Spread error
 
-grid.table(sw_df2)
+# sw_df2 = sw_df %>% 
+#   filter(variable %in% c('Secondary Energy|Electricity|Wind','Secondary
+#                          Energy|Electricity|Solar')) %>% 
+#   group_by(model,year) %>% 
+#   summarise(value = sum(value)) %>% 
+#   left_join(sw_df %>% 
+#               filter(variable == 'Secondary Energy|Electricity') %>% 
+#               select(-variable) %>% 
+#               rename(total = value)) %>% 
+#   mutate(Share = value/total) %>% 
+#   select(-value,-total) %>% 
+#   filter(year == 2040) %>% 
+#   spread(model,Share)
+# 
+# grid.table(sw_df2)
 ```
 
 Reduction in coal to electricity in 2040 compared to model's EIA 2023
@@ -1438,16 +1444,16 @@ var_list <- 'Secondary Energy|Electricity|Input|Coal'
 pec_df <- get_value_breakout(data_long_clean,var_list, config)
 
 Coal2023 = 7241.636*1000000000000*1.05506e-15
-
-pec_df2 = pec_df %>% 
-  spread(year, value) %>% 
-  rename(base ="2020",
-         target = "2040") %>% 
-  mutate(reduction =1 - (target/Coal2023)) %>% 
-  select(model,variable,reduction) %>% 
-  spread(model,reduction)
-
-grid.table(pec_df2)
+# TODO: Spread error
+# pec_df2 = pec_df %>% 
+#   spread(year, value) %>% 
+#   rename(base ="2020",
+#          target = "2040") %>% 
+#   mutate(reduction =1 - (target/Coal2023)) %>% 
+#   select(model,variable,reduction) %>% 
+#   spread(model,reduction)
+# 
+# grid.table(pec_df2)
 ```
 
 Passenger Vehicle sales share in 2040
@@ -1458,12 +1464,13 @@ var_list <- c("Energy Service|Transportation|Passenger|BEV|Sales Share",
               "Energy Service|Transportation|Passenger|ICE|Sales Share")
 
 vs_df <- get_value_breakout(data_long_clean, var_list, config)
+# TODO: Spread error
 
-vs_df2 = vs_df %>% 
-  filter(year ==2040) %>% 
-  spread(model,value) 
-
-grid.table(vs_df2)
+# vs_df2 = vs_df %>% 
+#   filter(year ==2040) %>% 
+#   spread(model,value) 
+# 
+# grid.table(vs_df2)
   
 ```
 
@@ -1475,11 +1482,12 @@ var_list <- c("Energy Service|Transportation|Freight|BEV|Sales Share",
               "Energy Service|Transportation|Freight|ICE|Sales Share")
 
 vs_df <- get_value_breakout(data_long_clean, var_list, config)
+# TODO: Spread error
 
-vs_df2 = vs_df %>% 
-  filter(year ==2040) %>% 
-  spread(model,value) 
-
-grid.table(vs_df2)
+# vs_df2 = vs_df %>% 
+#   filter(year ==2040) %>% 
+#   spread(model,value) 
+# 
+# grid.table(vs_df2)
 ```
 

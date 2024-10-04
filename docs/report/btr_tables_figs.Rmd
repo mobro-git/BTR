@@ -55,10 +55,9 @@ source("scripts/theming.R")
 
 ```{r gas summary}
 gas_df <- create_summary_table('gas','wm', projections_all_sm, config, settings)
-
 gas_table <- create_html_table(gas_df, 'Gas', settings)
-
 gas_table_merged <- create_html_table_merged(gas_df, 'Gas', settings)
+
 gas_table_merged
 ```
 
@@ -71,15 +70,13 @@ gtsave(gas_table_merged, paste0('output/',settings$version,"/tables_figs/results
 
 ```{r sector summary}
 sector_df <- create_summary_table('usproj_sector', 'wm', projections_all_sm, config, settings)
-
 sector_table <- create_html_table(sector_df, 'Sector', settings)
-
 sector_table_merged <- create_html_table_merged(sector_df, 'Sector', settings)
+
 sector_table_merged
 ```
 
 ```{r}
-
 filename <- paste0("sector_table_",Sys.Date(),".png")
 gtsave(sector_table_merged, paste0('output/',settings$version,"/tables_figs/results_tables/by_gas_sector/",filename))
 ```
@@ -89,28 +86,29 @@ gtsave(sector_table_merged, paste0('output/',settings$version,"/tables_figs/resu
 ### Gas
 
 ```{r, pct change by gas}
-# TODO: @morgan update these % reduction tables to look like the gas and sector tables - i want historical trends in there and for the ranges to be presented with "-"
 pct_change_table_gas <- create_pct_change_table('gas', 'wm', projections_all_sm, config, settings)
-pct_change_html_gas <- create_pct_change_html_table(pct_change_table_gas, 'Gas', settings)
-pct_change_html_gas
+pct_change_html_gas_merged <- create_html_table_merged_pct_change(pct_change_table_gas, 'Gas', settings)
+
+pct_change_html_gas_merged
 ```
 
 ```{r}
 filename <- paste0("gas_table_pctchange05_",Sys.Date(),".png")
-gtsave(pct_change_html_gas, paste0('output/',settings$version,"/tables_figs/results_tables/percent_change_2005/",filename))
+gtsave(pct_change_html_gas_merged, paste0('output/',settings$version,"/tables_figs/results_tables/percent_change_2005/",filename))
 ```
 
 ### Sector
 
 ```{r, pct change by sector}
 pct_change_table_sector <- create_pct_change_table('usproj_sector', 'wm', projections_all_sm, config, settings)
-pct_change_html_sector <- create_pct_change_html_table(pct_change_table_sector, 'Sector', settings)
-pct_change_html_sector
+pct_change_html_sector_merged <- create_html_table_merged_pct_change(pct_change_table_sector, 'Sector', settings)
+
+pct_change_html_sector_merged
 ```
 
 ```{r}
 filename <- paste0("sector_table_pctchange05_",Sys.Date(),".png")
-gtsave(pct_change_html_sector, paste0('output/',settings$version,"/tables_figs/results_tables/percent_change_2005/",filename))
+gtsave(pct_change_html_sector_merged, paste0('output/',settings$version,"/tables_figs/results_tables/percent_change_2005/",filename))
 ```
 
 ## BTR Main Plot {.tabset}

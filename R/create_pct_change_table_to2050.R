@@ -148,7 +148,7 @@ create_pct_change_table50 <- function(category, group, projections_all_sm, confi
   final_summary_table <- pct_change_table_df_high_low %>%
     rbind(total_gross_emissions_high_low) %>% 
     rbind(lulucf_sink_high_low) %>% 
-    rbind(total_net_emissions_high_low) %>% select(category,all_of(proj_col_order))
+    rbind(total_net_emissions_high_low)# %>% select(category,all_of(proj_col_order))
   
   rownames(final_summary_table) <- NULL
 
@@ -163,60 +163,63 @@ create_pct_change_table50 <- function(category, group, projections_all_sm, confi
 }
 
 # Create html table in the style of gt()
-create_pct_change_html_table50 <- function(final_summary_table, stubhead, settings){
+
+create_html_table_merged_pct_change50 <- function(final_summary_table, stubhead, settings){
   
   hist_years <- c('2005','2010','2015','2020', settings$base_year)
-  proj_col_order <- c('2025_low',
-                      '2025_high',
-                      '2030_low',
-                      '2030_high',
-                      '2035_low',
-                      '2035_high',
-                      '2040_low',
-                      '2040_high',
-                      '2045_low',
-                      '2045_high',
-                      '2050_low',
-                      '2050_high')
+  proj_col_order <- c('2025',
+                      '2030',
+                      '2035',
+                      '2040',
+                      '2045',
+                      '2050')
   
-  table_title <- paste0('Historical and Projected U.S. GHG Emissions (2024 Policy Baseline), by ',stubhead,': 2005-2040 (MMTCO<sub>2</sub>e)')
+  final_summary_table_chr <- final_summary_table %>% mutate_if(is.numeric, as.character)
   
-  html_table <-  final_summary_table %>%
-    rename(!!stubhead := category) %>% 
+  merged = final_summary_table_chr %>%
+    mutate(
+      `2025` = case_when(
+        `2025_low` == `2025_high` ~ `2025_high`,
+        `2025_low` != `2025_high` ~ paste0(`2025_low`," to ",`2025_high`)),
+      `2030` = case_when(
+        `2030_low` == `2030_high` ~ `2030_high`,
+        `2030_low` != `2030_high` ~ paste0(`2030_low`," to ",`2030_high`)),
+      `2035` = case_when(
+        `2035_low` == `2035_high` ~ `2035_high`,
+        `2035_low` != `2035_high` ~ paste0(`2035_low`," to ",`2035_high`)),
+      `2040` = case_when(
+        `2040_low` == `2040_high` ~ `2040_high`,
+        `2040_low` != `2040_high` ~ paste0(`2040_low`," to ",`2040_high`)),
+      `2045` = case_when(
+        `2045_low` == `2045_high` ~ `2045_high`,
+        `2045_low` != `2045_high` ~ paste0(`2045_low`," to ",`2040_high`)),
+      `2050` = case_when(
+        `2050_low` == `2050_high` ~ `2050_high`,
+        `2050_low` != `2050_high` ~ paste0(`2050_low`," to ",`2050_high`))
+    ) %>%
+    select(-contains("_"))
+  
+  bold1 = nrow(merged)-3
+  bold2 = nrow(merged)-1
+  
+  html_table <- merged  %>%
+    rename(!!stubhead := category) %>%
+    
     gt() %>%
     text_transform(locations = cells_body(columns = 1),
                    fn = function(x) {
                      subscript_numbers(x)
-                   }) %>%
+                   }) %>% 
     
-    tab_spanner(label = "2025", columns = proj_col_order[1:2]) %>%
-    tab_spanner(label = "2030", columns = proj_col_order[3:4]) %>%
-    tab_spanner(label = "2035", columns = proj_col_order[5:6]) %>%
-    tab_spanner(label = "2040", columns = proj_col_order[7:8]) %>%
-    tab_spanner(label = "2045", columns = proj_col_order[9:10]) %>%
-    tab_spanner(label = "2050", columns = proj_col_order[11:12]) %>%
-    cols_label(`2025_low` = 'Low') %>%
-    cols_label(`2030_low` = 'Low') %>% 
-    cols_label(`2035_low` = 'Low') %>% 
-    cols_label(`2040_low` = 'Low') %>%
-    cols_label(`2045_low` = 'Low') %>%
-    cols_label(`2050_low` = 'Low') %>%
-    
-    cols_label(`2025_high` = 'High') %>%
-    cols_label(`2030_high` = 'High') %>% 
-    cols_label(`2035_high` = 'High') %>% 
-    cols_label(`2040_high` = 'High') %>%
-    cols_label(`2045_high` = 'High') %>% 
-    cols_label(`2050_high` = 'High') %>% 
     cols_align('center', columns = everything()) %>%
     cols_align('left', columns = stubhead) %>% 
+    tab_spanner(label = "Historical ", columns = all_of(hist_years)) %>%
+    tab_spanner(label = "Projections", columns = all_of(proj_col_order)) %>%
+    tab_style(style = cell_borders(color = "#1F77AE", sides = c("bottom"),  weight = px(2)), #
+              locations = cells_body(rows = c(bold1,bold2))) %>%
     
-    
-    #tab_spanner(label = "Historical ", columns = all_of(hist_years), level = 2) %>%
-    tab_spanner(label = "Projected", columns = all_of(proj_col_order))%>%
-    tab_header(title = paste0('Projected Percent Change U.S. GHG Emissions Compared to 2005 Levels (2024 Policy Baseline), by ',stubhead,': 2025-2040 (%)')) %>%
     gt_theme_nc_blue()
   
-  
+  html_table
   
 }
