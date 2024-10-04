@@ -112,7 +112,7 @@ pct_change_html_sector_merged
 
 ```{r}
 filename <- paste0("sector_table_pctchange05_",Sys.Date(),".png")
-gtsave(pct_change_html_sector_merged, paste0('output/',settings$version,"/tables_figs/results_tables/percent_change_2005/",filename))
+gtsave(pct_change_html_sector, paste0('output/',settings$version,"/tables_figs_sens/results_tables/percent_change_2005/",filename))
 ```
 
 ## BTR Main Plot {.tabset}

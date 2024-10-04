@@ -27,3 +27,9 @@ nems_wm_highogs_nfs,wm,OP-NEMS,wm_highogs,nfs,wm,wm_sens
 nems_wm_lowogs_nfs,wm,OP-NEMS,wm_lowogs,nfs,wm,wm_sens
 usrr_wm_adv_nfs,wm,USREP-ReEDS,wm_adv,nfs,wm,wm_sens
 usrr_wm_adv_max_nfs,wm,USREP-ReEDS,wm_adv_max,nfs,wm,wm_sens
+gcam_wm_highfuelcost_nfs,wm,GCAM,wm_highfuelcost,nfs,wm,wm_sens
+gcam_wm_lowcostre_nfs,wm,GCAM,wm_lowcostre,nfs,wm,wm_sens
+gcam_wm_lowcostre_highfuelcost_nfs,wm,GCAM,wm_lowcostre_highfuelcost,gtm,wm,wm_sens
+gcam_wm_highfuelcost_gtm,wm,GCAM,wm_highfuelcost,gtm,wm,wm_sens
+gcam_wm_lowcostre_gtm,wm,GCAM,wm_lowcostre,gtm,wm,wm_sens
+gcam_wm_lowcostre_highfuelcost_gtm,wm,GCAM,wm_lowcostre_highfuelcost,gtm,wm,wm_sens
