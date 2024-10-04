@@ -322,7 +322,9 @@ net_ghg_stackbar <- br_project_net_ghg_sb(net_ghg_sb_df, config)
 net_ghg_stackbar
 ```
 
-# Kaya Analysis
+# Kaya Analysis {.tabset}
+
+## Kaya Main
 
 ```{r}
 
@@ -464,31 +466,56 @@ singlepanel_kaya
 ggsave(paste0('output/',settings$version,"/tables_figs/kaya/kaya_singlepanel.png"), width = 5, create.dir = TRUE)
 ```
 
-```{r}
-Kaya <- function(dat_range, dat4, var_palette){
-  ggplot() +
-    geom_line(dat4, mapping = aes(year,med, group = var, color = var),size = 0.7) +
-    geom_ribbon(dat_range, mapping = aes(x = year,ymax = ymax, ymin = ymin,
-                                                  fill = var, 
-                                                  color = var),
-                alpha = 0.4 ,
-                size = 0.7) +
-    scale_subpalette_single(var_palette) +
-    labs(x = 'Year',
-         y = 'Kaya Factor Index') +
-    theme(
-      legend.position = "inside",
-      legend.position.inside = c(0.15, 0.2))
-}
 
-fig <- Kaya(dat_range, dat4, var_palette)
-#fig
-```
+## BR5:VS Comparison
 
 ```{r}
-filename <- paste0("kaya_fig_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs/kaya/",filename), create.dir = TRUE)
+btr_kaya <- kaya_comp_renamed %>%
+  filter(br_version == '2024 BTR')
+
+vs_df <- data_long_clean %>% 
+  filter(scenario == 'leep_IRA',
+         variable %in% c("Emissions / Energy",
+                         "Energy / GDP",
+                         "GDP / Capita",
+                         "Population"),
+         year %in% config$table) %>%
+  select(model,year,variable,value)
+
+index_df <- kaya_comp_renamed %>%
+  filter(year == 2015,
+         br_version == '2024 BTR') %>%
+  mutate(model = 'EPA-GHGI',
+         variable = case_when(variable == "Energy/GDP" ~ "Energy / GDP",
+                              variable == "Emissions/Energy" ~ "Emissions / Energy",
+                              variable == "GDP/Capita" ~ "GDP / Capita",
+                              TRUE~variable)) %>%
+  select(names(vs_df)) %>%
+  distinct()
+
+vs_df_rbind <- vs_df %>%
+  rbind(index_df)
+
+calc_df <- vs_df_rbind %>%
+  group_by(variable) %>%
+  mutate(pct_change_15 = round((value/value[year==2015]-1),2)) %>% 
+  #mutate(pct_change_15 = round(((value - value[year == 2015]) / value[year == 2015]),2)) %>%
+  mutate(index_value = 1 + pct_change_15) %>%
+  ungroup() %>%
+  filter(!(model == 'USREP-ReEDS' & variable %in% c('Population','GDP / Capita')))
+
+ribbon_df <- calc_df %>%
+  group_by(variable,year) %>%
+  summarise(max = max(index_value),
+         min = min(index_value))
+
+
+ggplot() +
+  geom_ribbon(data = ribbon_df, mapping = aes(x = year, ymin = min, ymax = max, fill = variable, color = variable), alpha = .6) +
+  theme_btr()
+
 ```
+
 
 # Sector Analysis {.tabset}
 
