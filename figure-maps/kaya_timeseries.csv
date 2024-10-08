@@ -3,3 +3,9 @@ timeseries,1,Kaya,Emissions / Energy,Emissions / Energy,0,usa,model_wm,fives_pro
 timeseries,1,Kaya,Energy / GDP,Energy / GDP,0,usa,model_wm,fives_proj,wm,grid,year,value,scenario,model,FALSE,variable_rename,region,fixed
 timeseries,1,Kaya,GDP / Capita,GDP / Capita,0,usa,model_wm,fives_proj,wm,grid,year,value,scenario,model,FALSE,variable_rename,region,fixed
 timeseries,1,Kaya,Population,Population,0,usa,model_wm,fives_proj,wm,grid,year,value,scenario,model,FALSE,variable_rename,region,fixed
+timeseries,2,GDP Breakout,GDP|Consumption,Consumption,0,usa,model_wm,fives_proj,scen_wm_ira,wrap,year,value,variable_rename,scenario,FALSE,model,region,free_y
+timeseries,2,GDP Breakout,GDP|Imports,Imports,0,usa,model_wm,fives_proj,scen_wm_ira,wrap,year,value,variable_rename,scenario,FALSE,model,region,free_y
+timeseries,2,GDP Breakout,GDP|Exports,Exports,0,usa,model_wm,fives_proj,scen_wm_ira,wrap,year,value,variable_rename,scenario,FALSE,model,region,free_y
+timeseries,2,GDP Breakout,GDP|Government,Government,0,usa,model_wm,fives_proj,scen_wm_ira,wrap,year,value,variable_rename,scenario,FALSE,model,region,free_y
+timeseries,2,GDP Breakout,GDP|Investment,Investment,0,usa,model_wm,fives_proj,scen_wm_ira,wrap,year,value,variable_rename,scenario,FALSE,model,region,free_y
+timeseries,2,GDP Breakout,Output|Industry|Value,Industry Output,0,usa,model_wm,fives_proj,scen_wm_ira,wrap,year,value,variable_rename,scenario,FALSE,model,region,free_y

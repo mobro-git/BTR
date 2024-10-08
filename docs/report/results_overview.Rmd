@@ -32,7 +32,8 @@ tar_load(
     projections_all_sm, 
     figmap_nrgco2_stackbar,
     figmap_nrgco2_timeseries,
-    figmap_nrgco2_diffbar
+    figmap_nrgco2_diffbar,
+    figmap_kaya_timeseries
     )
   )
 ```
@@ -635,3 +636,9 @@ print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 12
 print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 13, "United States", scenario_rename = TRUE)
 ```
 
+### GDP-Breakout
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_kaya_timeseries, 2, "United States", scenario_rename = TRUE)
+
+```

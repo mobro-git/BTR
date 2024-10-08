@@ -559,6 +559,38 @@ ggplot() +
   guides(color = guide_legend(override.aes = list(alpha = 1)))
 ```
 
+## GDP-Breakout, BR5:VS Comparison
+
+```{r}
+
+var_list <- c('GDP|Consumption',
+              'GDP|Imports',
+              'GDP|Exports',
+              'GDP|Government',
+              'GDP|Investment',
+              'Output|Industry|Value')
+
+gdp_df <- data_long_clean %>%
+  filter(scenario %in% c('leep_IRA','wm'),
+         variable %in% var_list,
+         year %in% config$fives_proj,
+         model %in% c('USREP-ReEDS', "OP-NEMS")) %>%
+  select(model,scenario,year,variable,value) %>%
+  group_by(scenario,year,variable) %>% 
+  summarise(max = max(value),
+            min = min(value))
+
+var_palette <- unique(gdp_df$scenario)
+
+ggplot(data = gdp_df) +
+  geom_ribbon(aes(x = year, ymax = max, ymin = min, fill = scenario, color = scenario), alpha = .6) +
+  facet_wrap(~variable, scales = 'free_y') +
+  scale_y_continuous(labels = scales::label_currency()) +
+  scale_subpalette_single(var_palette) +
+  theme_btr()
+
+```
+
 
 # Sector Analysis {.tabset}
 
