@@ -375,7 +375,6 @@ dat4 <- dat3 %>%
 var_palette = c(unique(dat_range$var),unique(dat4$var))
 
 ```
-
 ```{r}
 
 ##### use real historic data 
@@ -430,7 +429,7 @@ multipanel_kaya = ggplot()+
   scale_subpalette_single(var_palette) +
   theme_btr() +
   labs(y="Key Factor Index \n(2015 = 1.0)")
-multipanel_kaya
+#multipanel_kaya
 ggsave(paste0('output/',settings$version,"/tables_figs/kaya/kaya_multipanel.png"), width = 5, create.dir = TRUE)
 
 line_size = 0.7
@@ -470,8 +469,10 @@ ggsave(paste0('output/',settings$version,"/tables_figs/kaya/kaya_singlepanel.png
 ## BR5:VS Comparison
 
 ```{r}
-btr_kaya <- kaya_comp_renamed %>%
-  filter(br_version == '2024 BTR')
+
+############################
+# Voluntary Supplement Data
+############################
 
 vs_df <- data_long_clean %>% 
   filter(scenario == 'leep_IRA',
@@ -479,7 +480,8 @@ vs_df <- data_long_clean %>%
                          "Energy / GDP",
                          "GDP / Capita",
                          "Population"),
-         year %in% config$table) %>%
+         year %in% config$table50,
+         year > 2022) %>%
   select(model,year,variable,value)
 
 index_df <- kaya_comp_renamed %>%
@@ -504,16 +506,57 @@ calc_df <- vs_df_rbind %>%
   ungroup() %>%
   filter(!(model == 'USREP-ReEDS' & variable %in% c('Population','GDP / Capita')))
 
-ribbon_df <- calc_df %>%
+ribbon_vs_df <- calc_df %>%
   group_by(variable,year) %>%
   summarise(max = max(index_value),
-         min = min(index_value))
+         min = min(index_value)) %>%
+  mutate(br_version = "2022 BR5:VS") %>% 
+  select(br_version, everything())
 
+############################
+# BTR Data
+###########################
+
+btr_kaya <- kaya_data_range %>%
+  # filter(year %in% config$table,
+  #        year >= 2015) %>%
+  mutate(variable = case_when(variable == "Energy/GDP" ~ "Energy / GDP",
+                              variable == "Emissions/Energy" ~ "Emissions / Energy",
+                              variable == "GDP/Capita" ~ "GDP / Capita",
+                              TRUE~variable)) %>%
+  select(names(ribbon_vs_df))
+
+kaya_full <- btr_kaya %>% rbind(ribbon_vs_df)
+
+
+
+var_palette <- unique(btr_kaya$variable)
 
 ggplot() +
-  geom_ribbon(data = ribbon_df, mapping = aes(x = year, ymin = min, ymax = max, fill = variable, color = variable), alpha = .6) +
-  theme_btr()
-
+  geom_ribbon(data = kaya_full,
+              mapping = aes(x = year,
+                            ymin = min,
+                            ymax = max,
+                            fill = variable,
+                            color = variable,
+                            linetype = br_version),
+              alpha = 0.4,
+              size = .7) +
+  scale_linetype_manual(values = c("2022 BR5:VS" = "dotted", "2024 BTR" = "solid")) +
+  scale_subpalette_single(var_palette) +
+  labs(y="Key Factor Index \n(2015 = 1.0)",
+       title = "2024 BTR Inputs (solid) vs. 2022 BR5: Voluntary Supplement (dotted)") +
+  scale_x_continuous(breaks = config$table50,expand = c(0,0)) +
+  geom_vline(xintercept = settings$base_year,
+               linetype = 'dashed',
+               color = "black",
+               alpha = 0.5
+              ) +
+  theme_btr() +
+  theme(legend.background = element_rect(color = NA),
+        legend.position = 'bottom',
+        panel.grid.minor.x = element_blank()) +
+  guides(color = guide_legend(override.aes = list(alpha = 1)))
 ```
 
 

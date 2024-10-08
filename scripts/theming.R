@@ -357,6 +357,9 @@ color_map <- c(
   "GDP/Capita" = "dark m.yellow",
   "Energy/GDP" = "dark salmon",
   "Emissions/Energy" = "m.green",
+  "GDP / Capita" = "dark m.yellow",
+  "Energy / GDP" = "dark salmon",
+  "Emissions / Energy" = "m.green",
   
   # Sector Analysis
   "Long-Term Strategy" = "m.green",
