@@ -62,8 +62,15 @@ ggplot() +
   facet_grid(usproj_sector~gas, scales = "free_y") +
   labs(y = "Mt CO2e") +
   theme_btr() +
+  theme(text = element_text(size = 20)) +
   nolegend
 ```
+
+```{r}
+ggsave(filename = paste0('output/',settings$version,"/tables_figs/tge_breakouts/main_fig.png"),width = 9, height = 7)
+
+```
+
 
 ## Agriculture {.tabset}
 

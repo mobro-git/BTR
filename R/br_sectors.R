@@ -60,7 +60,10 @@ br_sectors = function(sector_df, var_choice, ytitle) {
     geom_hline(aes(yintercept=0)) +
     theme(
       legend.position = "inside",
-      legend.position.inside = c(0.15, 0.2))
+      legend.position.inside = c(0.15, 0.2),
+      axis.text = element_text(size = 20),
+      axis.title.y = element_text(size = 16)
+      )
   
 }
 

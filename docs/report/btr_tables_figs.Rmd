@@ -1139,7 +1139,7 @@ lulucf_co2_hist_long <- lulucf_co2_hist %>%
   pivot_longer(cols = 2:34, names_to = 'year') %>%
   select(year, value)
 
-lulucf_proj <- read_xlsx("data-extra/USDA NFS Raw Data/LULUCF projections DRAFT compilation 82924.xlsx",
+lulucf_proj <- read_xlsx("data-extra/USDA NFS Raw Data/LULUCF projections DRAFT compilation 10 3 2024.xlsx",
                         sheet = "LULUCF TABLE FOR PIPELINE") %>%
   filter(variable == 'Emissions|LULUCF|Carbon Stock Change') %>%
   pivot_longer(cols = 6:11, names_to = 'year') %>%
@@ -1181,14 +1181,16 @@ lulucf_fig <- ggplot(mapping = aes(x = year, y = value)) +
   scale_x_continuous(breaks = c(2000, 2005, 2010, settings$base_year, 2025, 2030, 2035, 2040),expand = c(0,0)) +
   expand_limits(y = c(0,-1500)) +
   scale_y_continuous(labels = scales::comma, breaks = c(0,-500,-1000,-1500)) +
-  theme_btr()
+  theme_btr() +
+  theme(text = element_text(size = 20))
 lulucf_fig
 ```
 ```{r}
 filename <- paste0("lulucf_fig_", Sys.Date(), ".png")
 ggsave(paste0('output/', settings$version, "/tables_figs/lulucf/", filename),
   create.dir = TRUE,
-  height = 4.5)
+  height = 4.5,
+  width = 9)
 ```
 
 ## Stats

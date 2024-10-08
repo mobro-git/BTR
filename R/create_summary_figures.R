@@ -2,7 +2,7 @@
 theme_btr <- function() {
   
   theme <- theme_light() +
-    theme(text = element_text(size = 12),
+    theme(text = element_text(size = 20),
           legend.background = element_rect(fill="white",color="gray"),
           legend.title=element_blank(),
           legend.position="right",
