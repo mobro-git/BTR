@@ -62,7 +62,11 @@ ggplot() +
   facet_grid(usproj_sector~gas, scales = "free_y") +
   labs(y = "Mt CO2e") +
   theme_btr() +
-  theme(text = element_text(size = 20)) +
+  theme(
+    #text = element_text(size = 20),
+        strip.text.x = element_text(size = 14),
+        strip.text.y = element_text(size = 14),
+        text = element_text(size = 14)) +
   nolegend
 ```
 

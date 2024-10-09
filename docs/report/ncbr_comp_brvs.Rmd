@@ -307,7 +307,7 @@ fig
 
 ```{r}
 filename <- paste0("ncbr_comp_fig_with_brvs_subset",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs/ncbr_comparison/",filename), create.dir = TRUE)
+ggsave(paste0('output/',settings$version,"/tables_figs/ncbr_comparison/",filename), create.dir = TRUE, height = 7, width = 9)
 ```
 
 

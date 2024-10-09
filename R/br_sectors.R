@@ -58,11 +58,10 @@ br_sectors = function(sector_df, var_choice, ytitle) {
     scale_y_continuous(limits = c(0,2500), expand = c(0,0), labels = comma) +
     scale_x_continuous(breaks = c(2005, 2022, 2025, 2030, 2035, 2040)) + 
     geom_hline(aes(yintercept=0)) +
+    theme_btr() +
     theme(
       legend.position = "inside",
-      legend.position.inside = c(0.15, 0.2),
-      axis.text = element_text(size = 20),
-      axis.title.y = element_text(size = 16)
+      legend.position.inside = c(0.15, 0.2)
       )
   
 }

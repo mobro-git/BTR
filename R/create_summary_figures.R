@@ -2,7 +2,7 @@
 theme_btr <- function() {
   
   theme <- theme_light() +
-    theme(text = element_text(size = 20),
+    theme(
           legend.background = element_rect(fill="white",color="gray"),
           legend.title=element_blank(),
           legend.position="right",
@@ -10,15 +10,16 @@ theme_btr <- function() {
           legend.text = element_text(size = 8),
           legend.spacing.y = unit(0.5, "mm"),
           plot.margin = margin(8,10,8,8),
-          axis.text.y = element_text(size=9),
-          axis.text.x = element_text(size=9, angle = 45, hjust = 1),
+          axis.text.y = element_text(size=14),
+          axis.text.x = element_text(size=14, angle = 45, hjust = 1),
           axis.ticks = element_blank(),
           axis.title.y = element_text(face="bold",vjust=2),
           axis.title.x = element_blank(),
           strip.text.x = element_text(size = 10, color = "black",face = "bold"),
           strip.text.y = element_text(size = 9, color = "black",face = "bold"),
           strip.background = element_rect(fill=NA, linewidth=1),
-          panel.grid.minor.x = element_blank())
+          panel.grid.minor.x = element_blank(),
+          text = element_text(size = 14))
 
   theme
 }
