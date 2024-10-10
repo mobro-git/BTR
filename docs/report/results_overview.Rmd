@@ -636,9 +636,17 @@ print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 12
 print_graph("time_series", config, data_long_clean, figmap_nrgco2_timeseries, 13, "United States", scenario_rename = TRUE)
 ```
 
+### Kaya-Analysis
+
+```{r}
+# TODO: Add Kaya vars by model, figure out figmap with multiple units
+#print_graph("time_series", config, data_long_clean, figmap_kaya_timeseries, 1, "United States", scenario_rename = TRUE)
+
+```
+
 ### GDP-Breakout
 
 ```{r}
-print_graph("time_series", config, data_long_clean, figmap_kaya_timeseries, 2, "United States", scenario_rename = TRUE)
+#print_graph("time_series", config, data_long_clean, figmap_kaya_timeseries, 2, "United States", scenario_rename = TRUE)
 
 ```

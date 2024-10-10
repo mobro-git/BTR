@@ -51,7 +51,6 @@ OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,OP-NEMS,OP Moderate,OP-NEM
 092524gcamreport_Processed.csv,GCAM 7.0,WM_092524_highFuelCost,GCAM,wm_highfuelcost,high fuel cost sensitivity PRELIMINARY,btr
 092524gcamreport_Processed.csv,GCAM 7.0,WM_092524_LowCostRE23,GCAM,wm_lowcostre,low cost re ATB23 sensitivity PRELIMINARY,btr
 092524gcamreport_Processed.csv,GCAM 7.0,WM_092524_LowCostRE23_highFuelCost,GCAM,wm_lowcostre_highfuelcost,high fuel AND low cost re sensitivity PRELIMINARY,btr
-USREP-ReEDS additional Reporting Variables 8.13.xlsx,USREP-ReEDS,wm,USREP-ReEDS,wm,vehicle stock and sales variables,btr
 BTR OP Sensitivities-Advanced Case 9-27-2024.xlsx,OP-NEMS,OP Advanced,OP-NEMS,wm_adv,OP-NEMS sensitivities,btr
 BTR OP Sensitivities-High OGS Case 9-27-2024.xlsx,OP-NEMS,High OGS,OP-NEMS,wm_highogs,OP-NEMS sensitivities,btr
 BTR OP Sensitivities-Low OGS Case 9-27-2024.xlsx,OP-NEMS,Low OGS,OP-NEMS,wm_lowogs,OP-NEMS sensitivities,btr
