@@ -44,6 +44,7 @@ master_palette <- c(
   "gray green" = "#5f7470",
   "aqua" = "#2ab7ca",
   "black" = "#000000",
+  "MIT Red" = "#750014",
   "m.teal" = "#148896",
   "m.blue" = "#044980",
   "m.green" = "#149664",
@@ -130,17 +131,19 @@ color_map <- c(
   # scenarios
   "wm" = "teal blue",
   "With Measures" = "teal blue",
+  "2024 BTR, Sens." = "mauve",
+  "wm_sens" = "mauve",
   "2024 Policy Baseline" = "teal blue",
   "Historical" = "black",
   "leep_IRA" = "redD",
-  "IRA" = "redD",
+  "IRA" = "hue1",
   "LEEP" = "redD",
   
   # models
   
   "OP-NEMS" = "navyD",
   "GCAM" = "limeD",
-  "USREP-ReEDS" = "brownD",
+  "USREP-ReEDS" = "MIT Red",
   "EPA-GHGI" = "light orange",
   
   # fuels
@@ -369,6 +372,9 @@ color_map <- c(
   "2023 BR Voluntary Supplement: All Models" = "hue1",
   "2023 BR Voluntary Supplement - BTR Subset" = "hue1",
   "2023 BR Voluntary Supplement" = "hue1"
+  
+
+
   
   ) %>%
   find_color(master_palette)

@@ -20,7 +20,6 @@ library(targets)
 library(tarchetypes)
 tar_source()
 source('packages.R')
-source("scripts/theming.R")
 ```
 
 ```{r}
@@ -33,6 +32,9 @@ tar_load(
     figmap_sens_timeseries
     )
   )
+
+source("scripts/theming.R")
+
 ```
 
 # Energy CO2 Emissions
@@ -60,9 +62,7 @@ print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 10, 
 print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 41, "United States")
 ```
 
-## Fuel {.tabset}
-
-### Model
+## Fuel
 
 ```{r}
 print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 30, "United States")
@@ -152,62 +152,6 @@ print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 18, 
 
 ```{r}
 print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 19, "United States", scenario_rename = TRUE)
-```
-
-
-### Vehicle Share {.tabset}
-
-#### Sales Share 
-
-```{r}
-df1 = data_from_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 33, "United States", scenario_rename = TRUE) %>%
-  mutate(facet = "Freight")
-df2 = data_from_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 34, "United States", scenario_rename = TRUE) %>%
-  mutate(facet = "Passenger")
-df = rbind(df1,df2)
-
-var_palette <- unique(df$model)
-
-ggplot(data = df) +
-  geom_line(aes(x=year,y=value, colour = model), size = 1) +
-  facet_grid(facet~variable_rename) +
-  scale_color_manual(values = c("GCAM" = "#bfef45",
-                                'OP-NEMS' = "#000075",
-                                'USREP-ReEDS' = "#9a6324")) +
-  theme_custom() +
-  scale_y_continuous(labels = scales::percent)  +
-  labs(title = 'Vehicle Sales Share') +
-  theme(
-        axis.title.y = element_blank(),
-        axis.title.x = element_blank(),
-        axis.text.x = element_text(angle = 45, hjust=1),
-        panel.spacing.x = unit(4, "mm"))
-
-```
-
-#### Stock Share 
-
-```{r}
-df1 = data_from_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 35, "United States", scenario_rename = TRUE) %>%
-  mutate(facet = "Freight")
-df2 = data_from_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 36, "United States", scenario_rename = TRUE) %>%
-  mutate(facet = "Passenger")
-df = rbind(df1,df2)
-
-ggplot(data = df) +
-  geom_line(aes(x=year,y=value, colour = model), size = 1) +
-  facet_grid(facet~variable_rename) +
-  scale_color_manual(values = c("GCAM" = "#bfef45",
-                                'OP-NEMS' = "#000075",
-                                'USREP-ReEDS' = "#9a6324")) +
-  theme_custom() +
-  scale_y_continuous(labels = scales::percent)  +
-  labs(title = 'Vehicle Stock Share') +
-  theme(
-        axis.title.y = element_blank(),
-        axis.title.x = element_blank(),
-        axis.text.x = element_text(angle = 45, hjust=1),
-        panel.spacing.x = unit(4, "mm"))
 ```
 
 ## Percent Electricity
