@@ -26,6 +26,8 @@ source('packages.R')
 library(targets)
 library(tarchetypes)
 tar_source()
+source("scripts/theming.R")
+
 ```
 
 ```{r}
@@ -43,15 +45,27 @@ tar_load(
     )
   )
 
-source("scripts/theming.R")
 
 ```
 
 # BTR Tables and Figures: BRVS & BTR Sensitivities Comparison
-## BTR Main Plot w/ LEEP Report Comparison {.tabset}
 
+## Net-GHG Emissions {.tabset}
+
+### LEEP + Sens
 
 ```{r}
+
+brvs_tne <- read_csv("data-extra/BR Voluntary Supplement 2023/brvs_totalnetemissions.csv")
+
+brve_tne_clean <- brvs_tne %>%
+  mutate(model = case_when(model == "GCAM-PNNL" ~ "GCAM",
+                           model == "NEMS-OP" ~ "OP-NEMS",
+                           TRUE~model)) %>%
+  filter(model %in% config$model_wm) %>%
+  pivot_longer(cols = 5:11,
+               names_to = "year")
+
 net_ghg <- projections_ghgi %>%
   filter(year %in% config$fives50,
          !grouping == "wm_ltslulucf") %>% 
@@ -108,7 +122,6 @@ p <- ggplot() +
                        breaks = c(2000,4000,6000,round(ghgi$value[1])),
                        labels = comma) +
     scale_x_continuous(breaks = c(2005, 2010, 2015, 2020, 2022, 2025, 2030, 2035, 2040, 2045, 2050), expand = c(0,0)) +
-  scale_subpalette_single(unique(net_ghg_final$grouping)) +
     guides(fill = guide_legend(nrow = 4, byrow = T)) +
     geom_hline(aes(yintercept = 0)) +
     theme_btr() +
@@ -178,7 +191,8 @@ projections = p +
     color = "gray",
     size = 0.4,
     alpha = 0.5
-  )
+  ) +
+    scale_subpalette_single(c(unique(net_ghg_final$grouping), unique(ndc_targets$grouping))) 
 
 projections
 
@@ -223,7 +237,7 @@ ndc_targets = data.frame(
 )
 ```
 
-### Net GHG Emissions
+### LEEP
 
 ```{r proj function}
 projections_leep = br_project_brvs_sens(ghgi, proj, settings, targets = ndc_targets)
@@ -274,17 +288,7 @@ ndc_targets = data.frame(
 )
 ```
 
-### Percent Change from 2005
 
-```{r}
-projections_pct_change = br_project_pct_change(ghgi, proj, targets = ndc_targets)
-projections_pct_change
-```
-
-```{r}
-filename <- paste0("btr_main_fig_pctchange05_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_figs/main_fig_leep/",filename), create.dir = TRUE)
-```
 
 
 ### Comp. to Sens./BRVS
@@ -295,10 +299,43 @@ ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_figs/main_fig_le
 
 
 
-## BR5:VS Comparison
+## Kaya BR5:VS Comparison
 
 ```{r}
+tar_load(kaya_comparison50) 
 
+kaya_data_range <- kaya_comparison50 %>%
+  filter(br_version == "2024") %>%
+  select(-value, -base) %>%
+  pivot_wider(names_from = scenario, values_from = indexed) %>%
+  mutate(
+    variable = case_when(
+      variable == "EmissPerEnergy" ~ "Emissions/Energy",
+      variable == "EnergyPerGDP" ~ "Energy/GDP",
+      variable == "GDPPerCap" ~ "GDP/Capita",
+      TRUE ~ variable
+    ),
+    br_version = case_when(
+      br_version == "2022" ~ "2022 BR",
+      br_version == "2024" ~ "2024 BTR",
+      TRUE ~ br_version
+    )
+  ) %>%
+  filter(year <= 2050 & year >= 2005)
+
+kaya_comp_renamed <- kaya_comparison50  %>%
+  mutate(
+    variable = case_when(
+      variable == "EmissPerEnergy" ~ "Emissions/Energy",
+      variable == "EnergyPerGDP" ~ "Energy/GDP",
+      variable == "GDPPerCap" ~ "GDP/Capita",
+      TRUE~variable),
+    br_version = case_when(
+      br_version == "2022" ~ "2022 BR",
+      br_version == "2024" ~ "2024 BTR",
+      TRUE ~ br_version)) %>%
+  filter(!(br_version == "2024 BTR" & variable %in% c("Emissions/Energy","Energy/GDP") & year >2022)) %>%
+  filter(year <= 2050 & year >=2005)
 ############################
 # Voluntary Supplement Data
 ############################
@@ -506,8 +543,9 @@ median_df <- proj_df %>%
          scenario = "wm",
          unit = "Mt CO2/yr",
          datasrc = "median calc",
-         region = "United States") %>%
-  select(names(proj_df))
+         region = "United States") 
+# %>%
+# select(names(proj_df))
 
 # merge three datasets together
 sector_df <- rbind(ghgi_df, lts_df, proj_df, median_df) %>%
@@ -541,4 +579,13 @@ industry <- br_sectors(sector_df,
                        expression(paste("Industry Emissions (MMt C", O[2], ")")))
 ```
 
+```{r}
+tar_load(usproj_all)
+
+btr_df <- usproj_all %>%
+  filter(scenario == 'wm')
+
+write_csv(btr_df,"output/btr_wm_2024-10-17.csv")
+
+```
 

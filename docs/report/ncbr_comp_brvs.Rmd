@@ -208,7 +208,8 @@ gtsave(ncbr_comp_table, paste0('output/',settings$version,"/tables_figs/results_
 
 ```{r}
 tge_btr <- projections_all_sm %>% 
-  filter(!gas == 'LULUCF Sink') %>%
+  filter(!gas == 'LULUCF Sink',
+         !grouping == 'wm_sens') %>%
   group_by(proj_name, grouping, year) %>%
   summarise(Value = sum(sum),.groups = 'drop')
 
@@ -223,8 +224,6 @@ tge_all_long <- tge_btr %>%
                             Report == "br_2016" ~ "2016 BR",
                             Report == "br_2021" ~ "2021 BR",
                             Report == "br_2022" ~ "2022 BR"))
-#%>%
- # filter(year %in% config$fives_proj_sm)
 
 
 ncbr_comp_ribbon <- tge_all_long %>% 
@@ -308,6 +307,38 @@ fig
 ```{r}
 filename <- paste0("ncbr_comp_fig_with_brvs_subset",Sys.Date(),".png")
 ggsave(paste0('output/',settings$version,"/tables_figs/ncbr_comparison/",filename), create.dir = TRUE, height = 7, width = 9)
+```
+
+
+### Figure, BRVS + Sens
+
+```{r}
+sens_ribbon_data <- projections_ghgi %>%
+  filter(grouping %in% c('ghgi','wm_sens'),
+         usproj_sector != "LULUCF Sink",
+         year %in% config$fives50) %>%
+  group_by(proj_name, year) %>%
+  summarise(Value = sum(value), .groups = 'drop') %>%
+  mutate(gas = 'Total Gross Emissions') %>%
+  group_by(gas,year) %>%
+  summarise(max = max(Value),
+            min = min(Value),
+            .groups = 'drop') %>%
+  mutate(Report = '2024 BTR, Sens.') %>%
+  rename(Year = year) %>% 
+  select(Report, Year, max,min)
+
+ncbr_brvs_sens_comp_ribbon <- sens_ribbon_data %>%
+  rbind(ncbr_comp_ribbon_with_brvs_subset) %>%
+  filter(Year %in% config$fives50)
+
+
+ggplot(data = ncbr_brvs_sens_comp_ribbon) +
+  geom_ribbon(aes(x = Year, ymax = max, ymin = min, color = Report, fill = Report), alpha = .4) +
+  scale_subpalette_single(unique(ncbr_brvs_sens_comp_ribbon$Report)) +
+  theme_btr()
+
+
 ```
 
 

@@ -42,7 +42,8 @@ tar_plan(
     scen_wm = c("wm"), #, "leep_IRA"
     scen_wm_hist = c("wm","Historic"),
     scen_wm_ira = c("wm","leep_IRA"),
-    scen_wm_sensitivities = c("wm", "wm_adv", "wm_highogs","wm_lowogs", "wm_adv_max", "wm_highfuelcost", "wm_lowcostre", "wm_lowcostre_highfuelcost"),
+    scen_wm_sensitivities = c("wm", "wm_adv", "wm_highogs","wm_lowogs", "wm_adv_max", "wm_highfuelcost", "wm_lowfuelcost", "wm_lowcostre_highfuelcost",
+                              "wm_lowemis", "wm_lowemis_v2"),
     
     # regions
     usa = "United States",
@@ -342,7 +343,7 @@ tar_plan(
              params = list(mode = "targets")),
   
   tar_render(btr_tables_figs_sens,
-             "docs/report/btr_tables_figs_sens.Rmd",
+             "docs/report/btr_tables_figs_brvs_sens_comp.Rmd",
              output_dir = paste0('output/',settings$version,"/tables_figs_sens"),
              output_file = paste0("btr_tables_figs_sens",Sys.Date(),".html"),
              params = list(mode = "targets"))

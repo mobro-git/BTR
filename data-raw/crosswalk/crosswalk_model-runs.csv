@@ -44,23 +44,20 @@ usrep_reeds_allscen.csv,USREP-ReEDS,ira_mid_adv,USREP-ReEDS,leep_All Advanced,LE
 usrep_reeds_allscen.csv,USREP-ReEDS,ira_high_adv,USREP-ReEDS,leep_Opt-IRA.Adv,LEEP report,leep
 usrep_reeds_allscen.csv,USREP-ReEDS,ira_mid_constr,USREP-ReEDS,leep_Constrained Deployment,LEEP report,leep
 OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,OP-NEMS,OP Moderate,OP-NEMS,wm,btr - OP-NEMS BTR wm,btr
-092524gcamreport_Processed.csv,GCAM 7.0,WM_092524,GCAM,wm,btr- gcam,btr
-092524gcamreport_Processed.csv,GCAM 7.0,WM_IRAEGU_092524,GCAM,wm_iraegu,,btr
-092524gcamreport_Processed.csv,GCAM 7.0,WM_IRATRN_092524,GCAM,wm_iratrn,,btr
-092524gcamreport_Processed.csv,GCAM 7.0,WM_IRAonly_092524,GCAM,wm_iraonly,,btr
-092524gcamreport_Processed.csv,GCAM 7.0,WM_092524_highFuelCost,GCAM,wm_highfuelcost,high fuel cost sensitivity PRELIMINARY,btr
-092524gcamreport_Processed.csv,GCAM 7.0,WM_092524_LowCostRE23,GCAM,wm_lowcostre,low cost re ATB23 sensitivity PRELIMINARY,btr
-092524gcamreport_Processed.csv,GCAM 7.0,WM_092524_LowCostRE23_highFuelCost,GCAM,wm_lowcostre_highfuelcost,high fuel AND low cost re sensitivity PRELIMINARY,btr
 BTR OP Sensitivities-Advanced Case 9-27-2024.xlsx,OP-NEMS,OP Advanced,OP-NEMS,wm_adv,OP-NEMS sensitivities,btr
 BTR OP Sensitivities-High OGS Case 9-27-2024.xlsx,OP-NEMS,High OGS,OP-NEMS,wm_highogs,OP-NEMS sensitivities,btr
 BTR OP Sensitivities-Low OGS Case 9-27-2024.xlsx,OP-NEMS,Low OGS,OP-NEMS,wm_lowogs,OP-NEMS sensitivities,btr
-report_emf_all.csv,USREP-ReEDS,btr_ref,USREP-ReEDS,ref,,btr
-report_emf_all.csv,USREP-ReEDS,btr_wm,USREP-ReEDS,wm,btr,btr
-report_emf_all.csv,USREP-ReEDS,btr_wm_adv,USREP-ReEDS,wm_adv,,btr
-report_emf_all.csv,USREP-ReEDS,btr_wm_adv_max,USREP-ReEDS,wm_adv_max,,btr
-report_emf_all.csv,USREP-ReEDS,btr_wm_adv_max_old,USREP-ReEDS,max_old,old reeds,btr
-report_emf_all.csv,USREP-ReEDS,btr_ref_old,USREP-ReEDS,ref_old_new,old reeds,btr
-report_emf_all.csv,USREP-ReEDS,btr_wm_old,USREP-ReEDS,wm_old,old reeds,btr
-report_emf_all.csv,USREP-ReEDS,btr_wm_adv_old,USREP-ReEDS,wm_adv_old,old reeds,btr
 report_usrep_reeds_btr_9.3.csv,USREP-ReEDS,btr4_ref_new,USREP-ReEDS,ref_old,,btr
 report_usrep_reeds_btr_9.3.csv,USREP-ReEDS,btr4_wm,USREP-ReEDS,wm_bug,,btr
+emf_USREP-ReEDS_BTR_10.17_v1.csv,USREP-ReEDS,btr_ref,USREP-ReEDS,ref,,btr
+emf_USREP-ReEDS_BTR_10.17_v1.csv,USREP-ReEDS,btr_wm,USREP-ReEDS,wm,btr- reeds,btr
+emf_USREP-ReEDS_BTR_10.17_v1.csv,USREP-ReEDS,btr_wm_highemis,USREP-ReEDS,wm_highemis,,btr
+emf_USREP-ReEDS_BTR_10.17_v1.csv,USREP-ReEDS,btr_wm_lowemis,USREP-ReEDS,wm_lowemis,,btr
+emf_USREP-ReEDS_BTR_10.17_v1.csv,USREP-ReEDS,btr_wm_lowemis_v2,USREP-ReEDS,wm_lowemis_v2,,btr
+100924gcamreport_Processed.csv,GCAM 7.0,WM_100924,GCAM,wm,btr-gcam,
+100924gcamreport_Processed.csv,GCAM 7.0,WM_100924_LowCostRE23_highFuelCost,GCAM,wm_lowcostre_highfuelcost,,
+100924gcamreport_Processed.csv,GCAM 7.0,WM_100924_highFuelCost,GCAM,wm_highfuelcost,,
+100924gcamreport_Processed.csv,GCAM 7.0,WM_100924_lowFuelCost,GCAM,wm_lowfuelcost,,
+100924gcamreport_Processed.csv,GCAM 7.0,WM_IRAEGU_100924,GCAM,wm_iraegu,,
+100924gcamreport_Processed.csv,GCAM 7.0,WM_IRATRN_100924,GCAM,wm_iratrn,,
+100924gcamreport_Processed.csv,GCAM 7.0,WM_IRAonly_100924,GCAM,wm_iraonly,,
