@@ -34,6 +34,7 @@ tar_load(
     settings,
     data_long_clean,
     projections_all_sm,
+    projections_ghgi,
     total_gross_emissions,
     ghgi_comp_tab,
     figmap_nrgco2_stackbar,
