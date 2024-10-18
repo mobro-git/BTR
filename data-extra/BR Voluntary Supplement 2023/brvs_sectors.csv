@@ -1,0 +1,237 @@
+﻿model,scenario,variable,unit,2025,2030,2035
+EPS-EI,IRA,Carbon Sequestration|LULUCF,Mt CO2/yr,-738.381925,-742.3270665,-708.38832
+EPS-EI,IRA,Emissions|CH4,Mt CO2/yr,684.2283341,695.7968892,728.8069718
+EPS-EI,IRA,Emissions|CO2,Mt CO2e/yr,4531.869153,3624.576274,3037.847988
+EPS-EI,IRA,Emissions|CO2|Energy|Demand|Buildings|Total,Mt CO2/yr,1386.23175,919.1842197,723.3525795
+EPS-EI,IRA,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Mt CO2/yr,1146.681857,939.5390603,849.9808865
+EPS-EI,IRA,Emissions|CO2|Energy|Demand|Transportation|Total,Mt CO2/yr,1594.044956,1417.943852,1229.535041
+EPS-EI,IRA,Emissions|CO2|Energy|Supply|Electricity,Mt CO2/yr,1189.76,601.405,333.702
+EPS-EI,IRA,Emissions|F-gases|HFCs,Mt CO2e/yr,150,153,124
+EPS-EI,IRA,Emissions|F-gases|NF3,Mt CO2e/yr,1,1,1
+EPS-EI,IRA,Emissions|F-gases|PFCs,Mt CO2e/yr,5,5,5
+EPS-EI,IRA,Emissions|F-gases|SF6,Mt CO2e/yr,5,4,4
+EPS-EI,IRA,Emissions|GHG|Agriculture,Mt CO2e/yr,497.2560239,465.7605179,579.9633415
+EPS-EI,IRA,Emissions|GHG|Energy,Mt CO2e/yr,2643.81472,2122.403096,1821.402839
+EPS-EI,IRA,Emissions|GHG|Industrial Processes,Mt CO2e/yr,,,
+EPS-EI,IRA,Emissions|GHG|Net,Mt CO2e/yr,,,
+EPS-EI,IRA,Emissions|GHG|Total Gross,Mt CO2e/yr,,,
+EPS-EI,IRA,Emissions|GHG|Transportation,Mt CO2e/yr,1578.59844,1349.688903,1081.742152
+EPS-EI,IRA,Emissions|GHG|Waste,Mt CO2e/yr,190.325996,167.9948689,176.2728016
+EPS-EI,IRA,Emissions|N2O,Mt CO2e/yr,342.1168153,360.4618954,397.0683979
+GCAM-CGS,IRA,Carbon Sequestration|LULUCF,Mt CO2/yr,-754.9295962,-754.0458801,-751.717539
+GCAM-CGS,IRA,Emissions|CH4,Mt CO2/yr,722.008,688.1168,688.1168
+GCAM-CGS,IRA,Emissions|CO2,Mt CO2e/yr,4143.321331,3535.151217,3265.141577
+GCAM-CGS,IRA,Emissions|CO2|Energy|Demand|Buildings|Total,Mt CO2/yr,1250.410354,924.9101101,752.9288417
+GCAM-CGS,IRA.High,Emissions|CO2|Energy|Demand|Buildings|Total,Mt CO2/yr,497.5222945,450.3912101,436.996935
+GCAM-CGS,IRA.Low,Emissions|CO2|Energy|Demand|Buildings|Total,Mt CO2/yr,500.6440753,455.1327314,447.9295724
+GCAM-CGS,IRA,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Mt CO2/yr,1299.877112,1185.549759,1174.687987
+GCAM-CGS,IRA.High,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Mt CO2/yr,1065.626805,1005.428315,1048.178175
+GCAM-CGS,IRA.Low,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Mt CO2/yr,1073.645256,1016.656229,1067.936715
+GCAM-CGS,IRA,Emissions|CO2|Energy|Demand|Transportation|Total,Mt CO2/yr,1562.077279,1396.930722,1310.872568
+GCAM-CGS,IRA.High,Emissions|CO2|Energy|Demand|Transportation|Total,Mt CO2/yr,1537.211312,1350.02678,1270.237753
+GCAM-CGS,IRA.Low,Emissions|CO2|Energy|Demand|Transportation|Total,Mt CO2/yr,1540.06192,1364.024887,1292.36442
+GCAM-CGS,IRA,Emissions|CO2|Energy|Supply|Electricity,Mt CO2/yr,1001.239884,679.6590548,445.5802983
+GCAM-CGS,IRA.High,Emissions|CO2|Energy|Supply|Electricity,Mt CO2/yr,962.4171432,594.2729955,437.1385189
+GCAM-CGS,IRA.Low,Emissions|CO2|Energy|Supply|Electricity,Mt CO2/yr,1041.927462,763.1521786,445.8541138
+GCAM-CGS,IRA,Emissions|F-gases|HFCs,Mt CO2e/yr,150,153,124
+GCAM-CGS,IRA,Emissions|F-gases|NF3,Mt CO2e/yr,1,1,1
+GCAM-CGS,IRA,Emissions|F-gases|PFCs,Mt CO2e/yr,5,5,5
+GCAM-CGS,IRA,Emissions|F-gases|SF6,Mt CO2e/yr,5,4,4
+GCAM-CGS,IRA,Emissions|GHG|Agriculture,Mt CO2e/yr,647.3085821,663.400751,685.5291171
+GCAM-CGS,IRA,Emissions|GHG|Energy,Mt CO2e/yr,2919.43144,2456.591581,2260.534486
+GCAM-CGS,IRA,Emissions|GHG|Industrial Processes,Mt CO2e/yr,160.1348969,129.5470181,129.6306364
+GCAM-CGS,IRA,Emissions|GHG|Net,Mt CO2e/yr,4689.627142,4035.835723,3790.197957
+GCAM-CGS,IRA,Emissions|GHG|Total Gross,Mt CO2e/yr,5444.556738,4789.881603,4541.915496
+GCAM-CGS,IRA,Emissions|GHG|Transportation,Mt CO2e/yr,1538.616566,1357.179642,1282.967561
+GCAM-CGS,IRA,Emissions|GHG|Waste,Mt CO2e/yr,179.5164533,183.4458107,183.536896
+GCAM-CGS,IRA,Emissions|N2O,Mt CO2e/yr,439.7822166,457.6723285,479.7158614
+GCAM-PNNL,IRA,Carbon Sequestration|LULUCF,Mt CO2/yr,,,
+GCAM-PNNL,IRA,Emissions|CH4,Mt CO2e/yr,,,
+GCAM-PNNL,IRA,Emissions|CO2,Mt CO2/yr,4150.868768,3631.819136,3310.10805
+GCAM-PNNL,All Advanced,Emissions|CO2|Energy|Demand|Buildings|Total,Mt CO2/yr,1262.108811,1015.183713,944.9102878
+GCAM-PNNL,High Energy Price,Emissions|CO2|Energy|Demand|Buildings|Total,Mt CO2/yr,1135.2801,911.3916,823.6024
+GCAM-PNNL,High Growth,Emissions|CO2|Energy|Demand|Buildings|Total,Mt CO2/yr,1296.5508,1066.3322,1006.3374
+GCAM-PNNL,IRA,Emissions|CO2|Energy|Demand|Buildings|Total,Mt CO2/yr,1279.294741,1039.45558,974.2475746
+GCAM-PNNL,Low Energy Price,Emissions|CO2|Energy|Demand|Buildings|Total,Mt CO2/yr,1304.7486,1058.1822,1015.5188
+GCAM-PNNL,Low Growth,Emissions|CO2|Energy|Demand|Buildings|Total,Mt CO2/yr,1260.4517,1008.8972,936.5653
+GCAM-PNNL,All Advanced,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Mt CO2/yr,1048.32494,963.6221094,922.0481303
+GCAM-PNNL,High Energy Price,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Mt CO2/yr,994.1812607,919.1014426,867.3696583
+GCAM-PNNL,High Growth,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Mt CO2/yr,1069.053883,1002.998696,983.6307463
+GCAM-PNNL,IRA,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Mt CO2/yr,1056.764533,979.071266,949.0823984
+GCAM-PNNL,Low Energy Price,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Mt CO2/yr,1068.65343,990.4531817,974.323118
+GCAM-PNNL,Low Growth,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Mt CO2/yr,1045.304388,956.2947201,915.8501579
+GCAM-PNNL,All Advanced,Emissions|CO2|Energy|Demand|Transportation|Total,Mt CO2/yr,1708.896826,1486.694065,1255.057203
+GCAM-PNNL,High Energy Price,Emissions|CO2|Energy|Demand|Transportation|Total,Mt CO2/yr,1698.53217,1481.78383,1246.42889
+GCAM-PNNL,High Growth,Emissions|CO2|Energy|Demand|Transportation|Total,Mt CO2/yr,1741.02137,1544.15657,1331.05283
+GCAM-PNNL,IRA,Emissions|CO2|Energy|Demand|Transportation|Total,Mt CO2/yr,1714.238844,1504.764776,1283.052676
+GCAM-PNNL,Low Energy Price,Emissions|CO2|Energy|Demand|Transportation|Total,Mt CO2/yr,1723.0875,1523.45263,1306.02284
+GCAM-PNNL,Low Growth,Emissions|CO2|Energy|Demand|Transportation|Total,Mt CO2/yr,1686.49577,1462.97875,1231.03339
+GCAM-PNNL,All Advanced,Emissions|CO2|Energy|Supply|Electricity,Mt CO2/yr,1161.357632,837.8205901,792.4970279
+GCAM-PNNL,High Energy Price,Emissions|CO2|Energy|Supply|Electricity,Mt CO2/yr,1071.843,781.7242,719.7337
+GCAM-PNNL,High Growth,Emissions|CO2|Energy|Supply|Electricity,Mt CO2/yr,1163.749,837.5529,792.4751
+GCAM-PNNL,IRA,Emissions|CO2|Energy|Supply|Electricity,Mt CO2/yr,1160.581106,831.9987101,784.3681809
+GCAM-PNNL,Low Energy Price,Emissions|CO2|Energy|Supply|Electricity,Mt CO2/yr,1167.684,836.4162,792.2504
+GCAM-PNNL,Low Growth,Emissions|CO2|Energy|Supply|Electricity,Mt CO2/yr,1157.252,826.1101,775.6386
+GCAM-PNNL,IRA,Emissions|F-gases|HFCs,Mt CO2e/yr,150,153,124
+GCAM-PNNL,IRA,Emissions|F-gases|NF3,Mt CO2e/yr,1,1,1
+GCAM-PNNL,IRA,Emissions|F-gases|PFCs,Mt CO2e/yr,5,5,5
+GCAM-PNNL,IRA,Emissions|F-gases|SF6,Mt CO2e/yr,5,4,4
+GCAM-PNNL,IRA,Emissions|GHG|Agriculture,Mt CO2e/yr,,,
+GCAM-PNNL,IRA,Emissions|GHG|Energy,Mt CO2e/yr,,,
+GCAM-PNNL,IRA,Emissions|GHG|Industrial Processes,Mt CO2e/yr,,,
+GCAM-PNNL,IRA,Emissions|GHG|Net,Mt CO2e/yr,,,
+GCAM-PNNL,IRA,Emissions|GHG|Total Gross,Mt CO2e/yr,,,
+GCAM-PNNL,IRA,Emissions|GHG|Transportation,Mt CO2e/yr,,,
+GCAM-PNNL,IRA,Emissions|GHG|Waste,Mt CO2e/yr,,,
+GCAM-PNNL,IRA,Emissions|N2O,Mt CO2e/yr,,,
+MARKAL-NETL,IRA,Carbon Sequestration|LULUCF,Mt CO2/yr,,,
+MARKAL-NETL,IRA,Emissions|CH4,Mt CO2/yr,,,
+MARKAL-NETL,IRA,Emissions|CO2,Mt CO2e/yr,,,
+MARKAL-NETL,IRA,Emissions|GHG|Agriculture,Mt CO2e/yr,,,
+MARKAL-NETL,IRA,Emissions|GHG|Energy,Mt CO2e/yr,,,
+MARKAL-NETL,IRA,Emissions|GHG|Industrial Processes,Mt CO2e/yr,,,
+MARKAL-NETL,IRA,Emissions|GHG|Net,Mt CO2e/yr,,,
+MARKAL-NETL,IRA,Emissions|GHG|Total Gross,Mt CO2e/yr,,,
+MARKAL-NETL,IRA,Emissions|GHG|Transportation,Mt CO2e/yr,,,
+MARKAL-NETL,IRA,Emissions|GHG|Waste,Mt CO2e/yr,,,
+MARKAL-NETL,IRA,Emissions|N2O,Mt CO2e/yr,,,
+MARKAL-NETL,IRA,Emissions|CO2|Energy|Supply|Electricity,Mt CO2/yr,1410.01,1232.67,749.4
+MARKAL-NETL,IRA.Low,Emissions|CO2|Energy|Supply|Electricity,Mt CO2/yr,1391.03,1372.5,815.57
+MARKAL-NETL,IRA,Emissions|CO2|Energy|Demand|Buildings|Total,Mt CO2/yr,1323.266646,1140.932673,778.0950571
+MARKAL-NETL,IRA,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Mt CO2/yr,1316.817465,1314.64621,1222.266662
+MARKAL-NETL,IRA,Emissions|CO2|Energy|Demand|Transportation|Total,Mt CO2/yr,1602.975889,1493.401117,1356.218281
+MARKAL-NETL,IRA.Low,Emissions|CO2|Energy|Demand|Buildings|Total,Mt CO2/yr,1310.807899,1237.04851,826.2699075
+MARKAL-NETL,IRA.Low,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Mt CO2/yr,1313.76475,1346.840002,1233.165166
+MARKAL-NETL,IRA.Low,Emissions|CO2|Energy|Demand|Transportation|Total,Mt CO2/yr,1601.307351,1505.721488,1363.324927
+MARKAL-NETL,IRA,Emissions|F-gases|HFCs,Mt CO2e/yr,150,153,124
+MARKAL-NETL,IRA,Emissions|F-gases|PFCs,Mt CO2e/yr,5,5,5
+MARKAL-NETL,IRA,Emissions|F-gases|SF6,Mt CO2e/yr,5,4,4
+MARKAL-NETL,IRA,Emissions|F-gases|NF3,Mt CO2e/yr,1,1,1
+NEMS-OP,IRA,Carbon Sequestration|LULUCF,Mt CO2/yr,,,
+NEMS-OP,IRA,Emissions|CH4,Mt CO2/yr,,,
+NEMS-OP,IRA,Emissions|CO2,Mt CO2e/yr,,,
+NEMS-OP,IRA,Emissions|GHG|Agriculture,Mt CO2e/yr,,,
+NEMS-OP,IRA,Emissions|GHG|Energy,Mt CO2e/yr,,,
+NEMS-OP,IRA,Emissions|GHG|Industrial Processes,Mt CO2e/yr,,,
+NEMS-OP,IRA,Emissions|GHG|Net,Mt CO2e/yr,,,
+NEMS-OP,IRA,Emissions|GHG|Total Gross,Mt CO2e/yr,,,
+NEMS-OP,IRA,Emissions|GHG|Transportation,Mt CO2e/yr,,,
+NEMS-OP,IRA,Emissions|GHG|Waste,Mt CO2e/yr,,,
+NEMS-OP,IRA,Emissions|N2O,Mt CO2e/yr,,,
+NEMS-OP,IRA,Emissions|CO2|Energy|Supply|Electricity,Mt CO2/yr,1170.501465,660.642334,417.400726
+NEMS-OP,Opt-IRA.Adv,Emissions|CO2|Energy|Supply|Electricity,Mt CO2/yr,1173.990967,429.341614,274.357727
+NEMS-OP,IRA,Emissions|CO2|Energy|Demand|Buildings|Total,Mt CO2/yr,1401.790466,996.583252,809.16452
+NEMS-OP,IRA,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Mt CO2/yr,1284.959351,1128.404297,1055.642578
+NEMS-OP,IRA,Emissions|CO2|Energy|Demand|Transportation|Total,Mt CO2/yr,1797.472412,1641.628418,1471.571655
+NEMS-OP,Opt-IRA.Adv,Emissions|CO2|Energy|Demand|Buildings|Total,Mt CO2/yr,1402.612732,841.490448,711.765197
+NEMS-OP,Opt-IRA.Adv,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Mt CO2/yr,1268.80957,970.119629,929.613037
+NEMS-OP,Opt-IRA.Adv,Emissions|CO2|Energy|Demand|Transportation|Total,Mt CO2/yr,1791.015991,1561.681152,1322.033325
+NEMS-OP,IRA,Emissions|F-gases|HFCs,Mt CO2e/yr,150,153,124
+NEMS-OP,IRA,Emissions|F-gases|PFCs,Mt CO2e/yr,5,5,5
+NEMS-OP,IRA,Emissions|F-gases|SF6,Mt CO2e/yr,5,4,4
+NEMS-OP,IRA,Emissions|F-gases|NF3,Mt CO2e/yr,1,1,1
+NEMS-RHG,IRA,Carbon Sequestration|LULUCF,Mt CO2/yr,,,
+NEMS-RHG,IRA,Emissions|CH4,Mt CO2/yr,,,
+NEMS-RHG,IRA,Emissions|CO2,Mt CO2e/yr,,,
+NEMS-RHG,IRA,Emissions|GHG|Agriculture,Mt CO2e/yr,,,
+NEMS-RHG,IRA,Emissions|GHG|Energy,Mt CO2e/yr,,,
+NEMS-RHG,IRA,Emissions|GHG|Industrial Processes,Mt CO2e/yr,,,
+NEMS-RHG,IRA,Emissions|GHG|Net,Mt CO2e/yr,,,
+NEMS-RHG,IRA,Emissions|GHG|Total Gross,Mt CO2e/yr,,,
+NEMS-RHG,IRA,Emissions|GHG|Transportation,Mt CO2e/yr,,,
+NEMS-RHG,IRA,Emissions|GHG|Waste,Mt CO2e/yr,,,
+NEMS-RHG,IRA,Emissions|N2O,Mt CO2e/yr,,,
+NEMS-RHG,IRA,Emissions|CO2|Energy|Supply|Electricity,Mt CO2/yr,1194.845278,482.8198467,588.5355894
+NEMS-RHG,IRA,Emissions|CO2|Energy|Demand|Buildings|Total,Mt CO2/yr,1448.528023,915.6847613,967.4751029
+NEMS-RHG,IRA,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Mt CO2/yr,1121.967809,937.6841386,844.772202
+NEMS-RHG,IRA,Emissions|CO2|Energy|Demand|Transportation|Total,Mt CO2/yr,1647.689993,1508.597345,1387.059006
+NEMS-RHG,IRA,Emissions|F-gases|HFCs,Mt CO2e/yr,150,153,124
+NEMS-RHG,IRA,Emissions|F-gases|PFCs,Mt CO2e/yr,5,5,5
+NEMS-RHG,IRA,Emissions|F-gases|SF6,Mt CO2e/yr,5,4,4
+NEMS-RHG,IRA,Emissions|F-gases|NF3,Mt CO2e/yr,1,1,1
+REGEN-EPRI,IRA,Carbon Sequestration|LULUCF,Mt CO2/yr,,,
+REGEN-EPRI,IRA,Emissions|CH4,Mt CO2/yr,,,
+REGEN-EPRI,IRA,Emissions|CO2,Mt CO2e/yr,,,
+REGEN-EPRI,IRA,Emissions|F-gases|HFCs,Mt CO2e/yr,150,153,124
+REGEN-EPRI,IRA,Emissions|F-gases|PFCs,Mt CO2e/yr,5,5,5
+REGEN-EPRI,IRA,Emissions|F-gases|SF6,Mt CO2e/yr,5,4,4
+REGEN-EPRI,IRA,Emissions|F-gases|NF3,Mt CO2e/yr,1,1,1
+REGEN-EPRI,IRA,Emissions|GHG|Agriculture,Mt CO2e/yr,,,
+REGEN-EPRI,IRA,Emissions|GHG|Energy,Mt CO2e/yr,,,
+REGEN-EPRI,IRA,Emissions|GHG|Industrial Processes,Mt CO2e/yr,,,
+REGEN-EPRI,IRA,Emissions|GHG|Net,Mt CO2e/yr,,,
+REGEN-EPRI,IRA,Emissions|GHG|Total Gross,Mt CO2e/yr,,,
+REGEN-EPRI,IRA,Emissions|GHG|Transportation,Mt CO2e/yr,,,
+REGEN-EPRI,IRA,Emissions|GHG|Waste,Mt CO2e/yr,,,
+REGEN-EPRI,IRA,Emissions|N2O,Mt CO2e/yr,,,
+REGEN-EPRI,IRA,Emissions|CO2|Energy|Supply|Electricity,Mt CO2/yr,1325.90851,999.6662542,500.0375196
+REGEN-EPRI,IRA.High,Emissions|CO2|Energy|Supply|Electricity,Mt CO2/yr,1305.732739,1062.419276,309.2126285
+REGEN-EPRI,IRA.Low,Emissions|CO2|Energy|Supply|Electricity,Mt CO2/yr,1355.40241,1155.621161,950.8940704
+REGEN-EPRI,IRA,Emissions|CO2|Energy|Demand|Buildings|Total,Mt CO2/yr,1337.169639,1071.832407,737.8205431
+REGEN-EPRI,IRA,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Mt CO2/yr,1389.517375,1279.635446,1044.22399
+REGEN-EPRI,IRA,Emissions|CO2|Energy|Demand|Transportation|Total,Mt CO2/yr,1732.869354,1569.146661,1376.147619
+REGEN-EPRI,IRA.High,Emissions|CO2|Energy|Demand|Buildings|Total,Mt CO2/yr,523.3365524,491.9030549,468.5409598
+REGEN-EPRI,IRA.High,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Mt CO2/yr,923.5157068,929.8777997,863.9506377
+REGEN-EPRI,IRA.High,Emissions|CO2|Energy|Demand|Transportation|Total,Mt CO2/yr,1686.795598,1499.167405,1325.663035
+REGEN-EPRI,IRA.Low,Emissions|CO2|Energy|Demand|Buildings|Total,Mt CO2/yr,523.3365524,491.9030549,468.5409598
+REGEN-EPRI,IRA.Low,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Mt CO2/yr,923.5157068,929.8777997,863.9506377
+REGEN-EPRI,IRA.Low,Emissions|CO2|Energy|Demand|Transportation|Total,Mt CO2/yr,1686.795598,1499.167405,1325.663035
+RIO-REPEAT,IRA,Carbon Sequestration|LULUCF,Mt CO2/yr,,,
+RIO-REPEAT,IRA,Emissions|CH4,Mt CO2/yr,,,
+RIO-REPEAT,IRA,Emissions|CO2,Mt CO2e/yr,,,
+RIO-REPEAT,IRA,Emissions|GHG|Agriculture,Mt CO2e/yr,,,
+RIO-REPEAT,IRA,Emissions|GHG|Energy,Mt CO2e/yr,,,
+RIO-REPEAT,IRA,Emissions|GHG|Industrial Processes,Mt CO2e/yr,,,
+RIO-REPEAT,IRA,Emissions|GHG|Net,Mt CO2e/yr,,,
+RIO-REPEAT,IRA,Emissions|GHG|Total Gross,Mt CO2e/yr,,,
+RIO-REPEAT,IRA,Emissions|GHG|Transportation,Mt CO2e/yr,,,
+RIO-REPEAT,IRA,Emissions|GHG|Waste,Mt CO2e/yr,,,
+RIO-REPEAT,IRA,Emissions|N2O,Mt CO2e/yr,,,
+RIO-REPEAT,IRA,Emissions|CO2|Energy|Supply|Electricity,Mt CO2/yr,1460.5,741,370
+RIO-REPEAT,IRA.High,Emissions|CO2|Energy|Supply|Electricity,Mt CO2/yr,1329.5,676,324
+RIO-REPEAT,IRA.Low,Emissions|CO2|Energy|Supply|Electricity,Mt CO2/yr,1366,694,337
+RIO-REPEAT,IRA,Emissions|CO2|Energy|Demand|Buildings|Total,Mt CO2/yr,1696.011948,1091.908867,759.9757046
+RIO-REPEAT,IRA,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Mt CO2/yr,1143.888015,911.2163009,688.0923226
+RIO-REPEAT,IRA,Emissions|CO2|Energy|Demand|Transportation|Total,Mt CO2/yr,1829.600037,1583.874832,1204.931973
+RIO-REPEAT,IRA.High,Emissions|CO2|Energy|Demand|Buildings|Total,Mt CO2/yr,1598.621077,1035.457395,707.9311909
+RIO-REPEAT,IRA.High,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Mt CO2/yr,1110.457129,888.0918322,659.4124764
+RIO-REPEAT,IRA.High,Emissions|CO2|Energy|Demand|Transportation|Total,Mt CO2/yr,1819.921794,1540.450773,1108.656333
+RIO-REPEAT,IRA.Low,Emissions|CO2|Energy|Demand|Buildings|Total,Mt CO2/yr,1634.415993,1087.554278,788.8166977
+RIO-REPEAT,IRA.Low,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Mt CO2/yr,1143.146686,911.3173873,725.7013846
+RIO-REPEAT,IRA.Low,Emissions|CO2|Energy|Demand|Transportation|Total,Mt CO2/yr,1835.937321,1630.128335,1362.481918
+RIO-REPEAT,IRA,Emissions|F-gases|HFCs,Mt CO2e/yr,150,153,124
+RIO-REPEAT,IRA,Emissions|F-gases|PFCs,Mt CO2e/yr,5,5,5
+RIO-REPEAT,IRA,Emissions|F-gases|SF6,Mt CO2e/yr,5,4,4
+RIO-REPEAT,IRA,Emissions|F-gases|NF3,Mt CO2e/yr,1,1,1
+USREP-ReEDS,All Advanced,Emissions|CO2|Energy|Supply|Electricity,Mt CO2/yr,969.2015459,432.2378221,294.1613104
+USREP-ReEDS,Constrained Deployment,Emissions|CO2|Energy|Supply|Electricity,Mt CO2/yr,1099.534099,763.7320001,664.7557448
+USREP-ReEDS,IRA,Emissions|CO2|Energy|Supply|Electricity,Mt CO2/yr,1063.271865,616.834498,488.0122266
+USREP-ReEDS,IRA.High,Emissions|CO2|Energy|Supply|Electricity,Mt CO2/yr,1074.227677,610.5185662,488.6738995
+USREP-ReEDS,IRA.Low,Emissions|CO2|Energy|Supply|Electricity,Mt CO2/yr,1122.800324,698.2013332,577.0663645
+USREP-ReEDS,Opt-IRA.Adv,Emissions|CO2|Energy|Supply|Electricity,Mt CO2/yr,972.7656785,394.8322234,276.5247851
+USREP-ReEDS,Pess-IRA.Adv,Emissions|CO2|Energy|Supply|Electricity,Mt CO2/yr,1039.577307,484.0228703,352.3706364
+USREP-ReEDS,All Advanced,Emissions|CO2|Energy|Demand|Buildings|Total,Mt CO2/yr,1175.071773,695.0148509,532.9041906
+USREP-ReEDS,All Advanced,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Mt CO2/yr,1128.892345,977.6359023,900.8799441
+USREP-ReEDS,All Advanced,Emissions|CO2|Energy|Demand|Transportation|Total,Mt CO2/yr,1701.851534,1577.893037,1441.124333
+USREP-ReEDS,Constrained Deployment,Emissions|CO2|Energy|Demand|Buildings|Total,Mt CO2/yr,1275.254067,950.7345211,814.0548476
+USREP-ReEDS,Constrained Deployment,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Mt CO2/yr,1160.299946,1078.392739,1082.303114
+USREP-ReEDS,Constrained Deployment,Emissions|CO2|Energy|Demand|Transportation|Total,Mt CO2/yr,1706.043612,1603.713339,1508.514166
+USREP-ReEDS,IRA,Emissions|CO2|Energy|Demand|Buildings|Total,Mt CO2/yr,1240.825693,826.8316008,666.1815082
+USREP-ReEDS,IRA,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Mt CO2/yr,1152.134017,1037.579582,1037.94051
+USREP-ReEDS,IRA,Emissions|CO2|Energy|Demand|Transportation|Total,Mt CO2/yr,1708.973791,1599.234761,1495.210772
+USREP-ReEDS,IRA.High,Emissions|CO2|Energy|Demand|Buildings|Total,Mt CO2/yr,1236.557853,809.4015284,654.6115938
+USREP-ReEDS,IRA.High,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Mt CO2/yr,1148.649535,1031.496493,1034.028498
+USREP-ReEDS,IRA.High,Emissions|CO2|Energy|Demand|Transportation|Total,Mt CO2/yr,1709.659276,1599.006218,1481.012909
+USREP-ReEDS,IRA.Low,Emissions|CO2|Energy|Demand|Buildings|Total,Mt CO2/yr,1291.588286,894.8248726,739.7199791
+USREP-ReEDS,IRA.Low,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Mt CO2/yr,1161.042351,1052.859217,1054.352802
+USREP-ReEDS,IRA.Low,Emissions|CO2|Energy|Demand|Transportation|Total,Mt CO2/yr,1711.081155,1603.625167,1509.778785
+USREP-ReEDS,Opt-IRA.Adv,Emissions|CO2|Energy|Demand|Buildings|Total,Mt CO2/yr,1164.467816,655.6181693,507.6345757
+USREP-ReEDS,Opt-IRA.Adv,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Mt CO2/yr,1123.101957,987.1551647,966.5080578
+USREP-ReEDS,Opt-IRA.Adv,Emissions|CO2|Energy|Demand|Transportation|Total,Mt CO2/yr,1702.875073,1576.89154,1435.007143
+USREP-ReEDS,Pess-IRA.Adv,Emissions|CO2|Energy|Demand|Buildings|Total,Mt CO2/yr,1234.196296,741.1633731,585.8322087
+USREP-ReEDS,Pess-IRA.Adv,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Mt CO2/yr,1140.394727,987.3932995,912.1038108
+USREP-ReEDS,Pess-IRA.Adv,Emissions|CO2|Energy|Demand|Transportation|Total,Mt CO2/yr,1703.834204,1581.156815,1450.404157
+USREP-ReEDS,IRA,Emissions|F-gases|HFCs,Mt CO2e/yr,150,153,124
+USREP-ReEDS,IRA,Emissions|F-gases|PFCs,Mt CO2e/yr,5,5,5
+USREP-ReEDS,IRA,Emissions|F-gases|SF6,Mt CO2e/yr,5,4,4
+USREP-ReEDS,IRA,Emissions|F-gases|NF3,Mt CO2e/yr,1,1,1

@@ -60,6 +60,7 @@ master_palette <- c(
   "m.violet" = "#BC39C6",
   "m.cobalt" = "#3943C6",
   "light blue" = "#9CA3F9",
+  "lts green" = "#96BBA4",
   "brown" = "#BC8F73",
   "dark brown" = "#825335",
   "slate" = "#767684",
@@ -138,6 +139,7 @@ color_map <- c(
   "leep_IRA" = "redD",
   "IRA" = "hue1",
   "LEEP" = "redD",
+  "LTS" = "lts green",
   
   # models
   

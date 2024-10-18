@@ -64,6 +64,8 @@ tar_plan(
     
     fives_proj = c(seq(2020,2050, by = 5)),
     fives_proj_sm = c(seq(2025,2040, by = 5)),
+    fives_proj_sm50 = c(seq(2025,2050, by = 5)),
+    
     
     kaya = c(seq(1990,settings$base_year,by=1),seq(2025,2050,by = 5)),
     
@@ -340,12 +342,12 @@ tar_plan(
              "docs/report/results_overview_sens.Rmd",
              output_dir = paste0('output/',settings$version,"/results_overview_sens/"),
              output_file = paste0("results_overview_sens",Sys.Date(),".html"),
-             params = list(mode = "targets"))
+             params = list(mode = "targets")),
   
-  # tar_render(btr_tables_figs_sens,
-  #            "docs/report/btr_tables_figs_brvs_sens_comp.Rmd",
-  #            output_dir = paste0('output/',settings$version,"/tables_figs_sens"),
-  #            output_file = paste0("btr_tables_figs_sens",Sys.Date(),".html"),
-  #            params = list(mode = "targets"))
+   tar_render(btr_tables_figs_sens,
+              "docs/report/btr_tables_figs_brvs_sens_comp.Rmd",
+              output_dir = paste0('output/',settings$version,"/tables_figs_sens"),
+              output_file = paste0("btr_tables_figs_sens",Sys.Date(),".html"),
+              params = list(mode = "targets"))
   
 )
