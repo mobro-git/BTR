@@ -330,7 +330,7 @@ ggsave(paste0('output/',settings$version,"/tables_figs/to2050/btr_main_figs/main
 ```{r, fig.width=15}
 net_ghg_sb_df <- net_ghg_sb_data_processing(projections_all_sm, config, settings)
 net_ghg_stackbar <- br_project_net_ghg_sb(net_ghg_sb_df, config)
-net_ghg_stackbar
+#net_ghg_stackbar
 ```
 
 # Kaya Analysis
@@ -823,7 +823,8 @@ gtsave(ncbr_comp_table, paste0('output/',settings$version,"/tables_figs/to2050/r
 
 ```{r}
 tge_btr <- projections_all_sm %>% 
-  filter(!gas == 'LULUCF Sink') %>%
+  filter(!gas == 'LULUCF Sink',
+         grouping %in% c('ghgi','wm')) %>%
   group_by(proj_name, grouping, year) %>%
   summarise(Value = sum(sum),.groups = 'drop')
 
