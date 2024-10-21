@@ -94,7 +94,7 @@ pct_change_html_sector_merged
 
 ## Net-GHG Emissions {.tabset}
 
-### BR:VS BTR Model Subset
+### BR:VS - BTR Model Subset
 
 ```{r}
 brvs_tne <- read_csv("data-extra/BR Voluntary Supplement 2023/brvs_totalnetemissions.csv")
@@ -108,7 +108,7 @@ fig <- br_project_brvs_sens(projections_ghgi, brvs_tne, config, settings, brvs_b
 fig
 ```
 
-### BR:VS BTR Model Subset
+### BR:VS - All Models
 
 ```{r}
 fig <- br_project_brvs_sens(projections_ghgi, brvs_tne, config, settings, brvs_btr_subset = FALSE)
@@ -198,12 +198,12 @@ transportation <- brvs_sens_sectors("Emissions|CO2|Energy|Demand|Transportation|
 transportation
 ```
 
-## Industry
+## Industry {.tabset}
 
 ### All Models
 
 ```{r}
-industry <- brvs_sens_sectors("Emissions|CO2|Energy|Demand|Transportation|Total", brvs_btr_subset = FALSE, brvs_sectors, ghgi_comp_tab, config, settings,data_long_clean)
+industry <- brvs_sens_sectors("Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total", brvs_btr_subset = FALSE, brvs_sectors, ghgi_comp_tab, config, settings,data_long_clean)
 
 industry
 ```

@@ -372,7 +372,6 @@ brvs_sens_sectors <- function(var_choice, brvs_btr_subset = FALSE, brvs_sectors,
   ghgi_df <- ghgi_comp_tab %>%
     filter(model == config$model_hist) %>%
     filter(year %in% config$hist) %>%
-    filter(variable  == var_choice) %>%
     mutate(variable = case_when(
       variable == "Emissions|CO2|Energy|Demand|Industry|Total" ~ "Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total",
       TRUE~variable
