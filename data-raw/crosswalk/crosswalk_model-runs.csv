@@ -47,13 +47,6 @@ OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,OP-NEMS,OP Moderate,OP-NEM
 BTR OP Sensitivities-Advanced Case 9-27-2024.xlsx,OP-NEMS,OP Advanced,OP-NEMS,wm_adv,OP-NEMS sensitivities,btr
 BTR OP Sensitivities-High OGS Case 9-27-2024.xlsx,OP-NEMS,High OGS,OP-NEMS,wm_highogs,OP-NEMS sensitivities,btr
 BTR OP Sensitivities-Low OGS Case 9-27-2024.xlsx,OP-NEMS,Low OGS,OP-NEMS,wm_lowogs,OP-NEMS sensitivities,btr
-report_usrep_reeds_btr_9.3.csv,USREP-ReEDS,btr4_ref_new,,,,btr
-report_usrep_reeds_btr_9.3.csv,USREP-ReEDS,btr4_wm,,,,btr
-emf_USREP-ReEDS_BTR_10.17_v1.csv,USREP-ReEDS,btr_ref,,,,btr
-emf_USREP-ReEDS_BTR_10.17_v1.csv,USREP-ReEDS,btr_wm,,,,btr
-emf_USREP-ReEDS_BTR_10.17_v1.csv,USREP-ReEDS,btr_wm_highemis,,,,btr
-emf_USREP-ReEDS_BTR_10.17_v1.csv,USREP-ReEDS,btr_wm_lowemis,,,,btr
-emf_USREP-ReEDS_BTR_10.17_v1.csv,USREP-ReEDS,btr_wm_lowemis_v2,,,,btr
 100924gcamreport_Processed.csv,GCAM 7.0,WM_100924,GCAM,wm,btr-gcam,btr
 100924gcamreport_Processed.csv,GCAM 7.0,WM_100924_LowCostRE23_highFuelCost,GCAM,wm_lowcostre_highfuelcost,,btr
 100924gcamreport_Processed.csv,GCAM 7.0,WM_100924_highFuelCost,GCAM,wm_highfuelcost,,btr
@@ -61,7 +54,7 @@ emf_USREP-ReEDS_BTR_10.17_v1.csv,USREP-ReEDS,btr_wm_lowemis_v2,,,,btr
 100924gcamreport_Processed.csv,GCAM 7.0,WM_IRAEGU_100924,GCAM,wm_iraegu,,btr
 100924gcamreport_Processed.csv,GCAM 7.0,WM_IRATRN_100924,GCAM,wm_iratrn,,btr
 100924gcamreport_Processed.csv,GCAM 7.0,WM_IRAonly_100924,GCAM,wm_iraonly,,btr
-USREP_ReEDS_btr_results_10.21.csv,USREP-ReEDS,btr_ref,USREP-ReEDS,ref,,btr
-USREP_ReEDS_btr_results_10.21.csv,USREP-ReEDS,btr_wm,USREP-ReEDS,wm,btr- reeds,btr
-USREP_ReEDS_btr_results_10.21.csv,USREP-ReEDS,btr_highemis,USREP-ReEDS,wm_lowfuelcost,,btr
-USREP_ReEDS_btr_results_10.21.csv,USREP-ReEDS,btr_lowemis,USREP-ReEDS,wm_lowcostre_highfuelcost,,btr
+USREP_ReEDS_btr_results_10_21.csv,USREP-ReEDS,btr_ref,USREP-ReEDS,ref,,btr
+USREP_ReEDS_btr_results_10_21.csv,USREP-ReEDS,btr_wm,USREP-ReEDS,wm,btr- reeds,btr
+USREP_ReEDS_btr_results_10_21.csv,USREP-ReEDS,btr_highemis,USREP-ReEDS,wm_lowfuelcost,,btr
+USREP_ReEDS_btr_results_10_21.csv,USREP-ReEDS,btr_lowemis,USREP-ReEDS,wm_lowcostre_highfuelcost,,btr
