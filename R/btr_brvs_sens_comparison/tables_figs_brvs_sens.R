@@ -462,13 +462,20 @@ brvs_sens_sectors <- function(var_choice, brvs_btr_subset = FALSE, brvs_sectors,
   plot <- ggplot() +
     geom_line(data = ghgi_df, aes(x = year, y = value), color = 'black', size = 0.7) +
     geom_ribbon(data = lts_ribbon_df, aes(x = year, ymax = max, ymin = min , fill = grouping, color = grouping), alpha = 0.4 , size = 0.7) +
-   # geom_line(data = lts_df, aes(x = year, y = value, color = grouping)) +
+    geom_line(data = lts_df, aes(x = year, y = value, group = interaction(model, scenario), color = grouping)) +
     geom_point(data = point_df, aes(x = year, y = value, color = grouping)) +
-    geom_segment(data = median_df, aes(x = year - 1, xend = year + 1, y = median, yend = median, color = grouping)) +
+    geom_segment(data = median_df, aes(x = year - 1, xend = year + 1, y = median, yend = median, color = grouping),
+                 linewidth = 1) +
     scale_subpalette_single(var_palette) +
     labs(y = expression(paste("Mt C", O[2]))) +
-    scale_y_continuous(labels = scales::comma) +
-    theme_btr()
+    scale_y_continuous(labels = comma) +
+    scale_x_continuous(breaks = c(2005, 2022, 2025, 2030, 2035, 2040, 2045, 2050)) +
+    theme_btr() +
+    theme(
+      legend.position = "inside",
+      legend.position.inside = c(0.15, 0.2)
+    )
+    
   
   
   plot
