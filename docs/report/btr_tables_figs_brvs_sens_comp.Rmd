@@ -113,6 +113,11 @@ fig <- br_project_brvs_sens(projections_ghgi, brvs_tne, config, settings, brvs_b
 fig
 ```
 
+```{r}
+filename <- paste0("btr_main_fig_",Sys.Date(),".png")
+ggsave(paste0('output/',settings$version,"/tables_figs_sens/btr_main_figs/main_fig/",filename), create.dir = TRUE, height = 7, width = 9)
+```
+
 ### BR:VS - All Models
 
 ```{r}
@@ -122,6 +127,20 @@ fig
 ```
 
 
+### No BR:VS
+
+```{r}
+fig <- br_project_sens(projections_ghgi, config, settings)
+
+fig
+
+```
+
+```{r}
+filename <- paste0("btr_main_fig_nobrvs_",Sys.Date(),".png")
+ggsave(paste0('output/',settings$version,"/tables_figs_sens/btr_main_figs/main_fig/",filename), create.dir = TRUE)
+```
+
 ## Value Summary Tables
 
 ### 
@@ -130,8 +149,15 @@ fig
 ## Kaya BR5:VS Comparison
 
 ```{r}
-kaya_brvs(kaya_comparison50, data_long_clean, config, settings)
+kaya_fig <- kaya_brvs(kaya_comparison50, data_long_clean, config, settings)
+kaya_fig
 ```
+
+```{r}
+ggsave(paste0('output/',settings$version,"/tables_figs_sens/kaya/kaya_singlepanel.png"), width = 5, create.dir = TRUE)
+
+```
+
 
 ## GDP-Breakout, BR5:VS Comparison
 
@@ -221,3 +247,107 @@ industry <- brvs_sens_sectors("Emissions|CO2|Energy|Demand|Industry and Fuel Pro
 industry
 ```
 
+# Electricity and Transportation CO2
+
+# Energy and Transportation CO2 Emissions Range {.tabset}
+
+## Figure
+
+```{r}
+nrg_emissions <- projections_all_sm %>%
+  filter(usproj_sector %in% c('Energy','Transportation') & gas == "CO2") %>%
+  filter(grouping %in% c('ghgi','wm_sens')) %>%
+  group_by(proj_name, year, grouping) %>%
+  summarise(nrg_trn_co2 = sum(sum)) %>%
+  filter(year %in% config$annual_1990_fives) 
+
+ghgi <- nrg_emissions %>%
+  filter(year <= settings$base_year)
+
+proj <- nrg_emissions %>%
+  group_by(year) %>% 
+  filter(year >= settings$base_year)%>%
+    summarise(ymax = max(nrg_trn_co2),
+              ymin = min(nrg_trn_co2),
+              med = median(nrg_trn_co2),
+              .groups = 'drop')
+
+nrg_color <- "#2EAD96"
+
+fig <- 
+  ggplot() +
+  geom_line(ghgi, mapping = aes(x = year, y = nrg_trn_co2, color = proj_name), color = nrg_color, size = 0.7) +
+  geom_ribbon(proj, mapping = aes(x = year,ymax = ymax, ymin = ymin),
+              color = nrg_color,
+              fill = nrg_color,
+              alpha = 0.4 ,
+              size = 0.7)+
+    labs(x = 'Year',
+         y = expression(paste("MMt ", CO[2], sep = ""))) +
+    geom_vline(
+      xintercept = 2022,
+      linetype = 'dashed',
+      color = "black",
+      # size = 0.4,
+      alpha = 0.5) +
+    scale_y_continuous(labels = scales::comma) +
+    scale_x_continuous(breaks = c(seq(1990,2020,by=5), 2022, seq(2025,2040,by=5)), expand = c(0,0)) +
+    theme_btr() 
+  
+fig
+```
+
+```{r}
+filename <- paste0("nrg_emissions_fig_",Sys.Date(),".png")
+ggsave(paste0('output/',settings$version,"/tables_figs_sens/nrg_emissions/",filename), create.dir = TRUE,height = 4.5)
+```
+
+# NCBR Comp
+
+```{r}
+
+past_proj_clean <- past_proj %>%
+  select(Report, Year, Emissions) %>%
+  rename(Value = Emissions) %>%
+  filter(Year <= 2035)
+
+
+tge_btr <- projections_all_sm %>% 
+  filter(!gas == 'LULUCF Sink',
+         grouping %in% c('wm_sens','ghgi')) %>%
+  group_by(proj_name, grouping, year) %>%
+  summarise(Value = sum(sum),.groups = 'drop')
+
+tge_all_long <- tge_btr %>%
+  mutate(Report = 'btr_2024') %>%
+  rename(Year = year) %>% 
+  select(names(past_proj_clean)) %>%
+  rbind(past_proj_clean) %>%
+  mutate(Year = as.numeric(Year),
+         Report = case_when(Report == "btr_2024" ~ "2024 BTR",
+                            Report == "car_2014" ~ "2014 CAR",
+                            Report == "br_2016" ~ "2016 BR",
+                            Report == "br_2021" ~ "2021 BR",
+                            Report == "br_2022" ~ "2022 BR"))
+#%>%
+ # filter(year %in% config$fives_proj_sm)
+
+
+ncbr_comp_ribbon <- tge_all_long %>% 
+  group_by(Report,Year) %>%
+  mutate(min = min(Value),
+         max = max(Value)) %>%
+  select(Report,Year,min,max) %>%
+  distinct()
+```
+
+```{r}
+fig <- ncbr_comparison_figure_sens(ncbr_comp_ribbon, tge_all_long, settings, config)
+
+fig
+```
+
+```{r}
+filename <- paste0("ncbr_comp_fig_",Sys.Date(),".png")
+ggsave(paste0('output/',settings$version,"/tables_figs_sens/ncbr_comparison/",filename), create.dir = TRUE)
+```
