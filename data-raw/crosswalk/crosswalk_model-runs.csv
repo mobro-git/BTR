@@ -49,10 +49,10 @@ BTR OP Sensitivities-High OGS Case 9-27-2024.xlsx,OP-NEMS,High OGS,OP-NEMS,wm_hi
 BTR OP Sensitivities-Low OGS Case 9-27-2024.xlsx,OP-NEMS,Low OGS,OP-NEMS,wm_lowogs,OP-NEMS sensitivities,btr
 report_usrep_reeds_btr_9.3.csv,USREP-ReEDS,btr4_ref_new,USREP-ReEDS,ref_old,,btr
 report_usrep_reeds_btr_9.3.csv,USREP-ReEDS,btr4_wm,USREP-ReEDS,wm_bug,,btr
-emf_USREP-ReEDS_BTR_10.17_v1.csv,USREP-ReEDS,btr_ref,USREP-ReEDS,ref,,btr
-emf_USREP-ReEDS_BTR_10.17_v1.csv,USREP-ReEDS,btr_wm,USREP-ReEDS,wm,btr- reeds,btr
-emf_USREP-ReEDS_BTR_10.17_v1.csv,USREP-ReEDS,btr_wm_highemis,USREP-ReEDS,wm_highemis,,btr
-emf_USREP-ReEDS_BTR_10.17_v1.csv,USREP-ReEDS,btr_wm_lowemis,USREP-ReEDS,wm_lowemis,,btr
+emf_USREP-ReEDS_BTR_10.17_v1.csv,USREP-ReEDS,btr_ref,USREP-ReEDS,ref_1017,,btr
+emf_USREP-ReEDS_BTR_10.17_v1.csv,USREP-ReEDS,btr_wm,USREP-ReEDS,wm_1017,,btr
+emf_USREP-ReEDS_BTR_10.17_v1.csv,USREP-ReEDS,btr_wm_highemis,USREP-ReEDS,wm_highemis_old,,btr
+emf_USREP-ReEDS_BTR_10.17_v1.csv,USREP-ReEDS,btr_wm_lowemis,USREP-ReEDS,wm_lowemis_old,,btr
 emf_USREP-ReEDS_BTR_10.17_v1.csv,USREP-ReEDS,btr_wm_lowemis_v2,USREP-ReEDS,wm_lowemis_v2,,btr
 100924gcamreport_Processed.csv,GCAM 7.0,WM_100924,GCAM,wm,btr-gcam,
 100924gcamreport_Processed.csv,GCAM 7.0,WM_100924_LowCostRE23_highFuelCost,GCAM,wm_lowcostre_highfuelcost,,
@@ -61,3 +61,7 @@ emf_USREP-ReEDS_BTR_10.17_v1.csv,USREP-ReEDS,btr_wm_lowemis_v2,USREP-ReEDS,wm_lo
 100924gcamreport_Processed.csv,GCAM 7.0,WM_IRAEGU_100924,GCAM,wm_iraegu,,
 100924gcamreport_Processed.csv,GCAM 7.0,WM_IRATRN_100924,GCAM,wm_iratrn,,
 100924gcamreport_Processed.csv,GCAM 7.0,WM_IRAonly_100924,GCAM,wm_iraonly,,
+USREP_ReEDS_btr_results_10.21.csv,USREP-ReEDS,btr_ref,USREP-ReEDS,ref,,
+USREP_ReEDS_btr_results_10.21.csv,USREP-ReEDS,btr_wm,USREP-ReEDS,wm,btr- reeds,
+USREP_ReEDS_btr_results_10.21.csv,USREP-ReEDS,btr_highemis,USREP-ReEDS,wm_highemis,,
+USREP_ReEDS_btr_results_10.21.csv,USREP-ReEDS,btr_lowemis,USREP-ReEDS,wm_lowemis,,

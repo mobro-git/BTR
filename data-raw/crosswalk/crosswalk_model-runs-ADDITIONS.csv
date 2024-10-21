@@ -1,8 +1,5 @@
 datasrc,model,scenario
-092524gcamreport_Processed.csv,GCAM 7.0,WM_092524
-092524gcamreport_Processed.csv,GCAM 7.0,WM_092524_highFuelCost
-092524gcamreport_Processed.csv,GCAM 7.0,WM_092524_LowCostRE23
-092524gcamreport_Processed.csv,GCAM 7.0,WM_092524_LowCostRE23_highFuelCost
-092524gcamreport_Processed.csv,GCAM 7.0,WM_IRAEGU_092524
-092524gcamreport_Processed.csv,GCAM 7.0,WM_IRAonly_092524
-092524gcamreport_Processed.csv,GCAM 7.0,WM_IRATRN_092524
+USREP_ReEDS_btr_results_10.21.csv,USREP-ReEDS,btr_ref
+USREP_ReEDS_btr_results_10.21.csv,USREP-ReEDS,btr_wm
+USREP_ReEDS_btr_results_10.21.csv,USREP-ReEDS,btr_highemis
+USREP_ReEDS_btr_results_10.21.csv,USREP-ReEDS,btr_lowemis
