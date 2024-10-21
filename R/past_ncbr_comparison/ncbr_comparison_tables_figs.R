@@ -97,7 +97,7 @@ ncbr_comparison_figure <- function(ncbr_comp_ribbon, tge_all_long, settings, con
         legend.position.inside = c(0.23, 0.2)) 
   }
     
-  figure
+  return(figure)
   
 }
 

@@ -46,6 +46,11 @@ tar_load(
     )
   )
 
+projections_all_sm <- projections_all_sm %>%
+  mutate(grouping = case_when(grouping == "wm" ~ "wm_sens",
+                              TRUE~grouping))
+  
+
 
 ```
 

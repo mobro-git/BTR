@@ -748,7 +748,8 @@ gtsave(ncbr_comp_table_longnames, paste0('output/',settings$version,"/tables_fig
 
 ```{r}
 tge_btr <- projections_all_sm %>% 
-  filter(!gas == 'LULUCF Sink') %>%
+  filter(!gas == 'LULUCF Sink',
+         grouping %in% c('wm','ghgi')) %>%
   group_by(proj_name, grouping, year) %>%
   summarise(Value = sum(sum),.groups = 'drop')
 
@@ -778,7 +779,8 @@ ncbr_comp_ribbon <- tge_all_long %>%
 ### Figure
 
 ```{r}
-fig <- ncbr_comparison_figure(ncbr_comp_ribbon, tge_all_long, settings, config)
+fig <- ncbr_comparison_figure(ncbr_comp_ribbon, tge_all_long, settings, config, brvs = FALSE)
+
 fig
 ```
 

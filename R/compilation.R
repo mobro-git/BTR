@@ -74,6 +74,8 @@ add_ffc_lulucf = function(ffc_raw_data,lulucf_data,usproj_data_long,var_crosswal
 
 map_proj_name_v2 = function(usproj_all, crosswalk_compilation, settings) {
   
+  # TODO: Add Check for duplicate proj_name combinations in crosswalk_compilation
+  
   #Filter out non-national estimates
   proj_usa <- usproj_all %>% 
     filter(region == 'United States' &
