@@ -805,7 +805,7 @@ ncbr_comparison_figure_sens <- function(ncbr_comp_ribbon, tge_all_long, settings
   
   ncbr_ribbon_clean <- ncbr_comp_ribbon %>% 
     filter(Year %in% config$fives,
-           Report == '2024 BTR')
+           Report %in% c('2024 BTR','2023 BR Voluntary Supplement'))
   
   # if(brvs == TRUE){
   #   ncbr_brvs_ribbon_clean <- ncbr_comp_ribbon %>% 
@@ -819,13 +819,16 @@ ncbr_comparison_figure_sens <- function(ncbr_comp_ribbon, tge_all_long, settings
   #          proj_name %in% c('usrr_wm_hiseq',
   #                           'gcam_wm_hiseq',
   #                           'nems_wm_hiseq'))
-  var_palette = sort((unique(tge_all_long$Report)), decreasing = TRUE)
+  var_palette = sort(c(unique(ncbr_comp_ribbon$Report)), decreasing = TRUE)
   
   #TODO: FLIP LEGEND ORDER, new to old desc
     figure <- ggplot() +
       geom_line(ncbr_hist_long, mapping = aes(Year,Value, group = Report, color = Report),size = 0.7) +
       geom_line(ncbr_hist_btr,mapping = aes(Year,Value, group = Report, color = Report),size = 0.7 ) +
       #geom_text_repel(tge_ends, mapping = aes(Year,Value, label = proj_name)) +
+      # geom_ribbon(brvs_ribbon, mapping = aes(x = year,ymax = max, ymin = min,
+      #                                          fill = Report, 
+      #                                          color = Report)) +
       geom_ribbon(ncbr_ribbon_clean, mapping = aes(x = Year,ymax = max, ymin = min,
                                                    fill = Report, 
                                                    color = Report),

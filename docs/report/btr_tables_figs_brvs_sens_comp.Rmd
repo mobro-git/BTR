@@ -272,6 +272,12 @@ proj <- nrg_emissions %>%
               med = median(nrg_trn_co2),
               .groups = 'drop')
 
+# nrg_05_comp <- nrg_emissions %>%
+#   group_by(year) %>%
+#   # summarise(max = max(nrg_trn_co2),
+#   #           min = min(nrg_trn_co2))
+#    # mutate(pct_change_05 = nrg_trn_co2/nrg_trn_co2[year==2005])
+
 nrg_color <- "#2EAD96"
 
 fig <- 
@@ -302,9 +308,16 @@ filename <- paste0("nrg_emissions_fig_",Sys.Date(),".png")
 ggsave(paste0('output/',settings$version,"/tables_figs_sens/nrg_emissions/",filename), create.dir = TRUE,height = 4.5)
 ```
 
-# NCBR Comp
+# NCBR Comp w/ BR:VS
 
 ```{r}
+brvs_tge <- read_xlsx("data-extra/BR Voluntary Supplement 2023/totalgrossemissions.xlsx")
+
+brvs_tge_clean <- brvs_tge %>%
+  pivot_longer(cols = 2:36,
+               names_to = 'Year') %>%
+  mutate(Report = "2023 BR Voluntary Supplement") %>% 
+  select(Report, Year, value)
 
 past_proj_clean <- past_proj %>%
   select(Report, Year, Emissions) %>%
@@ -316,11 +329,28 @@ tge_btr <- projections_all_sm %>%
   filter(!gas == 'LULUCF Sink',
          grouping %in% c('wm_sens','ghgi')) %>%
   group_by(proj_name, grouping, year) %>%
-  summarise(Value = sum(sum),.groups = 'drop')
+  summarise(value = sum(sum),.groups = 'drop')
+
+tge_base <- tge_btr %>%
+  filter(year == settings$base_year) %>%
+  rename(Report = grouping,
+         Year = year) %>% 
+  select(names(brvs_tge_clean))
+
+brvs_ribbon <- brvs_tge_clean %>%
+  filter(Year > settings$base_year) %>%
+  rbind(tge_base) %>%
+  group_by(Year) %>% 
+  summarise(max = max(value),
+            min = min(value)) %>%
+  mutate(Report = "2023 BR Voluntary Supplement",
+         Year = as.numeric(Year)) %>%
+  select(Report, Year, min, max)
 
 tge_all_long <- tge_btr %>%
   mutate(Report = 'btr_2024') %>%
-  rename(Year = year) %>% 
+  rename(Year = year,
+         Value = value) %>% 
   select(names(past_proj_clean)) %>%
   rbind(past_proj_clean) %>%
   mutate(Year = as.numeric(Year),
@@ -338,7 +368,8 @@ ncbr_comp_ribbon <- tge_all_long %>%
   mutate(min = min(Value),
          max = max(Value)) %>%
   select(Report,Year,min,max) %>%
-  distinct()
+  distinct() %>%
+  rbind(brvs_ribbon)
 ```
 
 ```{r}
@@ -349,5 +380,10 @@ fig
 
 ```{r}
 filename <- paste0("ncbr_comp_fig_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs_sens/ncbr_comparison/",filename), create.dir = TRUE)
+ggsave(paste0('output/',settings$version,"/tables_figs_sens/ncbr_comparison/",filename), create.dir = TRUE,width = 9,height = 7)
 ```
+
+# Sector Analysis: Combine WM & WM_sens
+
+
+
