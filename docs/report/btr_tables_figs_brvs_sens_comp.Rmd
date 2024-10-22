@@ -46,6 +46,9 @@ tar_load(
     )
   )
 
+projections_all_sm_nosens <- projections_all_sm %>%
+  filter(grouping %in% c("ghgi","wm"))
+
 projections_all_sm <- projections_all_sm %>%
   mutate(grouping = case_when(grouping == "wm" ~ "wm_sens",
                               TRUE~grouping))
@@ -108,13 +111,13 @@ brvs_tne <- read_csv("data-extra/BR Voluntary Supplement 2023/brvs_totalnetemiss
 
 
 ```{r}
-fig <- br_project_brvs_sens(projections_ghgi, brvs_tne, config, settings, brvs_btr_subset = TRUE)
+fig <- br_project_sens_nosens(projections_ghgi, config, settings)
 
 fig
 ```
 
 ```{r}
-filename <- paste0("btr_main_fig_",Sys.Date(),".png")
+filename <- paste0("btr_main_fig_nosens",Sys.Date(),".png")
 ggsave(paste0('output/',settings$version,"/tables_figs_sens/btr_main_figs/main_fig/",filename), create.dir = TRUE, height = 7, width = 9)
 ```
 
@@ -140,10 +143,6 @@ fig
 filename <- paste0("btr_main_fig_nobrvs_",Sys.Date(),".png")
 ggsave(paste0('output/',settings$version,"/tables_figs_sens/btr_main_figs/main_fig/",filename), create.dir = TRUE)
 ```
-
-## Value Summary Tables
-
-### 
 
 
 ## Kaya BR5:VS Comparison
@@ -247,11 +246,9 @@ industry <- brvs_sens_sectors("Emissions|CO2|Energy|Demand|Industry and Fuel Pro
 industry
 ```
 
-# Electricity and Transportation CO2
-
 # Energy and Transportation CO2 Emissions Range {.tabset}
 
-## Figure
+## Figure: Sens
 
 ```{r}
 nrg_emissions <- projections_all_sm %>%
@@ -305,6 +302,90 @@ fig
 
 ```{r}
 filename <- paste0("nrg_emissions_fig_",Sys.Date(),".png")
+ggsave(paste0('output/',settings$version,"/tables_figs_sens/nrg_emissions/",filename), create.dir = TRUE,height = 4.5)
+```
+
+
+## Figure: No Sens
+
+```{r}
+nrg_emissions <- projections_all_sm %>%
+  filter(usproj_sector %in% c('Energy','Transportation') & gas == "CO2") %>%
+  filter(grouping %in% c('ghgi','wm_sens')) %>%
+  group_by(proj_name, year, grouping) %>%
+  summarise(nrg_trn_co2 = sum(sum)) %>%
+  filter(year %in% config$annual_1990_fives)
+
+nrg_emissions_nosens <- projections_all_sm_nosens %>%
+  filter(usproj_sector %in% c('Energy','Transportation') & gas == "CO2") %>%
+  filter(grouping %in% c('ghgi','wm')) %>%
+  group_by(proj_name, year, grouping) %>%
+  summarise(nrg_trn_co2 = sum(sum)) %>%
+  filter(year %in% config$annual_1990_fives)
+
+ghgi <- nrg_emissions %>%
+  filter(year <= settings$base_year)
+
+proj <- nrg_emissions %>%
+  group_by(year) %>% 
+  filter(year >= settings$base_year)%>%
+    summarise(ymax = max(nrg_trn_co2),
+              ymin = min(nrg_trn_co2),
+              med = median(nrg_trn_co2),
+              .groups = 'drop') %>%
+  mutate(grouping = "2024 Policy Baseline")
+
+proj_nosens <- nrg_emissions_nosens %>%
+  group_by(year) %>% 
+  filter(year >= settings$base_year)%>%
+    summarise(ymax = max(nrg_trn_co2),
+              ymin = min(nrg_trn_co2),
+              med = median(nrg_trn_co2),
+              .groups = 'drop') %>%
+  mutate(grouping = "2024 Policy Baseline, No Sens.")
+
+proj_final <- proj %>%
+  rbind(proj_nosens)
+
+# nrg_05_comp <- nrg_emissions %>%
+#   group_by(year) %>%
+#   # summarise(max = max(nrg_trn_co2),
+#   #           min = min(nrg_trn_co2))
+#    # mutate(pct_change_05 = nrg_trn_co2/nrg_trn_co2[year==2005])
+
+nrg_color <- "#2EAD96"
+
+fig <- 
+  ggplot() +
+  geom_line(ghgi, mapping = aes(x = year, y = nrg_trn_co2, color = proj_name), color = "black") +
+  geom_ribbon(proj_final, mapping = aes(x = year,
+                                        ymax = ymax,
+                                        ymin = ymin,
+                                        #color = grouping,
+                                        fill = grouping),
+              alpha = 0.6,
+              size = 0.7)+
+    labs(x = 'Year',
+         y = expression(paste("MMt ", CO[2], sep = ""))) +
+    geom_vline(
+      xintercept = 2022,
+      linetype = 'dashed',
+      color = "black",
+      # size = 0.4,
+      alpha = 0.5) +
+    scale_y_continuous(labels = scales::comma) +
+    scale_x_continuous(breaks = c(seq(1990,2020,by=5), 2022, seq(2025,2040,by=5)), expand = c(0,0))  +
+    theme_btr() +
+  scale_subpalette_single(unique(proj_final$grouping)) +
+    theme(
+      legend.position = "inside",
+      legend.position.inside = c(0.2, 0.2))
+  
+fig
+```
+
+```{r}
+filename <- paste0("nrg_emissions_fig_nosens",Sys.Date(),".png")
 ggsave(paste0('output/',settings$version,"/tables_figs_sens/nrg_emissions/",filename), create.dir = TRUE,height = 4.5)
 ```
 
@@ -383,7 +464,84 @@ filename <- paste0("ncbr_comp_fig_",Sys.Date(),".png")
 ggsave(paste0('output/',settings$version,"/tables_figs_sens/ncbr_comparison/",filename), create.dir = TRUE,width = 9,height = 7)
 ```
 
-# Sector Analysis: Combine WM & WM_sens
+# Sector Analysis: Combine WM & WM_sens {.tabset}
+
+## Buildings {.tabset}
+
+### All Models
+
+```{r}
+brvs_sectors <- read_csv("data-extra/BR Voluntary Supplement 2023/brvs_sectors.csv")
+```
+
+
+```{r}
+buildings <- brvs_wm_sens_combo_sectors("Emissions|CO2|Energy|Demand|Buildings|Total", brvs_btr_subset = FALSE, brvs_sectors, ghgi_comp_tab, config, settings, data_long_clean)
+
+buildings
+```
+
+### BTR Subset
+
+```{r}
+buildings <- brvs_wm_sens_combo_sectors("Emissions|CO2|Energy|Demand|Buildings|Total", brvs_btr_subset = TRUE, brvs_sectors, ghgi_comp_tab, config, settings,data_long_clean)
+
+buildings
+```
+
+## Electricity {.tabset}
+
+### All Models
+
+```{r}
+electricity <- brvs_wm_sens_combo_sectors("Emissions|CO2|Energy|Supply|Electricity", brvs_btr_subset = FALSE, brvs_sectors, ghgi_comp_tab, config, settings,data_long_clean)
+
+electricity
+```
+
+### BTR Subset
+
+```{r}
+electricity <- brvs_wm_sens_combo_sectors("Emissions|CO2|Energy|Supply|Electricity", brvs_btr_subset = TRUE, brvs_sectors, ghgi_comp_tab, config, settings,data_long_clean)
+
+electricity
+```
+
+## Transportation {.tabset}
+
+### All Models
+
+```{r}
+transportation <- brvs_wm_sens_combo_sectors("Emissions|CO2|Energy|Demand|Transportation|Total", brvs_btr_subset = FALSE, brvs_sectors, ghgi_comp_tab, config, settings,data_long_clean)
+
+transportation
+```
+
+### BTR Subset
+
+```{r}
+transportation <- brvs_wm_sens_combo_sectors("Emissions|CO2|Energy|Demand|Transportation|Total", brvs_btr_subset = TRUE, brvs_sectors, ghgi_comp_tab, config, settings,data_long_clean)
+
+transportation
+```
+
+## Industry {.tabset}
+
+### All Models
+
+```{r}
+industry <- brvs_wm_sens_combo_sectors("Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total", brvs_btr_subset = FALSE, brvs_sectors, ghgi_comp_tab, config, settings,data_long_clean)
+
+industry
+```
+
+### BTR Subset
+
+```{r}
+industry <- brvs_wm_sens_combo_sectors("Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total", brvs_btr_subset = TRUE, brvs_sectors, ghgi_comp_tab, config, settings,data_long_clean)
+
+industry
+```
 
 
 
