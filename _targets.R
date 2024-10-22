@@ -348,7 +348,7 @@ tar_plan(
              params = list(mode = "targets")),
   
    tar_render(btr_tables_figs_sens,
-              "docs/report/btr_tables_figs_brvs_sens_comp.Rmd",
+              "docs/report/btr_tables_figs_sens.Rmd",
               output_dir = paste0('output/',settings$version,"/tables_figs_sens"),
               output_file = paste0("btr_tables_figs_sens",Sys.Date(),".html"),
               params = list(mode = "targets"))

@@ -102,7 +102,7 @@ pct_change_html_sector_merged
 
 ## Net-GHG Emissions {.tabset}
 
-### BR:VS - BTR Model Subset
+### WM_sens vs. No Sens.
 
 ```{r}
 brvs_tne <- read_csv("data-extra/BR Voluntary Supplement 2023/brvs_totalnetemissions.csv")
@@ -127,6 +127,12 @@ ggsave(paste0('output/',settings$version,"/tables_figs_sens/btr_main_figs/main_f
 fig <- br_project_brvs_sens(projections_ghgi, brvs_tne, config, settings, brvs_btr_subset = FALSE)
 
 fig
+```
+
+### WM, WM_sens, BR:VS - All Models
+
+```{r}
+br_project_brvs_sens_wm(projections_ghgi, brvs_tne, config, settings, brvs_btr_subset = FALSE)
 ```
 
 

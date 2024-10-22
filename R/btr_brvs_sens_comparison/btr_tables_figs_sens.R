@@ -1,3 +1,6 @@
+
+# net-ghg figure, includes brvs
+
 br_project_brvs_sens = function(projections_ghgi,
                                 brvs_tne,
                                 config,
@@ -168,7 +171,9 @@ br_project_brvs_sens = function(projections_ghgi,
   
 }
 
-#####
+
+
+# Kaya analysis brvs data
 
 kaya_brvs <- function(kaya_comparison50, data_long_clean, config, settings){
   
@@ -204,10 +209,7 @@ kaya_brvs <- function(kaya_comparison50, data_long_clean, config, settings){
         TRUE ~ br_version)) %>%
     filter(!(br_version == "2024 BTR" & variable %in% c("Emissions/Energy","Energy/GDP") & year >2022)) %>%
     filter(year <= 2050 & year >=2005)
-  ############################
-  # Voluntary Supplement Data
-  ############################
-  
+ 
   vs_df <- data_long_clean %>% 
     filter(scenario == 'leep_IRA',
            variable %in% c("Emissions / Energy",
@@ -247,10 +249,8 @@ kaya_brvs <- function(kaya_comparison50, data_long_clean, config, settings){
     mutate(br_version = "2022 BR5:VS") %>% 
     select(br_version, everything())
   
-  ############################
-  # BTR Data
-  ###########################
-  
+  ## BTR Data
+
   btr_kaya <- kaya_data_range %>%
     # filter(year %in% config$table,
     #        year >= 2015) %>%
@@ -484,7 +484,7 @@ brvs_sens_sectors <- function(var_choice, brvs_btr_subset = FALSE, brvs_sectors,
 }
 
 
-br_project_brvs_sens = function(projections_ghgi,
+br_project_brvs_sens_wm = function(projections_ghgi,
                                 brvs_tne,
                                 config,
                                 settings,
@@ -549,7 +549,8 @@ br_project_brvs_sens = function(projections_ghgi,
     mutate(grouping = "2024 BTR, Sens.")
   
   net_ghg_final <- net_ghg_ribbon %>%
-    filter(!grouping == 'ghgi') %>% 
+    filter(!grouping == 'ghgi',
+           year <= 2040) %>% 
     rbind(connect_brvs,
           connect_wm,
           connect_wm_sens)
