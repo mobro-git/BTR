@@ -1,8 +1,2 @@
 datasrc,model,scenario,notes
-usproj_emissions_2024_wide_for_btr_ta_6-14_usprojRUN06242024.csv,usproj,wm_old,"usproj before updates to a non-co2, sf6, and nf3"
-usproj_emissions_2024_wide_for_btr_ta_6-14_usprojRUN09062024.csv,usproj,wm_oldwaste,before waste update
-usproj_emissions_2024_wide_for_btr_ta_6-14_usprojRUN09092024.csv,usproj,wm_oldag,waste update
-usproj_emissions_2024_wide_for_btr_ta_6-14_usprojRUN09192024.csv,usproj,wm_temp,updates to newest usda non-co2s
-usproj_emissions_2024_wide_for_btr_ta_6-14_usprojRUN10032024.csv,usproj,wm_oldlandfill,"reran to make sure landfills were updated, probably the same as wm_temp"
-usproj_emissions_2024_wide_for_btr_ta_6-14-usprojRUN10212024.csv,usproj,wm_partiallandfill,at least a partial update to landfills
 usproj_emissions_2024_wide_for_btr_ta_6-14-usprojRUNgray_landfillsUpdate.csv,usproj,wm,full landfills update from gray

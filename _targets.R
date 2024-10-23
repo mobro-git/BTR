@@ -50,7 +50,7 @@ tar_plan(
     
     # regions
     usa = "United States",
-    
+
     # years
     fives = c(seq(2005,settings$base_year,by = 1),seq(2025,2040,by = 5)),
     fives50 = c(seq(2005,settings$base_year,by = 1),seq(2025,2050,by = 5)),
@@ -295,8 +295,11 @@ tar_plan(
   
   kaya_ts = create_graph("Kaya", "time_series", config, settings, data_long_index, figmap_kaya_timeseries),
   leepcompare_ts = create_graph("leepcompare", "time_series", config, settings, data_long_clean, figmap_leepcompare_timeseries),
-  sens_ts = create_graph("sens", "time_series", config, settings, data_long_clean, figmap_sens_timeseries),
   
+  # sensitivity figure maps
+  sens_ts = create_graph("sens", "time_series", config, settings, data_long_clean, figmap_sens_timeseries),
+  sens_sb = create_graph("sens", "stacked_bar", config, settings, data_long_clean, figmap_sens_stackbar),
+  sens_db = create_graph("sens", "diff_bar", config, settings, data_long_clean, figmap_sens_diffbar),
   
   # TODO: remove variables we dont have historical data for
   # TODO: add historical data from EIA for energy variables
