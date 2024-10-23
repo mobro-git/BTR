@@ -2,7 +2,7 @@ section_pct_change_05 <- function(data_long_clean, var, config, scens = "wm") {
   
   df <- data_long_clean %>%
     filter(variable == var,
-           scenario %in% scens) %>%
+           scenario %in% c('Historic',scens)) %>%
     select(model,scenario,year,value) %>%
     mutate(pct_change_05 = round((value/value[year==2005]-1),2),
            value = round(value,2)) %>%
