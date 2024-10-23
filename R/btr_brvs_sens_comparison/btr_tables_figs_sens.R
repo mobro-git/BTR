@@ -993,7 +993,7 @@ br_project_sens_nosens = function(projections_ghgi,
   
 }
 
-brvs_wm_sens_combo_sectors <- function(var_choice, brvs_btr_subset = FALSE, brvs_sectors, ghgi_comp_tab, config, settings, data_long_clean) {
+brvs_wm_sens_combo_sectors <- function(var_choice, brvs_show = TRUE, brvs_btr_subset = FALSE, brvs_sectors, ghgi_comp_tab, config, settings, data_long_clean) {
   
   if (brvs_btr_subset == FALSE) {
     brvs_df <- brvs_sectors %>%
@@ -1060,7 +1060,11 @@ brvs_wm_sens_combo_sectors <- function(var_choice, brvs_btr_subset = FALSE, brvs
       str_detect(variable, "Industry") ~ "Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total",
       TRUE~variable)) %>%
     filter(variable == var_choice) %>%
-    mutate(grouping = "LTS")
+    mutate(grouping = "LTS") %>%
+    pivot_wider(names_from = "year", values_from = "value") %>%
+    mutate(`2022` = ghgi_connect$max) %>%
+    pivot_longer(cols = `2025`:`2022`, names_to = "year", values_to = "value") %>%
+    mutate(year = as.numeric(year))
   
   lts_ribbon_df <- lts_df %>% 
     group_by(year) %>%
@@ -1103,6 +1107,14 @@ brvs_wm_sens_combo_sectors <- function(var_choice, brvs_btr_subset = FALSE, brvs
   var_palette <- c("2024 Policy Baseline",
                    "2023 BR Voluntary Supplement",
                    "LTS")
+  
+  if(!brvs_show){
+    point_df = point_df %>%
+      filter(grouping != "2023 BR Voluntary Supplement")
+    
+    median_df = median_df %>%
+      filter(grouping != "2023 BR Voluntary Supplement")
+  }
   
   plot <- ggplot() +
     geom_line(data = ghgi_df, aes(x = year, y = value), color = 'black', size = 0.7) +
