@@ -779,27 +779,29 @@ elec <- section_pct_change_05(
   config$scen_wm_sensitivities
 )
 
-ghgi_ind_fp_df <- ghgi_comp_tab %>%
+ghgi_ind_fp_dir_df <- ghgi_comp_tab %>%
     filter(model == config$model_hist) %>%
     filter(year %in% config$hist) %>%
     mutate(variable = case_when(
-      variable == "Emissions|CO2|Energy|Demand|Industry|Total" ~ "Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total",
+      variable == "Emissions|CO2|Energy|Demand|Industry" ~ "Emissions|CO2|Energy|Demand|Industry and Fuel Production",
       TRUE~variable
     )) %>%
-    filter(variable == "Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total")
+    filter(variable == "Emissions|CO2|Energy|Demand|Industry and Fuel Production")
 
-data_long_clean_ind_fp <- data_long_clean %>% rbind(ghgi_ind_fp_df)
 
-industry_and_fp <- section_pct_change_05(
+
+data_long_clean_ind_fp <- data_long_clean %>% rbind(ghgi_ind_fp_dir_df)
+
+industry_and_fp_dir <- section_pct_change_05(
   data_long_clean_ind_fp,
-  "Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total",
+  "Emissions|CO2|Energy|Demand|Industry and Fuel Production",
   config,
   config$scen_wm_sensitivities
 )
 
-industry_total <- section_pct_change_05(
+industry_dir <- section_pct_change_05(
   data_long_clean,
-  'Emissions|CO2|Energy|Demand|Industry|Total',
+  'Emissions|CO2|Energy|Demand|Industry',
   config,
   config$scen_wm_sensitivities
 )
@@ -834,21 +836,23 @@ buildings_com <- section_pct_change_05(
 ```
 
 ### Electricity
+
 ```{r}
 elec_table <- create_stats_table(elec)
 elec_table
 ```
 
-### Industry and Fuel Prod
+### Industry and Fuel Prod - Direct
 
 ```{r}
-industry_table <- create_stats_table(industry_and_fp)
+industry_table <- create_stats_table(industry_and_fp_dir)
 industry_table
 ```
 
-### Industry_total
+### Industry direct
+
 ```{r}
-industry_table <- create_stats_table(industry_total)
+industry_table <- create_stats_table(industry_dir)
 industry_table
 ```
 
@@ -1149,7 +1153,7 @@ sw_df2 = sw_df %>%
               rename(total = value)) %>% 
   mutate(Share = value/total) %>% 
   select(-value,-total) %>% 
-  filter(year %in% c(2030,2035,2040)) %>% 
+  filter(year %in% c(2040)) %>% 
   pivot_wider(names_from = model,
               values_from = Share)
 
