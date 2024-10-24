@@ -1,3 +1,4 @@
 lulucf_name,datasrc,scenario,csc_model,ch4_model,n2o_model,grouping
 nfs,lulucf_btr_data_from_data-extra.csv,wm,NFS,USDA-OCE-GHGI,USDA-OCE-GHGI,wm
 gtm,lulucf_btr_data_from_data-extra.csv,wm,GTM,USDA-OCE-GHGI,USDA-OCE-GHGI,wm
+fasom,lulucf_btr_data_from_data-extra.csv,wm,FASOM,USDA-OCE-GHGI,USDA-OCE-GHGI,wm

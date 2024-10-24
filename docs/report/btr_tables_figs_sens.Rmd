@@ -1130,6 +1130,7 @@ Share of fuel usage in Commercial Buildings
 Share of Wind and Solar in elec gen in 2040
 
 ```{r}
+tar_load(figmap_nrgco2_stackbar)
 df <- figmap_nrgco2_stackbar %>% filter(figure_no == 13)
 
 var_list <- df$variable
