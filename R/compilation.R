@@ -235,7 +235,7 @@ check_combos_present = function(usproj_all, xw) {
   
   if (nrow(diff) > 0) {
     print(diff)
-    rlang::abort(message = paste("Model/scenario combinations in the crosswalk are not present in usproj_all. Please check that you've selected appropriate component model/scenario combinations in the crosswalk", sep = ""),
+    rlang::abort(message = paste("Model/scenario combinations in the compilation crosswalk are not present in usproj_all. Please check that you've selected appropriate component model/scenario combinations in the crosswalk", sep = ""),
                  class = 'compilation_combos_check')
   }
   

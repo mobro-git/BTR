@@ -43,10 +43,10 @@ tar_plan(
     scen_wm_hist = c("wm","Historic"),
     scen_wm_ira = c("wm","leep_IRA"),
     scen_wm_sensitivities = c("wm", 
-                              #OP-NEMS sensitivities
-                              "wm_adv", "wm_highogs","wm_lowogs", 
-                              #GCAM and USREP-ReEDS sensitivities
-                              "wm_highfuelcost", "wm_lowfuelcost","wm_lowcostre_highfuelcost"),
+                              "wm_adv", # OP-NEMS
+                              "wm_highfuelcost", # OP-NEMS, GCAM
+                              "wm_lowfuelcost", # OP-NEMS, GCAM, USREP-ReEDS
+                              "wm_lowcostre_highfuelcost"), #GCAM, USREP-ReEDS
     
     # regions
     usa = "United States",

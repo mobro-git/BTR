@@ -45,8 +45,8 @@ usrep_reeds_allscen.csv,USREP-ReEDS,ira_high_adv,USREP-ReEDS,leep_Opt-IRA.Adv,LE
 usrep_reeds_allscen.csv,USREP-ReEDS,ira_mid_constr,USREP-ReEDS,leep_Constrained Deployment,LEEP report,leep
 OP-NEMS_BTR_Scenario_with_Measures_Data 8-7-2024.xlsx,OP-NEMS,OP Moderate,OP-NEMS,wm,btr - OP-NEMS BTR wm,btr
 BTR OP Sensitivities-Advanced Case 9-27-2024.xlsx,OP-NEMS,OP Advanced,OP-NEMS,wm_adv,OP-NEMS sensitivities,btr
-BTR OP Sensitivities-High OGS Case 9-27-2024.xlsx,OP-NEMS,High OGS,OP-NEMS,wm_highogs,OP-NEMS sensitivities,btr
-BTR OP Sensitivities-Low OGS Case 9-27-2024.xlsx,OP-NEMS,Low OGS,OP-NEMS,wm_lowogs,OP-NEMS sensitivities,btr
+BTR OP Sensitivities-High OGS Case 9-27-2024.xlsx,OP-NEMS,High OGS,OP-NEMS,wm_lowfuelcost,OP-NEMS sensitivities,btr
+BTR OP Sensitivities-Low OGS Case 9-27-2024.xlsx,OP-NEMS,Low OGS,OP-NEMS,wm_highfuelcost,OP-NEMS sensitivities,btr
 100924gcamreport_Processed.csv,GCAM 7.0,WM_100924,GCAM,wm,btr-gcam,btr
 100924gcamreport_Processed.csv,GCAM 7.0,WM_100924_LowCostRE23_highFuelCost,GCAM,wm_lowcostre_highfuelcost,,btr
 100924gcamreport_Processed.csv,GCAM 7.0,WM_100924_highFuelCost,GCAM,wm_highfuelcost,,btr

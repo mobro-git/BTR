@@ -44,7 +44,7 @@ create_stats_table <- function(df) {
   return(table)
 }
 
-zev_share_table <- function(data_long_clean, ice_var, scens) {
+zev_share_table <- function(data_long_clean, ice_var, scens = "wm") {
   df <- data_long_clean %>% 
     filter(variable == ice_var,
            scenario %in% scens,
