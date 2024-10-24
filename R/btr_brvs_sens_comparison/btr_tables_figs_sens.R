@@ -1223,7 +1223,7 @@ br_sectors_sens = function(var_choice, data_long_clean,  ghgi_comp_tab, config, 
          y = ytitle, 
          x = "") +
     scale_y_continuous(limits = c(0,2500), expand = c(0,0), labels = comma) +
-    scale_x_continuous(breaks = c(2005, 2022, 2025, 2030, 2035, 2040)) + 
+    scale_x_continuous(breaks = c(2005, 2022, 2025, 2030, 2035, 2040), expand = c(0,0)) + 
     geom_hline(aes(yintercept=0)) +
     theme_btr() +
     theme(
