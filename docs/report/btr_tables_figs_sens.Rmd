@@ -399,6 +399,92 @@ filename <- paste0("nrg_emissions_fig_nosens",Sys.Date(),".png")
 ggsave(paste0('output/',settings$version,"/tables_figs_sens/nrg_emissions/",filename), create.dir = TRUE,height = 4.5)
 ```
 
+# LULUCF Sink Range {.tabset}
+
+```{r}
+# TODO: update to USDA NFS Raw Data/ ....FREEZE..... FOREST-ONLY CO2 tab for both historical and projections data for FORST ONLY CO2
+lulucf_co2_hist <- read_xlsx(
+  "data-extra/USDA NFS Raw Data/LULUCF projections DRAFT compilation 82924.xlsx",
+  sheet = "Table 6-2",
+  skip = 1,
+  n_max = 32
+) %>% filter(`Gas/Land-Use Category` == 'Carbon Stock Change (CO2)a')
+
+
+lulucf_co2_hist_long <- lulucf_co2_hist %>%
+  pivot_longer(cols = 2:34, names_to = 'year') %>%
+  select(year, value)
+
+lulucf_proj <- read_xlsx("data-extra/USDA NFS Raw Data/LULUCF projections DRAFT compilation 10 3 2024.xlsx",
+                        sheet = "LULUCF TABLE FOR PIPELINE") %>%
+  filter(variable == 'Emissions|LULUCF|Carbon Stock Change') %>%
+  pivot_longer(cols = 6:11, names_to = 'year') %>%
+  select(year, value)
+
+lulucf_plot_data <- lulucf_co2_hist_long %>% rbind(lulucf_proj) %>%
+  mutate(
+    year = as.numeric(year),
+    value = as.numeric(value)
+  ) %>%
+  filter(year <= 2040, year >= 2000)
+```
+
+## Figure
+
+```{r}
+lulucf_plot_proj <- lulucf_plot_data %>%
+  filter(year >= 2022) %>%
+  group_by(year) %>%
+  mutate(min = min(value),
+         max = max(value))
+
+lulucf_plot_hist <- lulucf_plot_data %>% filter(year < 2025)
+color_id <- '#0097FF'
+
+lulucf_fig <- ggplot(mapping = aes(x = year, y = value)) +
+  geom_line(data = lulucf_plot_hist, color = color_id,size = 0.7) +
+  geom_ribbon(data = lulucf_plot_proj, aes(ymin = min, ymax = max),color = color_id, fill = color_id, alpha = 0.4,
+              size = 0.7) +
+ # geom_point(data = lulucf_plot_data, color = color_id) +
+  labs(y = expression(paste("MMt C", O[2]))) +
+  geom_vline(
+    xintercept = 2022,
+    linetype = 'dashed',
+    color = "black",
+    # size = 0.4,
+    alpha = 0.5
+  ) +
+  scale_x_continuous(breaks = c(2000, 2005, 2010, settings$base_year, 2025, 2030, 2035, 2040),expand = c(0,0)) +
+  expand_limits(y = c(0,-1500)) +
+  scale_y_continuous(labels = scales::comma, breaks = c(0,-500,-1000,-1500)) +
+  theme_btr() 
+lulucf_fig
+```
+
+```{r}
+filename <- paste0("lulucf_fig_", Sys.Date(), ".png")
+ggsave(paste0('output/', settings$version, "/tables_figs/lulucf/", filename),
+  create.dir = TRUE,
+  height = 4.5,
+  width = 9)
+```
+
+## Stats
+
+```{r}
+ref <- lulucf_plot_data %>% filter(year == 2005) %>% pull(value)
+
+lulucf_stats_data <- lulucf_plot_data %>%
+  filter(year %in% c(2005, 2022, 2025, 2030, 2035, 2040)) %>%
+  mutate(`2005` = ref) %>%
+  mutate(pct_change_05 = ((value-`2005`)/`2005`)) %>%
+  group_by(year) %>%
+  summarise(min = min(pct_change_05),
+            max = max(pct_change_05))
+
+gt(lulucf_stats_data)
+```
+
 # NCBR Comp w/ BR:VS
 
 ```{r}
