@@ -1060,7 +1060,7 @@ brvs_wm_sens_combo_sectors <- function(var_choice, brvs_show = TRUE, brvs_btr_su
       str_detect(variable, "Industry") ~ "Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total",
       TRUE~variable)) %>%
     filter(variable == var_choice) %>%
-    mutate(grouping = "LTS") %>%
+    mutate(grouping = "Long-Term Strategy") %>%
     pivot_wider(names_from = "year", values_from = "value") %>%
     mutate(`2022` = ghgi_connect$max) %>%
     pivot_longer(cols = `2025`:`2022`, names_to = "year", values_to = "value") %>%
@@ -1079,7 +1079,7 @@ brvs_wm_sens_combo_sectors <- function(var_choice, brvs_show = TRUE, brvs_btr_su
   
   lts_ribbon_df <- lts_ribbon_df %>%
     rbind(ghgi_connect) %>%
-    mutate(grouping = "LTS")
+    mutate(grouping = "Long-Term Strategy")
   
   
   
@@ -1106,7 +1106,7 @@ brvs_wm_sens_combo_sectors <- function(var_choice, brvs_show = TRUE, brvs_btr_su
   
   var_palette <- c("2024 Policy Baseline",
                    "2023 BR Voluntary Supplement",
-                   "LTS")
+                   "Long-Term Strategy")
   
   if(!brvs_show){
     point_df = point_df %>%
@@ -1124,7 +1124,7 @@ brvs_wm_sens_combo_sectors <- function(var_choice, brvs_show = TRUE, brvs_btr_su
     geom_segment(data = median_df, aes(x = year - 1, xend = year + 1, y = median, yend = median, color = grouping),
                  linewidth = 1) +
     scale_subpalette_single(var_palette) +
-    labs(y = expression(paste("Mt C", O[2]))) +
+    labs(y = expression(paste("MMt C", O[2]))) +
     scale_y_continuous(labels = comma) +
     scale_x_continuous(breaks = c(2005, 2022, 2025, 2030, 2035, 2040, 2045, 2050)) +
     theme_btr() +

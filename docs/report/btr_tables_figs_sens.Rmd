@@ -40,7 +40,8 @@ tar_load(
     ghgi_comp_tab,
     projections_ghgi,
     past_proj,
-    kaya_comparison50
+    kaya_comparison50,
+    figmap_nrgco2_stackbar
     )
   )
 
@@ -66,6 +67,10 @@ gas_table_merged <- create_html_table_merged(gas_df, 'Gas', settings)
 gas_table_merged
 ```
 
+```{r}
+filename <- paste0("gas_table_",Sys.Date(),".png")
+gtsave(gas_table_merged, paste0('output/',settings$version,"/tables_figs_sens/results_tables/by_gas_sector/",filename))
+```
 
 ### Sector
 
@@ -77,6 +82,10 @@ sector_table_merged <- create_html_table_merged(sector_df, 'Sector', settings)
 sector_table_merged
 ```
 
+```{r}
+filename <- paste0("sector_table_",Sys.Date(),".png")
+gtsave(sector_table_merged, paste0('output/',settings$version,"/tables_figs_sens/results_tables/by_gas_sector/",filename))
+```
 ### % Change: Gas
 
 ```{r, pct change by gas}
@@ -450,8 +459,8 @@ ncbr_comp_ribbon <- tge_all_long %>%
   mutate(min = min(Value),
          max = max(Value)) %>%
   select(Report,Year,min,max) %>%
-  distinct() %>%
-  rbind(brvs_ribbon)
+  distinct()
+# %>%rbind(brvs_ribbon)
 ```
 
 ```{r}
@@ -463,6 +472,167 @@ fig
 ```{r}
 filename <- paste0("ncbr_comp_fig_",Sys.Date(),".png")
 ggsave(paste0('output/',settings$version,"/tables_figs_sens/ncbr_comparison/",filename), create.dir = TRUE,width = 9,height = 7)
+```
+
+## NCBR Table
+
+```{r}
+# Load in past NCBR data
+past_proj_clean <- past_proj %>%
+  select(Report, Year, Emissions) %>%
+  rename(Value = Emissions) %>%
+  filter(Year <= 2035)
+
+past_proj_clean_hilow <- past_proj_clean %>%
+  group_by(Report,Year) %>%
+  mutate(low = min(Value),
+         high = max (Value),
+         Report = case_when(Report == "btr_2024" ~ "2024 BTR",
+                            Report == "car_2014" ~ "2014 CAR",
+                            Report == "br_2016" ~ "2016 BR",
+                            Report == "br_2021" ~ "2021 BR",
+                            Report == "br_2022" ~ "2022 BR")) %>%
+  select(Report,Year,low,high)
+```
+
+```{r}
+col_order <- c('category', 'year', 'low', 'high')
+category <- 'gas'
+group <- 'wm_sens'
+
+summary <- projections_all_sm %>%
+  rename(category = .data[[category]]) %>%
+  filter(grouping %in% c(group,'ghgi')) %>%
+  filter(year %in% config$seq_ncbr_comp_sm) %>%
+  group_by(proj_name, category, year) %>%
+  summarise(cat_sum = sum(sum), .groups = 'drop')
+
+summary_total_gross <- summary %>%
+  filter(!category == 'LULUCF Sink') %>%
+  group_by(proj_name, year) %>%
+  summarise(value = sum(cat_sum), .groups = 'drop') %>%
+  group_by(year) %>%
+  mutate(low = min(value), high = max(value)) %>%
+  select(year, low, high) %>%
+  distinct() %>%
+  mutate(category = 'Total Gross Emissions') %>%
+  select(all_of(col_order)) %>%
+  rename(Projection = category) %>%
+  mutate(Projection = '2024 BTR')
+
+tge_all_long_high_low <- summary_total_gross %>%
+  rename(Report = Projection,
+         Year = year) %>%
+  rbind(past_proj_clean_hilow) %>%
+  filter(Year %in% config$seq_ncbr_comp_sm) %>%
+  drop_na() %>%
+  rename(Publication = Report)
+
+proj_years <- c('2025', '2030', '2035', '2040')
+hist_years <- c('2005', '2010', '2015', '2020')
+
+proj_col_order <- c(
+  '2025_low',
+  '2025_high',
+  '2030_low',
+  '2030_high',
+  '2035_low',
+  '2035_high',
+  '2040_low',
+  '2040_high'
+)
+
+df_low <- tge_all_long_high_low %>%
+  select(Publication, Year, low) %>%
+  pivot_wider(names_from = 'Year', values_from = 'low')
+
+
+df_high <- tge_all_long_high_low %>%
+  select(Publication, Year, high) %>%
+  pivot_wider(names_from = 'Year', values_from = 'high')
+
+df_merged <- merge(df_low[, c('Publication', proj_years)],
+                   df_high[, c('Publication', proj_years)],
+                   by = 'Publication',
+                   suffix = c('', '_high'))
+
+for (year in proj_years) {
+  colnames(df_merged)[colnames(df_merged) == year] <- paste0(year, '_low')
+  colnames(df_merged)[colnames(df_merged) == paste0(year, '_high')] <- paste0(year, '_high')
+}
+
+df_merge_final <- merge(df_low %>% select(Publication, all_of(hist_years)), df_merged) %>%
+  select(Publication, all_of(hist_years), all_of(proj_col_order)) %>%
+  mutate_if(is.numeric, round)
+
+numeric_cols <- sapply(df_merge_final, is.numeric)
+df_merge_final[, numeric_cols] <- lapply(df_merge_final[, numeric_cols], scales::comma)
+
+ncbr_table_df <- df_merge_final
+for (col in names(ncbr_table_df)) {
+  ncbr_table_df <- ncbr_table_df %>%
+    mutate(col = as.character(col)) %>%
+    select(names(df_merge_final)) %>%
+    arrange(desc(Publication))
+}
+```
+
+### Table
+
+```{r}
+proj_col_order <- c('2025', '2030', '2035', '2040')
+
+stubhead <- 'Publication'
+
+merged = ncbr_table_df %>%
+  mutate(
+    `2025` = case_when(
+      `2025_low` == `2025_high` ~ `2025_high`,
+      `2025_low` != `2025_high` ~ paste0(`2025_low`, " - ", `2025_high`)
+    ),
+    `2030` = case_when(
+      `2030_low` == `2030_high` ~ `2030_high`,
+      `2030_low` != `2030_high` ~ paste0(`2030_low`, " - ", `2030_high`)
+    ),
+    `2035` = case_when(
+      `2035_low` == `2035_high` ~ `2035_high`,
+      `2035_low` != `2035_high` ~ paste0(`2035_low`, " - ", `2035_high`)
+    ),
+    `2040` = case_when(
+      `2040_low` == `2040_high` ~ `2040_high`,
+      `2040_low` != `2040_high` ~ paste0(`2040_low`, " - ", `2040_high`)
+    )
+  ) %>%
+  select(-contains("_"))
+
+bold1 = nrow(merged) - 3
+bold2 = nrow(merged) - 1
+bold3 = nrow(merged) - 5
+
+ncbr_comp_table <- merged %>%
+  
+  gt() %>%
+  cols_align('center', columns = everything()) %>%
+  cols_align('left', columns = stubhead) %>%
+  # tab_style(
+  #   style = cell_borders(
+  #     color = "#1F77AE",
+  #     sides = c("bottom"),
+  #     weight = px(2)
+  #   ),
+  #   #
+  #   locations = cells_body(rows = c(bold1, bold2, bold3))
+  # ) %>% 
+
+  
+  gt_theme_nc_blue()
+
+ncbr_comp_table
+```
+
+```{r}
+filename <- paste0("ncbr_comp_table_",Sys.Date(),".png")
+gtsave(ncbr_comp_table, paste0('output/',settings$version,"/tables_figs_sens/results_tables/ncbr_comparison/",filename))
 ```
 
 # Sector Analysis: Combine WM & WM_sens {.tabset}
@@ -480,6 +650,8 @@ brvs_sectors <- read_csv("data-extra/BR Voluntary Supplement 2023/brvs_sectors.c
 buildings <- brvs_wm_sens_combo_sectors("Emissions|CO2|Energy|Demand|Buildings|Total", brvs_show = FALSE, brvs_btr_subset = FALSE, brvs_sectors, ghgi_comp_tab, config, settings, data_long_clean)
 
 buildings
+
+ggsave(plot = buildings,filename = paste0('output/',settings$version,"/tables_figs_sens/sector_analysis/buildings_comparison",Sys.Date(),".png"), create.dir = TRUE, height = 4.5, width = 9)
 ```
 
 ### BTR Subset
@@ -496,6 +668,8 @@ buildings
 
 ```{r}
 electricity <- brvs_wm_sens_combo_sectors("Emissions|CO2|Energy|Supply|Electricity", brvs_show = FALSE, brvs_btr_subset = FALSE, brvs_sectors, ghgi_comp_tab, config, settings,data_long_clean)
+
+ggsave(paste0('output/',settings$version,"/tables_figs_sens/sector_analysis/electricity_comparison",Sys.Date(),".png"), create.dir = TRUE, height = 4.5, width = 9)
 
 electricity
 ```
@@ -515,6 +689,8 @@ electricity
 ```{r}
 transportation <- brvs_wm_sens_combo_sectors("Emissions|CO2|Energy|Demand|Transportation|Total", brvs_show = FALSE, brvs_btr_subset = FALSE, brvs_sectors, ghgi_comp_tab, config, settings,data_long_clean)
 
+ggsave(paste0('output/',settings$version,"/tables_figs_sens/sector_analysis/transportation_comparison",Sys.Date(),".png"), height = 4.5, width = 9)
+
 transportation
 ```
 
@@ -532,6 +708,8 @@ transportation
 
 ```{r}
 industry <- brvs_wm_sens_combo_sectors("Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total", brvs_show = FALSE, brvs_btr_subset = FALSE, brvs_sectors, ghgi_comp_tab, config, settings,data_long_clean)
+
+ggsave(paste0('output/',settings$version,"/tables_figs_sens/sector_analysis/industry_comparison",Sys.Date(),".png"), create.dir = TRUE, height = 4.5, width = 9)
 
 industry
 ```
@@ -601,16 +779,29 @@ elec <- section_pct_change_05(
   config$scen_wm_sensitivities
 )
 
-industry <- section_pct_change_05(
-  data_long_clean,
-  'Emissions|CO2|Energy|Demand|Industry',
+ghgi_ind_fp_dir_df <- ghgi_comp_tab %>%
+    filter(model == config$model_hist) %>%
+    filter(year %in% config$hist) %>%
+    mutate(variable = case_when(
+      variable == "Emissions|CO2|Energy|Demand|Industry" ~ "Emissions|CO2|Energy|Demand|Industry and Fuel Production",
+      TRUE~variable
+    )) %>%
+    filter(variable == "Emissions|CO2|Energy|Demand|Industry and Fuel Production")
+
+
+
+data_long_clean_ind_fp <- data_long_clean %>% rbind(ghgi_ind_fp_dir_df)
+
+industry_and_fp_dir <- section_pct_change_05(
+  data_long_clean_ind_fp,
+  "Emissions|CO2|Energy|Demand|Industry and Fuel Production",
   config,
   config$scen_wm_sensitivities
 )
 
-industry_total <- section_pct_change_05(
+industry_dir <- section_pct_change_05(
   data_long_clean,
-  'Emissions|CO2|Energy|Demand|Industry|Total',
+  'Emissions|CO2|Energy|Demand|Industry',
   config,
   config$scen_wm_sensitivities
 )
@@ -645,20 +836,23 @@ buildings_com <- section_pct_change_05(
 ```
 
 ### Electricity
+
 ```{r}
 elec_table <- create_stats_table(elec)
 elec_table
 ```
 
-### Industry
+### Industry and Fuel Prod - Direct
+
 ```{r}
-industry_table <- create_stats_table(industry)
+industry_table <- create_stats_table(industry_and_fp_dir)
 industry_table
 ```
 
-### Industry_total
+### Industry direct
+
 ```{r}
-industry_table <- create_stats_table(industry_total)
+industry_table <- create_stats_table(industry_dir)
 industry_table
 ```
 
@@ -959,7 +1153,7 @@ sw_df2 = sw_df %>%
               rename(total = value)) %>% 
   mutate(Share = value/total) %>% 
   select(-value,-total) %>% 
-  filter(year %in% c(2030,2035,2040)) %>% 
+  filter(year %in% c(2040)) %>% 
   pivot_wider(names_from = model,
               values_from = Share)
 
@@ -987,53 +1181,53 @@ df_total_var <- df %>%
 Reduction in coal to electricity in 2040 compared to model's EIA 2023
 
 ```{r}
-var_list <- 'Secondary Energy|Electricity|Input|Coal'
-
-pec_df <- get_value_breakout(data_long_clean,var_list, config)
-
-Coal2023 = 7241.636*1000000000000*1.05506e-15
-
-pec_df2 = pec_df %>% 
-  pivot_wider(names_from = year,
-              values_from = value) %>% 
-  rename(base ="2020",
-         target = "2040") %>% 
-  mutate(reduction =1 - (target/Coal2023)) %>% 
-  select(model,variable,reduction) %>% 
-  pivot_wider(names_from = model,
-              values_from = reduction)
-
-grid.table(pec_df2)
+# var_list <- 'Secondary Energy|Electricity|Input|Coal'
+# 
+# pec_df <- get_value_breakout(data_long_clean,var_list, config)
+# 
+# Coal2023 = 7241.636*1000000000000*1.05506e-15
+# 
+# pec_df2 = pec_df %>% 
+#   pivot_wider(names_from = year,
+#               values_from = value) %>% 
+#   rename(base ="2020",
+#          target = "2040") %>% 
+#   mutate(reduction =1 - (target/Coal2023)) %>% 
+#   select(model,variable,reduction) %>% 
+#   pivot_wider(names_from = model,
+#               values_from = reduction)
+# 
+# grid.table(pec_df2)
 ```
 
 Passenger Vehicle sales share in 2040
 
 ```{r}
-var_list <- c("Energy Service|Transportation|Passenger|BEV|Sales Share",
-              "Energy Service|Transportation|Passenger|FCEV|Sales Share",
-              "Energy Service|Transportation|Passenger|PHEV|Sales Share",
-              "Energy Service|Transportation|Passenger|ICE|Sales Share")
-
-vs_df <- get_value_breakout(data_long_clean, var_list, config)
-
-vs_df2 = vs_df %>% 
-  filter(year ==2040) %>% 
-  pivot_wider(names_from = model,
-              values_from = value) 
-
-grid.table(vs_df2)
+# var_list <- c("Energy Service|Transportation|Passenger|BEV|Sales Share",
+#               "Energy Service|Transportation|Passenger|FCEV|Sales Share",
+#               "Energy Service|Transportation|Passenger|PHEV|Sales Share",
+#               "Energy Service|Transportation|Passenger|ICE|Sales Share")
+# 
+# vs_df <- get_value_breakout(data_long_clean, var_list, config)
+# 
+# vs_df2 = vs_df %>% 
+#   filter(year ==2040) %>% 
+#   pivot_wider(names_from = model,
+#               values_from = value) 
+# 
+# grid.table(vs_df2)
   
 ```
 
 Freight Vehicle sales share in 2040
 
 ```{r}
-var_list <- c("Energy Service|Transportation|Freight|BEV|Sales Share",
-              "Energy Service|Transportation|Freight|FCEV|Sales Share",
-              "Energy Service|Transportation|Freight|PHEV|Sales Share",
-              "Energy Service|Transportation|Freight|ICE|Sales Share")
-
-vs_df <- get_value_breakout(data_long_clean, var_list, config)
+# var_list <- c("Energy Service|Transportation|Freight|BEV|Sales Share",
+#               "Energy Service|Transportation|Freight|FCEV|Sales Share",
+#               "Energy Service|Transportation|Freight|PHEV|Sales Share",
+#               "Energy Service|Transportation|Freight|ICE|Sales Share")
+# 
+# vs_df <- get_value_breakout(data_long_clean, var_list, config)
 
 # vs_df2 = vs_df %>% 
 #   filter(year ==2040) %>% 

@@ -139,7 +139,7 @@ color_map <- c(
   "leep_IRA" = "redD",
   "IRA" = "hue1",
   "LEEP" = "redD",
-  "LTS" = "lts green",
+  "Long-Term Strategy" = "lts green",
   
   # models
   
