@@ -835,11 +835,11 @@ ncbr_comparison_figure_sens <- function(ncbr_comp_ribbon, tge_all_long, settings
                                                    color = Report),
                   alpha = 0.4 ,
                   size = 0.7) +
-      geom_vline(xintercept = settings$base_year,
-                 linetype = 'dashed',
-                 color = "black",
-                 # size = 0.4,
-                 alpha = 0.5) +
+      # geom_vline(xintercept = settings$base_year,
+      #            linetype = 'dashed',
+      #            color = "black",
+      #            # size = 0.4,
+      #            alpha = 0.5) +
       labs(x = 'Year',
            y = expression(paste("Total Gross GHG Emissions (MMt ", CO[2], "e)", sep = ""))) +
       scale_subpalette_single(var_palette) +
@@ -1136,6 +1136,100 @@ brvs_wm_sens_combo_sectors <- function(var_choice, brvs_show = TRUE, brvs_btr_su
   
   
   plot
+  
+}
+
+br_sectors_sens = function(var_choice, data_long_clean,  ghgi_comp_tab, config, settings, ytitle) {
+ 
+   lts_vars <- c("Emissions|CO2|Energy|Demand|Buildings|TotalDI",
+                "Emissions|CO2|Energy|Demand|Transportation|TotalDI",
+                "Emissions|CO2|Energy|Demand|Industry|TotalDI",
+                "Emissions|CO2|Energy|Supply|Electricity")
+  
+  # ghgi 24 data
+  ghgi_df <- ghgi_comp_tab %>%
+    filter(model == config$model_hist) %>%
+    filter(year %in% config$hist) %>%
+    mutate(variable = case_when(
+      variable == "Emissions|CO2|Energy|Demand|Industry|Total" ~ "Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total",
+      TRUE~variable
+    )) %>%
+    filter(variable == var_choice)
+
+  ghgi_connect <- ghgi_df %>%
+    filter(year == settings$base_year) %>%
+    mutate(max = value,
+           min = value) %>%
+    select(year,max,min)
+  
+  # LTS models and variables used for sector figures
+  
+  lts_df <- data_long_clean %>%
+    filter(model %in% config$model_lts,
+           year %in% config$fives_proj_sm50,
+           variable %in% lts_vars) %>%
+    # change names to match template update variable names
+    mutate(variable = case_when(
+      str_detect(variable, "Buildings") ~ "Emissions|CO2|Energy|Demand|Buildings|Total",
+      str_detect(variable, "Transportation") ~ "Emissions|CO2|Energy|Demand|Transportation|Total",
+      str_detect(variable, "Industry") ~ "Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total",
+      TRUE~variable)) %>%
+    filter(variable == var_choice) %>%
+    pivot_wider(names_from = "year", values_from = "value") %>%
+    mutate(`2022` = ghgi_connect$max) %>%
+    pivot_longer(cols = `2025`:`2022`, names_to = "year", values_to = "value") %>%
+    mutate(year = as.numeric(year))
+  
+  lts_ribbon_df <- lts_df %>% 
+    group_by(year) %>%
+    summarise(max = max(value),
+              min = min(value)) %>%
+    mutate(grouping = "Long-Term Strategy")
+  
+ 
+  
+  # models used in the projections and variables used for sector figures
+  
+  btr_df <- data_long_clean %>%
+    filter(scenario %in% config$scen_wm_sensitivities,
+           variable == var_choice,
+           year %in% config$fives_proj_sm50,
+           region == 'United States')
+  
+  
+  btr_ribbon_df <- btr_df %>%
+    group_by(year) %>%
+    summarise(max = max(value),
+              min = min(value)) %>%
+    rbind(ghgi_connect)  %>%
+    mutate(grouping = "2024 Policy Baseline")
+  
+  ribbon_df <- btr_ribbon_df %>%
+    rbind(lts_ribbon_df)
+  
+  
+  var_palette <- c("2024 Policy Baseline",
+                   "Long-Term Strategy")
+  
+  
+  ggplot() +
+    # Historic
+    geom_line(data = ghgi_df, aes(x = year, y = value), size = 0.7, color = "black") +
+    geom_ribbon(data = ribbon_df, aes(x=year, ymax=max, ymin=min, fill = grouping, color = grouping), alpha = 0.4 , size = 0.7) +
+    scale_subpalette_single(var_palette) +
+    # theming
+    theme_custom() +
+    labs(title = "", 
+         y = ytitle, 
+         x = "") +
+    scale_y_continuous(limits = c(0,2500), expand = c(0,0), labels = comma) +
+    scale_x_continuous(breaks = c(2005, 2022, 2025, 2030, 2035, 2040)) + 
+    geom_hline(aes(yintercept=0)) +
+    theme_btr() +
+    theme(
+      legend.position = "inside",
+      legend.position.inside = c(0.15, 0.2)
+    )
   
 }
 
