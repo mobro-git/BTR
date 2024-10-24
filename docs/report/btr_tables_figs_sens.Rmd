@@ -297,7 +297,7 @@ fig <-
               alpha = 0.4 ,
               size = 0.7)+
     labs(x = 'Year',
-         y = expression(paste("MMt ", CO[2], sep = ""))) +
+         y = expression(paste("Energy and Transportation Emissions (MMt ", CO[2], ")", sep = ""))) +
     scale_y_continuous(labels = scales::comma) +
     scale_x_continuous(breaks = c(seq(1990,2020,by=5), 2022, seq(2025,2040,by=5)), expand = c(0,0)) +
     theme_btr() 
@@ -307,7 +307,7 @@ fig
 
 ```{r}
 filename <- paste0("nrg_emissions_fig_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs_sens/nrg_emissions/",filename), create.dir = TRUE,height = 4.5)
+ggsave(paste0('output/',settings$version,"/tables_figs_sens/nrg_emissions/",filename), create.dir = TRUE,height = 5)
 ```
 
 
@@ -444,6 +444,7 @@ lulucf_fig <- ggplot() +
   scale_x_continuous(breaks = c(2000, 2005, 2010, settings$base_year, 2025, 2030, 2035, 2040),expand = c(0,0)) +
   expand_limits(y = c(0,-1500)) +
   scale_y_continuous(labels = scales::comma, breaks = c(0,-500,-1000,-1500)) +
+  labs(y = expression(paste("Forest Net ",CO[2]," Sequestration (MMt ", CO[2], ")", sep = ""))) +
   theme_btr() 
 lulucf_fig
 ```
@@ -455,8 +456,6 @@ ggsave(paste0('output/', settings$version, "/tables_figs_sens/lulucf/", filename
   height = 4.5,
   width = 9)
 ```
-
-## Stats
 
 ```{r}
 # ref <- lulucf_plot_data %>% filter(year == 2005) %>% pull(value)
@@ -812,7 +811,7 @@ buildings <- br_sectors_sens(
 
 buildings
 
-ggsave(plot = buildings,filename = paste0('output/',settings$version,"/tables_figs_sens/sector_analysis/only_ribbons/buildings_comparison",Sys.Date(),".png"), create.dir = TRUE, height = 4.5, width = 9)
+ggsave(plot = buildings,filename = paste0('output/',settings$version,"/tables_figs_sens/sector_analysis/only_ribbons/buildings_comparison",Sys.Date(),".png"), create.dir = TRUE, height = 5, width = 9)
 ```
 
 
@@ -830,7 +829,7 @@ electricity <- br_sectors_sens(
   expression(paste("Electricity Emissions (MMt C", O[2], ")"))
 )
 
-ggsave(paste0('output/',settings$version,"/tables_figs_sens/sector_analysis/only_ribbons/electricity_comparison",Sys.Date(),".png"), create.dir = TRUE, height = 4.5, width = 9)
+ggsave(paste0('output/',settings$version,"/tables_figs_sens/sector_analysis/only_ribbons/electricity_comparison",Sys.Date(),".png"), create.dir = TRUE, height = 5, width = 9)
 
 electricity
 ```
@@ -849,7 +848,7 @@ transportation <- br_sectors_sens(
   expression(paste("Transportation Emissions (MMt C", O[2], ")"))
 )
 
-ggsave(paste0('output/',settings$version,"/tables_figs_sens/sector_analysis/only_ribbons/transportation_comparison",Sys.Date(),".png"), height = 4.5, width = 9)
+ggsave(paste0('output/',settings$version,"/tables_figs_sens/sector_analysis/only_ribbons/transportation_comparison",Sys.Date(),".png"), height = 5, width = 9)
 
 transportation
 ```
@@ -868,7 +867,7 @@ industry <- br_sectors_sens(
   expression(paste("Industry and Fuel Production Emissions (MMt C", O[2], ")"))
 )
 
-ggsave(paste0('output/',settings$version,"/tables_figs_sens/sector_analysis/only_ribbons/industry_comparison",Sys.Date(),".png"), create.dir = TRUE, height = 4.5, width = 9)
+ggsave(paste0('output/',settings$version,"/tables_figs_sens/sector_analysis/only_ribbons/industry_comparison",Sys.Date(),".png"), create.dir = TRUE, height = 5, width = 9)
 
 industry
 ```

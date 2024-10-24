@@ -1166,7 +1166,7 @@ br_sectors_sens = function(var_choice, data_long_clean,  ghgi_comp_tab, config, 
   
   lts_df <- data_long_clean %>%
     filter(model %in% config$model_lts,
-           year %in% config$fives_proj_sm50,
+           year %in% config$fives_proj_sm,
            variable %in% lts_vars) %>%
     # change names to match template update variable names
     mutate(variable = case_when(
@@ -1193,7 +1193,7 @@ br_sectors_sens = function(var_choice, data_long_clean,  ghgi_comp_tab, config, 
   btr_df <- data_long_clean %>%
     filter(scenario %in% config$scen_wm_sensitivities,
            variable == var_choice,
-           year %in% config$fives_proj_sm50,
+           year %in% config$fives_proj_sm,
            region == 'United States')
   
   
