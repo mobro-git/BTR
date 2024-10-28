@@ -920,7 +920,7 @@ kable(Direct)
 kable(Total)
 ```
 
-## Energy CO2 emissions reductions from 2005 {.tabset}
+## Energy CO2 emissions reductions from 2005 - Direct {.tabset}
 
 ```{r}
 elec <- section_pct_change_05(
@@ -1026,6 +1026,109 @@ buildings_res_table
 ```
 
 ### Transportation
+```{r}
+transportation_table <- create_stats_table(transportation)
+transportation_table
+```
+
+
+## Energy CO2 emissions reductions from 2005 - Total Emissions {.tabset}
+
+```{r}
+
+ghgi_ind_fp_dir_df <- ghgi_comp_tab %>%
+    filter(model == config$model_hist) %>%
+    filter(year %in% config$hist) %>%
+    mutate(variable = case_when(
+      variable == "Emissions|CO2|Energy|Demand|Industry|Total" ~ "Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total",
+      TRUE~variable
+    )) %>%
+    filter(variable == "Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total")
+
+
+
+data_long_clean_ind_fp <- data_long_clean %>% rbind(ghgi_ind_fp_dir_df)
+
+industry_and_fp_dir <- section_pct_change_05(
+  data_long_clean_ind_fp,
+  "Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total",
+  config,
+  config$scen_wm_sensitivities
+)
+
+industry_dir <- section_pct_change_05(
+  data_long_clean,
+  'Emissions|CO2|Energy|Demand|Industry|Total',
+  config,
+  config$scen_wm_sensitivities
+)
+
+buildings <- section_pct_change_05(
+  data_long_clean,
+  'Emissions|CO2|Energy|Demand|Buildings|Total',
+  config,
+  config$scen_wm_sensitivities
+)
+
+transportation <- section_pct_change_05(
+  data_long_clean,
+  'Emissions|CO2|Energy|Demand|Transportation|Total',
+  config,
+  config$scen_wm_sensitivities
+)
+
+buildings_res <- section_pct_change_05(
+  data_long_clean,
+  'Emissions|CO2|Energy|Demand|Buildings|Residential|Total',
+  config,
+  config$scen_wm_sensitivities
+)
+
+buildings_com <- section_pct_change_05(
+  data_long_clean,
+  'Emissions|CO2|Energy|Demand|Buildings|Commercial|Total',
+  config,
+  config$scen_wm_sensitivities
+)
+```
+
+
+### Industry and Fuel Prod
+
+```{r}
+industry_table <- create_stats_table(industry_and_fp_dir)
+industry_table
+```
+
+### Industry
+
+```{r}
+industry_table <- create_stats_table(industry_dir)
+industry_table
+```
+
+### Buildings
+```{r}
+buildings_table <- create_stats_table(buildings)
+buildings_table
+```
+
+### Commercial
+
+```{r}
+buildings_com_table <- create_stats_table(buildings_com)
+buildings_com_table
+```
+
+### Residential
+
+```{r}
+buildings_res_table <- create_stats_table(buildings_res)
+buildings_res_table
+```
+
+### Transportation
+
 ```{r}
 transportation_table <- create_stats_table(transportation)
 transportation_table

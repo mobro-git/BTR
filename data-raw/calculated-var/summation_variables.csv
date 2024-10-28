@@ -6,6 +6,20 @@
 2,Emissions|CO2|Energy|Demand|Buildings|Total,Emissions|CO2|Energy|Demand|Buildings|Indirect,Mt CO2/yr,1
 3,Emissions|CO2|Energy|Demand|Industry|Total,Emissions|CO2|Energy|Demand|Industry,Mt CO2/yr,1
 3,Emissions|CO2|Energy|Demand|Industry|Total,Emissions|CO2|Energy|Demand|Industry|Indirect,Mt CO2/yr,1
+4,Emissions|CO2|Energy|Demand|Transportation|Total,Emissions|CO2|Energy|Demand|Transportation,Mt CO2/yr,1
+4,Emissions|CO2|Energy|Demand|Transportation|Total,Emissions|CO2|Energy|Demand|Transportation|Indirect,Mt CO2/yr,1
+5,Emissions|CO2|Energy|Demand|Buildings|Residential|Total,Emissions|CO2|Energy|Demand|Buildings|Residential,Mt CO2/yr,1
+5,Emissions|CO2|Energy|Demand|Buildings|Residential|Total,Emissions|CO2|Energy|Demand|Buildings|Residential|Indirect,Mt CO2/yr,1
+6,Emissions|CO2|Energy|Demand|Buildings|Commercial|Total,Emissions|CO2|Energy|Demand|Buildings|Commercial,Mt CO2/yr,1
+6,Emissions|CO2|Energy|Demand|Buildings|Commercial|Total,Emissions|CO2|Energy|Demand|Buildings|Commercial|Indirect,Mt CO2/yr,1
+7,Emissions|CO2|CDR,Carbon Sequestration|LULUCF,Mt CO2/yr,1
+7,Emissions|CO2|CDR,Carbon Sequestration|CCS|Biomass|Energy,Mt CO2/yr,1
+13,Energy Service|Transportation|EV|Sales Share,Energy Service|Transportation|Passenger|BEV|Sales Share,%,1
+13,Energy Service|Transportation|EV|Sales Share,Energy Service|Transportation|Passenger|FCEV|Sales Share,%,1
+13,Energy Service|Transportation|EV|Sales Share,Energy Service|Transportation|Passenger|HEV|Sales Share,%,1
+13,Energy Service|Transportation|EV|Sales Share,Energy Service|Transportation|Freight|BEV|Sales Share,%,1
+13,Energy Service|Transportation|EV|Sales Share,Energy Service|Transportation|Freight|FCEV|Sales Share,%,1
+13,Energy Service|Transportation|EV|Sales Share,Energy Service|Transportation|Passenger|PHEV|Sales Share,%,1
 101,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Emissions|CO2|Energy|Demand|Industry,Mt CO2/yr,1
 101,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Emissions|CO2|Energy|Supply|Biogas,Mt CO2/yr,1
 101,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Emissions|CO2|Energy|Supply|Biomass Liqids,Mt CO2/yr,1
@@ -26,16 +40,6 @@
 102,Emissions|CO2|Energy|Demand|Industry and Fuel Production,Emissions|CO2|Energy|Supply|Petroleum Refining,Mt CO2/yr,1
 102,Emissions|CO2|Energy|Demand|Industry and Fuel Production,Emissions|CO2|Energy|Supply|Synthetic Gas,Mt CO2/yr,1
 102,Emissions|CO2|Energy|Demand|Industry and Fuel Production,Emissions|CO2|Energy|Supply|Synthetic Liquids,Mt CO2/yr,1
-4,Emissions|CO2|Energy|Demand|Transportation|Total,Emissions|CO2|Energy|Demand|Transportation,Mt CO2/yr,1
-4,Emissions|CO2|Energy|Demand|Transportation|Total,Emissions|CO2|Energy|Demand|Transportation|Indirect,Mt CO2/yr,1
-6,Emissions|CO2|CDR,Carbon Sequestration|LULUCF,Mt CO2/yr,1
-6,Emissions|CO2|CDR,Carbon Sequestration|CCS|Biomass|Energy,Mt CO2/yr,1
-13,Energy Service|Transportation|EV|Sales Share,Energy Service|Transportation|Passenger|BEV|Sales Share,%,1
-13,Energy Service|Transportation|EV|Sales Share,Energy Service|Transportation|Passenger|FCEV|Sales Share,%,1
-13,Energy Service|Transportation|EV|Sales Share,Energy Service|Transportation|Passenger|HEV|Sales Share,%,1
-13,Energy Service|Transportation|EV|Sales Share,Energy Service|Transportation|Freight|BEV|Sales Share,%,1
-13,Energy Service|Transportation|EV|Sales Share,Energy Service|Transportation|Freight|FCEV|Sales Share,%,1
-13,Energy Service|Transportation|EV|Sales Share,Energy Service|Transportation|Passenger|PHEV|Sales Share,%,1
 210,BTR|Emissions|CO2|Energy excl TRN Sum,Emissions|CO2|Energy|Demand|Buildings,Mt CO2/yr,1
 210,BTR|Emissions|CO2|Energy excl TRN Sum,Emissions|CO2|Energy|Demand|Industry,Mt CO2/yr,1
 210,BTR|Emissions|CO2|Energy excl TRN Sum,Emissions|CO2|Energy|Supply,Mt CO2/yr,1
