@@ -1291,6 +1291,41 @@ res_electrif <- create_stats_table(res_electrif_wide)
 res_electrif
 ```
 
+## Percent clean energy
+
+```{r}
+vars = c("Secondary Energy|Electricity|Renewable","Secondary Energy|Electricity|Zero-Emissions",
+         "Secondary Energy|Electricity")
+df = data_long_clean %>%
+  filter(model %in% config$model_wm) %>%
+  filter(scenario %in% config$scen_wm_sensitivities) %>%
+  filter(variable %in% vars) %>%
+  mutate(variable = case_when(
+    str_detect(variable, "Renew") ~ "renew",
+    str_detect(variable, "Zero") ~ "zero",
+    TRUE~"total"
+  )) %>%
+  filter(year %in% c(2025,2030,2035,2040)) %>%
+  select(-region,-datasrc) %>%
+  pivot_wider(names_from = "variable", values_from = "value") %>%
+  mutate(pct_renew = renew/total,
+         pct_zero = zero/total) %>%
+  pivot_longer(cols = 5:9, names_to = "variable", values_to = "value") %>%
+  pivot_wider(names_from = "year", values_from = "value")
+```
+
+### Percent Renewable
+```{r}
+pct_renew = df %>% filter(variable == "pct_renew")
+gt(pct_renew)
+```
+
+### Percent Zero-Emissions
+```{r}
+pct_zero = df %>% filter(variable == "pct_zero")
+gt(pct_zero)
+```
+
 # Ad-hoc tables/figs
 
 Buildings and electricity emissions reductions in 2040 compared to 2005

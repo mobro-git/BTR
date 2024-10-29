@@ -53,3 +53,18 @@
 1000,Emissions|CO2|Net Emissions,Carbon Sequestration|CCS|Biomass|Industrial Processes,Mt CO2/yr,1
 1000,Emissions|CO2|Net Emissions,Carbon Sequestration|Chemical Feedstocks|Biomass,Mt CO2/yr,1
 1000,Emissions|CO2|Net Emissions,Carbon Sequestration|LULUCF ,Mt CO2/yr,1
+1001,Secondary Energy|Electricity|Renewable,Secondary Energy|Electricity|Geothermal,EJ/yr,1
+1001,Secondary Energy|Electricity|Renewable,Secondary Energy|Electricity|Hydro,EJ/yr,1
+1001,Secondary Energy|Electricity|Renewable,Secondary Energy|Electricity|Ocean,EJ/yr,1
+1001,Secondary Energy|Electricity|Renewable,Secondary Energy|Electricity|Solar,EJ/yr,1
+1001,Secondary Energy|Electricity|Renewable,Secondary Energy|Electricity|Wind,EJ/yr,1
+1002,Secondary Energy|Electricity|Zero-Emissions,Secondary Energy|Electricity|Biomass|w/ CCS,EJ/yr,1
+1002,Secondary Energy|Electricity|Zero-Emissions,Secondary Energy|Electricity|Coal|w/ CCS,EJ/yr,1
+1002,Secondary Energy|Electricity|Zero-Emissions,Secondary Energy|Electricity|Gas|w/ CCS,EJ/yr,1
+1002,Secondary Energy|Electricity|Zero-Emissions,Secondary Energy|Electricity|Geothermal,EJ/yr,1
+1002,Secondary Energy|Electricity|Zero-Emissions,Secondary Energy|Electricity|Hydro,EJ/yr,1
+1002,Secondary Energy|Electricity|Zero-Emissions,Secondary Energy|Electricity|Nuclear,EJ/yr,1
+1002,Secondary Energy|Electricity|Zero-Emissions,Secondary Energy|Electricity|Ocean,EJ/yr,1
+1002,Secondary Energy|Electricity|Zero-Emissions,Secondary Energy|Electricity|Oil|w/ CCS,EJ/yr,1
+1002,Secondary Energy|Electricity|Zero-Emissions,Secondary Energy|Electricity|Solar,EJ/yr,1
+1002,Secondary Energy|Electricity|Zero-Emissions,Secondary Energy|Electricity|Wind,EJ/yr,1
