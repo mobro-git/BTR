@@ -105,6 +105,17 @@ pct_change_html_sector_merged <- create_html_table_merged_pct_change(pct_change_
 pct_change_html_sector_merged
 ```
 
+
+```{r}
+tar_load(c(lulucf_data_extra_xlsx,
+        lulucf_btr_crosswalk))
+
+ctf_table <- make_btr_ctf_table(lulucf_data_extra_xlsx, lulucf_btr_crosswalk, projections_all_sm, settings, config)
+
+write_csv(ctf_table, paste0("output/",settings$version,"/proj_tables/ctf_table7.csv"))
+```
+
+
 ## Net-GHG Emissions {.tabset}
 
 ### WM_sens vs. No Sens.

@@ -84,6 +84,7 @@ tar_plan(
     table = c(seq(2005, 2020, by=5),settings$base_year,seq(2025,2040,by=5)),
     table_sm = c(2005, 2010, 2015, 2020, settings$base_year, 2025, 2030 , 2035),
     table50 = c(seq(2005, 2020, by=5),settings$base_year,seq(2025,2050,by=5)),
+    table_ctf = c(settings$base_year,seq(2025,2040, by = 5)),
     
     # ordering
     gas_order = c("CO2", "CH4", "N2O", "HFCs", "PFCs", "SF6", "NF3"),
