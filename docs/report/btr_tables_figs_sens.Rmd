@@ -41,7 +41,8 @@ tar_load(
     projections_ghgi,
     past_proj,
     kaya_comparison50,
-    figmap_nrgco2_stackbar
+    figmap_nrgco2_stackbar,
+    figmap_sens_timeseries
     )
   )
 
@@ -1134,30 +1135,46 @@ transportation_table <- create_stats_table(transportation)
 transportation_table
 ```
 
-## Electric Vehicle Sales Shares {.tabset}
+## ZEV Shares {.tabset}
 
-### Passenger
+### Sales {.tabset}
+
+#### Passenger
 
 ```{r}
-zev_share_table(data_long_clean,"Energy Service|Transportation|Passenger|ICE|Sales Share", config$scen_wm_sensitivities)
+zev_share_table(data_long_clean,"Energy Service|Transportation|Passenger|ZEV Sales Share", config$scen_wm_sensitivities)
 ```
 
-### Freight
+#### Freight
+
 ```{r}
-zev_share_table(data_long_clean,"Energy Service|Transportation|Freight|ICE|Sales Share", config$scen_wm_sensitivities)
+zev_share_table(data_long_clean,"Energy Service|Transportation|Freight|ZEV Sales Share", config$scen_wm_sensitivities)
 ```
 
-## Electric Vehicle Stock Shares {.tabset}
-
-### Passenger
+#### Figure
 
 ```{r}
-zev_share_table(data_long_clean,"Energy Service|Transportation|Passenger|ICE|Stock Share", config$scen_wm_sensitivities)
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 43, "United States", scenario_rename = TRUE)
 ```
 
-### Freight
+### Stock {.tabset}
+
+#### Passenger
+
 ```{r}
-zev_share_table(data_long_clean,"Energy Service|Transportation|Freight|ICE|Stock Share", config$scen_wm_sensitivities)
+zev_share_table(data_long_clean,"Energy Service|Transportation|Passenger|ZEV Stock Share", config$scen_wm_sensitivities)
+```
+
+#### Freight
+
+```{r}
+zev_share_table(data_long_clean,"Energy Service|Transportation|Freight|ZEV Stock Share", config$scen_wm_sensitivities)
+```
+
+#### Figure
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 44, "United States", scenario_rename = TRUE)
 ```
 
 ## Energy-Related Emissions Compared to 2005 {.tabset}

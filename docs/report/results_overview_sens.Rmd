@@ -154,6 +154,34 @@ print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 18, 
 print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 19, "United States", scenario_rename = TRUE)
 ```
 
+#### Sales Share {.tabset}
+
+##### Passenger 
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 34, "United States", scenario_rename = TRUE)
+```
+
+##### Freight
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 33, "United States", scenario_rename = TRUE)
+```
+
+#### Stock Share {.tabset}
+
+##### Passenger 
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 36, "United States", scenario_rename = TRUE)
+```
+
+##### Freight
+
+```{r}
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 35, "United States", scenario_rename = TRUE)
+```
+
 ## Percent Electricity
 
 ```{r}

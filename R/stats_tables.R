@@ -44,12 +44,12 @@ create_stats_table <- function(df) {
   return(table)
 }
 
-zev_share_table <- function(data_long_clean, ice_var, scens = "wm") {
+zev_share_table <- function(data_long_clean, zev_var, scens = "wm") {
   df <- data_long_clean %>% 
-    filter(variable == ice_var,
+    filter(variable == zev_var,
            scenario %in% scens,
            year %in% c(2030,2035,2040)) %>%
-    mutate(value = round(1-value,2)) %>% 
+    mutate(value = round(value,2)) %>% 
     select(model,scenario,year,value) %>%
     distinct()
   

@@ -16,10 +16,19 @@
 7,Emissions|CO2|CDR,Carbon Sequestration|CCS|Biomass|Energy,Mt CO2/yr,1
 13,Energy Service|Transportation|EV|Sales Share,Energy Service|Transportation|Passenger|BEV|Sales Share,%,1
 13,Energy Service|Transportation|EV|Sales Share,Energy Service|Transportation|Passenger|FCEV|Sales Share,%,1
-13,Energy Service|Transportation|EV|Sales Share,Energy Service|Transportation|Passenger|HEV|Sales Share,%,1
 13,Energy Service|Transportation|EV|Sales Share,Energy Service|Transportation|Freight|BEV|Sales Share,%,1
 13,Energy Service|Transportation|EV|Sales Share,Energy Service|Transportation|Freight|FCEV|Sales Share,%,1
 13,Energy Service|Transportation|EV|Sales Share,Energy Service|Transportation|Passenger|PHEV|Sales Share,%,1
+3000,Energy Service|Transportation|Passenger|ZEV Sales Share,Energy Service|Transportation|Passenger|BEV|Sales Share,%,1
+3000,Energy Service|Transportation|Passenger|ZEV Sales Share,Energy Service|Transportation|Passenger|FCEV|Sales Share,%,1
+3000,Energy Service|Transportation|Passenger|ZEV Sales Share,Energy Service|Transportation|Passenger|PHEV|Sales Share,%,1
+3001,Energy Service|Transportation|Freight|ZEV Sales Share,Energy Service|Transportation|Freight|BEV|Sales Share,%,1
+3001,Energy Service|Transportation|Freight|ZEV Sales Share,Energy Service|Transportation|Freight|FCEV|Sales Share,%,1
+3002,Energy Service|Transportation|Passenger|ZEV Stock Share,Energy Service|Transportation|Passenger|BEV|Stock Share,%,1
+3002,Energy Service|Transportation|Passenger|ZEV Stock Share,Energy Service|Transportation|Passenger|FCEV|Stock Share,%,1
+3002,Energy Service|Transportation|Passenger|ZEV Stock Share,Energy Service|Transportation|Passenger|PHEV|Stock Share,%,1
+3003,Energy Service|Transportation|Freight|ZEV Stock Share,Energy Service|Transportation|Freight|BEV|Stock Share,%,1
+3003,Energy Service|Transportation|Freight|ZEV Stock Share,Energy Service|Transportation|Freight|FCEV|Stock Share,%,1
 101,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Emissions|CO2|Energy|Demand|Industry,Mt CO2/yr,1
 101,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Emissions|CO2|Energy|Supply|Biogas,Mt CO2/yr,1
 101,Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total,Emissions|CO2|Energy|Supply|Biomass Liqids,Mt CO2/yr,1

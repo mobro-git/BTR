@@ -66,9 +66,9 @@ tar_plan(
     annual_lts = c(seq(2005,2050,by = 1)),
     
     fives_proj = c(seq(2020,2050, by = 5)),
+    fives_proj_40 = c(seq(2020,2040, by = 5)),
     fives_proj_sm = c(seq(2025,2040, by = 5)),
     fives_proj_sm50 = c(seq(2025,2050, by = 5)),
-    
     
     kaya = c(seq(1990,settings$base_year,by=1),seq(2025,2050,by = 5)),
     
