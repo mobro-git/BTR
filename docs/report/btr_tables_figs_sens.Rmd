@@ -409,11 +409,9 @@ ggsave(paste0('output/',settings$version,"/tables_figs_sens/nrg_emissions/",file
 # LULUCF Sink Range {.tabset}
 
 ```{r}
-# TODO: update to USDA NFS Raw Data/ ....FREEZE..... FOREST-ONLY CO2 tab for both historical and projections data for FORST ONLY CO2
 lulucf_co2 <- read_xlsx(
   "data-extra/USDA NFS Raw Data/LULUCF projections DRAFT compilation FREEZE 10 22 2024.xlsx",
   sheet = "FOREST-ONLY CO2")
-
 
 lulucf_co2_long <- lulucf_co2 %>%
   pivot_longer(cols = 2:25, names_to = 'year') %>%
@@ -1444,7 +1442,7 @@ Share of fuel usage in Commercial Buildings
 # grid.table(bc_df2)
 ```
 
-Share of Wind and Solar in elec gen in 2040
+## Share of Wind and Solar in elec gen in 2040
 
 ```{r}
 tar_load(figmap_nrgco2_stackbar)
