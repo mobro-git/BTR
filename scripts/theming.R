@@ -143,8 +143,8 @@ color_map <- c(
   
   # models
   
-  "OP-NEMS" = "navyD",
-  "GCAM" = "limeD",
+  "OP-NEMS" = "dark dark blue",
+  "GCAM" = "dark dark yellow",
   "USREP-ReEDS" = "MIT Red",
   "EPA-GHGI" = "light orange",
   
