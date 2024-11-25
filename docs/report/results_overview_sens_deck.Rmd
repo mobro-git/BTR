@@ -47,7 +47,6 @@ source("scripts/theming.R")
 print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 9, "United States", scenario_rename = TRUE,
             level_var = c("Buildings", "Industry", "Transportation", "Supply", "Total Energy"))
 
-df <- data_from_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 9, "United States")
 ```
 
 
@@ -71,16 +70,7 @@ print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 45, 
 ## Fuel
 
 ```{r}
-# KEEP
 print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 30, "United States", scenario_rename = TRUE)
-```
-
-```{r}
-# With Measures
-# Advanced Technologies
-# Low Fuel Cost
-# High Fuel Cost
-# High Fuel Cost & Low Cost Renewables
 ```
 
 ## CCS {.tabset}
@@ -176,13 +166,17 @@ print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 19, 
 ##### Passenger 
 
 ```{r}
-print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 34, "United States", scenario_rename = TRUE)
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 34, "United States", scenario_rename = TRUE)+
+  scale_y_continuous(labels = percent_format()) +
+  theme(axis.title.y = element_blank())
 ```
 
 ##### Freight
 
 ```{r}
-print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 33, "United States", scenario_rename = TRUE)
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 33, "United States", scenario_rename = TRUE)+
+  scale_y_continuous(labels = percent_format()) +
+  theme(axis.title.y = element_blank())
 ```
 
 #### Stock Share {.tabset}
@@ -190,13 +184,17 @@ print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 33, 
 ##### Passenger 
 
 ```{r}
-print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 36, "United States", scenario_rename = TRUE)
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 36, "United States", scenario_rename = TRUE)+
+  scale_y_continuous(labels = percent_format()) +
+  theme(axis.title.y = element_blank())
 ```
 
 ##### Freight
 
 ```{r}
-print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 35, "United States", scenario_rename = TRUE)
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 35, "United States", scenario_rename = TRUE)+
+  scale_y_continuous(labels = percent_format()) +
+  theme(axis.title.y = element_blank())
 ```
 
 ## Percent Electricity
@@ -204,7 +202,9 @@ print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 35, 
 ```{r}
 # Change y-axis labels to percents
 print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 14, "United States", scenario_rename = TRUE,
-                                  level_var = c("Buildings", "Industry", "Transportation","Total Electricity"))
+                                  level_var = c("Buildings", "Industry", "Transportation","Total Electricity")) +
+  scale_y_continuous(labels = percent_format()) +
+  theme(axis.title.y = element_blank())
 ```
 
 
@@ -235,7 +235,8 @@ print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 15, 
 #### Totals
 
 ```{r}
-print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 37, "United States", scenario_rename = TRUE)
+print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 37, "United States", scenario_rename = TRUE) +
+  theme()
 ```
 
 #### w/ and w/o CCS
