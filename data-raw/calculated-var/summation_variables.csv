@@ -77,3 +77,5 @@
 1002,Secondary Energy|Electricity|Zero-Emissions,Secondary Energy|Electricity|Oil|w/ CCS,EJ/yr,1
 1002,Secondary Energy|Electricity|Zero-Emissions,Secondary Energy|Electricity|Solar,EJ/yr,1
 1002,Secondary Energy|Electricity|Zero-Emissions,Secondary Energy|Electricity|Wind,EJ/yr,1
+1003,Secondary Energy|Electricity|Solar and Wind,Secondary Energy|Electricity|Solar,EJ/yr,1
+1003,Secondary Energy|Electricity|Solar and Wind,Secondary Energy|Electricity|Wind,EJ/yr,1

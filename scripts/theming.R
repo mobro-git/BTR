@@ -44,7 +44,7 @@ master_palette <- c(
   "gray green" = "#5f7470",
   "aqua" = "#2ab7ca",
   "black" = "#000000",
-  "MIT Red" = "#750014",
+  "MIT Red" = "#af0220",
   "m.teal" = "#148896",
   "m.blue" = "#044980",
   "m.green" = "#149664",

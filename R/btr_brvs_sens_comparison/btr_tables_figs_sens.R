@@ -792,6 +792,143 @@ br_project_sens = function(projections_ghgi,
   
 }
 
+br_project_sens_noNDC = function(projections_ghgi,
+                           config,
+                           settings) {
+  
+  net_ghg <- projections_ghgi %>%
+    filter(year %in% config$fives50,
+           !grouping %in% c("IRA","wm_ltslulucf")) %>% 
+    group_by(proj_name,grouping,year) %>%
+    summarise(value = sum(value)) %>%
+    mutate(grouping = case_when(grouping == 'wm' ~ "2024 Policy Baseline",
+                                grouping == 'wm_sens' ~ "2024 Policy Baseline",
+                                TRUE~grouping))
+  
+  
+  
+  
+  ghgi <- net_ghg %>%
+    filter(grouping == 'ghgi')
+  
+  net_ghg_ribbon <- net_ghg %>%
+    group_by(grouping,year) %>%
+    summarise(max = max(value),
+              min = min(value))
+  
+  
+  connect_wm <- net_ghg_ribbon %>%
+    filter(year == 2022) %>%
+    mutate(grouping = "2024 Policy Baseline")
+  # connect_wm_sens <- net_ghg_ribbon %>%
+  #   filter(year == 2022) %>%
+  #   mutate(grouping = "2024 BTR, Sens.")
+  
+  net_ghg_final <- net_ghg_ribbon %>%
+    filter(!grouping == 'ghgi') %>% 
+    rbind(connect_wm) %>%
+    filter(year <= 2040)
+  
+  baseline = ghgi[ghgi$year == 2005,]$value
+  
+  ndc_targets = data.frame(
+    year = c(2020, 2025, 2030),
+    ymin = c((baseline * (1-.169)), (baseline * (1-.26)), (baseline * (1-.50))),
+    ymax = c((baseline * (1-.171)), (baseline * (1-.28)), (baseline * (1-.52))),
+    grouping = c("17% Below 2005","26-28% Below 2005","50-52% Below 2005")
+  )
+  
+  
+  p <- ggplot() +
+    geom_line(ghgi, mapping = aes(x = year, y = value), color = 'black') +
+    geom_ribbon(data = net_ghg_final, aes(x = year, ymax = max, ymin = min, group = grouping, fill = grouping, color = grouping), alpha = 0.4) +
+    # theming
+    labs(title = "",
+         y = expression(paste("Net GHG Emissions (MMt ", CO[2], "e)", sep = "")),
+         x = "",
+         color = "",
+         fill = "") +
+    scale_y_continuous(limits = c(0, 7200), expand = c(0, 0),
+                       breaks = c(2000,4000,6000,round(ghgi$value[1])),
+                       labels = comma) +
+    scale_x_continuous(breaks = c(2005, 2010, 2015, 2020, 2022, 2025, 2030, 2035, 2040, 2045, 2050), expand = c(0,0)) +
+    guides(fill = guide_legend(nrow = 4, byrow = T)) +
+    geom_hline(aes(yintercept = 0)) +
+    theme_btr() +
+    theme(
+      legend.position = "inside",
+      legend.position.inside = c(0.2, 0.2))
+  
+  
+  projections = p +
+    # geom_rect(
+    #   data = ndc_targets %>%
+    #     filter(year == 2020),
+    #   aes(
+    #     ymin = ymin,
+    #     ymax = ymax,
+    #     xmin = year - .3,
+    #     xmax = year + .3,
+    #     color = grouping,
+    #     fill = grouping
+    #   ),
+    #   alpha = 0.5
+    # ) +
+    # geom_rect(
+    #   data = ndc_targets %>% filter(year == 2025),
+    #   aes(
+    #     ymin = ymin,
+    #     ymax = ymax,
+    #     xmin = year - .3,
+    #     xmax = year + .3,
+    #     color = grouping,
+    #     fill = grouping
+    #   ),
+    #   alpha = 0.5
+    # ) +
+    # geom_rect(
+    #   data = ndc_targets %>% filter(year == 2030),
+    #   aes(
+    #     ymin = ymin,
+    #     ymax = ymax,
+    #     xmin = year - .3,
+    #     xmax = year + .3,
+    #     color = grouping,
+    #     fill = grouping
+    #   ),
+    #   alpha = 0.5
+    # ) +
+    # geom_hline(
+    #   data = (ndc_targets %>% filter(year == 2020)),
+    #   aes(yintercept = ymax - .01),
+    #   linetype = "dashed",
+    #   color = "gray",
+    #   size = 0.4,
+    #   alpha = 0.5
+    # ) +
+    # geom_hline(
+    #   data = (ndc_targets %>% filter(year != 2020)),
+    #   aes(yintercept = ymax),
+    #   linetype = "dashed",
+    #   color = "gray",
+    #   size = 0.4,
+    #   alpha = 0.5
+    # ) +
+    # geom_hline(
+    #   data = (ndc_targets %>% filter(year != 2020)),
+    #   aes(yintercept = ymin),
+    #   linetype = "dashed",
+    #   color = "gray",
+    #   size = 0.4,
+    #   alpha = 0.5
+    # ) +
+    scale_subpalette_single(c(unique(net_ghg_final$grouping), unique(ndc_targets$grouping))) 
+  
+  projections
+  
+  
+}
+
 ncbr_comparison_figure_sens <- function(ncbr_comp_ribbon, tge_all_long, settings, config) {
   
   ncbr_hist_btr <- tge_all_long %>% filter(Report == '2024 BTR',
