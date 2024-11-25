@@ -95,7 +95,6 @@ print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 39, 
 ### Supply & Demand
 
 ```{r}
-# Add facet Biomass vs Fossil, two rows for source
 print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 40, "United States", scenario_rename = TRUE)
 ```
 
@@ -242,7 +241,6 @@ print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 37, 
 #### w/ and w/o CCS
 
 ```{r}
-# Facet CCS vs No CCS, two rows columns for each tech
 print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 38, "United States", scenario_rename = TRUE)
 ```
 
@@ -267,7 +265,6 @@ print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 20, 
 ### Capacity by Model
 
 ```{r, fig.width=12}
-# Facet CCS vs. Non-CCS
 print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 22, "United States", scenario_rename = TRUE)
 ```
 
