@@ -351,6 +351,12 @@ tar_plan(
              output_file = paste0("results_overview_sens",Sys.Date(),".html"),
              params = list(mode = "targets")),
   
+  tar_render(results_overview_sens_deck,
+             "docs/report/results_overview_sens_deck.Rmd",
+             output_dir = paste0('output/',settings$version,"/results_overview_sens_deck/"),
+             output_file = paste0("results_overview_sens_deck",Sys.Date(),".html"),
+             params = list(mode = "targets")),
+  
    tar_render(btr_tables_figs_sens,
               "docs/report/btr_tables_figs_sens.Rmd",
               output_dir = paste0('output/',settings$version,"/tables_figs_sens"),
