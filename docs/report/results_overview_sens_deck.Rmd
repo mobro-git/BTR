@@ -35,6 +35,14 @@ tar_load(
 
 source("scripts/theming.R")
 
+saveit = function(title, settings, width = 10, height = 5) {
+  ggsave(filename = paste0("output/",settings$version,"/results_overview_sens_deck/figs/",title,".png"),
+         
+         create.dir = TRUE,
+         width = width,
+         height = height,
+         units = "in")
+}
 ```
 
 # Energy CO2 Emissions
@@ -44,9 +52,11 @@ source("scripts/theming.R")
 ### Model
 
 ```{r}
+title = "Energy Emissions by Sector"
 print_graph("time_series", config, data_long_clean, figmap_sens_timeseries, 9, "United States", scenario_rename = TRUE,
-            level_var = c("Buildings", "Industry", "Transportation", "Supply", "Total Energy"))
-
+            level_var = c("Buildings", "Industry", "Transportation", "Supply", "Total Energy")) +
+  labs(title = title) 
+saveit(title,settings)
 ```
 
 

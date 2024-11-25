@@ -18,6 +18,9 @@ time_series_wrap_fn <- function(df, data_list, mapping_list) {
 
 time_series_grid_fn <- function(df, data_list, mapping_list) {
   
+  ylab = mapping_list$ylab
+  if(ylab == "Mt CO2/yr"){ylab = expression(paste("Mt C", O[2]))}
+  
   if (data_list$linetype == FALSE) {
   p <- ggplot(df, aes(x = .data[[data_list$x]], y = .data[[data_list$y]],
                       color = .data[[data_list$color]])) +
@@ -26,7 +29,7 @@ time_series_grid_fn <- function(df, data_list, mapping_list) {
                scales = mapping_list$scales) +
     labs(title = mapping_list$title,
          x = "",
-         y = mapping_list$ylab,
+         y = ylab,
          color = "") +
     scale_subpalette(mapping_list$palettes, mapping_list$model_color_palette) +
     scale_y_continuous(labels = scales::comma)  +
@@ -43,7 +46,7 @@ time_series_grid_fn <- function(df, data_list, mapping_list) {
                  scales = mapping_list$scales) +
       labs(title = mapping_list$title,
            x = "",
-           y = mapping_list$ylab,
+           y = ylab,
            color = "") +
       scale_subpalette(mapping_list$palettes, mapping_list$model_color_palette) +
       scale_y_continuous(labels = scales::comma)  +
