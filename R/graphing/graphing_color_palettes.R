@@ -59,11 +59,11 @@ scale_subpalette2 <- function(sub_pal, ...) {
 }
 
 
-create_subpalettes <- function(plot_list, config) {
-  figure_titles = unique(plot_list$title_name)
+create_subpalettes <- function(figmap, config) {
+  figure_titles = unique(figmap$title_name)
 
   for (figure_title in figure_titles) {
-    temp = plot_list %>% filter(title_name == figure_title)
+    temp = figmap %>% filter(title_name == figure_title)
 
     if(unique(temp$color) == "model")
     {var_palette = config[[unique(temp$models)]]}

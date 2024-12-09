@@ -141,8 +141,14 @@ color_map <- c(
   "LEEP" = "redD",
   "Long-Term Strategy" = "lts green",
   
-  # models
+  # scenarios - full names
+  "Reference" = "black",
+  "High Fuel Cost" = "yellowD",
+  "Low Fuel Cost" = "dark salmon",
+  "Advanced Technology" = "darker green",
+  "High Fuel Cost, Low Cost Renewables" = "teal blue",
   
+  # models
   "OP-NEMS" = "dark dark blue",
   "GCAM" = "dark dark yellow",
   "USREP-ReEDS" = "MIT Red",
