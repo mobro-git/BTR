@@ -329,10 +329,16 @@ coal_gen_df <- var_year_comparison(df, "Secondary Energy|Electricity|Coal", 2050
 
 ```
 
-## Elec Cap by Source
+## Elec Capacity by Source
 
 ```{r}
-df <- data_from_graph("time_series", config, data_long_clean, figmap_deck_timeseries, 39, "United States")
+df <- data_from_graph("time_series", config, data_long_clean, figmap_deck_timeseries, 16, "United States")
+
+solar_cap_df <- var_year_comparison(df,"Capacity|Electricity|Solar",2040)
+
+wind_cap_df <- var_year_comparison(df,"Capacity|Electricity|Wind",2040)
+
+coal_cap_df <- var_year_comparison(df,"Capacity|Electricity|Coal",2040)
 
 ```
 
