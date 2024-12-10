@@ -188,6 +188,213 @@ print_graph_for_save("time_series", config, data_long_clean_100, figmap_deck_tim
 
 
 
+# Stats
+
+```{r}
+var_year_comparison <- function(data_from_graph, var_choice, comparison_year) {
+ 
+  var_df <- data_from_graph %>%
+    filter(variable == var_choice,
+           year == comparison_year) %>%
+    group_by(model,scenario,year,variable) %>%
+    summarise(value = sum(value))
+}
+
+
+```
+
+
+## Energy CO2 Emissions
+
+```{r}
+
+df <- data_from_graph("time_series", config, data_long_clean, figmap_deck_timeseries, 9.1, "United States")
+
+```
+
+
+## CCS Emissions
+
+```{r}
+
+df <- data_from_graph("time_series", config, data_long_clean, figmap_deck_timeseries, 39, "United States")
+
+ccs_df <- df %>%
+  filter(!year %in% c(2045,2050)) %>% 
+  group_by(model,scenario) %>%
+  summarise(value = sum(value))
+
+```
+
+## Primary Energy Fossil
+
+```{r}
+df <- data_from_graph("time_series", config, data_long_clean, figmap_deck_timeseries, 6, "United States")
+
+coal_df <- var_year_comparison(df,"Primary Energy|Coal",2040)
+
+oil_df <- var_year_comparison(df,"Primary Energy|Oil",2040)
+  
+
+gas_df <- var_year_comparison(df,"Primary Energy|Gas",2040)
+
+```
+
+
+## Primary Energy Non-Fossil
+```{r}
+df <- data_from_graph("time_series", config, data_long_clean, figmap_deck_timeseries, 7, "United States")
+
+solar_df <- var_year_comparison(df,"Primary Energy|Solar",2040)
+
+
+wind_df <- var_year_comparison(df,"Primary Energy|Wind",2040)
+
+
+biomass_df <- df %>%
+  filter(year == 2040,
+         variable == "Primary Energy|Biomass",
+         !model == "USREP-ReEDS") %>% 
+  group_by(model,scenario,year,variable) %>%
+  summarise(value = sum(value))
+
+nuclear_df <- var_year_comparison(df,"Primary Energy|Nuclear",2040)
+
+
+```
+
+## Final Energy by Source
+
+```{r}
+df <- data_from_graph("time_series", config, data_long_clean, figmap_deck_timeseries, 1, "United States")
+
+feoil_df <- var_year_comparison(df,"Final Energy|Oil",2050)
+  
+
+```
+
+## Final Energy by Sector
+
+```{r}
+df <- data_from_graph("time_series", config, data_long_clean, figmap_deck_timeseries, 14, "United States")
+
+building_df <- var_year_comparison(df, "Final Energy|Buildings|Percent Electricity", 2040)
+
+transportation_df <- var_year_comparison(df, "Final Energy|Transportation|Percent Electricity", 2040)
+
+industry_df <- var_year_comparison(df, "Final Energy|Industry|Percent Electricity", 2040)
+
+```
+## Final Energy H2
+
+```{r}
+df <- data_from_graph("time_series", config, data_long_clean, figmap_deck_timeseries, 39, "United States")
+
+
+```
+
+## Elec Generation by Source
+
+```{r}
+df <- data_from_graph("time_series", config, data_long_clean, figmap_deck_timeseries, 15, "United States")
+
+share_clean_df <- df %>%
+  mutate(variable = case_when(variable %in% c("Secondary Energy|Electricity|Solar",
+                                              "Secondary Energy|Electricity|Wind") ~ "Secondary Energy|Electricity|Clean",
+                              TRUE~variable)) %>%
+  group_by(model,scenario,year,variable) %>%
+  summarise(value = sum(value)) %>%
+  filter(variable %in% c("Secondary Energy|Electricity|Clean",
+                         "Secondary Energy|Electricity")) %>%
+  pivot_wider(names_from = variable,
+              values_from = value) %>%
+  mutate(share_clean = `Secondary Energy|Electricity|Clean` / `Secondary Energy|Electricity`) %>%
+  mutate(share_clean = round(share_clean,3)) %>%
+  select(model,scenario,year,share_clean)
+
+share_clean_2035 <- share_clean_df %>%
+  filter(year == 2035)
+
+share_clean_2040 <- share_clean_df %>%
+  filter(year == 2040)
+ 
+
+solar_gen_df <- var_year_comparison(df, "Secondary Energy|Electricity|Solar", 2040)
+
+wind_gen_df <- var_year_comparison(df, "Secondary Energy|Electricity|Wind", 2040)
+
+coal_gen_df <- var_year_comparison(df, "Secondary Energy|Electricity|Coal", 2050)
+
+
+
+```
+
+## Elec Cap by Source
+
+```{r}
+df <- data_from_graph("time_series", config, data_long_clean, figmap_deck_timeseries, 39, "United States")
+
+```
+
+## Energy Demand by Sector
+
+```{r}
+df <- data_from_graph("time_series", config, data_long_clean, figmap_deck_timeseries, 17, "United States")
+
+buildings_change <- df %>%
+  filter(variable == "Final Energy|Buildings",
+         year %in% c(2020,2040)) %>%
+  group_by(model, scenario, year, variable) %>%
+  summarise(value = sum(value)) %>%
+  pivot_wider(names_from = year,
+              values_from = value) %>%
+  mutate(pct_change  = 1-(`2040`/`2020`)) %>%
+  select(!c(`2020`,`2040`))
+  
+  
+  
+
+buildings_elec_share <- df %>%
+  filter(variable %in% c("Final Energy|Buildings|Electricity",
+                         "Final Energy|Buildings"),
+         year == 2040) %>%
+  group_by(model, scenario, year, variable) %>%
+  summarise(value = sum(value))%>%
+  pivot_wider(names_from = variable,
+              values_from = value) %>%
+  mutate(elec_share = `Final Energy|Buildings|Electricity`/`Final Energy|Buildings`) %>%
+  select(!c(`Final Energy|Buildings|Electricity`,
+            `Final Energy|Buildings`))
+
+```
+
+
+```{r}
+df <- data_from_graph("time_series", config, data_long_clean, figmap_deck_timeseries, 18, "United States")
+
+ind_df <- var_year_comparison(df,"Final Energy|Industry",2050)
+
+ind_elec_share <- df %>%
+  filter(variable %in% c("Final Energy|Industry|Electricity",
+                         "Final Energy|Industry"),
+         year == 2050) %>%
+  group_by(model, scenario, year, variable) %>%
+  summarise(value = sum(value))%>%
+  pivot_wider(names_from = variable,
+              values_from = value) %>%
+  mutate(elec_share = `Final Energy|Industry|Electricity`/`Final Energy|Industry`) %>%
+  select(!c(`Final Energy|Industry|Electricity`,
+            `Final Energy|Industry`))
+
+```
+
+
+```{r}
+df <- data_from_graph("time_series", config, data_long_clean, figmap_deck_timeseries, 19, "United States")
+
+trn_df <- var_year_comparison(df, "Final Energy|Transportation",2040)
+
+```
 
 
 
