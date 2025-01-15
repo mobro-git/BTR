@@ -399,7 +399,7 @@ fig <-
       xintercept = 2022,
       linetype = 'dashed',
       color = "black",
-      # size = 0.4,
+      # size = 0.4
       alpha = 0.5) +
     scale_y_continuous(labels = scales::comma) +
     scale_x_continuous(breaks = c(seq(1990,2020,by=5), 2022, seq(2025,2040,by=5)), expand = c(0,0))  +

@@ -5,6 +5,11 @@ xup_light <- theme(axis.text.x = element_text(vjust = 10))
 slantx <- theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 9))
 bottom1 <- theme(legend.position = "bottom", legend.title = element_blank())
 nolegend <- theme(legend.position='none')
+smlegend <- theme(
+  legend.title = element_text(size = 9),
+  legend.text  = element_text(size = 9)
+)
+
 
 blank_theme <- theme_minimal()+
   theme(

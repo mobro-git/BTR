@@ -189,7 +189,9 @@ print_graph_for_save <- function(plot_type, config, data_long_clean, figmap, fig
     if(scenario_rename & unique(dat$color)=="scenario"){
       dat = dat %>% mutate(scenario = as.character(scenario))
       var_palette = unique(dat$scenario)
-      plot = plot + scale_subpalette_single(var_palette)
+      plot = plot + 
+        scale_subpalette_single(var_palette) +
+        scale_linetype_manual(values = c("GCAM" = "solid", "OP-NEMS" = "dashed", "USREP-ReEDS" = "dotted"))
     }
     
     plot

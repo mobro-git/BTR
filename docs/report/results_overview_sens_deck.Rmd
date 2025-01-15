@@ -29,14 +29,28 @@ tar_load(
     settings,
     data_long_clean,
     projections_all_sm, 
-    figmap_deck_timeseries
+    figmap_deck_timeseries,
+    projections_all_sm,
+    projections_ghgi,
+    past_proj
     )
   )
+
+usproj_categories = read_xlsx("data-raw/crosswalk/crosswalk_usproj_categories.xlsx")
+
+projections_ghgi = filter(projections_ghgi, year <= 2040)
+
+proj_ghgi_nonco2_pre_bind = projections_ghgi %>% filter(gas != "CO2")
+
+proj_ghgi_nonco2 = proj_ghgi_nonco2_pre_bind %>%
+  left_join(usproj_categories, by = "usproj_category") %>%
+  select(-usproj_category) %>%
+  rename(usproj_category = usproj_category_rename)
 
 source("scripts/theming.R")
 
 saveit = function(title, settings, width = 10, height = 5) {
-  ggsave(filename = paste0("output/",settings$version,"/results_overview_sens_deck/",title,".png"),
+  ggsave(filename = paste0("output/",settings$version,"/results_overview_sens_deck/",title,".svg"),
          
          create.dir = TRUE,
          width = width,
@@ -48,14 +62,160 @@ bottom = theme(legend.position="bottom",legend.direction="vertical")
 data_long_clean_100 = data_long_clean %>% mutate(value = value*100)
 ```
 
-# Emissions {.tabset}
+# GHG Emissions
+
+## Net GHGs
+
+```{r}
+br_project_sens_noNDC(projections_ghgi, config, settings) +
+  labs(y = expression(paste("Net GHG Emissions (Mt ", CO[2], "e)", sep = "")))
+
+saveit("Net GHG Emissions",settings,width = 6, height = 4)
+```
+
+## Total Gross Emissions
+
+```{r}
+brvs_tge <- read_xlsx("data-extra/BR Voluntary Supplement 2023/totalgrossemissions.xlsx")
+
+brvs_tge_clean <- brvs_tge %>%
+  pivot_longer(cols = 2:36,
+               names_to = 'Year') %>%
+  mutate(Report = "2023 BR Voluntary Supplement") %>% 
+  select(Report, Year, value)
+
+past_proj_clean <- past_proj %>%
+  select(Report, Year, Emissions) %>%
+  rename(Value = Emissions) %>%
+  filter(Year <= 2035)
+
+
+tge_btr <- projections_all_sm %>% 
+  filter(!gas == 'LULUCF Sink',
+         grouping %in% c('wm_sens','ghgi')) %>%
+  group_by(proj_name, grouping, year) %>%
+  summarise(value = sum(sum),.groups = 'drop')
+
+tge_base <- tge_btr %>%
+  filter(year == settings$base_year) %>%
+  rename(Report = grouping,
+         Year = year) %>% 
+  select(names(brvs_tge_clean))
+
+brvs_ribbon <- brvs_tge_clean %>%
+  filter(Year > settings$base_year) %>%
+  rbind(tge_base) %>%
+  group_by(Year) %>% 
+  summarise(max = max(value),
+            min = min(value)) %>%
+  mutate(Report = "2023 BR Voluntary Supplement",
+         Year = as.numeric(Year)) %>%
+  select(Report, Year, min, max)
+
+tge_all_long <- tge_btr %>%
+  mutate(Report = 'btr_2024') %>%
+  rename(Year = year,
+         Value = value) %>% 
+  select(names(past_proj_clean)) %>%
+  rbind(past_proj_clean) %>%
+  mutate(Year = as.numeric(Year),
+         Report = case_when(Report == "btr_2024" ~ "2024 BTR",
+                            Report == "car_2014" ~ "2014 CAR",
+                            Report == "br_2016" ~ "2016 BR",
+                            Report == "br_2021" ~ "2021 BR",
+                            Report == "br_2022" ~ "2022 BR"))
+#%>%
+ # filter(year %in% config$fives_proj_sm)
+
+
+ncbr_comp_ribbon <- tge_all_long %>% 
+  group_by(Report,Year) %>%
+  mutate(min = min(Value),
+         max = max(Value)) %>%
+  select(Report,Year,min,max) %>%
+  distinct()
+
+ncbr_comparison_figure_sens(ncbr_comp_ribbon, tge_all_long, settings, config) +
+  labs(y = expression(paste("Total Gross GHG Emissions (Mt ", CO[2], "e)", sep = "")))
+
+title = "Total Gross Emissions NCBR Comparison"
+saveit(title,settings,width=9, height=7)
+```
+
+## Tables
+
+### Gas
+
+```{r gas summary}
+gas_df <- create_summary_table('gas','wm_sens', projections_all_sm, config, settings)
+gas_table <- create_html_table(gas_df, 'Gas', settings)
+gas_table_merged <- create_html_table_merged(gas_df, 'Gas', settings)
+
+gas_table_merged
+
+gtsave(gas_table_merged, paste0('output/',settings$version,"/results_overview_sens_deck/Gas Table.png"))
+```
+
+### Sector
+
+```{r sector summary}
+sector_df <- create_summary_table('usproj_sector', 'wm_sens', projections_all_sm, config, settings)
+sector_table <- create_html_table(sector_df, 'Sector', settings)
+sector_table_merged <- create_html_table_merged(sector_df, 'Sector', settings)
+
+gtsave(sector_table_merged, paste0('output/',settings$version,"/results_overview_sens_deck/Sector Table.png"))
+```
+
+# Energy CO2 Emissions {.tabset}
+
+## All Energy Emissions
+```{r}
+nrg_emissions <- projections_all_sm %>%
+  filter(usproj_sector %in% c('Energy','Transportation') & gas == "CO2") %>%
+  filter(grouping %in% c('ghgi','wm_sens')) %>%
+  group_by(proj_name, year, grouping) %>%
+  summarise(nrg_trn_co2 = sum(sum)) %>%
+  filter(year %in% config$annual_1990_fives) 
+
+ghgi <- nrg_emissions %>%
+  filter(year <= settings$base_year,
+         year >= 2005)
+
+proj <- nrg_emissions %>%
+  group_by(year) %>% 
+  filter(year >= settings$base_year)%>%
+    summarise(ymax = max(nrg_trn_co2),
+              ymin = min(nrg_trn_co2),
+              med = median(nrg_trn_co2),
+              .groups = 'drop')
+
+nrg_color <- "#2EAD96"
+
+fig <- 
+  ggplot() +
+  geom_line(ghgi, mapping = aes(x = year, y = nrg_trn_co2, color = proj_name), color = 'black', size = 0.7) +
+  geom_ribbon(proj, mapping = aes(x = year,ymax = ymax, ymin = ymin),
+              color = nrg_color,
+              fill = nrg_color,
+              alpha = 0.4 ,
+              size = 0.7)+
+    labs(x = 'Year',
+         y = expression(paste("Energy Emissions (Mt ", CO[2], ")", sep = ""))) +
+    scale_y_continuous(labels = scales::comma) +
+    scale_x_continuous(breaks = c(seq(1990,2020,by=5), 2022, seq(2025,2040,by=5)), expand = c(0,0)) +
+    theme_btr() 
+fig
+title = "Energy CO2 Emissions"
+saveit(title,settings,width=6)
+```
 
 ## Gross Emissions
 ```{r}
 title = "Energy Emissions by Sector"
 print_graph_for_save("time_series", config, data_long_clean, figmap_deck_timeseries, 9.1, "United States",
             level_var = c("Buildings", "Industry", "Transportation", "Electricity", "Petroleum Refining", "Total Energy")) +
-  labs(title = "", y = expression(paste("Energy Emissions (Mt C", O[2],")"))) 
+  labs(title = "", y = expression(paste("Energy Emissions (Mt C", O[2],")"))) +
+  theme(legend.position = c(0.12, 0.67))
 saveit(title,settings, width = 13)
 ```
 
@@ -63,9 +223,9 @@ saveit(title,settings, width = 13)
 ```{r}
 title = "Carbon Capture and Storage (CCS)"
 print_graph_for_save("time_series", config, data_long_clean, figmap_deck_timeseries, 39, "United States") +
-  labs(title="", y = expression(paste("Captured and Stored Emissions (Mt C", O[2],")"))) +
+  labs(title="", y = expression(paste("Captured and Stored Emissions (Mt C ", O[2],")"))) +
   bottom
-saveit(title,settings, width = 6)
+saveit(title,settings, width = 6, height = 6)
 ```
 
 # Primary/Final Energy {.tabset}
@@ -75,8 +235,11 @@ saveit(title,settings, width = 6)
 fossil = print_graph_for_save("time_series", config, data_long_clean, figmap_deck_timeseries, 6, "United States") +
   labs(title = "Fossil", y = "Primary Energy (EJ/yr)")
 
-# Check GCAM nuclear units
-non_fossil = print_graph_for_save("time_series", config, data_long_clean, figmap_deck_timeseries, 7, "United States") +
+no_usrr_biomass = data_long_clean %>%
+  filter(!(model == "USREP-ReEDS" & variable == "Primary Energy|Biomass")) %>%
+  filter(!(model == "GCAM" & variable == "Primary Energy|Nuclear")) %>%
+  filter(variable != "Primary Energy|Other")
+non_fossil = print_graph_for_save("time_series", config, no_usrr_biomass, figmap_deck_timeseries, 7, "United States") +
   labs(title = "Non-Fossil", y = "")
 
 title = "Primary Energy"
@@ -90,7 +253,8 @@ saveit(title,settings, width = 15, height = 4)
 ```{r}
 title = "Final Energy by Source"
 print_graph_for_save("time_series", config, data_long_clean, figmap_deck_timeseries, 1, "United States") +
-  labs(title = "", y = "Final Energy (EJ/yr)") 
+  labs(title = "", y = "Final Energy (EJ/yr)") +
+  theme(legend.position = c(0.15, 0.6))
 saveit(title,settings, width = 14)
 ```
 
@@ -123,7 +287,7 @@ title = "Load Growth"
 print_graph_for_save("time_series", config, data_long_clean, figmap_deck_timeseries, 15.1, "United States") +
   labs(title = "") +
   bottom
-saveit(title,settings,width=4)
+saveit(title,settings,width=5)
 ```
 
 ## Generation by Source
@@ -131,7 +295,11 @@ saveit(title,settings,width=4)
 title = "Generation"
 print_graph_for_save("time_series", config, data_long_clean, figmap_deck_timeseries, 15, "United States",
                          level_var = c("Coal", "Gas", "Oil","Solar", "Wind", "Total Generation")) +
-  labs(title = "", y = "Electricity Generation (EJ/yr)")
+  labs(title = "", y = "Electricity Generation (EJ/yr)") +
+  theme(legend.position = c(0.12, 0.65))
+df1 = data_from_graph("time_series", config, data_long_clean, figmap_deck_timeseries, 15, "United States") %>%
+  filter(variable_rename == "Coal")
+df = data_from_graph("time_series", config, data_long_clean, figmap_deck_timeseries, 15.01, "United States")
 saveit(title,settings,width=15)
 ```
 
@@ -140,7 +308,8 @@ saveit(title,settings,width=15)
 title = "Capacity"
 print_graph_for_save("time_series", config, data_long_clean, figmap_deck_timeseries, 16, "United States",
                          level_var = c("Coal", "Gas", "Oil","Solar", "Wind", "Storage", "Total Capacity")) +
-  labs(title = "", y = "Electricity Capacity (GW)")
+  labs(title = "", y = "Electricity Capacity (GW)") +
+  theme(legend.position = c(0.12, 0.65))
 saveit(title,settings,width=15)
 ```
 
@@ -172,21 +341,29 @@ saveit(title,settings,width=6)
 ```{r}
 title = "Transportation Demand"
 print_graph_for_save("time_series", config, data_long_clean_100, figmap_deck_timeseries, 19, "United States") +
-  labs(title = "", y = "Transportation Demand (EJ/yr)") +
-  bottom
-saveit(title,settings,width=6)
+  labs(title = "", y = "Transportation Demand (EJ/yr)") 
+saveit(title,settings,width=13)
 ```
 
 ### Vehicle Sales and Stock
 
 ```{r}
-print_graph_for_save("time_series", config, data_long_clean_100, figmap_deck_timeseries, 34, "United States")
+sales = print_graph_for_save("time_series", config, data_long_clean, figmap_deck_timeseries, 33, "United States",
+                             level_var = c("ICE", "BEV", "HEV", "PHEV", "FCEV")) +
+  scale_y_continuous(labels = percent_format()) +
+  theme(axis.title.y = element_blank()) +
+  labs(title = "Sales Share")
 
-print_graph_for_save("time_series", config, data_long_clean_100, figmap_deck_timeseries, 34, "United States")
+stock = print_graph_for_save("time_series", config, data_long_clean, figmap_deck_timeseries, 34, "United States",
+                             level_var = c("ICE", "BEV", "HEV", "PHEV", "FCEV")) +
+  scale_y_continuous(labels = percent_format()) +
+  theme(axis.title.y = element_blank()) +
+  labs(title = "Stock Share")
+
+title = "Vehicles Sales and Stock Share"
+sales+stock+plot_layout(guides = "collect", widths = c(1, 1))
+saveit(title,settings, width = 15)
 ```
-
-
-
 
 # Stats
 
@@ -285,18 +462,17 @@ transportation_df <- var_year_comparison(df, "Final Energy|Transportation|Percen
 industry_df <- var_year_comparison(df, "Final Energy|Industry|Percent Electricity", 2040)
 
 ```
+
 ## Final Energy H2
 
 ```{r}
 df <- data_from_graph("time_series", config, data_long_clean, figmap_deck_timeseries, 39, "United States")
-
-
 ```
 
 ## Elec Generation by Source
 
 ```{r}
-df <- data_from_graph("time_series", config, data_long_clean, figmap_deck_timeseries, 15, "United States")
+df <- data_from_graph("time_series", config, data_long_clean, figmap_deck_timeseries, 15.2, "United States")
 
 share_clean_df <- df %>%
   mutate(variable = case_when(variable %in% c("Secondary Energy|Electricity|Solar",
@@ -318,15 +494,9 @@ share_clean_2035 <- share_clean_df %>%
 share_clean_2040 <- share_clean_df %>%
   filter(year == 2040)
  
-
 solar_gen_df <- var_year_comparison(df, "Secondary Energy|Electricity|Solar", 2040)
-
 wind_gen_df <- var_year_comparison(df, "Secondary Energy|Electricity|Wind", 2040)
-
 coal_gen_df <- var_year_comparison(df, "Secondary Energy|Electricity|Coal", 2050)
-
-
-
 ```
 
 ## Elec Capacity by Source
@@ -335,11 +505,8 @@ coal_gen_df <- var_year_comparison(df, "Secondary Energy|Electricity|Coal", 2050
 df <- data_from_graph("time_series", config, data_long_clean, figmap_deck_timeseries, 16, "United States")
 
 solar_cap_df <- var_year_comparison(df,"Capacity|Electricity|Solar",2040)
-
 wind_cap_df <- var_year_comparison(df,"Capacity|Electricity|Wind",2040)
-
 coal_cap_df <- var_year_comparison(df,"Capacity|Electricity|Coal",2040)
-
 ```
 
 ## Energy Demand by Sector
@@ -357,9 +524,6 @@ buildings_change <- df %>%
   mutate(pct_change  = 1-(`2040`/`2020`)) %>%
   select(!c(`2020`,`2040`))
   
-  
-  
-
 buildings_elec_share <- df %>%
   filter(variable %in% c("Final Energy|Buildings|Electricity",
                          "Final Energy|Buildings"),
@@ -371,7 +535,6 @@ buildings_elec_share <- df %>%
   mutate(elec_share = `Final Energy|Buildings|Electricity`/`Final Energy|Buildings`) %>%
   select(!c(`Final Energy|Buildings|Electricity`,
             `Final Energy|Buildings`))
-
 ```
 
 
@@ -391,17 +554,94 @@ ind_elec_share <- df %>%
   mutate(elec_share = `Final Energy|Industry|Electricity`/`Final Energy|Industry`) %>%
   select(!c(`Final Energy|Industry|Electricity`,
             `Final Energy|Industry`))
-
 ```
 
 
 ```{r}
 df <- data_from_graph("time_series", config, data_long_clean, figmap_deck_timeseries, 19, "United States")
-
 trn_df <- var_year_comparison(df, "Final Energy|Transportation",2040)
-
 ```
 
+# Non-CO2
 
+## Non-CO2 Gas and Sector Matrix
+```{r}
+all_gases = projections_all_sm %>% 
+  filter(grouping == "wm" & gas != "CO2") %>%
+  filter(usproj_sector != "LULUCF Sink") %>%
+  filter(!(str_detect(proj_name, "usrr") & usproj_sector %in% c("Transportation","Energy") & year %in% c(2045, 2050))) %>%
+  filter(!(usproj_sector == "Energy" & !year %in% c(2020, 2025, 2030, 2035, 2040, 2045, 2050))) %>%
+  filter(year <= 2040)
 
+ggplot() +
+  geom_line(data = all_gases, aes(x=year,y=sum,group=proj_name,color=gas), linewidth = 1) +
+  facet_grid(gas~usproj_sector, scales = "free_y") +
+  labs(y = "Mt CO2e") +
+  theme_btr() +
+  theme(
+    #text = element_text(size = 20),
+        strip.text.x = element_text(size = 14),
+        strip.text.y = element_text(size = 14),
+        text = element_text(size = 14)) +
+  nolegend  +
+  scale_color_brewer(palette = "Paired")
+saveit("Non-CO2 Gas Sector Matrix",settings, height = 8)
+```
 
+## Agriculture
+```{r}
+tge_breakout_figure_sm(proj_ghgi_nonco2, sector_select = 'Agriculture')  +
+  labs(title = "")
+saveit("Agriculture Non-CO2",settings, width = 8)
+```
+
+## Energy
+```{r}
+tge_breakout_figure_sm(proj_ghgi_nonco2, sector_select = 'Energy', col_count = 4)  +
+  labs(title = "")
+saveit("Energy Non-CO2",settings, width = 15)
+```
+
+## IPPU
+```{r}
+# IPPU Non-Energy CO2
+tge_breakout_figure_sm(filter(projections_ghgi, gas == "CO2"), sector_select = 'IPPU')  +
+  labs(title = "IPPU: Non-Energy CO2")
+# IPPU Non-CO2
+tge_breakout_figure_sm(proj_ghgi_nonco2, sector_select = 'IPPU', col_count = 4)  +
+  labs(title = "")
+# filtering out miniscule categories
+proj_ghgi_nonco2_sm = proj_ghgi_nonco2 %>%
+  filter(!usproj_category %in% c(
+    "Iron Steel Metallurgical Coke",
+    "Carbide Production",
+    "Ferroalloy Production",
+    "N2O Product Use",
+    "Petrochemicals"))
+tge_breakout_figure_sm(proj_ghgi_nonco2_sm, sector_select = 'IPPU', col_count = 6)  +
+  labs(title = "")
+saveit("IPPU Non-CO2",settings, width = 17)
+```
+
+## Transportation
+```{r}
+tge_breakout_figure_sm(proj_ghgi_nonco2, sector_select = 'Transportation') + 
+  labs(title = "")
+saveit("Transportation Non-CO2",settings, width = 8)
+```
+
+## Waste
+```{r}
+no_standalone_digesters = proj_ghgi_nonco2 %>%
+  filter(usproj_category != "StandaloneDigesters")
+tge_breakout_figure_sm(no_standalone_digesters, sector_select = 'Waste', col_count = 4)  +
+  labs(title = "")
+saveit("Waste Non-CO2",settings, width = 11, height = 4)
+```
+
+```{r}
+projections_ghgi %>%
+  select(usproj_category) %>%
+  distinct(usproj_category) %>%
+  write_csv("categories.csv")
+```
