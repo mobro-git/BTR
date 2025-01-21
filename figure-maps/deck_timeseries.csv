@@ -79,6 +79,10 @@ timeseriesplot,15.2,Electricity Generation,Secondary Energy|Electricity|Coal,Coa
 timeseriesplot,15.2,Electricity Generation,Secondary Energy|Electricity|Gas,Gas,,0,usa,model_wm,fives_proj_40,scen_wm_sensitivities,grid,year,value,region,variable_rename,model,scenario,region,free_y
 timeseriesplot,15.2,Electricity Generation,Secondary Energy|Electricity|Solar,Solar,,0,usa,model_wm,fives_proj_40,scen_wm_sensitivities,grid,year,value,region,variable_rename,model,scenario,region,free_y
 timeseriesplot,15.2,Electricity Generation,Secondary Energy|Electricity|Wind,Wind,,0,usa,model_wm,fives_proj_40,scen_wm_sensitivities,grid,year,value,region,variable_rename,model,scenario,region,free_y
+timeseriesplot,15.2,Electricity Generation,Secondary Energy|Electricity|Hydro,Hydro,,0,usa,model_wm,fives_proj_40,scen_wm_sensitivities,grid,year,value,region,variable_rename,model,scenario,region,free_y
+timeseriesplot,15.2,Electricity Generation,Secondary Energy|Electricity|Ocean,Ocean,,0,usa,model_wm,fives_proj_40,scen_wm_sensitivities,grid,year,value,region,variable_rename,model,scenario,region,free_y
+timeseriesplot,15.2,Electricity Generation,Secondary Energy|Electricity|Geothermal,Geothermal,,0,usa,model_wm,fives_proj_40,scen_wm_sensitivities,grid,year,value,region,variable_rename,model,scenario,region,free_y
+timeseriesplot,15.2,Electricity Generation,Secondary Energy|Electricity|Nuclear,Nuclear,,0,usa,model_wm,fives_proj_40,scen_wm_sensitivities,grid,year,value,region,variable_rename,model,scenario,region,free_y
 timeseriesplot,16,Electricity Capacity,Capacity|Electricity|Coal,Coal,,0,usa,model_wm,fives_proj_40,scen_wm_sensitivities,grid,year,value,region,variable_rename,model,scenario,region,free_y
 timeseriesplot,16,Electricity Capacity,Capacity|Electricity|Gas,Gas,,0,usa,model_wm,fives_proj_40,scen_wm_sensitivities,grid,year,value,region,variable_rename,model,scenario,region,free_y
 timeseriesplot,16,Electricity Capacity,Capacity|Electricity|Oil,Oil,,0,usa,model_wm,fives_proj_40,scen_wm_sensitivities,grid,year,value,region,variable_rename,model,scenario,region,free_y

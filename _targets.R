@@ -19,7 +19,7 @@ source("scripts/theming.R")
 # Define targets
 tar_plan(
   
-  ##### Config and settings -----------------
+  # Config and settings ----
   
   settings = list(
     version = "2024_BTR1",
@@ -91,9 +91,9 @@ tar_plan(
     sector_order = c("Energy","Transportation","IPPU","Agriculture","Waste")#,"LULUCF") # Uncomment if not netting out all LULUCF emissions
   ),
   
-  ##### Template + Crosswalks ---------------------------------------------------
+  # Template + Crosswalks ----
   
-  # BTR reporting template
+  ## BTR reporting template ----
   tar_target(template_original_xlsx, "data-raw/template/EMF37_data_template_R2_v2.xlsx", format = "file"),
   tar_target(template_original, read_emf_template_xlsx(template_original_xlsx)),
   
@@ -102,21 +102,24 @@ tar_plan(
   
   tar_target(template, rbind(template_original,template_additions)),
   
-  # scenario+model crosswalks
+  ## scenario+model crosswalks ----
   tar_target(crosswalk_model_runs_csv, "data-raw/crosswalk/crosswalk_model-runs.csv", format = "file"),
   tar_target(crosswalk_usproj_csv, "data-raw/crosswalk/crosswalk_usproj.csv", format = "file"), 
   
-  #### Data Files ----------------------------------------------------------------
+  tar_target(lulucf_crosswalk_csv, "data-raw/crosswalk/crosswalk_lulucf_all.csv", format = "file"),
+  tar_target(lulucf_crosswalk, read_csv(lulucf_crosswalk_csv)), 
   
-  # WM and WAM scenario - BTR template modeling
+  # Data Files ----
+  
+  ## WM and WAM scenario - BTR template modeling ----
   tar_target(data_folder, "data-raw/model-runs/", format = "file"),
   tar_target(data_files, dir_ls(data_folder), format = "file"),
   
-  # usproj Non-CO2 and CO2 from IPPU and NEU 
+  ## usproj Non-CO2 and CO2 from IPPU and NEU ----
   tar_target(usproj_data_folder, "data-raw/usproj-data/", format = "file"),
   tar_target(usproj_files, dir_ls(usproj_data_folder), format = "file"),
   
-  # Past projections and drivers
+  ## Past projections and drivers ----
   tar_target(past_proj_csv, "data-raw/ncbr_comparison/total_gross_ghg_ncbr_comparisons_ar5.csv", format = "file"),
   tar_target(past_proj, read_csv(past_proj_csv)),
   
@@ -126,9 +129,9 @@ tar_plan(
   tar_target(past_kaya_no_emissions_xlsx, "data-raw/ncbr_comparison/kaya_comparison_2024_btr1_ar5.xlsx", format = "file"),
   tar_target(past_kaya_no_emissions, read_xlsx(past_kaya_no_emissions_xlsx)),
   
-  #### Data Processing -----------------------
+  # Data Processing ----
   
-  # _calculated variables ----
+  ## calculated variables ----
   
   tar_target(ratio_var_list, "data-raw/calculated-var/ratio_variables.csv", format = "file"),
   ratio_var = readr::read_csv(ratio_var_list, col_types = cols()),
@@ -154,7 +157,7 @@ tar_plan(
                                   annual_growth_rate_var = annual_growth_rate_var,
                                   per_diff_var = per_diff_var)),
   
-  # _usproj data long ----
+  ## usproj data long ----
   
   usproj_data_loaded = {
     map_dfr(usproj_files, ~read_usproj_data_file(.x, crosswalk_usproj_csv)) %>%
@@ -165,12 +168,12 @@ tar_plan(
   # usproj w/o historical data
   usproj_data_long = gen_usproj_projections(usproj_data_long_all, settings), 
   
-  # _ghgi data 
+  ## ghgi data ----
   
-  #      from usproj
+  # from usproj
   ghgi_cat = gen_usproj_ghgi(usproj_data_long_all, config, settings),
   
-  #      from compiled_tables_2024
+  # from compiled_tables_2024
   tar_target(ghgi_comp_tab_csv, "data-raw/ghgi/EPA-GHGI_wide_wnotes_2024.csv", format = "file"),
   
   ghgi_comp_tab = {
@@ -181,7 +184,7 @@ tar_plan(
       select(names(data_long_clean_no_hist))
     },
   
-  # _modeled-data long ----
+  ## modeled-data long ----
   
   data_loaded = {
     map_dfr(data_files, ~read_process_data_file(.x, settings)) %>%
@@ -199,6 +202,9 @@ tar_plan(
                                                  settings), 
   
   data_long_clean = paste_hist(data_long_clean_no_hist, ghgi_comp_tab, c("wm","leep_IRA")),
+  
+  # Data output for submission to EMF 37 IIASA database (https://data.ece.iiasa.ac.at/emf37-internal/#/workspaces)
+  emf_submission_output = emf_submission_output(data_long_clean_no_hist, template, config, settings),
   
   # indexed version of data_long_clean. index_var determines which variables are indexed, only these are included
   data_long_index = index_data_long(data_long_clean, index_var),
@@ -223,16 +229,13 @@ tar_plan(
   tar_target(lulucf_files_with_check, list_lulucf_files(lulucf_folder,lulucf_btr_data_raw)),
   tar_target(lulucf_files, lulucf_files_with_check, format = "file"),
   
-  tar_target(lulucf_crosswalk_csv, "data-raw/crosswalk/crosswalk_lulucf_all.csv", format = "file"),
-  tar_target(lulucf_crosswalk, read_csv(lulucf_crosswalk_csv)), 
-  
   lulucf_data = {
     map_dfr(lulucf_files, ~read_lulucf_data_file(.x, lulucf_crosswalk, var_crosswalk)) %>%
       arrange_standard()}, 
   
-  ### Projections Compilation --------------
+  # Projections Compilation ----
   
-  # crosswalk between BTR and usproj template variables
+  ## xw between BTR and usproj template variables ----
   tar_target(var_crosswalk_csv, "data-raw/crosswalk/crosswalk_var.csv", format = "file"),
   tar_target(var_crosswalk, read_csv(var_crosswalk_csv)), # TODO: CHECK FOR VARIABLES!
   
@@ -240,16 +243,16 @@ tar_plan(
   
   usproj_all = add_ffc_lulucf(ffc_raw_data, lulucf_data, usproj_data_long, var_crosswalk, settings),
   
-  # crosswalk compilation
+  ## compilation xw
   tar_target(crosswalk_compilation_csv, "data-raw/crosswalk/crosswalk_compilation.csv", format = "file"),
   tar_target(crosswalk_compilation, read_csv(crosswalk_compilation_csv)), # TODO: CHECK FOR MODELS AND SCENARIOS!
   
-  # _complete projections ----
+  ## complete projections ----
   projections_all = map_proj_name_v2(usproj_all, crosswalk_compilation, settings),
   projections_ghgi = add_historical_data(ghgi_cat, projections_all), # bind ghgi historical data to projections
   projections_all_sm = gen_proj_all_sm(projections_ghgi, settings), # gas and sector sums for each projection
 
-  # _summary table breakouts ----
+  ## summary table breakouts ----
   lulucf_sink_breakout = gen_lulucf_sink_breakout(projections_all_sm, config, settings),
   
   gas_dataset = gen_gas_dataset(projections_all_sm, config),
@@ -258,13 +261,14 @@ tar_plan(
   sector_dataset = gen_sector_dataset(projections_all_sm, config),
   sector_breakout = gen_sector_breakout(sector_dataset, config, settings, category_order = config$sector_order),
   
-  # Sum Total Gross Emissions ----
+  ## sum Total Gross Emissions ----
   tar_target(total_gross_emissions, gen_total_gross_emissions(gas_dataset, config)),
   
-  # Calculate Total Net Emissions and write ----
+  ## Calculate Total Net Emissions and write ----
   tar_target(total_net_emissions, gen_total_net_emissions(gas_dataset, lulucf_sink_breakout, settings, config)),
   
-  ### QA/QC ----
+  
+  # QA/QC ----
   
   check_nrg_excl_trn_acct = {
     nrg_excl_trn_acct <- data_long_clean %>% 
@@ -278,7 +282,8 @@ tar_plan(
   
   check_lts_comp_var = check_lts_comp_var(data_long_clean,summation_var,settings),
   
-  ### Figure mapping --------------
+  
+  # Figure mapping ----
   
   tar_map(
     values = figmap_values("figure-maps"),
@@ -286,7 +291,9 @@ tar_plan(
     tar_target(figmap, figmap_target(figmap_csv, config, settings))
   ),
   
-  ### Outputs ----
+  # Outputs ----
+  
+  ## PDF figures ----
   
   # figure map outputs
   nrgco2_sb = create_graph("nrgco2", "stacked_bar", config, settings, data_long_clean, figmap_nrgco2_stackbar),
@@ -307,29 +314,37 @@ tar_plan(
   # TODO: create versions of the stacked bar figures that have historical data for 2020
   nrgco2hist = create_graph("nrgco2hist", "time_series", config, settings, data_long_clean, figmap_nrgco2hist_timeseries),
     
-  # markdowns
+  ## Final report figures and stats ----
+  
+  # markdown with all of the final report figures, all with measures sensitivities included
+  tar_render(btr_tables_figs_sens,
+             "docs/report/btr_tables_figs_sens.Rmd",
+             output_dir = paste0('output/',settings$version,"/tables_figs_sens"),
+             output_file = paste0("btr_tables_figs_sens",Sys.Date(),".html"),
+             params = list(mode = "targets")), 
+  # TODO: make sure that this btr_tables_figs_sens has absolutely everything from the report
+  
+  # energy model emissions and energy overview, all with measures sensitivities included
+  tar_render(results_overview_sens_deck,
+             "docs/report/results_overview_sens_deck.Rmd",
+             output_dir = paste0('output/',settings$version,"/results_overview_sens_deck/"),
+             output_file = paste0("results_overview_sens_deck",Sys.Date(),".html"),
+             params = list(mode = "targets")),
+  
+  tar_render(tge_breakouts,
+             "docs/report/tge_breakouts.Rmd",
+             output_dir = paste0('output/',settings$version,"/tables_figs/tge_breakouts/"),
+             output_file = paste0("btr_tge_breakouts_",Sys.Date(),".html"),
+             params = list(mode = "targets")),
+  
+  
+  ## Additional reports ----
+  
+  # BTR report tables and figures for ONLY the with measures scenario, no sensitivities included
   tar_render(btr_tables_figs,
              "docs/report/btr_tables_figs.Rmd",
              output_dir = paste0('output/',settings$version,"/tables_figs/"),
              output_file = paste0("btr_tables_figs_",Sys.Date(),".html"),
-             params = list(mode = "targets")),
-  
-  tar_render(results_overview,
-             "docs/report/results_overview.Rmd",
-             output_dir = paste0('output/',settings$version,"/results_overview/"),
-             output_file = paste0("results_overview_",Sys.Date(),".html"),
-             params = list(mode = "targets")),
-  
-  tar_render(ncbr_comp_brvs,
-            "docs/report/ncbr_comp_brvs.Rmd",
-            output_dir = paste0('output/',settings$version,"/results_overview/"),
-            output_file = paste0("ncbr_comp_brvs_",Sys.Date(),".html"),
-            params = list(mode = "targets")),
-  
-  tar_render(leepcompare,
-             "docs/report/leep_comparison_nrgco2.Rmd",
-             output_dir = paste0('output/',settings$version,"/results_overview/"),
-             output_file = paste0("leepcompare_",Sys.Date(),".html"),
              params = list(mode = "targets")),
   
   #TODO: fix the 2020-2022 sector analysis figures that go out to 2050
@@ -339,28 +354,23 @@ tar_plan(
              output_file = paste0("btr_tables_figs_to2050_",Sys.Date(),".html"),
              params = list(mode = "targets")),
   
-  tar_render(tge_breakouts,
-             "docs/report/tge_breakouts.Rmd",
-             output_dir = paste0('output/',settings$version,"/tables_figs/tge_breakouts/"),
-             output_file = paste0("btr_tge_breakouts_",Sys.Date(),".html"),
+  # energy model emissions and energy overview, no sensitivities included
+  tar_render(results_overview,
+             "docs/report/results_overview.Rmd",
+             output_dir = paste0('output/',settings$version,"/results_overview/"),
+             output_file = paste0("results_overview_",Sys.Date(),".html"),
              params = list(mode = "targets")),
   
-  tar_render(results_overview_sens,
-             "docs/report/results_overview_sens.Rmd",
-             output_dir = paste0('output/',settings$version,"/results_overview_sens/"),
-             output_file = paste0("results_overview_sens",Sys.Date(),".html"),
+  tar_render(leepcompare,
+             "docs/report/leep_comparison_nrgco2.Rmd",
+             output_dir = paste0('output/',settings$version,"/results_overview/"),
+             output_file = paste0("leepcompare_",Sys.Date(),".html"),
              params = list(mode = "targets")),
   
-  tar_render(results_overview_sens_deck,
-             "docs/report/results_overview_sens_deck.Rmd",
-             output_dir = paste0('output/',settings$version,"/results_overview_sens_deck/"),
-             output_file = paste0("results_overview_sens_deck",Sys.Date(),".html"),
-             params = list(mode = "targets")),
-  
-   tar_render(btr_tables_figs_sens,
-              "docs/report/btr_tables_figs_sens.Rmd",
-              output_dir = paste0('output/',settings$version,"/tables_figs_sens"),
-              output_file = paste0("btr_tables_figs_sens",Sys.Date(),".html"),
-              params = list(mode = "targets"))
+  tar_render(ncbr_comp_brvs,
+             "docs/report/ncbr_comp_brvs.Rmd",
+             output_dir = paste0('output/',settings$version,"/results_overview/"),
+             output_file = paste0("ncbr_comp_brvs_",Sys.Date(),".html"),
+             params = list(mode = "targets"))
   
 )
