@@ -17,8 +17,6 @@ params:
 
 ```{r,echo = FALSE, results = "show", warning = FALSE, message = FALSE, error = FALSE}
 knitr::opts_chunk$set(echo = FALSE, results = "show", warning = FALSE, message = FALSE, error = FALSE, fig.align = "center", fig.width = 9, fig.height = 7)
-
-
 ``` 
 
 ```{r}
@@ -29,7 +27,6 @@ tar_source()
 ```
 
 ```{r}
-
 tar_load(
   c(
     config,
@@ -42,9 +39,7 @@ tar_load(
     past_proj
     )
   )
-
 source("scripts/theming.R")
-
 ```
 
 # BTR Tables and Figures
@@ -62,8 +57,9 @@ gas_table_merged
 ```
 
 ```{r}
-filename <- paste0("gas_table_",Sys.Date(),".png")
-gtsave(gas_table_merged, paste0('output/',settings$version,"/tables_figs/results_tables/by_gas_sector/",filename))
+create_folders(paste0('output/',settings$version,"/exploratory/tables_figs_no_sens/results_tables/by_gas_sector/"))
+filename <- paste0("gas_table_",Sys.Date(),".html")
+gtsave(gas_table_merged, paste0('output/',settings$version,"/exploratory/tables_figs_no_sens/results_tables/by_gas_sector/",filename))
 ```
 
 ### Sector
@@ -77,8 +73,8 @@ sector_table_merged
 ```
 
 ```{r}
-filename <- paste0("sector_table_",Sys.Date(),".png")
-gtsave(sector_table_merged, paste0('output/',settings$version,"/tables_figs/results_tables/by_gas_sector/",filename))
+filename <- paste0("sector_table_",Sys.Date(),".html")
+gtsave(sector_table_merged, paste0('output/',settings$version,"/exploratory/tables_figs_no_sens/results_tables/by_gas_sector/",filename))
 ```
 
 ## 2005 Percent Change Table {.tabset}
@@ -93,8 +89,9 @@ pct_change_html_gas_merged
 ```
 
 ```{r}
-filename <- paste0("gas_table_pctchange05_",Sys.Date(),".png")
-gtsave(pct_change_html_gas_merged, paste0('output/',settings$version,"/tables_figs/results_tables/percent_change_2005/",filename))
+create_folders(paste0('output/',settings$version,"/exploratory/tables_figs_no_sens/results_tables/percent_change_2005/"))
+filename <- paste0("gas_table_pctchange05_",Sys.Date(),".html")
+gtsave(pct_change_html_gas_merged, paste0('output/',settings$version,"/exploratory/tables_figs_no_sens/results_tables/percent_change_2005/",filename))
 ```
 
 ### Sector
@@ -107,8 +104,8 @@ pct_change_html_sector_merged
 ```
 
 ```{r}
-filename <- paste0("sector_table_pctchange05_",Sys.Date(),".png")
-gtsave(pct_change_html_sector_merged, paste0('output/',settings$version,"/tables_figs/results_tables/percent_change_2005/",filename))
+filename <- paste0("sector_table_pctchange05_",Sys.Date(),".html")
+gtsave(pct_change_html_sector_merged, paste0('output/',settings$version,"/exploratory/tables_figs_no_sens/results_tables/percent_change_2005/",filename))
 ```
 
 ## BTR Main Plot {.tabset}
@@ -162,7 +159,7 @@ projections
 
 ```{r}
 filename <- paste0("btr_main_fig_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_figs/main_fig/",filename), create.dir = TRUE, height = 5.5)
+ggsave(paste0('output/',settings$version,"/exploratory/tables_figs_no_sens/btr_main_figs/main_fig/",filename), create.dir = TRUE, height = 5.5)
 ```
 
 ```{r}
@@ -210,7 +207,7 @@ projections_pct_change
 
 ```{r}
 filename <- paste0("btr_main_fig_pctchange05_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs/btr_main_figs/pct_change/",filename), create.dir = TRUE, height = 6)
+ggsave(paste0('output/',settings$version,"/exploratory/tables_figs_no_sens/btr_main_figs/pct_change/",filename), create.dir = TRUE, height = 6)
 ```
 
 # Kaya Analysis {.tabset}
@@ -328,7 +325,7 @@ multipanel_kaya <- ggplot() +
   theme_btr() +
   labs(y = "Key Factor Index \n(2015 = 1.0)")
 #multipanel_kaya
-ggsave(paste0('output/',settings$version,"/tables_figs/kaya/kaya_multipanel.png"), width = 5, create.dir = TRUE)
+ggsave(paste0('output/',settings$version,"/exploratory/tables_figs_no_sens/kaya/kaya_multipanel.png"), width = 5, create.dir = TRUE)
 
 line_size = 0.7
 
@@ -361,7 +358,7 @@ singlepanel_kaya <- ggplot() +
   theme(legend.background = element_rect(color = NA))
 
 singlepanel_kaya
-ggsave(paste0('output/',settings$version,"/tables_figs/kaya/kaya_singlepanel.png"), width = 5, create.dir = TRUE)
+ggsave(paste0('output/',settings$version,"/exploratory/tables_figs_no_sens/kaya/kaya_singlepanel.png"), width = 5, create.dir = TRUE)
 ```
 
 
@@ -457,28 +454,28 @@ industry <- br_sectors(sector_df,
 
 ```{r}
 buildings
-ggsave(plot = buildings,filename = paste0('output/',settings$version,"/tables_figs/sector_analysis/buildings_comparison",Sys.Date(),".png"), create.dir = TRUE, height = 4.5, width = 9)
+ggsave(plot = buildings,filename = paste0('output/',settings$version,"/exploratory/tables_figs_no_sens/sector_analysis/buildings_comparison",Sys.Date(),".png"), create.dir = TRUE, height = 4.5, width = 9)
 ```
 
 ## Electricity
 
 ```{r}
 electricity
-ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/electricity_comparison",Sys.Date(),".png"), create.dir = TRUE, height = 4.5, width = 9)
+ggsave(paste0('output/',settings$version,"/exploratory/tables_figs_no_sens/sector_analysis/electricity_comparison",Sys.Date(),".png"), create.dir = TRUE, height = 4.5, width = 9)
 ```
 
 ## Transportation
 
 ```{r}
 transportation
-ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/transportation_comparison",Sys.Date(),".png"), height = 4.5, width = 9)
+ggsave(paste0('output/',settings$version,"/exploratory/tables_figs_no_sens/sector_analysis/transportation_comparison",Sys.Date(),".png"), height = 4.5, width = 9)
 ```
 
 ## Industry
 
 ```{r}
 industry
-ggsave(paste0('output/',settings$version,"/tables_figs/sector_analysis/industry_comparison",Sys.Date(),".png"), create.dir = TRUE, height = 4.5, width = 9)
+ggsave(paste0('output/',settings$version,"/exploratory/tables_figs_no_sens/sector_analysis/industry_comparison",Sys.Date(),".png"), create.dir = TRUE, height = 4.5, width = 9)
 ```
 
 
@@ -677,8 +674,9 @@ ncbr_comp_table
 ```
 
 ```{r}
-filename <- paste0("ncbr_comp_table_",Sys.Date(),".png")
-gtsave(ncbr_comp_table, paste0('output/',settings$version,"/tables_figs/results_tables/ncbr_comparison/",filename))
+create_folders(paste0('output/',settings$version,"/exploratory/tables_figs_no_sens/results_tables/ncbr_comparison/longnames/"))
+filename <- paste0("ncbr_comp_table_",Sys.Date(),".html")
+gtsave(ncbr_comp_table, paste0('output/',settings$version,"/exploratory/tables_figs_no_sens/results_tables/ncbr_comparison/",filename))
 ```
 
 ### Table Long Names
@@ -742,8 +740,8 @@ ncbr_comp_table_longnames
 ```
 
 ```{r}
-filename <- paste0("ncbr_comp_table_longnames",Sys.Date(),".png")
-gtsave(ncbr_comp_table_longnames, paste0('output/',settings$version,"/tables_figs/results_tables/ncbr_comparison/longnames/",filename))
+filename <- paste0("ncbr_comp_table_longnames",Sys.Date(),".html")
+gtsave(ncbr_comp_table_longnames, paste0('output/',settings$version,"/exploratory/tables_figs_no_sens/results_tables/ncbr_comparison/longnames/",filename))
 ```
 
 ```{r}
@@ -786,7 +784,7 @@ fig
 
 ```{r}
 filename <- paste0("ncbr_comp_fig_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs/ncbr_comparison/",filename), create.dir = TRUE)
+ggsave(paste0('output/',settings$version,"/exploratory/tables_figs_no_sens/ncbr_comparison/",filename), create.dir = TRUE)
 ```
 
 ### Figure Long Names
@@ -798,7 +796,7 @@ fig_longnames
 
 ```{r}
 filename <- paste0("ncbr_comp_fig_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs/ncbr_comparison/longnames/",filename), create.dir = TRUE)
+ggsave(paste0('output/',settings$version,"/exploratory/tables_figs_no_sens/ncbr_comparison/longnames/",filename), create.dir = TRUE)
 ```
 
 ### Figure: From 1990
@@ -811,14 +809,14 @@ fig
 
 ```{r}
 filename <- paste0("ncbr_comp90_fig_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs/results_tables/ncbr_comparison/",filename))
+ggsave(paste0('output/',settings$version,"/exploratory/tables_figs_no_sens/results_tables/ncbr_comparison/",filename))
 ```
 
 
 
 ```{r}
 filename <- paste0("ncbr_tge_gas_and_sector_breakouts_fig_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs/results_tables/ncbr_comparison/",filename))
+ggsave(paste0('output/',settings$version,"/exploratory/tables_figs_no_sens/results_tables/ncbr_comparison/",filename))
 ```
 
 # Energy and Transportation CO2 Emissions Range {.tabset}
@@ -871,7 +869,7 @@ fig
 
 ```{r}
 filename <- paste0("nrg_emissions_fig_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs/nrg_emissions/",filename), create.dir = TRUE,height = 4.5)
+ggsave(paste0('output/',settings$version,"/exploratory/tables_figs_no_sens/nrg_emissions/",filename), create.dir = TRUE,height = 4.5)
 ```
 
 ## Stats
@@ -967,7 +965,7 @@ lulucf_fig
 
 ```{r}
 filename <- paste0("lulucf_fig_", Sys.Date(), ".png")
-ggsave(paste0('output/', settings$version, "/tables_figs/lulucf/", filename),
+ggsave(paste0('output/', settings$version, "/exploratory/tables_figs_no_sens/lulucf/", filename),
   create.dir = TRUE,
   height = 4.5,
   width = 9)

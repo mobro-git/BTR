@@ -1,3 +1,4 @@
+
 check_lts_comp_var = function(data_long_clean, summation_var,settings){
   vars = summation_var %>% 
     filter(variable %in% c("Emissions|CO2|Energy|Demand|Buildings|Total",

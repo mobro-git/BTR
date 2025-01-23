@@ -123,7 +123,7 @@ check_stop <- function(string) {
 create_folders <- function(paths) {
   lapply(paths,
          function(x) if(!dir.exists(x))
-           dir.create(x))
+           dir.create(x, recursive = TRUE))
 }
 
 tar_refresh <- function(tar_obj) {

@@ -1,5 +1,6 @@
 ---
-title: "BTR Results Overview W/ Sensitivities"
+title: "2024 U.S. Emissions and Energy System Baselines"
+subtitle: "Projections from the 2024 Biennial Transparency Report"
 output:
   html_document:
     toc: yes
@@ -50,13 +51,17 @@ proj_ghgi_nonco2 = proj_ghgi_nonco2_pre_bind %>%
 source("scripts/theming.R")
 
 saveit = function(title, settings, width = 10, height = 5) {
-  ggsave(filename = paste0("output/",settings$version,"/results_overview_sens_deck/",title,".svg"),
+  fig_path = paste0('output/',settings$version,"/report/btr_published_deck/figs/")
+  create_folders(fig_path)
+  
+  ggsave(filename = paste0(fig_path,title,".svg"),
          
          create.dir = TRUE,
          width = width,
          height = height,
          units = "in")
 }
+create_folders(paste0('output/',settings$version,"/report/btr_published_deck/tables/"))
 
 bottom = theme(legend.position="bottom",legend.direction="vertical")
 data_long_clean_100 = data_long_clean %>% mutate(value = value*100)
@@ -153,7 +158,7 @@ gas_table_merged <- create_html_table_merged(gas_df, 'Gas', settings)
 
 gas_table_merged
 
-gtsave(gas_table_merged, paste0('output/',settings$version,"/results_overview_sens_deck/Gas Table.png"))
+gtsave(gas_table_merged, paste0('output/',settings$version,"/report/btr_published_deck/tables/Gas Table.html"))
 ```
 
 ### Sector
@@ -163,7 +168,7 @@ sector_df <- create_summary_table('usproj_sector', 'wm_sens', projections_all_sm
 sector_table <- create_html_table(sector_df, 'Sector', settings)
 sector_table_merged <- create_html_table_merged(sector_df, 'Sector', settings)
 
-gtsave(sector_table_merged, paste0('output/',settings$version,"/results_overview_sens_deck/Sector Table.png"))
+gtsave(sector_table_merged, paste0('output/',settings$version,"/report/btr_published_deck/tables/Sector Table.html"))
 ```
 
 # Energy CO2 Emissions {.tabset}
@@ -367,18 +372,6 @@ saveit(title,settings, width = 15)
 
 # Stats
 
-```{r}
-var_year_comparison <- function(data_from_graph, var_choice, comparison_year) {
- 
-  var_df <- data_from_graph %>%
-    filter(variable == var_choice,
-           year == comparison_year) %>%
-    group_by(model,scenario,year,variable) %>%
-    summarise(value = sum(value))
-}
-```
-
-
 ## Energy CO2 Emissions
 ```{r}
 df <- data_from_graph("time_series", config, data_long_clean, figmap_deck_timeseries, 9.1, "United States")
@@ -507,16 +500,15 @@ buildings_elec_share <- df %>%
             `Final Energy|Buildings`))
 ```
 
-
 ```{r}
 df <- data_from_graph("time_series", config, data_long_clean, figmap_deck_timeseries, 18, "United States")
 
-ind_df <- var_year_comparison(df,"Final Energy|Industry",2050)
+ind_df <- var_year_comparison(df,"Final Energy|Industry",2040)
 
 ind_elec_share <- df %>%
   filter(variable %in% c("Final Energy|Industry|Electricity",
                          "Final Energy|Industry"),
-         year == 2050) %>%
+         year == 2040) %>%
   group_by(model, scenario, year, variable) %>%
   summarise(value = sum(value))%>%
   pivot_wider(names_from = variable,
@@ -525,7 +517,6 @@ ind_elec_share <- df %>%
   select(!c(`Final Energy|Industry|Electricity`,
             `Final Energy|Industry`))
 ```
-
 
 ```{r}
 df <- data_from_graph("time_series", config, data_long_clean, figmap_deck_timeseries, 19, "United States")

@@ -90,7 +90,6 @@ print_graph <- function(plot_type, config, data_long_clean, figmap, figure_num, 
           scenario == "wm_highfuelcost" ~ "High Fuel Cost",
           scenario == "wm_lowfuelcost" ~ "Low Fuel Cost",
           scenario == "wm_lowcostre_highfuelcost" ~ "High Fuel Cost, Low Cost Renewables",
-          
           TRUE~scenario)) %>%
         mutate(scenario = factor(scenario, scen_factor))
     }
@@ -117,7 +116,8 @@ print_graph <- function(plot_type, config, data_long_clean, figmap, figure_num, 
 
     plot
 
-  }}
+  }
+  }
 
 # allows use of pipeline graphing to print one figure and return a ggplot object that can then be edited
 

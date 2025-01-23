@@ -17,8 +17,6 @@ params:
 
 ```{r,echo = FALSE, results = "show", warning = FALSE, message = FALSE, error = FALSE}
 knitr::opts_chunk$set(echo = FALSE, results = "show", warning = FALSE, message = FALSE, error = FALSE, fig.align = "center", fig.width = 9, fig.height = 7)
-
-
 ``` 
 
 
@@ -30,7 +28,6 @@ tar_source()
 ```
 
 ```{r}
-
 tar_load(
   c(
     config,
@@ -40,9 +37,7 @@ tar_load(
     projections_ghgi
     )
   )
-
 source("scripts/theming.R")
-
 ```
 
 # Gas and Sector Breakouts
@@ -70,7 +65,7 @@ ggplot() +
         text = element_text(size = 14)) +
   nolegend
 
-ggsave(filename = paste0('output/',settings$version,"/tables_figs/tge_breakouts/main_fig.png"),width = 9, height = 7)
+ggsave(filename = paste0('output/',settings$version,"/exploratory/tge_breakouts/main_fig.png"),width = 9, height = 7)
 ```
 
 ### Non-CO2 Gases
@@ -90,7 +85,7 @@ ggplot() +
         text = element_text(size = 14)) +
   nolegend
 
-ggsave(filename = paste0('output/',settings$version,"/tables_figs/tge_breakouts/main_fig_no_co2.png"),width = 9, height = 7)
+ggsave(filename = paste0('output/',settings$version,"/exploratory/tge_breakouts/main_fig_no_co2.png"),width = 9, height = 7)
 ```
 
 ## Agriculture {.tabset}
@@ -322,8 +317,7 @@ fig <- ggplot() +
 
 fig
 
-ggsave(paste0('output/',settings$version,"/tables_figs/tge_breakouts/co2_facet.png"), width = 5, create.dir = TRUE)
-
+ggsave(paste0('output/',settings$version,"/exploratory/tge_breakouts/co2_facet.png"), width = 5, create.dir = TRUE)
 ```
 
 

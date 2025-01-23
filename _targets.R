@@ -319,57 +319,64 @@ tar_plan(
   # markdown with all of the final report figures, all with measures sensitivities included
   tar_render(btr_tables_figs_sens,
              "docs/report/btr_tables_figs_sens.Rmd",
-             output_dir = paste0('output/',settings$version,"/tables_figs_sens"),
-             output_file = paste0("btr_tables_figs_sens",Sys.Date(),".html"),
+             output_dir = paste0('output/',settings$version,"/report/tables_figs_sens"),
+             output_file = paste0("btr_tables_figs_sens_",Sys.Date(),".html"),
              params = list(mode = "targets")), 
   # TODO: make sure that this btr_tables_figs_sens has absolutely everything from the report
   
   # energy model emissions and energy overview, all with measures sensitivities included
-  tar_render(results_overview_sens_deck,
-             "docs/report/results_overview_sens_deck.Rmd",
-             output_dir = paste0('output/',settings$version,"/results_overview_sens_deck/"),
-             output_file = paste0("results_overview_sens_deck",Sys.Date(),".html"),
+  tar_render(results_overview_sens,
+             "docs/report/results_overview_sens.Rmd",
+             output_dir = paste0('output/',settings$version,"/report/results_overview_sens/"),
+             output_file = paste0("results_overview_sens_",Sys.Date(),".html"),
              params = list(mode = "targets")),
   
-  tar_render(tge_breakouts,
-             "docs/report/tge_breakouts.Rmd",
-             output_dir = paste0('output/',settings$version,"/tables_figs/tge_breakouts/"),
-             output_file = paste0("btr_tge_breakouts_",Sys.Date(),".html"),
+  # energy model emissions and energy overview, all with measures sensitivities included
+  tar_render(btr_published_deck,
+             "docs/report/btr_published_deck.Rmd",
+             output_dir = paste0('output/',settings$version,"/report/btr_published_deck/"),
+             output_file = paste0("btr_published_deck_",Sys.Date(),".html"),
              params = list(mode = "targets")),
   
-  
-  ## Additional reports ----
+  ## Additional exploratory reports ----
   
   # BTR report tables and figures for ONLY the with measures scenario, no sensitivities included
-  tar_render(btr_tables_figs,
-             "docs/report/btr_tables_figs.Rmd",
-             output_dir = paste0('output/',settings$version,"/tables_figs/"),
-             output_file = paste0("btr_tables_figs_",Sys.Date(),".html"),
+  tar_render(btr_tables_figs_no_sens,
+             "docs/exploratory/btr_tables_figs_no_sens.Rmd",
+             output_dir = paste0('output/',settings$version,"/exploratory/tables_figs_no_sens/"),
+             output_file = paste0("btr_tables_figs_no_sens_",Sys.Date(),".html"),
              params = list(mode = "targets")),
   
   #TODO: fix the 2020-2022 sector analysis figures that go out to 2050
-  tar_render(btr_tables_figs_to2050,
-             "docs/report/btr_tables_figs_to2050.Rmd",
-             output_dir = paste0('output/',settings$version,"/tables_figs/to2050/"),
-             output_file = paste0("btr_tables_figs_to2050_",Sys.Date(),".html"),
+  tar_render(btr_tables_figs_no_sens_to_2050,
+             "docs/exploratory/btr_tables_figs_no_sens_to_2050.Rmd",
+             output_dir = paste0('output/',settings$version,"/exploratory/tables_figs_no_sens_to_2050/"),
+             output_file = paste0("btr_tables_figs_no_sens_to_2050_",Sys.Date(),".html"),
+             params = list(mode = "targets")),
+  
+  # Non-CO2 and non-energy CO2 emissions breakouts by gas and sector
+  tar_render(tge_breakouts,
+             "docs/exploratory/tge_breakouts.Rmd",
+             output_dir = paste0('output/',settings$version,"/exploratory/tge_breakouts/"),
+             output_file = paste0("tge_breakouts_",Sys.Date(),".html"),
              params = list(mode = "targets")),
   
   # energy model emissions and energy overview, no sensitivities included
-  tar_render(results_overview,
-             "docs/report/results_overview.Rmd",
-             output_dir = paste0('output/',settings$version,"/results_overview/"),
-             output_file = paste0("results_overview_",Sys.Date(),".html"),
+  tar_render(results_overview_no_sens,
+             "docs/exploratory/results_overview_no_sens.Rmd",
+             output_dir = paste0('output/',settings$version,"/exploratory/results_overview_no_sens/"),
+             output_file = paste0("results_overview_no_sens_",Sys.Date(),".html"),
              params = list(mode = "targets")),
   
   tar_render(leepcompare,
-             "docs/report/leep_comparison_nrgco2.Rmd",
-             output_dir = paste0('output/',settings$version,"/results_overview/"),
-             output_file = paste0("leepcompare_",Sys.Date(),".html"),
+             "docs/exploratory/leep_comparison_nrgco2.Rmd",
+             output_dir = paste0('output/',settings$version,"/exploratory/leep_comparison_nrgco2/"),
+             output_file = paste0("leepcompare_nrgco2_",Sys.Date(),".html"),
              params = list(mode = "targets")),
   
   tar_render(ncbr_comp_brvs,
-             "docs/report/ncbr_comp_brvs.Rmd",
-             output_dir = paste0('output/',settings$version,"/results_overview/"),
+             "docs/exploratory/ncbr_comp_brvs.Rmd",
+             output_dir = paste0('output/',settings$version,"/exploratory/ncbr_comp_brvs/"),
              output_file = paste0("ncbr_comp_brvs_",Sys.Date(),".html"),
              params = list(mode = "targets"))
   

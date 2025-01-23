@@ -115,7 +115,9 @@ map_proj_name_v2 = function(usproj_all, crosswalk_compilation, settings) {
   
   projections_all = bind_rows(projections)
   
-  write_csv(projections_all, paste0('output/',settings$version,'/proj_tables/projections_all.csv'))
+  path = paste0('output/',settings$version,'/proj_tables/')
+  create_folders(path)
+  write_csv(projections_all, paste0(path,'projections_all.csv'))
   
   return(projections_all)
   

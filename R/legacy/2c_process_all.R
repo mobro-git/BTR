@@ -142,7 +142,7 @@ map_scenario_names <- function(data,
     print(glue::glue_data(preflight, "{datasrc}, {model}, {scenario}"))
     rlang::abort("Model+scenario combinations above not present in crosswalk (data-raw/crosswalk/crosswalk_model-runs.csv).
                  Combinations have been saved off to data-raw/crosswalk/crosswalk_model-runs-ADDITIONS.csv. 
-                 There might still be missing model+scenario in another datasource.") #TODO: Low prioritt; create one list of all additions needed, skip file with issues but add to list
+                 There might still be missing model+scenario in another datasource.") #TODO: Low priority; create one list of all additions needed, skip file with issues but add to list
   }
 
   # change model and scenario names in data to standardized names in scen_mapping file

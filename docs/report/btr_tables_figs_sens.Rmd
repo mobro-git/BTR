@@ -69,8 +69,9 @@ gas_table_merged
 ```
 
 ```{r}
-filename <- paste0("gas_table_",Sys.Date(),".png")
-gtsave(gas_table_merged, paste0('output/',settings$version,"/tables_figs_sens/results_tables/by_gas_sector/",filename))
+filename <- paste0("gas_table_",Sys.Date(),".html")
+create_folders(paste0('output/',settings$version,"/report/tables_figs_sens/results_tables/by_gas_sector/"))
+gtsave(gas_table_merged, paste0('output/',settings$version,"/report/tables_figs_sens/results_tables/by_gas_sector/",filename))
 ```
 
 ### Sector
@@ -84,8 +85,8 @@ sector_table_merged
 ```
 
 ```{r}
-filename <- paste0("sector_table_",Sys.Date(),".png")
-gtsave(sector_table_merged, paste0('output/',settings$version,"/tables_figs_sens/results_tables/by_gas_sector/",filename))
+filename <- paste0("sector_table_",Sys.Date(),".html")
+gtsave(sector_table_merged, paste0('output/',settings$version,"/report/tables_figs_sens/results_tables/by_gas_sector/",filename))
 ```
 ### % Change: Gas
 
@@ -135,7 +136,7 @@ fig
 
 ```{r}
 filename <- paste0("btr_main_fig_nosens",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs_sens/btr_main_figs/main_fig/",filename), create.dir = TRUE, height = 7, width = 9)
+ggsave(paste0('output/',settings$version,"/report/tables_figs_sens/btr_main_figs/main_fig/",filename), create.dir = TRUE, height = 7, width = 9)
 ```
 
 ### BR:VS - All Models
@@ -162,7 +163,7 @@ fig
 
 ```{r}
 filename <- paste0("btr_main_fig_nobrvs_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs_sens/btr_main_figs/main_fig/",filename), create.dir = TRUE)
+ggsave(paste0('output/',settings$version,"/report/tables_figs_sens/btr_main_figs/main_fig/",filename), create.dir = TRUE)
 ```
 
 ### No NDCs
@@ -174,7 +175,7 @@ fig
 
 ```{r}
 filename <- paste0("btr_main_fig_nobrvs_noNDC",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs_sens/btr_main_figs/main_fig/",filename), create.dir = TRUE, width = 6, height = 4)
+ggsave(paste0('output/',settings$version,"/report/tables_figs_sens/btr_main_figs/main_fig/",filename), create.dir = TRUE, width = 6, height = 4)
 ```
 
 
@@ -186,7 +187,7 @@ kaya_fig
 ```
 
 ```{r}
-ggsave(paste0('output/',settings$version,"/tables_figs_sens/kaya/kaya_singlepanel.png"), width = 5, create.dir = TRUE)
+ggsave(paste0('output/',settings$version,"/report/tables_figs_sens/kaya/kaya_singlepanel.png"), width = 5, create.dir = TRUE)
 
 ```
 
@@ -330,7 +331,7 @@ fig
 
 ```{r}
 filename <- paste0("nrg_emissions_fig_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs_sens/nrg_emissions/",filename), create.dir = TRUE,height = 5)
+ggsave(paste0('output/',settings$version,"/report/tables_figs_sens/nrg_emissions/",filename), create.dir = TRUE,height = 5)
 ```
 
 
@@ -414,7 +415,7 @@ fig
 
 ```{r}
 filename <- paste0("nrg_emissions_fig_nosens",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs_sens/nrg_emissions/",filename), create.dir = TRUE,height = 4.5)
+ggsave(paste0('output/',settings$version,"/report/tables_figs_sens/nrg_emissions/",filename), create.dir = TRUE,height = 4.5)
 ```
 
 # LULUCF Sink Range {.tabset}
@@ -472,7 +473,7 @@ lulucf_fig
 
 ```{r}
 filename <- paste0("lulucf_fig_", Sys.Date(), ".png")
-ggsave(paste0('output/', settings$version, "/tables_figs_sens/lulucf/", filename),
+ggsave(paste0('output/', settings$version, "/report/tables_figs_sens/lulucf/", filename),
   create.dir = TRUE,
   height = 4.5,
   width = 9)
@@ -564,7 +565,7 @@ fig
 
 ```{r}
 filename <- paste0("ncbr_comp_fig_",Sys.Date(),".png")
-ggsave(paste0('output/',settings$version,"/tables_figs_sens/ncbr_comparison/",filename), create.dir = TRUE,width = 9,height = 7)
+ggsave(paste0('output/',settings$version,"/report/tables_figs_sens/ncbr_comparison/",filename), create.dir = TRUE,width = 9,height = 7)
 ```
 
 ## NCBR Table
@@ -724,8 +725,9 @@ ncbr_comp_table
 ```
 
 ```{r}
-filename <- paste0("ncbr_comp_table_",Sys.Date(),".png")
-gtsave(ncbr_comp_table, paste0('output/',settings$version,"/tables_figs_sens/results_tables/ncbr_comparison/",filename))
+filename <- paste0("ncbr_comp_table_",Sys.Date(),".html")
+create_folders(paste0('output/',settings$version,"/report/tables_figs_sens/results_tables/ncbr_comparison/"))
+gtsave(ncbr_comp_table, paste0('output/',settings$version,"/report/tables_figs_sens/results_tables/ncbr_comparison/",filename))
 ```
 
 # Sector Analysis: Combine WM & WM_sens {.tabset}
@@ -744,7 +746,7 @@ buildings <- brvs_wm_sens_combo_sectors("Emissions|CO2|Energy|Demand|Buildings|T
 
 buildings
 
-ggsave(plot = buildings,filename = paste0('output/',settings$version,"/tables_figs_sens/sector_analysis/buildings_comparison",Sys.Date(),".png"), create.dir = TRUE, height = 4.5, width = 9)
+ggsave(plot = buildings,filename = paste0('output/',settings$version,"/report/tables_figs_sens/sector_analysis/buildings_comparison",Sys.Date(),".png"), create.dir = TRUE, height = 4.5, width = 9)
 ```
 
 ### BTR Subset
@@ -762,7 +764,7 @@ buildings
 ```{r}
 electricity <- brvs_wm_sens_combo_sectors("Emissions|CO2|Energy|Supply|Electricity", brvs_show = FALSE, brvs_btr_subset = FALSE, brvs_sectors, ghgi_comp_tab, config, settings,data_long_clean)
 
-ggsave(paste0('output/',settings$version,"/tables_figs_sens/sector_analysis/electricity_comparison",Sys.Date(),".png"), create.dir = TRUE, height = 4.5, width = 9)
+ggsave(paste0('output/',settings$version,"/report/tables_figs_sens/sector_analysis/electricity_comparison",Sys.Date(),".png"), create.dir = TRUE, height = 4.5, width = 9)
 
 electricity
 ```
@@ -782,7 +784,7 @@ electricity
 ```{r}
 transportation <- brvs_wm_sens_combo_sectors("Emissions|CO2|Energy|Demand|Transportation|Total", brvs_show = FALSE, brvs_btr_subset = FALSE, brvs_sectors, ghgi_comp_tab, config, settings,data_long_clean)
 
-ggsave(paste0('output/',settings$version,"/tables_figs_sens/sector_analysis/transportation_comparison",Sys.Date(),".png"), height = 4.5, width = 9)
+ggsave(paste0('output/',settings$version,"/report/tables_figs_sens/sector_analysis/transportation_comparison",Sys.Date(),".png"), height = 4.5, width = 9)
 
 transportation
 ```
@@ -802,7 +804,7 @@ transportation
 ```{r}
 industry <- brvs_wm_sens_combo_sectors("Emissions|CO2|Energy|Demand|Industry and Fuel Production|Total", brvs_show = FALSE, brvs_btr_subset = FALSE, brvs_sectors, ghgi_comp_tab, config, settings,data_long_clean)
 
-ggsave(paste0('output/',settings$version,"/tables_figs_sens/sector_analysis/industry_comparison",Sys.Date(),".png"), create.dir = TRUE, height = 4.5, width = 9)
+ggsave(paste0('output/',settings$version,"/report/tables_figs_sens/sector_analysis/industry_comparison",Sys.Date(),".png"), create.dir = TRUE, height = 4.5, width = 9)
 
 industry
 ```
@@ -832,7 +834,7 @@ buildings <- br_sectors_sens(
 
 buildings
 
-ggsave(plot = buildings,filename = paste0('output/',settings$version,"/tables_figs_sens/sector_analysis/only_ribbons/buildings_comparison",Sys.Date(),".png"), create.dir = TRUE, height = 5, width = 9)
+ggsave(plot = buildings,filename = paste0('output/',settings$version,"/report/tables_figs_sens/sector_analysis/only_ribbons/buildings_comparison",Sys.Date(),".png"), create.dir = TRUE, height = 5, width = 9)
 ```
 
 
@@ -850,7 +852,7 @@ electricity <- br_sectors_sens(
   expression(paste("Electricity Emissions (MMt C", O[2], ")"))
 )
 
-ggsave(paste0('output/',settings$version,"/tables_figs_sens/sector_analysis/only_ribbons/electricity_comparison",Sys.Date(),".png"), create.dir = TRUE, height = 5, width = 9)
+ggsave(paste0('output/',settings$version,"/report/tables_figs_sens/sector_analysis/only_ribbons/electricity_comparison",Sys.Date(),".png"), create.dir = TRUE, height = 5, width = 9)
 
 electricity
 ```
@@ -869,7 +871,7 @@ transportation <- br_sectors_sens(
   expression(paste("Transportation Emissions (MMt C", O[2], ")"))
 )
 
-ggsave(paste0('output/',settings$version,"/tables_figs_sens/sector_analysis/only_ribbons/transportation_comparison",Sys.Date(),".png"), height = 5, width = 9)
+ggsave(paste0('output/',settings$version,"/report/tables_figs_sens/sector_analysis/only_ribbons/transportation_comparison",Sys.Date(),".png"), height = 5, width = 9)
 
 transportation
 ```
@@ -888,7 +890,7 @@ industry <- br_sectors_sens(
   expression(paste("Industry and Fuel Production Emissions (MMt C", O[2], ")"))
 )
 
-ggsave(paste0('output/',settings$version,"/tables_figs_sens/sector_analysis/only_ribbons/industry_comparison",Sys.Date(),".png"), create.dir = TRUE, height = 5, width = 9)
+ggsave(paste0('output/',settings$version,"/report/tables_figs_sens/sector_analysis/only_ribbons/industry_comparison",Sys.Date(),".png"), create.dir = TRUE, height = 5, width = 9)
 
 industry
 ```

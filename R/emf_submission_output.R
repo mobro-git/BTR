@@ -20,8 +20,10 @@ emf_submission_output = function(data_long_clean_no_hist, template, config, sett
            Unit = unit) %>%
     pivot_wider(names_from = "year", values_from = "value")
   
+  path = paste0('output/',settings$version,"/emf_submission/")
+  create_folders(path)
   xlsx::write.xlsx(output, 
-                   file = paste0('output/',settings$version,"/emf_submission/biennial_transparency_report_NT_Ref_IRA.xlsx"),
+                   file = paste0(path,"biennial_transparency_report_NT_Ref_IRA.xlsx"),
                    sheetName = "data")
   
   return(output)
