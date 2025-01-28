@@ -55,6 +55,7 @@ make_usproj_data_long <- function(usproj_data_loaded, settings) {
       value,
       unit,
       usproj_category,
+      usproj_category_longname,
       usproj_source,
       usproj_subsource,
       region,

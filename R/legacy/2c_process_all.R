@@ -19,14 +19,15 @@ read_process_data_file <- function(filepath, settings) {
     process_data_file(settings = settings, filepath = filepath)
 }
 
-read_usproj_data_file <- function(filepath, crosswalk_usproj_csv) {
+read_usproj_data_file <- function(filepath, crosswalk_usproj_csv, crosswalk_usproj_categories) {
   print(paste0("Reading ",filepath))
   
   crosswalk <- read_csv(crosswalk_usproj_csv)
-  
+
   raw <-  read_file_ext(filepath) %>%
     mutate(datasrc = fs::path_file(filepath)) %>% 
     map_usproj_scenario_names(crosswalk) %>% 
+    map_usproj_category_names(crosswalk_usproj_categories) %>%
     select(datasrc, model, scenario, everything(),-notes) %>% 
     country_abbr()
 }
@@ -210,6 +211,25 @@ map_usproj_scenario_names <- function(raw, crosswalk) {
   
 }
 
+# Add usproj_cateogry_longname column to usproj dataframe based on the crosswalk_usproj_categories.xlsx file
+
+map_usproj_category_names <- function(raw, crosswalk_usproj_categories) {
+  
+  # make sure crosswalk has everything needed
+  preflight <- distinct_at(raw, "usproj_category") %>%
+    anti_join(crosswalk_usproj_categories, by = "usproj_category")
+  
+  if(nrow(preflight) > 0) {
+    paste0(preflight)
+    rlang::abort(paste0("The following values are category values in the usproj data file but do not have a translated value in the crosswalk: ", preflight))
+  }
+  
+  crosswalked = raw %>%
+    left_join(crosswalk_usproj_categories, by = "usproj_category") %>%
+    select(usproj_category_longname, everything())
+  return(crosswalked)
+  
+}
 
 #' assert_has_standard_cols
 #' checking if all standard columns exist in the dataframe

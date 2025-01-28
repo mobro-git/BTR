@@ -109,6 +109,16 @@ tar_plan(
   tar_target(lulucf_crosswalk_csv, "data-raw/crosswalk/crosswalk_lulucf_all.csv", format = "file"),
   tar_target(lulucf_crosswalk, read_csv(lulucf_crosswalk_csv)), 
   
+  ## variable name crosswalks ----
+  
+  ### add longnames for usproj_category variable
+  tar_target(crosswalk_usproj_categories_xlsx, "data-raw/crosswalk/crosswalk_usproj_categories.xlsx"),
+  tar_target(crosswalk_usproj_categories, read_xlsx(crosswalk_usproj_categories_xlsx)),
+  
+  ### xw between BTR and usproj template variables 
+  tar_target(var_crosswalk_csv, "data-raw/crosswalk/crosswalk_var.csv", format = "file"),
+  tar_target(var_crosswalk, make_var_xw(var_crosswalk_csv, crosswalk_usproj_categories)), # TODO: CHECK FOR BTR VARIABLES
+  
   # Data Files ----
   
   ## WM and WAM scenario - BTR template modeling ----
@@ -160,7 +170,7 @@ tar_plan(
   ## usproj data long ----
   
   usproj_data_loaded = {
-    map_dfr(usproj_files, ~read_usproj_data_file(.x, crosswalk_usproj_csv)) %>%
+    map_dfr(usproj_files, ~read_usproj_data_file(.x, crosswalk_usproj_csv, crosswalk_usproj_categories)) %>%
       arrange_standard()},
   
   usproj_data_long_all = make_usproj_data_long(usproj_data_loaded, settings), 
@@ -235,12 +245,10 @@ tar_plan(
   
   # Projections Compilation ----
   
-  ## xw between BTR and usproj template variables ----
-  tar_target(var_crosswalk_csv, "data-raw/crosswalk/crosswalk_var.csv", format = "file"),
-  tar_target(var_crosswalk, read_csv(var_crosswalk_csv)), # TODO: CHECK FOR VARIABLES!
-  
+  ## pull fossil fuel combustion projections from data_long_clean
   ffc_raw_data = get_ffc_model_runs(data_long_clean, var_crosswalk, usproj_data_long),
   
+  ## combine ffc_raw_data and lulucf_data to usproj_data_long for 1 large df
   usproj_all = add_ffc_lulucf(ffc_raw_data, lulucf_data, usproj_data_long, var_crosswalk, settings),
   
   ## compilation xw

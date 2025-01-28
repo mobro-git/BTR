@@ -37,16 +37,10 @@ tar_load(
     )
   )
 
-usproj_categories = read_xlsx("data-raw/crosswalk/crosswalk_usproj_categories.xlsx")
-
 projections_ghgi = filter(projections_ghgi, year <= 2040)
 
-proj_ghgi_nonco2_pre_bind = projections_ghgi %>% filter(gas != "CO2")
-
-proj_ghgi_nonco2 = proj_ghgi_nonco2_pre_bind %>%
-  left_join(usproj_categories, by = "usproj_category") %>%
-  select(-usproj_category) %>%
-  rename(usproj_category = usproj_category_rename)
+proj_ghgi_nonco2 = projections_ghgi %>% 
+  filter(gas != "CO2") 
 
 source("scripts/theming.R")
 
@@ -158,7 +152,7 @@ gas_table_merged <- create_html_table_merged(gas_df, 'Gas', settings)
 
 gas_table_merged
 
-gtsave(gas_table_merged, paste0('output/',settings$version,"/report/btr_published_deck/tables/Gas Table.html"))
+gtsave(gas_table_merged, paste0('output/',settings$version,"/report/btr_published_deck/tables/Gas Table.png"))
 ```
 
 ### Sector
@@ -168,7 +162,7 @@ sector_df <- create_summary_table('usproj_sector', 'wm_sens', projections_all_sm
 sector_table <- create_html_table(sector_df, 'Sector', settings)
 sector_table_merged <- create_html_table_merged(sector_df, 'Sector', settings)
 
-gtsave(sector_table_merged, paste0('output/',settings$version,"/report/btr_published_deck/tables/Sector Table.html"))
+gtsave(sector_table_merged, paste0('output/',settings$version,"/report/btr_published_deck/tables/Sector Table.png"))
 ```
 
 # Energy CO2 Emissions {.tabset}
@@ -573,7 +567,7 @@ tge_breakout_figure_sm(proj_ghgi_nonco2, sector_select = 'IPPU', col_count = 4) 
   labs(title = "")
 # filtering out miniscule categories
 proj_ghgi_nonco2_sm = proj_ghgi_nonco2 %>%
-  filter(!usproj_category %in% c(
+  filter(!usproj_category_longname %in% c(
     "Iron Steel Metallurgical Coke",
     "Carbide Production",
     "Ferroalloy Production",
@@ -600,9 +594,3 @@ tge_breakout_figure_sm(no_standalone_digesters, sector_select = 'Waste', col_cou
 saveit("Waste Non-CO2",settings, width = 11, height = 4)
 ```
 
-```{r}
-projections_ghgi %>%
-  select(usproj_category) %>%
-  distinct(usproj_category) %>%
-  write_csv("categories.csv")
-```

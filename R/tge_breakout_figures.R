@@ -81,9 +81,14 @@ tge_breakout_figure <- function(projections_ghgi, group = 'wm', sector_select = 
 }
 
 
-tge_breakout_figure_sm <- function(projections_ghgi, group = 'wm', sector_select = NULL, gas_select = NULL, col_count = 3) {
+tge_breakout_figure_sm <- function(projections_ghgi, group = 'wm', sector_select = NULL, gas_select = NULL, col_count = 3, longname = TRUE) {
   
   projections_ghgi <- projections_ghgi %>% filter(year >= 2005)
+  
+  if(longname) {
+    projections_ghgi = projections_ghgi %>%
+      mutate(usproj_category = usproj_category_longname)
+  }
   
   if(is.null(sector_select) & is.null(gas_select)) {
     

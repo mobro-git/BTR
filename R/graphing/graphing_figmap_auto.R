@@ -2,7 +2,7 @@
 create_graph <- function(presentation_title, presentation_plot_type, config, settings, emf_data_long, figmap,
                          pdfGraphs = TRUE, pngGraphs = FALSE, sub = "", saveData = FALSE) {
   #  create folders
-  exploratory_figures_path = paste("./output/", settings$version,"/exploratory_figures/", sep = "")
+  exploratory_figures_path = paste("./output/", settings$version,"/exploratory/exploratory_figures/", sep = "")
   create_folders(exploratory_figures_path)
   overall_path = paste("./output/", settings$version,"/exploratory_figures/",presentation_title, "/", sep = "")
 
